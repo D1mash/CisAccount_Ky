@@ -47,8 +47,8 @@ namespace Учет_цистерн
             qCargo qCargoForm = new qCargo();
             qCargoForm.Show();
         }
-
-        private void button7_Click(object sender, EventArgs e)
+       
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             string message = "Вы действительно хотите закрыть программу?";
             string title = "Закрытие программы";
@@ -64,13 +64,13 @@ namespace Учет_цистерн
                 sda.Fill(dtbl);
                 string user_aid = dtbl.Rows[0][0].ToString();
 
-                    SqlCommand cmd = con.CreateCommand();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "UPDATE AUDIT_USER SET DATE_OUT = GETDATE(), IS_DEAD = 1 WHERE ID_SESSION = @@spid and (IS_DEAD IS NULL OR DATE_OUT IS NULL)";
-                    cmd.ExecuteNonQuery();
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter sa = new SqlDataAdapter(cmd);
-                    sa.Fill(dt);
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "UPDATE AUDIT_USER SET DATE_OUT = GETDATE(), IS_DEAD = 1 WHERE ID_SESSION = @@spid and (IS_DEAD IS NULL OR DATE_OUT IS NULL)";
+                cmd.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter sa = new SqlDataAdapter(cmd);
+                sa.Fill(dt);
 
                 con.Close();
                 Environment.Exit(0);
