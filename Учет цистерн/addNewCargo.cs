@@ -30,9 +30,14 @@ namespace Учет_цистерн
         {
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
+            string get_user_aid = "select dbo.get_user_aid() S";
+            SqlDataAdapter sda = new SqlDataAdapter(get_user_aid, con);
+            DataTable dtbl = new DataTable();
+            sda.Fill(dtbl);
+            string user_aid = dtbl.Rows[0][0].ToString();
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "insert into qCargo values('" + textBox1.Text.Trim() + "','" + comboBox1.Text.Trim() + "','" + AID + "')";
+                cmd.CommandText = "insert into qCargo values('" + textBox1.Text.Trim() + "','" + comboBox1.Text.Trim() + "',"+user_aid+")";
                 //cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 SqlDataAdapter sa = new SqlDataAdapter(cmd);

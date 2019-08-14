@@ -32,7 +32,15 @@ namespace Учет_цистерн
             if(dtbl.Rows.Count == 1)
             {
                 this.Hide();
-                MainForm objFrmMain = new MainForm(dtbl.Rows[0][0].ToString());
+                string User_AID = dtbl.Rows[0][0].ToString();
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "exec dbo.Login "+User_AID;
+                //cmd.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter sa = new SqlDataAdapter(cmd);
+                sa.Fill(dt);
+                MainForm objFrmMain = new MainForm(dtbl.Rows[0][3].ToString());
                 objFrmMain.Show();
             }
             else
