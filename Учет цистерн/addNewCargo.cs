@@ -37,7 +37,7 @@ namespace Учет_цистерн
             string user_aid = dtbl.Rows[0][0].ToString();
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "insert into qCargo values('" + textBox1.Text.Trim() + "','" + comboBox1.Text.Trim() + "',"+user_aid+")";
+                cmd.CommandText = "insert into d__Product values('" + textBox1.Text.Trim() + "','" + comboBox1.SelectedValue + "',"+user_aid+")";
                 //cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 SqlDataAdapter sa = new SqlDataAdapter(cmd);

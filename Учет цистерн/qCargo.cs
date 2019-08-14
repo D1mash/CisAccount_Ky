@@ -34,8 +34,8 @@ namespace Учет_цистерн
             {
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select Name as [Название],Handling as [Обработка] from dbo.qCargo";
-                cmd.ExecuteNonQuery();
+                cmd.CommandText = "select dp.Name as [Название],qh.Name as [Обработка] from dbo.d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
+                //cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 SqlDataAdapter sa = new SqlDataAdapter(cmd);
                 sa.Fill(dt);
