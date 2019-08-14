@@ -50,8 +50,8 @@ namespace Учет_цистерн
 
         private void button7_Click(object sender, EventArgs e)
         {
-            string message = "Do you want to close this window?";
-            string title = "Close Window";
+            string message = "Вы действительно хотите закрыть программу?";
+            string title = "Закрытие программы";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Yes)
@@ -66,7 +66,7 @@ namespace Учет_цистерн
 
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "UPDATE AUDIT_USER SET DATE_OUT = GETDATE(), IS_DEAD = 1 WHERE ID_SESSION = @@spid AND ID_USER ="+user_aid;
+                    cmd.CommandText = "UPDATE AUDIT_USER SET DATE_OUT = GETDATE(), IS_DEAD = 1 WHERE ID_SESSION = @@spid and (IS_DEAD IS NULL OR DATE_OUT IS NULL)";
                     cmd.ExecuteNonQuery();
                     DataTable dt = new DataTable();
                     SqlDataAdapter sa = new SqlDataAdapter(cmd);
