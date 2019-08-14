@@ -47,7 +47,7 @@ namespace Учет_цистерн
             qCargo qCargoForm = new qCargo();
             qCargoForm.Show();
         }
-       
+        //Димаш лопиталь лох
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             string message = "Вы действительно хотите закрыть программу?";
