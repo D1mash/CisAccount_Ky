@@ -88,7 +88,6 @@
     <Compile Include="qCargo.Designer.cs">
       <DependentUpon>qCargo.cs</DependentUpon>
     </Compile>
-    <Compile Include="SqlConnection.cs" />
     <EmbeddedResource Include="addNewCargo.resx">
       <DependentUpon>addNewCargo.cs</DependentUpon>
     </EmbeddedResource>

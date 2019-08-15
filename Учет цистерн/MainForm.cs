@@ -15,7 +15,7 @@ namespace Учет_цистерн
 {
     public partial class MainForm : Form
     {
-        
+        public string connectionString = "Data Source=POTITPC-01\\PLMLOCAL;Initial Catalog=Batys;User ID=sa;Password=!sql123;";
         public MainForm(string FIO)
         {
             InitializeComponent();

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.contextMenuStrip_Product = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1_Product = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2_Station = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3_Brigade = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4_Owner = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,8 +44,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.toolStripMenuItem1_Product = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.contextMenuStrip_Product.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip_Product
@@ -59,6 +61,14 @@
             this.contextMenuStrip_Product.Name = "contextMenuStrip1";
             this.contextMenuStrip_Product.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             resources.ApplyResources(this.contextMenuStrip_Product, "contextMenuStrip_Product");
+            // 
+            // toolStripMenuItem1_Product
+            // 
+            this.toolStripMenuItem1_Product.CheckOnClick = true;
+            resources.ApplyResources(this.toolStripMenuItem1_Product, "toolStripMenuItem1_Product");
+            this.toolStripMenuItem1_Product.Image = global::Учет_цистерн.Properties.Resources.winrar_1;
+            this.toolStripMenuItem1_Product.Name = "toolStripMenuItem1_Product";
+            this.toolStripMenuItem1_Product.Click += new System.EventHandler(this.ToolStripMenuItem1_Product_Click);
             // 
             // toolStripMenuItem2_Station
             // 
@@ -148,29 +158,31 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // toolStripMenuItem1_Product
+            // groupBox1
             // 
-            this.toolStripMenuItem1_Product.CheckOnClick = true;
-            resources.ApplyResources(this.toolStripMenuItem1_Product, "toolStripMenuItem1_Product");
-            this.toolStripMenuItem1_Product.Image = global::Учет_цистерн.Properties.Resources.winrar_1;
-            this.toolStripMenuItem1_Product.Name = "toolStripMenuItem1_Product";
-            this.toolStripMenuItem1_Product.Click += new System.EventHandler(this.ToolStripMenuItem1_Product_Click);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Name = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.contextMenuStrip_Product.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,6 +204,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Service;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Carriage;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
