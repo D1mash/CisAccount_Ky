@@ -30,31 +30,68 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.button10 = new System.Windows.Forms.Button();
+            this.contextMenuStrip_Product = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem2_Station = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3_Brigade = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4_Owner = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Service = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Carriage = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
+            this.toolStripMenuItem1_Product = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip_Product.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button10
+            // contextMenuStrip_Product
             // 
-            resources.ApplyResources(this.button10, "button10");
-            this.button10.Name = "button10";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.contextMenuStrip_Product.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1_Product,
+            this.toolStripMenuItem2_Station,
+            this.toolStripMenuItem3_Brigade,
+            this.toolStripMenuItem4_Owner,
+            this.toolStripMenuItem_Service,
+            this.toolStripMenuItem_Carriage});
+            this.contextMenuStrip_Product.Name = "contextMenuStrip1";
+            this.contextMenuStrip_Product.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            resources.ApplyResources(this.contextMenuStrip_Product, "contextMenuStrip_Product");
+            // 
+            // toolStripMenuItem2_Station
+            // 
+            this.toolStripMenuItem2_Station.CheckOnClick = true;
+            resources.ApplyResources(this.toolStripMenuItem2_Station, "toolStripMenuItem2_Station");
+            this.toolStripMenuItem2_Station.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.toolStripMenuItem2_Station.Name = "toolStripMenuItem2_Station";
+            // 
+            // toolStripMenuItem3_Brigade
+            // 
+            resources.ApplyResources(this.toolStripMenuItem3_Brigade, "toolStripMenuItem3_Brigade");
+            this.toolStripMenuItem3_Brigade.Name = "toolStripMenuItem3_Brigade";
+            // 
+            // toolStripMenuItem4_Owner
+            // 
+            resources.ApplyResources(this.toolStripMenuItem4_Owner, "toolStripMenuItem4_Owner");
+            this.toolStripMenuItem4_Owner.Name = "toolStripMenuItem4_Owner";
+            // 
+            // toolStripMenuItem_Service
+            // 
+            resources.ApplyResources(this.toolStripMenuItem_Service, "toolStripMenuItem_Service");
+            this.toolStripMenuItem_Service.Name = "toolStripMenuItem_Service";
+            // 
+            // toolStripMenuItem_Carriage
+            // 
+            resources.ApplyResources(this.toolStripMenuItem_Carriage, "toolStripMenuItem_Carriage");
+            this.toolStripMenuItem_Carriage.Name = "toolStripMenuItem_Carriage";
+            // 
+            // tabControl1
+            // 
+            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
             // 
             // button6
             // 
@@ -111,67 +148,19 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dataGridView1
+            // toolStripMenuItem1_Product
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Name = "dataGridView1";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
-            // 
-            // toolStripMenuItem1
-            // 
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
-            this.toolStripMenuItem1.Image = global::Учет_цистерн.Properties.Resources.winrar_1;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            // 
-            // toolStripMenuItem2
-            // 
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
-            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            // 
-            // toolStripMenuItem3
-            // 
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            // 
-            // toolStripMenuItem4
-            // 
-            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            // 
-            // toolStripMenuItem5
-            // 
-            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            // 
-            // toolStripMenuItem6
-            // 
-            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem1_Product.CheckOnClick = true;
+            resources.ApplyResources(this.toolStripMenuItem1_Product, "toolStripMenuItem1_Product");
+            this.toolStripMenuItem1_Product.Image = global::Учет_цистерн.Properties.Resources.winrar_1;
+            this.toolStripMenuItem1_Product.Name = "toolStripMenuItem1_Product";
+            this.toolStripMenuItem1_Product.Click += new System.EventHandler(this.ToolStripMenuItem1_Product_Click);
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -181,8 +170,7 @@
             this.Name = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip_Product.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,15 +184,14 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Product;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1_Product;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2_Station;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3_Brigade;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4_Owner;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Service;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Carriage;
+        private System.Windows.Forms.TabControl tabControl1;
     }
 }
 
