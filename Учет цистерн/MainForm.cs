@@ -44,10 +44,15 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
+            /*
             qCargo qCargoForm = new qCargo();
             qCargoForm.Show();
+            */
+
+            contextMenuStrip1.Show(button1, new Point(0, button1.Height));
+
         }
-        //Димаш лопиталь лох
+        
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             string message = "Вы действительно хотите закрыть программу?";
@@ -80,5 +85,6 @@ namespace Учет_цистерн
                 // Do something  
             }
         }
+
     }
 }
