@@ -19,6 +19,7 @@ namespace Учет_цистерн
         public Form_Product()
         {
             InitializeComponent();
+            textBox1.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -27,7 +28,7 @@ namespace Учет_цистерн
             addCargo.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click_Refresh_Table(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
@@ -40,30 +41,41 @@ namespace Учет_цистерн
             con.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click_Update_Product(object sender, EventArgs e)
         {
+            UpdateProductForm UpdateProductForm = new UpdateProductForm();
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
-            foreach (DataGridViewRow dgRow in dataGridView1.Rows)
-            {
-                string Id = dgRow.Cells[0].Value.ToString();
-                string GetProduct = "delete from d__Product where ID = " +Id;
-                SqlDataAdapter sda = new SqlDataAdapter(GetProduct, con);
-                DataTable dtbl = new DataTable();
-                sda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-            }
+            string GetCurrentProduct = "select dp.Name, qh.Name from d__Product dp left join qHangling qh on qh.ID = dp.ID where dp.ID = " + this.textBox1.Text;
+            SqlDataAdapter sda = new SqlDataAdapter(GetCurrentProduct, con);
+            DataTable dtbl = new DataTable();
+            sda.Fill(dtbl);
+            UpdateProductForm.textBox1.Text = dtbl.Rows[0]["Name"].ToString();
+            UpdateProductForm.textBox2.Text = this.textBox1.Text;
             con.Close();
+            UpdateProductForm.Show();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick_SelectedRow(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                //DataGridView row = dataGridView1.Rows[e.RowIndex];
-
-
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                string Id = row.Cells["ID"].Value.ToString();
+                textBox1.Text = Id;
             }
+        }
+
+        private void button3_Click_Delete_Product(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            string DeleteCurrentProduct = "delete from d__Product where ID = "+textBox1.Text;
+            SqlDataAdapter sda = new SqlDataAdapter(DeleteCurrentProduct, con);
+            DataTable dtbl = new DataTable();
+            sda.Fill(dtbl);
+            con.Close();
+            MessageBox.Show("Продукт удалён!");
         }
     }
 }
