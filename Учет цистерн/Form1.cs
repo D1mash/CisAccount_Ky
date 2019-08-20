@@ -55,7 +55,7 @@ namespace Учет_цистерн
             //con.Close();
 
             UpdateProductForm UpdateProductForm = new UpdateProductForm();
-            UpdateProductForm.textBox1.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
+            UpdateProductForm.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             UpdateProductForm.SelectID = SelectItemRow;
             UpdateProductForm.Show();
         }
