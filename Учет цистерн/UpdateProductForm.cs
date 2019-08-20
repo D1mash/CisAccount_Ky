@@ -17,14 +17,18 @@ namespace Учет_цистерн
         public UpdateProductForm()
         {
             InitializeComponent();
-            this.textBox2.Visible = false;
+            //this.textBox2.Visible = false;
         }
+
+        int selectID;
+
+        public int SelectID { get => selectID; set => selectID = value; }
 
         private void button1_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
-            string UpdateCurrentProduct = "update d__Product set Name = '" + textBox1.Text.Trim() + "', Handling_id = "+comboBox1.SelectedValue+"where ID = "+textBox2.Text;
+            string UpdateCurrentProduct = "update d__Product set Name = '" + textBox1.Text.Trim() + "', Handling_id = "+comboBox1.SelectedValue+"where ID = "+selectID;
             SqlDataAdapter sda = new SqlDataAdapter(UpdateCurrentProduct, con);
             DataTable dtbl = new DataTable();
             sda.Fill(dtbl);

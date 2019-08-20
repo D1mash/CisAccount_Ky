@@ -49,7 +49,7 @@ namespace Учет_цистерн
         private void button2_Click(object sender, EventArgs e)
         {
             addNewCargo addNewCargoForm = new addNewCargo();
-            addNewCargoForm.Hide();
+            addNewCargoForm.Close();
         }
     }
 }

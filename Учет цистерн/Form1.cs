@@ -19,8 +19,10 @@ namespace Учет_цистерн
         public Form_Product()
         {
             InitializeComponent();
-            textBox1.Visible = false;
+            //textBox1.Visible = false;
         }
+
+        int SelectItemRow;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -43,34 +45,39 @@ namespace Учет_цистерн
 
         private void button2_Click_Update_Product(object sender, EventArgs e)
         {
-            UpdateProductForm UpdateProductForm = new UpdateProductForm();
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            string GetCurrentProduct = "select dp.Name, qh.Name from d__Product dp left join qHangling qh on qh.ID = dp.ID where dp.ID = " + this.textBox1.Text;
-            SqlDataAdapter sda = new SqlDataAdapter(GetCurrentProduct, con);
+
+            //SqlConnection con = new SqlConnection(connectionString);
+            //con.Open();
+            //string GetCurrentProduct = "select dp.Name, qh.Name from d__Product dp left join qHangling qh on qh.ID = dp.ID where dp.ID = " + this.textBox1.Text;
+            //SqlDataAdapter sda = new SqlDataAdapter(GetCurrentProduct, con);
             DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            UpdateProductForm.textBox1.Text = dtbl.Rows[0]["Name"].ToString();
-            UpdateProductForm.textBox2.Text = this.textBox1.Text;
-            con.Close();
+            //sda.Fill(dtbl);
+            //con.Close();
+
+            UpdateProductForm UpdateProductForm = new UpdateProductForm();
+            UpdateProductForm.textBox1.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
+            UpdateProductForm.SelectID = SelectItemRow;
             UpdateProductForm.Show();
         }
 
         private void dataGridView1_CellClick_SelectedRow(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                string Id = row.Cells["ID"].Value.ToString();
-                textBox1.Text = Id;
-            }
+
+            SelectItemRow = e.RowIndex;
+
+            //if (e.RowIndex >= 0)
+            //{
+            //    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+            //    string Id = row.Cells["ID"].Value.ToString();
+            //    //textBox1.Text = Id;
+            //}
         }
 
         private void button3_Click_Delete_Product(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
-            string DeleteCurrentProduct = "delete from d__Product where ID = "+textBox1.Text;
+            string DeleteCurrentProduct = "delete from d__Product where ID = "+SelectItemRow;
             SqlDataAdapter sda = new SqlDataAdapter(DeleteCurrentProduct, con);
             DataTable dtbl = new DataTable();
             sda.Fill(dtbl);
