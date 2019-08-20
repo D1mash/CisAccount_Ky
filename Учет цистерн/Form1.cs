@@ -19,7 +19,6 @@ namespace Учет_цистерн
         public Form_Product()
         {
             InitializeComponent();
-            //textBox1.Visible = false;
         }
 
         int SelectItemRow;
@@ -45,15 +44,6 @@ namespace Учет_цистерн
 
         private void button2_Click_Update_Product(object sender, EventArgs e)
         {
-
-            //SqlConnection con = new SqlConnection(connectionString);
-            //con.Open();
-            //string GetCurrentProduct = "select dp.Name, qh.Name from d__Product dp left join qHangling qh on qh.ID = dp.ID where dp.ID = " + this.textBox1.Text;
-            //SqlDataAdapter sda = new SqlDataAdapter(GetCurrentProduct, con);
-            DataTable dtbl = new DataTable();
-            //sda.Fill(dtbl);
-            //con.Close();
-
             UpdateProductForm UpdateProductForm = new UpdateProductForm();
             UpdateProductForm.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             UpdateProductForm.SelectID = SelectItemRow;
@@ -62,15 +52,12 @@ namespace Учет_цистерн
 
         private void dataGridView1_CellClick_SelectedRow(object sender, DataGridViewCellEventArgs e)
         {
-
-            SelectItemRow = e.RowIndex;
-
-            //if (e.RowIndex >= 0)
-            //{
-            //    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-            //    string Id = row.Cells["ID"].Value.ToString();
-            //    //textBox1.Text = Id;
-            //}
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                string Id = row.Cells["ID"].Value.ToString();
+                SelectItemRow = Convert.ToInt32(Id);
+            }
         }
 
         private void button3_Click_Delete_Product(object sender, EventArgs e)

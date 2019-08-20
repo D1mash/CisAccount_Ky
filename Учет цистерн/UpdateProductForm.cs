@@ -17,18 +17,21 @@ namespace Учет_цистерн
         public UpdateProductForm()
         {
             InitializeComponent();
-            //this.textBox2.Visible = false;
         }
 
         int selectID;
 
-        public int SelectID { get => selectID; set => selectID = value; }
+        public int SelectID
+        {
+            get { return SelectID; }
+            set { selectID = value; }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
-            string UpdateCurrentProduct = "update d__Product set Name = '" + textBox1.Text.Trim() + "', Handling_id = "+comboBox1.SelectedValue+"where ID = "+selectID;
+            string UpdateCurrentProduct = "update d__Product set Name = '" + textBox1.Text.Trim() + "', Handling_id = "+comboBox1.SelectedValue+" where ID = "+selectID;
             SqlDataAdapter sda = new SqlDataAdapter(UpdateCurrentProduct, con);
             DataTable dtbl = new DataTable();
             sda.Fill(dtbl);
@@ -42,8 +45,6 @@ namespace Учет_цистерн
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "batysDataSet11.qHangling". При необходимости она может быть перемещена или удалена.
             this.qHanglingTableAdapter1.Fill(this.batysDataSet11.qHangling);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "batysDataSet11.qHangling". При необходимости она может быть перемещена или удалена.
-            this.qHanglingTableAdapter.Fill(this.batysDataSet1.qHangling);
         }
     }
 }
