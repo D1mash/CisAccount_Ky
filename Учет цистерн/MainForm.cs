@@ -64,7 +64,7 @@ namespace Учет_цистерн
             }
             else
             {
-                // Do something  
+                //
             }
         }
 
@@ -72,14 +72,28 @@ namespace Учет_цистерн
         {
             Form_Product frm = new Form_Product();
             tabControl1.Show();
-            TabPage firstPage = new TabPage("Продукты");
-            tabControl1.TabPages.Add(firstPage);
-            tabControl1.SelectedTab = firstPage;
+            TabPage ProductTabPage = new TabPage("Продукты");
+            tabControl1.TabPages.Add(ProductTabPage);
+            tabControl1.SelectedTab = ProductTabPage;
             frm.TopLevel = false;
             frm.Visible = true;
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Dock = DockStyle.Fill;
-            firstPage.Controls.Add(frm);
+            ProductTabPage.Controls.Add(frm);
+        }
+
+        private void toolStripMenuItem2_Station_Click(object sender, EventArgs e)
+        {
+            StationForm frm = new StationForm();
+            tabControl1.Show();
+            TabPage StationTabPage = new TabPage("Станции");
+            tabControl1.TabPages.Add(StationTabPage);
+            tabControl1.SelectedTab = StationTabPage;
+            frm.TopLevel = false;
+            frm.Visible = true;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            StationTabPage.Controls.Add(frm);
         }
     }
 }

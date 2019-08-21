@@ -76,6 +76,7 @@
             resources.ApplyResources(this.toolStripMenuItem2_Station, "toolStripMenuItem2_Station");
             this.toolStripMenuItem2_Station.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripMenuItem2_Station.Name = "toolStripMenuItem2_Station";
+            this.toolStripMenuItem2_Station.Click += new System.EventHandler(this.toolStripMenuItem2_Station_Click);
             // 
             // toolStripMenuItem3_Brigade
             // 

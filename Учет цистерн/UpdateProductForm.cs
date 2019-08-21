@@ -46,5 +46,11 @@ namespace Учет_цистерн
             // TODO: данная строка кода позволяет загрузить данные в таблицу "batysDataSet11.qHangling". При необходимости она может быть перемещена или удалена.
             this.qHanglingTableAdapter1.Fill(this.batysDataSet11.qHangling);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            UpdateProductForm UpdateProductForm = new UpdateProductForm();
+            UpdateProductForm.Close();
+        }
     }
 }

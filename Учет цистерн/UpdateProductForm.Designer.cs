@@ -106,6 +106,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // qHanglingTableAdapter1
             // 
@@ -140,13 +141,6 @@
         public System.Windows.Forms.ComboBox comboBox1;
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Button button2;
-        private BatysDataSet batysDataSet;
-        private System.Windows.Forms.BindingSource batysDataSetBindingSource;
-        private System.Windows.Forms.BindingSource batysDataSetBindingSource1;
-        private System.Windows.Forms.BindingSource batysDataSet1BindingSource;
-        private BatysDataSet1 batysDataSet1;
-        private System.Windows.Forms.BindingSource qHanglingBindingSource;
-        private BatysDataSet1TableAdapters.qHanglingTableAdapter qHanglingTableAdapter;
         private BatysDataSet1 batysDataSet11;
         private System.Windows.Forms.BindingSource bindingSource1;
         private BatysDataSet1TableAdapters.qHanglingTableAdapter qHanglingTableAdapter1;

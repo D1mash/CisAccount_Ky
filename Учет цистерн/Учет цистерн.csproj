@@ -52,6 +52,12 @@
     <Compile Include="addNewCargo.Designer.cs">
       <DependentUpon>addNewCargo.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddNewStation_StationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewStation_StationForm.Designer.cs">
+      <DependentUpon>AddNewStation_StationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BatysDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,14 +88,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StationForm.Designer.cs">
+      <DependentUpon>StationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UpdateProductForm.Designer.cs">
       <DependentUpon>UpdateProductForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdtCurrentStation_StationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdtCurrentStation_StationForm.Designer.cs">
+      <DependentUpon>UpdtCurrentStation_StationForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="addNewCargo.resx">
       <DependentUpon>addNewCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddNewStation_StationForm.resx">
+      <DependentUpon>AddNewStation_StationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -108,8 +129,14 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="StationForm.resx">
+      <DependentUpon>StationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdateProductForm.resx">
       <DependentUpon>UpdateProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdtCurrentStation_StationForm.resx">
+      <DependentUpon>UpdtCurrentStation_StationForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="BatysDataSet.xsc">
       <DependentUpon>BatysDataSet.xsd</DependentUpon>

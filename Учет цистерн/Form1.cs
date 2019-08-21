@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 
 namespace Учет_цистерн
@@ -23,7 +22,7 @@ namespace Учет_цистерн
 
         int SelectItemRow;
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_Add_Product(object sender, EventArgs e)
         {
             addNewCargo addCargo = new addNewCargo();
             addCargo.Show();
@@ -70,6 +69,19 @@ namespace Учет_цистерн
             sda.Fill(dtbl);
             con.Close();
             MessageBox.Show("Продукт удалён!");
+        }
+
+        private void Form_Product_Load(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            string GetProduct = "select dp.ID,dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
+            SqlDataAdapter sda = new SqlDataAdapter(GetProduct, con);
+            DataTable dtbl = new DataTable();
+            sda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+            dataGridView1.Columns[0].Visible = false;
+            con.Close();
         }
     }
 }
