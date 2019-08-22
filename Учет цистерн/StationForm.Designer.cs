@@ -49,7 +49,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1804, 63);
+            this.panel1.Size = new System.Drawing.Size(1370, 63);
             this.panel1.TabIndex = 1;
             // 
             // btn_refsh_station_form
@@ -98,7 +98,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1804, 748);
+            this.panel2.Size = new System.Drawing.Size(1370, 686);
             this.panel2.TabIndex = 2;
             // 
             // dataGridView_Station_Form
@@ -110,7 +110,7 @@
             this.dataGridView_Station_Form.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_Station_Form.Location = new System.Drawing.Point(0, 0);
             this.dataGridView_Station_Form.Name = "dataGridView_Station_Form";
-            this.dataGridView_Station_Form.Size = new System.Drawing.Size(1804, 748);
+            this.dataGridView_Station_Form.Size = new System.Drawing.Size(1370, 686);
             this.dataGridView_Station_Form.TabIndex = 0;
             this.dataGridView_Station_Form.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_Station_Form_CellClick);
             // 
@@ -118,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1804, 811);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "StationForm";

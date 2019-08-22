@@ -30,16 +30,17 @@ namespace Учет_цистерн
 
         private void button_Updt_OK_StationForm_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
+            //SqlConnection con = new SqlConnection(connectionString);
+            //con.Open();
             string Updt_CurrentStation = 
                 "update d__Station " +
                 "set Name = '"+textBox_Updt_Name_StationForm.Text.Trim()+"', Code = "+Convert.ToInt32(textBox_Updt_Code_StationForm.Text.Trim())+", Code6 = "+Convert.ToInt32(textBox_Updt_Code6_StationForm.Text.Trim())+" " +
                 "where ID = "+ selectStationID;
-            SqlDataAdapter sda = new SqlDataAdapter(Updt_CurrentStation, con);
+            //SqlDataAdapter sda = new SqlDataAdapter(Updt_CurrentStation, con);
             DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            con.Close();
+            dtbl = DbConnection.DBConnect(Updt_CurrentStation);
+            //sda.Fill(dtbl);
+            //con.Close();
             this.Close();
             MessageBox.Show("Станция изменена!");
         }

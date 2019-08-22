@@ -29,13 +29,14 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
+            //SqlConnection con = new SqlConnection(connectionString);
+            //con.Open();
             string UpdateCurrentProduct = "update d__Product set Name = '" + textBox1.Text.Trim() + "', Handling_id = "+comboBox1.SelectedValue+" where ID = "+selectID;
-            SqlDataAdapter sda = new SqlDataAdapter(UpdateCurrentProduct, con);
+            //SqlDataAdapter sda = new SqlDataAdapter(UpdateCurrentProduct, con);
             DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            con.Close();
+            dtbl = DbConnection.DBConnect(UpdateCurrentProduct);
+            //sda.Fill(dtbl);
+            //con.Close();
             this.Close();
             MessageBox.Show("Продукт изменён!");
 
@@ -49,8 +50,7 @@ namespace Учет_цистерн
 
         private void button2_Click(object sender, EventArgs e)
         {
-            UpdateProductForm UpdateProductForm = new UpdateProductForm();
-            UpdateProductForm.Close();
+            this.Close();
         }
     }
 }

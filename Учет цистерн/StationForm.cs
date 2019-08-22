@@ -39,15 +39,16 @@ namespace Учет_цистерн
 
         private void StationForm_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
+            //SqlConnection con = new SqlConnection(connectionString);
+            //con.Open();
             string GetStation = "select ID, Name as [Наименование], Code, Code6 from d__Station";
-            SqlDataAdapter sda = new SqlDataAdapter(GetStation, con);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            dataGridView_Station_Form.DataSource = dtbl;
-            dataGridView_Station_Form.Columns[0].Visible = false;
-            con.Close();
+            //SqlDataAdapter sda = new SqlDataAdapter(GetStation, con);
+            DataTable dataTable = new DataTable();
+            dataTable = DbConnection.DBConnect(GetStation);
+            //sda.Fill(dtbl);
+            dataGridView_Station_Form.DataSource = dataTable;
+            //dataGridView_Station_Form.Columns[0].Visible = false;
+            //con.Close();
         }
 
         private void btn_upd_station_form_Click(object sender, EventArgs e)
@@ -62,26 +63,28 @@ namespace Учет_цистерн
 
         private void btn_refsh_station_form_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
+            //SqlConnection con = new SqlConnection(connectionString);
+            //con.Open();
             string GetStation = "select ID, Name as [Наименование], Code, Code6 from d__Station";
-            SqlDataAdapter sda = new SqlDataAdapter(GetStation, con);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            dataGridView_Station_Form.DataSource = dtbl;
-            dataGridView_Station_Form.Columns[0].Visible = false;
-            con.Close();
+            //SqlDataAdapter sda = new SqlDataAdapter(GetStation, con);
+            DataTable dTl = new DataTable();
+            dTl = DbConnection.DBConnect(GetStation);
+            //sda.Fill(dtbl);
+            dataGridView_Station_Form.DataSource = dTl;
+            //dataGridView_Station_Form.Columns[0].Visible = false;
+            //con.Close();
         }
 
         private void btn_dlt_station_form_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
+            //SqlConnection con = new SqlConnection(connectionString);
+            //con.Open();
             string DeleteCurrentStation = "delete from d__Station where ID = " + SelectItemRow;
-            SqlDataAdapter sda = new SqlDataAdapter(DeleteCurrentStation, con);
+            //SqlDataAdapter sda = new SqlDataAdapter(DeleteCurrentStation, con);
             DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            con.Close();
+            dtbl = DbConnection.DBConnect(DeleteCurrentStation);
+            //sda.Fill(dtbl);
+            //con.Close();
             MessageBox.Show("Станция удалена!");
         }
     }

@@ -57,5 +57,10 @@ namespace Учет_цистерн
             textBox2.Select();
 
         }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

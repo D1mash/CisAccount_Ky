@@ -30,15 +30,20 @@ namespace Учет_цистерн
 
         private void button4_Click_Refresh_Table(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
             string GetProduct = "select dp.ID,dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
-            SqlDataAdapter sda = new SqlDataAdapter(GetProduct, con);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            dataGridView1.DataSource = dtbl;
-            dataGridView1.Columns[0].Visible = false;
-            con.Close();
+            DataTable dataTable = new DataTable();
+            dataTable = DbConnection.DBConnect(GetProduct);
+            dataGridView1.DataSource = dataTable;
+            //dataGridView1.Columns[0].Visible = false;
+            //SqlConnection con = new SqlConnection(connectionString);
+            //con.Open();
+            //string GetProduct = "select dp.ID,dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
+            //SqlDataAdapter sda = new SqlDataAdapter(GetProduct, con);
+            //DataTable dtbl = new DataTable();
+            //sda.Fill(dtbl);
+            //dataGridView1.DataSource = dtbl;
+            //dataGridView1.Columns[0].Visible = false;
+            //con.Close();
         }
 
         private void button2_Click_Update_Product(object sender, EventArgs e)
@@ -61,27 +66,33 @@ namespace Учет_цистерн
 
         private void button3_Click_Delete_Product(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
+            //SqlConnection con = new SqlConnection(connectionString);
+            //con.Open();
             string DeleteCurrentProduct = "delete from d__Product where ID = "+SelectItemRow;
-            SqlDataAdapter sda = new SqlDataAdapter(DeleteCurrentProduct, con);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            con.Close();
+            DataTable dataTable = new DataTable();
+            dataTable = DbConnection.DBConnect(DeleteCurrentProduct);
+           //SqlDataAdapter sda = new SqlDataAdapter(DeleteCurrentProduct, con);
+            //DataTable dtbl = new DataTable();
+            //sda.Fill(dtbl);
+            //con.Close();
             MessageBox.Show("Продукт удалён!");
         }
 
         private void Form_Product_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
+            //dataGridView1.Columns[0].Visible = false;
+            //SqlConnection con = new SqlConnection(connectionString);
+            //con.Open();
             string GetProduct = "select dp.ID,dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
-            SqlDataAdapter sda = new SqlDataAdapter(GetProduct, con);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            dataGridView1.DataSource = dtbl;
-            dataGridView1.Columns[0].Visible = false;
-            con.Close();
+            DataTable dataTable = new DataTable();
+            dataTable = DbConnection.DBConnect(GetProduct);
+            dataGridView1.DataSource = dataTable;
+            //SqlDataAdapter sda = new SqlDataAdapter(GetProduct, con);
+            //DataTable dtbl = new DataTable();
+            //sda.Fill(dtbl);
+            //dataGridView1.DataSource = dtbl;
+            //dataGridView1.Columns[0].Visible = false;
+            //con.Close();
         }
     }
 }

@@ -60,6 +60,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // label1
             // 
