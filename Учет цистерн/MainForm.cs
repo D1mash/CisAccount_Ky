@@ -95,5 +95,19 @@ namespace Учет_цистерн
             frm.Dock = DockStyle.Fill;
             StationTabPage.Controls.Add(frm);
         }
+
+        private void ToolStripMenuItem3_Brigade_Click(object sender, EventArgs e)
+        {
+            BrigadeForm frm = new BrigadeForm();
+            tabControl1.Show();
+            TabPage StationTabPage = new TabPage("Бригады");
+            tabControl1.TabPages.Add(StationTabPage);
+            tabControl1.SelectedTab = StationTabPage;
+            frm.TopLevel = false;
+            frm.Visible = true;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            StationTabPage.Controls.Add(frm);
+        }
     }
 }

@@ -2,25 +2,32 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Учет_цистерн
 {
-    public partial class AddNewStation_StationForm : Form
+    public partial class BrigadeAddForm : Form
     {
         public string connectionString = "Data Source=POTITPC-01\\PLMLOCAL;Initial Catalog=Batys;User ID=sa;Password=!sql123;";
-
-        public AddNewStation_StationForm()
+        public BrigadeAddForm()
         {
             InitializeComponent();
         }
 
-        private void button_OK_StationForm_Click(object sender, EventArgs e)
+        int yes;
+        int not;
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
@@ -31,19 +38,24 @@ namespace Учет_цистерн
             string user_aid = dtbl.Rows[0][0].ToString();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into d__Station values ("+ Convert.ToInt32(textBox_Add_Code_StationForm.Text.Trim())+ "," + Convert.ToInt32(textBox_Add_Code6_StationForm.Text.Trim())+",'"+textBox_Add_Name_StationForm.Text.Trim()+"',"+user_aid+",getdate())";
+
+            if (checkBox1.Checked)
+            {
+                yes = 1;
+                cmd.CommandText = "insert into d__Brigade values('" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','"+ textBox1.Text.Trim()+textBox2.Text.Trim()+ textBox3.Text.Trim()+"','"+ yes + ")";
+            }
+            else
+            {
+                not = 0;
+                cmd.CommandText = "insert into d__Brigade values('" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + textBox1.Text.Trim() + textBox2.Text.Trim() + textBox3.Text.Trim() + "'," + not + ")";
+            }
+            
             //cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter sa = new SqlDataAdapter(cmd);
             sa.Fill(dt);
-            MessageBox.Show("Станция добавлена!");
+            MessageBox.Show("Добавлен сотрудник!");
             con.Close();
-        }
-
-        private void button_Add_Cancel_StationForm_Click(object sender, EventArgs e)
-        {
-            AddNewStation_StationForm AddNewStation_StationForm = new AddNewStation_StationForm();
-            AddNewStation_StationForm.Close();
         }
     }
 }

@@ -68,7 +68,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BatysDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="BrigadeAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrigadeAddForm.Designer.cs">
+      <DependentUpon>BrigadeAddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DbConnection.cs" />
+    <Compile Include="BrigadeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrigadeForm.Designer.cs">
+      <DependentUpon>BrigadeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BrigadeUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrigadeUpdateForm.Designer.cs">
+      <DependentUpon>BrigadeUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +130,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddNewStation_StationForm.resx">
       <DependentUpon>AddNewStation_StationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrigadeAddForm.resx">
+      <DependentUpon>BrigadeAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrigadeForm.resx">
+      <DependentUpon>BrigadeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrigadeUpdateForm.resx">
+      <DependentUpon>BrigadeUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>

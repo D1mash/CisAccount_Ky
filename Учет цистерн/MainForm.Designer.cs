@@ -82,6 +82,7 @@
             // 
             resources.ApplyResources(this.toolStripMenuItem3_Brigade, "toolStripMenuItem3_Brigade");
             this.toolStripMenuItem3_Brigade.Name = "toolStripMenuItem3_Brigade";
+            this.toolStripMenuItem3_Brigade.Click += new System.EventHandler(this.ToolStripMenuItem3_Brigade_Click);
             // 
             // toolStripMenuItem4_Owner
             // 
