@@ -14,33 +14,25 @@ namespace Учет_цистерн
 {
     public partial class LoginForm : Form
     {
-        public static string constring = "Data Source=POTITPC-01\\PLMLOCAL;Initial Catalog=Batys;User ID=sa;Password=!sql123;";
-        SqlConnection con = new SqlConnection(constring);
-        //SqlCommand cmd;
-
         public LoginForm()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             string getUsers = "Select * from dbo.Users where FIO = '" + comboBox1.Text.Trim() + "' and pass = '" + textBox2.Text.Trim() + "'";
-            SqlDataAdapter sda = new SqlDataAdapter(getUsers, con);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            if(dtbl.Rows.Count == 1)
+            DataTable dataTable = new DataTable();
+            dataTable = DbConnection.DBConnect(getUsers);
+
+            if(dataTable.Rows.Count == 1)
             {
                 this.Hide();
-                string User_AID = dtbl.Rows[0][0].ToString();
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "exec dbo.Login "+User_AID;
-                //cmd.ExecuteNonQuery();
+                string User_AID = dataTable.Rows[0][0].ToString();
+                string ExecLogin = "exec dbo.Login "+User_AID;
                 DataTable dt = new DataTable();
-                SqlDataAdapter sa = new SqlDataAdapter(cmd);
-                sa.Fill(dt);
-                MainForm objFrmMain = new MainForm(dtbl.Rows[0][3].ToString());
+                dt = DbConnection.DBConnect(ExecLogin);
+                MainForm objFrmMain = new MainForm(dataTable.Rows[0][3].ToString());
                 objFrmMain.Show();
             }
             else

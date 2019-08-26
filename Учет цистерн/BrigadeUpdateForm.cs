@@ -38,20 +38,29 @@ namespace Учет_цистерн
             if (checkBox1.Checked)
             {
                 yes = 1;
-                UpdateCurrentBrigade = "update d__Brigade Name = '" + textBox1.Text.Trim() + "', Surname = " + textBox1.Text.Trim() + "Lastname = " + textBox1.Text.Trim() + " FIO = " + textBox1.Text.Trim() + "Active = "+yes+" where ID = " + selectID;
+                UpdateCurrentBrigade = "update d__Brigade " +
+                                       "set Name = '" + textBox1.Text.Trim() + "', " +
+                                       "Surname = '" + textBox2.Text.Trim() + "'," +
+                                       "Lastname = '" + textBox3.Text.Trim() + "', " +
+                                       "FIO = '"+textBox3.Text.Trim()+' '+textBox1.Text.Substring(0,1)+'.'+textBox2.Text.Substring(0,1)+'.'+"', " +
+                                       "Active = "+yes+" " +
+                                       "where ID = " + selectID;
             }
             else
             {
                 not = 0;
-                UpdateCurrentBrigade = "update d__Brigade Name = '" + textBox1.Text.Trim() + "', Surname = " + textBox1.Text.Trim() + "Lastname = " + textBox1.Text.Trim() + " FIO = " + textBox1.Text.Trim() + "Active = "+not+" where ID = " + selectID;
+                UpdateCurrentBrigade = "update d__Brigade " +
+                                       "set Name = '" + textBox1.Text.Trim() + "', " +
+                                       "Surname = '" + textBox2.Text.Trim() + "'," +
+                                       "Lastname = '" + textBox3.Text.Trim() + "', " +
+                                       "FIO = '" + textBox3.Text.Trim() + ' ' + textBox1.Text.Substring(0, 1) + '.' + textBox2.Text.Substring(0, 1) + '.' + "', " +
+                                       "Active = " + not + " " +
+                                       "where ID = " + selectID;
             }
-                //SqlDataAdapter sda = new SqlDataAdapter(UpdateCurrentProduct, con);
             DataTable dtbl = new DataTable();
             dtbl = DbConnection.DBConnect(UpdateCurrentBrigade);
-            //sda.Fill(dtbl);
-            //con.Close();
             this.Close();
-            MessageBox.Show("Изменён!");
+            MessageBox.Show("Запись изменена!");
         }
     }
 }

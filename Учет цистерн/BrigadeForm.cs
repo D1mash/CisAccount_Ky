@@ -18,6 +18,7 @@ namespace Учет_цистерн
         }
 
         int SelectItemRow;
+        int Active;
 
         private void BtnBrigadeAdd_Click(object sender, EventArgs e)
         {
@@ -27,29 +28,44 @@ namespace Учет_цистерн
 
         private void BtnBrigadeUpdate_Click(object sender, EventArgs e)
         {
-            BrigadeUpdateForm brigadeUpdateForm = new BrigadeUpdateForm();
-            brigadeUpdateForm.SelectID = SelectItemRow;
+            string GetActiveBrigade = "select Active from d__Brigade where ID = " + SelectItemRow;
+            DataTable dataTable = new DataTable();
+            dataTable = DbConnection.DBConnect(GetActiveBrigade);
+            Active = Convert.ToInt32(dataTable.Rows[0][0]);
+
+            BrigadeUpdateForm brigadeUpdateForm = new BrigadeUpdateForm
+            {
+                SelectID = SelectItemRow
+            };
             brigadeUpdateForm.textBox1.Text = dataGVBrigade.CurrentRow.Cells[1].Value.ToString();
             brigadeUpdateForm.textBox2.Text = dataGVBrigade.CurrentRow.Cells[2].Value.ToString();
             brigadeUpdateForm.textBox3.Text = dataGVBrigade.CurrentRow.Cells[3].Value.ToString();
-            // надо дописать для чекбокса
+            if (Active == 1)
+            {
+                brigadeUpdateForm.checkBox1.Checked = true;
+            }
+            else
+            {
+                brigadeUpdateForm.checkBox1.Checked = false;
+            }
             brigadeUpdateForm.Show();
         }
 
         private void BtnBrigadeDelete_Click(object sender, EventArgs e)
         {
-            string DeleteCurrentProduct = "delete from d__Brigade where ID = " + SelectItemRow;
+            string Delete = "delete from d__Brigade where ID = " + SelectItemRow;
             DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(DeleteCurrentProduct);
-            MessageBox.Show("Продукт удалён!");
+            dataTable = DbConnection.DBConnect(Delete);
+            MessageBox.Show("Запись удалена!");
         }
 
         private void BtnBrigadeReffresh_Click(object sender, EventArgs e)
         {
-            string GetProduct = "SELECT * FROM [Batys].[dbo].[d__Brigade]";
+            string Reffresh = "SELECT ID,Name [Имя],Surname [Фамилия],Lastname [Отчество],FIO [ФИО],Active [Активный] FROM [Batys].[dbo].[d__Brigade]";
             DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(GetProduct);
+            dataTable = DbConnection.DBConnect(Reffresh);
             dataGVBrigade.DataSource = dataTable;
+            dataGVBrigade.Columns[0].Visible = false;
         }
 
         private void DataGVBrigade_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -61,6 +77,15 @@ namespace Учет_цистерн
                 string Id = row.Cells["ID"].Value.ToString();
                 SelectItemRow = Convert.ToInt32(Id);
             }
+        }
+
+        private void BrigadeForm_Load(object sender, EventArgs e)
+        {
+            string Reffresh = "SELECT ID,Name [Имя],Surname [Фамилия],Lastname [Отчество],FIO [ФИО],Active [Активный] FROM [Batys].[dbo].[d__Brigade]";
+            DataTable dataTable = new DataTable();
+            dataTable = DbConnection.DBConnect(Reffresh);
+            dataGVBrigade.DataSource = dataTable;
+            dataGVBrigade.Columns[0].Visible = false;
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Учет_цистерн
             dataTable = DbConnection.DBConnect(GetStation);
             //sda.Fill(dtbl);
             dataGridView_Station_Form.DataSource = dataTable;
-            //dataGridView_Station_Form.Columns[0].Visible = false;
+            dataGridView_Station_Form.Columns[0].Visible = false;
             //con.Close();
         }
 
@@ -71,7 +71,7 @@ namespace Учет_цистерн
             dTl = DbConnection.DBConnect(GetStation);
             //sda.Fill(dtbl);
             dataGridView_Station_Form.DataSource = dTl;
-            //dataGridView_Station_Form.Columns[0].Visible = false;
+            dataGridView_Station_Form.Columns[0].Visible = false;
             //con.Close();
         }
 

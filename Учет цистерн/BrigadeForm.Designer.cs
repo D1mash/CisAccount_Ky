@@ -62,7 +62,7 @@
             // 
             // btnBrigadeDelete
             // 
-            this.btnBrigadeDelete.Location = new System.Drawing.Point(169, 19);
+            this.btnBrigadeDelete.Location = new System.Drawing.Point(169, 20);
             this.btnBrigadeDelete.Name = "btnBrigadeDelete";
             this.btnBrigadeDelete.Size = new System.Drawing.Size(75, 23);
             this.btnBrigadeDelete.TabIndex = 0;
@@ -92,6 +92,10 @@
             // 
             // dataGVBrigade
             // 
+            this.dataGVBrigade.AllowUserToAddRows = false;
+            this.dataGVBrigade.AllowUserToDeleteRows = false;
+            this.dataGVBrigade.AllowUserToOrderColumns = true;
+            this.dataGVBrigade.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGVBrigade.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGVBrigade.Location = new System.Drawing.Point(12, 73);
             this.dataGVBrigade.Name = "dataGVBrigade";
@@ -103,11 +107,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1270, 450);
+            this.ClientSize = new System.Drawing.Size(1270, 459);
             this.Controls.Add(this.dataGVBrigade);
             this.Controls.Add(this.groupBox1);
             this.Name = "BrigadeForm";
             this.Text = "FormBrigade";
+            this.Load += new System.EventHandler(this.BrigadeForm_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGVBrigade)).EndInit();
             this.ResumeLayout(false);

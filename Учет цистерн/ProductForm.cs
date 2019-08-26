@@ -34,7 +34,7 @@ namespace Учет_цистерн
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(GetProduct);
             dataGridView1.DataSource = dataTable;
-            //dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[0].Visible = false;
             //SqlConnection con = new SqlConnection(connectionString);
             //con.Open();
             //string GetProduct = "select dp.ID,dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
@@ -91,7 +91,7 @@ namespace Учет_цистерн
             //DataTable dtbl = new DataTable();
             //sda.Fill(dtbl);
             //dataGridView1.DataSource = dtbl;
-            //dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[0].Visible = false;
             //con.Close();
         }
     }

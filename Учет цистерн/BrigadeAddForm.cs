@@ -22,7 +22,7 @@ namespace Учет_цистерн
         int yes;
         int not;
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -42,12 +42,12 @@ namespace Учет_цистерн
             if (checkBox1.Checked)
             {
                 yes = 1;
-                cmd.CommandText = "insert into d__Brigade values('" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','"+ textBox1.Text.Trim()+textBox2.Text.Trim()+ textBox3.Text.Trim()+"','"+ yes + ")";
+                cmd.CommandText = "insert into d__Brigade values('" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','"+textBox3.Text.Trim()+' '+textBox1.Text.Substring(0,1)+'.'+textBox2.Text.Substring(0,1)+'.'+"',"+ yes + ")";
             }
             else
             {
                 not = 0;
-                cmd.CommandText = "insert into d__Brigade values('" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + textBox1.Text.Trim() + textBox2.Text.Trim() + textBox3.Text.Trim() + "'," + not + ")";
+                cmd.CommandText = "insert into d__Brigade values('" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','"+textBox3.Text.Trim()+' '+textBox1.Text.Substring(0, 1)+'.'+textBox2.Text.Substring(0, 1)+'.'+"',"+ not + ")";
             }
             
             //cmd.ExecuteNonQuery();

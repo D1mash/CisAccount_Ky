@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.CheckBox checkBox2;
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -38,26 +37,25 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            checkBox2 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(305, 87);
+            this.textBox1.Location = new System.Drawing.Point(119, 42);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(180, 20);
             this.textBox1.TabIndex = 0;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(305, 126);
+            this.textBox2.Location = new System.Drawing.Point(119, 81);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(180, 20);
             this.textBox2.TabIndex = 0;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(305, 163);
+            this.textBox3.Location = new System.Drawing.Point(119, 118);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(180, 20);
             this.textBox3.TabIndex = 0;
@@ -65,7 +63,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(236, 90);
+            this.label1.Location = new System.Drawing.Point(50, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 1;
@@ -74,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(236, 129);
+            this.label2.Location = new System.Drawing.Point(50, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 1;
@@ -83,7 +81,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(236, 166);
+            this.label3.Location = new System.Drawing.Point(50, 121);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 1;
@@ -91,7 +89,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(239, 253);
+            this.btnAdd.Location = new System.Drawing.Point(53, 167);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
@@ -101,40 +99,30 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(410, 253);
+            this.btnClose.Location = new System.Drawing.Point(224, 167);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Отмена";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(239, 210);
+            this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox1.Location = new System.Drawing.Point(223, 144);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.Size = new System.Drawing.Size(76, 17);
             this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.Text = "Активный";
             this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new System.Drawing.Point(405, 210);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new System.Drawing.Size(80, 17);
-            checkBox2.TabIndex = 4;
-            checkBox2.Text = "checkBox2";
-            checkBox2.UseVisualStyleBackColor = true;
             // 
             // BrigadeAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 318);
-            this.Controls.Add(checkBox2);
+            this.ClientSize = new System.Drawing.Size(353, 238);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAdd);
@@ -145,6 +133,7 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "BrigadeAddForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BrigadeAddForm";
             this.ResumeLayout(false);
             this.PerformLayout();
