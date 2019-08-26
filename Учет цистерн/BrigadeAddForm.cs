@@ -21,6 +21,7 @@ namespace Учет_цистерн
 
         int yes;
         int not;
+        string AddNewBrigade;
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
@@ -29,7 +30,22 @@ namespace Учет_цистерн
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(connectionString);
+            if (checkBox1.Checked)
+            {
+                yes = 1;
+                AddNewBrigade = "insert into d__Brigade values('" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + textBox3.Text.Trim() + ' ' + textBox1.Text.Substring(0, 1) + '.' + textBox2.Text.Substring(0, 1) + '.' + "'," + yes + ")";
+            }
+            else
+            {
+                not = 0;
+                AddNewBrigade = "insert into d__Brigade values('" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + textBox3.Text.Trim() + ' ' + textBox1.Text.Substring(0, 1) + '.' + textBox2.Text.Substring(0, 1) + '.' + "'," + not + ")";
+            }
+            DataTable dataTable = new DataTable();
+            dataTable = DbConnection.DBConnect(AddNewBrigade);
+            this.Close();
+            MessageBox.Show("Добавлен сотрудник!");
+
+            /*SqlConnection con = new SqlConnection(connectionString);
             con.Open();
             string get_user_aid = "select dbo.get_user_aid() S";
             SqlDataAdapter sda = new SqlDataAdapter(get_user_aid, con);
@@ -55,7 +71,7 @@ namespace Учет_цистерн
             SqlDataAdapter sa = new SqlDataAdapter(cmd);
             sa.Fill(dt);
             MessageBox.Show("Добавлен сотрудник!");
-            con.Close();
+            con.Close();*/
         }
     }
 }

@@ -40,13 +40,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.btnBrigadeReffresh);
             this.groupBox1.Controls.Add(this.btnBrigadeDelete);
             this.groupBox1.Controls.Add(this.btnBrigadeUpdate);
             this.groupBox1.Controls.Add(this.btnBrigadeAdd);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 55);
+            this.groupBox1.Size = new System.Drawing.Size(776, 62);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -94,11 +95,12 @@
             // 
             this.dataGVBrigade.AllowUserToAddRows = false;
             this.dataGVBrigade.AllowUserToDeleteRows = false;
-            this.dataGVBrigade.AllowUserToOrderColumns = true;
+            this.dataGVBrigade.AllowUserToResizeRows = false;
             this.dataGVBrigade.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGVBrigade.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGVBrigade.Location = new System.Drawing.Point(12, 73);
             this.dataGVBrigade.Name = "dataGVBrigade";
+            this.dataGVBrigade.ReadOnly = true;
             this.dataGVBrigade.Size = new System.Drawing.Size(1246, 374);
             this.dataGVBrigade.TabIndex = 1;
             this.dataGVBrigade.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGVBrigade_CellClick);
@@ -116,6 +118,7 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGVBrigade)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

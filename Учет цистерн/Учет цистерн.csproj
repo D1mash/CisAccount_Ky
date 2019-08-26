@@ -87,6 +87,24 @@
     <Compile Include="BrigadeUpdateForm.Designer.cs">
       <DependentUpon>BrigadeUpdateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OwnerAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OwnerAddForm.Designer.cs">
+      <DependentUpon>OwnerAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OwnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OwnerForm.Designer.cs">
+      <DependentUpon>OwnerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OwnerUpdtForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OwnerUpdtForm.Designer.cs">
+      <DependentUpon>OwnerUpdtForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +157,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BrigadeUpdateForm.resx">
       <DependentUpon>BrigadeUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OwnerAddForm.resx">
+      <DependentUpon>OwnerAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OwnerForm.resx">
+      <DependentUpon>OwnerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OwnerUpdtForm.resx">
+      <DependentUpon>OwnerUpdtForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>

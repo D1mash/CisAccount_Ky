@@ -105,11 +105,13 @@
             // 
             this.dataGridView_Station_Form.AllowUserToAddRows = false;
             this.dataGridView_Station_Form.AllowUserToDeleteRows = false;
+            this.dataGridView_Station_Form.AllowUserToResizeRows = false;
             this.dataGridView_Station_Form.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_Station_Form.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Station_Form.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_Station_Form.Location = new System.Drawing.Point(0, 0);
             this.dataGridView_Station_Form.Name = "dataGridView_Station_Form";
+            this.dataGridView_Station_Form.ReadOnly = true;
             this.dataGridView_Station_Form.Size = new System.Drawing.Size(1370, 686);
             this.dataGridView_Station_Form.TabIndex = 0;
             this.dataGridView_Station_Form.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_Station_Form_CellClick);

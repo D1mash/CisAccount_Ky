@@ -88,6 +88,7 @@
             // 
             resources.ApplyResources(this.toolStripMenuItem4_Owner, "toolStripMenuItem4_Owner");
             this.toolStripMenuItem4_Owner.Name = "toolStripMenuItem4_Owner";
+            this.toolStripMenuItem4_Owner.Click += new System.EventHandler(this.toolStripMenuItem4_Owner_Click);
             // 
             // toolStripMenuItem_Service
             // 

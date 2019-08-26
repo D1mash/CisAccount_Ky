@@ -31,18 +31,14 @@ namespace Учет_цистерн
         {
             string message = "Вы действительно хотите закрыть программу?";
             string title = "Закрытие программы";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
             DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.Yes)
+            if (result == DialogResult.OK)
             {
                 string UpdateAuditUser = "UPDATE AUDIT_USER SET DATE_OUT = GETDATE(), IS_DEAD = 1 WHERE ID_SESSION = @@spid and (IS_DEAD IS NULL OR DATE_OUT IS NULL)";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(UpdateAuditUser);
                 Environment.Exit(0);
-            }
-            else
-            {
-                //
             }
         }
 
@@ -79,6 +75,20 @@ namespace Учет_цистерн
             BrigadeForm frm = new BrigadeForm();
             tabControl1.Show();
             TabPage StationTabPage = new TabPage("Бригады");
+            tabControl1.TabPages.Add(StationTabPage);
+            tabControl1.SelectedTab = StationTabPage;
+            frm.TopLevel = false;
+            frm.Visible = true;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            StationTabPage.Controls.Add(frm);
+        }
+
+        private void toolStripMenuItem4_Owner_Click(object sender, EventArgs e)
+        {
+            OwnerForm frm = new OwnerForm();
+            tabControl1.Show();
+            TabPage StationTabPage = new TabPage("Собственники");
             tabControl1.TabPages.Add(StationTabPage);
             tabControl1.SelectedTab = StationTabPage;
             frm.TopLevel = false;
