@@ -99,6 +99,7 @@
             // 
             resources.ApplyResources(this.toolStripMenuItem_Carriage, "toolStripMenuItem_Carriage");
             this.toolStripMenuItem_Carriage.Name = "toolStripMenuItem_Carriage";
+            this.toolStripMenuItem_Carriage.Click += new System.EventHandler(this.ToolStripMenuItem_Carriage_Click);
             // 
             // tabControl1
             // 

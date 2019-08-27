@@ -26,5 +26,10 @@ namespace Учет_цистерн
             this.Close();
             MessageBox.Show("Запись добавлена!");
         }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

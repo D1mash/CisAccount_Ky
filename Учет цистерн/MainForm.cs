@@ -74,28 +74,43 @@ namespace Учет_цистерн
         {
             BrigadeForm frm = new BrigadeForm();
             tabControl1.Show();
-            TabPage StationTabPage = new TabPage("Бригады");
-            tabControl1.TabPages.Add(StationTabPage);
-            tabControl1.SelectedTab = StationTabPage;
+            TabPage BrigadeTabPage = new TabPage("Бригады");
+            tabControl1.TabPages.Add(BrigadeTabPage);
+            tabControl1.SelectedTab = BrigadeTabPage;
             frm.TopLevel = false;
             frm.Visible = true;
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Dock = DockStyle.Fill;
-            StationTabPage.Controls.Add(frm);
+            BrigadeTabPage.Controls.Add(frm);
         }
 
         private void toolStripMenuItem4_Owner_Click(object sender, EventArgs e)
         {
             OwnerForm frm = new OwnerForm();
             tabControl1.Show();
-            TabPage StationTabPage = new TabPage("Собственники");
-            tabControl1.TabPages.Add(StationTabPage);
-            tabControl1.SelectedTab = StationTabPage;
+            TabPage OwnerTabPage = new TabPage("Собственники");
+            tabControl1.TabPages.Add(OwnerTabPage);
+            tabControl1.SelectedTab = OwnerTabPage;
             frm.TopLevel = false;
             frm.Visible = true;
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Dock = DockStyle.Fill;
-            StationTabPage.Controls.Add(frm);
+            OwnerTabPage.Controls.Add(frm);
+        }
+
+        private void ToolStripMenuItem_Carriage_Click(object sender, EventArgs e)
+        {
+            CarriageForm carriageForm = new CarriageForm();
+            tabControl1.Show();
+            TabPage CarriageTabPage = new TabPage("Вагоны");
+            tabControl1.TabPages.Add(CarriageTabPage);
+            tabControl1.SelectedTab = CarriageTabPage;
+            carriageForm.TopLevel = false;
+            carriageForm.Visible = true;
+            carriageForm.FormBorderStyle = FormBorderStyle.None;
+            carriageForm.Dock = DockStyle.Fill;
+            CarriageTabPage.Controls.Add(carriageForm);
+         
         }
     }
 }

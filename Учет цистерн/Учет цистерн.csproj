@@ -74,6 +74,12 @@
     <Compile Include="BrigadeAddForm.Designer.cs">
       <DependentUpon>BrigadeAddForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CarriageAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CarriageAddForm.Designer.cs">
+      <DependentUpon>CarriageAddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DbConnection.cs" />
     <Compile Include="BrigadeForm.cs">
       <SubType>Form</SubType>
@@ -86,6 +92,12 @@
     </Compile>
     <Compile Include="BrigadeUpdateForm.Designer.cs">
       <DependentUpon>BrigadeUpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CarriageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CarriageForm.Designer.cs">
+      <DependentUpon>CarriageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="OwnerAddForm.cs">
       <SubType>Form</SubType>
@@ -131,6 +143,12 @@
     <Compile Include="StationForm.Designer.cs">
       <DependentUpon>StationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CarriageUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CarriageUpdateForm.Designer.cs">
+      <DependentUpon>CarriageUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +175,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BrigadeUpdateForm.resx">
       <DependentUpon>BrigadeUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarriageAddForm.resx">
+      <DependentUpon>CarriageAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarriageForm.resx">
+      <DependentUpon>CarriageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarriageUpdateForm.resx">
+      <DependentUpon>CarriageUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OwnerAddForm.resx">
       <DependentUpon>OwnerAddForm.cs</DependentUpon>

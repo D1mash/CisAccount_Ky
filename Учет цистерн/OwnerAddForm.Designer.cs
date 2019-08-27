@@ -46,6 +46,7 @@
             this.btnClose.TabIndex = 12;
             this.btnClose.Text = "Отмена";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // btnAdd
             // 
