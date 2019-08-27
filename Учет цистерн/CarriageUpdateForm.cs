@@ -34,13 +34,5 @@ namespace Учет_цистерн
         {
 
         }
-
-        private void CarriageUpdateForm_Load(object sender, EventArgs e)
-        {
-            string GetCarriageUpd = "Select dc.CarNumber,AXIS, do.Name,FullName From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID where dc.ID = ";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(GetCarriageUpd+SelectID);
-            textBox1.Text = dataTable.Rows[0]["CarNumber"].ToString();
-        }
     }
 }
