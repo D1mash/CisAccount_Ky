@@ -137,6 +137,36 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceAddForm.Designer.cs">
+      <DependentUpon>ServiceAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceCostAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceCostAddForm.Designer.cs">
+      <DependentUpon>ServiceCostAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceCostForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceCostForm.Designer.cs">
+      <DependentUpon>ServiceCostForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceCostUpdtForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceCostUpdtForm.Designer.cs">
+      <DependentUpon>ServiceCostUpdtForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceForm.Designer.cs">
+      <DependentUpon>ServiceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +240,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceAddForm.resx">
+      <DependentUpon>ServiceAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceCostAddForm.resx">
+      <DependentUpon>ServiceCostAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceCostForm.resx">
+      <DependentUpon>ServiceCostForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceForm.resx">
+      <DependentUpon>ServiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StationForm.resx">
       <DependentUpon>StationForm.cs</DependentUpon>

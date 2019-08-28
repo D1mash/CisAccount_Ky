@@ -15,6 +15,7 @@ namespace Учет_цистерн
         public CarriageUpdateForm()
         {
             InitializeComponent();
+            FillCombobox();
         }
 
         int selectID;
@@ -23,6 +24,15 @@ namespace Учет_цистерн
         {
             get { return SelectID; }
             set { selectID = value; }
+        }
+
+        private void FillCombobox()
+        {
+            String OwnerName = "Select * from d__Owner";
+            DataTable dT = DbConnection.DBConnect(OwnerName);
+            comboBox1.DataSource = dT;
+            comboBox1.DisplayMember = "Name";
+            comboBox1.ValueMember = "ID";
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)

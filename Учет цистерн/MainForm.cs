@@ -26,7 +26,7 @@ namespace Учет_цистерн
         {
             contextMenuStrip_Product.Show(button1, new Point(0, button1.Height));
         }
-        
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             string message = "Вы действительно хотите закрыть программу?";
@@ -111,6 +111,34 @@ namespace Учет_цистерн
             carriageForm.Dock = DockStyle.Fill;
             CarriageTabPage.Controls.Add(carriageForm);
          
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ServiceCostForm ServiceCostForm = new ServiceCostForm();
+            tabControl1.Show();
+            TabPage CarriageTabPage = new TabPage("Расценки");
+            tabControl1.TabPages.Add(CarriageTabPage);
+            tabControl1.SelectedTab = CarriageTabPage;
+            ServiceCostForm.TopLevel = false;
+            ServiceCostForm.Visible = true;
+            ServiceCostForm.FormBorderStyle = FormBorderStyle.None;
+            ServiceCostForm.Dock = DockStyle.Fill;
+            CarriageTabPage.Controls.Add(ServiceCostForm);
+        }
+
+        private void toolStripMenuItem_Service_Click(object sender, EventArgs e)
+        {
+            ServiceForm ServiceForm = new ServiceForm();
+            tabControl1.Show();
+            TabPage CarriageTabPage = new TabPage("Услуги");
+            tabControl1.TabPages.Add(CarriageTabPage);
+            tabControl1.SelectedTab = CarriageTabPage;
+            ServiceForm.TopLevel = false;
+            ServiceForm.Visible = true;
+            ServiceForm.FormBorderStyle = FormBorderStyle.None;
+            ServiceForm.Dock = DockStyle.Fill;
+            CarriageTabPage.Controls.Add(ServiceForm);
         }
     }
 }

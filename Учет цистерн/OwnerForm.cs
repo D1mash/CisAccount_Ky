@@ -22,7 +22,7 @@ namespace Учет_цистерн
         //загрузка данных в DataGridView
         private void OwnerForm_Load(object sender, EventArgs e)
         {
-            string Reffresh = "SELECT ID,Name [Наименование],FullName [Полное наименование],SpecialCost [Специальная цена] FROM [Batys].[dbo].[d__Owner]";
+            string Reffresh = "SELECT ID,Name [Наименование],FullName [Полное наименование] FROM [Batys].[dbo].[d__Owner]";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(Reffresh);
             dataGVOwner.DataSource = dataTable;
@@ -43,7 +43,7 @@ namespace Учет_цистерн
             OwnerUpdtForm.SelectID = SelectItemRow;
             OwnerUpdtForm.textBox1.Text = dataGVOwner.CurrentRow.Cells[1].Value.ToString();
             OwnerUpdtForm.textBox2.Text = dataGVOwner.CurrentRow.Cells[2].Value.ToString();
-            OwnerUpdtForm.textBox3.Text = dataGVOwner.CurrentRow.Cells[3].Value.ToString();
+            //OwnerUpdtForm.textBox3.Text = dataGVOwner.CurrentRow.Cells[3].Value.ToString();
             OwnerUpdtForm.Show();
         }
 
@@ -61,7 +61,7 @@ namespace Учет_цистерн
         //Обновление
         private void btnOwnerReffresh_Click(object sender, EventArgs e)
         {
-            string Reffresh = "SELECT ID,Name [Наименование],FullName [Полное наименование],SpecialCost [Специальная цена] FROM [Batys].[dbo].[d__Owner]";
+            string Reffresh = "SELECT ID,Name [Наименование],FullName [Полное наименование] FROM [Batys].[dbo].[d__Owner]";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(Reffresh);
             dataGVOwner.DataSource = dataTable;
