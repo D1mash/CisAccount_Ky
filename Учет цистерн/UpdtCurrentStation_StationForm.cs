@@ -49,5 +49,27 @@ namespace Учет_цистерн
         {
             this.Close();
         }
+
+        private void UpdtCurrentStation_StationForm_Load(object sender, EventArgs e)
+        {
+            textBox_Updt_Name_StationForm.Enabled = false;
+            textBox_Updt_Code_StationForm.Enabled = false;
+            textBox_Updt_Code6_StationForm.Enabled = false;
+        }
+
+        private void checkBox1_CheckStateChanged(object sender, EventArgs e)
+        {
+            textBox_Updt_Name_StationForm.Enabled = (checkBox1.CheckState == CheckState.Checked);
+        }
+
+        private void checkBox2_CheckStateChanged(object sender, EventArgs e)
+        {
+            textBox_Updt_Code_StationForm.Enabled = (checkBox2.CheckState == CheckState.Checked);
+        }
+
+        private void checkBox3_CheckStateChanged(object sender, EventArgs e)
+        {
+            textBox_Updt_Code6_StationForm.Enabled = (checkBox3.CheckState == CheckState.Checked);
+        }
     }
 }

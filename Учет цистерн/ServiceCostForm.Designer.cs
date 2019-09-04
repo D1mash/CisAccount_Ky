@@ -80,6 +80,7 @@
             this.Btn_Updt.TabIndex = 1;
             this.Btn_Updt.Text = "Изменить";
             this.Btn_Updt.UseVisualStyleBackColor = true;
+            this.Btn_Updt.Click += new System.EventHandler(this.Btn_Updt_Click);
             // 
             // Btn_Add
             // 

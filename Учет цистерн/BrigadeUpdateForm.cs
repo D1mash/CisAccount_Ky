@@ -62,5 +62,27 @@ namespace Учет_цистерн
             this.Close();
             MessageBox.Show("Запись изменена!");
         }
+
+        private void BrigadeUpdateForm_Load(object sender, EventArgs e)
+        {
+            textBox1.Enabled = false;
+            textBox2.Enabled = false;
+            textBox3.Enabled = false;
+        }
+
+        private void checkBox2_CheckStateChanged(object sender, EventArgs e)
+        {
+            textBox1.Enabled = (checkBox2.CheckState == CheckState.Checked);
+        }
+
+        private void checkBox3_CheckStateChanged(object sender, EventArgs e)
+        {
+            textBox2.Enabled = (checkBox3.CheckState == CheckState.Checked);
+        }
+
+        private void checkBox4_CheckStateChanged(object sender, EventArgs e)
+        {
+            textBox3.Enabled = (checkBox4.CheckState == CheckState.Checked);
+        }
     }
 }

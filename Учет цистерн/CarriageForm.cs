@@ -18,6 +18,7 @@ namespace Учет_цистерн
         }
 
         int SelectItemRow;
+        int SelectOwnerID;
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
@@ -28,22 +29,24 @@ namespace Учет_цистерн
         //Нужно переписать этот метод
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
-            string GetCarriage = "Select dc.ID, dc.CarNumber,AXIS, do.Name,FullName From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
+            string GetCarriage = "Select dc.ID, dc.CarNumber [Номер вагона],dc.AXIS [Осность],do.ID [OwnerID], do.Name [Наименование],do.FullName [Полное наименование] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(GetCarriage);
             dataGridView1.DataSource = dataTable;
             dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[3].Visible = false;
         }
 
 
         //Нужно переписать этот метод
         private void CarriageForm_Load(object sender, EventArgs e)
         {
-            string GetCarriage = "Select dc.ID, dc.CarNumber,AXIS, do.Name,FullName From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
+            string GetCarriage = "Select dc.ID, dc.CarNumber [Номер вагона],dc.AXIS [Осность], do.ID [OwnerID],do.Name [Наименование],do.FullName [Полное наименование] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(GetCarriage);
             dataGridView1.DataSource = dataTable;
             dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[3].Visible = false;
         }
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -53,7 +56,9 @@ namespace Учет_цистерн
                 DataGridViewRow row = this.dataGridView1.Rows[
                     e.RowIndex];
                 string Id = row.Cells["ID"].Value.ToString();
+                string OwnerID = row.Cells["OwnerID"].Value.ToString();
                 SelectItemRow = Convert.ToInt32(Id);
+                SelectOwnerID = Convert.ToInt32(OwnerID);
             }
         }
 
@@ -76,6 +81,7 @@ namespace Учет_цистерн
         {
             CarriageUpdateForm carriageUpdateForm = new CarriageUpdateForm();
             carriageUpdateForm.SelectID = SelectItemRow;
+            carriageUpdateForm.SelectOwnerID = SelectOwnerID;
             carriageUpdateForm.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             carriageUpdateForm.textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             carriageUpdateForm.Show();

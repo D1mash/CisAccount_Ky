@@ -33,9 +33,9 @@
             this.textBox_Updt_Code6_StationForm = new System.Windows.Forms.TextBox();
             this.textBox_Updt_Code_StationForm = new System.Windows.Forms.TextBox();
             this.textBox_Updt_Name_StationForm = new System.Windows.Forms.TextBox();
-            this.label_Updt_Code6_StationForm = new System.Windows.Forms.Label();
-            this.label_Updt_Code_StationForm = new System.Windows.Forms.Label();
-            this.label_Updt_Name_StationForm = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button_Updt_Cancel_StationForm
@@ -79,49 +79,56 @@
             this.textBox_Updt_Name_StationForm.Size = new System.Drawing.Size(236, 20);
             this.textBox_Updt_Name_StationForm.TabIndex = 11;
             // 
-            // label_Updt_Code6_StationForm
+            // checkBox1
             // 
-            this.label_Updt_Code6_StationForm.AutoSize = true;
-            this.label_Updt_Code6_StationForm.Location = new System.Drawing.Point(12, 85);
-            this.label_Updt_Code6_StationForm.Name = "label_Updt_Code6_StationForm";
-            this.label_Updt_Code6_StationForm.Size = new System.Drawing.Size(35, 13);
-            this.label_Updt_Code6_StationForm.TabIndex = 10;
-            this.label_Updt_Code6_StationForm.Text = "Код 6";
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(12, 32);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(102, 17);
+            this.checkBox1.TabIndex = 16;
+            this.checkBox1.Text = "Наименование";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
-            // label_Updt_Code_StationForm
+            // checkBox2
             // 
-            this.label_Updt_Code_StationForm.AutoSize = true;
-            this.label_Updt_Code_StationForm.Location = new System.Drawing.Point(12, 59);
-            this.label_Updt_Code_StationForm.Name = "label_Updt_Code_StationForm";
-            this.label_Updt_Code_StationForm.Size = new System.Drawing.Size(26, 13);
-            this.label_Updt_Code_StationForm.TabIndex = 9;
-            this.label_Updt_Code_StationForm.Text = "Код";
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(12, 58);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(45, 17);
+            this.checkBox2.TabIndex = 17;
+            this.checkBox2.Text = "Код";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckStateChanged += new System.EventHandler(this.checkBox2_CheckStateChanged);
             // 
-            // label_Updt_Name_StationForm
+            // checkBox3
             // 
-            this.label_Updt_Name_StationForm.AutoSize = true;
-            this.label_Updt_Name_StationForm.Location = new System.Drawing.Point(12, 33);
-            this.label_Updt_Name_StationForm.Name = "label_Updt_Name_StationForm";
-            this.label_Updt_Name_StationForm.Size = new System.Drawing.Size(83, 13);
-            this.label_Updt_Name_StationForm.TabIndex = 8;
-            this.label_Updt_Name_StationForm.Text = "Наименование";
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(12, 84);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(54, 17);
+            this.checkBox3.TabIndex = 18;
+            this.checkBox3.Text = "Код 6";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckStateChanged += new System.EventHandler(this.checkBox3_CheckStateChanged);
             // 
             // UpdtCurrentStation_StationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 190);
+            this.ClientSize = new System.Drawing.Size(373, 183);
+            this.Controls.Add(this.checkBox3);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button_Updt_Cancel_StationForm);
             this.Controls.Add(this.button_Updt_OK_StationForm);
             this.Controls.Add(this.textBox_Updt_Code6_StationForm);
             this.Controls.Add(this.textBox_Updt_Code_StationForm);
             this.Controls.Add(this.textBox_Updt_Name_StationForm);
-            this.Controls.Add(this.label_Updt_Code6_StationForm);
-            this.Controls.Add(this.label_Updt_Code_StationForm);
-            this.Controls.Add(this.label_Updt_Name_StationForm);
             this.Name = "UpdtCurrentStation_StationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование в \"Станции\"";
+            this.Load += new System.EventHandler(this.UpdtCurrentStation_StationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,8 +141,8 @@
         public System.Windows.Forms.TextBox textBox_Updt_Code6_StationForm;
         public System.Windows.Forms.TextBox textBox_Updt_Code_StationForm;
         public System.Windows.Forms.TextBox textBox_Updt_Name_StationForm;
-        public System.Windows.Forms.Label label_Updt_Code6_StationForm;
-        public System.Windows.Forms.Label label_Updt_Code_StationForm;
-        public System.Windows.Forms.Label label_Updt_Name_StationForm;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox3;
     }
 }

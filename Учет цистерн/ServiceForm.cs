@@ -66,5 +66,13 @@ namespace Учет_цистерн
             ServiceAddForm serviceAddForm = new ServiceAddForm();
             serviceAddForm.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ServiceUpdtForm ServiceUpdtForm = new ServiceUpdtForm();
+            ServiceUpdtForm.SelectID = SelectItemRow;
+            ServiceUpdtForm.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            ServiceUpdtForm.Show();
+        }
     }
 }

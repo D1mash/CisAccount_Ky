@@ -140,5 +140,19 @@ namespace Учет_цистерн
             ServiceForm.Dock = DockStyle.Fill;
             CarriageTabPage.Controls.Add(ServiceForm);
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            RenderedServiceForm RenderedServiceForm = new RenderedServiceForm();
+            tabControl1.Show();
+            TabPage CarriageTabPage = new TabPage("Обработанные вагоны");
+            tabControl1.TabPages.Add(CarriageTabPage);
+            tabControl1.SelectedTab = CarriageTabPage;
+            RenderedServiceForm.TopLevel = false;
+            RenderedServiceForm.Visible = true;
+            RenderedServiceForm.FormBorderStyle = FormBorderStyle.None;
+            RenderedServiceForm.Dock = DockStyle.Fill;
+            CarriageTabPage.Controls.Add(RenderedServiceForm);
+        }
     }
 }

@@ -32,8 +32,6 @@ namespace Учет_цистерн
             comboBox1.ValueMember = "ID";
         }
 
-        
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string AddNewCarriage = "insert into d__Carriage (CarNumber, AXIS,Owner_ID)" + "values (" + textBox1.Text.Trim() + "," + textBox2.Text.Trim() + ","+comboBox1.SelectedValue.ToString()+")";

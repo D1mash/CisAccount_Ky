@@ -40,11 +40,23 @@ namespace Учет_цистерн
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "batysDataSet11.qHangling". При необходимости она может быть перемещена или удалена.
             this.qHanglingTableAdapter1.Fill(this.batysDataSet11.qHangling);
+            textBox1.Enabled = false;
+            comboBox1.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void checkBox1_CheckStateChanged(object sender, EventArgs e)
+        {
+            textBox1.Enabled = (checkBox1.CheckState == CheckState.Checked);
+        }
+
+        private void checkBox2_CheckStateChanged(object sender, EventArgs e)
+        {
+            comboBox1.Enabled = (checkBox2.CheckState == CheckState.Checked);
         }
     }
 }

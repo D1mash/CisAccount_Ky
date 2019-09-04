@@ -110,7 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 190);
+            this.ClientSize = new System.Drawing.Size(373, 185);
             this.Controls.Add(this.button_Add_Cancel_StationForm);
             this.Controls.Add(this.button_Add_OK_StationForm);
             this.Controls.Add(this.textBox_Add_Code6_StationForm);
