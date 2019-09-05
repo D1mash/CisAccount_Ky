@@ -63,6 +63,16 @@ namespace Учет_цистерн.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap keys {
+            get {
+                object obj = ResourceManager.GetObject("keys", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pass1 {
             get {
                 object obj = ResourceManager.GetObject("pass1", resourceCulture);
@@ -156,6 +166,16 @@ namespace Учет_цистерн.Properties {
         internal static System.Drawing.Bitmap winrar_13 {
             get {
                 object obj = ResourceManager.GetObject("winrar 13", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap winrar_14 {
+            get {
+                object obj = ResourceManager.GetObject("winrar 14", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

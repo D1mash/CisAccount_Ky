@@ -47,28 +47,11 @@ namespace Учет_цистерн
             // TODO: данная строка кода позволяет загрузить данные в таблицу "batysDataSet.Users". При необходимости она может быть перемещена или удалена.
             this.usersTableAdapter.Fill(this.batysDataSet.Users);
             textBox2.Select();
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void textBox2_Click(object sender, EventArgs e)
-        {
-            textBox2.Clear();
-            textBox2.PasswordChar = '*';
-            pictureBox2.BackgroundImage = Properties.Resources.pass2;
-            flowLayoutPanel1.ForeColor = Color.FromArgb(78, 164, 208);
-            textBox2.ForeColor = Color.FromArgb(78, 164, 208);
-        }
-
-        private void comboBox1_Click(object sender, EventArgs e)
-        {
-            comboBox1.SelectedValue = -1;
-            pictureBox1.BackgroundImage = Properties.Resources.user2;
-            comboBox1.ForeColor = Color.FromArgb(78, 164, 208);
         }
     }
 }

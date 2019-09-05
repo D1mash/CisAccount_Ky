@@ -32,8 +32,8 @@
             this.btnOwnerReffresh = new System.Windows.Forms.Button();
             this.btnOwnerDelete = new System.Windows.Forms.Button();
             this.btnOwnerUpdate = new System.Windows.Forms.Button();
-            this.btnOwnerAdd = new System.Windows.Forms.Button();
             this.dataGVOwner = new System.Windows.Forms.DataGridView();
+            this.btnOwnerAdd = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGVOwner)).BeginInit();
             this.SuspendLayout();
@@ -47,13 +47,15 @@
             this.groupBox1.Controls.Add(this.btnOwnerAdd);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 62);
+            this.groupBox1.Size = new System.Drawing.Size(776, 63);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
             // btnOwnerReffresh
             // 
-            this.btnOwnerReffresh.Location = new System.Drawing.Point(250, 20);
+            this.btnOwnerReffresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnOwnerReffresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOwnerReffresh.Location = new System.Drawing.Point(255, 19);
             this.btnOwnerReffresh.Name = "btnOwnerReffresh";
             this.btnOwnerReffresh.Size = new System.Drawing.Size(75, 23);
             this.btnOwnerReffresh.TabIndex = 0;
@@ -63,7 +65,9 @@
             // 
             // btnOwnerDelete
             // 
-            this.btnOwnerDelete.Location = new System.Drawing.Point(169, 20);
+            this.btnOwnerDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnOwnerDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOwnerDelete.Location = new System.Drawing.Point(174, 19);
             this.btnOwnerDelete.Name = "btnOwnerDelete";
             this.btnOwnerDelete.Size = new System.Drawing.Size(75, 23);
             this.btnOwnerDelete.TabIndex = 0;
@@ -73,23 +77,15 @@
             // 
             // btnOwnerUpdate
             // 
-            this.btnOwnerUpdate.Location = new System.Drawing.Point(88, 20);
+            this.btnOwnerUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnOwnerUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOwnerUpdate.Location = new System.Drawing.Point(93, 19);
             this.btnOwnerUpdate.Name = "btnOwnerUpdate";
             this.btnOwnerUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnOwnerUpdate.TabIndex = 0;
             this.btnOwnerUpdate.Text = "Изменить";
             this.btnOwnerUpdate.UseVisualStyleBackColor = true;
             this.btnOwnerUpdate.Click += new System.EventHandler(this.btnOwnerUpdate_Click);
-            // 
-            // btnOwnerAdd
-            // 
-            this.btnOwnerAdd.Location = new System.Drawing.Point(7, 20);
-            this.btnOwnerAdd.Name = "btnOwnerAdd";
-            this.btnOwnerAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnOwnerAdd.TabIndex = 0;
-            this.btnOwnerAdd.Text = "Добавить";
-            this.btnOwnerAdd.UseVisualStyleBackColor = true;
-            this.btnOwnerAdd.Click += new System.EventHandler(this.btnOwnerAdd_Click);
             // 
             // dataGVOwner
             // 
@@ -106,10 +102,27 @@
             this.dataGVOwner.TabIndex = 3;
             this.dataGVOwner.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGVOwner_CellClick);
             // 
+            // btnOwnerAdd
+            // 
+            this.btnOwnerAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnOwnerAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOwnerAdd.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnOwnerAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOwnerAdd.Location = new System.Drawing.Point(7, 19);
+            this.btnOwnerAdd.Name = "btnOwnerAdd";
+            this.btnOwnerAdd.Size = new System.Drawing.Size(80, 23);
+            this.btnOwnerAdd.TabIndex = 0;
+            this.btnOwnerAdd.Text = "Добавить";
+            this.btnOwnerAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnOwnerAdd.UseMnemonic = false;
+            this.btnOwnerAdd.UseVisualStyleBackColor = false;
+            this.btnOwnerAdd.Click += new System.EventHandler(this.btnOwnerAdd_Click);
+            // 
             // OwnerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1270, 459);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGVOwner);
