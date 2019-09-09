@@ -149,6 +149,7 @@
     <Compile Include="RenderedServiceUpdtForm.Designer.cs">
       <DependentUpon>RenderedServiceUpdtForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RowFilterBuilder.cs" />
     <Compile Include="ServiceAddForm.cs">
       <SubType>Form</SubType>
     </Compile>

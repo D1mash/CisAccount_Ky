@@ -149,5 +149,19 @@ namespace Учет_цистерн
             DbConnection.DBConnect(Delete);
             MessageBox.Show("Запись добавлена!");
         }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string filter = Codeproject.RowFilterBuilder.BuildMultiColumnFilter(txtSearch.Text, ((DataTable)dataGridView1.DataSource).DefaultView);
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = filter;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
