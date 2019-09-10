@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Учет_цистерн
 {
@@ -25,7 +26,7 @@ namespace Учет_цистерн
                 conn.Dispose();
             }
             catch(Exception ex) {
-                
+                MessageBox.Show(ex.Message);
             }
             return dataTable;
             }

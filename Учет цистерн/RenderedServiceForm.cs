@@ -25,6 +25,8 @@ namespace Учет_цистерн
         int SelectProductID;
         int SelectServiceCostID;
 
+        BindingSource source = new BindingSource();
+
         private void FillCombobox()
         {
             String Carriage = "Select * from d__Carriage";
@@ -75,7 +77,8 @@ namespace Учет_цистерн
             string Refresh = "dbo.GetRenderedService";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(Refresh);
-            dataGridView1.DataSource = dataTable;
+            source.DataSource = dataTable;
+            dataGridView1.DataSource = source;
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[1].Visible = false;
             dataGridView1.Columns[2].Visible = false;
@@ -90,7 +93,8 @@ namespace Учет_цистерн
             string Refresh = "dbo.GetRenderedService";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(Refresh);
-            dataGridView1.DataSource = dataTable;
+            source.DataSource = dataTable;
+            dataGridView1.DataSource = source;
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[1].Visible = false;
             dataGridView1.Columns[2].Visible = false;
@@ -147,7 +151,7 @@ namespace Учет_цистерн
         {
             string Delete = "delete from d__RenderedService where ID = " + SelectItemRow ;
             DbConnection.DBConnect(Delete);
-            MessageBox.Show("Запись добавлена!");
+            MessageBox.Show("Запись Удалена!");
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
@@ -155,13 +159,67 @@ namespace Учет_цистерн
             try
             {
 
-                string filter = Codeproject.RowFilterBuilder.BuildMultiColumnFilter(txtSearch.Text, ((DataTable)dataGridView1.DataSource).DefaultView);
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = filter;
+                string filter = Codeproject.RowFilterBuilder.BuildMultiColumnFilter(txtSearch.Text, ((DataTable)((BindingSource)this.dataGridView1.DataSource).DataSource).DefaultView);
+                ((DataTable)((BindingSource)this.dataGridView1.DataSource).DataSource).DefaultView.RowFilter = filter;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+
+        private void DataGridView1_SortStringChanged(object sender, EventArgs e)
+        {
+            this.source.Sort = this.dataGridView1.SortString;
+        }
+
+        private void DataGridView1_FilterStringChanged(object sender, EventArgs e)
+        {
+            this.source.Filter = this.dataGridView1.FilterString;
+        }
+
+        private void SearchToolBar1_Search(object sender, ADGV.SearchToolBarSearchEventArgs e)
+        {
+            bool restartsearch = true;
+            int startColumn = 0;
+            int startRow = 0;
+            if (!e.FromBegin)
+            {
+                bool endcol = dataGridView1.CurrentCell.ColumnIndex + 1 >= dataGridView1.ColumnCount;
+                bool endrow = dataGridView1.CurrentCell.RowIndex + 1 >= dataGridView1.RowCount;
+
+                if (endcol && endrow)
+                {
+                    startColumn = dataGridView1.CurrentCell.ColumnIndex;
+                    startRow = dataGridView1.CurrentCell.RowIndex;
+                }
+                else
+                {
+                    startColumn = endcol? 0 : dataGridView1.CurrentCell.ColumnIndex + 1;
+                    startRow = dataGridView1.CurrentCell.RowIndex + (endcol? 1 : 0);
+                }
+            }
+
+            DataGridViewCell c = dataGridView1.FindCell(
+                e.ValueToSearch,
+                e.ColumnToSearch != null ? e.ColumnToSearch.Name : null,
+                startRow,
+                startColumn,
+                e.WholeWord,
+                e.CaseSensitive);
+            if (c == null && restartsearch)
+                c = dataGridView1.FindCell(
+                    e.ValueToSearch,
+                    e.ColumnToSearch != null ? e.ColumnToSearch.Name : null,
+                    0,
+                    0,
+                    e.WholeWord,
+                    e.CaseSensitive);
+            if (c != null)
+                dataGridView1.CurrentCell = c;
+        }
+
+
     }
 }

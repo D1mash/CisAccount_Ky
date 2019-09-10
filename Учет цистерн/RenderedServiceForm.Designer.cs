@@ -52,11 +52,13 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new ADGV.AdvancedDataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.searchToolBar1 = new ADGV.SearchToolBar();
             this.label10 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -285,42 +287,51 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(12, 178);
+            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Location = new System.Drawing.Point(12, 200);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1301, 494);
+            this.groupBox2.Size = new System.Drawing.Size(1301, 472);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoGenerateContextFilters = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 197);
+            this.dataGridView1.DateWithTime = false;
+            this.dataGridView1.Location = new System.Drawing.Point(9, 19);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1286, 469);
+            this.dataGridView1.Size = new System.Drawing.Size(1277, 389);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.TimeFilter = false;
+            this.dataGridView1.SortStringChanged += new System.EventHandler(this.DataGridView1_SortStringChanged);
+            this.dataGridView1.FilterStringChanged += new System.EventHandler(this.DataGridView1_FilterStringChanged);
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.searchToolBar1);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.txtSearch);
             this.groupBox3.Location = new System.Drawing.Point(12, 116);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1301, 56);
+            this.groupBox3.Size = new System.Drawing.Size(1301, 78);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             // 
-            // txtSearch
+            // searchToolBar1
             // 
-            this.txtSearch.Location = new System.Drawing.Point(91, 19);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(200, 20);
-            this.txtSearch.TabIndex = 0;
-            this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
+            this.searchToolBar1.AllowMerge = false;
+            this.searchToolBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.searchToolBar1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.searchToolBar1.Location = new System.Drawing.Point(3, 48);
+            this.searchToolBar1.MaximumSize = new System.Drawing.Size(0, 27);
+            this.searchToolBar1.MinimumSize = new System.Drawing.Size(0, 27);
+            this.searchToolBar1.Name = "searchToolBar1";
+            this.searchToolBar1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.searchToolBar1.Size = new System.Drawing.Size(1295, 27);
+            this.searchToolBar1.TabIndex = 3;
+            this.searchToolBar1.Text = "searchToolBar1";
+            this.searchToolBar1.Search += new ADGV.SearchToolBarSearchEventHandler(this.SearchToolBar1_Search);
             // 
             // label10
             // 
@@ -331,13 +342,20 @@
             this.label10.TabIndex = 1;
             this.label10.Text = "Поиск:";
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(91, 19);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(200, 20);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
+            // 
             // RenderedServiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1325, 684);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "RenderedServiceForm";
@@ -345,6 +363,7 @@
             this.Load += new System.EventHandler(this.RenderedServiceForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -371,7 +390,6 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox5;
@@ -382,5 +400,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtSearch;
+        private ADGV.AdvancedDataGridView dataGridView1;
+        private ADGV.SearchToolBar searchToolBar1;
     }
 }
