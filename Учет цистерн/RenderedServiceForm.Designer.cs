@@ -327,7 +327,7 @@
             this.searchToolBar1.MaximumSize = new System.Drawing.Size(0, 27);
             this.searchToolBar1.MinimumSize = new System.Drawing.Size(0, 27);
             this.searchToolBar1.Name = "searchToolBar1";
-            this.searchToolBar1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.searchToolBar1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.searchToolBar1.Size = new System.Drawing.Size(1295, 27);
             this.searchToolBar1.TabIndex = 3;
             this.searchToolBar1.Text = "searchToolBar1";
@@ -336,7 +336,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(13, 22);
+            this.label10.Location = new System.Drawing.Point(6, 22);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 13);
             this.label10.TabIndex = 1;

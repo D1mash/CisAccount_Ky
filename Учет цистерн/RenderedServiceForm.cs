@@ -86,6 +86,8 @@ namespace Учет_цистерн
             dataGridView1.Columns[4].Visible = false;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
+
+            searchToolBar1.SetColumns(dataGridView1.Columns);
         }
 
         private void button4_Click(object sender, EventArgs e)
