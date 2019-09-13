@@ -37,15 +37,19 @@
             this.toolStripMenuItem4_Owner = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Service = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Carriage = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tabControl1 = new TradeWright.UI.Forms.TabControlExtra();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.contextMenuStrip_Product.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip_Product
@@ -100,12 +104,6 @@
             resources.ApplyResources(this.toolStripMenuItem_Carriage, "toolStripMenuItem_Carriage");
             this.toolStripMenuItem_Carriage.Name = "toolStripMenuItem_Carriage";
             this.toolStripMenuItem_Carriage.Click += new System.EventHandler(this.ToolStripMenuItem_Carriage_Click);
-            // 
-            // tabControl1
-            // 
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
             // 
             // groupBox1
             // 
@@ -168,18 +166,101 @@
             this.button6.UseMnemonic = false;
             this.button6.UseVisualStyleBackColor = false;
             // 
+            // groupBox2
+            // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.tabControl1);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            // 
+            // 
+            // 
+            this.tabControl1.DisplayStyleProvider.BlendStyle = TradeWright.UI.Forms.BlendStyle.Normal;
+            this.tabControl1.DisplayStyleProvider.BorderColorDisabled = System.Drawing.SystemColors.ControlLight;
+            this.tabControl1.DisplayStyleProvider.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(157)))), ((int)(((byte)(185)))));
+            this.tabControl1.DisplayStyleProvider.BorderColorHighlighted = System.Drawing.SystemColors.ControlDark;
+            this.tabControl1.DisplayStyleProvider.BorderColorSelected = System.Drawing.SystemColors.ControlDark;
+            this.tabControl1.DisplayStyleProvider.BorderColorUnselected = System.Drawing.SystemColors.ControlDark;
+            this.tabControl1.DisplayStyleProvider.CloserButtonFillColorFocused = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserButtonFillColorFocusedActive = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.tabControl1.DisplayStyleProvider.CloserButtonFillColorHighlighted = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserButtonFillColorHighlightedActive = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.tabControl1.DisplayStyleProvider.CloserButtonFillColorSelected = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserButtonFillColorSelectedActive = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.tabControl1.DisplayStyleProvider.CloserButtonFillColorUnselected = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorFocused = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorFocusedActive = System.Drawing.Color.Red;
+            this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorHighlighted = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorHighlightedActive = System.Drawing.Color.Red;
+            this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorSelected = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorSelectedActive = System.Drawing.Color.Red;
+            this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorUnselected = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserColorFocused = System.Drawing.Color.Black;
+            this.tabControl1.DisplayStyleProvider.CloserColorFocusedActive = System.Drawing.Color.White;
+            this.tabControl1.DisplayStyleProvider.CloserColorHighlighted = System.Drawing.Color.Black;
+            this.tabControl1.DisplayStyleProvider.CloserColorHighlightedActive = System.Drawing.Color.White;
+            this.tabControl1.DisplayStyleProvider.CloserColorSelected = System.Drawing.Color.Black;
+            this.tabControl1.DisplayStyleProvider.CloserColorSelectedActive = System.Drawing.Color.White;
+            this.tabControl1.DisplayStyleProvider.CloserColorUnselected = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.FocusTrack = false;
+            this.tabControl1.DisplayStyleProvider.HotTrack = true;
+            this.tabControl1.DisplayStyleProvider.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tabControl1.DisplayStyleProvider.Opacity = 1F;
+            this.tabControl1.DisplayStyleProvider.Overlap = 0;
+            this.tabControl1.DisplayStyleProvider.Padding = new System.Drawing.Point(6, 3);
+            this.tabControl1.DisplayStyleProvider.PageBackgroundColorDisabled = System.Drawing.SystemColors.Control;
+            this.tabControl1.DisplayStyleProvider.PageBackgroundColorFocused = System.Drawing.SystemColors.ControlLight;
+            this.tabControl1.DisplayStyleProvider.PageBackgroundColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(244)))), ((int)(((byte)(252)))));
+            this.tabControl1.DisplayStyleProvider.PageBackgroundColorSelected = System.Drawing.SystemColors.ControlLightLight;
+            this.tabControl1.DisplayStyleProvider.PageBackgroundColorUnselected = System.Drawing.SystemColors.Control;
+            this.tabControl1.DisplayStyleProvider.Radius = 2;
+            this.tabControl1.DisplayStyleProvider.SelectedTabIsLarger = true;
+            this.tabControl1.DisplayStyleProvider.ShowTabCloser = true;
+            this.tabControl1.DisplayStyleProvider.TabColorDisabled1 = System.Drawing.SystemColors.Control;
+            this.tabControl1.DisplayStyleProvider.TabColorDisabled2 = System.Drawing.SystemColors.Control;
+            this.tabControl1.DisplayStyleProvider.TabColorFocused1 = System.Drawing.SystemColors.ControlLight;
+            this.tabControl1.DisplayStyleProvider.TabColorFocused2 = System.Drawing.SystemColors.ControlLight;
+            this.tabControl1.DisplayStyleProvider.TabColorHighLighted1 = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(244)))), ((int)(((byte)(252)))));
+            this.tabControl1.DisplayStyleProvider.TabColorHighLighted2 = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
+            this.tabControl1.DisplayStyleProvider.TabColorSelected1 = System.Drawing.SystemColors.ControlLightLight;
+            this.tabControl1.DisplayStyleProvider.TabColorSelected2 = System.Drawing.SystemColors.ControlLightLight;
+            this.tabControl1.DisplayStyleProvider.TabColorUnSelected1 = System.Drawing.SystemColors.Control;
+            this.tabControl1.DisplayStyleProvider.TabColorUnSelected2 = System.Drawing.SystemColors.Control;
+            this.tabControl1.DisplayStyleProvider.TabPageMargin = new System.Windows.Forms.Padding(1);
+            this.tabControl1.DisplayStyleProvider.TextColorDisabled = System.Drawing.SystemColors.ControlDark;
+            this.tabControl1.DisplayStyleProvider.TextColorFocused = System.Drawing.SystemColors.ControlText;
+            this.tabControl1.DisplayStyleProvider.TextColorHighlighted = System.Drawing.SystemColors.ControlText;
+            this.tabControl1.DisplayStyleProvider.TextColorSelected = System.Drawing.SystemColors.ControlText;
+            this.tabControl1.DisplayStyleProvider.TextColorUnselected = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.HotTrack = true;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            // 
+            // tabPage1
+            // 
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.contextMenuStrip_Product.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,9 +279,11 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4_Owner;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Service;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Carriage;
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private TradeWright.UI.Forms.TabControlExtra tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }
 

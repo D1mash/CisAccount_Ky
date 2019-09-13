@@ -87,9 +87,10 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1301, 98);
+            this.groupBox1.Size = new System.Drawing.Size(1325, 98);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -288,20 +289,24 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 200);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox2.Location = new System.Drawing.Point(0, 162);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1301, 472);
+            this.groupBox2.Size = new System.Drawing.Size(1325, 522);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateContextFilters = true;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.DateWithTime = false;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 19);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1277, 389);
+            this.dataGridView1.Size = new System.Drawing.Size(1319, 503);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.TimeFilter = false;
             this.dataGridView1.SortStringChanged += new System.EventHandler(this.DataGridView1_SortStringChanged);
@@ -312,9 +317,10 @@
             this.groupBox3.Controls.Add(this.searchToolBar1);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.txtSearch);
-            this.groupBox3.Location = new System.Drawing.Point(12, 116);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(0, 98);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1301, 78);
+            this.groupBox3.Size = new System.Drawing.Size(1325, 79);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             // 
@@ -323,12 +329,12 @@
             this.searchToolBar1.AllowMerge = false;
             this.searchToolBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.searchToolBar1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.searchToolBar1.Location = new System.Drawing.Point(3, 48);
+            this.searchToolBar1.Location = new System.Drawing.Point(3, 49);
             this.searchToolBar1.MaximumSize = new System.Drawing.Size(0, 27);
             this.searchToolBar1.MinimumSize = new System.Drawing.Size(0, 27);
             this.searchToolBar1.Name = "searchToolBar1";
             this.searchToolBar1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.searchToolBar1.Size = new System.Drawing.Size(1295, 27);
+            this.searchToolBar1.Size = new System.Drawing.Size(1319, 27);
             this.searchToolBar1.TabIndex = 3;
             this.searchToolBar1.Text = "searchToolBar1";
             this.searchToolBar1.Search += new ADGV.SearchToolBarSearchEventHandler(this.SearchToolBar1_Search);

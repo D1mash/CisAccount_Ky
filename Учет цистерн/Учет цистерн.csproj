@@ -47,6 +47,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TradeWright.TabControlExtra">
+      <HintPath>..\..\..\Personal\d.omarbayev\Desktop\tabcontrol-extra-master\TabControlExtraDemo\packages\TradeWright.TabControlExtra.2.0.1\lib\net45\TradeWright.TabControlExtra.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="addNewCargo.cs">

@@ -38,7 +38,7 @@ namespace Учет_цистерн
                 string UpdateAuditUser = "UPDATE AUDIT_USER SET DATE_OUT = GETDATE(), IS_DEAD = 1 WHERE ID_SESSION = @@spid and (IS_DEAD IS NULL OR DATE_OUT IS NULL)";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(UpdateAuditUser);
-                Environment.Exit(0);
+                Application.Exit();
             }
         }
 
