@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Учет_цистерн
 {
@@ -28,7 +21,7 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string UpdateCurrentProduct = "update d__Product set Name = '" + textBox1.Text.Trim() + "', Handling_id = "+comboBox1.SelectedValue+" where ID = "+selectID;
+            string UpdateCurrentProduct = "update d__Product set Name = '" + textBox1.Text.Trim() + "', Handling_id = " + comboBox1.SelectedValue + " where ID = " + selectID;
             DataTable dtbl = new DataTable();
             dtbl = DbConnection.DBConnect(UpdateCurrentProduct);
             this.Close();

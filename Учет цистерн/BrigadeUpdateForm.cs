@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -42,8 +36,8 @@ namespace Учет_цистерн
                                        "set Name = '" + textBox1.Text.Trim() + "', " +
                                        "Surname = '" + textBox2.Text.Trim() + "'," +
                                        "Lastname = '" + textBox3.Text.Trim() + "', " +
-                                       "FIO = '"+textBox3.Text.Trim()+' '+textBox1.Text.Substring(0,1)+'.'+textBox2.Text.Substring(0,1)+'.'+"', " +
-                                       "Active = "+yes+" " +
+                                       "FIO = '" + textBox3.Text.Trim() + ' ' + textBox1.Text.Substring(0, 1) + '.' + textBox2.Text.Substring(0, 1) + '.' + "', " +
+                                       "Active = " + yes + " " +
                                        "where ID = " + selectID;
             }
             else

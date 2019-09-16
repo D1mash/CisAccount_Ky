@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Data.Sql;
 
 namespace Учет_цистерн
 {
@@ -25,11 +17,11 @@ namespace Учет_цистерн
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(getUsers);
 
-            if(dataTable.Rows.Count == 1)
+            if (dataTable.Rows.Count == 1)
             {
                 this.Hide();
                 string User_AID = dataTable.Rows[0][0].ToString();
-                string ExecLogin = "exec dbo.Login "+User_AID;
+                string ExecLogin = "exec dbo.Login " + User_AID;
                 DataTable dt = new DataTable();
                 dt = DbConnection.DBConnect(ExecLogin);
                 MainForm objFrmMain = new MainForm(dataTable.Rows[0][3].ToString());

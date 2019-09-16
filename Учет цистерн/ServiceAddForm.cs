@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -24,7 +18,7 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string ServiceAdd = "insert into d__Service values ('"+textBox1.Text.Trim()+"',1)";
+            string ServiceAdd = "insert into d__Service values ('" + textBox1.Text.Trim() + "',1)";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(ServiceAdd);
             this.Close();

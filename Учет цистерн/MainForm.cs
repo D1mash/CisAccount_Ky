@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Data.SqlClient;
-
+using System.Collections;
 
 namespace Учет_цистерн
 {
@@ -18,10 +18,10 @@ namespace Учет_цистерн
         public MainForm(string FIO)
         {
             InitializeComponent();
-            this.Text = "Учет вагонов-цистерн. Батыс Петролеум ТОО - "+FIO;
+            this.Text = "Учет вагонов-цистерн. Батыс Петролеум ТОО - " + FIO;
         }
 
-    
+
         private void button1_Click(object sender, EventArgs e)
         {
             contextMenuStrip_Product.Show(button1, new Point(0, button1.Height));
@@ -110,7 +110,7 @@ namespace Учет_цистерн
             carriageForm.FormBorderStyle = FormBorderStyle.None;
             carriageForm.Dock = DockStyle.Fill;
             CarriageTabPage.Controls.Add(carriageForm);
-         
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -154,5 +154,78 @@ namespace Учет_цистерн
             RenderedServiceForm.Dock = DockStyle.Fill;
             CarriageTabPage.Controls.Add(RenderedServiceForm);
         }
+
+
+        private Point DragStartPosition = Point.Empty;
+
+        private void tabControl1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            DragStartPosition = new Point(e.X, e.Y);
+        }
+
+
+        private void tabControl1_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+
+            Rectangle r = new Rectangle(DragStartPosition, Size.Empty);
+            r.Inflate(SystemInformation.DragSize);
+
+            TabPage tp = HoverTab();
+
+            if (tp != null)
+            {
+                if (!r.Contains(e.X, e.Y))
+                    tabControl1.DoDragDrop(tp, DragDropEffects.All);
+            }
+            DragStartPosition = Point.Empty;
+        }
+
+
+        private void tabControl1_DragOver(object sender, System.Windows.Forms.DragEventArgs e)
+        {
+            TabPage hover_Tab = HoverTab();
+            if (hover_Tab == null)
+                e.Effect = DragDropEffects.None;
+            else
+            {
+                if (e.Data.GetDataPresent(typeof(TabPage)))
+                {
+                    e.Effect = DragDropEffects.Move;
+                    TabPage drag_tab = (TabPage)e.Data.GetData(typeof(TabPage));
+
+                    if (hover_Tab == drag_tab) return;
+
+                    Rectangle TabRect = tabControl1.GetTabRect(tabControl1.TabPages.IndexOf(hover_Tab));
+                    TabRect.Inflate(-3, -3);
+                    if (TabRect.Contains(tabControl1.PointToClient(new Point(e.X, e.Y))))
+                    {
+                        SwapTabPages(drag_tab, hover_Tab);
+                        tabControl1.SelectedTab = drag_tab;
+                    }
+                }
+            }
+        }
+
+
+        private TabPage HoverTab()
+        {
+            for (int index = 0; index <= tabControl1.TabCount - 1; index++)
+            {
+                if (tabControl1.GetTabRect(index).Contains(tabControl1.PointToClient(Cursor.Position)))
+                    return tabControl1.TabPages[index];
+            }
+            return null;
+        }
+
+
+        private void SwapTabPages(TabPage tp1, TabPage tp2)
+        {
+            int Index1 = tabControl1.TabPages.IndexOf(tp1);
+            int Index2 = tabControl1.TabPages.IndexOf(tp2);
+            tabControl1.TabPages[Index1] = tp2;
+            tabControl1.TabPages[Index2] = tp1;
+        }
+
     }
 }

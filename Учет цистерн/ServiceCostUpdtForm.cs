@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -82,7 +76,7 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string Update = "exec dbo.UpdateServiceCost " + comboBox1.SelectedValue.ToString() + ",'" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + textBox1.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString()+","+selectID;
+            string Update = "exec dbo.UpdateServiceCost " + comboBox1.SelectedValue.ToString() + ",'" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + textBox1.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString() + "," + selectID;
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(Update);
             this.Close();

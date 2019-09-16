@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Учет_цистерн
 {
@@ -32,10 +25,10 @@ namespace Учет_цистерн
         {
             //SqlConnection con = new SqlConnection(connectionString);
             //con.Open();
-            string Updt_CurrentStation = 
+            string Updt_CurrentStation =
                 "update d__Station " +
-                "set Name = '"+textBox_Updt_Name_StationForm.Text.Trim()+"', Code = "+Convert.ToInt32(textBox_Updt_Code_StationForm.Text.Trim())+", Code6 = "+Convert.ToInt32(textBox_Updt_Code6_StationForm.Text.Trim())+" " +
-                "where ID = "+ selectStationID;
+                "set Name = '" + textBox_Updt_Name_StationForm.Text.Trim() + "', Code = " + Convert.ToInt32(textBox_Updt_Code_StationForm.Text.Trim()) + ", Code6 = " + Convert.ToInt32(textBox_Updt_Code6_StationForm.Text.Trim()) + " " +
+                "where ID = " + selectStationID;
             //SqlDataAdapter sda = new SqlDataAdapter(Updt_CurrentStation, con);
             DataTable dtbl = new DataTable();
             dtbl = DbConnection.DBConnect(Updt_CurrentStation);

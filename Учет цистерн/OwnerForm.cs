@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -77,7 +71,7 @@ namespace Учет_цистерн
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.OK)
             {
-                string Delete = "delete from d__Owner where ID = "+SelectItemRow;
+                string Delete = "delete from d__Owner where ID = " + SelectItemRow;
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(Delete);
                 MessageBox.Show("Запись удалена!");

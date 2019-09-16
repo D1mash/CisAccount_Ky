@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -108,7 +102,7 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string Add = "exec dbo.FillRenderedService '"+ dateTimePicker1.Value.Date.ToString()+ "'," + comboBox3.SelectedValue.ToString() + "," +comboBox1.SelectedValue.ToString()+",'"+textBox2.Text.Trim()+"','"+textBox1.Text.Trim()+"',"+comboBox6.SelectedValue.ToString()+","+comboBox4.SelectedValue.ToString()+","+comboBox5.SelectedValue.ToString();
+            string Add = "exec dbo.FillRenderedService '" + dateTimePicker1.Value.Date.ToString() + "'," + comboBox3.SelectedValue.ToString() + "," + comboBox1.SelectedValue.ToString() + ",'" + textBox2.Text.Trim() + "','" + textBox1.Text.Trim() + "'," + comboBox6.SelectedValue.ToString() + "," + comboBox4.SelectedValue.ToString() + "," + comboBox5.SelectedValue.ToString();
             DbConnection.DBConnect(Add);
             MessageBox.Show("Запись добавлена!");
         }
@@ -151,7 +145,7 @@ namespace Учет_цистерн
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string Delete = "delete from d__RenderedService where ID = " + SelectItemRow ;
+            string Delete = "delete from d__RenderedService where ID = " + SelectItemRow;
             DbConnection.DBConnect(Delete);
             MessageBox.Show("Запись Удалена!");
         }
@@ -198,8 +192,8 @@ namespace Учет_цистерн
                 }
                 else
                 {
-                    startColumn = endcol? 0 : dataGridView1.CurrentCell.ColumnIndex + 1;
-                    startRow = dataGridView1.CurrentCell.RowIndex + (endcol? 1 : 0);
+                    startColumn = endcol ? 0 : dataGridView1.CurrentCell.ColumnIndex + 1;
+                    startRow = dataGridView1.CurrentCell.RowIndex + (endcol ? 1 : 0);
                 }
             }
 

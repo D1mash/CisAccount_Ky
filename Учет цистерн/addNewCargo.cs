@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Учет_цистерн
 {
@@ -35,14 +29,14 @@ namespace Учет_цистерн
             DataTable dtbl = new DataTable();
             sda.Fill(dtbl);
             string user_aid = dtbl.Rows[0][0].ToString();
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "insert into d__Product values('" + textBox1.Text.Trim() + "','" + comboBox1.SelectedValue + "',"+user_aid+",getdate())";
-                //cmd.ExecuteNonQuery();
-                DataTable dt = new DataTable();
-                SqlDataAdapter sa = new SqlDataAdapter(cmd);
-                sa.Fill(dt);
-                MessageBox.Show("Product added!");
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "insert into d__Product values('" + textBox1.Text.Trim() + "','" + comboBox1.SelectedValue + "'," + user_aid + ",getdate())";
+            //cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter sa = new SqlDataAdapter(cmd);
+            sa.Fill(dt);
+            MessageBox.Show("Product added!");
             con.Close();
         }
 

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -45,7 +39,7 @@ namespace Учет_цистерн
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            string Update = "update d__Carriage set CarNumber = "+textBox1.Text.Trim()+", AXIS = "+textBox2.Text.Trim()+", Owner_ID = "+comboBox1.SelectedValue.ToString()+" where ID = " + selectID;
+            string Update = "update d__Carriage set CarNumber = " + textBox1.Text.Trim() + ", AXIS = " + textBox2.Text.Trim() + ", Owner_ID = " + comboBox1.SelectedValue.ToString() + " where ID = " + selectID;
             DataTable dtbl = new DataTable();
             dtbl = DbConnection.DBConnect(Update);
             this.Close();

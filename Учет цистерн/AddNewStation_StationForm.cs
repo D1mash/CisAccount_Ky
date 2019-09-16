@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Учет_цистерн
 {
@@ -31,7 +25,7 @@ namespace Учет_цистерн
             string user_aid = dtbl.Rows[0][0].ToString();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into d__Station values ("+ Convert.ToInt32(textBox_Add_Code_StationForm.Text.Trim())+ "," + Convert.ToInt32(textBox_Add_Code6_StationForm.Text.Trim())+",'"+textBox_Add_Name_StationForm.Text.Trim()+"',"+user_aid+",getdate())";
+            cmd.CommandText = "insert into d__Station values (" + Convert.ToInt32(textBox_Add_Code_StationForm.Text.Trim()) + "," + Convert.ToInt32(textBox_Add_Code6_StationForm.Text.Trim()) + ",'" + textBox_Add_Name_StationForm.Text.Trim() + "'," + user_aid + ",getdate())";
             //cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter sa = new SqlDataAdapter(cmd);

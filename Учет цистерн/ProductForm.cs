@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -68,10 +61,10 @@ namespace Учет_цистерн
         {
             //SqlConnection con = new SqlConnection(connectionString);
             //con.Open();
-            string DeleteCurrentProduct = "delete from d__Product where ID = "+SelectItemRow;
+            string DeleteCurrentProduct = "delete from d__Product where ID = " + SelectItemRow;
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(DeleteCurrentProduct);
-           //SqlDataAdapter sda = new SqlDataAdapter(DeleteCurrentProduct, con);
+            //SqlDataAdapter sda = new SqlDataAdapter(DeleteCurrentProduct, con);
             //DataTable dtbl = new DataTable();
             //sda.Fill(dtbl);
             //con.Close();

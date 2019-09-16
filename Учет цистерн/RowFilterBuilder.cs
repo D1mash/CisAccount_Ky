@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Data;
-using System.Collections;
 
 namespace Codeproject
 {
@@ -38,7 +34,7 @@ namespace Codeproject
             coloumns.CopyTo(coloumnNames, 0);
             return BuildMultiColumnFilter(filterExpression, coloumnNames);
         }
-        
+
         /// <summary>
         /// Builds a string that can be used for DataViews as Row filter.
         /// You might pass 2 arguments: a string that repressents the expressiuon for the filter, seperated by blancs
@@ -50,17 +46,17 @@ namespace Codeproject
         /// An String Array with the Name of Coloumns
         /// for Example "Prename, Name"
         /// <returns></returns>
-        public static string BuildMultiColumnFilter(string filterExpression, string[] coloumnsString )
+        public static string BuildMultiColumnFilter(string filterExpression, string[] coloumnsString)
         {
             filterExpression = filterExpression.Replace("'", "''");
-            
+
             string result = "";
             string[] filters = filterExpression.Split(" ".ToCharArray());
 
 
             for (int i = 0; i < filters.Length; i++)
             {
-                if (i!=0)
+                if (i != 0)
                 {
                     result += " AND ";
                 }
@@ -71,15 +67,15 @@ namespace Codeproject
                     string column = coloumnsString[j];
                     //we need an prefix "OR" for every operator - but not for the first one
                     if (j != 0)
-	                {
+                    {
                         result += " OR ";
-	                }
+                    }
 
                     result += " (CONVERT( [" + column + "], 'System.String') like '%" + filter + "%' )";
                 }
 
                 result += ")";
-                
+
             }
             return result;
         }

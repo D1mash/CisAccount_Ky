@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -37,7 +31,7 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string Update = "Update d__Service Set Name = "+textBox1.Text.Trim()+" where ID = "+selectID;
+            string Update = "Update d__Service Set Name = " + textBox1.Text.Trim() + " where ID = " + selectID;
             DataTable dtbl = new DataTable();
             dtbl = DbConnection.DBConnect(Update);
             this.Close();
