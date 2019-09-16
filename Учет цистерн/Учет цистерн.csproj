@@ -105,6 +105,12 @@
     <Compile Include="CarriageForm.Designer.cs">
       <DependentUpon>CarriageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OwnerAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RenderedServiceUpdtForm.resx">
       <DependentUpon>RenderedServiceUpdtForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServiceAddForm.resx">
       <DependentUpon>ServiceAddForm.cs</DependentUpon>

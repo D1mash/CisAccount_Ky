@@ -45,9 +45,12 @@
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new TradeWright.UI.Forms.TabControlExtra();
+            this.contextMenuStrip_Report = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Product.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.contextMenuStrip_Report.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip_Product
@@ -67,7 +70,6 @@
             // 
             this.toolStripMenuItem1_Product.CheckOnClick = true;
             resources.ApplyResources(this.toolStripMenuItem1_Product, "toolStripMenuItem1_Product");
-            this.toolStripMenuItem1_Product.Image = global::Учет_цистерн.Properties.Resources.winrar_1;
             this.toolStripMenuItem1_Product.Name = "toolStripMenuItem1_Product";
             this.toolStripMenuItem1_Product.Click += new System.EventHandler(this.ToolStripMenuItem1_Product_Click);
             // 
@@ -154,6 +156,7 @@
             this.button3.Name = "button3";
             this.button3.UseMnemonic = false;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button6
             // 
@@ -242,6 +245,20 @@
             this.tabControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseDown);
             this.tabControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseMove);
             // 
+            // contextMenuStrip_Report
+            // 
+            this.contextMenuStrip_Report.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenuStrip_Report.Name = "contextMenuStrip_Report";
+            this.contextMenuStrip_Report.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            resources.ApplyResources(this.contextMenuStrip_Report, "contextMenuStrip_Report");
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem1_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -255,6 +272,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.contextMenuStrip_Report.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,6 +295,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox2;
         private TradeWright.UI.Forms.TabControlExtra tabControl1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Report;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

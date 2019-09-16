@@ -227,5 +227,15 @@ namespace Учет_цистерн
             tabControl1.TabPages[Index2] = tp1;
         }
 
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            contextMenuStrip_Report.Show(button3, new Point(0, button3.Height));
+        }
+
+        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ReportForm reportForm = new ReportForm();
+            reportForm.Show();
+        }
     }
 }
