@@ -52,16 +52,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="addNewCargo.cs">
+    <Compile Include="Forms\addNewCargo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="addNewCargo.Designer.cs">
+    <Compile Include="Forms\addNewCargo.Designer.cs">
       <DependentUpon>addNewCargo.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddNewStation_StationForm.cs">
+    <Compile Include="Forms\AddNewStation_StationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddNewStation_StationForm.Designer.cs">
+    <Compile Include="Forms\AddNewStation_StationForm.Designer.cs">
       <DependentUpon>AddNewStation_StationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BatysDataSet.Designer.cs">
@@ -74,197 +74,197 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BatysDataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BrigadeAddForm.cs">
+    <Compile Include="Forms\BrigadeAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BrigadeAddForm.Designer.cs">
+    <Compile Include="Forms\BrigadeAddForm.Designer.cs">
       <DependentUpon>BrigadeAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CarriageAddForm.cs">
+    <Compile Include="Forms\CarriageAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CarriageAddForm.Designer.cs">
+    <Compile Include="Forms\CarriageAddForm.Designer.cs">
       <DependentUpon>CarriageAddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DbConnection.cs" />
-    <Compile Include="BrigadeForm.cs">
+    <Compile Include="Forms\BrigadeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BrigadeForm.Designer.cs">
+    <Compile Include="Forms\BrigadeForm.Designer.cs">
       <DependentUpon>BrigadeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BrigadeUpdateForm.cs">
+    <Compile Include="Forms\BrigadeUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BrigadeUpdateForm.Designer.cs">
+    <Compile Include="Forms\BrigadeUpdateForm.Designer.cs">
       <DependentUpon>BrigadeUpdateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CarriageForm.cs">
+    <Compile Include="Forms\CarriageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CarriageForm.Designer.cs">
+    <Compile Include="Forms\CarriageForm.Designer.cs">
       <DependentUpon>CarriageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportForm.cs">
+    <Compile Include="Forms\ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReportForm.Designer.cs">
+    <Compile Include="Forms\ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OwnerAddForm.cs">
+    <Compile Include="Forms\OwnerAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OwnerAddForm.Designer.cs">
+    <Compile Include="Forms\OwnerAddForm.Designer.cs">
       <DependentUpon>OwnerAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OwnerForm.cs">
+    <Compile Include="Forms\OwnerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OwnerForm.Designer.cs">
+    <Compile Include="Forms\OwnerForm.Designer.cs">
       <DependentUpon>OwnerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OwnerUpdtForm.cs">
+    <Compile Include="Forms\OwnerUpdtForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OwnerUpdtForm.Designer.cs">
+    <Compile Include="Forms\OwnerUpdtForm.Designer.cs">
       <DependentUpon>OwnerUpdtForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductForm.cs">
+    <Compile Include="Forms\ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductForm.Designer.cs">
+    <Compile Include="Forms\ProductForm.Designer.cs">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RenderedServiceForm.cs">
+    <Compile Include="Forms\RenderedServiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RenderedServiceForm.Designer.cs">
+    <Compile Include="Forms\RenderedServiceForm.Designer.cs">
       <DependentUpon>RenderedServiceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RenderedServiceUpdtForm.cs">
+    <Compile Include="Forms\RenderedServiceUpdtForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RenderedServiceUpdtForm.Designer.cs">
+    <Compile Include="Forms\RenderedServiceUpdtForm.Designer.cs">
       <DependentUpon>RenderedServiceUpdtForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RowFilterBuilder.cs" />
-    <Compile Include="ServiceAddForm.cs">
+    <Compile Include="Forms\ServiceAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ServiceAddForm.Designer.cs">
+    <Compile Include="Forms\ServiceAddForm.Designer.cs">
       <DependentUpon>ServiceAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServiceCostAddForm.cs">
+    <Compile Include="Forms\ServiceCostAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ServiceCostAddForm.Designer.cs">
+    <Compile Include="Forms\ServiceCostAddForm.Designer.cs">
       <DependentUpon>ServiceCostAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServiceCostForm.cs">
+    <Compile Include="Forms\ServiceCostForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ServiceCostForm.Designer.cs">
+    <Compile Include="Forms\ServiceCostForm.Designer.cs">
       <DependentUpon>ServiceCostForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServiceCostUpdtForm.cs">
+    <Compile Include="Forms\ServiceCostUpdtForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ServiceCostUpdtForm.Designer.cs">
+    <Compile Include="Forms\ServiceCostUpdtForm.Designer.cs">
       <DependentUpon>ServiceCostUpdtForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServiceForm.cs">
+    <Compile Include="Forms\ServiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ServiceForm.Designer.cs">
+    <Compile Include="Forms\ServiceForm.Designer.cs">
       <DependentUpon>ServiceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServiceUpdtForm.cs">
+    <Compile Include="Forms\ServiceUpdtForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ServiceUpdtForm.Designer.cs">
+    <Compile Include="Forms\ServiceUpdtForm.Designer.cs">
       <DependentUpon>ServiceUpdtForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StationForm.cs">
+    <Compile Include="Forms\StationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StationForm.Designer.cs">
+    <Compile Include="Forms\StationForm.Designer.cs">
       <DependentUpon>StationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CarriageUpdateForm.cs">
+    <Compile Include="Forms\CarriageUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CarriageUpdateForm.Designer.cs">
+    <Compile Include="Forms\CarriageUpdateForm.Designer.cs">
       <DependentUpon>CarriageUpdateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateProductForm.cs">
+    <Compile Include="Forms\UpdateProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateProductForm.Designer.cs">
+    <Compile Include="Forms\UpdateProductForm.Designer.cs">
       <DependentUpon>UpdateProductForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdtCurrentStation_StationForm.cs">
+    <Compile Include="Forms\UpdtCurrentStation_StationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdtCurrentStation_StationForm.Designer.cs">
+    <Compile Include="Forms\UpdtCurrentStation_StationForm.Designer.cs">
       <DependentUpon>UpdtCurrentStation_StationForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="addNewCargo.resx">
+    <EmbeddedResource Include="Forms\addNewCargo.resx">
       <DependentUpon>addNewCargo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddNewStation_StationForm.resx">
+    <EmbeddedResource Include="Forms\AddNewStation_StationForm.resx">
       <DependentUpon>AddNewStation_StationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BrigadeAddForm.resx">
+    <EmbeddedResource Include="Forms\BrigadeAddForm.resx">
       <DependentUpon>BrigadeAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BrigadeForm.resx">
+    <EmbeddedResource Include="Forms\BrigadeForm.resx">
       <DependentUpon>BrigadeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BrigadeUpdateForm.resx">
+    <EmbeddedResource Include="Forms\BrigadeUpdateForm.resx">
       <DependentUpon>BrigadeUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CarriageAddForm.resx">
+    <EmbeddedResource Include="Forms\CarriageAddForm.resx">
       <DependentUpon>CarriageAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CarriageForm.resx">
+    <EmbeddedResource Include="Forms\CarriageForm.resx">
       <DependentUpon>CarriageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CarriageUpdateForm.resx">
+    <EmbeddedResource Include="Forms\CarriageUpdateForm.resx">
       <DependentUpon>CarriageUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OwnerAddForm.resx">
+    <EmbeddedResource Include="Forms\OwnerAddForm.resx">
       <DependentUpon>OwnerAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OwnerForm.resx">
+    <EmbeddedResource Include="Forms\OwnerForm.resx">
       <DependentUpon>OwnerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OwnerUpdtForm.resx">
+    <EmbeddedResource Include="Forms\OwnerUpdtForm.resx">
       <DependentUpon>OwnerUpdtForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductForm.resx">
+    <EmbeddedResource Include="Forms\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.az-Cyrl.resx">
+    <EmbeddedResource Include="Forms\MainForm.az-Cyrl.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -272,40 +272,40 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RenderedServiceForm.resx">
+    <EmbeddedResource Include="Forms\RenderedServiceForm.resx">
       <DependentUpon>RenderedServiceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RenderedServiceUpdtForm.resx">
+    <EmbeddedResource Include="Forms\RenderedServiceUpdtForm.resx">
       <DependentUpon>RenderedServiceUpdtForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportForm.resx">
+    <EmbeddedResource Include="Forms\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ServiceAddForm.resx">
+    <EmbeddedResource Include="Forms\ServiceAddForm.resx">
       <DependentUpon>ServiceAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ServiceCostAddForm.resx">
+    <EmbeddedResource Include="Forms\ServiceCostAddForm.resx">
       <DependentUpon>ServiceCostAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ServiceCostForm.resx">
+    <EmbeddedResource Include="Forms\ServiceCostForm.resx">
       <DependentUpon>ServiceCostForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ServiceCostUpdtForm.resx">
+    <EmbeddedResource Include="Forms\ServiceCostUpdtForm.resx">
       <DependentUpon>ServiceCostUpdtForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ServiceForm.resx">
+    <EmbeddedResource Include="Forms\ServiceForm.resx">
       <DependentUpon>ServiceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ServiceUpdtForm.resx">
+    <EmbeddedResource Include="Forms\ServiceUpdtForm.resx">
       <DependentUpon>ServiceUpdtForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StationForm.resx">
+    <EmbeddedResource Include="Forms\StationForm.resx">
       <DependentUpon>StationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateProductForm.resx">
+    <EmbeddedResource Include="Forms\UpdateProductForm.resx">
       <DependentUpon>UpdateProductForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdtCurrentStation_StationForm.resx">
+    <EmbeddedResource Include="Forms\UpdtCurrentStation_StationForm.resx">
       <DependentUpon>UpdtCurrentStation_StationForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="BatysDataSet.xsc">
