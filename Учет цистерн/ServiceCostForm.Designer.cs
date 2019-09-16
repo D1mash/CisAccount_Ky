@@ -42,19 +42,21 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.Btn_Refresh);
             this.groupBox1.Controls.Add(this.Btn_Delete);
             this.groupBox1.Controls.Add(this.Btn_Updt);
             this.groupBox1.Controls.Add(this.Btn_Add);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 55);
+            this.groupBox1.Size = new System.Drawing.Size(1370, 61);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // Btn_Refresh
             // 
-            this.Btn_Refresh.Location = new System.Drawing.Point(249, 19);
+            this.Btn_Refresh.Location = new System.Drawing.Point(255, 19);
             this.Btn_Refresh.Name = "Btn_Refresh";
             this.Btn_Refresh.Size = new System.Drawing.Size(75, 23);
             this.Btn_Refresh.TabIndex = 3;
@@ -64,7 +66,7 @@
             // 
             // Btn_Delete
             // 
-            this.Btn_Delete.Location = new System.Drawing.Point(168, 19);
+            this.Btn_Delete.Location = new System.Drawing.Point(174, 19);
             this.Btn_Delete.Name = "Btn_Delete";
             this.Btn_Delete.Size = new System.Drawing.Size(75, 23);
             this.Btn_Delete.TabIndex = 2;
@@ -74,7 +76,7 @@
             // 
             // Btn_Updt
             // 
-            this.Btn_Updt.Location = new System.Drawing.Point(87, 19);
+            this.Btn_Updt.Location = new System.Drawing.Point(93, 19);
             this.Btn_Updt.Name = "Btn_Updt";
             this.Btn_Updt.Size = new System.Drawing.Size(75, 23);
             this.Btn_Updt.TabIndex = 1;
@@ -84,7 +86,7 @@
             // 
             // Btn_Add
             // 
-            this.Btn_Add.Location = new System.Drawing.Point(6, 19);
+            this.Btn_Add.Location = new System.Drawing.Point(12, 19);
             this.Btn_Add.Name = "Btn_Add";
             this.Btn_Add.Size = new System.Drawing.Size(75, 23);
             this.Btn_Add.TabIndex = 0;
@@ -95,9 +97,10 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 73);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 61);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(776, 365);
+            this.groupBox2.Size = new System.Drawing.Size(1370, 688);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -108,9 +111,10 @@
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(764, 340);
+            this.dataGridView1.Size = new System.Drawing.Size(1364, 669);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -118,7 +122,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "ServiceCostForm";
@@ -128,6 +133,7 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
