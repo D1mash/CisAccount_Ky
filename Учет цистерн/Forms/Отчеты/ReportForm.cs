@@ -16,5 +16,10 @@ namespace Учет_цистерн
         {
             InitializeComponent();
         }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
