@@ -68,7 +68,14 @@ namespace Учет_цистерн
 
         private void RenderedServiceForm_Load(object sender, EventArgs e)
         {
-            string Refresh = "dbo.GetRenderedService";
+            DateTime now = DateTime.Now;
+            var startDate = new DateTime(now.Year, now.Month, 1);
+            var endDate = startDate.AddMonths(1).AddDays(-1);
+
+            dateTimePicker2.Value = startDate;
+            dateTimePicker4.Value = endDate;
+
+            string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(Refresh);
             source.DataSource = dataTable;
@@ -86,7 +93,7 @@ namespace Учет_цистерн
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string Refresh = "dbo.GetRenderedService";
+            string Refresh = "dbo.GetRenderedService '"+dateTimePicker2.Value.Date.ToString()+"','"+dateTimePicker4.Value.Date.ToString()+"'";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(Refresh);
             source.DataSource = dataTable;
