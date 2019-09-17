@@ -127,20 +127,6 @@ namespace Учет_цистерн
             CarriageTabPage.Controls.Add(ServiceCostForm);
         }
 
-        private void toolStripMenuItem_Service_Click(object sender, EventArgs e)
-        {
-            ServiceForm ServiceForm = new ServiceForm();
-            tabControl1.Show();
-            TabPage CarriageTabPage = new TabPage("Услуги");
-            tabControl1.TabPages.Add(CarriageTabPage);
-            tabControl1.SelectedTab = CarriageTabPage;
-            ServiceForm.TopLevel = false;
-            ServiceForm.Visible = true;
-            ServiceForm.FormBorderStyle = FormBorderStyle.None;
-            ServiceForm.Dock = DockStyle.Fill;
-            CarriageTabPage.Controls.Add(ServiceForm);
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             RenderedServiceForm RenderedServiceForm = new RenderedServiceForm();

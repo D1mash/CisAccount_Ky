@@ -35,7 +35,6 @@
             this.toolStripMenuItem2_Station = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3_Brigade = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4_Owner = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem_Service = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Carriage = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -60,7 +59,6 @@
             this.toolStripMenuItem2_Station,
             this.toolStripMenuItem3_Brigade,
             this.toolStripMenuItem4_Owner,
-            this.toolStripMenuItem_Service,
             this.toolStripMenuItem_Carriage});
             this.contextMenuStrip_Product.Name = "contextMenuStrip1";
             this.contextMenuStrip_Product.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -92,12 +90,6 @@
             resources.ApplyResources(this.toolStripMenuItem4_Owner, "toolStripMenuItem4_Owner");
             this.toolStripMenuItem4_Owner.Name = "toolStripMenuItem4_Owner";
             this.toolStripMenuItem4_Owner.Click += new System.EventHandler(this.toolStripMenuItem4_Owner_Click);
-            // 
-            // toolStripMenuItem_Service
-            // 
-            resources.ApplyResources(this.toolStripMenuItem_Service, "toolStripMenuItem_Service");
-            this.toolStripMenuItem_Service.Name = "toolStripMenuItem_Service";
-            this.toolStripMenuItem_Service.Click += new System.EventHandler(this.toolStripMenuItem_Service_Click);
             // 
             // toolStripMenuItem_Carriage
             // 
@@ -290,7 +282,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2_Station;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3_Brigade;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4_Owner;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Service;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Carriage;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button4;
