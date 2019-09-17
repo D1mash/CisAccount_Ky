@@ -52,16 +52,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\addNewCargo.cs">
+    <Compile Include="Forms\Продукты\addNewCargo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\addNewCargo.Designer.cs">
+    <Compile Include="Forms\Продукты\addNewCargo.Designer.cs">
       <DependentUpon>addNewCargo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddNewStation_StationForm.cs">
+    <Compile Include="Forms\Станции\AddNewStation_StationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddNewStation_StationForm.Designer.cs">
+    <Compile Include="Forms\Станции\AddNewStation_StationForm.Designer.cs">
       <DependentUpon>AddNewStation_StationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BatysDataSet.Designer.cs">
@@ -74,65 +74,65 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BatysDataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BrigadeAddForm.cs">
+    <Compile Include="Forms\Бригады\BrigadeAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BrigadeAddForm.Designer.cs">
+    <Compile Include="Forms\Бригады\BrigadeAddForm.Designer.cs">
       <DependentUpon>BrigadeAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CarriageAddForm.cs">
+    <Compile Include="Forms\Вагоны\CarriageAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CarriageAddForm.Designer.cs">
+    <Compile Include="Forms\Вагоны\CarriageAddForm.Designer.cs">
       <DependentUpon>CarriageAddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DbConnection.cs" />
-    <Compile Include="Forms\BrigadeForm.cs">
+    <Compile Include="Forms\Бригады\BrigadeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BrigadeForm.Designer.cs">
+    <Compile Include="Forms\Бригады\BrigadeForm.Designer.cs">
       <DependentUpon>BrigadeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BrigadeUpdateForm.cs">
+    <Compile Include="Forms\Бригады\BrigadeUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BrigadeUpdateForm.Designer.cs">
+    <Compile Include="Forms\Бригады\BrigadeUpdateForm.Designer.cs">
       <DependentUpon>BrigadeUpdateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CarriageForm.cs">
+    <Compile Include="Forms\Вагоны\CarriageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CarriageForm.Designer.cs">
+    <Compile Include="Forms\Вагоны\CarriageForm.Designer.cs">
       <DependentUpon>CarriageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ReportForm.cs">
+    <Compile Include="Forms\Отчеты\ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ReportForm.Designer.cs">
+    <Compile Include="Forms\Отчеты\ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\OwnerAddForm.cs">
+    <Compile Include="Forms\Собственники\OwnerAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OwnerAddForm.Designer.cs">
+    <Compile Include="Forms\Собственники\OwnerAddForm.Designer.cs">
       <DependentUpon>OwnerAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\OwnerForm.cs">
+    <Compile Include="Forms\Собственники\OwnerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OwnerForm.Designer.cs">
+    <Compile Include="Forms\Собственники\OwnerForm.Designer.cs">
       <DependentUpon>OwnerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\OwnerUpdtForm.cs">
+    <Compile Include="Forms\Собственники\OwnerUpdtForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OwnerUpdtForm.Designer.cs">
+    <Compile Include="Forms\Собственники\OwnerUpdtForm.Designer.cs">
       <DependentUpon>OwnerUpdtForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ProductForm.cs">
+    <Compile Include="Forms\Продукты\ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ProductForm.Designer.cs">
+    <Compile Include="Forms\Продукты\ProductForm.Designer.cs">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainForm.cs">
@@ -141,24 +141,24 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LoginForm.cs">
+    <Compile Include="Forms\Логин\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LoginForm.Designer.cs">
+    <Compile Include="Forms\Логин\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\RenderedServiceForm.cs">
+    <Compile Include="Forms\Обработанные вагоны\RenderedServiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RenderedServiceForm.Designer.cs">
+    <Compile Include="Forms\Обработанные вагоны\RenderedServiceForm.Designer.cs">
       <DependentUpon>RenderedServiceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RenderedServiceUpdtForm.cs">
+    <Compile Include="Forms\Обработанные вагоны\RenderedServiceUpdtForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RenderedServiceUpdtForm.Designer.cs">
+    <Compile Include="Forms\Обработанные вагоны\RenderedServiceUpdtForm.Designer.cs">
       <DependentUpon>RenderedServiceUpdtForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RowFilterBuilder.cs" />
@@ -198,64 +198,64 @@
     <Compile Include="Forms\ServiceUpdtForm.Designer.cs">
       <DependentUpon>ServiceUpdtForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\StationForm.cs">
+    <Compile Include="Forms\Станции\StationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\StationForm.Designer.cs">
+    <Compile Include="Forms\Станции\StationForm.Designer.cs">
       <DependentUpon>StationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CarriageUpdateForm.cs">
+    <Compile Include="Forms\Вагоны\CarriageUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CarriageUpdateForm.Designer.cs">
+    <Compile Include="Forms\Вагоны\CarriageUpdateForm.Designer.cs">
       <DependentUpon>CarriageUpdateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UpdateProductForm.cs">
+    <Compile Include="Forms\Продукты\UpdateProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UpdateProductForm.Designer.cs">
+    <Compile Include="Forms\Продукты\UpdateProductForm.Designer.cs">
       <DependentUpon>UpdateProductForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UpdtCurrentStation_StationForm.cs">
+    <Compile Include="Forms\Станции\UpdtCurrentStation_StationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UpdtCurrentStation_StationForm.Designer.cs">
+    <Compile Include="Forms\Станции\UpdtCurrentStation_StationForm.Designer.cs">
       <DependentUpon>UpdtCurrentStation_StationForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\addNewCargo.resx">
+    <EmbeddedResource Include="Forms\Продукты\addNewCargo.resx">
       <DependentUpon>addNewCargo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddNewStation_StationForm.resx">
+    <EmbeddedResource Include="Forms\Станции\AddNewStation_StationForm.resx">
       <DependentUpon>AddNewStation_StationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BrigadeAddForm.resx">
+    <EmbeddedResource Include="Forms\Бригады\BrigadeAddForm.resx">
       <DependentUpon>BrigadeAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BrigadeForm.resx">
+    <EmbeddedResource Include="Forms\Бригады\BrigadeForm.resx">
       <DependentUpon>BrigadeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BrigadeUpdateForm.resx">
+    <EmbeddedResource Include="Forms\Бригады\BrigadeUpdateForm.resx">
       <DependentUpon>BrigadeUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CarriageAddForm.resx">
+    <EmbeddedResource Include="Forms\Вагоны\CarriageAddForm.resx">
       <DependentUpon>CarriageAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CarriageForm.resx">
+    <EmbeddedResource Include="Forms\Вагоны\CarriageForm.resx">
       <DependentUpon>CarriageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CarriageUpdateForm.resx">
+    <EmbeddedResource Include="Forms\Вагоны\CarriageUpdateForm.resx">
       <DependentUpon>CarriageUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OwnerAddForm.resx">
+    <EmbeddedResource Include="Forms\Собственники\OwnerAddForm.resx">
       <DependentUpon>OwnerAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OwnerForm.resx">
+    <EmbeddedResource Include="Forms\Собственники\OwnerForm.resx">
       <DependentUpon>OwnerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OwnerUpdtForm.resx">
+    <EmbeddedResource Include="Forms\Собственники\OwnerUpdtForm.resx">
       <DependentUpon>OwnerUpdtForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ProductForm.resx">
+    <EmbeddedResource Include="Forms\Продукты\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.az-Cyrl.resx">
@@ -264,7 +264,7 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoginForm.resx">
+    <EmbeddedResource Include="Forms\Логин\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -272,13 +272,13 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RenderedServiceForm.resx">
+    <EmbeddedResource Include="Forms\Обработанные вагоны\RenderedServiceForm.resx">
       <DependentUpon>RenderedServiceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RenderedServiceUpdtForm.resx">
+    <EmbeddedResource Include="Forms\Обработанные вагоны\RenderedServiceUpdtForm.resx">
       <DependentUpon>RenderedServiceUpdtForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ReportForm.resx">
+    <EmbeddedResource Include="Forms\Отчеты\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ServiceAddForm.resx">
@@ -299,13 +299,13 @@
     <EmbeddedResource Include="Forms\ServiceUpdtForm.resx">
       <DependentUpon>ServiceUpdtForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\StationForm.resx">
+    <EmbeddedResource Include="Forms\Станции\StationForm.resx">
       <DependentUpon>StationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UpdateProductForm.resx">
+    <EmbeddedResource Include="Forms\Продукты\UpdateProductForm.resx">
       <DependentUpon>UpdateProductForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UpdtCurrentStation_StationForm.resx">
+    <EmbeddedResource Include="Forms\Станции\UpdtCurrentStation_StationForm.resx">
       <DependentUpon>UpdtCurrentStation_StationForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="BatysDataSet.xsc">
@@ -378,6 +378,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\keys.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\Услуги\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
