@@ -237,5 +237,20 @@ namespace Учет_цистерн
             ReportForm reportForm = new ReportForm();
             reportForm.Show();
         }
+
+        private void button4_MouseHover(object sender, EventArgs e)
+        {
+            this.button4.BackColor = System.Drawing.Color.Pink;
+        }
+
+        private void button4_MouseLeave(object sender, EventArgs e)
+        {
+            this.button4.BackColor = System.Drawing.SystemColors.Control;
+        }
+
+        private void button4_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.button4.BackColor = System.Drawing.Color.Pink;
+        }
     }
 }

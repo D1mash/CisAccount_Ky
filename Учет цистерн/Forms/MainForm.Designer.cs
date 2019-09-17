@@ -120,6 +120,7 @@
             // button4
             // 
             resources.ApplyResources(this.button4, "button4");
+            this.button4.BackColor = System.Drawing.SystemColors.Control;
             this.button4.Cursor = System.Windows.Forms.Cursors.Default;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.Name = "button4";
