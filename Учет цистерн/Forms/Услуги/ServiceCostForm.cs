@@ -12,8 +12,8 @@ namespace Учет_цистерн
         }
 
         int SelectItemRow;
-        int SelectServiceID;
         int SelectSeasonID;
+        int SelectServiceID;
 
         private void ServiceCostForm_Load(object sender, EventArgs e)
         {
@@ -22,7 +22,6 @@ namespace Учет_цистерн
             dataTable = DbConnection.DBConnect(Reffresh);
             dataGridView1.DataSource = dataTable;
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
             dataGridView1.Columns[2].Visible = false;
         }
 
@@ -33,7 +32,6 @@ namespace Учет_цистерн
             dataTable = DbConnection.DBConnect(Reffresh);
             dataGridView1.DataSource = dataTable;
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
             dataGridView1.Columns[2].Visible = false;
         }
 
@@ -65,24 +63,29 @@ namespace Учет_цистерн
                 DataGridViewRow row = this.dataGridView1.Rows[
                     e.RowIndex];
                 string Id = row.Cells["ID"].Value.ToString();
-                string ServiceID = row.Cells["ServiceID"].Value.ToString();
                 string SeasonID = row.Cells["SeasonID"].Value.ToString();
                 SelectItemRow = Convert.ToInt32(Id);
-                SelectServiceID = Convert.ToInt32(ServiceID);
                 SelectSeasonID = Convert.ToInt32(SeasonID);
             }
         }
 
         private void Btn_Updt_Click(object sender, EventArgs e)
         {
-            ServiceCostUpdtForm ServiceCostUpdtForm = new ServiceCostUpdtForm();
-            ServiceCostUpdtForm.SelectID = SelectItemRow;
-            ServiceCostUpdtForm.SelectServiceID = SelectServiceID;
-            ServiceCostUpdtForm.SelectSeasonID = SelectSeasonID;
-            ServiceCostUpdtForm.textBox1.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
-            ServiceCostUpdtForm.dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            ServiceCostUpdtForm.dateTimePicker2.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-            ServiceCostUpdtForm.Show();
+            try
+            {
+                ServiceCostUpdtForm ServiceCostUpdtForm = new ServiceCostUpdtForm();
+                ServiceCostUpdtForm.SelectID = SelectItemRow;
+                ServiceCostUpdtForm.SelectSeasonID = SelectSeasonID;
+                ServiceCostUpdtForm.textBox2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                ServiceCostUpdtForm.textBox1.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                ServiceCostUpdtForm.dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                ServiceCostUpdtForm.dateTimePicker2.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                ServiceCostUpdtForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message);
+            }
         }
     }
 }

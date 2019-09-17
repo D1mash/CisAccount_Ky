@@ -14,13 +14,13 @@ namespace Учет_цистерн
 
         int SelectItemRow;
 
-        private void btn_add_station_form_Click(object sender, EventArgs e)
+        private void btn_add_station_form_Click_1(object sender, EventArgs e)
         {
             AddNewStation_StationForm AddNewStation_StationForm = new AddNewStation_StationForm();
             AddNewStation_StationForm.Show();
         }
 
-        private void dataGridView1_Station_Form_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView_Station_Form_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -44,41 +44,45 @@ namespace Учет_цистерн
             //con.Close();
         }
 
-        private void btn_upd_station_form_Click(object sender, EventArgs e)
+        private void btn_refsh_station_form_Click_1(object sender, EventArgs e)
         {
-            UpdtCurrentStation_StationForm UpdtCurrentStation_StationForm = new UpdtCurrentStation_StationForm();
-            UpdtCurrentStation_StationForm.textBox_Updt_Name_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[1].Value.ToString();
-            UpdtCurrentStation_StationForm.textBox_Updt_Code_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[2].Value.ToString();
-            UpdtCurrentStation_StationForm.textBox_Updt_Code6_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[3].Value.ToString();
-            UpdtCurrentStation_StationForm.SelectStationID_Method = SelectItemRow;
-            UpdtCurrentStation_StationForm.Show();
-        }
-
-        private void btn_refsh_station_form_Click(object sender, EventArgs e)
-        {
-            //SqlConnection con = new SqlConnection(connectionString);
-            //con.Open();
             string GetStation = "select ID, Name as [Наименование], Code, Code6 from d__Station";
-            //SqlDataAdapter sda = new SqlDataAdapter(GetStation, con);
             DataTable dTl = new DataTable();
             dTl = DbConnection.DBConnect(GetStation);
-            //sda.Fill(dtbl);
             dataGridView_Station_Form.DataSource = dTl;
             dataGridView_Station_Form.Columns[0].Visible = false;
-            //con.Close();
         }
 
-        private void btn_dlt_station_form_Click(object sender, EventArgs e)
+        private void btn_dlt_station_form_Click_1(object sender, EventArgs e)
         {
-            //SqlConnection con = new SqlConnection(connectionString);
-            //con.Open();
-            string DeleteCurrentStation = "delete from d__Station where ID = " + SelectItemRow;
-            //SqlDataAdapter sda = new SqlDataAdapter(DeleteCurrentStation, con);
-            DataTable dtbl = new DataTable();
-            dtbl = DbConnection.DBConnect(DeleteCurrentStation);
-            //sda.Fill(dtbl);
-            //con.Close();
-            MessageBox.Show("Станция удалена!");
+            string message = "Вы действительно хотите удалить эту запись?";
+            string title = "Удаление";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.OK)
+            {
+                string DeleteCurrentStation = "delete from d__Station where ID = " + SelectItemRow;
+                DataTable dtbl = new DataTable();
+                dtbl = DbConnection.DBConnect(DeleteCurrentStation);
+                MessageBox.Show("Запись удалена!");
+            }
+        }
+
+        private void btn_upd_station_form_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UpdtCurrentStation_StationForm UpdtCurrentStation_StationForm = new UpdtCurrentStation_StationForm();
+                UpdtCurrentStation_StationForm.textBox_Updt_Name_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[1].Value.ToString();
+                UpdtCurrentStation_StationForm.textBox_Updt_Code_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[2].Value.ToString();
+                UpdtCurrentStation_StationForm.textBox_Updt_Code6_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[3].Value.ToString();
+                UpdtCurrentStation_StationForm.SelectStationID_Method = SelectItemRow;
+                UpdtCurrentStation_StationForm.Show();
+             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Для редактирования записи, необходимо указать строку! "+ex.Message);
+            }
         }
     }
 }

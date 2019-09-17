@@ -16,28 +16,25 @@ namespace Учет_цистерн
 
         private void button_OK_StationForm_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            string get_user_aid = "select dbo.get_user_aid() S";
-            SqlDataAdapter sda = new SqlDataAdapter(get_user_aid, con);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            string user_aid = dtbl.Rows[0][0].ToString();
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into d__Station values (" + Convert.ToInt32(textBox_Add_Code_StationForm.Text.Trim()) + "," + Convert.ToInt32(textBox_Add_Code6_StationForm.Text.Trim()) + ",'" + textBox_Add_Name_StationForm.Text.Trim() + "'," + user_aid + ",getdate())";
-            //cmd.ExecuteNonQuery();
+            string FillStation = "exec [dbo].[FillStation] "+ textBox_Add_Code_StationForm.Text.Trim() + ","+ textBox_Add_Code6_StationForm.Text.Trim() + ","+ textBox_Add_Name_StationForm.Text.Trim();
+            string SelectDubl = "select * from d__Station where Code = " + textBox_Add_Code_StationForm.Text.Trim();
             DataTable dt = new DataTable();
-            SqlDataAdapter sa = new SqlDataAdapter(cmd);
-            sa.Fill(dt);
-            MessageBox.Show("Станция добавлена!");
-            con.Close();
+            dt = DbConnection.DBConnect(SelectDubl);
+            if (dt.Rows.Count == 0)
+            {
+                DbConnection.DBConnect(FillStation);
+                this.Close();
+                MessageBox.Show("Запись добавлена!");
+            }
+            else
+            {
+                MessageBox.Show("Станция с кодом: "+ textBox_Add_Code_StationForm.Text.Trim() + " имеется в справочнике");
+            }
         }
 
         private void button_Add_Cancel_StationForm_Click(object sender, EventArgs e)
         {
-            AddNewStation_StationForm AddNewStation_StationForm = new AddNewStation_StationForm();
-            AddNewStation_StationForm.Close();
+            this.Close();
         }
     }
 }

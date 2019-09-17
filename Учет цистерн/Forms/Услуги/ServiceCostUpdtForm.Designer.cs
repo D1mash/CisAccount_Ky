@@ -34,12 +34,12 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button2
@@ -95,14 +95,6 @@
             this.comboBox2.Size = new System.Drawing.Size(200, 21);
             this.comboBox2.TabIndex = 13;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(117, 48);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 21);
-            this.comboBox1.TabIndex = 12;
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -110,7 +102,7 @@
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(62, 17);
             this.checkBox1.TabIndex = 24;
-            this.checkBox1.Text = "Услуги";
+            this.checkBox1.Text = "Услуга";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
@@ -158,11 +150,19 @@
             this.checkBox5.UseVisualStyleBackColor = true;
             this.checkBox5.CheckStateChanged += new System.EventHandler(this.checkBox5_CheckStateChanged);
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(117, 50);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(200, 20);
+            this.textBox2.TabIndex = 29;
+            // 
             // ServiceCostUpdtForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 277);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.checkBox3);
@@ -174,7 +174,6 @@
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
             this.Name = "ServiceCostUpdtForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ServiceCostUpdtForm";
@@ -192,11 +191,11 @@
         public System.Windows.Forms.DateTimePicker dateTimePicker2;
         public System.Windows.Forms.DateTimePicker dateTimePicker1;
         public System.Windows.Forms.ComboBox comboBox2;
-        public System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
+        public System.Windows.Forms.TextBox textBox2;
     }
 }

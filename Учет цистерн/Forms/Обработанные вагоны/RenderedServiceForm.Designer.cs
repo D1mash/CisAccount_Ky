@@ -300,6 +300,9 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoGenerateContextFilters = true;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -313,6 +316,7 @@
             this.dataGridView1.TimeFilter = false;
             this.dataGridView1.SortStringChanged += new System.EventHandler(this.DataGridView1_SortStringChanged);
             this.dataGridView1.FilterStringChanged += new System.EventHandler(this.DataGridView1_FilterStringChanged);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick_1);
             // 
             // groupBox3
             // 

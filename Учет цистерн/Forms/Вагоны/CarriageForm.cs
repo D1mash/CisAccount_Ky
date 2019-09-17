@@ -73,12 +73,19 @@ namespace Учет_цистерн
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            CarriageUpdateForm carriageUpdateForm = new CarriageUpdateForm();
-            carriageUpdateForm.SelectID = SelectItemRow;
-            carriageUpdateForm.SelectOwnerID = SelectOwnerID;
-            carriageUpdateForm.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            carriageUpdateForm.textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            carriageUpdateForm.Show();
+            try
+            {
+                CarriageUpdateForm carriageUpdateForm = new CarriageUpdateForm();
+                carriageUpdateForm.SelectID = SelectItemRow;
+                carriageUpdateForm.SelectOwnerID = SelectOwnerID;
+                carriageUpdateForm.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                carriageUpdateForm.textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                carriageUpdateForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message);
+            }
         }
     }
 }

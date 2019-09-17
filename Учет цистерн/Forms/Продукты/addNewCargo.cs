@@ -12,32 +12,35 @@ namespace Учет_цистерн
         public addNewCargo()
         {
             InitializeComponent();
+            FillCombobox();
         }
 
-        private void addNewCargo_Load(object sender, EventArgs e)
+        private void FillCombobox()
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "batysDataSet1.qHangling". При необходимости она может быть перемещена или удалена.
-            this.qHanglingTableAdapter.Fill(this.batysDataSet1.qHangling);
+            string Season = "select * from qHangling";
+            DataTable dTs = DbConnection.DBConnect(Season);
+            comboBox1.DataSource = dTs;
+            comboBox1.DisplayMember = "Name";
+            comboBox1.ValueMember = "ID";
+            //comboBox2.DataBindings.Add("SelectedValue", this, "SelectSeasonID", true, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            string get_user_aid = "select dbo.get_user_aid() S";
-            SqlDataAdapter sda = new SqlDataAdapter(get_user_aid, con);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            string user_aid = dtbl.Rows[0][0].ToString();
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into d__Product values('" + textBox1.Text.Trim() + "','" + comboBox1.SelectedValue + "'," + user_aid + ",getdate())";
-            //cmd.ExecuteNonQuery();
+            string FillProduct = "exec [dbo].[FillProduct] '" + textBox1.Text.Trim()+"',"+comboBox1.SelectedValue.ToString();
+            string SelectDubl = "select * from d__Product where Name = '" + textBox1.Text.Trim()+"'";
             DataTable dt = new DataTable();
-            SqlDataAdapter sa = new SqlDataAdapter(cmd);
-            sa.Fill(dt);
-            MessageBox.Show("Product added!");
-            con.Close();
+            dt = DbConnection.DBConnect(SelectDubl);
+            if (dt.Rows.Count == 0)
+            {
+                DbConnection.DBConnect(FillProduct);
+                this.Close();
+                MessageBox.Show("Запись добавлена!");
+            }
+            else
+            {
+                MessageBox.Show("Продукт с названием: "+textBox1.Text.Trim()+" уже имеется в справочнике");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -107,7 +107,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
-            this.button1.Text = "Добавить";
+            this.button1.Text = "ОК";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -154,7 +154,6 @@
             this.Name = "addNewCargo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "addNewCargo";
-            this.Load += new System.EventHandler(this.addNewCargo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.qHanglingBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.batysDataSet1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.batysDataSet1)).EndInit();

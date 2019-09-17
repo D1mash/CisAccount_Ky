@@ -57,10 +57,10 @@ namespace Учет_цистерн
             comboBox4.ValueMember = "ID";
             comboBox4.DataBindings.Add("SelectedValue", this, "SelectProductID", true, DataSourceUpdateMode.OnPropertyChanged);
 
-            String Service = "Select * from d__Service";
+            String Service = "Select * from d__ServiceCost";
             DataTable ServiceDT = DbConnection.DBConnect(Service);
             comboBox5.DataSource = ServiceDT;
-            comboBox5.DisplayMember = "Name";
+            comboBox5.DisplayMember = "ServiceName";
             comboBox5.ValueMember = "ID";
             comboBox5.DataBindings.Add("SelectedValue", this, "SelectServiceID", true, DataSourceUpdateMode.OnPropertyChanged);
 

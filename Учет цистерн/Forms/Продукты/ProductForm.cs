@@ -41,10 +41,17 @@ namespace Учет_цистерн
 
         private void button2_Click_Update_Product(object sender, EventArgs e)
         {
-            UpdateProductForm UpdateProductForm = new UpdateProductForm();
-            UpdateProductForm.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            UpdateProductForm.SelectID = SelectItemRow;
-            UpdateProductForm.Show();
+            try
+            {
+                UpdateProductForm UpdateProductForm = new UpdateProductForm();
+                UpdateProductForm.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                UpdateProductForm.SelectID = SelectItemRow;
+                UpdateProductForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message);
+            }
         }
 
         private void dataGridView1_CellClick_SelectedRow(object sender, DataGridViewCellEventArgs e)
@@ -59,16 +66,17 @@ namespace Учет_цистерн
 
         private void button3_Click_Delete_Product(object sender, EventArgs e)
         {
-            //SqlConnection con = new SqlConnection(connectionString);
-            //con.Open();
-            string DeleteCurrentProduct = "delete from d__Product where ID = " + SelectItemRow;
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(DeleteCurrentProduct);
-            //SqlDataAdapter sda = new SqlDataAdapter(DeleteCurrentProduct, con);
-            //DataTable dtbl = new DataTable();
-            //sda.Fill(dtbl);
-            //con.Close();
-            MessageBox.Show("Продукт удалён!");
+            string message = "Вы действительно хотите удалить эту запись?";
+            string title = "Удаление";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.OK)
+            {
+                string DeleteCurrentProduct = "delete from d__Product where ID = " + SelectItemRow;
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(DeleteCurrentProduct);
+                MessageBox.Show("Продукт удалён!");
+            }
         }
 
         private void Form_Product_Load(object sender, EventArgs e)

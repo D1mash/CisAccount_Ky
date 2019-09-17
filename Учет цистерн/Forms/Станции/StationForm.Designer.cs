@@ -54,6 +54,7 @@
             this.dataGridView_Station_Form.ReadOnly = true;
             this.dataGridView_Station_Form.Size = new System.Drawing.Size(1364, 669);
             this.dataGridView_Station_Form.TabIndex = 3;
+            this.dataGridView_Station_Form.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Station_Form_CellClick_1);
             // 
             // btn_refsh_station_form
             // 
@@ -63,6 +64,7 @@
             this.btn_refsh_station_form.TabIndex = 7;
             this.btn_refsh_station_form.Text = "Обновить";
             this.btn_refsh_station_form.UseVisualStyleBackColor = true;
+            this.btn_refsh_station_form.Click += new System.EventHandler(this.btn_refsh_station_form_Click_1);
             // 
             // btn_dlt_station_form
             // 
@@ -72,6 +74,7 @@
             this.btn_dlt_station_form.TabIndex = 6;
             this.btn_dlt_station_form.Text = "Удалить";
             this.btn_dlt_station_form.UseVisualStyleBackColor = true;
+            this.btn_dlt_station_form.Click += new System.EventHandler(this.btn_dlt_station_form_Click_1);
             // 
             // btn_upd_station_form
             // 
@@ -81,6 +84,7 @@
             this.btn_upd_station_form.TabIndex = 5;
             this.btn_upd_station_form.Text = "Изменить";
             this.btn_upd_station_form.UseVisualStyleBackColor = true;
+            this.btn_upd_station_form.Click += new System.EventHandler(this.btn_upd_station_form_Click);
             // 
             // btn_add_station_form
             // 
@@ -90,6 +94,7 @@
             this.btn_add_station_form.TabIndex = 4;
             this.btn_add_station_form.Text = "Добавить";
             this.btn_add_station_form.UseVisualStyleBackColor = true;
+            this.btn_add_station_form.Click += new System.EventHandler(this.btn_add_station_form_Click_1);
             // 
             // groupBox1
             // 

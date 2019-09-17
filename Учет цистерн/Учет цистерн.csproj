@@ -47,8 +47,8 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TradeWright.TabControlExtra">
-      <HintPath>..\..\..\Personal\d.omarbayev\Desktop\tabcontrol-extra-master\TabControlExtraDemo\packages\TradeWright.TabControlExtra.2.0.1\lib\net45\TradeWright.TabControlExtra.dll</HintPath>
+    <Reference Include="TradeWright.TabControlExtra, Version=2.0.1.0, Culture=neutral, PublicKeyToken=f4d0df7e5886cbe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\TradeWright.TabControlExtra.2.0.1\lib\net45\TradeWright.TabControlExtra.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -162,40 +162,40 @@
       <DependentUpon>RenderedServiceUpdtForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RowFilterBuilder.cs" />
-    <Compile Include="Forms\ServiceAddForm.cs">
+    <Compile Include="Forms\JUNK\ServiceAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ServiceAddForm.Designer.cs">
+    <Compile Include="Forms\JUNK\ServiceAddForm.Designer.cs">
       <DependentUpon>ServiceAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ServiceCostAddForm.cs">
+    <Compile Include="Forms\Услуги\ServiceCostAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ServiceCostAddForm.Designer.cs">
+    <Compile Include="Forms\Услуги\ServiceCostAddForm.Designer.cs">
       <DependentUpon>ServiceCostAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ServiceCostForm.cs">
+    <Compile Include="Forms\Услуги\ServiceCostForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ServiceCostForm.Designer.cs">
+    <Compile Include="Forms\Услуги\ServiceCostForm.Designer.cs">
       <DependentUpon>ServiceCostForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ServiceCostUpdtForm.cs">
+    <Compile Include="Forms\Услуги\ServiceCostUpdtForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ServiceCostUpdtForm.Designer.cs">
+    <Compile Include="Forms\Услуги\ServiceCostUpdtForm.Designer.cs">
       <DependentUpon>ServiceCostUpdtForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ServiceForm.cs">
+    <Compile Include="Forms\JUNK\ServiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ServiceForm.Designer.cs">
+    <Compile Include="Forms\JUNK\ServiceForm.Designer.cs">
       <DependentUpon>ServiceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ServiceUpdtForm.cs">
+    <Compile Include="Forms\JUNK\ServiceUpdtForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ServiceUpdtForm.Designer.cs">
+    <Compile Include="Forms\JUNK\ServiceUpdtForm.Designer.cs">
       <DependentUpon>ServiceUpdtForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Станции\StationForm.cs">
@@ -281,22 +281,22 @@
     <EmbeddedResource Include="Forms\Отчеты\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ServiceAddForm.resx">
+    <EmbeddedResource Include="Forms\JUNK\ServiceAddForm.resx">
       <DependentUpon>ServiceAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ServiceCostAddForm.resx">
+    <EmbeddedResource Include="Forms\Услуги\ServiceCostAddForm.resx">
       <DependentUpon>ServiceCostAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ServiceCostForm.resx">
+    <EmbeddedResource Include="Forms\Услуги\ServiceCostForm.resx">
       <DependentUpon>ServiceCostForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ServiceCostUpdtForm.resx">
+    <EmbeddedResource Include="Forms\Услуги\ServiceCostUpdtForm.resx">
       <DependentUpon>ServiceCostUpdtForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ServiceForm.resx">
+    <EmbeddedResource Include="Forms\JUNK\ServiceForm.resx">
       <DependentUpon>ServiceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ServiceUpdtForm.resx">
+    <EmbeddedResource Include="Forms\JUNK\ServiceUpdtForm.resx">
       <DependentUpon>ServiceUpdtForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Станции\StationForm.resx">
@@ -379,8 +379,6 @@
   <ItemGroup>
     <None Include="Resources\keys.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Услуги\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

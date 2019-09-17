@@ -33,12 +33,19 @@ namespace Учет_цистерн
         //Изменение
         private void btnOwnerUpdate_Click(object sender, EventArgs e)
         {
-            OwnerUpdtForm OwnerUpdtForm = new OwnerUpdtForm();
-            OwnerUpdtForm.SelectID = SelectItemRow;
-            OwnerUpdtForm.textBox1.Text = dataGVOwner.CurrentRow.Cells[1].Value.ToString();
-            OwnerUpdtForm.textBox2.Text = dataGVOwner.CurrentRow.Cells[2].Value.ToString();
-            //OwnerUpdtForm.textBox3.Text = dataGVOwner.CurrentRow.Cells[3].Value.ToString();
-            OwnerUpdtForm.Show();
+            try
+            {
+                OwnerUpdtForm OwnerUpdtForm = new OwnerUpdtForm();
+                OwnerUpdtForm.SelectID = SelectItemRow;
+                OwnerUpdtForm.textBox1.Text = dataGVOwner.CurrentRow.Cells[1].Value.ToString();
+                OwnerUpdtForm.textBox2.Text = dataGVOwner.CurrentRow.Cells[2].Value.ToString();
+                //OwnerUpdtForm.textBox3.Text = dataGVOwner.CurrentRow.Cells[3].Value.ToString();
+                OwnerUpdtForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message);
+            }
         }
 
         private void dataGVOwner_CellClick(object sender, DataGridViewCellEventArgs e)

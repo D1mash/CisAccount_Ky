@@ -25,7 +25,7 @@ namespace Учет_цистерн
 
         private void ServiceCostUpdtForm_Load(object sender, EventArgs e)
         {
-            comboBox1.Enabled = false;
+            textBox2.Enabled = false;
             comboBox2.Enabled = false;
             dateTimePicker1.Enabled = false;
             dateTimePicker2.Enabled = false;
@@ -34,7 +34,7 @@ namespace Учет_цистерн
 
         private void checkBox1_CheckStateChanged(object sender, EventArgs e)
         {
-            comboBox1.Enabled = (checkBox1.CheckState == CheckState.Checked);
+            textBox2.Enabled = (checkBox1.CheckState == CheckState.Checked);
         }
 
         private void checkBox2_CheckStateChanged(object sender, EventArgs e)
@@ -59,15 +59,8 @@ namespace Учет_цистерн
 
         private void FillCombobox()
         {
-            string Service = "Select * from d__Service";
             string Season = "select * from d__Season";
-            DataTable dT = DbConnection.DBConnect(Service);
             DataTable dTs = DbConnection.DBConnect(Season);
-            comboBox1.DataSource = dT;
-            comboBox1.DisplayMember = "Name";
-            comboBox1.ValueMember = "ID";
-            comboBox1.DataBindings.Add("SelectedValue", this, "SelectServiceID", true, DataSourceUpdateMode.OnPropertyChanged);
-
             comboBox2.DataSource = dTs;
             comboBox2.DisplayMember = "Name";
             comboBox2.ValueMember = "ID";
@@ -76,7 +69,7 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string Update = "exec dbo.UpdateServiceCost " + comboBox1.SelectedValue.ToString() + ",'" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + textBox1.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString() + "," + selectID;
+            string Update = "exec dbo.UpdateServiceCost '" + textBox2.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + textBox1.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString() + "," + selectID;
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(Update);
             this.Close();

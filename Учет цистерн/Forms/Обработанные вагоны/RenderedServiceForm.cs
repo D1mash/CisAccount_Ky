@@ -51,10 +51,10 @@ namespace Учет_цистерн
             comboBox4.ValueMember = "ID";
             //comboBox1.DataBindings.Add("SelectedValue", this, "SelectOwnerID", true, DataSourceUpdateMode.OnPropertyChanged);
 
-            String Service = "Select * from d__Service";
+            String Service = "Select * from d__ServiceCost";
             DataTable ServiceDT = DbConnection.DBConnect(Service);
             comboBox5.DataSource = ServiceDT;
-            comboBox5.DisplayMember = "Name";
+            comboBox5.DisplayMember = "ServiceName";
             comboBox5.ValueMember = "ID";
             //comboBox1.DataBindings.Add("SelectedValue", this, "SelectOwnerID", true, DataSourceUpdateMode.OnPropertyChanged);
 
@@ -102,12 +102,12 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string Add = "exec dbo.FillRenderedService '" + dateTimePicker1.Value.Date.ToString() + "'," + comboBox3.SelectedValue.ToString() + "," + comboBox1.SelectedValue.ToString() + ",'" + textBox2.Text.Trim() + "','" + textBox1.Text.Trim() + "'," + comboBox6.SelectedValue.ToString() + "," + comboBox4.SelectedValue.ToString() + "," + comboBox5.SelectedValue.ToString();
+            string Add = "exec dbo.FillRenderedService '" + dateTimePicker1.Value.Date.ToString() + "'," + comboBox3.SelectedValue.ToString() + "," + comboBox1.SelectedValue.ToString() + ",'" + textBox2.Text.Trim() + "','" + textBox1.Text.Trim() + "'," + comboBox6.SelectedValue.ToString() + "," + comboBox4.SelectedValue.ToString() + "," + comboBox5.SelectedValue.ToString() + ";";
             DbConnection.DBConnect(Add);
             MessageBox.Show("Запись добавлена!");
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -118,7 +118,7 @@ namespace Учет_цистерн
                 string CarriageID = row.Cells["CarriageID"].Value.ToString();
                 string StationID = row.Cells["StationID"].Value.ToString();
                 string ProductID = row.Cells["ProductID"].Value.ToString();
-                string ServiceCostID = row.Cells["ServiceID"].Value.ToString();
+                string ServiceCostID = row.Cells["ServiceCostID"].Value.ToString();
                 SelectItemRow = Convert.ToInt32(Id);
                 SelectBrigadeID = Convert.ToInt32(BrigadeID);
                 SelectCarriageID = Convert.ToInt32(CarriageID);
@@ -130,17 +130,24 @@ namespace Учет_цистерн
 
         private void button2_Click(object sender, EventArgs e)
         {
-            RenderedServiceUpdtForm RenderedServiceUpdtForm = new RenderedServiceUpdtForm();
-            RenderedServiceUpdtForm.SelectID = SelectItemRow;
-            RenderedServiceUpdtForm.SelectBrigadeID = SelectBrigadeID;
-            RenderedServiceUpdtForm.SelectCarriageID = SelectCarriageID;
-            RenderedServiceUpdtForm.SelectStationID = SelectStationID;
-            RenderedServiceUpdtForm.SelectProductID = SelectProductID;
-            RenderedServiceUpdtForm.SelectServiceID = SelectServiceCostID;
-            RenderedServiceUpdtForm.textBox1.Text = dataGridView1.CurrentRow.Cells[13].Value.ToString();
-            RenderedServiceUpdtForm.textBox2.Text = dataGridView1.CurrentRow.Cells[12].Value.ToString();
-            RenderedServiceUpdtForm.dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[10].Value.ToString();
-            RenderedServiceUpdtForm.Show();
+            try
+            {
+                RenderedServiceUpdtForm RenderedServiceUpdtForm = new RenderedServiceUpdtForm();
+                RenderedServiceUpdtForm.SelectID = SelectItemRow;
+                RenderedServiceUpdtForm.SelectBrigadeID = SelectBrigadeID;
+                RenderedServiceUpdtForm.SelectCarriageID = SelectCarriageID;
+                RenderedServiceUpdtForm.SelectStationID = SelectStationID;
+                RenderedServiceUpdtForm.SelectProductID = SelectProductID;
+                RenderedServiceUpdtForm.SelectServiceID = SelectServiceCostID;
+                RenderedServiceUpdtForm.textBox1.Text = dataGridView1.CurrentRow.Cells[13].Value.ToString();
+                RenderedServiceUpdtForm.textBox2.Text = dataGridView1.CurrentRow.Cells[12].Value.ToString();
+                RenderedServiceUpdtForm.dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[10].Value.ToString();
+                RenderedServiceUpdtForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -215,7 +222,5 @@ namespace Учет_цистерн
             if (c != null)
                 dataGridView1.CurrentCell = c;
         }
-
-
     }
 }
