@@ -78,10 +78,10 @@ namespace Учет_цистерн
                 UpdtCurrentStation_StationForm.textBox_Updt_Code6_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[3].Value.ToString();
                 UpdtCurrentStation_StationForm.SelectStationID_Method = SelectItemRow;
                 UpdtCurrentStation_StationForm.Show();
-             }
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Для редактирования записи, необходимо указать строку! "+ex.Message);
+                MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message);
             }
         }
     }

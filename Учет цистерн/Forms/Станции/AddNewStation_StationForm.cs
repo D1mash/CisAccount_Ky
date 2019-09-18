@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -16,7 +15,7 @@ namespace Учет_цистерн
 
         private void button_OK_StationForm_Click(object sender, EventArgs e)
         {
-            string FillStation = "exec [dbo].[FillStation] "+ textBox_Add_Code_StationForm.Text.Trim() + ","+ textBox_Add_Code6_StationForm.Text.Trim() + ","+ textBox_Add_Name_StationForm.Text.Trim();
+            string FillStation = "exec [dbo].[FillStation] " + textBox_Add_Code_StationForm.Text.Trim() + "," + textBox_Add_Code6_StationForm.Text.Trim() + "," + textBox_Add_Name_StationForm.Text.Trim();
             string SelectDubl = "select * from d__Station where Code = " + textBox_Add_Code_StationForm.Text.Trim();
             DataTable dt = new DataTable();
             dt = DbConnection.DBConnect(SelectDubl);
@@ -28,7 +27,7 @@ namespace Учет_цистерн
             }
             else
             {
-                MessageBox.Show("Станция с кодом: "+ textBox_Add_Code_StationForm.Text.Trim() + " имеется в справочнике");
+                MessageBox.Show("Станция с кодом: " + textBox_Add_Code_StationForm.Text.Trim() + " имеется в справочнике");
             }
         }
 

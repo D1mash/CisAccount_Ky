@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -29,7 +28,7 @@ namespace Учет_цистерн
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string AddNewCarriage = "exec dbo.FillCarriage '" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "','" + comboBox1.SelectedValue.ToString()+"'";
+            string AddNewCarriage = "exec dbo.FillCarriage '" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "','" + comboBox1.SelectedValue.ToString() + "'";
             string SelectDubl = "select * from d__Carriage where Carnumber = " + textBox1.Text.Trim();
             DataTable dt = new DataTable();
             dt = DbConnection.DBConnect(SelectDubl);
@@ -41,7 +40,7 @@ namespace Учет_цистерн
             }
             else
             {
-                MessageBox.Show("Вагон с номером: "+textBox1.Text.Trim()+" уже имеется в справочнике!");
+                MessageBox.Show("Вагон с номером: " + textBox1.Text.Trim() + " уже имеется в справочнике!");
             }
         }
     }

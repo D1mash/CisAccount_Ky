@@ -93,7 +93,7 @@ namespace Учет_цистерн
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string Refresh = "dbo.GetRenderedService '"+dateTimePicker2.Value.Date.ToString()+"','"+dateTimePicker4.Value.Date.ToString()+"'";
+            string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(Refresh);
             source.DataSource = dataTable;

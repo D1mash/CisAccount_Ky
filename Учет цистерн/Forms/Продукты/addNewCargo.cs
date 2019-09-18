@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -27,8 +26,8 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string FillProduct = "exec [dbo].[FillProduct] '" + textBox1.Text.Trim()+"',"+comboBox1.SelectedValue.ToString();
-            string SelectDubl = "select * from d__Product where Name = '" + textBox1.Text.Trim()+"'";
+            string FillProduct = "exec [dbo].[FillProduct] '" + textBox1.Text.Trim() + "'," + comboBox1.SelectedValue.ToString();
+            string SelectDubl = "select * from d__Product where Name = '" + textBox1.Text.Trim() + "'";
             DataTable dt = new DataTable();
             dt = DbConnection.DBConnect(SelectDubl);
             if (dt.Rows.Count == 0)
@@ -39,7 +38,7 @@ namespace Учет_цистерн
             }
             else
             {
-                MessageBox.Show("Продукт с названием: "+textBox1.Text.Trim()+" уже имеется в справочнике");
+                MessageBox.Show("Продукт с названием: " + textBox1.Text.Trim() + " уже имеется в справочнике");
             }
         }
 
