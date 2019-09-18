@@ -30,11 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -43,6 +41,7 @@
             this.btn_Excel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -55,7 +54,6 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.groupBox5);
-            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.btn_Excel);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -65,52 +63,32 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // button3
-            // 
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(599, 20);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(48, 46);
-            this.button3.TabIndex = 5;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
-            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Controls.Add(this.comboBox2);
-            this.groupBox5.Location = new System.Drawing.Point(245, 12);
+            this.groupBox5.Location = new System.Drawing.Point(214, 12);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(240, 100);
+            this.groupBox5.Size = new System.Drawing.Size(236, 100);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 65);
+            this.label4.Location = new System.Drawing.Point(5, 28);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 13);
+            this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Собственник";
+            this.label4.Text = "Собственник:";
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(85, 62);
+            this.comboBox2.Location = new System.Drawing.Point(84, 25);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(146, 21);
             this.comboBox2.TabIndex = 5;
-            // 
-            // button2
-            // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(545, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(48, 48);
-            this.button2.TabIndex = 3;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // groupBox3
             // 
@@ -120,7 +98,7 @@
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(6, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(233, 100);
+            this.groupBox3.Size = new System.Drawing.Size(202, 100);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Период";
@@ -160,10 +138,13 @@
             // btn_Excel
             // 
             this.btn_Excel.Image = ((System.Drawing.Image)(resources.GetObject("btn_Excel.Image")));
-            this.btn_Excel.Location = new System.Drawing.Point(491, 19);
+            this.btn_Excel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Excel.Location = new System.Drawing.Point(456, 17);
             this.btn_Excel.Name = "btn_Excel";
-            this.btn_Excel.Size = new System.Drawing.Size(48, 48);
+            this.btn_Excel.Size = new System.Drawing.Size(135, 42);
             this.btn_Excel.TabIndex = 0;
+            this.btn_Excel.Text = "Экспортировать";
+            this.btn_Excel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Excel.UseVisualStyleBackColor = true;
             this.btn_Excel.Click += new System.EventHandler(this.Btn_Excel_Click);
             // 
@@ -179,12 +160,24 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(778, 411);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(456, 67);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(135, 42);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "Обновить";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // ReportForm
             // 
@@ -217,7 +210,6 @@
         private System.Windows.Forms.Button btn_Excel;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
