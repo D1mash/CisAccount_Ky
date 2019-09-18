@@ -323,73 +323,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\winrar 11.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\winrar 1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\user1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pass1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\vagon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\vagon2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pass2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\user2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\winrar 1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\keys.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-сохранить-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-массовое-редактирование-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-доступные-обновления-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-удалить-навсегда-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\save24.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\edit24.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\delete24.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\refresh.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\save36.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\edit36.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\delete36.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\refresh36.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\refresh32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

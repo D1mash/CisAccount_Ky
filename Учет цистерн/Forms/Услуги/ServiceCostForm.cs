@@ -13,7 +13,7 @@ namespace Учет_цистерн
 
         int SelectItemRow;
         int SelectSeasonID;
-        int SelectServiceID;
+        
 
         private void ServiceCostForm_Load(object sender, EventArgs e)
         {

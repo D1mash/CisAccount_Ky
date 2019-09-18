@@ -14,13 +14,9 @@ namespace Учет_цистерн
 
         private void FillCombobox()
         {
-            string Service = "Select * from d__Service";
+
             string Season = "select * from d__Season";
-            DataTable dT = DbConnection.DBConnect(Service);
             DataTable dTs = DbConnection.DBConnect(Season);
-            comboBox1.DataSource = dT;
-            comboBox1.DisplayMember = "Name";
-            comboBox1.ValueMember = "ID";
 
             comboBox2.DataSource = dTs;
             comboBox2.DisplayMember = "Name";
@@ -34,7 +30,7 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string FillServiceCost = "exec dbo.FillServiceCost " + comboBox1.SelectedValue.ToString() + ",'" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + textBox1.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString();
+            string FillServiceCost = "exec dbo.FillServiceCost " + textBox2.Text.Trim() + ",'" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + textBox1.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString();
             DbConnection.DBConnect(FillServiceCost);
             this.Close();
             MessageBox.Show("Запись добавлена!");
