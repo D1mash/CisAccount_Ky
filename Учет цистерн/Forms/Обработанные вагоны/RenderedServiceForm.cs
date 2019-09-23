@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Threading;
 using System.Windows.Forms;
 using Учет_цистерн.Forms.Оповещения;
 
@@ -7,21 +8,25 @@ namespace Учет_цистерн
 {
     public partial class RenderedServiceForm : Form
     {
-        public RenderedServiceForm()
-        {
-            InitializeComponent();
-            FillCombobox();
-        }
-
+        private ProgressBar progBar;
         int SelectItemRow;
         int SelectBrigadeID;
         int SelectCarriageID;
         int SelectStationID;
         int SelectProductID;
         int SelectServiceCostID;
+        int Rows;
 
+        DataTable dataTable = new DataTable();
         BindingSource source = new BindingSource();
 
+        public RenderedServiceForm(ProgressBar progressBar1)
+        {
+            InitializeComponent();
+            FillCombobox();
+            progBar = progressBar1;
+        }
+                
         private void FillCombobox()
         {
             String Carriage = "Select * from d__Carriage";
@@ -76,18 +81,21 @@ namespace Учет_цистерн
             dateTimePicker2.Value = startDate;
             dateTimePicker4.Value = endDate;
 
-            string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(Refresh);
-            source.DataSource = dataTable;
-            dataGridView1.DataSource = source;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
-            dataGridView1.Columns[2].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
-            dataGridView1.Columns[4].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[6].Visible = false;
+            //string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+            //DataTable dataTable = new DataTable();
+            //dataTable = DbConnection.DBConnect(Refresh);
+            //source.DataSource = dataTable;
+            //dataGridView1.DataSource = source;
+            //dataGridView1.Columns[0].Visible = false;
+            //dataGridView1.Columns[1].Visible = false;
+            //dataGridView1.Columns[2].Visible = false;
+            //dataGridView1.Columns[3].Visible = false;
+            //dataGridView1.Columns[4].Visible = false;
+            //dataGridView1.Columns[5].Visible = false;
+            //dataGridView1.Columns[6].Visible = false;
+            progBar.Maximum = GetTotalRecords();
+            backgroundWorker1.RunWorkerAsync();
+            BackgroundWorker1_DoWork(null, null);
 
             searchToolBar1.SetColumns(dataGridView1.Columns);
         }
@@ -241,6 +249,67 @@ namespace Учет_цистерн
                     e.CaseSensitive);
             if (c != null)
                 dataGridView1.CurrentCell = c;
+        }
+
+        private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+            int i = 1;
+            try
+            {
+                dataTable = DbConnection.DBConnect(Refresh);
+
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    backgroundWorker1.ReportProgress(i);
+                    Thread.Sleep(1);
+                    i++;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            try
+            {
+                progBar.Value = e.ProgressPercentage;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            source.DataSource = dataTable;
+            dataGridView1.DataSource = source;
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Visible = false;
+            dataGridView1.Columns[2].Visible = false;
+            dataGridView1.Columns[3].Visible = false;
+            dataGridView1.Columns[4].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
+        }
+
+        private int GetTotalRecords()
+        {
+            try
+            {
+                string TotalRow = "dbo.TotalRowsRenderedServices '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+                Rows = DbConnection.DatabseConnection(TotalRow);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return Rows;
         }
     }
 }

@@ -27,5 +27,27 @@ namespace Учет_цистерн
             }
             return dataTable;
         }
+
+        internal static int DatabseConnection(string query)
+        {
+            SqlConnection con;
+            SqlCommand cmd;
+            int TotalRecords = 0;
+            try
+            {
+                using (con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    cmd = new SqlCommand(query, con);
+                    TotalRecords = int.Parse(cmd.ExecuteScalar().ToString());
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return TotalRecords;
+        }
     }
 }
