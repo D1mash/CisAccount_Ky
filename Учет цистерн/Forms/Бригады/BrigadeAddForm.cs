@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -36,7 +37,10 @@ namespace Учет_цистерн
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(AddNewBrigade);
             this.Close();
-            MessageBox.Show("Добавлен сотрудник!");
+            OkForm okForm = new OkForm();
+            okForm.label1.Text = "Добавлен сотрудник!";
+            okForm.Show();
+            //MessageBox.Show("Добавлен сотрудник!");
 
             /*SqlConnection con = new SqlConnection(connectionString);
             con.Open();

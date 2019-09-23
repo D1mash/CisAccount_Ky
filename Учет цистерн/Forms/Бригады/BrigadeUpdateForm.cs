@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -54,7 +55,10 @@ namespace Учет_цистерн
             DataTable dtbl = new DataTable();
             dtbl = DbConnection.DBConnect(UpdateCurrentBrigade);
             this.Close();
-            MessageBox.Show("Запись изменена!");
+            OkForm okForm = new OkForm();
+            okForm.label1.Text = "Запись изменена!";
+            okForm.Show();
+            //MessageBox.Show("Запись изменена!");
         }
 
         private void BrigadeUpdateForm_Load(object sender, EventArgs e)

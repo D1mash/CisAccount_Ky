@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -46,19 +47,14 @@ namespace Учет_цистерн
         //изменить
         private void btnOk_Click(object sender, EventArgs e)
         {
-            /*if (textBox3.Text.StartsWith(","))
-            {
-                textBox3.Text = textBox3.Text.Substring(1);
-            }*/
-            string UpdateCurrentOwner = "update d__Owner " +
-                                        "set Name = '" + textBox1.Text.Trim() + "'," +
-                                        "FullName = '" + textBox2.Text.Trim() + "'," +
-                                        //"SpecialCost = "+textBox3.Text.Replace(",",".")+" " +
-                                        "where ID = " + selectID;
+            string UpdateCurrentOwner = "update d__Owner set Name = '"+textBox1.Text.Trim()+"', FullName = '"+textBox2.Text.Trim()+"' where ID = " + selectID;
             DataTable dtbl = new DataTable();
             dtbl = DbConnection.DBConnect(UpdateCurrentOwner);
             this.Close();
-            MessageBox.Show("Запись изменена!");
+            OkForm ok = new OkForm();
+            ok.label1.Text = "Запись изменена!";
+            ok.Show();
+            //MessageBox.Show("Запись изменена!");
         }
 
         private void btnClose_Click(object sender, EventArgs e)

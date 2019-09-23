@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -43,7 +44,10 @@ namespace Учет_цистерн
             DataTable dtbl = new DataTable();
             dtbl = DbConnection.DBConnect(Update);
             this.Close();
-            MessageBox.Show("Запись изменена!");
+            OkForm ok = new OkForm();
+            ok.label1.Text = "Запись изменена!";
+            ok.Show();
+            //MessageBox.Show("Запись изменена!");
         }
 
         private void CarriageUpdateForm_Load(object sender, EventArgs e)

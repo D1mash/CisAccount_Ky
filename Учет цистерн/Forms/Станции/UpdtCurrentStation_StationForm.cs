@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -35,7 +36,10 @@ namespace Учет_цистерн
             //sda.Fill(dtbl);
             //con.Close();
             this.Close();
-            MessageBox.Show("Станция изменена!");
+            OkForm ok = new OkForm();
+            ok.label1.Text = "Станция изменена!";
+            ok.Show();
+            //MessageBox.Show("Станция изменена!");
         }
 
         private void button_Updt_Cancel_StationForm_Click(object sender, EventArgs e)

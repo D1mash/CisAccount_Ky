@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -30,10 +31,13 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string FillServiceCost = "exec dbo.FillServiceCost " + textBox2.Text.Trim() + ",'" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + textBox1.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString();
+            string FillServiceCost = "exec dbo.FillServiceCost '" + textBox2.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + textBox1.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString();
             DbConnection.DBConnect(FillServiceCost);
             this.Close();
-            MessageBox.Show("Запись добавлена!");
+            OkForm ok = new OkForm();
+            ok.label1.Text = "Запись добавлена!";
+            ok.Show();
+            //MessageBox.Show("Запись добавлена!");
         }
     }
 }

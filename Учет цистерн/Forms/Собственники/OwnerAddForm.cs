@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -20,7 +21,10 @@ namespace Учет_цистерн
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(AddNewOwner);
             this.Close();
-            MessageBox.Show("Запись добавлена!");
+            OkForm ok = new OkForm();
+            ok.label1.Text = "Запись добавлена!";
+            ok.Show();
+            //MessageBox.Show("Запись добавлена!");
         }
 
         private void BtnClose_Click(object sender, EventArgs e)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -64,10 +65,21 @@ namespace Учет_цистерн
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.OK)
             {
+                string CheckReference = "select count(*) from d__RenderedService where Carriage = " + SelectItemRow;
                 string Delete = "delete from d__Carriage where ID = " + SelectItemRow;
-                DataTable dataTable = new DataTable();
-                dataTable = DbConnection.DBConnect(Delete);
-                MessageBox.Show("Запись удалена!");
+                DataTable dt = new DataTable();
+                dt = DbConnection.DBConnect(CheckReference);
+                if(dt.Rows.Count == 0)
+                {
+                    DbConnection.DBConnect(Delete);
+                    MessageBox.Show("Запись удалена!");
+                }
+                else
+                {
+                    ExceptionForm exf = new ExceptionForm();
+                    exf.label1.Text = "Невозможно удалить, т.к. вагон привязан в таблице Обработанные вагоны";
+                    exf.Show();
+                }
             }
         }
 
@@ -84,7 +96,10 @@ namespace Учет_цистерн
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message);
+                ExceptionForm exf = new ExceptionForm();
+                exf.label1.Text = "Для редактирования записи, необходимо указать строку!" + ex.Message;
+                exf.Show();
+                //MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message);
             }
         }
     }

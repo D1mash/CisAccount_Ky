@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-
+using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -14,6 +14,7 @@ namespace Учет_цистерн
         }
 
         int SelectItemRow;
+        int SelectHandlingID;
 
         private void button1_Click_Add_Product(object sender, EventArgs e)
         {
@@ -23,20 +24,12 @@ namespace Учет_цистерн
 
         private void button4_Click_Refresh_Table(object sender, EventArgs e)
         {
-            string GetProduct = "select dp.ID,dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
+            string GetProduct = "select dp.ID, qh.ID as [Hangling_id],dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(GetProduct);
             dataGridView1.DataSource = dataTable;
             dataGridView1.Columns[0].Visible = false;
-            //SqlConnection con = new SqlConnection(connectionString);
-            //con.Open();
-            //string GetProduct = "select dp.ID,dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
-            //SqlDataAdapter sda = new SqlDataAdapter(GetProduct, con);
-            //DataTable dtbl = new DataTable();
-            //sda.Fill(dtbl);
-            //dataGridView1.DataSource = dtbl;
-            //dataGridView1.Columns[0].Visible = false;
-            //con.Close();
+            dataGridView1.Columns[1].Visible = false;
         }
 
         private void button2_Click_Update_Product(object sender, EventArgs e)
@@ -44,13 +37,17 @@ namespace Учет_цистерн
             try
             {
                 UpdateProductForm UpdateProductForm = new UpdateProductForm();
-                UpdateProductForm.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                UpdateProductForm.textBox1.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 UpdateProductForm.SelectID = SelectItemRow;
+                UpdateProductForm.SelectHandlingID = SelectHandlingID;
                 UpdateProductForm.Show();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message);
+                ExceptionForm exf = new ExceptionForm();
+                exf.label1.Text = "Для редактирования записи, необходимо указать строку! " + ex.Message;
+                exf.Show();
+                //MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message);
             }
         }
 
@@ -60,7 +57,9 @@ namespace Учет_цистерн
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
                 string Id = row.Cells["ID"].Value.ToString();
+                string HandID = row.Cells["Hangling_id"].Value.ToString();
                 SelectItemRow = Convert.ToInt32(Id);
+                SelectHandlingID = Convert.ToInt32(HandID);
             }
         }
 
@@ -72,28 +71,32 @@ namespace Учет_цистерн
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.OK)
             {
+                string CheckReference = "select count(*) from d__RenderedService where Product_ID = " + SelectItemRow;
                 string DeleteCurrentProduct = "delete from d__Product where ID = " + SelectItemRow;
-                DataTable dataTable = new DataTable();
-                dataTable = DbConnection.DBConnect(DeleteCurrentProduct);
-                MessageBox.Show("Продукт удалён!");
+                DataTable dt = new DataTable();
+                dt = DbConnection.DBConnect(CheckReference);
+                if(dt.Rows.Count == 0)
+                {
+                    DbConnection.DBConnect(DeleteCurrentProduct);
+                    MessageBox.Show("Продукт удалён!");
+                }
+                else
+                {
+                    ExceptionForm exf = new ExceptionForm();
+                    exf.label1.Text = "Невозможно удалить, т.к. продукт привязан в таблице Обработанные вагоны";
+                    exf.Show();
+                }
             }
         }
 
         private void Form_Product_Load(object sender, EventArgs e)
         {
-            //dataGridView1.Columns[0].Visible = false;
-            //SqlConnection con = new SqlConnection(connectionString);
-            //con.Open();
-            string GetProduct = "select dp.ID,dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
+            string GetProduct = "select dp.ID, qh.ID as [Hangling_id],dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(GetProduct);
             dataGridView1.DataSource = dataTable;
-            //SqlDataAdapter sda = new SqlDataAdapter(GetProduct, con);
-            //DataTable dtbl = new DataTable();
-            //sda.Fill(dtbl);
-            //dataGridView1.DataSource = dtbl;
             dataGridView1.Columns[0].Visible = false;
-            //con.Close();
+            dataGridView1.Columns[1].Visible = false;
         }
     }
 }

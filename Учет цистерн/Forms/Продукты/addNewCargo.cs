@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -34,11 +35,17 @@ namespace Учет_цистерн
             {
                 DbConnection.DBConnect(FillProduct);
                 this.Close();
-                MessageBox.Show("Запись добавлена!");
+                OkForm ok = new OkForm();
+                ok.label1.Text = "Запись добавлена!";
+                ok.Show();
+                //MessageBox.Show("Запись добавлена!");
             }
             else
             {
-                MessageBox.Show("Продукт с названием: " + textBox1.Text.Trim() + " уже имеется в справочнике");
+                ExceptionForm exf = new ExceptionForm();
+                exf.label1.Text = "Продукт с названием: " + textBox1.Text.Trim() + " уже имеется в справочнике";
+                exf.Show();
+                //MessageBox.Show("Продукт с названием: " + textBox1.Text.Trim() + " уже имеется в справочнике");
             }
         }
 

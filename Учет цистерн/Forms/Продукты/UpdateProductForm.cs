@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -9,6 +10,7 @@ namespace Учет_цистерн
         public UpdateProductForm()
         {
             InitializeComponent();
+            FillCombobox();
         }
 
         int selectID;
@@ -19,13 +21,28 @@ namespace Учет_цистерн
             set { selectID = value; }
         }
 
+        public int SelectHandlingID { get; set; }
+
+        private void FillCombobox()
+        {
+            String OwnerName = "Select * from qHangling";
+            DataTable dT = DbConnection.DBConnect(OwnerName);
+            comboBox1.DataSource = dT;
+            comboBox1.DisplayMember = "Name";
+            comboBox1.ValueMember = "ID";
+            comboBox1.DataBindings.Add("SelectedValue", this, "SelectHandlingID", true, DataSourceUpdateMode.OnPropertyChanged);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             string UpdateCurrentProduct = "update d__Product set Name = '" + textBox1.Text.Trim() + "', Handling_id = " + comboBox1.SelectedValue + " where ID = " + selectID;
             DataTable dtbl = new DataTable();
             dtbl = DbConnection.DBConnect(UpdateCurrentProduct);
             this.Close();
-            MessageBox.Show("Продукт изменён!");
+            OkForm ok = new OkForm();
+            ok.label1.Text = "Продукт изменён!";
+            ok.Show();
+            //MessageBox.Show("Продукт изменён!");
 
         }
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-
+using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -98,7 +98,10 @@ namespace Учет_цистерн
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                ExceptionForm exf = new ExceptionForm();
+                exf.label1.Text = ex.Message;
+                exf.Show();
+                //MessageBox.Show(ex.Message);
             }
             finally
             {

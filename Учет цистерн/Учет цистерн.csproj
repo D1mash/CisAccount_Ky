@@ -52,6 +52,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Оповещения\ExceptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Оповещения\ExceptionForm.Designer.cs">
+      <DependentUpon>ExceptionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Оповещения\OkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Оповещения\OkForm.Designer.cs">
+      <DependentUpon>OkForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Продукты\addNewCargo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +216,12 @@
     <Compile Include="Forms\Станции\UpdtCurrentStation_StationForm.Designer.cs">
       <DependentUpon>UpdtCurrentStation_StationForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Оповещения\ExceptionForm.resx">
+      <DependentUpon>ExceptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Оповещения\OkForm.resx">
+      <DependentUpon>OkForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Продукты\addNewCargo.resx">
       <DependentUpon>addNewCargo.cs</DependentUpon>
     </EmbeddedResource>
@@ -326,6 +344,15 @@
     <None Include="Resources\keys.png" />
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="LCC11">
+      <Guid>{EDCD5812-6A06-43C3-AFAC-46EF5D14E22C}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -338,7 +365,7 @@
     <COMReference Include="Microsoft.Office.Interop.Excel">
       <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>1</VersionMajor>
-      <VersionMinor>9</VersionMinor>
+      <VersionMinor>8</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
@@ -353,6 +380,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Error-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ОК-48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
