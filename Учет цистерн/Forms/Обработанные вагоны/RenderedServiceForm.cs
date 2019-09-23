@@ -258,6 +258,8 @@ namespace Учет_цистерн
             try
             {
                 dataTable = DbConnection.DBConnect(Refresh);
+                Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
+                System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
 
                 foreach (DataRow dr in dataTable.Rows)
                 {
@@ -278,6 +280,7 @@ namespace Учет_цистерн
             try
             {
                 progBar.Value = e.ProgressPercentage;
+                
             }
             catch (Exception ex)
             {
@@ -296,6 +299,10 @@ namespace Учет_цистерн
             dataGridView1.Columns[4].Visible = false;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
+
+            Application.UseWaitCursor = false;
+            System.Windows.Forms.Cursor.Current = Cursors.Default;
+
         }
 
         private int GetTotalRecords()
