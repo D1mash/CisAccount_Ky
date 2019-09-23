@@ -113,6 +113,16 @@ namespace Учет_цистерн.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap exit48 {
+            get {
+                object obj = ResourceManager.GetObject("exit48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_доступные_обновления_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8-доступные-обновления-64", resourceCulture);

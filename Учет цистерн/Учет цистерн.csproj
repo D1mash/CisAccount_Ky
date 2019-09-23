@@ -58,6 +58,12 @@
     <Compile Include="Forms\Оповещения\ExceptionForm.Designer.cs">
       <DependentUpon>ExceptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Оповещения\ExitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Оповещения\ExitForm.Designer.cs">
+      <DependentUpon>ExitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Оповещения\OkForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\Оповещения\ExceptionForm.resx">
       <DependentUpon>ExceptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Оповещения\ExitForm.resx">
+      <DependentUpon>ExitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Оповещения\OkForm.resx">
       <DependentUpon>OkForm.cs</DependentUpon>
@@ -386,6 +395,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ОК-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

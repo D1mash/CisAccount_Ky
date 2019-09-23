@@ -2,6 +2,7 @@
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -21,17 +22,22 @@ namespace Учет_цистерн
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string message = "Вы действительно хотите закрыть программу?";
-            string title = "Закрытие программы";
-            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.OK)
-            {
-                string UpdateAuditUser = "UPDATE AUDIT_USER SET DATE_OUT = GETDATE(), IS_DEAD = 1 WHERE ID_SESSION = @@spid and (IS_DEAD IS NULL OR DATE_OUT IS NULL)";
-                DataTable dataTable = new DataTable();
-                dataTable = DbConnection.DBConnect(UpdateAuditUser);
-                Application.Exit();
-            }
+            e.Cancel = true;
+            ExitForm exit = new ExitForm();
+            exit.Show();
+
+            //string message = "Вы действительно хотите закрыть программу?";
+            //string title = "Закрытие программы";
+            //e.Cancel = true;
+            //MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            //DialogResult result = MessageBox.Show(message, title, buttons);
+            //if (result == DialogResult.OK)
+            //{
+            //    string UpdateAuditUser = "UPDATE AUDIT_USER SET DATE_OUT = GETDATE(), IS_DEAD = 1 WHERE ID_SESSION = @@spid and (IS_DEAD IS NULL OR DATE_OUT IS NULL)";
+            //    DataTable dataTable = new DataTable();
+            //    dataTable = DbConnection.DBConnect(UpdateAuditUser);
+            //    Application.Exit();
+            //}
         }
 
         private void ToolStripMenuItem1_Product_Click(object sender, EventArgs e)

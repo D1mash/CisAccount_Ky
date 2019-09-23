@@ -136,7 +136,7 @@
 </value>
   </data>
   <data name="toolStripMenuItem1_Product.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>175, 24</value>
   </data>
   <data name="toolStripMenuItem1_Product.Text" xml:space="preserve">
     <value>Продукты</value>
@@ -170,7 +170,7 @@
 </value>
   </data>
   <data name="toolStripMenuItem2_Station.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>175, 24</value>
   </data>
   <data name="toolStripMenuItem2_Station.Text" xml:space="preserve">
     <value>Станции</value>
@@ -200,7 +200,7 @@
 </value>
   </data>
   <data name="toolStripMenuItem3_Brigade.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>175, 24</value>
   </data>
   <data name="toolStripMenuItem3_Brigade.Text" xml:space="preserve">
     <value>Бригада</value>
@@ -257,7 +257,7 @@
 </value>
   </data>
   <data name="toolStripMenuItem4_Owner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>175, 24</value>
   </data>
   <data name="toolStripMenuItem4_Owner.Text" xml:space="preserve">
     <value>Собственники</value>
@@ -297,13 +297,13 @@
 </value>
   </data>
   <data name="toolStripMenuItem_Carriage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>175, 24</value>
   </data>
   <data name="toolStripMenuItem_Carriage.Text" xml:space="preserve">
     <value>Вагоны</value>
   </data>
   <data name="contextMenuStrip_Product.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 146</value>
+    <value>176, 124</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip_Product.Name" xml:space="preserve">
     <value>contextMenuStrip_Product</value>
@@ -762,6 +762,9 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
