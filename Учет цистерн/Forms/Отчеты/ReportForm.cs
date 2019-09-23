@@ -28,13 +28,24 @@ namespace Учет_цистерн
             dateTimePicker1.Value = startDate;
             dateTimePicker2.Value = endDate;
 
-            string Refresh = "dbo.GetReportRenderedServices '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(Refresh);
-            source.DataSource = dataTable;
-            dataGridView1.DataSource = source;
-            dataGridView1.Columns[0].Visible = false;
-
+            if (comboBox2.SelectedIndex == 0)
+            {
+                string RefreshAll = "exec dbo.GetReportAllRenderedService '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
+                DataTable dt = new DataTable();
+                dt = DbConnection.DBConnect(RefreshAll);
+                source.DataSource = dt;
+                dataGridView1.DataSource = source;
+                dataGridView1.Columns[0].Visible = false;
+            }
+            else
+            {
+                string Refresh = "dbo.GetReportRenderedServices '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(Refresh);
+                source.DataSource = dataTable;
+                dataGridView1.DataSource = source;
+                dataGridView1.Columns[0].Visible = false;
+            }
         }
 
         private void ReportForm_Load(object sender, EventArgs e)
@@ -47,6 +58,10 @@ namespace Учет_цистерн
 
             String Owner = "Select * from d__Owner";
             DataTable OwnerDT = DbConnection.DBConnect(Owner);
+            var dr = OwnerDT.NewRow();
+            dr["Id"] = -1;
+            dr["Name"] = "Все";
+            OwnerDT.Rows.InsertAt(dr, 0);
             comboBox2.DataSource = OwnerDT;
             comboBox2.DisplayMember = "Name";
             comboBox2.ValueMember = "ID";

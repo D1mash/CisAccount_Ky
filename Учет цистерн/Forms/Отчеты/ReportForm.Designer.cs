@@ -217,7 +217,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox2;
+        public System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button3;
     }
 }
