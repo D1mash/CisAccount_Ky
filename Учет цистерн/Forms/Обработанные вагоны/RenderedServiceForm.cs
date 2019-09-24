@@ -93,7 +93,7 @@ namespace Учет_цистерн
             //dataGridView1.Columns[4].Visible = false;
             //dataGridView1.Columns[5].Visible = false;
             //dataGridView1.Columns[6].Visible = false;
-            progBar.Maximum = GetTotalRecords();
+            //progBar.Maximum = GetTotalRecords();
             backgroundWorker1.RunWorkerAsync();
             BackgroundWorker1_DoWork(null, null);
 
@@ -279,7 +279,7 @@ namespace Учет_цистерн
         {
             try
             {
-                progBar.Value = e.ProgressPercentage;
+                //progBar.Value = e.ProgressPercentage;
                 
             }
             catch (Exception ex)
@@ -311,18 +311,18 @@ namespace Учет_цистерн
 
         }
 
-        private int GetTotalRecords()
-        {
-            try
-            {
-                string TotalRow = "dbo.TotalRowsRenderedServices '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
-                Rows = DbConnection.DatabseConnection(TotalRow);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return Rows;
-        }
+        //private int GetTotalRecords()
+        //{
+        //    try
+        //    {
+        //        string TotalRow = "dbo.TotalRowsRenderedServices '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+        //        Rows = DbConnection.DatabseConnection(TotalRow);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    return Rows;
+        //}
     }
 }
