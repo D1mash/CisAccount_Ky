@@ -258,8 +258,8 @@ namespace Учет_цистерн
             try
             {
                 dataTable = DbConnection.DBConnect(Refresh);
-                Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
-                System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
+                //Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
+                //System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
 
                 foreach (DataRow dr in dataTable.Rows)
                 {
@@ -290,18 +290,24 @@ namespace Учет_цистерн
 
         private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            source.DataSource = dataTable;
-            dataGridView1.DataSource = source;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
-            dataGridView1.Columns[2].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
-            dataGridView1.Columns[4].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[6].Visible = false;
-
-            Application.UseWaitCursor = false;
-            System.Windows.Forms.Cursor.Current = Cursors.Default;
+            try
+            {
+                source.DataSource = dataTable;
+                dataGridView1.DataSource = source;
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].Visible = false;
+                dataGridView1.Columns[2].Visible = false;
+                dataGridView1.Columns[3].Visible = false;
+                dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[5].Visible = false;
+                dataGridView1.Columns[6].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            //Application.UseWaitCursor = false;
+            //System.Windows.Forms.Cursor.Current = Cursors.Default;
 
         }
 
