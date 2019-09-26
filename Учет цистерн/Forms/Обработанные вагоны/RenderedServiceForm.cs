@@ -102,18 +102,37 @@ namespace Учет_цистерн
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(Refresh);
-            source.DataSource = dataTable;
-            dataGridView1.DataSource = source;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
-            dataGridView1.Columns[2].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
-            dataGridView1.Columns[4].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[6].Visible = false;
+            if (checkBox1.Checked)
+            {
+                int yes = 1;
+                string RefreshGF = "dbo.GetRenderedServiceGlobalFilter '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "','" + yes + "'";
+                DataTable dt = new DataTable();
+                dt = DbConnection.DBConnect(RefreshGF);
+                source.DataSource = dt;
+                dataGridView1.DataSource = source;
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].Visible = false;
+                dataGridView1.Columns[2].Visible = false;
+                dataGridView1.Columns[3].Visible = false;
+                dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[5].Visible = false;
+                dataGridView1.Columns[6].Visible = false;
+            }
+            else
+            {
+                string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(Refresh);
+                source.DataSource = dataTable;
+                dataGridView1.DataSource = source;
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].Visible = false;
+                dataGridView1.Columns[2].Visible = false;
+                dataGridView1.Columns[3].Visible = false;
+                dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[5].Visible = false;
+                dataGridView1.Columns[6].Visible = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -11,13 +12,66 @@ namespace Учет_цистерн
         public MainForm(string FIO)
         {
             InitializeComponent();
+            this.tabControl2.SelectedTab = tabPage2;
+            this.splitContainer1.SplitterDistance = 25;
             this.Text = "Учет вагонов-цистерн. Батыс Петролеум ТОО - " + FIO;
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            GetFilter();
+        }
+
+        private void GetFilter()
+        {
+            string Reffresh = "exec dbo.GetFilter";
+            advancedDataGridView1.DataSource = DbConnection.DBConnect(Reffresh); ;
+            advancedDataGridView1.RowHeadersVisible = false;
+            advancedDataGridView1.Columns[1].Visible = false;
+        }
+
+        private void advancedDataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = advancedDataGridView1.HitTest(e.X, e.Y).RowIndex;
+                contextMenuStrip_GlobalFilter.Show(advancedDataGridView1, new Point(e.X, e.Y));
+            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             contextMenuStrip_Product.Show(button1, new Point(0, button1.Height));
+        }
+
+        private void вставитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string Insert = "exec dbo.InsertGlobalFilter '" + Clipboard.GetText() + "'";
+            DbConnection.DBConnect(Insert);
+            GetFilter();
+        }
+
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string message = string.Empty;
+            string IDs = string.Empty;
+            List<Object> aList = new List<Object>();
+            foreach (DataGridViewRow row in advancedDataGridView1.Rows)
+            {
+                bool isSelected = Convert.ToBoolean(row.Cells["checkBoxColumn"].Value);
+                if (isSelected)
+                {
+                    aList.Add(row.Cells[1].Value.ToString());
+                    IDs = string.Join(" ", aList);
+                    string delete = "exec dbo.RemoveGlobalFilter '" + IDs + "'";
+                    DbConnection.DBConnect(delete);
+                }
+                else
+                {
+                    MessageBox.Show("Выбирите строки!");
+                }
+            }
+            GetFilter();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -236,6 +290,18 @@ namespace Учет_цистерн
         private void button4_MouseMove(object sender, MouseEventArgs e)
         {
             this.button4.BackColor = System.Drawing.Color.Pink;
+        }
+
+        private void tabControl2_Click(object sender, EventArgs e)
+        {
+            if (tabControl2.SelectedTab == tabPage1)
+            {
+                this.splitContainer1.SplitterDistance = 188;
+            }
+            else if (tabControl2.SelectedTab == tabPage2)
+            {
+                this.splitContainer1.SplitterDistance = 25;
+            }
         }
     }
 }
