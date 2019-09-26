@@ -51,6 +51,12 @@ namespace Учет_цистерн
             GetFilter();
         }
 
+
+        private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GetFilter();
+        }
+
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string message = string.Empty;

@@ -17,7 +17,7 @@ namespace Учет_цистерн
         int SelectServiceCostID;
         int Rows;
 
-        DataTable dataTable = new DataTable();
+        //DataTable dataTable = new DataTable();
         BindingSource source = new BindingSource();
 
         public RenderedServiceForm(ProgressBar progressBar1)
@@ -94,8 +94,8 @@ namespace Учет_цистерн
             //dataGridView1.Columns[5].Visible = false;
             //dataGridView1.Columns[6].Visible = false;
             //progBar.Maximum = GetTotalRecords();
-            backgroundWorker1.RunWorkerAsync();
-            BackgroundWorker1_DoWork(null, null);
+            //backgroundWorker1.RunWorkerAsync();
+            //BackgroundWorker1_DoWork(null, null);
 
             searchToolBar1.SetColumns(dataGridView1.Columns);
         }
@@ -270,65 +270,67 @@ namespace Учет_цистерн
                 dataGridView1.CurrentCell = c;
         }
 
-        private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-            string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
-            int i = 1;
-            try
-            {
-                dataTable = DbConnection.DBConnect(Refresh);
-                //Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
-                //System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
+        //private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        //{
+        //    string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+        //    DataTable dataTable;
+        //    int i = 1;
+        //    try
+        //    {
+        //        dataTable = DbConnection.DBConnect(Refresh);
+        //        //Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
+        //        //System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
 
-                foreach (DataRow dr in dataTable.Rows)
-                {
-                    backgroundWorker1.ReportProgress(i);
-                    Thread.Sleep(1);
-                    i++;
-                }
+        //        foreach (DataRow dr in dataTable.Rows)
+        //        {
+        //            backgroundWorker1.ReportProgress(i);
+        //            Thread.Sleep(1);
+        //            i++;
+        //        }
+        //        e.Result = dataTable;
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
 
-        private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
-        {
-            try
-            {
-                //progBar.Value = e.ProgressPercentage;
+        //private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        //progBar.Value = e.ProgressPercentage;
                 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
 
-        private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        {
-            try
-            {
-                source.DataSource = dataTable;
-                dataGridView1.DataSource = source;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[1].Visible = false;
-                dataGridView1.Columns[2].Visible = false;
-                dataGridView1.Columns[3].Visible = false;
-                dataGridView1.Columns[4].Visible = false;
-                dataGridView1.Columns[5].Visible = false;
-                dataGridView1.Columns[6].Visible = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            //Application.UseWaitCursor = false;
-            //System.Windows.Forms.Cursor.Current = Cursors.Default;
+        //private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        source.DataSource = e.Result as DataTable;
+        //        dataGridView1.DataSource = source;
+        //        dataGridView1.Columns[0].Visible = false;
+        //        dataGridView1.Columns[1].Visible = false;
+        //        dataGridView1.Columns[2].Visible = false;
+        //        dataGridView1.Columns[3].Visible = false;
+        //        dataGridView1.Columns[4].Visible = false;
+        //        dataGridView1.Columns[5].Visible = false;
+        //        dataGridView1.Columns[6].Visible = false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    //Application.UseWaitCursor = false;
+        //    //System.Windows.Forms.Cursor.Current = Cursors.Default;
 
-        }
+        //}
 
         //private int GetTotalRecords()
         //{

@@ -6,14 +6,26 @@ namespace Учет_цистерн
 {
     public partial class LoginForm : Form
     {
+        public static string connectionString = "Data Source=POTITPC-01\\PLMLOCAL;Initial Catalog=Batys;User ID=sa;Password=!sql123;";
+
         public LoginForm()
         {
             InitializeComponent();
+            FillCombobox();
+        }
+
+        public void FillCombobox()
+        {
+            string GetUser = "select * from dbo.Users";
+            DataTable dt = DbConnection.DBConnect(GetUser);
+            comboBox1.DataSource = dt;
+            comboBox1.DisplayMember = "FIO";
+            comboBox1.ValueMember = "AID";
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            string getUsers = "Select * from dbo.Users where FIO = '" + comboBox1.Text.Trim() + "' and pass = '" + textBox2.Text.Trim() + "'";
+            string getUsers = "Select * from dbo.Users where AID = '" + comboBox1.SelectedValue.ToString() + "' and pass = '" + textBox2.Text.Trim() + "'";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(getUsers);
 
@@ -32,13 +44,6 @@ namespace Учет_цистерн
                 MessageBox.Show("Неправильные имя пользователя или пароль.");
                 textBox2.Clear();
             }
-        }
-
-        private void LoginForm_Load_1(object sender, EventArgs e)
-        {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "batysDataSet.Users". При необходимости она может быть перемещена или удалена.
-            this.usersTableAdapter.Fill(this.batysDataSet.Users);
-            textBox2.Select();
         }
 
         private void button2_Click(object sender, EventArgs e)
