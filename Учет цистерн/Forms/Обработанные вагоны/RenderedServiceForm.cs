@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
-using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Учет_цистерн.Forms.Оповещения;
 
@@ -73,7 +73,7 @@ namespace Учет_цистерн
             //comboBox1.DataBindings.Add("SelectedValue", this, "SelectOwnerID", true, DataSourceUpdateMode.OnPropertyChanged);
         }
 
-        private void RenderedServiceForm_Load(object sender, EventArgs e)
+        private async void RenderedServiceForm_Load(object sender, EventArgs e)
         {
             DateTime now = DateTime.Now;
             var startDate = new DateTime(now.Year, now.Month, 1);
@@ -94,23 +94,46 @@ namespace Учет_цистерн
             panel8.Visible = false;
             panel9.Visible = false;
 
-            //string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
-            //DataTable dataTable = new DataTable();
-            //dataTable = DbConnection.DBConnect(Refresh);
-            //source.DataSource = dataTable;
-            //dataGridView1.DataSource = source;
-            //dataGridView1.Columns[0].Visible = false;
-            //dataGridView1.Columns[1].Visible = false;
-            //dataGridView1.Columns[2].Visible = false;
-            //dataGridView1.Columns[3].Visible = false;
-            //dataGridView1.Columns[4].Visible = false;
-            //dataGridView1.Columns[5].Visible = false;
-            //dataGridView1.Columns[6].Visible = false;
-            //progBar.Maximum = GetTotalRecords();
-            //backgroundWorker1.RunWorkerAsync();
-            //BackgroundWorker1_DoWork(null, null);
+            string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+            DataTable dataTable;
+
+            var progress = new Progress<ProgressReport>();
+            progress.ProgressChanged += (o, report) => {
+                progBar.Value = report.PercentComplete;
+                progBar.Update();
+            };
+
+            await Task.Run(() =>
+            {
+                ProcessData(progress);
+                dataTable = DbConnection.DBConnect(Refresh);
+                source.DataSource = dataTable;
+            });
+
+            dataGridView1.DataSource = source;
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Visible = false;
+            dataGridView1.Columns[2].Visible = false;
+            dataGridView1.Columns[3].Visible = false;
+            dataGridView1.Columns[4].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
 
             searchToolBar1.SetColumns(dataGridView1.Columns);
+        }
+
+        private Task ProcessData(IProgress<ProgressReport> progress)
+        {
+            int index = 1;
+            int totalProcess = GetTotalRecords();
+            var progressReport = new ProgressReport();
+            return Task.Run(() => {
+                for (int i = 0; i < totalProcess; i++)
+                {
+                    progressReport.PercentComplete = index++ * 100 / totalProcess;
+                    progress.Report(progressReport);
+                }
+            });
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -178,9 +201,9 @@ namespace Учет_цистерн
 
             //Сумма услуг
             textBox5.Text = "Сумма: " + sum.ToString();
-            int Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(14, 1, true).Location.X;
+            int Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(14, -1, true).Location.X;
             textBox5.Width = this.dataGridView1.Columns[15].Width+1;
-            Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(15, 1, true).Location.X;
+            Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(15, -1, true).Location.X;
             textBox5.Location = new Point(Xdgvx1, this.dataGridView1.Height - (textBox5.Height - 15));
             textBox5.Visible = true;
 
@@ -240,8 +263,7 @@ namespace Учет_цистерн
             DbConnection.DBConnect(Add);
             OkForm ok = new OkForm();
             ok.label1.Text = "Запись добавлена!";
-            ok.Show();
-            //MessageBox.Show("Запись добавлена!");
+            ok.Show();            
         }
 
         private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
@@ -285,8 +307,7 @@ namespace Учет_цистерн
             {
                 ExceptionForm exf = new ExceptionForm();
                 exf.label1.Text = "Для редактирования записи, необходимо указать строку! " + ex.Message;
-                exf.Show();
-                //MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message);
+                exf.Show();                
             }
         }
 
@@ -297,7 +318,6 @@ namespace Учет_цистерн
             OkForm ok = new OkForm();
             ok.label1.Text = "Запись Удалена!";
             ok.Show();
-            //MessageBox.Show("Запись Удалена!");
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
@@ -312,8 +332,7 @@ namespace Учет_цистерн
             {
                 ExceptionForm exf = new ExceptionForm();
                 exf.label1.Text = ex.Message;
-                exf.Show();
-                //MessageBox.Show(ex.Message);
+                exf.Show();            
             }
         }
 
@@ -369,80 +388,24 @@ namespace Учет_цистерн
                 dataGridView1.CurrentCell = c;
         }
 
-        //private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        //{
-        //    string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
-        //    DataTable dataTable;
-        //    int i = 1;
-        //    try
-        //    {
-        //        dataTable = DbConnection.DBConnect(Refresh);
         //        //Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
         //        //System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
 
-        //        foreach (DataRow dr in dataTable.Rows)
-        //        {
-        //            backgroundWorker1.ReportProgress(i);
-        //            Thread.Sleep(1);
-        //            i++;
-        //        }
-        //        e.Result = dataTable;
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
-
-        //private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        //progBar.Value = e.ProgressPercentage;
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
-
-        //private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        source.DataSource = e.Result as DataTable;
-        //        dataGridView1.DataSource = source;
-        //        dataGridView1.Columns[0].Visible = false;
-        //        dataGridView1.Columns[1].Visible = false;
-        //        dataGridView1.Columns[2].Visible = false;
-        //        dataGridView1.Columns[3].Visible = false;
-        //        dataGridView1.Columns[4].Visible = false;
-        //        dataGridView1.Columns[5].Visible = false;
-        //        dataGridView1.Columns[6].Visible = false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
         //    //Application.UseWaitCursor = false;
         //    //System.Windows.Forms.Cursor.Current = Cursors.Default;
 
-        //}
-
-        //private int GetTotalRecords()
-        //{
-        //    try
-        //    {
-        //        string TotalRow = "dbo.TotalRowsRenderedServices '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
-        //        Rows = DbConnection.DatabseConnection(TotalRow);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    return Rows;
-        //}
+        private int GetTotalRecords()
+        {
+            try
+            {
+                string TotalRow = "dbo.TotalRowsRenderedServices '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+                Rows = DbConnection.DatabseConnection(TotalRow);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return Rows;
+        }
     }
 }
