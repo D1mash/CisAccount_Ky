@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using Учет_цистерн.Forms.Оповещения;
@@ -81,6 +82,18 @@ namespace Учет_цистерн
             dateTimePicker2.Value = startDate;
             dateTimePicker4.Value = endDate;
 
+            textBox4.Visible = false;
+            textBox5.Visible = false;
+            panel1.Visible = false;
+            panel2.Visible = false;
+            panel3.Visible = false;
+            panel4.Visible = false;
+            panel5.Visible = false;
+            panel6.Visible = false;
+            panel7.Visible = false;
+            panel8.Visible = false;
+            panel9.Visible = false;
+
             //string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
             //DataTable dataTable = new DataTable();
             //dataTable = DbConnection.DBConnect(Refresh);
@@ -100,6 +113,90 @@ namespace Учет_цистерн
             searchToolBar1.SetColumns(dataGridView1.Columns);
         }
 
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            decimal sum = 0;
+            int Count = 0;
+            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            {
+                if (dataGridView1.Rows[i].Cells[15].Value != string.Empty)
+                {
+                    sum += Convert.ToDecimal(this.dataGridView1[15, i].Value);
+                }
+                Count = dataGridView1.RowCount;
+            }
+
+            //Количество вагонов
+            textBox4.Text = "Всего строк: " + Count.ToString();
+            int Xdgvx = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
+            textBox4.Width = this.dataGridView1.Columns[7].Width+1;
+            Xdgvx = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
+            textBox4.Location = new Point(Xdgvx, this.dataGridView1.Height - (textBox4.Height - 15));
+            textBox4.Visible = true;
+
+            int Xdgvx_Panel1 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
+            panel1.Width = this.dataGridView1.Columns[8].Width+1;
+            Xdgvx_Panel1 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
+            panel1.Location = new Point(Xdgvx_Panel1, this.dataGridView1.Height - (panel1.Height - 15));
+            panel1.Visible = true;
+
+            int Xdgvx_Panel2 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
+            panel2.Width = this.dataGridView1.Columns[9].Width+1;
+            Xdgvx_Panel2 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
+            panel2.Location = new Point(Xdgvx_Panel2, this.dataGridView1.Height - (panel2.Height - 15));
+            panel2.Visible = true;
+
+            int Xdgvx_Panel3 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
+            panel3.Width = this.dataGridView1.Columns[9].Width+1;
+            Xdgvx_Panel3 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
+            panel3.Location = new Point(Xdgvx_Panel3, this.dataGridView1.Height - (panel3.Height - 15));
+            panel3.Visible = true;
+
+            int Xdgvx_Panel4 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
+            panel4.Width = this.dataGridView1.Columns[11].Width+1;
+            Xdgvx_Panel4 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
+            panel4.Location = new Point(Xdgvx_Panel4, this.dataGridView1.Height - (panel4.Height - 15));
+            panel4.Visible = true;
+
+            int Xdgvx_Panel5 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
+            panel5.Width = this.dataGridView1.Columns[12].Width+1;
+            Xdgvx_Panel5 = this.dataGridView1.GetCellDisplayRectangle(12, -1, true).Location.X;
+            panel5.Location = new Point(Xdgvx_Panel5, this.dataGridView1.Height - (panel5.Height - 15));
+            panel5.Visible = true;
+
+            int Xdgvx_Panel6 = this.dataGridView1.GetCellDisplayRectangle(12, -1, true).Location.X;
+            panel6.Width = this.dataGridView1.Columns[13].Width+1;
+            Xdgvx_Panel6 = this.dataGridView1.GetCellDisplayRectangle(13, -1, true).Location.X;
+            panel6.Location = new Point(Xdgvx_Panel6, this.dataGridView1.Height - (panel6.Height - 15));
+            panel6.Visible = true;
+
+            int Xdgvx_Panel7 = this.dataGridView1.GetCellDisplayRectangle(13, -1, true).Location.X;
+            panel7.Width = this.dataGridView1.Columns[14].Width+1;
+            Xdgvx_Panel7 = this.dataGridView1.GetCellDisplayRectangle(14, -1, true).Location.X;
+            panel7.Location = new Point(Xdgvx_Panel7, this.dataGridView1.Height - (panel7.Height - 15));
+            panel7.Visible = true;
+
+            //Сумма услуг
+            textBox5.Text = "Сумма: " + sum.ToString();
+            int Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(14, 1, true).Location.X;
+            textBox5.Width = this.dataGridView1.Columns[15].Width+1;
+            Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(15, 1, true).Location.X;
+            textBox5.Location = new Point(Xdgvx1, this.dataGridView1.Height - (textBox5.Height - 15));
+            textBox5.Visible = true;
+
+            int Xdgvx_Panel8 = this.dataGridView1.GetCellDisplayRectangle(15, -1, true).Location.X;
+            panel8.Width = this.dataGridView1.Columns[16].Width+2;
+            Xdgvx_Panel8 = this.dataGridView1.GetCellDisplayRectangle(16, -1, true).Location.X;
+            panel8.Location = new Point(Xdgvx_Panel8, this.dataGridView1.Height - (panel8.Height - 15));
+            panel8.Visible = true;
+
+            //int Xdgvx_Panel9 = this.dataGridView1.GetCellDisplayRectangle(-1, -1, true).Location.X;
+            panel9.Width = this.dataGridView1.RowHeadersWidth - 3;
+            panel9.Location = new Point(5, this.dataGridView1.Height - (panel9.Height - 15));
+            //panel9.Location = new Point(Xdgvx_Panel9, this.dataGridView1.Height - (panel9.Height - 15));
+            panel9.Visible = true;
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -110,6 +207,7 @@ namespace Учет_цистерн
                 dt = DbConnection.DBConnect(RefreshGF);
                 source.DataSource = dt;
                 dataGridView1.DataSource = source;
+                dataGridView1.RowHeadersWidth = 15;
                 dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[1].Visible = false;
                 dataGridView1.Columns[2].Visible = false;
@@ -125,6 +223,7 @@ namespace Учет_цистерн
                 dataTable = DbConnection.DBConnect(Refresh);
                 source.DataSource = dataTable;
                 dataGridView1.DataSource = source;
+                dataGridView1.RowHeadersWidth = 15;
                 dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[1].Visible = false;
                 dataGridView1.Columns[2].Visible = false;
@@ -301,7 +400,7 @@ namespace Учет_цистерн
         //    try
         //    {
         //        //progBar.Value = e.ProgressPercentage;
-                
+
         //    }
         //    catch (Exception ex)
         //    {

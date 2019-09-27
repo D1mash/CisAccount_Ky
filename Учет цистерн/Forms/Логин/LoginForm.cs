@@ -12,6 +12,7 @@ namespace Учет_цистерн
         {
             InitializeComponent();
             FillCombobox();
+            textBox2.Select();
         }
 
         public void FillCombobox()
