@@ -490,7 +490,7 @@
             // textBox5
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox5.Location = new System.Drawing.Point(58, 493);
+            this.textBox5.Location = new System.Drawing.Point(24, 540);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 4;
@@ -498,7 +498,7 @@
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox4.Location = new System.Drawing.Point(1140, 493);
+            this.textBox4.Location = new System.Drawing.Point(872, 538);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 3;
@@ -506,7 +506,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Location = new System.Drawing.Point(202, 423);
+            this.panel1.Location = new System.Drawing.Point(130, 540);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(100, 19);
             this.panel1.TabIndex = 5;
@@ -514,7 +514,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.panel2.Location = new System.Drawing.Point(320, 423);
+            this.panel2.Location = new System.Drawing.Point(236, 541);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(100, 19);
             this.panel2.TabIndex = 6;
@@ -522,7 +522,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Location = new System.Drawing.Point(439, 423);
+            this.panel3.Location = new System.Drawing.Point(342, 540);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(100, 19);
             this.panel3.TabIndex = 7;
@@ -530,7 +530,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
-            this.panel4.Location = new System.Drawing.Point(558, 423);
+            this.panel4.Location = new System.Drawing.Point(448, 540);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(100, 19);
             this.panel4.TabIndex = 8;
@@ -538,7 +538,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Control;
-            this.panel5.Location = new System.Drawing.Point(677, 423);
+            this.panel5.Location = new System.Drawing.Point(554, 540);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(100, 19);
             this.panel5.TabIndex = 8;
@@ -546,7 +546,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.Control;
-            this.panel6.Location = new System.Drawing.Point(801, 423);
+            this.panel6.Location = new System.Drawing.Point(660, 538);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(100, 19);
             this.panel6.TabIndex = 8;
@@ -554,7 +554,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.Control;
-            this.panel7.Location = new System.Drawing.Point(939, 423);
+            this.panel7.Location = new System.Drawing.Point(766, 538);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(100, 19);
             this.panel7.TabIndex = 8;
@@ -562,7 +562,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.SystemColors.Control;
-            this.panel8.Location = new System.Drawing.Point(1258, 423);
+            this.panel8.Location = new System.Drawing.Point(978, 538);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(100, 19);
             this.panel8.TabIndex = 8;

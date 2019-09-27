@@ -15,6 +15,10 @@ namespace Учет_цистерн
             this.tabControl2.SelectedTab = tabPage2;
             this.splitContainer1.SplitterDistance = 25;
             this.Text = "Учет вагонов-цистерн. Батыс Петролеум ТОО - " + FIO;
+            string GetConnection = "exec dbo.GetConnection";
+            DataTable dt = DbConnection.DBConnect(GetConnection);
+
+            textBox1.Text = "SPID: " + dt.Rows[0][1].ToString() + "; UID: " + dt.Rows[0][0].ToString() + ";";
         }
 
         private void MainForm_Load(object sender, EventArgs e)
