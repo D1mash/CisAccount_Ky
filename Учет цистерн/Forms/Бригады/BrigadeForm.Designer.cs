@@ -98,6 +98,7 @@
             // 
             this.dataGVBrigade.AllowUserToAddRows = false;
             this.dataGVBrigade.AllowUserToDeleteRows = false;
+            this.dataGVBrigade.AllowUserToOrderColumns = true;
             this.dataGVBrigade.AllowUserToResizeRows = false;
             this.dataGVBrigade.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGVBrigade.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;

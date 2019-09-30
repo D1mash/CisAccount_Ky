@@ -24,7 +24,7 @@ namespace Учет_цистерн
         //Нужно переписать этот метод
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
-            string GetCarriage = "Select dc.ID, dc.CarNumber [Номер вагона],dc.AXIS [Осность],do.ID [OwnerID], do.Name [Наименование],do.FullName [Полное наименование] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
+            string GetCarriage = "Select dc.ID, dc.CarNumber [Номер вагона],dc.AXIS [Осность],do.ID [OwnerID], do.Name [Собственник],do.FullName [Собственник полное наименование] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(GetCarriage);
             dataGridView1.DataSource = dataTable;
@@ -33,16 +33,16 @@ namespace Учет_цистерн
         }
 
 
-        //Нужно переписать этот метод
-        private void CarriageForm_Load(object sender, EventArgs e)
-        {
-            string GetCarriage = "Select dc.ID, dc.CarNumber [Номер вагона],dc.AXIS [Осность], do.ID [OwnerID],do.Name [Наименование],do.FullName [Полное наименование] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(GetCarriage);
-            dataGridView1.DataSource = dataTable;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
-        }
+        //Пока убрал, т.к. 15к вагонов, лучше пусть через Обновить смотрит
+        //private void CarriageForm_Load(object sender, EventArgs e)
+        //{
+        //    string GetCarriage = "Select dc.ID, dc.CarNumber [Номер вагона],dc.AXIS [Осность], do.ID [OwnerID],do.Name [Собственник],do.FullName [Собственник полное наименование] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
+        //    DataTable dataTable = new DataTable();
+        //    dataTable = DbConnection.DBConnect(GetCarriage);
+        //    dataGridView1.DataSource = dataTable;
+        //    dataGridView1.Columns[0].Visible = false;
+        //    dataGridView1.Columns[3].Visible = false;
+        //}
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {

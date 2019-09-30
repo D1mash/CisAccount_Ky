@@ -44,6 +44,7 @@
             // 
             this.dataGridView_Station_Form.AllowUserToAddRows = false;
             this.dataGridView_Station_Form.AllowUserToDeleteRows = false;
+            this.dataGridView_Station_Form.AllowUserToOrderColumns = true;
             this.dataGridView_Station_Form.AllowUserToResizeRows = false;
             this.dataGridView_Station_Form.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_Station_Form.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
