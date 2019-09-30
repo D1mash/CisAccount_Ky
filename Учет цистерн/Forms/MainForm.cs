@@ -192,7 +192,7 @@ namespace Учет_цистерн
         private void button4_Click(object sender, EventArgs e)
         {
             //RenderedServiceForm RenderedServiceForm = new RenderedServiceForm();
-            RenderedServiceForm RenderedServiceForm = new RenderedServiceForm(this.progressBar1);
+            RenderedServiceForm RenderedServiceForm = new RenderedServiceForm(this.toolStripProgressBar1, this.toolStripLabel1);
             tabControl1.Show();
             TabPage CarriageTabPage = new TabPage("Обработанные вагоны");
             tabControl1.TabPages.Add(CarriageTabPage);

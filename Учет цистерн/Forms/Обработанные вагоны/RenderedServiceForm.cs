@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Учет_цистерн.Forms.Оповещения;
@@ -9,7 +10,8 @@ namespace Учет_цистерн
 {
     public partial class RenderedServiceForm : Form
     {
-        private ProgressBar progBar;
+        private ToolStripProgressBar progBar;
+        private ToolStripLabel TlStpLabel;
         int SelectItemRow;
         int SelectBrigadeID;
         int SelectCarriageID;
@@ -21,11 +23,12 @@ namespace Учет_цистерн
         //DataTable dataTable = new DataTable();
         BindingSource source = new BindingSource();
 
-        public RenderedServiceForm(ProgressBar progressBar1)
+        public RenderedServiceForm(ToolStripProgressBar progressBar1, ToolStripLabel toolStripLabel)
         {
             InitializeComponent();
             FillCombobox();
             progBar = progressBar1;
+            TlStpLabel = toolStripLabel;
         }
                 
         private void FillCombobox()
@@ -118,27 +121,30 @@ namespace Учет_цистерн
             //dataGridView1.Columns[4].Visible = false;
             //dataGridView1.Columns[5].Visible = false;
             //dataGridView1.Columns[6].Visible = false;
+            progBar.Visible = false;
 
-            progBar.Maximum = GetTotalRecords()+2;
-
-            backgroundWorker1.RunWorkerAsync();
-
+            if (!backgroundWorker1.IsBusy)
+            {
+                progBar.Visible = true;
+                progBar.Maximum = GetTotalRecords();
+                backgroundWorker1.RunWorkerAsync();
+            }
             searchToolBar1.SetColumns(dataGridView1.Columns);
         }
 
-        private Task ProcessData(IProgress<ProgressReport> progress)
-        {
-            int index = 1;
-            int totalProcess = GetTotalRecords();
-            var progressReport = new ProgressReport();
-            return Task.Run(() => {
-                for (int i = 0; i < totalProcess; i++)
-                {
-                    progressReport.PercentComplete = index++ * 100 / totalProcess;
-                    progress.Report(progressReport);
-                }
-            });
-        }
+        //private Task ProcessData(IProgress<ProgressReport> progress)
+        //{
+        //    int index = 1;
+        //    int totalProcess = GetTotalRecords();
+        //    var progressReport = new ProgressReport();
+        //    return Task.Run(() => {
+        //        for (int i = 0; i < totalProcess; i++)
+        //        {
+        //            progressReport.PercentComplete = index++ * 100 / totalProcess;
+        //            progress.Report(progressReport);
+        //        }
+        //    });
+        //}
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -392,11 +398,6 @@ namespace Учет_цистерн
                 dataGridView1.CurrentCell = c;
         }
 
-        //        //Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
-        //        //System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
-
-        //    //Application.UseWaitCursor = false;
-        //    //System.Windows.Forms.Cursor.Current = Cursors.Default;
 
         private int GetTotalRecords()
         {
@@ -414,6 +415,8 @@ namespace Учет_цистерн
 
         private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
+            //Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
+            //System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
             string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
             DataTable dataTable = DbConnection.DBConnect(Refresh);
             int i = 1;
@@ -422,6 +425,7 @@ namespace Учет_цистерн
                 foreach (DataRow dr in dataTable.Rows)
                 {
                     backgroundWorker1.ReportProgress(i);
+                    Thread.Sleep(5);
                     i++;
                 }
                 e.Result = dataTable;
@@ -432,22 +436,41 @@ namespace Учет_цистерн
             }
         }
 
-        private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        {
-            source.DataSource = e.Result;
-            dataGridView1.DataSource = source;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
-            dataGridView1.Columns[2].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
-            dataGridView1.Columns[4].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[6].Visible = false;
-        }
-
         private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-            progBar.Value = e.ProgressPercentage;
+            if (!backgroundWorker1.CancellationPending)
+            {
+                progBar.Value = e.ProgressPercentage;
+                TlStpLabel.Text = "Обработка строки.. " + e.ProgressPercentage.ToString() + " из " + GetTotalRecords();
+            }
+        }
+
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if(e.Error != null)
+            {
+                TlStpLabel.Text = "Ошибка" + e.Error.Message;
+            }
+            else
+            {
+                //Application.UseWaitCursor = false;
+                //System.Windows.Forms.Cursor.Current = Cursors.Default;
+
+                source.DataSource = e.Result;
+                dataGridView1.DataSource = source;
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].Visible = false;
+                dataGridView1.Columns[2].Visible = false;
+                dataGridView1.Columns[3].Visible = false;
+                dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[5].Visible = false;
+                dataGridView1.Columns[6].Visible = false;
+
+                progBar.Visible = false;
+
+                TlStpLabel.Text = "Данные загружены...";
+
+            }
         }
     }
 }
