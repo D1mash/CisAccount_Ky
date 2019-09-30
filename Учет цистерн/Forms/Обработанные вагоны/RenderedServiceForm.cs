@@ -94,30 +94,34 @@ namespace Учет_цистерн
             panel8.Visible = false;
             panel9.Visible = false;
 
-            string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
-            DataTable dataTable;
+            //string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+            //DataTable dataTable;
 
-            var progress = new Progress<ProgressReport>();
-            progress.ProgressChanged += (o, report) => {
-                progBar.Value = report.PercentComplete;
-                progBar.Update();
-            };
+            //var progress = new Progress<ProgressReport>();
+            //progress.ProgressChanged += (o, report) => {
+            //    progBar.Value = report.PercentComplete;
+            //    progBar.Update();
+            //};
 
-            await Task.Run(() =>
-            {
-                ProcessData(progress);
-                dataTable = DbConnection.DBConnect(Refresh);
-                source.DataSource = dataTable;
-            });
+            //await Task.Run(() =>
+            //{
+            //    ProcessData(progress);
+            //    dataTable = DbConnection.DBConnect(Refresh);
+            //    source.DataSource = dataTable;
+            //});
 
-            dataGridView1.DataSource = source;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
-            dataGridView1.Columns[2].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
-            dataGridView1.Columns[4].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[6].Visible = false;
+            //dataGridView1.DataSource = source;
+            //dataGridView1.Columns[0].Visible = false;
+            //dataGridView1.Columns[1].Visible = false;
+            //dataGridView1.Columns[2].Visible = false;
+            //dataGridView1.Columns[3].Visible = false;
+            //dataGridView1.Columns[4].Visible = false;
+            //dataGridView1.Columns[5].Visible = false;
+            //dataGridView1.Columns[6].Visible = false;
+
+            progBar.Maximum = GetTotalRecords()+2;
+
+            backgroundWorker1.RunWorkerAsync();
 
             searchToolBar1.SetColumns(dataGridView1.Columns);
         }
@@ -406,6 +410,44 @@ namespace Учет_цистерн
                 MessageBox.Show(ex.Message);
             }
             return Rows;
+        }
+
+        private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+            DataTable dataTable = DbConnection.DBConnect(Refresh);
+            int i = 1;
+            try
+            {
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    backgroundWorker1.ReportProgress(i);
+                    i++;
+                }
+                e.Result = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            source.DataSource = e.Result;
+            dataGridView1.DataSource = source;
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Visible = false;
+            dataGridView1.Columns[2].Visible = false;
+            dataGridView1.Columns[3].Visible = false;
+            dataGridView1.Columns[4].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
+        }
+
+        private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            progBar.Value = e.ProgressPercentage;
         }
     }
 }
