@@ -127,7 +127,8 @@ namespace Учет_цистерн
             {
                 progBar.Visible = true;
                 progBar.Maximum = GetTotalRecords();
-                backgroundWorker1.RunWorkerAsync();
+                string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+                backgroundWorker1.RunWorkerAsync(Refresh);
             }
             searchToolBar1.SetColumns(dataGridView1.Columns);
         }
@@ -234,36 +235,51 @@ namespace Учет_цистерн
         {
             if (checkBox1.Checked)
             {
-                int yes = 1;
-                string RefreshGF = "dbo.GetRenderedServiceGlobalFilter '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "','" + yes + "'";
-                DataTable dt = new DataTable();
-                dt = DbConnection.DBConnect(RefreshGF);
-                source.DataSource = dt;
-                dataGridView1.DataSource = source;
-                dataGridView1.RowHeadersWidth = 15;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[1].Visible = false;
-                dataGridView1.Columns[2].Visible = false;
-                dataGridView1.Columns[3].Visible = false;
-                dataGridView1.Columns[4].Visible = false;
-                dataGridView1.Columns[5].Visible = false;
-                dataGridView1.Columns[6].Visible = false;
+                progBar.Visible = false;
+
+                if (!backgroundWorker1.IsBusy)
+                {
+                    int yes = 1;
+                    progBar.Visible = true;
+                    progBar.Maximum = GetTotalRecords();
+                    string RefreshGF = "dbo.GetRenderedServiceGlobalFilter '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "','" + yes + "'";
+                    backgroundWorker1.RunWorkerAsync(RefreshGF);
+                }
+                
+                //DataTable dt = new DataTable();
+                //dt = DbConnection.DBConnect(RefreshGF);
+                //source.DataSource = dt;
+                //dataGridView1.DataSource = source;
+                //dataGridView1.RowHeadersWidth = 15;
+                //dataGridView1.Columns[0].Visible = false;
+                //dataGridView1.Columns[1].Visible = false;
+                //dataGridView1.Columns[2].Visible = false;
+                //dataGridView1.Columns[3].Visible = false;
+                //dataGridView1.Columns[4].Visible = false;
+                //dataGridView1.Columns[5].Visible = false;
+                //dataGridView1.Columns[6].Visible = false;
             }
             else
             {
-                string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
-                DataTable dataTable = new DataTable();
-                dataTable = DbConnection.DBConnect(Refresh);
-                source.DataSource = dataTable;
-                dataGridView1.DataSource = source;
-                dataGridView1.RowHeadersWidth = 15;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[1].Visible = false;
-                dataGridView1.Columns[2].Visible = false;
-                dataGridView1.Columns[3].Visible = false;
-                dataGridView1.Columns[4].Visible = false;
-                dataGridView1.Columns[5].Visible = false;
-                dataGridView1.Columns[6].Visible = false;
+                if (!backgroundWorker1.IsBusy)
+                {
+                    progBar.Visible = true;
+                    progBar.Maximum = GetTotalRecords();
+                    string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+                    backgroundWorker1.RunWorkerAsync(Refresh);
+                }
+                //DataTable dataTable = new DataTable();
+                //dataTable = DbConnection.DBConnect(Refresh);
+                //source.DataSource = dataTable;
+                //dataGridView1.DataSource = source;
+                //dataGridView1.RowHeadersWidth = 15;
+                //dataGridView1.Columns[0].Visible = false;
+                //dataGridView1.Columns[1].Visible = false;
+                //dataGridView1.Columns[2].Visible = false;
+                //dataGridView1.Columns[3].Visible = false;
+                //dataGridView1.Columns[4].Visible = false;
+                //dataGridView1.Columns[5].Visible = false;
+                //dataGridView1.Columns[6].Visible = false;
             }
         }
 
@@ -417,11 +433,13 @@ namespace Учет_цистерн
         {
             //Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
             //System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
-            string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
-            DataTable dataTable = DbConnection.DBConnect(Refresh);
+            string Query = (string)e.Argument;
+            //string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+            
             int i = 1;
             try
             {
+                DataTable dataTable = DbConnection.DBConnect(Query);
                 foreach (DataRow dr in dataTable.Rows)
                 {
                     backgroundWorker1.ReportProgress(i);
@@ -458,6 +476,7 @@ namespace Учет_цистерн
 
                 source.DataSource = e.Result;
                 dataGridView1.DataSource = source;
+                dataGridView1.RowHeadersWidth = 15;
                 dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[1].Visible = false;
                 dataGridView1.Columns[2].Visible = false;

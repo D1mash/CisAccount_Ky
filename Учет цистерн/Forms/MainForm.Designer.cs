@@ -203,6 +203,7 @@
             // tabControl1
             // 
             this.tabControl1.AllowDrop = true;
+            this.tabControl1.DisplayStyle = TradeWright.UI.Forms.TabStyle.Chrome;
             // 
             // 
             // 
@@ -213,46 +214,45 @@
             this.tabControl1.DisplayStyleProvider.BorderColorSelected = System.Drawing.SystemColors.ControlDark;
             this.tabControl1.DisplayStyleProvider.BorderColorUnselected = System.Drawing.SystemColors.ControlDark;
             this.tabControl1.DisplayStyleProvider.CloserButtonFillColorFocused = System.Drawing.Color.Empty;
-            this.tabControl1.DisplayStyleProvider.CloserButtonFillColorFocusedActive = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserButtonFillColorFocusedActive = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(159)))), ((int)(((byte)(148)))));
             this.tabControl1.DisplayStyleProvider.CloserButtonFillColorHighlighted = System.Drawing.Color.Empty;
-            this.tabControl1.DisplayStyleProvider.CloserButtonFillColorHighlightedActive = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserButtonFillColorHighlightedActive = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(159)))), ((int)(((byte)(148)))));
             this.tabControl1.DisplayStyleProvider.CloserButtonFillColorSelected = System.Drawing.Color.Empty;
-            this.tabControl1.DisplayStyleProvider.CloserButtonFillColorSelectedActive = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserButtonFillColorSelectedActive = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(159)))), ((int)(((byte)(148)))));
             this.tabControl1.DisplayStyleProvider.CloserButtonFillColorUnselected = System.Drawing.Color.Empty;
             this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorFocused = System.Drawing.Color.Empty;
-            this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorFocusedActive = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorFocusedActive = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(106)))), ((int)(((byte)(94)))));
             this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorHighlighted = System.Drawing.Color.Empty;
-            this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorHighlightedActive = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorHighlightedActive = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(106)))), ((int)(((byte)(94)))));
             this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorSelected = System.Drawing.Color.Empty;
-            this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorSelectedActive = System.Drawing.Color.Empty;
+            this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorSelectedActive = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(106)))), ((int)(((byte)(94)))));
             this.tabControl1.DisplayStyleProvider.CloserButtonOutlineColorUnselected = System.Drawing.Color.Empty;
-            this.tabControl1.DisplayStyleProvider.CloserColorFocused = System.Drawing.SystemColors.ControlDark;
-            this.tabControl1.DisplayStyleProvider.CloserColorFocusedActive = System.Drawing.SystemColors.ControlDark;
-            this.tabControl1.DisplayStyleProvider.CloserColorHighlighted = System.Drawing.SystemColors.ControlDark;
-            this.tabControl1.DisplayStyleProvider.CloserColorHighlightedActive = System.Drawing.SystemColors.ControlDark;
-            this.tabControl1.DisplayStyleProvider.CloserColorSelected = System.Drawing.SystemColors.ControlDark;
-            this.tabControl1.DisplayStyleProvider.CloserColorSelectedActive = System.Drawing.SystemColors.ControlDark;
+            this.tabControl1.DisplayStyleProvider.CloserColorFocused = System.Drawing.Color.Black;
+            this.tabControl1.DisplayStyleProvider.CloserColorFocusedActive = System.Drawing.Color.White;
+            this.tabControl1.DisplayStyleProvider.CloserColorHighlighted = System.Drawing.Color.Black;
+            this.tabControl1.DisplayStyleProvider.CloserColorHighlightedActive = System.Drawing.Color.White;
+            this.tabControl1.DisplayStyleProvider.CloserColorSelected = System.Drawing.Color.Black;
+            this.tabControl1.DisplayStyleProvider.CloserColorSelectedActive = System.Drawing.Color.White;
             this.tabControl1.DisplayStyleProvider.CloserColorUnselected = System.Drawing.Color.Empty;
             this.tabControl1.DisplayStyleProvider.FocusTrack = false;
             this.tabControl1.DisplayStyleProvider.HotTrack = true;
             this.tabControl1.DisplayStyleProvider.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tabControl1.DisplayStyleProvider.Opacity = 1F;
-            this.tabControl1.DisplayStyleProvider.Overlap = 0;
-            this.tabControl1.DisplayStyleProvider.Padding = new System.Drawing.Point(6, 3);
+            this.tabControl1.DisplayStyleProvider.Overlap = 16;
+            this.tabControl1.DisplayStyleProvider.Padding = new System.Drawing.Point(16, 5);
             this.tabControl1.DisplayStyleProvider.PageBackgroundColorDisabled = System.Drawing.SystemColors.Control;
             this.tabControl1.DisplayStyleProvider.PageBackgroundColorFocused = System.Drawing.SystemColors.ControlLight;
-            this.tabControl1.DisplayStyleProvider.PageBackgroundColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(244)))), ((int)(((byte)(252)))));
+            this.tabControl1.DisplayStyleProvider.PageBackgroundColorHighlighted = System.Drawing.SystemColors.Control;
             this.tabControl1.DisplayStyleProvider.PageBackgroundColorSelected = System.Drawing.SystemColors.ControlLightLight;
             this.tabControl1.DisplayStyleProvider.PageBackgroundColorUnselected = System.Drawing.SystemColors.Control;
-            this.tabControl1.DisplayStyleProvider.Radius = 2;
-            this.tabControl1.DisplayStyleProvider.SelectedTabIsLarger = true;
-            this.tabControl1.DisplayStyleProvider.ShowTabCloser = false;
+            this.tabControl1.DisplayStyleProvider.SelectedTabIsLarger = false;
+            this.tabControl1.DisplayStyleProvider.ShowTabCloser = true;
             this.tabControl1.DisplayStyleProvider.TabColorDisabled1 = System.Drawing.SystemColors.Control;
             this.tabControl1.DisplayStyleProvider.TabColorDisabled2 = System.Drawing.SystemColors.Control;
             this.tabControl1.DisplayStyleProvider.TabColorFocused1 = System.Drawing.SystemColors.ControlLight;
             this.tabControl1.DisplayStyleProvider.TabColorFocused2 = System.Drawing.SystemColors.ControlLight;
-            this.tabControl1.DisplayStyleProvider.TabColorHighLighted1 = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(244)))), ((int)(((byte)(252)))));
-            this.tabControl1.DisplayStyleProvider.TabColorHighLighted2 = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
+            this.tabControl1.DisplayStyleProvider.TabColorHighLighted1 = System.Drawing.SystemColors.Control;
+            this.tabControl1.DisplayStyleProvider.TabColorHighLighted2 = System.Drawing.SystemColors.Control;
             this.tabControl1.DisplayStyleProvider.TabColorSelected1 = System.Drawing.SystemColors.ControlLightLight;
             this.tabControl1.DisplayStyleProvider.TabColorSelected2 = System.Drawing.SystemColors.ControlLightLight;
             this.tabControl1.DisplayStyleProvider.TabColorUnSelected1 = System.Drawing.SystemColors.Control;
