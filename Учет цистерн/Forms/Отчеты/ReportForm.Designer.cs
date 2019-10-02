@@ -42,19 +42,21 @@
             this.btn_Excel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.LblStatus = new System.Windows.Forms.ToolStripLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
-            this.groupBox1.Controls.Add(this.progressBar);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.groupBox3);
@@ -167,7 +169,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 131);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(784, 430);
+            this.groupBox2.Size = new System.Drawing.Size(784, 405);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -182,15 +184,8 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(778, 411);
+            this.dataGridView1.Size = new System.Drawing.Size(778, 386);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(598, 17);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(100, 23);
-            this.progressBar.TabIndex = 6;
             // 
             // backgroundWorker
             // 
@@ -200,6 +195,30 @@
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BackgroundWorker_ProgressChanged);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker_RunWorkerCompleted);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.progressBar,
+            this.LblStatus});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 536);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(784, 25);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // progressBar
+            // 
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(200, 22);
+            // 
+            // LblStatus
+            // 
+            this.LblStatus.Margin = new System.Windows.Forms.Padding(10, 1, 0, 2);
+            this.LblStatus.Name = "LblStatus";
+            this.LblStatus.Size = new System.Drawing.Size(38, 22);
+            this.LblStatus.Text = "Готов";
+            // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,6 +226,7 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ReportForm";
@@ -220,6 +240,8 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,7 +262,9 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ProgressBar progressBar;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripProgressBar progressBar;
+        private System.Windows.Forms.ToolStripLabel LblStatus;
     }
 }

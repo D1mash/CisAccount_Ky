@@ -201,6 +201,7 @@ namespace Учет_цистерн
         private void BackgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             progressBar.Value = e.ProgressPercentage;
+            LblStatus.Text = "Обработка строки.. " + e.ProgressPercentage.ToString() /*+ " из " + TotalRow()*/;
         }
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
@@ -208,6 +209,7 @@ namespace Учет_цистерн
             if(e.Error == null)
             {
                 Thread.Sleep(1);
+                LblStatus.Text = "Данные были успешно экспортированы";
             }
         }
     }
