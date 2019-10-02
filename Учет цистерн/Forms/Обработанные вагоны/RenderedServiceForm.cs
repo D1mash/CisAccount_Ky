@@ -415,7 +415,7 @@ namespace Учет_цистерн
         }
 
 
-        private int GetTotalRecords()
+        public int GetTotalRecords()
         {
             try
             {
@@ -431,8 +431,8 @@ namespace Учет_цистерн
 
         private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            //Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
-            //System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
+            Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
+            System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
             string Query = (string)e.Argument;
             //string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
             
@@ -471,8 +471,8 @@ namespace Учет_цистерн
             }
             else
             {
-                //Application.UseWaitCursor = false;
-                //System.Windows.Forms.Cursor.Current = Cursors.Default;
+                Application.UseWaitCursor = false;
+                System.Windows.Forms.Cursor.Current = Cursors.Default;
 
                 source.DataSource = e.Result;
                 dataGridView1.DataSource = source;

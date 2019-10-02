@@ -53,13 +53,13 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -303,8 +303,8 @@
             // 
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1,
             this.toolStripProgressBar1,
+            this.toolStripLabel1,
             this.toolStripTextBox1});
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -317,6 +317,13 @@
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
             resources.ApplyResources(this.toolStripLabel1, "toolStripLabel1");
+            // 
+            // toolStripTextBox1
+            // 
+            resources.ApplyResources(this.toolStripTextBox1, "toolStripTextBox1");
+            this.toolStripTextBox1.Margin = new System.Windows.Forms.Padding(1300, 0, 1, 0);
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.ReadOnly = true;
             // 
             // button6
             // 
@@ -380,13 +387,6 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            // 
-            // toolStripTextBox1
-            // 
-            resources.ApplyResources(this.toolStripTextBox1, "toolStripTextBox1");
-            this.toolStripTextBox1.Margin = new System.Windows.Forms.Padding(1300, 0, 1, 0);
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.ReadOnly = true;
             // 
             // MainForm
             // 
