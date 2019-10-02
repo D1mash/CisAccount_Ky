@@ -73,23 +73,30 @@ namespace Учет_цистерн
             comboBox2.DataSource = OwnerDT;
             comboBox2.DisplayMember = "Name";
             comboBox2.ValueMember = "ID";
-
-
         }
 
         private void Btn_Excel_Click(object sender, EventArgs e)
         {
-            if (backgroundWorker.IsBusy)
-                return;
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Excel file (*.xlsx)|*.xlsx|All files(*.*)|*.*" })
+            if (dataGridView1.Rows != null && dataGridView1.Rows.Count != 0)
             {
-                if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                if (backgroundWorker.IsBusy)
+                    return;
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Excel file (*.xlsx)|*.xlsx|All files(*.*)|*.*" })
                 {
-                    _inputParametr.FileName = saveFileDialog.FileName;
-                    progressBar.Minimum = 0;
-                    progressBar.Value = 0;
-                    backgroundWorker.RunWorkerAsync(_inputParametr);
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        _inputParametr.FileName = saveFileDialog.FileName;
+                        progressBar.Minimum = 0;
+                        progressBar.Value = 0;
+                        backgroundWorker.RunWorkerAsync(_inputParametr);
+                    }
                 }
+            }
+            else
+            {
+                ExceptionForm exceptionForm = new ExceptionForm();
+                exceptionForm.label1.Text = "Обновите данные!";
+                exceptionForm.Show();
             }
             //Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
             //Microsoft.Office.Interop.Excel.Workbook workbook = app.Workbooks.Add(Type.Missing);
