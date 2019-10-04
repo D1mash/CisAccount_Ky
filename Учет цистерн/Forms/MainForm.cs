@@ -177,16 +177,7 @@ namespace Учет_цистерн
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ServiceCostForm ServiceCostForm = new ServiceCostForm();
-            tabControl1.Show();
-            TabPage CarriageTabPage = new TabPage("Расценки");
-            tabControl1.TabPages.Add(CarriageTabPage);
-            tabControl1.SelectedTab = CarriageTabPage;
-            ServiceCostForm.TopLevel = false;
-            ServiceCostForm.Visible = true;
-            ServiceCostForm.FormBorderStyle = FormBorderStyle.None;
-            ServiceCostForm.Dock = DockStyle.Fill;
-            CarriageTabPage.Controls.Add(ServiceCostForm);
+            contextMenuStrip_Services.Show(button2, new Point(0, button2.Height));
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -312,6 +303,20 @@ namespace Учет_цистерн
             {
                 this.splitContainer1.SplitterDistance = 25;
             }
+        }
+
+        private void РасценкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ServiceCostForm ServiceCostForm = new ServiceCostForm();
+            tabControl1.Show();
+            TabPage CarriageTabPage = new TabPage("Расценки");
+            tabControl1.TabPages.Add(CarriageTabPage);
+            tabControl1.SelectedTab = CarriageTabPage;
+            ServiceCostForm.TopLevel = false;
+            ServiceCostForm.Visible = true;
+            ServiceCostForm.FormBorderStyle = FormBorderStyle.None;
+            ServiceCostForm.Dock = DockStyle.Fill;
+            CarriageTabPage.Controls.Add(ServiceCostForm);
         }
     }
 }

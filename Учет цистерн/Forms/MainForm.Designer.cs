@@ -60,6 +60,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.contextMenuStrip_Services = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.расценкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сНОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -73,6 +76,7 @@
             this.contextMenuStrip_GlobalFilter.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.contextMenuStrip_Services.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip_Product
@@ -388,6 +392,25 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
+            // contextMenuStrip_Services
+            // 
+            this.contextMenuStrip_Services.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.расценкиToolStripMenuItem,
+            this.сНОToolStripMenuItem});
+            this.contextMenuStrip_Services.Name = "contextMenuStrip_Services";
+            resources.ApplyResources(this.contextMenuStrip_Services, "contextMenuStrip_Services");
+            // 
+            // расценкиToolStripMenuItem
+            // 
+            this.расценкиToolStripMenuItem.Name = "расценкиToolStripMenuItem";
+            resources.ApplyResources(this.расценкиToolStripMenuItem, "расценкиToolStripMenuItem");
+            this.расценкиToolStripMenuItem.Click += new System.EventHandler(this.РасценкиToolStripMenuItem_Click);
+            // 
+            // сНОToolStripMenuItem
+            // 
+            this.сНОToolStripMenuItem.Name = "сНОToolStripMenuItem";
+            resources.ApplyResources(this.сНОToolStripMenuItem, "сНОToolStripMenuItem");
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -414,6 +437,7 @@
             this.toolStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.contextMenuStrip_Services.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -450,6 +474,9 @@
         private TradeWright.UI.Forms.TabControlExtra tabControl1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Services;
+        private System.Windows.Forms.ToolStripMenuItem расценкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сНОToolStripMenuItem;
     }
 }
 
