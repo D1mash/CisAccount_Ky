@@ -63,6 +63,8 @@
             this.contextMenuStrip_Services = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.расценкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -308,7 +310,9 @@
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1,
+            this.toolStripSeparator1,
             this.toolStripLabel1,
+            this.toolStripSeparator2,
             this.toolStripTextBox1});
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -412,6 +416,16 @@
             resources.ApplyResources(this.сНОToolStripMenuItem, "сНОToolStripMenuItem");
             this.сНОToolStripMenuItem.Click += new System.EventHandler(this.СНОToolStripMenuItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -478,6 +492,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Services;
         private System.Windows.Forms.ToolStripMenuItem расценкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сНОToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 

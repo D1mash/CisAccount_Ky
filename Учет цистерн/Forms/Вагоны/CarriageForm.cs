@@ -12,6 +12,7 @@ namespace Учет_цистерн
         private ToolStripLabel TlStpLabel;
         int SelectItemRow;
         int SelectOwnerID;
+        int Rows;
 
         public CarriageForm(ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1)
         {
@@ -27,7 +28,7 @@ namespace Учет_цистерн
             if (!backgroundWorker1.IsBusy)
             {
                 progBar.Visible = true;
-                //progBar.Maximum = GetTotalRecords();
+                progBar.Maximum = GetTotalRecords();
                 string GetCarriage = "Select dc.ID, dc.CarNumber [Номер вагона],dc.AXIS [Осность],do.ID [OwnerID], do.Name [Собственник],do.FullName [Собственник полное наименование] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
                 backgroundWorker1.RunWorkerAsync(GetCarriage);
             }
@@ -135,7 +136,7 @@ namespace Учет_цистерн
                 foreach (DataRow dr in dataTable.Rows)
                 {
                     backgroundWorker1.ReportProgress(i);
-                    Thread.Sleep(5);
+                    Thread.Sleep(2);
                     i++;
                 }
                 e.Result = dataTable;
@@ -150,8 +151,8 @@ namespace Учет_цистерн
         {
             if (!backgroundWorker1.CancellationPending)
             {
-                //progBar.Value = e.ProgressPercentage;
-                TlStpLabel.Text = "Обработка строки.. " + e.ProgressPercentage.ToString() /*+ " из " + GetTotalRecords()*/;
+                progBar.Value = e.ProgressPercentage;
+                TlStpLabel.Text = "Обработка строки.. " + e.ProgressPercentage.ToString() + " из " + GetTotalRecords();
             }
         }
 
@@ -175,6 +176,20 @@ namespace Учет_цистерн
 
                 TlStpLabel.Text = "Данные загружены...";
             }
+        }
+
+        public int GetTotalRecords()
+        {
+            try
+            {
+                string TotalRow = "TotalRowCarriage";
+                Rows = DbConnection.DatabseConnection(TotalRow);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return Rows;
         }
     }
 }
