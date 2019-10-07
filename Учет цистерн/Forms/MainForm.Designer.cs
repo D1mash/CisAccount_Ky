@@ -410,6 +410,7 @@
             // 
             this.сНОToolStripMenuItem.Name = "сНОToolStripMenuItem";
             resources.ApplyResources(this.сНОToolStripMenuItem, "сНОToolStripMenuItem");
+            this.сНОToolStripMenuItem.Click += new System.EventHandler(this.СНОToolStripMenuItem_Click);
             // 
             // MainForm
             // 

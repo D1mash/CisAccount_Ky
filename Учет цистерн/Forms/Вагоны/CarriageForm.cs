@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Threading;
 using System.Windows.Forms;
 using Учет_цистерн.Forms.Оповещения;
 
@@ -7,13 +8,30 @@ namespace Учет_цистерн
 {
     public partial class CarriageForm : Form
     {
-        public CarriageForm()
-        {
-            InitializeComponent();
-        }
-
+        private ToolStripProgressBar progBar;
+        private ToolStripLabel TlStpLabel;
         int SelectItemRow;
         int SelectOwnerID;
+
+        public CarriageForm(ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1)
+        {
+            InitializeComponent();
+            progBar = toolStripProgressBar1;
+            TlStpLabel = toolStripLabel1;
+        }
+
+        private void CarriageForm_Load(object sender, EventArgs e)
+        {
+            progBar.Visible = false;
+
+            if (!backgroundWorker1.IsBusy)
+            {
+                progBar.Visible = true;
+                //progBar.Maximum = GetTotalRecords();
+                string GetCarriage = "Select dc.ID, dc.CarNumber [Номер вагона],dc.AXIS [Осность],do.ID [OwnerID], do.Name [Собственник],do.FullName [Собственник полное наименование] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
+                backgroundWorker1.RunWorkerAsync(GetCarriage);
+            }
+        }
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
@@ -99,7 +117,63 @@ namespace Учет_цистерн
                 ExceptionForm exf = new ExceptionForm();
                 exf.label1.Text = "Для редактирования записи, необходимо указать строку!" + ex.Message;
                 exf.Show();
-                //MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message);
+            }
+        }
+
+
+        private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
+            System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
+            string Query = (string)e.Argument;
+            //string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+
+            int i = 1;
+            try
+            {
+                DataTable dataTable = DbConnection.DBConnect(Query);
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    backgroundWorker1.ReportProgress(i);
+                    Thread.Sleep(5);
+                    i++;
+                }
+                e.Result = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            if (!backgroundWorker1.CancellationPending)
+            {
+                //progBar.Value = e.ProgressPercentage;
+                TlStpLabel.Text = "Обработка строки.. " + e.ProgressPercentage.ToString() /*+ " из " + GetTotalRecords()*/;
+            }
+        }
+
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                TlStpLabel.Text = "Ошибка" + e.Error.Message;
+            }
+            else
+            {
+                Application.UseWaitCursor = false;
+                System.Windows.Forms.Cursor.Current = Cursors.Default;
+
+                dataGridView1.DataSource = e.Result;
+                dataGridView1.RowHeadersWidth = 15;
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[3].Visible = false;
+
+                progBar.Visible = false;
+
+                TlStpLabel.Text = "Данные загружены...";
             }
         }
     }

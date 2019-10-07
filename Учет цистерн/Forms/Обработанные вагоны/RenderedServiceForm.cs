@@ -97,30 +97,6 @@ namespace Учет_цистерн
             panel8.Visible = false;
             panel9.Visible = false;
 
-            //string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
-            //DataTable dataTable;
-
-            //var progress = new Progress<ProgressReport>();
-            //progress.ProgressChanged += (o, report) => {
-            //    progBar.Value = report.PercentComplete;
-            //    progBar.Update();
-            //};
-
-            //await Task.Run(() =>
-            //{
-            //    ProcessData(progress);
-            //    dataTable = DbConnection.DBConnect(Refresh);
-            //    source.DataSource = dataTable;
-            //});
-
-            //dataGridView1.DataSource = source;
-            //dataGridView1.Columns[0].Visible = false;
-            //dataGridView1.Columns[1].Visible = false;
-            //dataGridView1.Columns[2].Visible = false;
-            //dataGridView1.Columns[3].Visible = false;
-            //dataGridView1.Columns[4].Visible = false;
-            //dataGridView1.Columns[5].Visible = false;
-            //dataGridView1.Columns[6].Visible = false;
             progBar.Visible = false;
 
             if (!backgroundWorker1.IsBusy)
@@ -132,20 +108,6 @@ namespace Учет_цистерн
             }
             searchToolBar1.SetColumns(dataGridView1.Columns);
         }
-
-        //private Task ProcessData(IProgress<ProgressReport> progress)
-        //{
-        //    int index = 1;
-        //    int totalProcess = GetTotalRecords();
-        //    var progressReport = new ProgressReport();
-        //    return Task.Run(() => {
-        //        for (int i = 0; i < totalProcess; i++)
-        //        {
-        //            progressReport.PercentComplete = index++ * 100 / totalProcess;
-        //            progress.Report(progressReport);
-        //        }
-        //    });
-        //}
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -245,19 +207,6 @@ namespace Учет_цистерн
                     string RefreshGF = "dbo.GetRenderedServiceGlobalFilter '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "','" + yes + "'";
                     backgroundWorker1.RunWorkerAsync(RefreshGF);
                 }
-                
-                //DataTable dt = new DataTable();
-                //dt = DbConnection.DBConnect(RefreshGF);
-                //source.DataSource = dt;
-                //dataGridView1.DataSource = source;
-                //dataGridView1.RowHeadersWidth = 15;
-                //dataGridView1.Columns[0].Visible = false;
-                //dataGridView1.Columns[1].Visible = false;
-                //dataGridView1.Columns[2].Visible = false;
-                //dataGridView1.Columns[3].Visible = false;
-                //dataGridView1.Columns[4].Visible = false;
-                //dataGridView1.Columns[5].Visible = false;
-                //dataGridView1.Columns[6].Visible = false;
             }
             else
             {
@@ -268,18 +217,6 @@ namespace Учет_цистерн
                     string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
                     backgroundWorker1.RunWorkerAsync(Refresh);
                 }
-                //DataTable dataTable = new DataTable();
-                //dataTable = DbConnection.DBConnect(Refresh);
-                //source.DataSource = dataTable;
-                //dataGridView1.DataSource = source;
-                //dataGridView1.RowHeadersWidth = 15;
-                //dataGridView1.Columns[0].Visible = false;
-                //dataGridView1.Columns[1].Visible = false;
-                //dataGridView1.Columns[2].Visible = false;
-                //dataGridView1.Columns[3].Visible = false;
-                //dataGridView1.Columns[4].Visible = false;
-                //dataGridView1.Columns[5].Visible = false;
-                //dataGridView1.Columns[6].Visible = false;
             }
         }
 
@@ -488,7 +425,6 @@ namespace Учет_цистерн
                 progBar.Visible = false;
 
                 TlStpLabel.Text = "Данные загружены...";
-
             }
         }
     }

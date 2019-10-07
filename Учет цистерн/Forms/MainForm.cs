@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Учет_цистерн.Forms.Оповещения;
+using Учет_цистерн.Forms.Услуги;
 
 namespace Учет_цистерн
 {
@@ -89,19 +90,6 @@ namespace Учет_цистерн
             e.Cancel = true;
             ExitForm exit = new ExitForm();
             exit.Show();
-
-            //string message = "Вы действительно хотите закрыть программу?";
-            //string title = "Закрытие программы";
-            //e.Cancel = true;
-            //MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
-            //DialogResult result = MessageBox.Show(message, title, buttons);
-            //if (result == DialogResult.OK)
-            //{
-            //    string UpdateAuditUser = "UPDATE AUDIT_USER SET DATE_OUT = GETDATE(), IS_DEAD = 1 WHERE ID_SESSION = @@spid and (IS_DEAD IS NULL OR DATE_OUT IS NULL)";
-            //    DataTable dataTable = new DataTable();
-            //    dataTable = DbConnection.DBConnect(UpdateAuditUser);
-            //    Application.Exit();
-            //}
         }
 
         private void ToolStripMenuItem1_Product_Click(object sender, EventArgs e)
@@ -162,7 +150,7 @@ namespace Учет_цистерн
 
         private void ToolStripMenuItem_Carriage_Click(object sender, EventArgs e)
         {
-            CarriageForm carriageForm = new CarriageForm();
+            CarriageForm carriageForm = new CarriageForm(this.toolStripProgressBar1, this.toolStripLabel1);
             tabControl1.Show();
             TabPage CarriageTabPage = new TabPage("Вагоны");
             tabControl1.TabPages.Add(CarriageTabPage);
@@ -182,7 +170,6 @@ namespace Учет_цистерн
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //RenderedServiceForm RenderedServiceForm = new RenderedServiceForm();
             RenderedServiceForm RenderedServiceForm = new RenderedServiceForm(this.toolStripProgressBar1, this.toolStripLabel1);
             tabControl1.Show();
             TabPage CarriageTabPage = new TabPage("Обработанные вагоны");
@@ -317,6 +304,20 @@ namespace Учет_цистерн
             ServiceCostForm.FormBorderStyle = FormBorderStyle.None;
             ServiceCostForm.Dock = DockStyle.Fill;
             CarriageTabPage.Controls.Add(ServiceCostForm);
+        }
+
+        private void СНОToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SNOForm SNOForm = new SNOForm();
+            tabControl1.Show();
+            TabPage SNOtabPage = new TabPage("СНО");
+            tabControl1.TabPages.Add(SNOtabPage);
+            tabControl1.SelectedTab = SNOtabPage;
+            SNOForm.TopLevel = false;
+            SNOForm.Visible = true;
+            SNOForm.FormBorderStyle = FormBorderStyle.None;
+            SNOForm.Dock = DockStyle.Fill;
+            SNOtabPage.Controls.Add(SNOForm);
         }
     }
 }
