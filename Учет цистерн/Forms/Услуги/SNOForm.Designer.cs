@@ -202,6 +202,8 @@
             this.dataGridView1.Size = new System.Drawing.Size(1364, 669);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.TimeFilter = false;
+            this.dataGridView1.SortStringChanged += new System.EventHandler(this.DataGridView1_SortStringChanged);
+            this.dataGridView1.FilterStringChanged += new System.EventHandler(this.DataGridView1_FilterStringChanged);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting_1);
             // 

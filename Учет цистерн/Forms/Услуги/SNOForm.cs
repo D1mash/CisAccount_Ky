@@ -14,6 +14,7 @@ namespace Учет_цистерн.Forms.СНО
 {
     public partial class SnoForm : Form
     {
+        BindingSource source = new BindingSource();
         public SnoForm()
         {
             InitializeComponent();
@@ -27,7 +28,8 @@ namespace Учет_цистерн.Forms.СНО
             string GetSNO = "exec dbo.GetSNO";
             DataTable dataTable = new DataTable();
             dataTable = DbConnection.DBConnect(GetSNO);
-            dataGridView1.DataSource = dataTable;
+            source.DataSource = dataTable;
+            dataGridView1.DataSource = source;
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[1].Visible = false;
         }
@@ -186,6 +188,16 @@ namespace Учет_цистерн.Forms.СНО
         private void button4_Click(object sender, EventArgs e)
         {
             GetSNO();
+        }
+
+        private void DataGridView1_SortStringChanged(object sender, EventArgs e)
+        {
+            this.source.Sort = this.dataGridView1.SortString;
+        }
+
+        private void DataGridView1_FilterStringChanged(object sender, EventArgs e)
+        {
+            this.source.Filter = this.dataGridView1.FilterString;
         }
     }
 }
