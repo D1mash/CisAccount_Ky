@@ -4,7 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Учет_цистерн.Forms.Оповещения;
-using Учет_цистерн.Forms.Услуги;
+using Учет_цистерн.Forms.СНО;
 
 namespace Учет_цистерн
 {
@@ -308,16 +308,16 @@ namespace Учет_цистерн
 
         private void СНОToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SNOForm SNOForm = new SNOForm();
+            SnoForm SnoForm = new SnoForm();
             tabControl1.Show();
-            TabPage SNOtabPage = new TabPage("СНО");
-            tabControl1.TabPages.Add(SNOtabPage);
-            tabControl1.SelectedTab = SNOtabPage;
-            SNOForm.TopLevel = false;
-            SNOForm.Visible = true;
-            SNOForm.FormBorderStyle = FormBorderStyle.None;
-            SNOForm.Dock = DockStyle.Fill;
-            SNOtabPage.Controls.Add(SNOForm);
+            TabPage SnotabPage = new TabPage("СНО");
+            tabControl1.TabPages.Add(SnotabPage);
+            tabControl1.SelectedTab = SnotabPage;
+            SnoForm.TopLevel = false;
+            SnoForm.Visible = true;
+            SnoForm.FormBorderStyle = FormBorderStyle.None;
+            SnoForm.Dock = DockStyle.Fill;
+            SnotabPage.Controls.Add(SnoForm);
         }
 
     }

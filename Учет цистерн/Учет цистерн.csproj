@@ -166,11 +166,23 @@
     <Compile Include="Forms\Логин\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Услуги\SNOForm.cs">
+    <Compile Include="Forms\Услуги\SnoAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Услуги\SNOForm.Designer.cs">
-      <DependentUpon>SNOForm.cs</DependentUpon>
+    <Compile Include="Forms\Услуги\SnoAddForm.Designer.cs">
+      <DependentUpon>SnoAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Услуги\SnoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Услуги\SnoForm.Designer.cs">
+      <DependentUpon>SnoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Услуги\SnoUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Услуги\SnoUpdateForm.Designer.cs">
+      <DependentUpon>SnoUpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProgressReport.cs" />
@@ -284,8 +296,14 @@
     <EmbeddedResource Include="Forms\Логин\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Услуги\SNOForm.resx">
-      <DependentUpon>SNOForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Услуги\SnoAddForm.resx">
+      <DependentUpon>SnoAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Услуги\SnoForm.resx">
+      <DependentUpon>SnoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Услуги\SnoUpdateForm.resx">
+      <DependentUpon>SnoUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
