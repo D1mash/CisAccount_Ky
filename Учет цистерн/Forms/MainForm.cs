@@ -319,5 +319,6 @@ namespace Учет_цистерн
             SNOForm.Dock = DockStyle.Fill;
             SNOtabPage.Controls.Add(SNOForm);
         }
+
     }
 }

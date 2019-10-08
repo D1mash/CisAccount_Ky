@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data;
 using System.Threading;
 using System.Windows.Forms;
@@ -13,6 +14,14 @@ namespace Учет_цистерн
         int SelectItemRow;
         int SelectOwnerID;
         int Rows;
+        
+        public BackgroundWorker formWorker
+        {
+            get
+            {
+                return backgroundWorker1;
+            }
+        }
 
         public CarriageForm(ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1)
         {
@@ -40,7 +49,6 @@ namespace Учет_цистерн
             carriageAddForm.Show();
         }
 
-        //Нужно переписать этот метод
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
             string GetCarriage = "Select dc.ID, dc.CarNumber [Номер вагона],dc.AXIS [Осность],do.ID [OwnerID], do.Name [Собственник],do.FullName [Собственник полное наименование] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
@@ -132,6 +140,7 @@ namespace Учет_цистерн
             int i = 1;
             try
             {
+              
                 DataTable dataTable = DbConnection.DBConnect(Query);
                 foreach (DataRow dr in dataTable.Rows)
                 {
@@ -140,6 +149,15 @@ namespace Учет_цистерн
                     i++;
                 }
                 e.Result = dataTable;
+
+                if (backgroundWorker1.CancellationPending)
+                {
+                    // Set the e.Cancel flag so that the WorkerCompleted event
+                    // knows that the process was cancelled.
+                    e.Cancel = true;
+                    backgroundWorker1.ReportProgress(0);
+                    return;
+                }
             }
             catch (Exception ex)
             {
@@ -158,7 +176,11 @@ namespace Учет_цистерн
 
         private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            if (e.Error != null)
+            if (e.Cancelled)
+            {
+                TlStpLabel.Text = "Готов";
+            }
+            else if (e.Error != null)
             {
                 TlStpLabel.Text = "Ошибка" + e.Error.Message;
             }
@@ -190,6 +212,20 @@ namespace Учет_цистерн
                 MessageBox.Show(ex.Message);
             }
             return Rows;
+        }
+          
+        public void Button2_Click(object sender, EventArgs e)
+        {
+            if (backgroundWorker1.IsBusy)
+            {
+                // Stop the Background Thread execution
+                Application.UseWaitCursor = false;
+                System.Windows.Forms.Cursor.Current = Cursors.Default;
+                backgroundWorker1.CancelAsync();
+                progBar.Value = 0;
+                progBar.Visible = false;
+                TlStpLabel.Text = "Пользователь умышленно отменил";
+            }
         }
     }
 }
