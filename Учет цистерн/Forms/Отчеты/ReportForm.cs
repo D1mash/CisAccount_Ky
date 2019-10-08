@@ -33,6 +33,7 @@ namespace Учет_цистерн
                 dataGridView1.DataSource = source;
                 dataGridView1.Columns[0].Visible = false;
                 progressBar.Maximum = TotalRow(dt);
+                toolStripLabel1.Text = TotalRow(dt).ToString();
             }
             else
             {
@@ -43,6 +44,7 @@ namespace Учет_цистерн
                 dataGridView1.DataSource = source;
                 dataGridView1.Columns[0].Visible = false;
                 progressBar.Maximum = TotalRow(dataTable);
+                toolStripLabel1.Text = TotalRow(dataTable).ToString();
             }
         }
 
@@ -58,12 +60,6 @@ namespace Учет_цистерн
 
         private void ReportForm_Load(object sender, EventArgs e)
         {
-            //String Station = "Select * from d__Station";
-            //DataTable StationDT = DbConnection.DBConnect(Station);
-            //comboBox1.DataSource = StationDT;
-            //comboBox1.DisplayMember = "Name";
-            //comboBox1.ValueMember = "ID";
-
             String Owner = "Select * from d__Owner";
             DataTable OwnerDT = DbConnection.DBConnect(Owner);
             var dr = OwnerDT.NewRow();
@@ -98,60 +94,6 @@ namespace Учет_цистерн
                 exceptionForm.label1.Text = "Обновите данные!";
                 exceptionForm.Show();
             }
-            //Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
-            //Microsoft.Office.Interop.Excel.Workbook workbook = app.Workbooks.Add(Type.Missing);
-            //Microsoft.Office.Interop.Excel.Worksheet worksheet = null;
-
-            //try
-            //{
-            //    worksheet = workbook.ActiveSheet;
-            //    worksheet.Name = "Обработанные вагоны";
-
-            //    int cellRowIndex = 1;
-            //    int cellColumnIndex = 1;
-
-            //    for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-            //    {
-            //        for (int j = 1; j < dataGridView1.Columns.Count; j++)
-            //        {
-            //            // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check.
-            //            if (cellRowIndex == 1)
-            //            {
-            //                worksheet.Cells[cellRowIndex, cellColumnIndex] = dataGridView1.Columns[j].HeaderText;
-            //            }
-            //            else
-            //            {
-            //                worksheet.Cells[cellRowIndex, cellColumnIndex] = dataGridView1.Rows[i].Cells[j].Value.ToString();
-            //            }
-            //            cellColumnIndex++;
-            //        }
-            //        cellColumnIndex = 1;
-            //        cellRowIndex++;
-            //    }
-
-            //    SaveFileDialog saveFileDialog = new SaveFileDialog();
-            //    saveFileDialog.Filter = "Excel file (*.xlsx)|*.xlsx|All files(*.*)|*.*";
-            //    saveFileDialog.FilterIndex = 2;
-
-            //    if(saveFileDialog.ShowDialog() == DialogResult.OK)
-            //    {
-            //        workbook.SaveAs(saveFileDialog.FileName);
-            //        MessageBox.Show("Успешно выгружен");
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    ExceptionForm exf = new ExceptionForm();
-            //    exf.label1.Text = ex.Message;
-            //    exf.Show();
-            //}
-            //finally
-            //{
-            //    app.Quit();
-            //    workbook = null;
-            //    app = null;
-            //}
         }
 
         struct DataParametr

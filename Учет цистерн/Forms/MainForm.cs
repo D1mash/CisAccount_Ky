@@ -320,5 +320,16 @@ namespace Учет_цистерн
             SnotabPage.Controls.Add(SnoForm);
         }
 
+        private void TabControl1_TabClosing(object sender, TabControlCancelEventArgs e)
+        {
+            
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            CarriageForm carriageForm = new CarriageForm(null, null);
+            carriageForm.formWorker.CancelAsync();
+            toolStripLabel1.Text = "Stopped";
+        }
     }
 }
