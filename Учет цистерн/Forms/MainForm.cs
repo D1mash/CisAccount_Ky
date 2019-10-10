@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -55,7 +56,6 @@ namespace Учет_цистерн
             DbConnection.DBConnect(Insert);
             GetFilter();
         }
-
 
         private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -150,7 +150,7 @@ namespace Учет_цистерн
 
         private void ToolStripMenuItem_Carriage_Click(object sender, EventArgs e)
         {
-            CarriageForm carriageForm = new CarriageForm(this.toolStripProgressBar1, this.toolStripLabel1);
+            CarriageForm carriageForm = new CarriageForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.button6);
             tabControl1.Show();
             TabPage CarriageTabPage = new TabPage("Вагоны");
             tabControl1.TabPages.Add(CarriageTabPage);
@@ -320,16 +320,5 @@ namespace Учет_цистерн
             SnotabPage.Controls.Add(SnoForm);
         }
 
-        private void TabControl1_TabClosing(object sender, TabControlCancelEventArgs e)
-        {
-            
-        }
-
-        private void Button5_Click(object sender, EventArgs e)
-        {
-            CarriageForm carriageForm = new CarriageForm(null, null);
-            carriageForm.formWorker.CancelAsync();
-            toolStripLabel1.Text = "Stopped";
-        }
     }
 }

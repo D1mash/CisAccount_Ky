@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Threading;
 using System.Windows.Forms;
@@ -11,36 +10,25 @@ namespace Учет_цистерн
     {
         private ToolStripProgressBar progBar;
         private ToolStripLabel TlStpLabel;
+        private Button btn1;
+        private Button btn2;
+        private Button btn3;
+        private Button btn4;
+        private Button btn6;
         int SelectItemRow;
         int SelectOwnerID;
         int Rows;
-        
-        public BackgroundWorker formWorker
-        {
-            get
-            {
-                return backgroundWorker1;
-            }
-        }
 
-        public CarriageForm(ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1)
+        public CarriageForm(ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1, Button button1, Button button2, Button button3, Button button4, Button button6)
         {
             InitializeComponent();
             progBar = toolStripProgressBar1;
             TlStpLabel = toolStripLabel1;
-        }
-
-        private void CarriageForm_Load(object sender, EventArgs e)
-        {
-            progBar.Visible = false;
-
-            if (!backgroundWorker1.IsBusy)
-            {
-                progBar.Visible = true;
-                progBar.Maximum = GetTotalRecords();
-                string GetCarriage = "Select dc.ID, dc.CarNumber [Номер вагона],dc.AXIS [Осность],do.ID [OwnerID], do.Name [Собственник],do.FullName [Собственник полное наименование] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
-                backgroundWorker1.RunWorkerAsync(GetCarriage);
-            }
+            btn1 = button1;
+            btn2 = button2;
+            btn3 = button3;
+            btn4 = button4;
+            btn6 = button6;
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -51,12 +39,26 @@ namespace Учет_цистерн
 
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
-            string GetCarriage = "Select dc.ID, dc.CarNumber [Номер вагона],dc.AXIS [Осность],do.ID [OwnerID], do.Name [Собственник],do.FullName [Собственник полное наименование] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(GetCarriage);
-            dataGridView1.DataSource = dataTable;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
+            //string GetCarriage = "Select dc.ID, dc.CarNumber [Номер вагона],dc.AXIS [Осность],do.ID [OwnerID], do.Name [Собственник],do.FullName [Собственник полное наименование] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
+            //DataTable dataTable = new DataTable();
+            //dataTable = DbConnection.DBConnect(GetCarriage);
+            //dataGridView1.DataSource = dataTable;
+            //dataGridView1.Columns[0].Visible = false;
+            //dataGridView1.Columns[3].Visible = false;
+            progBar.Visible = false;
+
+            if (!backgroundWorker1.IsBusy)
+            {
+                progBar.Visible = true;
+                progBar.Maximum = GetTotalRecords();
+                string GetCarriage = "Select dc.ID, dc.CarNumber [Номер вагона],dc.AXIS [Осность],do.ID [OwnerID], do.Name [Собственник],do.FullName [Собственник полное наименование] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
+                btn1.Enabled = false;
+                btn2.Enabled = false;
+                btn3.Enabled = false;
+                btn4.Enabled = false;
+                btn6.Enabled = false;
+                backgroundWorker1.RunWorkerAsync(GetCarriage);
+            }
         }
 
 
@@ -96,7 +98,7 @@ namespace Учет_цистерн
                 string Delete = "delete from d__Carriage where ID = " + SelectItemRow;
                 DataTable dt = new DataTable();
                 dt = DbConnection.DBConnect(CheckReference);
-                if(dt.Rows.Count == 0)
+                if (dt.Rows.Count == 0)
                 {
                     DbConnection.DBConnect(Delete);
                     MessageBox.Show("Запись удалена!");
@@ -140,7 +142,7 @@ namespace Учет_цистерн
             int i = 1;
             try
             {
-              
+
                 DataTable dataTable = DbConnection.DBConnect(Query);
                 foreach (DataRow dr in dataTable.Rows)
                 {
@@ -195,6 +197,11 @@ namespace Учет_цистерн
                 dataGridView1.Columns[3].Visible = false;
 
                 progBar.Visible = false;
+                btn1.Enabled = true;
+                btn2.Enabled = true;
+                btn3.Enabled = true;
+                btn4.Enabled = true;
+                btn6.Enabled = true;
 
                 TlStpLabel.Text = "Данные загружены...";
             }
@@ -212,20 +219,6 @@ namespace Учет_цистерн
                 MessageBox.Show(ex.Message);
             }
             return Rows;
-        }
-          
-        public void Button2_Click(object sender, EventArgs e)
-        {
-            if (backgroundWorker1.IsBusy)
-            {
-                // Stop the Background Thread execution
-                Application.UseWaitCursor = false;
-                System.Windows.Forms.Cursor.Current = Cursors.Default;
-                backgroundWorker1.CancelAsync();
-                progBar.Value = 0;
-                progBar.Visible = false;
-                TlStpLabel.Text = "Пользователь умышленно отменил";
-            }
         }
     }
 }
