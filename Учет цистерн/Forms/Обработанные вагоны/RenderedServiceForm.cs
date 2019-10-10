@@ -12,6 +12,11 @@ namespace Учет_цистерн
     {
         private ToolStripProgressBar progBar;
         private ToolStripLabel TlStpLabel;
+        private Button btn1;
+        private Button btn2;
+        private Button btn3;
+        private Button btn4;
+        private Button btn6;
         int SelectItemRow;
         int SelectBrigadeID;
         int SelectCarriageID;
@@ -20,15 +25,21 @@ namespace Учет_цистерн
         int SelectServiceCostID;
         int Rows;
 
+
         //DataTable dataTable = new DataTable();
         BindingSource source = new BindingSource();
 
-        public RenderedServiceForm(ToolStripProgressBar progressBar1, ToolStripLabel toolStripLabel)
+        public RenderedServiceForm(ToolStripProgressBar progressBar1, ToolStripLabel toolStripLabel, Button button1, Button button2, Button button3, Button button4, Button button6)
         {
             InitializeComponent();
             FillCombobox();
             progBar = progressBar1;
             TlStpLabel = toolStripLabel;
+            btn1 = button1;
+            btn2 = button2;
+            btn3 = button3;
+            btn4 = button4;
+            btn6 = button6;
         }
                 
         private void FillCombobox()
@@ -99,14 +110,14 @@ namespace Учет_цистерн
 
             progBar.Visible = false;
 
-            if (!backgroundWorker1.IsBusy)
-            {
-                progBar.Visible = true;
-                progBar.Maximum = GetTotalRecords();
-                string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
-                backgroundWorker1.RunWorkerAsync(Refresh);
-            }
-            searchToolBar1.SetColumns(dataGridView1.Columns);
+            //if (!backgroundWorker1.IsBusy)
+            //{
+            //    progBar.Visible = true;
+            //    progBar.Maximum = GetTotalRecords();
+            //    string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
+            //    backgroundWorker1.RunWorkerAsync(Refresh);
+            //}
+            
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -202,6 +213,11 @@ namespace Учет_цистерн
                 if (!backgroundWorker1.IsBusy)
                 {
                     int yes = 1;
+                    btn1.Enabled = false;
+                    btn2.Enabled = false;
+                    btn3.Enabled = false;
+                    btn4.Enabled = false;
+                    btn6.Enabled = false;
                     progBar.Visible = true;
                     progBar.Maximum = GetTotalRecords();
                     string RefreshGF = "dbo.GetRenderedServiceGlobalFilter '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "','" + yes + "'";
@@ -212,12 +228,19 @@ namespace Учет_цистерн
             {
                 if (!backgroundWorker1.IsBusy)
                 {
+                    btn1.Enabled = false;
+                    btn2.Enabled = false;
+                    btn3.Enabled = false;
+                    btn4.Enabled = false;
+                    btn6.Enabled = false;
                     progBar.Visible = true;
                     progBar.Maximum = GetTotalRecords();
                     string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
                     backgroundWorker1.RunWorkerAsync(Refresh);
                 }
             }
+
+            searchToolBar1.SetColumns(dataGridView1.Columns);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -423,6 +446,11 @@ namespace Учет_цистерн
                 dataGridView1.Columns[6].Visible = false;
 
                 progBar.Visible = false;
+                btn1.Enabled = true;
+                btn2.Enabled = true;
+                btn3.Enabled = true;
+                btn4.Enabled = true;
+                btn6.Enabled = true;
 
                 TlStpLabel.Text = "Данные загружены...";
             }
