@@ -2,12 +2,14 @@
 using System.Data;
 using System.Threading;
 using System.Windows.Forms;
+using TradeWright.UI.Forms;
 using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
     public partial class CarriageForm : Form
     {
+        private TabControlExtra tabControlExtra;
         private ToolStripProgressBar progBar;
         private ToolStripLabel TlStpLabel;
         private Button btn1;
@@ -19,7 +21,7 @@ namespace Учет_цистерн
         int SelectOwnerID;
         int Rows;
 
-        public CarriageForm(ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1, Button button1, Button button2, Button button3, Button button4, Button button6)
+        public CarriageForm(ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1, Button button1, Button button2, Button button3, Button button4, Button button6, TradeWright.UI.Forms.TabControlExtra tabControl1)
         {
             InitializeComponent();
             progBar = toolStripProgressBar1;
@@ -29,6 +31,7 @@ namespace Учет_цистерн
             btn3 = button3;
             btn4 = button4;
             btn6 = button6;
+            tabControlExtra = tabControl1;
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -57,6 +60,11 @@ namespace Учет_цистерн
                 btn3.Enabled = false;
                 btn4.Enabled = false;
                 btn6.Enabled = false;
+                btnAdd.Enabled = false;
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+                btnRefresh.Enabled = false;
+                tabControlExtra.DisplayStyleProvider.ShowTabCloser = false;
                 backgroundWorker1.RunWorkerAsync(GetCarriage);
             }
         }
@@ -147,7 +155,7 @@ namespace Учет_цистерн
                 foreach (DataRow dr in dataTable.Rows)
                 {
                     backgroundWorker1.ReportProgress(i);
-                    Thread.Sleep(2);
+                    Thread.Sleep(1);
                     i++;
                 }
                 e.Result = dataTable;
@@ -202,7 +210,12 @@ namespace Учет_цистерн
                 btn3.Enabled = true;
                 btn4.Enabled = true;
                 btn6.Enabled = true;
+                btnAdd.Enabled = true;
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+                btnRefresh.Enabled = true;
 
+                tabControlExtra.DisplayStyleProvider.ShowTabCloser = true;
                 TlStpLabel.Text = "Данные загружены...";
             }
         }

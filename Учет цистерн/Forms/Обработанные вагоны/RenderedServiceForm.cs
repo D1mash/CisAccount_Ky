@@ -4,12 +4,14 @@ using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TradeWright.UI.Forms;
 using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
     public partial class RenderedServiceForm : Form
     {
+        private TabControlExtra tabControlExtra;
         private ToolStripProgressBar progBar;
         private ToolStripLabel TlStpLabel;
         private Button btn1;
@@ -29,7 +31,7 @@ namespace Учет_цистерн
         //DataTable dataTable = new DataTable();
         BindingSource source = new BindingSource();
 
-        public RenderedServiceForm(ToolStripProgressBar progressBar1, ToolStripLabel toolStripLabel, Button button1, Button button2, Button button3, Button button4, Button button6)
+        public RenderedServiceForm(ToolStripProgressBar progressBar1, ToolStripLabel toolStripLabel, Button button1, Button button2, Button button3, Button button4, Button button6, TabControlExtra tabControl1)
         {
             InitializeComponent();
             FillCombobox();
@@ -40,6 +42,7 @@ namespace Учет_цистерн
             btn3 = button3;
             btn4 = button4;
             btn6 = button6;
+            tabControlExtra = tabControl1;
         }
                 
         private void FillCombobox()
@@ -218,6 +221,7 @@ namespace Учет_цистерн
                     btn3.Enabled = false;
                     btn4.Enabled = false;
                     btn6.Enabled = false;
+                    tabControlExtra.DisplayStyleProvider.ShowTabCloser = false;
                     progBar.Visible = true;
                     progBar.Maximum = GetTotalRecords();
                     string RefreshGF = "dbo.GetRenderedServiceGlobalFilter '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "','" + yes + "'";
@@ -233,6 +237,11 @@ namespace Учет_цистерн
                     btn3.Enabled = false;
                     btn4.Enabled = false;
                     btn6.Enabled = false;
+                    button1.Enabled = false;
+                    button2.Enabled = false;
+                    button3.Enabled = false;
+                    button4.Enabled = false;
+                    tabControlExtra.DisplayStyleProvider.ShowTabCloser = false;
                     progBar.Visible = true;
                     progBar.Maximum = GetTotalRecords();
                     string Refresh = "dbo.GetRenderedService '" + dateTimePicker2.Value.Date.ToString() + "','" + dateTimePicker4.Value.Date.ToString() + "'";
@@ -451,7 +460,11 @@ namespace Учет_цистерн
                 btn3.Enabled = true;
                 btn4.Enabled = true;
                 btn6.Enabled = true;
-
+                button1.Enabled = true;
+                button2.Enabled = true;
+                button3.Enabled = true;
+                button4.Enabled = true;
+                tabControlExtra.DisplayStyleProvider.ShowTabCloser = true;
                 TlStpLabel.Text = "Данные загружены...";
             }
         }

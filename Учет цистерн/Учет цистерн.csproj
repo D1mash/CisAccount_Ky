@@ -359,6 +359,7 @@
     <None Include="BatysDataSet1.xss">
       <DependentUpon>BatysDataSet1.xsd</DependentUpon>
     </None>
+    <None Include="Forms\ReportTemplates\Реестр  за арендованных и  собственных вагон-цистерн компании.xls" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -428,5 +429,6 @@
   <ItemGroup>
     <None Include="Resources\exit48.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

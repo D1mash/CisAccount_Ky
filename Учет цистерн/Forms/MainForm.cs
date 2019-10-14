@@ -150,7 +150,7 @@ namespace Учет_цистерн
 
         private void ToolStripMenuItem_Carriage_Click(object sender, EventArgs e)
         {
-            CarriageForm carriageForm = new CarriageForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.button6);
+            CarriageForm carriageForm = new CarriageForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.button6, this.tabControl1);
             tabControl1.Show();
             TabPage CarriageTabPage = new TabPage("Вагоны");
             tabControl1.TabPages.Add(CarriageTabPage);
@@ -160,7 +160,6 @@ namespace Учет_цистерн
             carriageForm.FormBorderStyle = FormBorderStyle.None;
             carriageForm.Dock = DockStyle.Fill;
             CarriageTabPage.Controls.Add(carriageForm);
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -170,7 +169,7 @@ namespace Учет_цистерн
 
         private void button4_Click(object sender, EventArgs e)
         {
-            RenderedServiceForm RenderedServiceForm = new RenderedServiceForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.button6);
+            RenderedServiceForm RenderedServiceForm = new RenderedServiceForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.button6, this.tabControl1);
             tabControl1.Show();
             TabPage CarriageTabPage = new TabPage("Обработанные вагоны");
             tabControl1.TabPages.Add(CarriageTabPage);
