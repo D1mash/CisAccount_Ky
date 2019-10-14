@@ -105,6 +105,7 @@ namespace Учет_цистерн
 
         private void BackgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
+            string path = "D:/Project/mmmadi/CisAccount/Учет цистерн/Forms/ReportTemplates/Реестр  за арендованных и  собственных вагон-цистерн компании.xls";
             string fileName = ((DataParametr)e.Argument).FileName;
             Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Workbook workbook = app.Workbooks.Add(Type.Missing);
@@ -152,6 +153,7 @@ namespace Учет_цистерн
             {
                 Thread.Sleep(1);
                 LblStatus.Text = "Данные были успешно экспортированы";
+                progressBar.Value = 0;
             }
         }
     }
