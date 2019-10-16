@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Учет_цистерн.Forms.Оповещения;
-using Учет_цистерн.Forms.СНО;
 
 namespace Учет_цистерн.Forms.СНО
 {
@@ -161,26 +154,17 @@ namespace Учет_цистерн.Forms.СНО
             }
             catch (Exception ex)
             {
-                ExceptionForm exf = new ExceptionForm();
-                exf.label1.Text = "Для редактирования записи, необходимо указать строку! " + ex.Message;
-                exf.Show();
-                //MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message);
+                MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message,"",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string message = "Вы действительно хотите удалить эту запись?";
-            string title = "Удаление";
-            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.OK)
+            if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 string Delete = "delete from d__SNO where ID = " + SelectItemRow;
                 DbConnection.DBConnect(Delete);
-                OkForm ok = new OkForm();
-                ok.label1.Text = "Запись удалена!";
-                ok.Show();
+                MessageBox.Show("Запись удалена!", "",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 GetSNO();
             }
         }

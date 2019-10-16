@@ -2,7 +2,6 @@
 using System.Data;
 using System.Threading;
 using System.Windows.Forms;
-using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -90,9 +89,7 @@ namespace Учет_цистерн
             }
             else
             {
-                ExceptionForm exceptionForm = new ExceptionForm();
-                exceptionForm.label1.Text = "Обновите данные!";
-                exceptionForm.Show();
+                MessageBox.Show("Обновите данные!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

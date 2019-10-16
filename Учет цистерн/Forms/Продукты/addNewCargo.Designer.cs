@@ -33,21 +33,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.qHanglingBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.batysDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.batysDataSet1 = new Учет_цистерн.BatysDataSet1();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.batysDataSet = new Учет_цистерн.BatysDataSet();
-            this.batysDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.batysDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.qHanglingTableAdapter = new Учет_цистерн.BatysDataSet1TableAdapters.qHanglingTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.qHanglingBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSet1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSetBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -77,7 +64,6 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.DataSource = this.qHanglingBindingSource;
             this.comboBox1.DisplayMember = "Name";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(149, 65);
@@ -85,21 +71,6 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 3;
             this.comboBox1.ValueMember = "ID";
-            // 
-            // qHanglingBindingSource
-            // 
-            this.qHanglingBindingSource.DataMember = "qHangling";
-            this.qHanglingBindingSource.DataSource = this.batysDataSet1BindingSource;
-            // 
-            // batysDataSet1BindingSource
-            // 
-            this.batysDataSet1BindingSource.DataSource = this.batysDataSet1;
-            this.batysDataSet1BindingSource.Position = 0;
-            // 
-            // batysDataSet1
-            // 
-            this.batysDataSet1.DataSetName = "BatysDataSet1";
-            this.batysDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // button1
             // 
@@ -121,25 +92,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // batysDataSet
-            // 
-            this.batysDataSet.DataSetName = "BatysDataSet";
-            this.batysDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // batysDataSetBindingSource
-            // 
-            this.batysDataSetBindingSource.DataSource = this.batysDataSet;
-            this.batysDataSetBindingSource.Position = 0;
-            // 
-            // batysDataSetBindingSource1
-            // 
-            this.batysDataSetBindingSource1.DataSource = this.batysDataSet;
-            this.batysDataSetBindingSource1.Position = 0;
-            // 
-            // qHanglingTableAdapter
-            // 
-            this.qHanglingTableAdapter.ClearBeforeFill = true;
-            // 
             // addNewCargo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,12 +106,6 @@
             this.Name = "addNewCargo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "addNewCargo";
-            ((System.ComponentModel.ISupportInitialize)(this.qHanglingBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSet1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSetBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,12 +119,5 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private BatysDataSet batysDataSet;
-        private System.Windows.Forms.BindingSource batysDataSetBindingSource;
-        private System.Windows.Forms.BindingSource batysDataSetBindingSource1;
-        private System.Windows.Forms.BindingSource batysDataSet1BindingSource;
-        private BatysDataSet1 batysDataSet1;
-        private System.Windows.Forms.BindingSource qHanglingBindingSource;
-        private BatysDataSet1TableAdapters.qHanglingTableAdapter qHanglingTableAdapter;
     }
 }

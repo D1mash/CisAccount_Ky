@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using Учет_цистерн.Forms.Оповещения;
+using Учет_цистерн.Forms.заявки_на_обработку;
 using Учет_цистерн.Forms.СНО;
 
 namespace Учет_цистерн
@@ -88,8 +87,13 @@ namespace Учет_цистерн
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            ExitForm exit = new ExitForm();
-            exit.Show();
+            if (MessageBox.Show("Завершить работу с программой?", "Завершение программы", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                string UpdateAuditUser = "UPDATE AUDIT_USER SET DATE_OUT = GETDATE(), IS_DEAD = 1 WHERE ID_SESSION = @@spid and (IS_DEAD IS NULL OR DATE_OUT IS NULL)";
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(UpdateAuditUser);
+                Environment.Exit(0);
+            }
         }
 
         private void ToolStripMenuItem1_Product_Click(object sender, EventArgs e)
@@ -319,5 +323,19 @@ namespace Учет_цистерн
             SnotabPage.Controls.Add(SnoForm);
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            OrderAllForm orderAllForm = new OrderAllForm(this.tabControl1);
+            tabControl1.Show();
+            TabPage OrderAllTabPage = new TabPage("Заявки на обработку");
+            tabControl1.TabPages.Add(OrderAllTabPage);
+            OrderAllTabPage.Name = "OrderAllTabPage";
+            tabControl1.SelectedTab = OrderAllTabPage;
+            orderAllForm.TopLevel = false;
+            orderAllForm.Visible = true;
+            orderAllForm.FormBorderStyle = FormBorderStyle.None;
+            orderAllForm.Dock = DockStyle.Fill;
+            OrderAllTabPage.Controls.Add(orderAllForm);
+        }
     }
 }

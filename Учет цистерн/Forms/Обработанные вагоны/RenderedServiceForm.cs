@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TradeWright.UI.Forms;
-using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -256,9 +255,7 @@ namespace Учет_цистерн
         {
             string Add = "exec dbo.FillRenderedService '" + dateTimePicker1.Value.Date.ToString() + "'," + comboBox3.SelectedValue.ToString() + "," + comboBox1.SelectedValue.ToString() + ",'" + textBox2.Text.Trim() + "','" + textBox1.Text.Trim() + "'," + comboBox6.SelectedValue.ToString() + "," + comboBox4.SelectedValue.ToString() + "," + comboBox5.SelectedValue.ToString() + ";";
             DbConnection.DBConnect(Add);
-            OkForm ok = new OkForm();
-            ok.label1.Text = "Запись добавлена!";
-            ok.Show();            
+            MessageBox.Show("Запись добавлена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);         
         }
 
         private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
@@ -300,9 +297,7 @@ namespace Учет_цистерн
             }
             catch (Exception ex)
             {
-                ExceptionForm exf = new ExceptionForm();
-                exf.label1.Text = "Для редактирования записи, необходимо указать строку! " + ex.Message;
-                exf.Show();                
+                MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message,"",MessageBoxButtons.OK,MessageBoxIcon.Warning);            
             }
         }
 
@@ -310,9 +305,7 @@ namespace Учет_цистерн
         {
             string Delete = "delete from d__RenderedService where ID = " + SelectItemRow;
             DbConnection.DBConnect(Delete);
-            OkForm ok = new OkForm();
-            ok.label1.Text = "Запись Удалена!";
-            ok.Show();
+            MessageBox.Show("Запись Удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
@@ -325,9 +318,7 @@ namespace Учет_цистерн
             }
             catch (Exception ex)
             {
-                ExceptionForm exf = new ExceptionForm();
-                exf.label1.Text = ex.Message;
-                exf.Show();            
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);          
             }
         }
 

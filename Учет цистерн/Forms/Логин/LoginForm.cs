@@ -42,7 +42,7 @@ namespace Учет_цистерн
             }
             else
             {
-                MessageBox.Show("Неправильные имя пользователя или пароль.");
+                MessageBox.Show("Неправильные имя пользователя или пароль!","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 textBox2.Clear();
             }
         }

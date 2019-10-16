@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -34,10 +33,7 @@ namespace Учет_цистерн
             string FillServiceCost = "exec dbo.FillServiceCost '" + textBox2.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + textBox1.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString();
             DbConnection.DBConnect(FillServiceCost);
             this.Close();
-            OkForm ok = new OkForm();
-            ok.label1.Text = "Запись добавлена!";
-            ok.Show();
-            //MessageBox.Show("Запись добавлена!");
+            MessageBox.Show("Запись добавлена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
     }
 }

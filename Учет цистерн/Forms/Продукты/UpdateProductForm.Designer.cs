@@ -31,15 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.batysDataSet11 = new Учет_цистерн.BatysDataSet1();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.qHanglingTableAdapter1 = new Учет_цистерн.BatysDataSet1TableAdapters.qHanglingTableAdapter();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSet11)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -60,16 +55,6 @@
             this.comboBox1.TabIndex = 4;
             this.comboBox1.ValueMember = "ID";
             // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataMember = "qHangling";
-            this.bindingSource1.DataSource = this.batysDataSet11;
-            // 
-            // batysDataSet11
-            // 
-            this.batysDataSet11.DataSetName = "BatysDataSet1";
-            this.batysDataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(257, 104);
@@ -89,10 +74,6 @@
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // qHanglingTableAdapter1
-            // 
-            this.qHanglingTableAdapter1.ClearBeforeFill = true;
             // 
             // checkBox1
             // 
@@ -131,8 +112,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateProductForm";
             this.Load += new System.EventHandler(this.UpdateProductForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSet11)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,9 +123,7 @@
         public System.Windows.Forms.ComboBox comboBox1;
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Button button2;
-        private BatysDataSet1 batysDataSet11;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private BatysDataSet1TableAdapters.qHanglingTableAdapter qHanglingTableAdapter1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
     }

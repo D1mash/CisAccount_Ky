@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using Учет_цистерн.Forms.Оповещения;
 
 using System.Windows.Forms;
 
@@ -30,9 +29,7 @@ namespace Учет_цистерн.Forms.СНО
         {
             String FillSNO = "exec dbo.FillSNO "+comboBox1.SelectedValue.ToString()+","+textBox1.Text.Replace(",", ".") + ","+textBox2.Text.Replace(",", ".") + ","+textBox3.Text.Replace(",", ".") + ","+textBox4.Text.Replace(",", ".") + ","+textBox5.Text.Replace(",", ".") + ",'"+dateTimePicker1.Value.Date.ToString()+"'";
             DataTable dT = DbConnection.DBConnect(FillSNO);
-            OkForm ok = new OkForm();
-            ok.label1.Text = "Запись добавлена!";
-            ok.Show();
+            MessageBox.Show("Запись добавлена!", "",MessageBoxButtons.OK,MessageBoxIcon.Information);
             this.Close();
         }
 

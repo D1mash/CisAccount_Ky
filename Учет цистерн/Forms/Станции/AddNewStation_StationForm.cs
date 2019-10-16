@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -24,17 +23,11 @@ namespace Учет_цистерн
             {
                 DbConnection.DBConnect(FillStation);
                 this.Close();
-                OkForm ok = new OkForm();
-                ok.label1.Text = "Запись добавлена!";
-                ok.Show();
-                //MessageBox.Show("Запись добавлена!");
+                MessageBox.Show("Запись добавлена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
-                ExceptionForm exf = new ExceptionForm();
-                exf.label1.Text = "Станция с кодом: " + textBox_Add_Code_StationForm.Text.Trim() + " имеется в справочнике";
-                exf.Show();
-                //MessageBox.Show("Станция с кодом: " + textBox_Add_Code_StationForm.Text.Trim() + " имеется в справочнике");
+                MessageBox.Show("Станция с кодом: " + textBox_Add_Code_StationForm.Text.Trim() + " имеется в справочнике","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
 

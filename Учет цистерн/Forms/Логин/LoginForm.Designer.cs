@@ -33,9 +33,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.batysDataSet = new Учет_цистерн.BatysDataSet();
-            this.usersTableAdapter = new Учет_цистерн.BatysDataSetTableAdapters.UsersTableAdapter();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,8 +40,6 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +74,6 @@
             // comboBox1
             // 
             this.comboBox1.BackColor = System.Drawing.Color.White;
-            this.comboBox1.DataSource = this.usersBindingSource;
             this.comboBox1.DisplayMember = "FIO";
             this.comboBox1.DropDownWidth = 184;
             this.comboBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -91,20 +85,6 @@
             this.comboBox1.Size = new System.Drawing.Size(263, 25);
             this.comboBox1.TabIndex = 6;
             this.comboBox1.ValueMember = "AID";
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "Users";
-            this.usersBindingSource.DataSource = this.batysDataSet;
-            // 
-            // batysDataSet
-            // 
-            this.batysDataSet.DataSetName = "BatysDataSet";
-            this.batysDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usersTableAdapter
-            // 
-            this.usersTableAdapter.ClearBeforeFill = true;
             // 
             // flowLayoutPanel1
             // 
@@ -205,8 +185,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Вход";
             this.TopMost = true;
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batysDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -218,9 +196,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private BatysDataSet batysDataSet;
-        private System.Windows.Forms.BindingSource usersBindingSource;
-        private BatysDataSetTableAdapters.UsersTableAdapter usersTableAdapter;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;

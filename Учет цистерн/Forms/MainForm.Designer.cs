@@ -62,6 +62,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.contextMenuStrip_Services = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.расценкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -397,6 +398,7 @@
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.button2);
@@ -405,6 +407,17 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // button7
+            // 
+            resources.ApplyResources(this.button7, "button7");
+            this.button7.BackColor = System.Drawing.SystemColors.Control;
+            this.button7.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.Name = "button7";
+            this.button7.UseMnemonic = false;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // contextMenuStrip_Services
             // 
@@ -494,6 +507,7 @@
         public System.Windows.Forms.Button button2;
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button7;
     }
 }
 

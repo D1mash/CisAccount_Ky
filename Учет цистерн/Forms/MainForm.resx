@@ -612,9 +612,6 @@
   <data name="toolStripTextBox1.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="toolStripTextBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
   <data name="toolStripTextBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 23</value>
   </data>
@@ -674,7 +671,7 @@
     <value>NoControl</value>
   </data>
   <data name="button6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>952, 19</value>
+    <value>1086, 19</value>
   </data>
   <data name="button6.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 56</value>
@@ -701,7 +698,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button6.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="button3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -740,7 +737,7 @@
     <value>NoControl</value>
   </data>
   <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>700, 19</value>
+    <value>834, 19</value>
   </data>
   <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 56</value>
@@ -767,7 +764,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="button2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -843,7 +840,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="button1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -922,7 +919,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="button4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -989,10 +986,77 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="groupBox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="button7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="button7.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="button7.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="button7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="button7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAwZJREFUaEPt
+        mcFLVFEUh8dFqxrcR22CCAzbRDrxpinM0LFxRheuInwNFgkFReBmHBvcOeM40k4KWtSiVBxbiEItU6J/
+        QJcaCKm4KCIixds5b84De57nOPPOnSaYH3ybc98937n3PRTRV0stVZhL2dDpwJgxHRgLfidmjHHjHC1X
+        dwrDB7cB5WC7+dm1U/RY9YZuXj15a6jNNUNtrAXV4zd0iFxwkh6r3sCg+MlYg6stw+LrqmG/hW/02L/J
+        xYl7xzrzXbdv5rtmI7Ox5Ui+awvYA5TN5fEr1rDcAXBt/7MA7t2kXvnITPctdJBONtF3UT9IlkjsSmii
+        xRoWPxs8BA7/iD6hq7DG7XGw2DPZc4K0coGbzzGyA4QnO+GmQ9bA+8FaeKqT3cOQJa1coOkXh8SVjuko
+        vInr1ieD4M2XMDyySlq5QNNdh0QnO6SVi928YaBR+Vvr1fEWf1HsPdyaE+yJve09pJWL3fiowyP2Hm6N
+        w3+jXv8BOLEbXvaQVi5ehuHW3LD3kFYuXobh1tyw95BWLl6G4dbcsPeQVi5ehuHW3LD3kFYuduP//qeQ
+        zt8D5wcu6D9ApSCtXDiJTkgrF06iE9LKhZPohLRy4SQ6Ia1cOIlOSCsXTqIT0soFm4Zfwd+8/TEViBQI
+        3Y+p9pf8AEfhsH6klQvKAtGYam77G6x1vD44XDGK9SOtXPCmUHB3OKkWllbUPNA3nLBqoX5+yMMo1o+0
+        csHGyNyHFbX4ecNi7v2yVfOCWz/SyqWYsFwqfoDehwlLirLeB4VX7gW3fqSVy35pJSCtXDiJTkgrF06i
+        E9LKhZPohLRygabrTolG1kkrl6b2WHdTW3STkYmCDnSRVl/MoUzKTGYU8MnnU3VULiGqDvZ+tHoMZp5S
+        sTKJp0ZOgvgHyuOJ0SCVS46ZyAagxx7wsy81Url/AMKNvcDhe5OZKSqVHegzXeiVfk4lvbmTGm2AwXdA
+        +tscTJ+lctmJp3JnoNcvYNdMjjVSWV9AtIA3BuSo5DnmUHqces5TqZZaKhOf7w81rKAEpuKLegAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
+  <data name="button7.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="button7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>636, 19</value>
+  </data>
+  <data name="button7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 56</value>
+  </data>
+  <data name="button7.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="button7.Text" xml:space="preserve">
+    <value>Заявки на обработку</value>
+  </data>
+  <data name="button7.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="button7.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;button7.Name" xml:space="preserve">
+    <value>button7</value>
+  </data>
+  <data name="&gt;&gt;button7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button7.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;button7.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>

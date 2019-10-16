@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -39,17 +38,12 @@ namespace Учет_цистерн
             DataTable dtbl = new DataTable();
             dtbl = DbConnection.DBConnect(UpdateCurrentProduct);
             this.Close();
-            OkForm ok = new OkForm();
-            ok.label1.Text = "Продукт изменён!";
-            ok.Show();
-            //MessageBox.Show("Продукт изменён!");
+            MessageBox.Show("Продукт изменён!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
         }
 
         private void UpdateProductForm_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "batysDataSet11.qHangling". При необходимости она может быть перемещена или удалена.
-            this.qHanglingTableAdapter1.Fill(this.batysDataSet11.qHangling);
             textBox1.Enabled = false;
             comboBox1.Enabled = false;
         }

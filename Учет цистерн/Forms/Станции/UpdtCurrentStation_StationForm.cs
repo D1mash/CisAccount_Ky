@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -24,22 +23,14 @@ namespace Учет_цистерн
 
         private void button_Updt_OK_StationForm_Click(object sender, EventArgs e)
         {
-            //SqlConnection con = new SqlConnection(connectionString);
-            //con.Open();
             string Updt_CurrentStation =
                 "update d__Station " +
                 "set Name = '" + textBox_Updt_Name_StationForm.Text.Trim() + "', Code = " + Convert.ToInt32(textBox_Updt_Code_StationForm.Text.Trim()) + ", Code6 = " + Convert.ToInt32(textBox_Updt_Code6_StationForm.Text.Trim()) + " " +
                 "where ID = " + selectStationID;
-            //SqlDataAdapter sda = new SqlDataAdapter(Updt_CurrentStation, con);
             DataTable dtbl = new DataTable();
             dtbl = DbConnection.DBConnect(Updt_CurrentStation);
-            //sda.Fill(dtbl);
-            //con.Close();
             this.Close();
-            OkForm ok = new OkForm();
-            ok.label1.Text = "Станция изменена!";
-            ok.Show();
-            //MessageBox.Show("Станция изменена!");
+            MessageBox.Show("Станция изменена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void button_Updt_Cancel_StationForm_Click(object sender, EventArgs e)

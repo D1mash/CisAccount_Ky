@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн.Forms.СНО
 {
@@ -54,9 +47,7 @@ namespace Учет_цистерн.Forms.СНО
         {
             string UpdateSNO = "exec dbo.UpdateSNO " + comboBox1.SelectedValue.ToString() + "," + textBox1.Text.Replace(",", ".") + "," + textBox2.Text.Replace(",", ".") + "," + textBox3.Text.Replace(",", ".") + "," + textBox4.Text.Replace(",", ".") + "," + textBox5.Text.Replace(",", ".") + ",'" + dateTimePicker1.Value.Date.ToString() + "'," + selectID;
             DataTable dT = DbConnection.DBConnect(UpdateSNO);
-            OkForm ok = new OkForm();
-            ok.label1.Text = "Запись изменена!";
-            ok.Show();
+            MessageBox.Show("Запись изменена!", "",MessageBoxButtons.OK,MessageBoxIcon.Information);
             this.Close();
         }
 

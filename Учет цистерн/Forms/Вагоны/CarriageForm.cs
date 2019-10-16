@@ -3,7 +3,6 @@ using System.Data;
 using System.Threading;
 using System.Windows.Forms;
 using TradeWright.UI.Forms;
-using Учет_цистерн.Forms.Оповещения;
 
 namespace Учет_цистерн
 {
@@ -96,26 +95,20 @@ namespace Учет_цистерн
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            string message = "Вы действительно хотите удалить эту запись?";
-            string title = "Удаление";
-            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.OK)
+            if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string CheckReference = "select count(*) from d__RenderedService where Carriage = " + SelectItemRow;
+                string CheckReference = "select * from d__RenderedService where Carriage = " + SelectItemRow;
                 string Delete = "delete from d__Carriage where ID = " + SelectItemRow;
                 DataTable dt = new DataTable();
                 dt = DbConnection.DBConnect(CheckReference);
                 if (dt.Rows.Count == 0)
                 {
                     DbConnection.DBConnect(Delete);
-                    MessageBox.Show("Запись удалена!");
+                    MessageBox.Show("Запись удалена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
                 else
                 {
-                    ExceptionForm exf = new ExceptionForm();
-                    exf.label1.Text = "Невозможно удалить, т.к. вагон привязан в таблице Обработанные вагоны";
-                    exf.Show();
+                    MessageBox.Show("Невозможно удалить, т.к. вагон привязан в таблице Обработанные вагоны", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -133,9 +126,7 @@ namespace Учет_цистерн
             }
             catch (Exception ex)
             {
-                ExceptionForm exf = new ExceptionForm();
-                exf.label1.Text = "Для редактирования записи, необходимо указать строку!" + ex.Message;
-                exf.Show();
+                MessageBox.Show("Для редактирования записи, необходимо указать строку!" + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
