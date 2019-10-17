@@ -48,6 +48,7 @@
             this.tabControl1 = new TradeWright.UI.Forms.TabControlExtra();
             this.contextMenuStrip_GlobalFilter = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -66,6 +67,7 @@
             this.contextMenuStrip_Services = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.расценкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -186,6 +188,7 @@
             resources.ApplyResources(this.advancedDataGridView1, "advancedDataGridView1");
             this.advancedDataGridView1.Name = "advancedDataGridView1";
             this.advancedDataGridView1.TimeFilter = false;
+            this.advancedDataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.advancedDataGridView1_CellPainting);
             this.advancedDataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.advancedDataGridView1_MouseClick);
             // 
             // checkBoxColumn
@@ -283,6 +286,7 @@
             // 
             this.contextMenuStrip_GlobalFilter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьToolStripMenuItem,
+            this.удалитьToolStripMenuItem1,
             this.удалитьToolStripMenuItem,
             this.обновитьToolStripMenuItem});
             this.contextMenuStrip_GlobalFilter.Name = "contextMenuStrip_GlobalFilter";
@@ -293,6 +297,12 @@
             this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
             resources.ApplyResources(this.вставитьToolStripMenuItem, "вставитьToolStripMenuItem");
             this.вставитьToolStripMenuItem.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
+            // 
+            // удалитьToolStripMenuItem1
+            // 
+            this.удалитьToolStripMenuItem1.Name = "удалитьToolStripMenuItem1";
+            resources.ApplyResources(this.удалитьToolStripMenuItem1, "удалитьToolStripMenuItem1");
+            this.удалитьToolStripMenuItem1.Click += new System.EventHandler(this.удалитьToolStripMenuItem1_Click);
             // 
             // удалитьToolStripMenuItem
             // 
@@ -398,6 +408,7 @@
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button1);
@@ -438,6 +449,12 @@
             this.сНОToolStripMenuItem.Name = "сНОToolStripMenuItem";
             resources.ApplyResources(this.сНОToolStripMenuItem, "сНОToolStripMenuItem");
             this.сНОToolStripMenuItem.Click += new System.EventHandler(this.СНОToolStripMenuItem_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.Name = "comboBox1";
             // 
             // MainForm
             // 
@@ -508,6 +525,8 @@
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

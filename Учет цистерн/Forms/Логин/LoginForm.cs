@@ -6,22 +6,28 @@ namespace Учет_цистерн
 {
     public partial class LoginForm : Form
     {
-        public static string connectionString = "Data Source=POTITPC-01\\PLMLOCAL;Initial Catalog=Batys;User ID=sa;Password=!sql123;";
-
         public LoginForm()
         {
             InitializeComponent();
             FillCombobox();
+            this.ControlBox = false;
             textBox2.Select();
         }
 
+        public int UserLastID { get; set; }
+
         public void FillCombobox()
         {
+            string Hostname = System.Environment.MachineName;
+            string GetLastUser = "select top 1 ID_USER from AUDIT_USER where HostIns = '"+Hostname+"' order by DATE_IN desc";
+            DataTable dt1 = DbConnection.DBConnect(GetLastUser);
+            UserLastID = Convert.ToInt32(dt1.Rows[0][0]);
             string GetUser = "select * from dbo.Users";
             DataTable dt = DbConnection.DBConnect(GetUser);
             comboBox1.DataSource = dt;
             comboBox1.DisplayMember = "FIO";
             comboBox1.ValueMember = "AID";
+            comboBox1.DataBindings.Add("SelectedValue", this, "UserLastID", true, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private void Button1_Click(object sender, EventArgs e)

@@ -25,7 +25,7 @@ namespace Учет_цистерн
 
             if (comboBox2.SelectedIndex == 0)
             {
-                string RefreshAll = "exec dbo.GetReportAllRenderedService '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
+                string RefreshAll = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
                 DataTable dt;
                 dt = DbConnection.DBConnect(RefreshAll);
                 source.DataSource = dt;
@@ -36,7 +36,7 @@ namespace Учет_цистерн
             }
             else
             {
-                string Refresh = "dbo.GetReportRenderedServices '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
+                string Refresh = "dbo.GetReportRenderedServices_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
                 DataTable dataTable;
                 dataTable = DbConnection.DBConnect(Refresh);
                 source.DataSource = dataTable;

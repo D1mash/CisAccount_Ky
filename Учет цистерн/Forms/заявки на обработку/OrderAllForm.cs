@@ -218,7 +218,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             int Count = 0;
             for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
             {
-                if (dataGridView1.Rows[i].Cells[6].Value.ToString() != string.Empty)
+                if (dataGridView1.Rows[i].Cells[4].Value.ToString() != string.Empty)
                 {
                     sum += Convert.ToDecimal(this.dataGridView1[4, i].Value);
                 }
@@ -321,13 +321,11 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
 
         private void dataGridView2_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (tabControl1.SelectedTab == tabPage2)
-            {
                 Decimal sum = 0;
                 int Count = 0;
                 for (int i = 0; i < this.dataGridView2.Rows.Count; i++)
                 {
-                    if (dataGridView2.Rows[i].Cells[10].Value.ToString() != string.Empty)
+                    if (dataGridView2.Rows[i].Cells[4].Value.ToString() != string.Empty)
                     {
                         sum += Convert.ToDecimal(this.dataGridView2[4, i].Value);
                     }
@@ -405,7 +403,6 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 Xdgvx10 = this.dataGridView2.GetCellDisplayRectangle(11, -1, true).Location.X;
                 panel15.Location = new Point(Xdgvx10, this.dataGridView2.Height - (panel15.Height - 15));
                 panel15.Visible = true;
-            }
         }
     }
 }

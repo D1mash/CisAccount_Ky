@@ -361,7 +361,7 @@
     <value>3, 3</value>
   </data>
   <data name="advancedDataGridView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 616</value>
+    <value>155, 616</value>
   </data>
   <data name="advancedDataGridView1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -385,7 +385,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 622</value>
+    <value>161, 622</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -412,7 +412,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 622</value>
+    <value>161, 622</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -442,7 +442,7 @@
     <value>0, 0</value>
   </data>
   <data name="tabControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 630</value>
+    <value>188, 630</value>
   </data>
   <data name="tabControl2.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -481,7 +481,7 @@
     <value>3, 16</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1335, 611</value>
+    <value>1172, 611</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -505,7 +505,7 @@
     <value>0, 0</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1341, 630</value>
+    <value>1178, 630</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -538,7 +538,7 @@
     <value>1370, 630</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>25</value>
+    <value>188</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -559,25 +559,31 @@
     <value>566, 47</value>
   </metadata>
   <data name="вставитьToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 22</value>
+    <value>139, 22</value>
   </data>
   <data name="вставитьToolStripMenuItem.Text" xml:space="preserve">
     <value>Вставить</value>
   </data>
-  <data name="удалитьToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 22</value>
+  <data name="удалитьToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 22</value>
   </data>
-  <data name="удалитьToolStripMenuItem.Text" xml:space="preserve">
+  <data name="удалитьToolStripMenuItem1.Text" xml:space="preserve">
     <value>Удалить</value>
   </data>
+  <data name="удалитьToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 22</value>
+  </data>
+  <data name="удалитьToolStripMenuItem.Text" xml:space="preserve">
+    <value>Удалить все</value>
+  </data>
   <data name="обновитьToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 22</value>
+    <value>139, 22</value>
   </data>
   <data name="обновитьToolStripMenuItem.Text" xml:space="preserve">
     <value>Обновить</value>
   </data>
   <data name="contextMenuStrip_GlobalFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 70</value>
+    <value>140, 92</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip_GlobalFilter.Name" xml:space="preserve">
     <value>contextMenuStrip_GlobalFilter</value>
@@ -698,7 +704,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button6.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="button3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -764,7 +770,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="button2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -840,7 +846,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="button1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -919,7 +925,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="button4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -986,10 +992,31 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="groupBox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>979, 51</value>
+  </data>
+  <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 21</value>
+  </data>
+  <data name="comboBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.Name" xml:space="preserve">
+    <value>comboBox1</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="button7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1056,7 +1083,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button7.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1342,6 +1369,12 @@
     <value>вставитьToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;вставитьToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;удалитьToolStripMenuItem1.Name" xml:space="preserve">
+    <value>удалитьToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;удалитьToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;удалитьToolStripMenuItem.Name" xml:space="preserve">

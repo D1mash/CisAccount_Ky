@@ -31,37 +31,46 @@ namespace Учет_цистерн
         {
             string Reffresh = "exec dbo.GetFilter";
             advancedDataGridView1.DataSource = DbConnection.DBConnect(Reffresh); ;
-            advancedDataGridView1.RowHeadersVisible = false;
+            advancedDataGridView1.RowHeadersWidth = 15;
             advancedDataGridView1.Columns[1].Visible = false;
         }
 
         private void advancedDataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if((bool)advancedDataGridView1.SelectedRows[0].Cells[0].Value == false)
             {
-                int currentMouseOverRow = advancedDataGridView1.HitTest(e.X, e.Y).RowIndex;
-                contextMenuStrip_GlobalFilter.Show(advancedDataGridView1, new Point(e.X, e.Y));
+                advancedDataGridView1.SelectedRows[0].Cells[0].Value = true;
             }
+            else
+            {
+                advancedDataGridView1.SelectedRows[0].Cells[0].Value = false;
+            }
+            //if (e.Button == MouseButtons.Right)
+            //{
+            //    int currentMouseOverRow = advancedDataGridView1.HitTest(e.X, e.Y).RowIndex;
+            //    contextMenuStrip_GlobalFilter.Show(advancedDataGridView1, new Point(e.X, e.Y));
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             contextMenuStrip_Product.Show(button1, new Point(0, button1.Height));
         }
-
+        //Глобальный фильтр, вставить вагоны
         private void вставитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             string Insert = "exec dbo.InsertGlobalFilter '" + Clipboard.GetText() + "'";
             DbConnection.DBConnect(Insert);
             GetFilter();
         }
-
+        //Глобальный фильтр, обновить вагоны
         private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GetFilter();
         }
-
-        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        //Глобальный фильтр, удалить выделенные вагоны
+        private void удалитьToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             string message = string.Empty;
             string IDs = string.Empty;
@@ -81,6 +90,13 @@ namespace Учет_цистерн
                     MessageBox.Show("Выбирите строки!");
                 }
             }
+            GetFilter();
+        }
+        //Глобальный фильтр, удалить все вагоны
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string DeleteAll = "delete from dbo.GlobalFilter where UserID = dbo.GET_USER_AID()";
+            DbConnection.DBConnect(DeleteAll);
             GetFilter();
         }
 
@@ -336,6 +352,11 @@ namespace Учет_цистерн
             orderAllForm.FormBorderStyle = FormBorderStyle.None;
             orderAllForm.Dock = DockStyle.Fill;
             OrderAllTabPage.Controls.Add(orderAllForm);
+        }
+
+        private void advancedDataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+
         }
     }
 }

@@ -46,7 +46,6 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.DataSource = this.bindingSource1;
             this.comboBox1.DisplayMember = "Name";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(185, 66);
