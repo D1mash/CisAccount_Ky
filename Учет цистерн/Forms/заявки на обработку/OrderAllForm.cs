@@ -420,5 +420,18 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 panel15.Location = new Point(Xdgvx10, this.dataGridView2.Height - (panel15.Height - 15));
                 panel15.Visible = true;
         }
+
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int rowSelected = e.RowIndex;
+                if (e.RowIndex != -1)
+                {
+                    this.dataGridView1.ClearSelection();
+                    this.dataGridView1.Rows[rowSelected].Selected = true;
+                }
+            }
+        }
     }
 }
