@@ -35,11 +35,37 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             dataGridView1.Columns[10].Visible = false;
             dataGridView1.Columns[11].Visible = false;
         }
+        private void GetDocumentGlobalFilter()
+        {
+            int yes = 1;
+            string DateFrom = dateTimePicker1.Text;
+            string DateTo = dateTimePicker2.Text;
+            string GetDocument = "exec [dbo].[GetRenderedServiceDocGlobalFilter] '" + DateFrom + "','" + DateTo + "','"+yes+"'";
+            DataTable dt = DbConnection.DBConnect(GetDocument);
+            source.DataSource = dt;
+            dataGridView1.DataSource = source;
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[8].Visible = false;
+            dataGridView1.Columns[9].Visible = false;
+            dataGridView1.Columns[10].Visible = false;
+            dataGridView1.Columns[11].Visible = false;
+        }
         private void GetDocumentBody()
         {
             string DateFrom = dateTimePicker1.Text;
             string DateTo = dateTimePicker2.Text;
             string GetDocumentBody = "exec dbo.GetRenderedServiceDoc_Body '" + DateFrom + "','" + DateTo + "'";
+            DataTable dt = DbConnection.DBConnect(GetDocumentBody);
+            source.DataSource = dt;
+            dataGridView2.DataSource = source;
+            dataGridView2.Columns[0].Visible = false;
+        }
+        private void GetDocumentBodyGlobalFilter()
+        {
+            int yes = 1;
+            string DateFrom = dateTimePicker1.Text;
+            string DateTo = dateTimePicker2.Text;
+            string GetDocumentBody = "exec [dbo].[GetRenderedServiceDocGlobalFilter_Body] '" + DateFrom + "','" + DateTo + "','"+yes+"'";
             DataTable dt = DbConnection.DBConnect(GetDocumentBody);
             source.DataSource = dt;
             dataGridView2.DataSource = source;
@@ -83,13 +109,27 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             {
                 button2.Enabled = true;
                 button3.Enabled = true;
-                GetDocument();
+                if (checkBox1.Checked)
+                {
+                    GetDocumentGlobalFilter();
+                }
+                else
+                {
+                    GetDocument();
+                }
             }
             else if (tabControl1.SelectedTab == tabPage2)
             {
                 button2.Enabled = false;
                 button3.Enabled = false;
-                GetDocumentBody();
+                if (checkBox1.Checked)
+                {
+                    GetDocumentBodyGlobalFilter();
+                }
+                else
+                {
+                    GetDocumentBody();
+                }
             }
         }
         //Кнопка Добавить
@@ -130,11 +170,25 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         {
             if (tabControl1.SelectedTab == tabPage1)
             {
-                GetDocument();
+                if (checkBox1.Checked)
+                {
+                    GetDocumentGlobalFilter();
+                }
+                else
+                {
+                    GetDocument();
+                }
             }
             else if (tabControl1.SelectedTab == tabPage2)
             {
-                GetDocumentBody();
+                if (checkBox1.Checked)
+                {
+                    GetDocumentBodyGlobalFilter();
+                }
+                else
+                {
+                    GetDocumentBody();
+                }
             }
         }
 
