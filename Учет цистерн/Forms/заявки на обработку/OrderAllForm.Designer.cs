@@ -476,7 +476,7 @@
             this.провестиДокументToolStripMenuItem,
             this.отменитьПроведениеToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(258, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(258, 158);
             // 
             // добавитьToolStripMenuItem
             // 
@@ -511,12 +511,14 @@
             this.провестиДокументToolStripMenuItem.Name = "провестиДокументToolStripMenuItem";
             this.провестиДокументToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.провестиДокументToolStripMenuItem.Text = "Провести документ";
+            this.провестиДокументToolStripMenuItem.Click += new System.EventHandler(this.провестиДокументToolStripMenuItem_Click);
             // 
             // отменитьПроведениеToolStripMenuItem
             // 
             this.отменитьПроведениеToolStripMenuItem.Name = "отменитьПроведениеToolStripMenuItem";
             this.отменитьПроведениеToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.отменитьПроведениеToolStripMenuItem.Text = "Отменить проведение документа";
+            this.отменитьПроведениеToolStripMenuItem.Click += new System.EventHandler(this.отменитьПроведениеToolStripMenuItem_Click);
             // 
             // OrderAllForm
             // 

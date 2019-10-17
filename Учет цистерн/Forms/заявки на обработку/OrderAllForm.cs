@@ -319,6 +319,22 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             GetDocument();
         }
 
+        private void провестиДокументToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string UpdateDocState = "update d__RenderedServiceHead set ID_DocState = 2 where ID = " + SelectItemRow;
+            DbConnection.DBConnect(UpdateDocState);
+            MessageBox.Show("Документ проведен!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            GetDocument();
+        }
+
+        private void отменитьПроведениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string UpdateDocState = "update d__RenderedServiceHead set ID_DocState = 1 where ID = " + SelectItemRow;
+            DbConnection.DBConnect(UpdateDocState);
+            MessageBox.Show("Проведение документа отменено!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            GetDocument();
+        }
+
         private void dataGridView2_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
                 Decimal sum = 0;

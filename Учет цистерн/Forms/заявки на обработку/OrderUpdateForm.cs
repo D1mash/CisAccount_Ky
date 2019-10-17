@@ -112,6 +112,32 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             this.textBox3.Text = dt.Rows[0][3].ToString();
             this.label9.Text = dt.Rows[0][4].ToString();
             this.label10.Text = dt.Rows[0][5].ToString();
+
+            string GetDocState = "select ID_DocState from d__RenderedServiceHead where ID = " + SelectedID;
+            DataTable DocStateDt = DbConnection.DBConnect(GetDocState);
+            int DocState = Convert.ToInt32(DocStateDt.Rows[0][0]);
+            if (DocState > 0 && DocState <2)
+            {
+                button1.Enabled = true;
+                textBox1.Enabled = true;
+                textBox2.Enabled = true;
+                textBox3.Enabled = true;
+                dateTimePicker1.Enabled = true;
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                comboBox3.Enabled = true;
+            }
+            else if(DocState > 1 && DocState <3)
+            {
+                button1.Enabled = false;
+                textBox1.Enabled = false;
+                textBox2.Enabled = false;
+                textBox3.Enabled = false;
+                dateTimePicker1.Enabled = false;
+                comboBox1.Enabled = false;
+                comboBox2.Enabled = false;
+                comboBox3.Enabled = false;
+            }
         }
         //Получаю данные из таблицы d__RenderedServiceBody, также комбобоксы по внешним ключам - продукты и услуги
         private void GetData()
