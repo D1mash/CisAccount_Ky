@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Учет_цистерн.Forms.заявки_на_обработку;
 using Учет_цистерн.Forms.СНО;
@@ -18,38 +19,36 @@ namespace Учет_цистерн
             this.Text = "Учет вагонов-цистерн. Батыс Петролеум ТОО - " + FIO;
             string GetConnection = "exec dbo.GetConnection";
             DataTable dt = DbConnection.DBConnect(GetConnection);
-
             toolStripTextBox1.Text = "SPID: " + dt.Rows[0][1].ToString() + "; UID: " + dt.Rows[0][0].ToString() + ";";
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             GetFilter();
+            panel1.Visible = false;
+            panel2.Visible = false;
+            panel3.Visible = false;
+            textBox1.Visible = false;
         }
 
         private void GetFilter()
         {
             string Reffresh = "exec dbo.GetFilter";
-            advancedDataGridView1.DataSource = DbConnection.DBConnect(Reffresh); ;
-            advancedDataGridView1.RowHeadersWidth = 15;
-            advancedDataGridView1.Columns[1].Visible = false;
+            dataGridView1.DataSource = DbConnection.DBConnect(Reffresh); ;
+            dataGridView1.RowHeadersWidth = 15;
+            dataGridView1.Columns[1].Visible = false;
+            dataGridView1.Columns[0].Width = 50;
+            dataGridView1.Columns[2].Width = 120;
+            dataGridView1.Columns[3].Width = 80;
         }
 
-        private void advancedDataGridView1_MouseClick(object sender, MouseEventArgs e)
+        private void dataGridView1_MouseClick_1(object sender, MouseEventArgs e)
         {
-            if((bool)advancedDataGridView1.SelectedRows[0].Cells[0].Value == false)
+            if (e.Button == MouseButtons.Right)
             {
-                advancedDataGridView1.SelectedRows[0].Cells[0].Value = true;
+                int currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+                contextMenuStrip_GlobalFilter.Show(dataGridView1, new Point(e.X, e.Y));
             }
-            else
-            {
-                advancedDataGridView1.SelectedRows[0].Cells[0].Value = false;
-            }
-            //if (e.Button == MouseButtons.Right)
-            //{
-            //    int currentMouseOverRow = advancedDataGridView1.HitTest(e.X, e.Y).RowIndex;
-            //    contextMenuStrip_GlobalFilter.Show(advancedDataGridView1, new Point(e.X, e.Y));
-            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -75,7 +74,7 @@ namespace Учет_цистерн
             string message = string.Empty;
             string IDs = string.Empty;
             List<Object> aList = new List<Object>();
-            foreach (DataGridViewRow row in advancedDataGridView1.Rows)
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 bool isSelected = Convert.ToBoolean(row.Cells["checkBoxColumn"].Value);
                 if (isSelected)
@@ -87,7 +86,6 @@ namespace Учет_цистерн
                 }
                 else
                 {
-                    MessageBox.Show("Выбирите строки!");
                 }
             }
             GetFilter();
@@ -303,7 +301,8 @@ namespace Учет_цистерн
         {
             if (tabControl2.SelectedTab == tabPage1)
             {
-                this.splitContainer1.SplitterDistance = 188;
+                this.splitContainer1.SplitterDistance = 250;
+                GetFilter();
             }
             else if (tabControl2.SelectedTab == tabPage2)
             {
@@ -354,9 +353,73 @@ namespace Учет_цистерн
             OrderAllTabPage.Controls.Add(orderAllForm);
         }
 
-        private void advancedDataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void dataGridView1_CellPainting_1(object sender, DataGridViewCellPaintingEventArgs e)
         {
+            int Count = 0;
+            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            {
+                Count = dataGridView1.RowCount;
+            }
 
+            foreach (var scroll in dataGridView1.Controls.OfType<HScrollBar>())
+            {
+                if (scroll.Visible)
+                {
+                    panel1.Width = this.dataGridView1.RowHeadersWidth + 2;
+                    panel1.Location = new Point(5, this.dataGridView1.Height - (panel1.Height+15));
+                    panel1.Visible = true;
+
+                    int Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
+                    panel2.Width = this.dataGridView1.Columns[0].Width + 1;
+                    Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
+                    panel2.Location = new Point(Xdgvx2, this.dataGridView1.Height - (panel2.Height + 15));
+                    panel2.Visible = true;
+
+                    textBox1.Text = "Всего строк: " + Count.ToString();
+                    int Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
+                    textBox1.Width = this.dataGridView1.Columns[2].Width + 1;
+                    Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
+                    textBox1.Location = new Point(Xdgvx1, this.dataGridView1.Height - (textBox1.Height + 15));
+                    textBox1.Visible = true;
+
+                    int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
+                    panel3.Width = this.dataGridView1.Columns[3].Width + 2;
+                    Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
+                    panel3.Location = new Point(Xdgvx3, this.dataGridView1.Height - (panel3.Height + 15));
+                    panel3.Visible = true;
+                }
+                else
+                {
+                    panel1.Width = this.dataGridView1.RowHeadersWidth + 1;
+                    panel1.Location = new Point(5, this.dataGridView1.Height - (panel1.Height - 1));
+                    panel1.Visible = true;
+
+                    int Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
+                    panel2.Width = this.dataGridView1.Columns[0].Width + 1;
+                    Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
+                    panel2.Location = new Point(Xdgvx2, this.dataGridView1.Height - (panel2.Height - 1));
+                    panel2.Visible = true;
+
+                    textBox1.Text = "Всего строк: " + Count.ToString();
+                    int Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
+                    textBox1.Width = this.dataGridView1.Columns[2].Width + 1;
+                    Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
+                    textBox1.Location = new Point(Xdgvx1, this.dataGridView1.Height - (textBox1.Height-1));
+                    textBox1.Visible = true;
+
+                    int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
+                    panel3.Width = this.dataGridView1.Columns[3].Width + 2;
+                    Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
+                    panel3.Location = new Point(Xdgvx3, this.dataGridView1.Height - (panel3.Height - 1));
+                    panel3.Visible = true;
+                }
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+                this.dataGridView1.Rows[e.RowIndex].Cells["checkBoxColumn"].Value = true;
         }
     }
 }

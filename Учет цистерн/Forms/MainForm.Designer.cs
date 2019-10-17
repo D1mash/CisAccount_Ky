@@ -41,14 +41,11 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.advancedDataGridView1 = new ADGV.AdvancedDataGridView();
-            this.checkBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new TradeWright.UI.Forms.TabControlExtra();
             this.contextMenuStrip_GlobalFilter = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.удалитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -67,7 +64,13 @@
             this.contextMenuStrip_Services = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.расценкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.удалитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -76,12 +79,12 @@
             this.splitContainer1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.contextMenuStrip_GlobalFilter.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip_Services.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip_Product
@@ -169,34 +172,14 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.advancedDataGridView1);
+            this.tabPage1.Controls.Add(this.panel3);
+            this.tabPage1.Controls.Add(this.panel2);
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Controls.Add(this.dataGridView1);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // advancedDataGridView1
-            // 
-            this.advancedDataGridView1.AllowUserToAddRows = false;
-            this.advancedDataGridView1.AllowUserToDeleteRows = false;
-            this.advancedDataGridView1.AllowUserToResizeRows = false;
-            this.advancedDataGridView1.AutoGenerateContextFilters = true;
-            this.advancedDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.advancedDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.advancedDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.checkBoxColumn});
-            this.advancedDataGridView1.DateWithTime = false;
-            resources.ApplyResources(this.advancedDataGridView1, "advancedDataGridView1");
-            this.advancedDataGridView1.Name = "advancedDataGridView1";
-            this.advancedDataGridView1.TimeFilter = false;
-            this.advancedDataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.advancedDataGridView1_CellPainting);
-            this.advancedDataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.advancedDataGridView1_MouseClick);
-            // 
-            // checkBoxColumn
-            // 
-            this.checkBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            resources.ApplyResources(this.checkBoxColumn, "checkBoxColumn");
-            this.checkBoxColumn.Name = "checkBoxColumn";
-            this.checkBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // tabPage2
             // 
@@ -297,12 +280,6 @@
             this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
             resources.ApplyResources(this.вставитьToolStripMenuItem, "вставитьToolStripMenuItem");
             this.вставитьToolStripMenuItem.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
-            // 
-            // удалитьToolStripMenuItem1
-            // 
-            this.удалитьToolStripMenuItem1.Name = "удалитьToolStripMenuItem1";
-            resources.ApplyResources(this.удалитьToolStripMenuItem1, "удалитьToolStripMenuItem1");
-            this.удалитьToolStripMenuItem1.Click += new System.EventHandler(this.удалитьToolStripMenuItem1_Click);
             // 
             // удалитьToolStripMenuItem
             // 
@@ -408,7 +385,6 @@
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button1);
@@ -450,11 +426,54 @@
             resources.ApplyResources(this.сНОToolStripMenuItem, "сНОToolStripMenuItem");
             this.сНОToolStripMenuItem.Click += new System.EventHandler(this.СНОToolStripMenuItem_Click);
             // 
-            // comboBox1
+            // dataGridView1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.Name = "comboBox1";
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.checkBoxColumn});
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting_1);
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick_1);
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            // 
+            // panel2
+            // 
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
+            // 
+            // panel3
+            // 
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
+            // 
+            // удалитьToolStripMenuItem1
+            // 
+            this.удалитьToolStripMenuItem1.Name = "удалитьToolStripMenuItem1";
+            resources.ApplyResources(this.удалитьToolStripMenuItem1, "удалитьToolStripMenuItem1");
+            this.удалитьToolStripMenuItem1.Click += new System.EventHandler(this.удалитьToolStripMenuItem1_Click);
+            // 
+            // checkBoxColumn
+            // 
+            resources.ApplyResources(this.checkBoxColumn, "checkBoxColumn");
+            this.checkBoxColumn.Name = "checkBoxColumn";
+            this.checkBoxColumn.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -475,7 +494,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).EndInit();
+            this.tabPage1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.contextMenuStrip_GlobalFilter.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
@@ -483,6 +502,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.contextMenuStrip_Services.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -500,8 +520,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage1;
-        private ADGV.AdvancedDataGridView advancedDataGridView1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn checkBoxColumn;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_GlobalFilter;
         private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
@@ -525,8 +543,13 @@
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn checkBoxColumn;
     }
 }
 
