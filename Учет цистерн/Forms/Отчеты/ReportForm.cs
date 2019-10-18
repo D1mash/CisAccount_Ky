@@ -128,8 +128,8 @@ namespace Учет_цистерн
                 worksheet.Cells[cellRowIndex + 10, 1] = i + 1;
                 worksheet.Cells[cellRowIndex + 10, 2] = dataGridView1.Rows[i].Cells[6].Value.ToString();
 
-                for (int j = 1; j < dataGridView1.Columns.Count; j++)
-                {
+                //for (int j = 1; j < dataGridView1.Columns.Count; j++)
+                //{
                     // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check.
                     //if (cellRowIndex == 1)
                     //{
@@ -138,18 +138,23 @@ namespace Учет_цистерн
                     //else
                     //{
 
-                    //worksheet.Cells[cellRowIndex + 10, j+2] = dataGridView1.Rows[i].Cells[j].Value.ToString();
-                    if (dataGridView1.Rows[i].Cells[2].Value.ToString().Trim() == "8")
-                    {
-                        worksheet.Cells[cellRowIndex + 10, 5] = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                    }
-                    else
-                    {
-                        worksheet.Cells[cellRowIndex + 10, 4] = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                    }
-                //}
-                cellColumnIndex++;
+                worksheet.Cells[cellRowIndex + 10, 3] = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                worksheet.Cells[cellRowIndex + 10, 14] = dataGridView1.Rows[i].Cells[9].Value.ToString();
+                worksheet.Cells[cellRowIndex + 10, 13] = dataGridView1.Rows[i].Cells[11].Value.ToString();
+                worksheet.Cells[cellRowIndex + 10, 15] = dataGridView1.Rows[i].Cells[5].Value.ToString();
+
+                if (dataGridView1.Rows[i].Cells[2].Value.ToString().Trim() == "8")
+                {
+                    worksheet.Cells[cellRowIndex + 10, 5] = dataGridView1.Rows[i].Cells[2].Value.ToString();
                 }
+                else
+                {
+                    worksheet.Cells[cellRowIndex + 10, 4] = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                }
+
+                //}
+                //cellColumnIndex++;
+                //}
 
                 Excel.Range range = worksheet.Range[worksheet.Cells[cellRowIndex + 10, 1], worksheet.Cells[cellRowIndex + 10, dataGridView1.Columns.Count - 1]];
                 //range.EntireColumn.AutoFit();
