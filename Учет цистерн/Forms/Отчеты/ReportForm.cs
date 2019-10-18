@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Data;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace Учет_цистерн
 {
@@ -16,13 +19,6 @@ namespace Учет_цистерн
         
         private void Button3_Click(object sender, EventArgs e)
         {
-            DateTime now = DateTime.Now;
-            var startDate = new DateTime(now.Year, now.Month, 1);
-            var endDate = startDate.AddMonths(1).AddDays(-1);
-
-            dateTimePicker1.Value = startDate;
-            dateTimePicker2.Value = endDate;
-
             if (comboBox2.SelectedIndex == 0)
             {
                 string RefreshAll = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
@@ -68,6 +64,13 @@ namespace Учет_цистерн
             comboBox2.DataSource = OwnerDT;
             comboBox2.DisplayMember = "Name";
             comboBox2.ValueMember = "ID";
+
+            DateTime now = DateTime.Now;
+            var startDate = new DateTime(now.Year, now.Month, 1);
+            var endDate = startDate.AddMonths(1).AddDays(-1);
+
+            dateTimePicker1.Value = startDate;
+            dateTimePicker2.Value = endDate;
         }
 
         private void Btn_Excel_Click(object sender, EventArgs e)
@@ -102,32 +105,58 @@ namespace Учет_цистерн
 
         private void BackgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            string path = "D:/Project/mmmadi/CisAccount/Учет цистерн/Forms/ReportTemplates/Реестр  за арендованных и  собственных вагон-цистерн компании.xls";
+            string path = "D:/Project2/CisAccount/Учет цистерн/Forms/ReportTemplates/Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
             string fileName = ((DataParametr)e.Argument).FileName;
-            Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel.Workbook workbook = app.Workbooks.Add(Type.Missing);
-            Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
+
+            Excel.Application app = new Excel.Application();
+            Excel.Workbook workbook = app.Workbooks.Open(path);
+            Excel.Worksheet worksheet = workbook.Worksheets.get_Item("Test");
 
             app.Visible = false;
 
-            int cellRowIndex = 1;
+            int cellRowIndex = 0;
             int cellColumnIndex = 1;
+
+            worksheet.Range["B12:K34"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 12, 2]);
+            //Excel.Range cellRange = (Excel.Range)worksheet.Cells[dataGridView1.Rows.Count + 12, 2];
+            //cellRange.set_Value(Missing.Value, worksheet.get_Range("B14:C34"));
+            //Excel.Range rowRange = cellRange.EntireRow;
+            //rowRange.Insert(Excel.XlInsertShiftDirection.xlShiftDown);
 
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
+                worksheet.Cells[cellRowIndex + 10, 1] = i + 1;
+                worksheet.Cells[cellRowIndex + 10, 2] = dataGridView1.Rows[i].Cells[6].Value.ToString();
+
                 for (int j = 1; j < dataGridView1.Columns.Count; j++)
                 {
                     // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check.
-                    if (cellRowIndex == 1)
+                    //if (cellRowIndex == 1)
+                    //{
+                    //    worksheet.Cells[cellRowIndex, cellColumnIndex] = dataGridView1.Columns[j].HeaderText;
+                    //}
+                    //else
+                    //{
+
+                    //worksheet.Cells[cellRowIndex + 10, j+2] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                    if (dataGridView1.Rows[i].Cells[2].Value.ToString().Trim() == "8")
                     {
-                        worksheet.Cells[cellRowIndex, cellColumnIndex] = dataGridView1.Columns[j].HeaderText;
+                        worksheet.Cells[cellRowIndex + 10, 5] = dataGridView1.Rows[i].Cells[2].Value.ToString();
                     }
                     else
                     {
-                        worksheet.Cells[cellRowIndex, cellColumnIndex] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                        worksheet.Cells[cellRowIndex + 10, 4] = dataGridView1.Rows[i].Cells[2].Value.ToString();
                     }
-                    cellColumnIndex++;
+                //}
+                cellColumnIndex++;
                 }
+
+                Excel.Range range = worksheet.Range[worksheet.Cells[cellRowIndex + 10, 1], worksheet.Cells[cellRowIndex + 10, dataGridView1.Columns.Count - 1]];
+                //range.EntireColumn.AutoFit();
+                Excel.Borders border = range.Borders;
+                border.LineStyle = Excel.XlLineStyle.xlContinuous;
+                border.Weight = 2d;
+
                 backgroundWorker.ReportProgress(cellRowIndex);
                 cellColumnIndex = 1;
                 cellRowIndex++;
