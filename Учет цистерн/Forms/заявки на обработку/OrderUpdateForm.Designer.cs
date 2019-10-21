@@ -63,6 +63,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new ADGV.AdvancedDataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -75,6 +76,7 @@
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox1);
@@ -447,6 +449,17 @@
             this.tabPage2.Text = "Вложенные документы";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(154, 22);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(342, 16);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Документ проведен, изменения не доступны";
+            // 
             // OrderUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -511,5 +524,6 @@
         public System.Windows.Forms.Button button3;
         public ADGV.AdvancedDataGridView dataGridView1;
         public System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label12;
     }
 }

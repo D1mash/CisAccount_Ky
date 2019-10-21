@@ -126,6 +126,12 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 comboBox1.Enabled = true;
                 comboBox2.Enabled = true;
                 comboBox3.Enabled = true;
+                dataGridView1.Enabled = true;
+                label12.Visible = false;
+                button3.Enabled = true;
+                button4.Enabled = true;
+                button5.Enabled = true;
+                button6.Enabled = true;
             }
             else if(DocState > 1 && DocState <3)
             {
@@ -137,6 +143,12 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 comboBox1.Enabled = false;
                 comboBox2.Enabled = false;
                 comboBox3.Enabled = false;
+                dataGridView1.Enabled = false;
+                label12.Visible = true;
+                button3.Enabled = false;
+                button4.Enabled = false;
+                button5.Enabled = false;
+                button6.Enabled = false;
             }
         }
         //Получаю данные из таблицы d__RenderedServiceBody, также комбобоксы по внешним ключам - продукты и услуги
