@@ -63,6 +63,10 @@
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new ADGV.AdvancedDataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -329,6 +333,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Controls.Add(this.panel7);
+            this.groupBox2.Controls.Add(this.panel6);
+            this.groupBox2.Controls.Add(this.panel5);
+            this.groupBox2.Controls.Add(this.panel4);
             this.groupBox2.Controls.Add(this.panel3);
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Controls.Add(this.textBox4);
@@ -377,7 +385,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(246, 15);
+            this.button6.Location = new System.Drawing.Point(166, 15);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(74, 23);
             this.button6.TabIndex = 11;
@@ -387,7 +395,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(166, 15);
+            this.button5.Location = new System.Drawing.Point(86, 15);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(74, 23);
             this.button5.TabIndex = 10;
@@ -397,12 +405,13 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(86, 15);
+            this.button4.Location = new System.Drawing.Point(246, 15);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(74, 23);
             this.button4.TabIndex = 9;
             this.button4.Text = "Вставить";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
@@ -445,6 +454,34 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Вложенные документы";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Location = new System.Drawing.Point(432, 531);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(100, 19);
+            this.panel4.TabIndex = 14;
+            // 
+            // panel5
+            // 
+            this.panel5.Location = new System.Drawing.Point(538, 531);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(100, 19);
+            this.panel5.TabIndex = 14;
+            // 
+            // panel6
+            // 
+            this.panel6.Location = new System.Drawing.Point(644, 531);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(100, 19);
+            this.panel6.TabIndex = 14;
+            // 
+            // panel7
+            // 
+            this.panel7.Location = new System.Drawing.Point(750, 531);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(100, 19);
+            this.panel7.TabIndex = 14;
             // 
             // OrderAddForm
             // 
@@ -510,5 +547,9 @@
         public System.Windows.Forms.Button button3;
         public ADGV.AdvancedDataGridView dataGridView1;
         public System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
     }
 }
