@@ -259,10 +259,20 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                string DeleteDoc = "exec dbo.DeleteRenderedServiceDoc " + SelectItemRow;
-                DbConnection.DBConnect(DeleteDoc);
-                MessageBox.Show("Документ удалён!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                GetDocument();
+                string GetDocState = "exec dbo.GetDocState " + SelectItemRow;
+                DataTable DocStateDt = DbConnection.DBConnect(GetDocState);
+                int DocState = Convert.ToInt32(DocStateDt.Rows[0][0]);
+                if(DocState>0 && DocState < 2)
+                {
+                    string DeleteDoc = "exec dbo.DeleteRenderedServiceDoc " + SelectItemRow;
+                    DbConnection.DBConnect(DeleteDoc);
+                    MessageBox.Show("Документ удалён!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GetDocument();
+                }
+                else
+                {
+                    MessageBox.Show("Документ проведен! Сначала отмените проведение документа!","",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                }
             }
         }
 
@@ -375,18 +385,38 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
 
         private void провестиДокументToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string UpdateDocState = "update d__RenderedServiceHead set ID_DocState = 2 where ID = " + SelectItemRow;
-            DbConnection.DBConnect(UpdateDocState);
-            MessageBox.Show("Документ проведен!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            GetDocument();
+            string GetDocState = "exec dbo.GetDocState "+SelectItemRow;
+            DataTable DocStateDt = DbConnection.DBConnect(GetDocState);
+            int DocState = Convert.ToInt32(DocStateDt.Rows[0][0]);
+            if (DocState > 0 && DocState < 2)
+            {
+                string UpdateDocState = "update d__RenderedServiceHead set ID_DocState = 2 where ID = " + SelectItemRow;
+                DbConnection.DBConnect(UpdateDocState);
+                MessageBox.Show("Документ проведен!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                GetDocument();
+            }
+            else
+            {
+                MessageBox.Show("Документ проведен!","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
         }
 
         private void отменитьПроведениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string UpdateDocState = "update d__RenderedServiceHead set ID_DocState = 1 where ID = " + SelectItemRow;
-            DbConnection.DBConnect(UpdateDocState);
-            MessageBox.Show("Проведение документа отменено!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            GetDocument();
+            string GetDocState = "exec dbo.GetDocState "+SelectItemRow;
+            DataTable DocStateDt = DbConnection.DBConnect(GetDocState);
+            int DocState = Convert.ToInt32(DocStateDt.Rows[0][0]);
+            if(DocState > 1 && DocState < 3)
+            {
+                string UpdateDocState = "update d__RenderedServiceHead set ID_DocState = 1 where ID = " + SelectItemRow;
+                DbConnection.DBConnect(UpdateDocState);
+                MessageBox.Show("Проведение документа отменено!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                GetDocument();
+            }
+            else
+            {
+                MessageBox.Show("Документ не проведен!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void dataGridView2_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
