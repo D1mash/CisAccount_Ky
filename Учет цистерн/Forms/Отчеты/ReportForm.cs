@@ -114,8 +114,8 @@ namespace Учет_цистерн
 
             app.Visible = false;
 
-            int cellRowIndex = 0;
-            int cellColumnIndex = 1;
+            //int cellRowIndex = 0;
+            //int cellColumnIndex = 1;
 
             worksheet.Range["B12:K34"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 12, 2]);
             //Excel.Range cellRange = (Excel.Range)worksheet.Cells[dataGridView1.Rows.Count + 12, 2];
@@ -123,50 +123,73 @@ namespace Учет_цистерн
             //Excel.Range rowRange = cellRange.EntireRow;
             //rowRange.Insert(Excel.XlInsertShiftDirection.xlShiftDown);
 
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                worksheet.Cells[cellRowIndex + 10, 1] = i + 1;
-                worksheet.Cells[cellRowIndex + 10, 2] = dataGridView1.Rows[i].Cells[6].Value.ToString();
-
-                //for (int j = 1; j < dataGridView1.Columns.Count; j++)
-                //{
+                worksheet.Cells[i + 10, 1] = i + 1;
+                for (int j = 1; j < dataGridView1.Columns.Count; j++)
+                {
                     // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check.
                     //if (cellRowIndex == 1)
                     //{
                     //    worksheet.Cells[cellRowIndex, cellColumnIndex] = dataGridView1.Columns[j].HeaderText;
                     //}
-                    //else
-                    //{
-
-                worksheet.Cells[cellRowIndex + 10, 3] = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                worksheet.Cells[cellRowIndex + 10, 14] = dataGridView1.Rows[i].Cells[9].Value.ToString();
-                worksheet.Cells[cellRowIndex + 10, 13] = dataGridView1.Rows[i].Cells[11].Value.ToString();
-                worksheet.Cells[cellRowIndex + 10, 15] = dataGridView1.Rows[i].Cells[5].Value.ToString();
-
-                if (dataGridView1.Rows[i].Cells[2].Value.ToString().Trim() == "8")
-                {
-                    worksheet.Cells[cellRowIndex + 10, 5] = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                    if(j!=3 && j<4)
+                    {
+                        worksheet.Cells[i + 10, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                    }
+                    else
+                    {
+                        if(j == 3)
+                        {
+                            if (dataGridView1.Rows[i].Cells[j].Value.ToString().Trim() == "8")
+                            {
+                                worksheet.Cells[i + 10, 5] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            }
+                            else
+                            {
+                                worksheet.Cells[i + 10, 4] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            }
+                        }
+                    }
+                    if(j>=4 && j<=5)
+                    {
+                        worksheet.Cells[i + 10, j + 3] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                    }
+                    else
+                    {
+                        if(j>=6 && j <= 9)
+                        {
+                            if(dataGridView1.Rows[i].Cells[j].Value.ToString().Trim() == "True")
+                            {
+                                worksheet.Cells[i + 10, j + 3] = "✓";
+                            }
+                            else
+                            {
+                                worksheet.Cells[i + 10, j + 3] = " ";
+                            }
+                        }
+                    }
+                    if(j>9)
+                    {
+                        worksheet.Cells[i + 10, j + 3] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                    }
+                    //cellColumnIndex++;
                 }
-                else
-                {
-                    worksheet.Cells[cellRowIndex + 10, 4] = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                }
+                Excel.Range priceRange = worksheet.Range[worksheet.Cells[i + 10, 15], worksheet.Cells[dataGridView1.Rows.Count + 10, 15]];
+                priceRange.NumberFormat = "0.00";
 
-                //}
-                //cellColumnIndex++;
-                //}
-
-                Excel.Range range = worksheet.Range[worksheet.Cells[cellRowIndex + 10, 1], worksheet.Cells[cellRowIndex + 10, dataGridView1.Columns.Count - 1]];
+                Excel.Range range = worksheet.Range[worksheet.Cells[i + 10, 1], worksheet.Cells[i + 10, dataGridView1.Columns.Count + 2]];
                 //range.EntireColumn.AutoFit();
+                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                 Excel.Borders border = range.Borders;
                 border.LineStyle = Excel.XlLineStyle.xlContinuous;
                 border.Weight = 2d;
 
-                backgroundWorker.ReportProgress(cellRowIndex);
-                cellColumnIndex = 1;
-                cellRowIndex++;
+                backgroundWorker.ReportProgress(i);
+                //cellColumnIndex = 1;
+                //cellRowIndex++;
             }
-
+            
             workbook.SaveAs(fileName);
             app.Quit();
 

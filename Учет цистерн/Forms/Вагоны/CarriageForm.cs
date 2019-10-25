@@ -20,6 +20,8 @@ namespace Учет_цистерн
         int SelectOwnerID;
         int Rows;
 
+        BindingSource source = new BindingSource();
+
         public CarriageForm(ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1, Button button1, Button button2, Button button3, Button button4, Button button6, TradeWright.UI.Forms.TabControlExtra tabControl1)
         {
             InitializeComponent();
@@ -190,7 +192,8 @@ namespace Учет_цистерн
                 Application.UseWaitCursor = false;
                 System.Windows.Forms.Cursor.Current = Cursors.Default;
 
-                dataGridView1.DataSource = e.Result;
+                source.DataSource = e.Result;
+                dataGridView1.DataSource = source;
                 dataGridView1.RowHeadersWidth = 15;
                 dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[3].Visible = false;
@@ -223,6 +226,16 @@ namespace Учет_цистерн
                 MessageBox.Show(ex.Message);
             }
             return Rows;
+        }
+
+        private void advancedDataGridView1_FilterStringChanged(object sender, EventArgs e)
+        {
+            this.source.Filter = this.dataGridView1.FilterString;
+        }
+
+        private void advancedDataGridView1_SortStringChanged(object sender, EventArgs e)
+        {
+            this.source.Sort = this.dataGridView1.SortString;
         }
     }
 }
