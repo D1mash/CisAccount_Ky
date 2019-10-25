@@ -346,8 +346,31 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             }
             else
             {
-                string UpdateBody = "exec dbo.UpdateRenderedServiceBody '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + "',1," + SelectItemRow;
-                DbConnection.DBConnect(UpdateBody);
+                string CarNumber = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                string ServiceDate = dateTimePicker1.Value.Date.ToShortDateString();
+
+                string CheckCarnumber = "select * from d__Carriage where CarNumber = " + CarNumber;
+                DataTable dt1 = DbConnection.DBConnect(CheckCarnumber);
+                if (dt1.Rows.Count > 0)
+                {
+                    string GetCarnumber = "select * from d__RenderedServiceHead h left join d__RenderedServiceBody b on h.ID = b.Head_ID where b.CarNumber = " + CarNumber + " and h.ServiceDate = '" + ServiceDate + "' and h.NUM != '" + GetStatus + "'";
+                    DataTable dt = DbConnection.DBConnect(GetCarnumber);
+                    if (dt.Rows.Count == 0)
+                    {
+                        string UpdateBody = "exec dbo.UpdateRenderedServiceBody '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + "',1," + SelectItemRow;
+                        DbConnection.DBConnect(UpdateBody);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Вагон " + CarNumber + " уже имеется в заявках на эту дату " + ServiceDate, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        UpdateBody();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(CarNumber + " отсутствует в справочнике Вагоны!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    UpdateBody();
+                }
             }
 
             //Проверка для продукта

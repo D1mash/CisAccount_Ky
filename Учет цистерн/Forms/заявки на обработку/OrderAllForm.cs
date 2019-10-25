@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -141,7 +142,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         private void CreateNewDocument()
         {
             string DocNum;
-            string GetDate = System.DateTime.Now.ToString();
+            string GetDate = System.DateTime.Now.ToShortDateString();
             string GetDocNum = "exec dbo.GetDocNum 1";
             DataTable dt = new DataTable();
             dt = DbConnection.DBConnect(GetDocNum);
@@ -253,6 +254,27 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         //удаление документа
         private void DeleteDoc()
         {
+            //if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //{
+            //    try
+            //    {
+            //        string DeleteDoc = "exec dbo.DeleteRenderedServiceDoc " + SelectItemRow;
+            //        DbConnection.DBConnect(DeleteDoc);
+            //        GetDocument();
+            //    }
+            //    catch (SqlException ex)
+            //    {
+            //        throw ex;
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        MessageBox.Show(e.Message);
+            //    }
+            //    finally
+            //    {
+            //        MessageBox.Show("Документ удалён!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //}
             string message = "Вы действительно хотите удалить эту запись?";
             string title = "Удаление";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -262,7 +284,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 string GetDocState = "exec dbo.GetDocState " + SelectItemRow;
                 DataTable DocStateDt = DbConnection.DBConnect(GetDocState);
                 int DocState = Convert.ToInt32(DocStateDt.Rows[0][0]);
-                if(DocState>0 && DocState < 2)
+                if (DocState > 0 && DocState < 2)
                 {
                     string DeleteDoc = "exec dbo.DeleteRenderedServiceDoc " + SelectItemRow;
                     DbConnection.DBConnect(DeleteDoc);
@@ -271,9 +293,14 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 }
                 else
                 {
-                    MessageBox.Show("Документ проведен! Сначала отмените проведение документа!","",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                    MessageBox.Show("Документ проведен! Сначала отмените проведение документа!", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
             }
+        }
+
+        private void DisplaySqlErrors(SqlException ex)
+        {
+            throw new NotImplementedException();
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)

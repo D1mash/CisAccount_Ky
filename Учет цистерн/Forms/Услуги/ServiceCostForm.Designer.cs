@@ -56,7 +56,7 @@
             // 
             // Btn_Refresh
             // 
-            this.Btn_Refresh.Location = new System.Drawing.Point(255, 19);
+            this.Btn_Refresh.Location = new System.Drawing.Point(12, 19);
             this.Btn_Refresh.Name = "Btn_Refresh";
             this.Btn_Refresh.Size = new System.Drawing.Size(75, 23);
             this.Btn_Refresh.TabIndex = 3;
@@ -72,6 +72,7 @@
             this.Btn_Delete.TabIndex = 2;
             this.Btn_Delete.Text = "Удалить";
             this.Btn_Delete.UseVisualStyleBackColor = true;
+            this.Btn_Delete.Visible = false;
             this.Btn_Delete.Click += new System.EventHandler(this.Btn_Delete_Click);
             // 
             // Btn_Updt
@@ -82,16 +83,18 @@
             this.Btn_Updt.TabIndex = 1;
             this.Btn_Updt.Text = "Изменить";
             this.Btn_Updt.UseVisualStyleBackColor = true;
+            this.Btn_Updt.Visible = false;
             this.Btn_Updt.Click += new System.EventHandler(this.Btn_Updt_Click);
             // 
             // Btn_Add
             // 
-            this.Btn_Add.Location = new System.Drawing.Point(12, 19);
+            this.Btn_Add.Location = new System.Drawing.Point(255, 19);
             this.Btn_Add.Name = "Btn_Add";
             this.Btn_Add.Size = new System.Drawing.Size(75, 23);
             this.Btn_Add.TabIndex = 0;
             this.Btn_Add.Text = "Добавить";
             this.Btn_Add.UseVisualStyleBackColor = true;
+            this.Btn_Add.Visible = false;
             this.Btn_Add.Click += new System.EventHandler(this.Btn_Add_Click);
             // 
             // groupBox2

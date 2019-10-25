@@ -53,6 +53,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -63,10 +67,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new ADGV.AdvancedDataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -353,6 +353,34 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Вагоны";
             // 
+            // panel7
+            // 
+            this.panel7.Location = new System.Drawing.Point(750, 531);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(100, 19);
+            this.panel7.TabIndex = 14;
+            // 
+            // panel6
+            // 
+            this.panel6.Location = new System.Drawing.Point(644, 531);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(100, 19);
+            this.panel6.TabIndex = 14;
+            // 
+            // panel5
+            // 
+            this.panel5.Location = new System.Drawing.Point(538, 531);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(100, 19);
+            this.panel5.TabIndex = 14;
+            // 
+            // panel4
+            // 
+            this.panel4.Location = new System.Drawing.Point(432, 531);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(100, 19);
+            this.panel4.TabIndex = 14;
+            // 
             // panel3
             // 
             this.panel3.Location = new System.Drawing.Point(326, 532);
@@ -454,34 +482,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Вложенные документы";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // panel4
-            // 
-            this.panel4.Location = new System.Drawing.Point(432, 531);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(100, 19);
-            this.panel4.TabIndex = 14;
-            // 
-            // panel5
-            // 
-            this.panel5.Location = new System.Drawing.Point(538, 531);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(100, 19);
-            this.panel5.TabIndex = 14;
-            // 
-            // panel6
-            // 
-            this.panel6.Location = new System.Drawing.Point(644, 531);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(100, 19);
-            this.panel6.TabIndex = 14;
-            // 
-            // panel7
-            // 
-            this.panel7.Location = new System.Drawing.Point(750, 531);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(100, 19);
-            this.panel7.TabIndex = 14;
             // 
             // OrderAddForm
             // 
