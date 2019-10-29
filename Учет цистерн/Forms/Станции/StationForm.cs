@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -57,18 +58,19 @@ namespace Учет_цистерн
         {
             if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string CheckReference = "select * from d__RenderedServiceHead where Station_ID = " + SelectItemRow;
-                string DeleteCurrentStation = "delete from d__Station where ID = " + SelectItemRow;
-                DataTable dt = new DataTable();
-                dt = DbConnection.DBConnect(CheckReference);
-                if (dt.Rows.Count == 0)
+                try
                 {
+                    string DeleteCurrentStation = "delete from d__Station where ID = " + SelectItemRow;
                     DbConnection.DBConnect(DeleteCurrentStation);
-                    MessageBox.Show("Запись удалена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else
+                catch (SqlException ex)
                 {
-                    MessageBox.Show("Невозможно удалить, т.к. станция привязана в таблице Обработанные вагоны", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show(exp.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

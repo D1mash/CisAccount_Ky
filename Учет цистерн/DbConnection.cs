@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -14,17 +15,22 @@ namespace Учет_цистерн
             SqlDataAdapter da = new SqlDataAdapter(query, conn);
             DataTable dataTable = new DataTable();
 
-            try
-            {
-                conn.Open();
-                da.Fill(dataTable);
-                conn.Close();
-                conn.Dispose();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            conn.Open();
+            da.Fill(dataTable);
+            conn.Close();
+            conn.Dispose();
+
+            //try
+            //{
+            //    conn.Open();
+            //    da.Fill(dataTable);
+            //    conn.Close();
+            //    conn.Dispose();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message,"",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            //}
             return dataTable;
         }
 
@@ -45,7 +51,7 @@ namespace Учет_цистерн
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             return TotalRecords;
         }

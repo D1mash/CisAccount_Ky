@@ -99,19 +99,22 @@ namespace Учет_цистерн
         {
             if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string CheckReference = "select * from d__RenderedService where Carriage = " + SelectItemRow;
                 string Delete = "delete from d__Carriage where ID = " + SelectItemRow;
-                DataTable dt = new DataTable();
-                dt = DbConnection.DBConnect(CheckReference);
-                if (dt.Rows.Count == 0)
-                {
-                    DbConnection.DBConnect(Delete);
-                    MessageBox.Show("Запись удалена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Невозможно удалить, т.к. вагон привязан в таблице Обработанные вагоны", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                DbConnection.DBConnect(Delete);
+                MessageBox.Show("Запись удалена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                //string CheckReference = "select * from d__RenderedService where Carriage = " + SelectItemRow;
+                //string Delete = "delete from d__Carriage where ID = " + SelectItemRow;
+                //DataTable dt = new DataTable();
+                //dt = DbConnection.DBConnect(CheckReference);
+                //if (dt.Rows.Count == 0)
+                //{
+                //    DbConnection.DBConnect(Delete);
+                //    MessageBox.Show("Запись удалена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Невозможно удалить, т.к. вагон привязан в таблице Обработанные вагоны", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
             }
         }
 
