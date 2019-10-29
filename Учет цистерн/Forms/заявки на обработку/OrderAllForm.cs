@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Учет_цистерн.Forms.заявки_на_обработку
@@ -254,53 +249,24 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         //удаление документа
         private void DeleteDoc()
         {
-            //if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            //{
-            //    try
-            //    {
-            //        string DeleteDoc = "exec dbo.DeleteRenderedServiceDoc " + SelectItemRow;
-            //        DbConnection.DBConnect(DeleteDoc);
-            //        GetDocument();
-            //    }
-            //    catch (SqlException ex)
-            //    {
-            //        throw ex;
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        MessageBox.Show(e.Message);
-            //    }
-            //    finally
-            //    {
-            //        MessageBox.Show("Документ удалён!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-            //}
-            string message = "Вы действительно хотите удалить эту запись?";
-            string title = "Удаление";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string GetDocState = "exec dbo.GetDocState " + SelectItemRow;
-                DataTable DocStateDt = DbConnection.DBConnect(GetDocState);
-                int DocState = Convert.ToInt32(DocStateDt.Rows[0][0]);
-                if (DocState > 0 && DocState < 2)
+                try
                 {
                     string DeleteDoc = "exec dbo.DeleteRenderedServiceDoc " + SelectItemRow;
                     DbConnection.DBConnect(DeleteDoc);
-                    MessageBox.Show("Документ удалён!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GetDocument();
+                    MessageBox.Show("Документ удалён!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else
+                catch (SqlException ex)
                 {
-                    MessageBox.Show("Документ проведен! Сначала отмените проведение документа!", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }       
             }
-        }
-
-        private void DisplaySqlErrors(SqlException ex)
-        {
-            throw new NotImplementedException();
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
