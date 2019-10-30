@@ -141,8 +141,10 @@ namespace Учет_цистерн
 
                 worksheet.Range["C6"].Value = "в ТОО Казыгурт-Юг c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
 
-                worksheet.Range["B15:K23"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 17 + getserv.Rows.Count*2, 2]);
+                FormattingExcelCells(worksheet.Range["C6"], false, false);
 
+                worksheet.Range["B15:K23"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 17 + getserv.Rows.Count*2, 2]);
+                
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
                     worksheet.Cells[i + 10, 1] = i + 1;
@@ -182,21 +184,7 @@ namespace Учет_цистерн
                                 if(dataGridView1.Rows[i].Cells[j].Value.ToString().Trim() == "True")
                                 {
                                     worksheet.Cells[i + 10, j + 3] = "✓";
-                                    ////Осмотр котлов 4-осн В/Ц, пригодных под налив без обработки
-                                    //if (j==7 && dataGridView1.Rows[i].Cells[3].Value.ToString().Trim() == "4" && dataGridView1.Rows[i].Cells[j].Value.ToString().Trim() == "True")
-                                    //{
-                                    //    InspectionWithout++;
-
-                                    //    SumInspectionWithout = dataGridView1.Rows[i].Cells[12].Value.ToString();
-                                    //}
-                                    
-                                    //ТОР 4-х осных:
-                                    //if (j == 8 && dataGridView1.Rows[i].Cells[3].Value.ToString().Trim() == "4")
-                                    //{
-                                    //    totalTOR4++;
-
-                                    //    //SumTotalTor4 = dataGridView1.Rows[i].Cells[12].Value.ToString();
-                                    //}
+                                   
                                 }
                                 else
                                 {
@@ -208,64 +196,13 @@ namespace Учет_цистерн
                         {
                             worksheet.Cells[i + 10, j + 3] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                         }
-                        //cellColumnIndex++;
                     }
-
-                    ////Подготовка 4-осн В/Ц под налив горячим способом св/св
-                    //if (dataGridView1.Rows[i].Cells[3].Value.ToString().Trim() == "4" && dataGridView1.Rows[i].Cells[14].Value.ToString().Trim() == "св/св" && dataGridView1.Rows[i].Cells[6].Value.ToString().Trim() == "True")
-                    //{
-                    //    totalNaliv4sv++;
-
-                    //    Sumsv = dataGridView1.Rows[i].Cells[12].Value.ToString();
-
-                    //    //Подготовка 4-осн В/Ц под налив горячим способом для всех видов ремонта св/св
-                    //    if (dataGridView1.Rows[i].Cells[8].Value.ToString().Trim() == "True")
-                    //    {
-                    //        SumtotalNalivAllTorTem = dataGridView1.Rows[i].Cells[12].Value.ToString();
-
-                    //        totalNalivAllTorSV++;
-                    //    }
-
-                    //    //Горячая обработка 4-осн В/Ц для ДР и КР св/св
-                    //    if (dataGridView1.Rows[i].Cells[9].Value.ToString().Trim() == "True")
-                    //    {
-                    //        DrKrSv++;
-                    //    }
-                    //}
-                    //else
-                    ////Подготовка 4-осн В/Ц под налив горячим способом тем/тем
-                    //{
-                    //    if (dataGridView1.Rows[i].Cells[14].Value.ToString().Trim() == "тем/тем" && dataGridView1.Rows[i].Cells[3].Value.ToString().Trim() == "4" && dataGridView1.Rows[i].Cells[6].Value.ToString().Trim() == "True")
-                    //    {
-                    //        totalNaliv4tem++;
-
-                    //        Sumtem = dataGridView1.Rows[i].Cells[12].Value.ToString();
-
-                    //        //Подготовка 4-осн В/Ц под налив горячим способом для всех видов ремонта тем/тем
-                    //        if (dataGridView1.Rows[i].Cells[8].Value.ToString().Trim() == "True")
-                    //        {
-                    //            SumtotalNalivAllTorTem = dataGridView1.Rows[i].Cells[12].Value.ToString();
-
-                    //            totalNalivAllTorTem++;
-                    //        }
-
-                    //        //Горячая обработка 4-осн В/Ц для ДР и КР тем/тем
-                    //        if (dataGridView1.Rows[i].Cells[9].Value.ToString().Trim() == "True")
-                    //        {
-                    //            DrKrTem++;
-                    //        }
-                    //    }
-                    //}
 
                     //Excel.Range priceRange = worksheet.Range[worksheet.Cells[i + 10, 15], worksheet.Cells[dataGridView1.Rows.Count + 9, 15]];
                     //priceRange.NumberFormat = "0.00";
                 
                     Excel.Range range = worksheet.Range[worksheet.Cells[i + 10, 1], worksheet.Cells[i + 10, dataGridView1.Columns.Count]];
-                    //range.EntireColumn.AutoFit();
-                    range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                    Excel.Borders border = range.Borders;
-                    border.LineStyle = Excel.XlLineStyle.xlContinuous;
-                    border.Weight = 2d;
+                    FormattingExcelCells(range, true, true);
 
                     backgroundWorker.ReportProgress(i);
 
@@ -306,6 +243,9 @@ namespace Учет_цистерн
 
                 worksheet.Cells[dataGridView1.Rows.Count + getserv.Rows.Count*2 + 19, 14] = TotalSum();
 
+                Excel.Range range1 = worksheet.Range[worksheet.Cells[dataGridView1.Rows.Count + 12, 2], worksheet.Cells[dataGridView1.Rows.Count + getserv.Rows.Count * 2 + 19, 14]];
+                FormattingExcelCells(range1, false, false);
+
                 workbook.SaveAs(fileName);
                 app.Quit();
         }
@@ -323,15 +263,32 @@ namespace Учет_цистерн
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                     sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[12].Value);
-             
             }
             return sum;
         }
 
-        private void Init() 
-        { 
-        
+        public void FormattingExcelCells(Excel.Range range, bool val1, bool val2)
+        {
+            //range.EntireColumn.AutoFit();
+            range.Font.Name = "Arial Cyr";
+            range.Font.Size = 9;
+            range.Font.FontStyle = "Bold";
+            if (val1 == true)
+            {
+                Excel.Borders border = range.Borders;
+                border.LineStyle = Excel.XlLineStyle.xlContinuous;
+                border.Weight = 2d;
+            }
+            if (val2 == true)
+            {
+                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            }
+            else
+            {
+                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            }
         }
+
         private void BackgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             progressBar.Value = e.ProgressPercentage;
