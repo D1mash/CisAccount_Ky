@@ -11,26 +11,16 @@ namespace Учет_цистерн
         public static string connectionString = "Data Source=POTITPC-01\\PLMLOCAL;Initial Catalog=Batys;User ID=sa;Password=!sql123;";
         public static DataTable DBConnect(string query)
         {
-            SqlConnection conn = new SqlConnection(connectionString);
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            SqlConnection conn;
             DataTable dataTable = new DataTable();
 
-            conn.Open();
-            da.Fill(dataTable);
-            conn.Close();
-            conn.Dispose();
-
-            //try
-            //{
-            //    conn.Open();
-            //    da.Fill(dataTable);
-            //    conn.Close();
-            //    conn.Dispose();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message,"",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-            //}
+            using (conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                da.Fill(dataTable);
+                conn.Close();
+            }
             return dataTable;
         }
 

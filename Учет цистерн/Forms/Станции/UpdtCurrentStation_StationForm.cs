@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -23,14 +24,25 @@ namespace Учет_цистерн
 
         private void button_Updt_OK_StationForm_Click(object sender, EventArgs e)
         {
-            string Updt_CurrentStation =
+            try
+            {
+                string Updt_CurrentStation =
                 "update d__Station " +
                 "set Name = '" + textBox_Updt_Name_StationForm.Text.Trim() + "', Code = " + Convert.ToInt32(textBox_Updt_Code_StationForm.Text.Trim()) + ", Code6 = " + Convert.ToInt32(textBox_Updt_Code6_StationForm.Text.Trim()) + " " +
                 "where ID = " + selectStationID;
-            DataTable dtbl = new DataTable();
-            dtbl = DbConnection.DBConnect(Updt_CurrentStation);
-            this.Close();
-            MessageBox.Show("Станция изменена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                DataTable dtbl = new DataTable();
+                dtbl = DbConnection.DBConnect(Updt_CurrentStation);
+                this.Close();
+                MessageBox.Show("Станция изменена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button_Updt_Cancel_StationForm_Click(object sender, EventArgs e)

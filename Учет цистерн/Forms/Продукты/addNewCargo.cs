@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -26,19 +27,30 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string FillProduct = "exec [dbo].[FillProduct] '" + textBox1.Text.Trim() + "'," + comboBox1.SelectedValue.ToString();
-            string SelectDubl = "select * from d__Product where Name = '" + textBox1.Text.Trim() + "'";
-            DataTable dt = new DataTable();
-            dt = DbConnection.DBConnect(SelectDubl);
-            if (dt.Rows.Count == 0)
+            try
             {
-                DbConnection.DBConnect(FillProduct);
-                this.Close();
-                MessageBox.Show("Запись добавлена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                string FillProduct = "exec [dbo].[FillProduct] '" + textBox1.Text.Trim() + "'," + comboBox1.SelectedValue.ToString();
+                string SelectDubl = "select * from d__Product where Name = '" + textBox1.Text.Trim() + "'";
+                DataTable dt = new DataTable();
+                dt = DbConnection.DBConnect(SelectDubl);
+                if (dt.Rows.Count == 0)
+                {
+                    DbConnection.DBConnect(FillProduct);
+                    this.Close();
+                    MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Продукт с названием: " + textBox1.Text.Trim() + " уже имеется в справочнике", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else
+            catch (SqlException ex)
             {
-                MessageBox.Show("Продукт с названием: " + textBox1.Text.Trim() + " уже имеется в справочнике","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

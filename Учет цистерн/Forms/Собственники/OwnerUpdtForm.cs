@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -46,11 +47,22 @@ namespace Учет_цистерн
         //изменить
         private void btnOk_Click(object sender, EventArgs e)
         {
-            string UpdateCurrentOwner = "update d__Owner set Name = '"+textBox1.Text.Trim()+"', FullName = '"+textBox2.Text.Trim()+"' where ID = " + selectID;
-            DataTable dtbl = new DataTable();
-            dtbl = DbConnection.DBConnect(UpdateCurrentOwner);
-            this.Close();
-            MessageBox.Show("Запись изменена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            try
+            {
+                string UpdateCurrentOwner = "update d__Owner set Name = '" + textBox1.Text.Trim() + "', FullName = '" + textBox2.Text.Trim() + "' where ID = " + selectID;
+                DataTable dtbl = new DataTable();
+                dtbl = DbConnection.DBConnect(UpdateCurrentOwner);
+                this.Close();
+                MessageBox.Show("Запись изменена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

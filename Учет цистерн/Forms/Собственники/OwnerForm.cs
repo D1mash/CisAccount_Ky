@@ -17,18 +17,40 @@ namespace Учет_цистерн
         //загрузка данных в DataGridView
         private void OwnerForm_Load(object sender, EventArgs e)
         {
-            string Reffresh = "SELECT ID,Name [Наименование],FullName [Полное наименование] FROM [Batys].[dbo].[d__Owner]";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(Reffresh);
-            dataGVOwner.DataSource = dataTable;
-            dataGVOwner.Columns[0].Visible = false;
+            try
+            {
+                string Reffresh = "SELECT ID,Name [Наименование],FullName [Полное наименование] FROM [Batys].[dbo].[d__Owner]";
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(Reffresh);
+                dataGVOwner.DataSource = dataTable;
+                dataGVOwner.Columns[0].Visible = false;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //Добавление
         private void btnOwnerAdd_Click(object sender, EventArgs e)
         {
-            OwnerAddForm OwnerAddForm = new OwnerAddForm();
-            OwnerAddForm.Show();
+            try
+            {
+                OwnerAddForm OwnerAddForm = new OwnerAddForm();
+                OwnerAddForm.Show();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //Изменение
@@ -51,23 +73,45 @@ namespace Учет_цистерн
 
         private void dataGVOwner_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = this.dataGVOwner.Rows[
-                    e.RowIndex];
-                string Id = row.Cells["ID"].Value.ToString();
-                SelectItemRow = Convert.ToInt32(Id);
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGVOwner.Rows[
+                        e.RowIndex];
+                    string Id = row.Cells["ID"].Value.ToString();
+                    SelectItemRow = Convert.ToInt32(Id);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         //Обновление
         private void btnOwnerReffresh_Click(object sender, EventArgs e)
         {
-            string Reffresh = "SELECT ID,Name [Наименование],FullName [Полное наименование] FROM [Batys].[dbo].[d__Owner]";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(Reffresh);
-            dataGVOwner.DataSource = dataTable;
-            dataGVOwner.Columns[0].Visible = false;
+            try
+            {
+                string Reffresh = "SELECT ID,Name [Наименование],FullName [Полное наименование] FROM [Batys].[dbo].[d__Owner]";
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(Reffresh);
+                dataGVOwner.DataSource = dataTable;
+                dataGVOwner.Columns[0].Visible = false;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //Удаление

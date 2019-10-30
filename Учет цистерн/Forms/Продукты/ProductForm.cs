@@ -18,18 +18,40 @@ namespace Учет_цистерн
 
         private void button1_Click_Add_Product(object sender, EventArgs e)
         {
-            addNewCargo addCargo = new addNewCargo();
-            addCargo.Show();
+            try
+            {
+                addNewCargo addCargo = new addNewCargo();
+                addCargo.Show();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button4_Click_Refresh_Table(object sender, EventArgs e)
         {
-            string GetProduct = "select dp.ID, qh.ID as [Hangling_id],dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(GetProduct);
-            dataGridView1.DataSource = dataTable;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
+            try
+            {
+                string GetProduct = "select dp.ID, qh.ID as [Hangling_id],dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(GetProduct);
+                dataGridView1.DataSource = dataTable;
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].Visible = false;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click_Update_Product(object sender, EventArgs e)
@@ -50,13 +72,24 @@ namespace Учет_цистерн
 
         private void dataGridView1_CellClick_SelectedRow(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                string Id = row.Cells["ID"].Value.ToString();
-                string HandID = row.Cells["Hangling_id"].Value.ToString();
-                SelectItemRow = Convert.ToInt32(Id);
-                SelectHandlingID = Convert.ToInt32(HandID);
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                    string Id = row.Cells["ID"].Value.ToString();
+                    string HandID = row.Cells["Hangling_id"].Value.ToString();
+                    SelectItemRow = Convert.ToInt32(Id);
+                    SelectHandlingID = Convert.ToInt32(HandID);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -83,12 +116,23 @@ namespace Учет_цистерн
 
         private void Form_Product_Load(object sender, EventArgs e)
         {
-            string GetProduct = "select dp.ID, qh.ID as [Hangling_id],dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(GetProduct);
-            dataGridView1.DataSource = dataTable;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
+            try
+            {
+                string GetProduct = "select dp.ID, qh.ID as [Hangling_id],dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(GetProduct);
+                dataGridView1.DataSource = dataTable;
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].Visible = false;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

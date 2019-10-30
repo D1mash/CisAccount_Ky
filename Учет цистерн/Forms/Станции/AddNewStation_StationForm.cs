@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -15,19 +16,30 @@ namespace Учет_цистерн
 
         private void button_OK_StationForm_Click(object sender, EventArgs e)
         {
-            string FillStation = "exec [dbo].[FillStation] " + textBox_Add_Code_StationForm.Text.Trim() + "," + textBox_Add_Code6_StationForm.Text.Trim() + "," + textBox_Add_Name_StationForm.Text.Trim();
-            string SelectDubl = "select * from d__Station where Code = " + textBox_Add_Code_StationForm.Text.Trim();
-            DataTable dt = new DataTable();
-            dt = DbConnection.DBConnect(SelectDubl);
-            if (dt.Rows.Count == 0)
+            try
             {
-                DbConnection.DBConnect(FillStation);
-                this.Close();
-                MessageBox.Show("Запись добавлена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                string FillStation = "exec [dbo].[FillStation] " + textBox_Add_Code_StationForm.Text.Trim() + "," + textBox_Add_Code6_StationForm.Text.Trim() + "," + textBox_Add_Name_StationForm.Text.Trim();
+                string SelectDubl = "select * from d__Station where Code = " + textBox_Add_Code_StationForm.Text.Trim();
+                DataTable dt = new DataTable();
+                dt = DbConnection.DBConnect(SelectDubl);
+                if (dt.Rows.Count == 0)
+                {
+                    DbConnection.DBConnect(FillStation);
+                    this.Close();
+                    MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Станция с кодом: " + textBox_Add_Code_StationForm.Text.Trim() + " имеется в справочнике", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else
+            catch (SqlException ex)
             {
-                MessageBox.Show("Станция с кодом: " + textBox_Add_Code_StationForm.Text.Trim() + " имеется в справочнике","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

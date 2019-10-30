@@ -17,41 +17,80 @@ namespace Учет_цистерн
 
         private void btn_add_station_form_Click_1(object sender, EventArgs e)
         {
-            AddNewStation_StationForm AddNewStation_StationForm = new AddNewStation_StationForm();
-            AddNewStation_StationForm.Show();
+            try
+            {
+                AddNewStation_StationForm AddNewStation_StationForm = new AddNewStation_StationForm();
+                AddNewStation_StationForm.Show();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dataGridView_Station_Form_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = this.dataGridView_Station_Form.Rows[e.RowIndex];
-                string Id = row.Cells["ID"].Value.ToString();
-                SelectItemRow = Convert.ToInt32(Id);
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGridView_Station_Form.Rows[e.RowIndex];
+                    string Id = row.Cells["ID"].Value.ToString();
+                    SelectItemRow = Convert.ToInt32(Id);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void StationForm_Load(object sender, EventArgs e)
         {
-            //SqlConnection con = new SqlConnection(connectionString);
-            //con.Open();
-            string GetStation = "select ID, Name as [Наименование], Code, Code6 from d__Station";
-            //SqlDataAdapter sda = new SqlDataAdapter(GetStation, con);
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(GetStation);
-            //sda.Fill(dtbl);
-            dataGridView_Station_Form.DataSource = dataTable;
-            dataGridView_Station_Form.Columns[0].Visible = false;
-            //con.Close();
+            try
+            {
+                string GetStation = "select ID, Name as [Наименование], Code, Code6 from d__Station";
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(GetStation);
+                dataGridView_Station_Form.DataSource = dataTable;
+                dataGridView_Station_Form.Columns[0].Visible = false;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_refsh_station_form_Click_1(object sender, EventArgs e)
         {
-            string GetStation = "select ID, Name as [Наименование], Code, Code6 from d__Station";
-            DataTable dTl = new DataTable();
-            dTl = DbConnection.DBConnect(GetStation);
-            dataGridView_Station_Form.DataSource = dTl;
-            dataGridView_Station_Form.Columns[0].Visible = false;
+            try
+            {
+                string GetStation = "select ID, Name as [Наименование], Code, Code6 from d__Station";
+                DataTable dTl = new DataTable();
+                dTl = DbConnection.DBConnect(GetStation);
+                dataGridView_Station_Form.DataSource = dTl;
+                dataGridView_Station_Form.Columns[0].Visible = false;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_dlt_station_form_Click_1(object sender, EventArgs e)
