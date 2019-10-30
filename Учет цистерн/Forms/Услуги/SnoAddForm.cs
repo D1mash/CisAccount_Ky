@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data;
-
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн.Forms.СНО
@@ -27,90 +27,178 @@ namespace Учет_цистерн.Forms.СНО
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String FillSNO = "exec dbo.FillSNO "+comboBox1.SelectedValue.ToString()+","+textBox1.Text.Replace(",", ".") + ","+textBox2.Text.Replace(",", ".") + ","+textBox3.Text.Replace(",", ".") + ","+textBox4.Text.Replace(",", ".") + ","+textBox5.Text.Replace(",", ".") + ",'"+dateTimePicker1.Value.Date.ToString()+"'";
-            DataTable dT = DbConnection.DBConnect(FillSNO);
-            MessageBox.Show("Запись добавлена!", "",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            this.Close();
+            try
+            {
+                String FillSNO = "exec dbo.FillSNO " + comboBox1.SelectedValue.ToString() + "," + textBox1.Text.Replace(",", ".") + "," + textBox2.Text.Replace(",", ".") + "," + textBox3.Text.Replace(",", ".") + "," + textBox4.Text.Replace(",", ".") + "," + textBox5.Text.Replace(",", ".") + ",'" + dateTimePicker1.Value.Date.ToString() + "'";
+                DataTable dT = DbConnection.DBConnect(FillSNO);
+                MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text))
-                textBox3.Text = (Convert.ToDecimal(textBox1.Text) * Convert.ToDecimal(textBox2.Text)).ToString();
+            try
+            {
+                if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text))
+                    textBox3.Text = (Convert.ToDecimal(textBox1.Text) * Convert.ToDecimal(textBox2.Text)).ToString();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text))
-            textBox3.Text = (Convert.ToDecimal(textBox1.Text) * Convert.ToDecimal(textBox2.Text)).ToString();
+            try
+            {
+                if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text))
+                    textBox3.Text = (Convert.ToDecimal(textBox1.Text) * Convert.ToDecimal(textBox2.Text)).ToString();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
-            string temp = "";
-            string sum = "";
-            if (string.IsNullOrEmpty(textBox4.Text))
+            try
             {
-                textBox4.Text = "0";
+                string temp = "";
+                string sum = "";
+                if (string.IsNullOrEmpty(textBox4.Text))
+                {
+                    textBox4.Text = "0";
+                }
+                temp = ((Convert.ToDecimal(textBox3.Text) * Convert.ToDecimal(textBox4.Text)) / 100).ToString();
+                sum = (Convert.ToDecimal(textBox3.Text) + Convert.ToDecimal(temp)).ToString();
+                textBox5.Text = sum;
             }
-            temp = ((Convert.ToDecimal(textBox3.Text) * Convert.ToDecimal(textBox4.Text)) / 100).ToString();
-            sum = (Convert.ToDecimal(textBox3.Text) + Convert.ToDecimal(temp)).ToString();
-            textBox5.Text = sum;
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != ','))
+            try
             {
-                e.Handled = true;
-            }
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != ','))
+                {
+                    e.Handled = true;
+                }
 
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (SqlException ex)
             {
-                e.Handled = true;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != ','))
+            try
             {
-                e.Handled = true;
-            }
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != ','))
+                {
+                    e.Handled = true;
+                }
 
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (SqlException ex)
             {
-                e.Handled = true;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != ','))
+            try
             {
-                e.Handled = true;
-            }
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != ','))
+                {
+                    e.Handled = true;
+                }
 
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (SqlException ex)
             {
-                e.Handled = true;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != ','))
+            try
             {
-                e.Handled = true;
-            }
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != ','))
+                {
+                    e.Handled = true;
+                }
 
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (SqlException ex)
             {
-                e.Handled = true;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

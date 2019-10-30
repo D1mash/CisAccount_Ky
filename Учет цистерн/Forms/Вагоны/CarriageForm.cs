@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Threading;
 using System.Windows.Forms;
 using TradeWright.UI.Forms;
@@ -37,8 +38,19 @@ namespace Учет_цистерн
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            CarriageAddForm carriageAddForm = new CarriageAddForm();
-            carriageAddForm.Show();
+            try
+            {
+                CarriageAddForm carriageAddForm = new CarriageAddForm();
+                carriageAddForm.Show();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e)
@@ -84,37 +96,46 @@ namespace Учет_цистерн
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = this.dataGridView1.Rows[
-                    e.RowIndex];
-                string Id = row.Cells["ID"].Value.ToString();
-                string OwnerID = row.Cells["OwnerID"].Value.ToString();
-                SelectItemRow = Convert.ToInt32(Id);
-                SelectOwnerID = Convert.ToInt32(OwnerID);
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGridView1.Rows[
+                        e.RowIndex];
+                    string Id = row.Cells["ID"].Value.ToString();
+                    string OwnerID = row.Cells["OwnerID"].Value.ToString();
+                    SelectItemRow = Convert.ToInt32(Id);
+                    SelectOwnerID = Convert.ToInt32(OwnerID);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            try
             {
-                string Delete = "delete from d__Carriage where ID = " + SelectItemRow;
-                DbConnection.DBConnect(Delete);
-                MessageBox.Show("Запись удалена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                //string CheckReference = "select * from d__RenderedService where Carriage = " + SelectItemRow;
-                //string Delete = "delete from d__Carriage where ID = " + SelectItemRow;
-                //DataTable dt = new DataTable();
-                //dt = DbConnection.DBConnect(CheckReference);
-                //if (dt.Rows.Count == 0)
-                //{
-                //    DbConnection.DBConnect(Delete);
-                //    MessageBox.Show("Запись удалена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Невозможно удалить, т.к. вагон привязан в таблице Обработанные вагоны", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
+                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string Delete = "delete from d__Carriage where ID = " + SelectItemRow;
+                    DbConnection.DBConnect(Delete);
+                    MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -15,12 +16,23 @@ namespace Учет_цистерн
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string AddNewOwner = "insert into d__Owner " +
+            try
+            {
+                string AddNewOwner = "insert into d__Owner " +
                                  "values ('" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "',NULL)";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(AddNewOwner);
-            this.Close();
-            MessageBox.Show("Запись добавлена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(AddNewOwner);
+                this.Close();
+                MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnClose_Click(object sender, EventArgs e)

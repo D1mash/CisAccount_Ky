@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -39,11 +40,22 @@ namespace Учет_цистерн
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            string Update = "update d__Carriage set CarNumber = " + textBox1.Text.Trim() + ", AXIS = " + textBox2.Text.Trim() + ", Owner_ID = " + comboBox1.SelectedValue.ToString() + " where ID = " + selectID;
-            DataTable dtbl = new DataTable();
-            dtbl = DbConnection.DBConnect(Update);
-            this.Close();
-            MessageBox.Show("Запись изменена!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            try
+            {
+                string Update = "update d__Carriage set CarNumber = " + textBox1.Text.Trim() + ", AXIS = " + textBox2.Text.Trim() + ", Owner_ID = " + comboBox1.SelectedValue.ToString() + " where ID = " + selectID;
+                DataTable dtbl = new DataTable();
+                dtbl = DbConnection.DBConnect(Update);
+                this.Close();
+                MessageBox.Show("Запись изменена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CarriageUpdateForm_Load(object sender, EventArgs e)

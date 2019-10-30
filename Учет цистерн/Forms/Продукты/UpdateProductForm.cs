@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -34,12 +35,22 @@ namespace Учет_цистерн
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string UpdateCurrentProduct = "update d__Product set Name = '" + textBox1.Text.Trim() + "', Handling_id = " + comboBox1.SelectedValue + " where ID = " + selectID;
-            DataTable dtbl = new DataTable();
-            dtbl = DbConnection.DBConnect(UpdateCurrentProduct);
-            this.Close();
-            MessageBox.Show("Продукт изменён!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
-
+            try
+            {
+                string UpdateCurrentProduct = "update d__Product set Name = '" + textBox1.Text.Trim() + "', Handling_id = " + comboBox1.SelectedValue + " where ID = " + selectID;
+                DataTable dtbl = new DataTable();
+                dtbl = DbConnection.DBConnect(UpdateCurrentProduct);
+                this.Close();
+                MessageBox.Show("Продукт изменён!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void UpdateProductForm_Load(object sender, EventArgs e)

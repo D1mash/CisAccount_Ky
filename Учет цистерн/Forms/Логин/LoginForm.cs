@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -32,24 +33,35 @@ namespace Учет_цистерн
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            string getUsers = "Select * from dbo.Users where AID = '" + comboBox1.SelectedValue.ToString() + "' and pass = '" + textBox2.Text.Trim() + "'";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(getUsers);
+            try
+            {
+                string getUsers = "Select * from dbo.Users where AID = '" + comboBox1.SelectedValue.ToString() + "' and pass = '" + textBox2.Text.Trim() + "'";
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(getUsers);
 
-            if (dataTable.Rows.Count == 1)
-            {
-                this.Hide();
-                string User_AID = dataTable.Rows[0][0].ToString();
-                string ExecLogin = "exec dbo.Login " + User_AID;
-                DataTable dt = new DataTable();
-                dt = DbConnection.DBConnect(ExecLogin);
-                MainForm objFrmMain = new MainForm(dataTable.Rows[0][3].ToString());
-                objFrmMain.Show();
+                if (dataTable.Rows.Count == 1)
+                {
+                    this.Hide();
+                    string User_AID = dataTable.Rows[0][0].ToString();
+                    string ExecLogin = "exec dbo.Login " + User_AID;
+                    DataTable dt = new DataTable();
+                    dt = DbConnection.DBConnect(ExecLogin);
+                    MainForm objFrmMain = new MainForm(dataTable.Rows[0][3].ToString());
+                    objFrmMain.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Неправильные имя пользователя или пароль!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    textBox2.Clear();
+                }
             }
-            else
+            catch (SqlException ex)
             {
-                MessageBox.Show("Неправильные имя пользователя или пароль!","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                textBox2.Clear();
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -17,28 +17,61 @@ namespace Учет_цистерн
 
         private void ServiceCostForm_Load(object sender, EventArgs e)
         {
-            string Reffresh = "exec dbo.GetServiceCost";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(Reffresh);
-            dataGridView1.DataSource = dataTable;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[2].Visible = false;
+            try
+            {
+                string Reffresh = "exec dbo.GetServiceCost";
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(Reffresh);
+                dataGridView1.DataSource = dataTable;
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[2].Visible = false;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Btn_Refresh_Click(object sender, EventArgs e)
         {
-            string Reffresh = "exec dbo.GetServiceCost";
-            DataTable dataTable = new DataTable();
-            dataTable = DbConnection.DBConnect(Reffresh);
-            dataGridView1.DataSource = dataTable;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[2].Visible = false;
+            try
+            {
+                string Reffresh = "exec dbo.GetServiceCost";
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(Reffresh);
+                dataGridView1.DataSource = dataTable;
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[2].Visible = false;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Btn_Add_Click(object sender, EventArgs e)
         {
-            ServiceCostAddForm ServiceCostAddForm = new ServiceCostAddForm();
-            ServiceCostAddForm.Show();
+            try
+            {
+                ServiceCostAddForm ServiceCostAddForm = new ServiceCostAddForm();
+                ServiceCostAddForm.Show();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Btn_Delete_Click(object sender, EventArgs e)
@@ -64,14 +97,25 @@ namespace Учет_цистерн
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = this.dataGridView1.Rows[
-                    e.RowIndex];
-                string Id = row.Cells["ID"].Value.ToString();
-                string SeasonID = row.Cells["SeasonID"].Value.ToString();
-                SelectItemRow = Convert.ToInt32(Id);
-                SelectSeasonID = Convert.ToInt32(SeasonID);
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGridView1.Rows[
+                        e.RowIndex];
+                    string Id = row.Cells["ID"].Value.ToString();
+                    string SeasonID = row.Cells["SeasonID"].Value.ToString();
+                    SelectItemRow = Convert.ToInt32(Id);
+                    SelectSeasonID = Convert.ToInt32(SeasonID);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -29,32 +30,43 @@ namespace Учет_цистерн
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            try
             {
-                yes = 1;
-                UpdateCurrentBrigade = "update d__Brigade " +
-                                       "set Name = '" + textBox1.Text.Trim() + "', " +
-                                       "Surname = '" + textBox2.Text.Trim() + "'," +
-                                       "Lastname = '" + textBox3.Text.Trim() + "', " +
-                                       "FIO = '" + textBox3.Text.Trim() + ' ' + textBox1.Text.Substring(0, 1) + '.' + textBox2.Text.Substring(0, 1) + '.' + "', " +
-                                       "Active = " + yes + " " +
-                                       "where ID = " + selectID;
+                if (checkBox1.Checked)
+                {
+                    yes = 1;
+                    UpdateCurrentBrigade = "update d__Brigade " +
+                                           "set Name = '" + textBox1.Text.Trim() + "', " +
+                                           "Surname = '" + textBox2.Text.Trim() + "'," +
+                                           "Lastname = '" + textBox3.Text.Trim() + "', " +
+                                           "FIO = '" + textBox3.Text.Trim() + ' ' + textBox1.Text.Substring(0, 1) + '.' + textBox2.Text.Substring(0, 1) + '.' + "', " +
+                                           "Active = " + yes + " " +
+                                           "where ID = " + selectID;
+                }
+                else
+                {
+                    not = 0;
+                    UpdateCurrentBrigade = "update d__Brigade " +
+                                           "set Name = '" + textBox1.Text.Trim() + "', " +
+                                           "Surname = '" + textBox2.Text.Trim() + "'," +
+                                           "Lastname = '" + textBox3.Text.Trim() + "', " +
+                                           "FIO = '" + textBox3.Text.Trim() + ' ' + textBox1.Text.Substring(0, 1) + '.' + textBox2.Text.Substring(0, 1) + '.' + "', " +
+                                           "Active = " + not + " " +
+                                           "where ID = " + selectID;
+                }
+                DataTable dtbl = new DataTable();
+                dtbl = DbConnection.DBConnect(UpdateCurrentBrigade);
+                this.Close();
+                MessageBox.Show("Запись изменена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
+            catch (SqlException ex)
             {
-                not = 0;
-                UpdateCurrentBrigade = "update d__Brigade " +
-                                       "set Name = '" + textBox1.Text.Trim() + "', " +
-                                       "Surname = '" + textBox2.Text.Trim() + "'," +
-                                       "Lastname = '" + textBox3.Text.Trim() + "', " +
-                                       "FIO = '" + textBox3.Text.Trim() + ' ' + textBox1.Text.Substring(0, 1) + '.' + textBox2.Text.Substring(0, 1) + '.' + "', " +
-                                       "Active = " + not + " " +
-                                       "where ID = " + selectID;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            DataTable dtbl = new DataTable();
-            dtbl = DbConnection.DBConnect(UpdateCurrentBrigade);
-            this.Close();
-            MessageBox.Show("Запись изменена!", "",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BrigadeUpdateForm_Load(object sender, EventArgs e)
