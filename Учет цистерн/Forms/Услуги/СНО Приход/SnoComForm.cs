@@ -21,8 +21,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
         }
 
         int SelectItemRow;
-        int SelectContragentID;
-
+ 
         private void dataGridView1_FilterStringChanged(object sender, EventArgs e)
         {
             this.source.Filter = this.dataGridView1.FilterString;
@@ -51,7 +50,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
         {
             try
             {
-                string GetSNO = "select * from d__CurrentSNO";
+                string GetSNO = "exec dbo.GetCurrentSNO";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(GetSNO);
                 source.DataSource = dataTable;
@@ -157,12 +156,9 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
             {
                 if (e.RowIndex >= 0)
                 {
-                    DataGridViewRow row = this.dataGridView1.Rows[
-                        e.RowIndex];
+                    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
                     string Id = row.Cells["ID"].Value.ToString();
-                    string ContragentID = row.Cells["ContragentID"].Value.ToString();
                     SelectItemRow = Convert.ToInt32(Id);
-                    SelectContragentID = Convert.ToInt32(ContragentID);
                 }
             }
             catch (Exception exp)
@@ -186,17 +182,39 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                SnoComUpdateFrom snoComUpdateFrom = new SnoComUpdateFrom();
+                snoComUpdateFrom.SelectID = SelectItemRow;
+                snoComUpdateFrom.Show();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string Delete = "delete from d__CurrentSNO where ID = " + SelectItemRow;
+                    DbConnection.DBConnect(Delete);
+                    MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GetSNO();
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            GetSNO();
         }
     }
 }

@@ -168,6 +168,12 @@
     <Compile Include="Forms\Услуги\СНО Приход\SnoComForm.Designer.cs">
       <DependentUpon>SnoComForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Услуги\СНО Приход\SnoComUpdateFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Услуги\СНО Приход\SnoComUpdateFrom.Designer.cs">
+      <DependentUpon>SnoComUpdateFrom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Услуги\СНО Реализация\SnoImplAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Услуги\СНО Приход\SnoComForm.resx">
       <DependentUpon>SnoComForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Услуги\СНО Приход\SnoComUpdateFrom.resx">
+      <DependentUpon>SnoComUpdateFrom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Услуги\СНО Реализация\SnoImplAddForm.resx">
       <DependentUpon>SnoImplAddForm.cs</DependentUpon>

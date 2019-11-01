@@ -18,7 +18,7 @@ namespace Учет_цистерн.Forms.СНО
 
         void FillComboBox()
         {
-            String Contragent = "Select * from d__Owner";
+            string Contragent = "Select * from d__Owner";
             DataTable dT = DbConnection.DBConnect(Contragent);
             comboBox1.DataSource = dT;
             comboBox1.DisplayMember = "Name";
@@ -29,7 +29,7 @@ namespace Учет_цистерн.Forms.СНО
         {
             try
             {
-                String FillSNO = "exec dbo.FillSNO " + comboBox1.SelectedValue.ToString() + "," + textBox1.Text.Replace(",", ".") + "," + textBox2.Text.Replace(",", ".") + "," + textBox3.Text.Replace(",", ".") + "," + textBox4.Text.Replace(",", ".") + "," + textBox5.Text.Replace(",", ".") + ",'" + dateTimePicker1.Value.Date.ToString() + "'";
+                string FillSNO = "exec dbo.FillSNO " + comboBox1.SelectedValue.ToString() + "," + textBox1.Text.Replace(",", ".") + "," + textBox2.Text.Replace(",", ".") + "," + textBox3.Text.Replace(",", ".") + "," + textBox4.Text.Replace(",", ".") + "," + textBox5.Text.Replace(",", ".") + ",'" + dateTimePicker1.Value.Date.ToString() + "'";
                 DataTable dT = DbConnection.DBConnect(FillSNO);
                 MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();

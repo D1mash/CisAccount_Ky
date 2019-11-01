@@ -203,10 +203,6 @@ namespace Учет_цистерн.Forms.СНО
                     GetSNO();
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
