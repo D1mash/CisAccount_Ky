@@ -1,6 +1,6 @@
 ﻿namespace Учет_цистерн.Forms.СНО
 {
-    partial class SnoForm
+    partial class SnoImplForm
     {
         /// <summary>
         /// Required designer variable.
@@ -207,16 +207,16 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting_1);
             // 
-            // SnoForm
+            // SnoImplForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "SnoForm";
-            this.Text = "SnoForm";
-            this.Load += new System.EventHandler(this.SnoForm_Load);
+            this.Name = "SnoImplForm";
+            this.Text = "SnoImplForm";
+            this.Load += new System.EventHandler(this.SnoImplForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

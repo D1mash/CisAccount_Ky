@@ -1,6 +1,6 @@
 ﻿namespace Учет_цистерн.Forms.СНО
 {
-    partial class SnoUpdateForm
+    partial class SnoImplUpdateForm
     {
         /// <summary>
         /// Required designer variable.
@@ -203,7 +203,7 @@
             this.checkBox7.UseVisualStyleBackColor = true;
             this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
             // 
-            // SnoUpdateForm
+            // SnoImplUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -224,10 +224,10 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Name = "SnoUpdateForm";
+            this.Name = "SnoImplUpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SnoUpdateForm";
-            this.Load += new System.EventHandler(this.SnoUpdateForm_Load);
+            this.Text = "SnoImplUpdateForm";
+            this.Load += new System.EventHandler(this.SnoImplUpdateForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

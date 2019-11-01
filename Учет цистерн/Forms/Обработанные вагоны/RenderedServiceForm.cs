@@ -89,7 +89,7 @@ namespace Учет_цистерн
             //comboBox1.DataBindings.Add("SelectedValue", this, "SelectOwnerID", true, DataSourceUpdateMode.OnPropertyChanged);
         }
 
-        private async void RenderedServiceForm_Load(object sender, EventArgs e)
+        private void RenderedServiceForm_Load(object sender, EventArgs e)
         {
             DateTime now = DateTime.Now;
             var startDate = new DateTime(now.Year, now.Month, 1);

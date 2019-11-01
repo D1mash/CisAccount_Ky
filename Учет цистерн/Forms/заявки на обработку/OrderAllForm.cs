@@ -334,7 +334,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Для редактирования записи, необходимо указать строку!", "Исключение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Для редактирования записи, необходимо указать строку!" + ex.Message, "Исключение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         //Кнопка удалить, работает только в tabPage1

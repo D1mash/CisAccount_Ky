@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Учет_цистерн.Forms.заявки_на_обработку;
 using Учет_цистерн.Forms.СНО;
+using Учет_цистерн.Forms.Услуги.СНО_Приход;
 
 namespace Учет_цистерн
 {
@@ -544,31 +545,6 @@ namespace Учет_цистерн
             }
         }
 
-        private void СНОToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                SnoForm SnoForm = new SnoForm();
-                tabControl1.Show();
-                TabPage SnotabPage = new TabPage("СНО");
-                tabControl1.TabPages.Add(SnotabPage);
-                tabControl1.SelectedTab = SnotabPage;
-                SnoForm.TopLevel = false;
-                SnoForm.Visible = true;
-                SnoForm.FormBorderStyle = FormBorderStyle.None;
-                SnoForm.Dock = DockStyle.Fill;
-                SnotabPage.Controls.Add(SnoForm);
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void button7_Click(object sender, EventArgs e)
         {
             try
@@ -679,6 +655,48 @@ namespace Учет_цистерн
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void сНОРеализацияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SnoImplForm SnoImplForm = new SnoImplForm();
+                tabControl1.Show();
+                TabPage SnotabPage = new TabPage("СНО Реализация");
+                tabControl1.TabPages.Add(SnotabPage);
+                tabControl1.SelectedTab = SnotabPage;
+                SnoImplForm.TopLevel = false;
+                SnoImplForm.Visible = true;
+                SnoImplForm.FormBorderStyle = FormBorderStyle.None;
+                SnoImplForm.Dock = DockStyle.Fill;
+                SnotabPage.Controls.Add(SnoImplForm);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void сНОПриходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SnoComForm snoComForm = new SnoComForm();
+                tabControl1.Show();
+                TabPage SnotabPage = new TabPage("СНО приход");
+                tabControl1.TabPages.Add(SnotabPage);
+                tabControl1.SelectedTab = SnotabPage;
+                snoComForm.TopLevel = false;
+                snoComForm.Visible = true;
+                snoComForm.FormBorderStyle = FormBorderStyle.None;
+                snoComForm.Dock = DockStyle.Fill;
+                SnotabPage.Controls.Add(snoComForm);
             }
             catch (Exception exp)
             {

@@ -6,10 +6,10 @@ using System.Windows.Forms;
 
 namespace Учет_цистерн.Forms.СНО
 {
-    public partial class SnoForm : Form
+    public partial class SnoImplForm : Form
     {
         BindingSource source = new BindingSource();
-        public SnoForm()
+        public SnoImplForm()
         {
             InitializeComponent();
         }
@@ -17,7 +17,7 @@ namespace Учет_цистерн.Forms.СНО
         int SelectItemRow;
         int SelectContragentID;
 
-        void GetSNO()
+        private void GetSNO()
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Учет_цистерн.Forms.СНО
             }
         }
 
-        private void SnoForm_Load(object sender, EventArgs e)
+        private void SnoImplForm_Load(object sender, EventArgs e)
         {
             GetSNO();
 
@@ -131,10 +131,6 @@ namespace Учет_цистерн.Forms.СНО
                 panel3.Location = new Point(Xdgvx_Panel3, this.dataGridView1.Height - (panel3.Height - 15));
                 panel3.Visible = true;
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -155,10 +151,6 @@ namespace Учет_цистерн.Forms.СНО
                     SelectContragentID = Convert.ToInt32(ContragentID);
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -169,12 +161,8 @@ namespace Учет_цистерн.Forms.СНО
         {
             try
             {
-                SnoAddForm snoAddForm = new SnoAddForm();
-                snoAddForm.Show();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SnoImplAddFormForm SnoImplAddFormForm = new SnoImplAddFormForm();
+                SnoImplAddFormForm.Show();
             }
             catch (Exception exp)
             {
@@ -186,16 +174,16 @@ namespace Учет_цистерн.Forms.СНО
         {
             try
             {
-                SnoUpdateForm SnoUpdateForm = new SnoUpdateForm();
-                SnoUpdateForm.SelectID = SelectItemRow;
-                SnoUpdateForm.SelectContragentID = SelectContragentID;
-                SnoUpdateForm.textBox1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                SnoUpdateForm.textBox2.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                SnoUpdateForm.textBox3.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-                SnoUpdateForm.textBox4.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
-                SnoUpdateForm.textBox5.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
-                SnoUpdateForm.dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString();
-                SnoUpdateForm.Show();
+                SnoImplUpdateForm SnoImplUpdateForm = new SnoImplUpdateForm();
+                SnoImplUpdateForm.SelectID = SelectItemRow;
+                SnoImplUpdateForm.SelectContragentID = SelectContragentID;
+                SnoImplUpdateForm.textBox1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                SnoImplUpdateForm.textBox2.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                SnoImplUpdateForm.textBox3.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                SnoImplUpdateForm.textBox4.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+                SnoImplUpdateForm.textBox5.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
+                SnoImplUpdateForm.dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString();
+                SnoImplUpdateForm.Show();
             }
             catch (Exception ex)
             {
@@ -214,10 +202,6 @@ namespace Учет_цистерн.Forms.СНО
                     MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GetSNO();
                 }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception exp)
             {

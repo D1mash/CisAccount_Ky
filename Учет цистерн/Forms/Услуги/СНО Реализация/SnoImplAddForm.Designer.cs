@@ -1,6 +1,6 @@
 ﻿namespace Учет_цистерн.Forms.СНО
 {
-    partial class SnoAddForm
+    partial class SnoImplAddFormForm
     {
         /// <summary>
         /// Required designer variable.
@@ -189,7 +189,7 @@
             this.comboBox1.Size = new System.Drawing.Size(236, 21);
             this.comboBox1.TabIndex = 25;
             // 
-            // SnoAddForm
+            // SnoImplAddFormForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -210,9 +210,9 @@
             this.Controls.Add(this.label_Add_Code6_StationForm);
             this.Controls.Add(this.label_Add_Code_StationForm);
             this.Controls.Add(this.label_Add_Name_StationForm);
-            this.Name = "SnoAddForm";
+            this.Name = "SnoImplAddFormForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SnoAddForm";
+            this.Text = "SnoImplAddFormForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

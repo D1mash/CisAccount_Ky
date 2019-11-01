@@ -71,6 +71,8 @@
             this.contextMenuStrip_Services = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.расценкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сНОРеализацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сНОПриходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -472,9 +474,23 @@
             // 
             // сНОToolStripMenuItem
             // 
+            this.сНОToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сНОРеализацияToolStripMenuItem,
+            this.сНОПриходToolStripMenuItem});
             this.сНОToolStripMenuItem.Name = "сНОToolStripMenuItem";
             resources.ApplyResources(this.сНОToolStripMenuItem, "сНОToolStripMenuItem");
-            this.сНОToolStripMenuItem.Click += new System.EventHandler(this.СНОToolStripMenuItem_Click);
+            // 
+            // сНОРеализацияToolStripMenuItem
+            // 
+            this.сНОРеализацияToolStripMenuItem.Name = "сНОРеализацияToolStripMenuItem";
+            resources.ApplyResources(this.сНОРеализацияToolStripMenuItem, "сНОРеализацияToolStripMenuItem");
+            this.сНОРеализацияToolStripMenuItem.Click += new System.EventHandler(this.сНОРеализацияToolStripMenuItem_Click);
+            // 
+            // сНОПриходToolStripMenuItem
+            // 
+            this.сНОПриходToolStripMenuItem.Name = "сНОПриходToolStripMenuItem";
+            resources.ApplyResources(this.сНОПриходToolStripMenuItem, "сНОПриходToolStripMenuItem");
+            this.сНОПриходToolStripMenuItem.Click += new System.EventHandler(this.сНОПриходToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -551,6 +567,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem сНОРеализацияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сНОПриходToolStripMenuItem;
     }
 }
 
