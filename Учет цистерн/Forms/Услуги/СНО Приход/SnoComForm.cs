@@ -55,6 +55,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                 dataTable = DbConnection.DBConnect(GetSNO);
                 source.DataSource = dataTable;
                 dataGridView1.DataSource = source;
+                dataGridView1.Columns[0].Visible = false;
             }
             catch (SqlException ex)
             {
@@ -150,23 +151,6 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
             }
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                    string Id = row.Cells["ID"].Value.ToString();
-                    SelectItemRow = Convert.ToInt32(Id);
-                }
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -215,6 +199,23 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
         private void button4_Click(object sender, EventArgs e)
         {
             GetSNO();
+        }
+
+        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                    string Id = row.Cells["ID"].Value.ToString();
+                    SelectItemRow = Convert.ToInt32(Id);
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
