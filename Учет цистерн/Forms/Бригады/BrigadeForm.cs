@@ -67,22 +67,29 @@ namespace Учет_цистерн
 
         private void BtnBrigadeDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (dataGVBrigade.SelectedRows.Count > 0)
             {
-                try
+                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string Delete = "delete from d__Brigade where ID = " + SelectItemRow;
-                    DbConnection.DBConnect(Delete);
-                    MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    try
+                    {
+                        string Delete = "delete from d__Brigade where ID = " + SelectItemRow;
+                        DbConnection.DBConnect(Delete);
+                        MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception exp)
+                    {
+                        MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception exp)
-                {
-                    MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            else
+            {
+                MessageBox.Show("Для удаления записи, необходимо выбрать строку!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

@@ -348,23 +348,30 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         //удаление документа
         private void DeleteDoc()
         {
-            if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                try
+                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string DeleteDoc = "exec dbo.DeleteRenderedServiceDoc " + SelectItemRow;
-                    DbConnection.DBConnect(DeleteDoc);
-                    GetDocument();
-                    MessageBox.Show("Документ удалён!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    try
+                    {
+                        string DeleteDoc = "exec dbo.DeleteRenderedServiceDoc " + SelectItemRow;
+                        DbConnection.DBConnect(DeleteDoc);
+                        GetDocument();
+                        MessageBox.Show("Документ удалён!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }       
+            }
+            else
+            {
+                MessageBox.Show("Для удаления записи, необходимо выбрать строку!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

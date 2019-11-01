@@ -122,11 +122,18 @@ namespace Учет_цистерн
         {
             try
             {
-                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if(dataGridView1.SelectedRows.Count > 0)
                 {
-                    string Delete = "delete from d__Carriage where ID = " + SelectItemRow;
-                    DbConnection.DBConnect(Delete);
-                    MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        string Delete = "delete from d__Carriage where ID = " + SelectItemRow;
+                        DbConnection.DBConnect(Delete);
+                        MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Для удаления записи, необходимо выбрать строку!","", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (SqlException ex)
