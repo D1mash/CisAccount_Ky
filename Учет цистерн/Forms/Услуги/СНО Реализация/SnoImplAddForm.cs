@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace Учет_цистерн.Forms.СНО
 {
-    public partial class SnoAddForm : Form
+    public partial class SnoImplAddFormForm : Form
     {
-        public SnoAddForm()
+        public SnoImplAddFormForm()
         {
             InitializeComponent();
             FillComboBox();

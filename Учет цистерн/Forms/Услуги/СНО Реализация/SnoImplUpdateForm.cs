@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace Учет_цистерн.Forms.СНО
 {
-    public partial class SnoUpdateForm : Form
+    public partial class SnoImplUpdateForm : Form
     {
-        public SnoUpdateForm()
+        public SnoImplUpdateForm()
         {
             InitializeComponent();
             FillCombobox();
@@ -33,7 +33,7 @@ namespace Учет_цистерн.Forms.СНО
             comboBox1.DataBindings.Add("SelectedValue", this, "SelectContragentID", true, DataSourceUpdateMode.OnPropertyChanged);
         }
 
-        private void SnoUpdateForm_Load(object sender, EventArgs e)
+        private void SnoImplUpdateForm_Load(object sender, EventArgs e)
         {
             comboBox1.Enabled = false;
             textBox1.Enabled = false;

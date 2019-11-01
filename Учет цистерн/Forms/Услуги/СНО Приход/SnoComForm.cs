@@ -1,15 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Учет_цистерн.Forms.СНО
+namespace Учет_цистерн.Forms.Услуги.СНО_Приход
 {
-    public partial class SnoForm : Form
+    public partial class SnoComForm : Form
     {
         BindingSource source = new BindingSource();
-        public SnoForm()
+
+        public SnoComForm()
         {
             InitializeComponent();
         }
@@ -17,29 +23,17 @@ namespace Учет_цистерн.Forms.СНО
         int SelectItemRow;
         int SelectContragentID;
 
-        void GetSNO()
+        private void dataGridView1_FilterStringChanged(object sender, EventArgs e)
         {
-            try
-            {
-                string GetSNO = "exec dbo.GetSNO";
-                DataTable dataTable = new DataTable();
-                dataTable = DbConnection.DBConnect(GetSNO);
-                source.DataSource = dataTable;
-                dataGridView1.DataSource = source;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[1].Visible = false;
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            this.source.Filter = this.dataGridView1.FilterString;
         }
 
-        private void SnoForm_Load(object sender, EventArgs e)
+        private void dataGridView1_SortStringChanged(object sender, EventArgs e)
+        {
+            this.source.Sort = this.dataGridView1.SortString;
+        }
+
+        private void SnoComForm_Load(object sender, EventArgs e)
         {
             GetSNO();
 
@@ -51,6 +45,26 @@ namespace Учет_цистерн.Forms.СНО
             textBox2.Visible = false;
             textBox3.Visible = false;
             textBox4.Visible = false;
+        }
+
+        private void GetSNO()
+        {
+            try
+            {
+                string GetSNO = "select * from d__CurrentSNO";
+                DataTable dataTable = new DataTable();
+                dataTable = DbConnection.DBConnect(GetSNO);
+                source.DataSource = dataTable;
+                dataGridView1.DataSource = source;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dataGridView1_CellPainting_1(object sender, DataGridViewCellPaintingEventArgs e)
@@ -131,10 +145,6 @@ namespace Учет_цистерн.Forms.СНО
                 panel3.Location = new Point(Xdgvx_Panel3, this.dataGridView1.Height - (panel3.Height - 15));
                 panel3.Visible = true;
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -155,10 +165,6 @@ namespace Учет_цистерн.Forms.СНО
                     SelectContragentID = Convert.ToInt32(ContragentID);
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -169,12 +175,8 @@ namespace Учет_цистерн.Forms.СНО
         {
             try
             {
-                SnoAddForm snoAddForm = new SnoAddForm();
-                snoAddForm.Show();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SnoComAddForm snoComAddForm = new SnoComAddForm();
+                snoComAddForm.Show();
             }
             catch (Exception exp)
             {
@@ -184,60 +186,17 @@ namespace Учет_цистерн.Forms.СНО
 
         private void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SnoUpdateForm SnoUpdateForm = new SnoUpdateForm();
-                SnoUpdateForm.SelectID = SelectItemRow;
-                SnoUpdateForm.SelectContragentID = SelectContragentID;
-                SnoUpdateForm.textBox1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                SnoUpdateForm.textBox2.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                SnoUpdateForm.textBox3.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-                SnoUpdateForm.textBox4.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
-                SnoUpdateForm.textBox5.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
-                SnoUpdateForm.dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString();
-                SnoUpdateForm.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message,"",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    string Delete = "delete from d__SNO where ID = " + SelectItemRow;
-                    DbConnection.DBConnect(Delete);
-                    MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    GetSNO();
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            GetSNO();
-        }
 
-        private void DataGridView1_SortStringChanged(object sender, EventArgs e)
-        {
-            this.source.Sort = this.dataGridView1.SortString;
-        }
-
-        private void DataGridView1_FilterStringChanged(object sender, EventArgs e)
-        {
-            this.source.Filter = this.dataGridView1.FilterString;
         }
     }
 }
