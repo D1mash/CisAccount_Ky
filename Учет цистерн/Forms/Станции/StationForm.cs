@@ -95,22 +95,29 @@ namespace Учет_цистерн
 
         private void btn_dlt_station_form_Click_1(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (dataGridView_Station_Form.SelectedRows.Count > 0)
             {
-                try
+                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string DeleteCurrentStation = "delete from d__Station where ID = " + SelectItemRow;
-                    DbConnection.DBConnect(DeleteCurrentStation);
-                    MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    try
+                    {
+                        string DeleteCurrentStation = "delete from d__Station where ID = " + SelectItemRow;
+                        DbConnection.DBConnect(DeleteCurrentStation);
+                        MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception exp)
+                    {
+                        MessageBox.Show(exp.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception exp)
-                {
-                    MessageBox.Show(exp.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            else
+            {
+                MessageBox.Show("Для удаления записи, необходимо выбрать строку!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

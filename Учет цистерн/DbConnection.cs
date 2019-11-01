@@ -20,6 +20,7 @@ namespace Учет_цистерн
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 da.Fill(dataTable);
                 conn.Close();
+                conn.Dispose();
             }
             return dataTable;
         }
