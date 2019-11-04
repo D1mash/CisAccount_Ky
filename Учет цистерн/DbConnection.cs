@@ -38,6 +38,7 @@ namespace Учет_цистерн
                     cmd = new SqlCommand(query, con);
                     TotalRecords = int.Parse(cmd.ExecuteScalar().ToString());
                     con.Close();
+                    con.Dispose();
                 }
             }
             catch (Exception ex)

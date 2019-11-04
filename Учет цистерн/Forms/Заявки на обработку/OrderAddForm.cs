@@ -14,7 +14,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         {
             InitializeComponent();
             TabControlExtra = tabControlExtra;
-            //this.TabControlExtra.TabClosing += new System.EventHandler<System.Windows.Forms.TabControlCancelEventArgs>(this.tabControl1_TabClosing);
+            this.TabControlExtra.TabClosing += new System.EventHandler<System.Windows.Forms.TabControlCancelEventArgs>(this.tabControl1_TabClosing);
         }
         public string GetStatus { get; set; }
         public string GetDate { get; set; }
@@ -251,27 +251,27 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             comboBox3.ValueMember = "ID";
         }
 
-        //private void tabControl1_TabClosing(object sender, TabControlCancelEventArgs e)
-        //{
-        //    try
-        //    {
-        //        string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
-        //        DataTable GetDTID = DbConnection.DBConnect(GetID);
-        //        int ID = Convert.ToInt32(GetDTID.Rows[0][0].ToString());
-        //        string Delete = "delete from temp where head_id = " + ID + " delete from d__RenderedServiceBody where Head_ID = " + ID + " delete from d__RenderedServiceHead where ID = " + ID;
-        //        DbConnection.DBConnect(Delete);
-        //        MessageBox.Show("Документ не будет сохранен!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        this.TabControlExtra.TabPages.Remove(TabControlExtra.SelectedTab);
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    catch (Exception exp)
-        //    {
-        //        MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+        private void tabControl1_TabClosing(object sender, TabControlCancelEventArgs e)
+        {
+            try
+            {
+                string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+                DataTable GetDTID = DbConnection.DBConnect(GetID);
+                int ID = Convert.ToInt32(GetDTID.Rows[0][0].ToString());
+                string Delete = "delete from temp where head_id = " + ID + " delete from d__RenderedServiceBody where Head_ID = " + ID + " delete from d__RenderedServiceHead where ID = " + ID;
+                DbConnection.DBConnect(Delete);
+                MessageBox.Show("Документ не будет сохранен!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.TabControlExtra.TabPages.Remove(TabControlExtra.SelectedTab);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         //Рисование строки в datagridview с выводом "Кол-во строк"
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
