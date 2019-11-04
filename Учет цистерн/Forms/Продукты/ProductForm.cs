@@ -7,7 +7,6 @@ namespace Учет_цистерн
 {
     public partial class Form_Product : Form
     {
-        public string connectionString = "Data Source=POTITPC-01\\PLMLOCAL;Initial Catalog=Batys;User ID=sa;Password=!sql123;";
         public Form_Product()
         {
             InitializeComponent();
@@ -95,7 +94,7 @@ namespace Учет_цистерн
 
         private void button3_Click_Delete_Product(object sender, EventArgs e)
         {
-            if(dataGridView1.SelectedRows.Count > 0)
+            if(this.dataGridView1.SelectedRows.Count > 0)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -117,7 +116,7 @@ namespace Учет_цистерн
             }
             else
             {
-                MessageBox.Show("Для удаления записи, необходимо выбрать строку!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
