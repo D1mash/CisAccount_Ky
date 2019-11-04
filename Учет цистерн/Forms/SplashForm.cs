@@ -37,7 +37,7 @@ namespace Учет_цистерн.Forms
         {
             this.FormBorderStyle = FormBorderStyle.None;
             this.Opacity = 0.5;
-            this.BackgroundImage = Properties.Resources.images;
+            //this.BackgroundImage = Properties.Resources.PLMIcon;
         }
         #endregion
 
