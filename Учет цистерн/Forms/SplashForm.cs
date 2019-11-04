@@ -36,7 +36,9 @@ namespace Учет_цистерн.Forms
         private void ExtraFormSettings()
         {
             this.FormBorderStyle = FormBorderStyle.None;
-            this.Opacity = 0.5;
+            this.Opacity = 0.0;
+            this.BackColor = Color.Green;
+            this.TransparencyKey = Color.Green;
             //this.BackgroundImage = Properties.Resources.PLMIcon;
         }
         #endregion

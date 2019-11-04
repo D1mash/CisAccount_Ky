@@ -34,11 +34,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::Учет_цистерн.Properties.Resources.PLMIcon;
+            this.pictureBox1.BackgroundImage = global::Учет_цистерн.Properties.Resources.Logo1;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(255, 76);
+            this.pictureBox1.Size = new System.Drawing.Size(493, 205);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -46,8 +46,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(266, 94);
+            this.ClientSize = new System.Drawing.Size(519, 229);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SplashForm";

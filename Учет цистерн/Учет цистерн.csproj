@@ -453,6 +453,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Image1.png" />
+    <None Include="Resources\Logo1.png" />
+    <None Include="Resources\Logo.png" />
     <None Include="Resources\PLMIcon.png" />
     <None Include="Resources\images.jpg" />
     <None Include="Resources\Splash.jpg" />
