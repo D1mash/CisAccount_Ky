@@ -115,19 +115,26 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
 
         private void button3_Click(object sender, EventArgs e)
         {
-            try
+            if(dataGridView1.SelectedRows.Count > 0)
             {
-                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                try
                 {
-                    string Delete = "delete from d__CurrentSNO where ID = " + SelectItemRow;
-                    DbConnection.DBConnect(Delete);
-                    MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    GetSNO();
+                    if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        string Delete = "delete from d__CurrentSNO where ID = " + SelectItemRow;
+                        DbConnection.DBConnect(Delete);
+                        MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        GetSNO();
+                    }
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception exp)
+            else
             {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

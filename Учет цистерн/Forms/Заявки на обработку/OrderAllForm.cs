@@ -17,6 +17,16 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             InitializeComponent();
             TabControlExtra = tabControl1;
         }
+
+        private void dataGridView1_SortStringChanged(object sender, EventArgs e)
+        {
+            this.source.Sort = this.dataGridView1.SortString;
+        }
+
+        private void dataGridView1_FilterStringChanged(object sender, EventArgs e)
+        {
+            this.source.Filter = this.dataGridView1.FilterString;
+        }
         private void GetDocument()
         {
             try
@@ -337,13 +347,11 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 MessageBox.Show("Для редактирования записи, необходимо указать строку!" + ex.Message, "Исключение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        //Кнопка удалить, работает только в tabPage1
+        //Кнопка удалить
         private void button3_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab == tabPage1)
-            {
-                DeleteDoc();
-            }
+            DeleteDoc();
+            GetDocument();
         }
         //удаление документа
         private void DeleteDoc()
@@ -371,7 +379,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             }
             else
             {
-                MessageBox.Show("Для удаления записи, необходимо выбрать строку!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -446,16 +454,6 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void dataGridView1_SortStringChanged(object sender, EventArgs e)
-        {
-            this.source.Sort = this.dataGridView1.SortString;
-        }
-
-        private void dataGridView1_FilterStringChanged(object sender, EventArgs e)
-        {
-            this.source.Filter = this.dataGridView1.FilterString;
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
