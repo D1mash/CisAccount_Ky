@@ -53,22 +53,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\заявки на обработку\OrderAddForm.cs">
+    <Compile Include="Forms\Заявки на обработку\OrderAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\заявки на обработку\OrderAddForm.Designer.cs">
+    <Compile Include="Forms\Заявки на обработку\OrderAddForm.Designer.cs">
       <DependentUpon>OrderAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\заявки на обработку\OrderAllForm.cs">
+    <Compile Include="Forms\Заявки на обработку\OrderAllForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\заявки на обработку\OrderAllForm.Designer.cs">
+    <Compile Include="Forms\Заявки на обработку\OrderAllForm.Designer.cs">
       <DependentUpon>OrderAllForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\заявки на обработку\OrderUpdateForm.cs">
+    <Compile Include="Forms\Заявки на обработку\OrderUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\заявки на обработку\OrderUpdateForm.Designer.cs">
+    <Compile Include="Forms\Заявки на обработку\OrderUpdateForm.Designer.cs">
       <DependentUpon>OrderUpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Продукты\addNewCargo.cs">
@@ -250,13 +250,13 @@
     <Compile Include="Forms\Станции\UpdtCurrentStation_StationForm.Designer.cs">
       <DependentUpon>UpdtCurrentStation_StationForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\заявки на обработку\OrderAddForm.resx">
+    <EmbeddedResource Include="Forms\Заявки на обработку\OrderAddForm.resx">
       <DependentUpon>OrderAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\заявки на обработку\OrderAllForm.resx">
+    <EmbeddedResource Include="Forms\Заявки на обработку\OrderAllForm.resx">
       <DependentUpon>OrderAllForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\заявки на обработку\OrderUpdateForm.resx">
+    <EmbeddedResource Include="Forms\Заявки на обработку\OrderUpdateForm.resx">
       <DependentUpon>OrderUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Продукты\addNewCargo.resx">
