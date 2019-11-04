@@ -143,7 +143,8 @@ namespace Учет_цистерн.Forms.СНО
             {
                 if (e.RowIndex >= 0)
                 {
-                    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                    DataGridViewRow row = this.dataGridView1.Rows[
+                        e.RowIndex];
                     string Id = row.Cells["ID"].Value.ToString();
                     string ContragentID = row.Cells["ContragentID"].Value.ToString();
                     SelectItemRow = Convert.ToInt32(Id);
@@ -194,19 +195,12 @@ namespace Учет_цистерн.Forms.СНО
         {
             try
             {
-                if (SelectItemRow > 0)
+                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        string Delete = "delete from d__SNO where ID = " + SelectItemRow;
-                        DbConnection.DBConnect(Delete);
-                        MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        GetSNO();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Выберите строку для удаления!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string Delete = "delete from d__SNO where ID = " + SelectItemRow;
+                    DbConnection.DBConnect(Delete);
+                    MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GetSNO();
                 }
             }
             catch (Exception exp)

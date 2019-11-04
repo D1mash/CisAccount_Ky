@@ -36,17 +36,15 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
         {
             GetSNO();
 
-            panel1.Visible = false;
-            panel2.Visible = false;
             panel3.Visible = false;
+            panel4.Visible = false;
 
             textBox1.Visible = false;
             textBox2.Visible = false;
             textBox3.Visible = false;
-            textBox4.Visible = false;
         }
 
-        public void GetSNO()
+        private void GetSNO()
         {
             try
             {
@@ -67,83 +65,16 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
             }
         }
 
-        private void dataGridView1_CellPainting_1(object sender, DataGridViewCellPaintingEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                Decimal Capacity = 0;
-                Decimal Cost = 0;
-                Decimal SumOutVat = 0;
-                Decimal SumVat = 0;
-                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                if (e.RowIndex >= 0)
                 {
-                    if (dataGridView1.Rows[i].Cells[3].Value.ToString() != string.Empty)
-                    {
-                        Capacity += Convert.ToDecimal(this.dataGridView1[3, i].Value);
-                    }
-                    if (dataGridView1.Rows[i].Cells[4].Value.ToString() != string.Empty)
-                    {
-                        Cost += Convert.ToDecimal(this.dataGridView1[4, i].Value);
-                    }
-                    if (dataGridView1.Rows[i].Cells[5].Value.ToString() != string.Empty)
-                    {
-                        SumOutVat += Convert.ToDecimal(this.dataGridView1[5, i].Value);
-                    }
-                    if (dataGridView1.Rows[i].Cells[7].Value.ToString() != string.Empty)
-                    {
-                        SumVat += Convert.ToDecimal(this.dataGridView1[7, i].Value);
-                    }
+                    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                    string Id = row.Cells["ID"].Value.ToString();
+                    SelectItemRow = Convert.ToInt32(Id);
                 }
-
-                panel4.Width = this.dataGridView1.RowHeadersWidth - 3;
-                panel4.Location = new Point(5, this.dataGridView1.Height - (panel4.Height - 15));
-                panel4.Visible = true;
-
-                int Xdgvx_Panel1 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
-                panel1.Width = this.dataGridView1.Columns[2].Width;
-                Xdgvx_Panel1 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
-                panel1.Location = new Point(Xdgvx_Panel1, this.dataGridView1.Height - (panel1.Height - 15));
-                panel1.Visible = true;
-
-                int Xdgvx_TextBox1 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
-                textBox1.Width = this.dataGridView1.Columns[3].Width;
-                Xdgvx_TextBox1 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
-                textBox1.Location = new Point(Xdgvx_TextBox1, this.dataGridView1.Height - (textBox1.Height - 15));
-                textBox1.Text = Capacity.ToString();
-                textBox1.Visible = true;
-
-                int Xdgvx_TextBox2 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
-                textBox2.Width = this.dataGridView1.Columns[4].Width;
-                Xdgvx_TextBox2 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
-                textBox2.Location = new Point(Xdgvx_TextBox2, this.dataGridView1.Height - (textBox2.Height - 15));
-                textBox2.Text = Cost.ToString();
-                textBox2.Visible = true;
-
-                int Xdgvx_TextBox3 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
-                textBox3.Width = this.dataGridView1.Columns[5].Width;
-                Xdgvx_TextBox3 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
-                textBox3.Location = new Point(Xdgvx_TextBox3, this.dataGridView1.Height - (textBox3.Height - 15));
-                textBox3.Text = SumOutVat.ToString();
-                textBox3.Visible = true;
-
-                int Xdgvx_Panel2 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
-                panel2.Width = this.dataGridView1.Columns[6].Width;
-                Xdgvx_Panel2 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
-                panel2.Location = new Point(Xdgvx_Panel2, this.dataGridView1.Height - (panel2.Height - 15));
-                panel2.Visible = true;
-
-                int Xdgvx_TextBox4 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
-                textBox4.Width = this.dataGridView1.Columns[7].Width;
-                Xdgvx_TextBox4 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
-                textBox4.Location = new Point(Xdgvx_TextBox4, this.dataGridView1.Height - (textBox4.Height - 15));
-                textBox4.Text = SumVat.ToString();
-                textBox4.Visible = true;
-
-                int Xdgvx_Panel3 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
-                panel3.Width = this.dataGridView1.Columns[8].Width + 2;
-                Xdgvx_Panel3 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
-                panel3.Location = new Point(Xdgvx_Panel3, this.dataGridView1.Height - (panel3.Height - 15));
-                panel3.Visible = true;
             }
             catch (Exception exp)
             {
@@ -178,7 +109,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -186,18 +117,12 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
         {
             try
             {
-                if (SelectItemRow > 0) {
-                    if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        string Delete = "delete from d__CurrentSNO where ID = " + SelectItemRow;
-                        DbConnection.DBConnect(Delete);
-                        MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        GetSNO();
-                    }
-                }
-                else
+                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MessageBox.Show("Для удаления записи, необходимо выбрать строку!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    string Delete = "delete from d__CurrentSNO where ID = " + SelectItemRow;
+                    DbConnection.DBConnect(Delete);
+                    MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GetSNO();
                 }
             }
             catch (Exception exp)
@@ -211,16 +136,59 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
             GetSNO();
         }
 
-        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             try
             {
-                if (e.RowIndex >= 0)
+                Decimal SumAll = 0;
+                Decimal SumOne = 0;
+                Decimal SumTwo = 0;
+                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                 {
-                    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                    string Id = row.Cells["ID"].Value.ToString();
-                    SelectItemRow = Convert.ToInt32(Id);
+                    if (dataGridView1.Rows[i].Cells[1].Value.ToString() != string.Empty)
+                    {
+                        SumAll += Convert.ToDecimal(this.dataGridView1[1, i].Value);
+                    }
+                    if (dataGridView1.Rows[i].Cells[2].Value.ToString() != string.Empty)
+                    {
+                        SumOne += Convert.ToDecimal(this.dataGridView1[2, i].Value);
+                    }
+                    if (dataGridView1.Rows[i].Cells[3].Value.ToString() != string.Empty)
+                    {
+                        SumTwo += Convert.ToDecimal(this.dataGridView1[3, i].Value);
+                    }
                 }
+
+                panel4.Width = this.dataGridView1.RowHeadersWidth;
+                panel4.Location = new Point(5, this.dataGridView1.Height - (panel4.Height - 15));
+                panel4.Visible = true;
+
+                int Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
+                textBox1.Width = this.dataGridView1.Columns[1].Width;
+                Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                textBox1.Location = new Point(Xdgvx1, this.dataGridView1.Height - (textBox1.Height - 15));
+                textBox1.Visible = true;
+                textBox1.Text = SumAll.ToString();
+
+                int Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                textBox2.Width = this.dataGridView1.Columns[2].Width;
+                Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
+                textBox2.Location = new Point(Xdgvx2, this.dataGridView1.Height - (textBox2.Height - 15));
+                textBox2.Visible = true;
+                textBox2.Text = SumOne.ToString();
+
+                int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
+                textBox3.Width = this.dataGridView1.Columns[3].Width;
+                Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
+                textBox3.Location = new Point(Xdgvx3, this.dataGridView1.Height - (textBox3.Height - 15));
+                textBox3.Visible = true;
+                textBox3.Text = SumTwo.ToString();
+
+                int Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
+                panel3.Width = this.dataGridView1.Columns[4].Width + 2;
+                Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
+                panel3.Location = new Point(Xdgvx4, this.dataGridView1.Height - (panel3.Height - 15));
+                panel3.Visible = true;
             }
             catch (Exception exp)
             {
