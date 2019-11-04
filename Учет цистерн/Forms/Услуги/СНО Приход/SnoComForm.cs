@@ -186,12 +186,18 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
         {
             try
             {
-                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (SelectItemRow > 0) {
+                    if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        string Delete = "delete from d__CurrentSNO where ID = " + SelectItemRow;
+                        DbConnection.DBConnect(Delete);
+                        MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        GetSNO();
+                    }
+                }
+                else
                 {
-                    string Delete = "delete from d__CurrentSNO where ID = " + SelectItemRow;
-                    DbConnection.DBConnect(Delete);
-                    MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    GetSNO();
+                    MessageBox.Show("Для удаления записи, необходимо выбрать строку!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception exp)
