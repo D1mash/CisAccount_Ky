@@ -46,7 +46,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
             textBox4.Visible = false;
         }
 
-        private void GetSNO()
+        public void GetSNO()
         {
             try
             {
@@ -178,7 +178,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
