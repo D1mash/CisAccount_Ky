@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Учет_цистерн.Forms;
 
 namespace Учет_цистерн
 {
@@ -13,7 +14,10 @@ namespace Учет_цистерн
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            #region Splash
+            Application.Run(new SplashForm());
             Application.Run(new LoginForm());
+            #endregion
         }
     }
 }
