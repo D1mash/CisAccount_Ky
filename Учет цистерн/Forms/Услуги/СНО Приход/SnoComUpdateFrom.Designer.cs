@@ -49,6 +49,7 @@
             this.checkBox7.TabIndex = 64;
             this.checkBox7.Text = "Дата";
             this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
             // 
             // checkBox3
             // 
@@ -59,6 +60,7 @@
             this.checkBox3.TabIndex = 60;
             this.checkBox3.Text = "Резервуар №1";
             this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // checkBox2
             // 
@@ -88,6 +90,7 @@
             this.button2.TabIndex = 52;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -97,6 +100,7 @@
             this.button1.TabIndex = 51;
             this.button1.Text = "ОК";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox2
             // 
@@ -121,6 +125,7 @@
             this.checkBox1.TabIndex = 65;
             this.checkBox1.Text = "Резервуар №2";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // textBox3
             // 
@@ -146,6 +151,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "SnoComUpdateFrom";
             this.Text = "SnoComUpdateFrom";
+            this.Load += new System.EventHandler(this.SnoComUpdateFrom_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,10 +163,10 @@
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.TextBox textBox2;
         public System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
         public System.Windows.Forms.CheckBox checkBox2;
         public System.Windows.Forms.CheckBox checkBox7;
         public System.Windows.Forms.CheckBox checkBox3;
         public System.Windows.Forms.CheckBox checkBox1;
+        public System.Windows.Forms.TextBox textBox3;
     }
 }

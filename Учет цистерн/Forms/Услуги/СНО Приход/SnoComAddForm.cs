@@ -27,18 +27,18 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
         {
             try
             {
-                if (textBox2.Text != string.Empty  && textBox3.Text != string.Empty && textBox4.Text != string.Empty) 
+                if (textBox2.Text != string.Empty && textBox3.Text != string.Empty && textBox4.Text != string.Empty)
                 {
                     string FillSNOCom = "exec dbo.FillCurrentSNO '" + textBox2.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textBox3.Text.Trim() + "','" + textBox4.Text.Trim() + "'";
                     DataTable dataTable = DbConnection.DBConnect(FillSNOCom);
                     MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Заполните данные!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
+                else
+            {
+                MessageBox.Show("Заполните данные!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
