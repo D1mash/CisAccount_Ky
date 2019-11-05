@@ -225,8 +225,9 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "SnoImplUpdateForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SnoImplUpdateForm";
+            this.Text = "Редактирование";
             this.Load += new System.EventHandler(this.SnoImplUpdateForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

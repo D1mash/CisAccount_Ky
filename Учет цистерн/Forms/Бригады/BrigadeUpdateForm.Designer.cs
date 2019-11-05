@@ -139,8 +139,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "BrigadeUpdateForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Update Brigade";
+            this.Text = "Редактирование";
             this.Load += new System.EventHandler(this.BrigadeUpdateForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

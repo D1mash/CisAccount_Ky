@@ -150,8 +150,9 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "SnoComUpdateFrom";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SnoComUpdateFrom";
+            this.Text = "Редактирование";
             this.Load += new System.EventHandler(this.SnoComUpdateFrom_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

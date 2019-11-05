@@ -126,8 +126,9 @@
             this.Controls.Add(this.textBox_Updt_Code_StationForm);
             this.Controls.Add(this.textBox_Updt_Name_StationForm);
             this.Name = "UpdtCurrentStation_StationForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Редактирование в \"Станции\"";
+            this.Text = "Редактирование";
             this.Load += new System.EventHandler(this.UpdtCurrentStation_StationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

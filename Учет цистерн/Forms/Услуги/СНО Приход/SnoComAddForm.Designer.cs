@@ -142,7 +142,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label_Add_Code_StationForm);
             this.Name = "SnoComAddForm";
-            this.Text = "SnoComAddForm";
+            this.ShowInTaskbar = false;
+            this.Text = "Добавление";
             this.ResumeLayout(false);
             this.PerformLayout();
 

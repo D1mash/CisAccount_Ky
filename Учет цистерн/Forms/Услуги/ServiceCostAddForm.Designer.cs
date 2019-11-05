@@ -165,8 +165,9 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.comboBox2);
             this.Name = "ServiceCostAddForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ServiceCostAddForm";
+            this.Text = "Добавление";
             this.ResumeLayout(false);
             this.PerformLayout();
 
