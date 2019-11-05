@@ -211,8 +211,9 @@
             this.Controls.Add(this.label_Add_Code_StationForm);
             this.Controls.Add(this.label_Add_Name_StationForm);
             this.Name = "SnoImplAddFormForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SnoImplAddFormForm";
+            this.Text = "Добавление";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -120,8 +120,9 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "OwnerAddForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "OwnerAddForm";
+            this.Text = "Добавление";
             this.ResumeLayout(false);
             this.PerformLayout();
 

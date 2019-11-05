@@ -18,6 +18,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         {
             InitializeComponent();
             TabControlExtra = tabControlExtra;
+            this.TabControlExtra.TabClosing += new System.EventHandler<System.Windows.Forms.TabControlCancelEventArgs>(this.tabControl1_TabClosing);
         }
         int SelectItemRow;
         public string GetStatus { get; set; }
@@ -100,6 +101,10 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         //Сохранить и закрыть документ
         private void button1_Click(object sender, EventArgs e)
         {
+            SaveDoc();
+        }
+        private void SaveDoc()
+        {
             try
             {
                 string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
@@ -108,26 +113,35 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 string CheckProduct = "select Carnumber from d__RenderedServiceBody where Product_ID is NULL and Head_ID = " + dt.Rows[0][0].ToString();
                 DataTable dt1 = DbConnection.DBConnect(CheckProduct);
 
-                string CheckService = "select Carnumber from d__RenderedServiceBody where ServiceCost_ID is NULL and Head_ID = " + dt.Rows[0][0].ToString();
-                DataTable dt2 = DbConnection.DBConnect(CheckService);
+                string CheckCarNumber = "select * from d__RenderedServiceBody where CarNumber is NULL and Head_ID = " + dt.Rows[0][0].ToString();
+                DataTable dt2 = DbConnection.DBConnect(CheckCarNumber);
 
-                if (dt1.Rows.Count > 0)
-                {
-                    MessageBox.Show("У вагона " + dt1.Rows[0][0].ToString() + " не выбран продукт!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
+                string CheckRows = "select * from d__RenderedServiceBody where Head_ID = " + dt.Rows[0][0].ToString();
+                DataTable dt3 = DbConnection.DBConnect(CheckRows);
+                if (dt3.Rows.Count > 0)
                 {
                     if (dt2.Rows.Count > 0)
                     {
-                        MessageBox.Show("У вагона " + dt2.Rows[0][0].ToString() + " не выбрана услуга!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Введите вагон или удалите пустую строку!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
-                        string RenrederServiceHead = "exec dbo.RenderedServiceCreate '" + comboBox1.SelectedValue.ToString() + "','" + textBox1.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + comboBox2.SelectedValue.ToString() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + comboBox3.SelectedValue.ToString() + "',1,1";
-                        DbConnection.DBConnect(RenrederServiceHead);
-                        UpdateBody();
-                        TabControlExtra.TabPages.Remove(TabControlExtra.SelectedTab);
+                        if (dt1.Rows.Count > 0)
+                        {
+                            MessageBox.Show("У вагона " + dt1.Rows[0][0].ToString() + " не выбран продукт!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            string RenrederServiceHead = "exec dbo.RenderedServiceUpdate '" + comboBox1.SelectedValue.ToString() + "','" + textBox1.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + comboBox2.SelectedValue.ToString() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + comboBox3.SelectedValue.ToString() + "',1,1";
+                            DbConnection.DBConnect(RenrederServiceHead);
+                            UpdateBody();
+                            TabControlExtra.TabPages.Remove(TabControlExtra.SelectedTab);
+                        }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("В табличной части отсутствуют вагоны!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (SqlException ex)
@@ -279,6 +293,78 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             comboBox3.DisplayMember = "Name";
             comboBox3.ValueMember = "ID";
             comboBox3.DataBindings.Add("SelectedValue", this, "SelectStationID", true, DataSourceUpdateMode.OnPropertyChanged);
+        }
+
+        private void tabControl1_TabClosing(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPage.Text == "Заявка на обработку № " + GetStatus + ". Редактирование от " + GetDate)
+            {
+                DialogResult result = MessageBox.Show("Документ изменён. Нажмите Да, если вы хотите сохранить изменения и закрыть документ, Нет - для возврата в документ.", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+                        DataTable dt = DbConnection.DBConnect(GetID);
+
+                        string CheckProduct = "select Carnumber from d__RenderedServiceBody where Product_ID is NULL and Head_ID = " + dt.Rows[0][0].ToString();
+                        DataTable dt1 = DbConnection.DBConnect(CheckProduct);
+
+                        string CheckCarNumber = "select * from d__RenderedServiceBody where CarNumber is NULL and Head_ID = " + dt.Rows[0][0].ToString();
+                        DataTable dt2 = DbConnection.DBConnect(CheckCarNumber);
+
+                        string CheckRows = "select * from d__RenderedServiceBody where Head_ID = " + dt.Rows[0][0].ToString();
+                        DataTable dt3 = DbConnection.DBConnect(CheckRows);
+                        if (dt3.Rows.Count > 0)
+                        {
+                            if (dt2.Rows.Count > 0)
+                            {
+                                MessageBox.Show("Введите вагон или удалите пустую строку!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                e.Cancel = true;
+                                return;
+                            }
+                            else
+                            {
+                                if (dt1.Rows.Count > 0)
+                                {
+                                    MessageBox.Show("У вагона " + dt1.Rows[0][0].ToString() + " не выбран продукт!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    e.Cancel = true;
+                                    return;
+                                }
+                                else
+                                {
+                                    string RenrederServiceHead = "exec dbo.RenderedServiceUpdate '" + comboBox1.SelectedValue.ToString() + "','" + textBox1.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + comboBox2.SelectedValue.ToString() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + comboBox3.SelectedValue.ToString() + "',1,1";
+                                    DbConnection.DBConnect(RenrederServiceHead);
+                                    UpdateBody();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("В табличной части отсутствуют вагоны!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            e.Cancel = true;
+                            return;
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception exp)
+                    {
+                        MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+            else
+            {
+
+            }
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
