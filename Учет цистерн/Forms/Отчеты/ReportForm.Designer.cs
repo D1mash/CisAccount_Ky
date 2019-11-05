@@ -65,13 +65,13 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(784, 118);
+            this.groupBox1.Size = new System.Drawing.Size(784, 101);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(456, 67);
+            this.button3.Location = new System.Drawing.Point(637, 17);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(135, 42);
             this.button3.TabIndex = 5;
@@ -85,7 +85,7 @@
             this.groupBox5.Controls.Add(this.comboBox2);
             this.groupBox5.Location = new System.Drawing.Point(214, 12);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(236, 100);
+            this.groupBox5.Size = new System.Drawing.Size(276, 83);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             // 
@@ -103,7 +103,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(84, 25);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(146, 21);
+            this.comboBox2.Size = new System.Drawing.Size(186, 21);
             this.comboBox2.TabIndex = 5;
             // 
             // groupBox3
@@ -114,7 +114,7 @@
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(6, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(202, 100);
+            this.groupBox3.Size = new System.Drawing.Size(202, 83);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Период";
@@ -123,7 +123,7 @@
             // 
             this.dateTimePicker2.CustomFormat = "dd.MM.yyyy";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(60, 64);
+            this.dateTimePicker2.Location = new System.Drawing.Point(60, 51);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(133, 20);
             this.dateTimePicker2.TabIndex = 1;
@@ -140,7 +140,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 65);
+            this.label2.Location = new System.Drawing.Point(7, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 0;
@@ -159,9 +159,9 @@
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 118);
+            this.groupBox2.Location = new System.Drawing.Point(0, 101);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(784, 418);
+            this.groupBox2.Size = new System.Drawing.Size(784, 435);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -176,7 +176,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(778, 399);
+            this.dataGridView1.Size = new System.Drawing.Size(778, 416);
             this.dataGridView1.TabIndex = 0;
             // 
             // backgroundWorker
@@ -234,7 +234,7 @@
             // 
             this.btn_Excel.Image = global::Учет_цистерн.Properties.Resources.icons8_microsoft_excel_2019_36;
             this.btn_Excel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Excel.Location = new System.Drawing.Point(456, 17);
+            this.btn_Excel.Location = new System.Drawing.Point(496, 17);
             this.btn_Excel.Name = "btn_Excel";
             this.btn_Excel.Size = new System.Drawing.Size(135, 42);
             this.btn_Excel.TabIndex = 0;
