@@ -388,6 +388,8 @@
       <DependentUpon>UpdtCurrentStation_StationForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Forms\ReportTemplates\Реестр  за арендованных и  собственных вагон-цистерн компании.xls" />
+    <None Include="Forms\ReportTemplates\СНО Приход.xlsx" />
+    <None Include="Forms\ReportTemplates\СНО Реализ.xlsx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

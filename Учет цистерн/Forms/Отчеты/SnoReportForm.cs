@@ -85,7 +85,7 @@ namespace Учет_цистерн.Forms.Отчеты
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             ProgrBar.Value = e.ProgressPercentage;
-            label1.Text = "Обработка строки.. " + e.ProgressPercentage.ToString()
+            label1.Text = "Обработка строки.. " + e.ProgressPercentage.ToString();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
