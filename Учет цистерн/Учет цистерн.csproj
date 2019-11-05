@@ -461,6 +461,8 @@
     <Folder Include="System\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icons8-microsoft-excel-2019-48.png" />
+    <None Include="Resources\icons8-microsoft-excel-2019-36.png" />
     <Content Include="Resources\Image1.png" />
     <None Include="Resources\Logo1.png" />
     <None Include="Resources\Logo.png" />
