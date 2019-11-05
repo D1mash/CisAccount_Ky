@@ -38,6 +38,7 @@
             this.toolStripMenuItem_Carriage = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Report = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.сНОToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -137,7 +138,8 @@
             // contextMenuStrip_Report
             // 
             this.contextMenuStrip_Report.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.сНОToolStripMenuItem1});
             this.contextMenuStrip_Report.Name = "contextMenuStrip_Report";
             this.contextMenuStrip_Report.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             resources.ApplyResources(this.contextMenuStrip_Report, "contextMenuStrip_Report");
@@ -147,6 +149,12 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             this.toolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem1_Click);
+            // 
+            // сНОToolStripMenuItem1
+            // 
+            this.сНОToolStripMenuItem1.Name = "сНОToolStripMenuItem1";
+            resources.ApplyResources(this.сНОToolStripMenuItem1, "сНОToolStripMenuItem1");
+            this.сНОToolStripMenuItem1.Click += new System.EventHandler(this.сНОToolStripMenuItem1_Click);
             // 
             // splitContainer1
             // 
@@ -306,7 +314,6 @@
             this.tabControl1.HotTrack = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-
             this.tabControl1.DragOver += new System.Windows.Forms.DragEventHandler(this.tabControl1_DragOver);
             this.tabControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseDown);
             this.tabControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseMove);
@@ -569,6 +576,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem сНОРеализацияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сНОПриходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сНОToolStripMenuItem1;
     }
 }
 

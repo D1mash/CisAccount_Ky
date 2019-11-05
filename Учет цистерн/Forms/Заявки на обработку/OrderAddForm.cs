@@ -263,6 +263,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                     string Delete = "delete from temp where head_id = " + ID + " delete from d__RenderedServiceBody where Head_ID = " + ID + " delete from d__RenderedServiceHead where ID = " + ID;
                     DbConnection.DBConnect(Delete);
                     MessageBox.Show("Документ не будет сохранен!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.TabControlExtra.TabPages.Remove(TabControlExtra.SelectedTab);
                 }
                 catch (SqlException ex)
                 {

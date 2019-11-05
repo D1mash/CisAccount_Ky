@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Учет_цистерн.Forms.заявки_на_обработку;
+using Учет_цистерн.Forms.Отчеты;
 using Учет_цистерн.Forms.СНО;
 using Учет_цистерн.Forms.Услуги.СНО_Приход;
 
@@ -702,6 +703,20 @@ namespace Учет_цистерн
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void сНОToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SnoReportForm snoReporForm = new SnoReportForm();
+            tabControl1.Show();
+            TabPage SnotabPage = new TabPage("СНО Отчет");
+            tabControl1.TabPages.Add(SnotabPage);
+            tabControl1.SelectedTab = SnotabPage;
+            snoReporForm.TopLevel = false;
+            snoReporForm.Visible = true;
+            snoReporForm.FormBorderStyle = FormBorderStyle.None;
+            snoReporForm.Dock = DockStyle.Fill;
+            SnotabPage.Controls.Add(snoReporForm);
         }
     }
 }

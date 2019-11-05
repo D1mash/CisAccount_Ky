@@ -92,6 +92,12 @@
     <Compile Include="Forms\заявки на обработку\OrderUpdateForm.Designer.cs">
       <DependentUpon>OrderUpdateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Отчеты\SnoReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Отчеты\SnoReportForm.Designer.cs">
+      <DependentUpon>SnoReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Продукты\addNewCargo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\заявки на обработку\OrderUpdateForm.resx">
       <DependentUpon>OrderUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Отчеты\SnoReportForm.resx">
+      <DependentUpon>SnoReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Продукты\addNewCargo.resx">
       <DependentUpon>addNewCargo.cs</DependentUpon>
