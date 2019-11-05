@@ -472,10 +472,6 @@ namespace Учет_цистерн
                 ReportForm reportForm = new ReportForm();
                 reportForm.Show();
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -707,16 +703,15 @@ namespace Учет_цистерн
 
         private void сНОToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            SnoReportForm snoReporForm = new SnoReportForm();
-            tabControl1.Show();
-            TabPage SnotabPage = new TabPage("СНО Отчет");
-            tabControl1.TabPages.Add(SnotabPage);
-            tabControl1.SelectedTab = SnotabPage;
-            snoReporForm.TopLevel = false;
-            snoReporForm.Visible = true;
-            snoReporForm.FormBorderStyle = FormBorderStyle.None;
-            snoReporForm.Dock = DockStyle.Fill;
-            SnotabPage.Controls.Add(snoReporForm);
+            try
+            {
+                SnoReportForm snoReporForm = new SnoReportForm();
+                snoReporForm.Show();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
