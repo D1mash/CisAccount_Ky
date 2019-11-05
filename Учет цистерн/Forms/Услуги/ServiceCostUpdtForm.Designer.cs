@@ -174,10 +174,12 @@
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.comboBox2);
+            this.MaximizeBox = false;
             this.Name = "ServiceCostUpdtForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.ServiceCostUpdtForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

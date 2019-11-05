@@ -125,10 +125,12 @@
             this.Controls.Add(this.textBox_Updt_Code6_StationForm);
             this.Controls.Add(this.textBox_Updt_Code_StationForm);
             this.Controls.Add(this.textBox_Updt_Name_StationForm);
+            this.MaximizeBox = false;
             this.Name = "UpdtCurrentStation_StationForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.UpdtCurrentStation_StationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

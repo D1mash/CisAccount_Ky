@@ -126,10 +126,12 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.MaximizeBox = false;
             this.Name = "CarriageUpdateForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.CarriageUpdateForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

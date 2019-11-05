@@ -210,10 +210,12 @@
             this.Controls.Add(this.label_Add_Code6_StationForm);
             this.Controls.Add(this.label_Add_Code_StationForm);
             this.Controls.Add(this.label_Add_Name_StationForm);
+            this.MaximizeBox = false;
             this.Name = "SnoImplAddFormForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
