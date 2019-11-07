@@ -128,7 +128,7 @@ namespace Учет_цистерн
             int Count = 0;
             for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
             {
-                if (dataGridView1.Rows[i].Cells[15].Value != string.Empty)
+                if (dataGridView1.Rows[i].Cells[15].Value.ToString() != string.Empty)
                 {
                     sum += Convert.ToDecimal(this.dataGridView1[15, i].Value);
                 }
