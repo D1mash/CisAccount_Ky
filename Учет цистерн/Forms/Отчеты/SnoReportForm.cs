@@ -163,6 +163,16 @@ namespace Учет_цистерн.Forms.Отчеты
                         backgroundWorker1.ReportProgress(i);
                     }
 
+                    worksheet.Cells[dataGridView1.Rows.Count + 4, 1] = "Итог";
+                    Excel.Range r1 = worksheet.Cells[dataGridView1.Rows.Count + 4, 2] as Excel.Range;
+                    r1.Formula = String.Format($"=SUM(B{4}:C{dataGridView1.Rows.Count + 3})");
+
+                    Excel.Range r2 = worksheet.Cells[dataGridView1.Rows.Count + 4, 3] as Excel.Range;
+                    r2.Formula = String.Format($"=SUM(C{4}:C{dataGridView1.Rows.Count + 3})");
+
+                    Excel.Range r3 = worksheet.Cells[dataGridView1.Rows.Count + 4, 4] as Excel.Range;
+                    r3.Formula = String.Format($"=SUM(D{4}:D{dataGridView1.Rows.Count + 3})");
+
                     Excel.Range range = (Excel.Range) worksheet.Range[worksheet.Cells[4, 1], worksheet.Cells[dataGridView1.Rows.Count+4, 5]];
                     FormattingExcelCells(range, true, true);
 
