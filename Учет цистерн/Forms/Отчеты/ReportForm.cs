@@ -119,12 +119,12 @@ namespace Учет_цистерн
             try
             {
 
-                string path = "D:/Project2/CisAccount/Учет цистерн/Forms/ReportTemplates/Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
+                string path = "D:/Project/CisAccount/Учет цистерн/Forms/ReportTemplates/Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
                 string fileName = ((DataParametr)e.Argument).FileName;
                 string ownerName = ((DataParametr)e.Argument).owner;
                 Excel.Application app = new Excel.Application();
                 Excel.Workbook workbook = app.Workbooks.Open(path);
-                Excel.Worksheet worksheet = workbook.Worksheets.get_Item("Test");
+                Excel.Worksheet worksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
                 app.Visible = false;
 
                 int cellRowIndex = 0;
@@ -248,12 +248,12 @@ namespace Учет_цистерн
 
                 workbook.SaveAs(fileName);
                 app.Quit();
-        }
+            }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message,"",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-}
+        }
 
         //ИТОГО СУММА
         private Double TotalSum()

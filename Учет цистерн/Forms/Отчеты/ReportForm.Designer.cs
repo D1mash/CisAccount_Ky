@@ -38,6 +38,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_Excel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
@@ -47,7 +48,6 @@
             this.LblStatus = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.btn_Excel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -65,7 +65,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(784, 101);
+            this.groupBox1.Size = new System.Drawing.Size(784, 93);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -155,13 +155,25 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Начало:";
             // 
+            // btn_Excel
+            // 
+            this.btn_Excel.Image = global::Учет_цистерн.Properties.Resources.icons8_microsoft_excel_2019_36;
+            this.btn_Excel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Excel.Location = new System.Drawing.Point(496, 17);
+            this.btn_Excel.Name = "btn_Excel";
+            this.btn_Excel.Size = new System.Drawing.Size(135, 42);
+            this.btn_Excel.TabIndex = 0;
+            this.btn_Excel.Text = "Экспорт";
+            this.btn_Excel.UseVisualStyleBackColor = true;
+            this.btn_Excel.Click += new System.EventHandler(this.Btn_Excel_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 101);
+            this.groupBox2.Location = new System.Drawing.Point(0, 93);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(784, 435);
+            this.groupBox2.Size = new System.Drawing.Size(784, 443);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -176,7 +188,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(778, 416);
+            this.dataGridView1.Size = new System.Drawing.Size(778, 424);
             this.dataGridView1.TabIndex = 0;
             // 
             // backgroundWorker
@@ -229,18 +241,6 @@
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(16, 22);
             this.toolStripLabel1.Text = "...";
-            // 
-            // btn_Excel
-            // 
-            this.btn_Excel.Image = global::Учет_цистерн.Properties.Resources.icons8_microsoft_excel_2019_36;
-            this.btn_Excel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Excel.Location = new System.Drawing.Point(496, 17);
-            this.btn_Excel.Name = "btn_Excel";
-            this.btn_Excel.Size = new System.Drawing.Size(135, 42);
-            this.btn_Excel.TabIndex = 0;
-            this.btn_Excel.Text = "Экспорт";
-            this.btn_Excel.UseVisualStyleBackColor = true;
-            this.btn_Excel.Click += new System.EventHandler(this.Btn_Excel_Click);
             // 
             // ReportForm
             // 

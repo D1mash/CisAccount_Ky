@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Учет_цистерн.Forms.Отчеты
 {
@@ -79,7 +80,63 @@ namespace Учет_цистерн.Forms.Отчеты
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            try
+            {
+                if(radioButton1.Checked)
+                {
+                    string path = "D:/Project/CisAccount/Учет цистерн/Forms/ReportTemplates/СНО Реализ.xlsx";
+                    string fileName = ((DataParametr)e.Argument).FileName;
+                    Excel.Application app = new Excel.Application();
+                    Excel.Workbook workbook = app.Workbooks.Open(path);
+                    Excel.Worksheet worksheet = workbook.Worksheets.get_Item("СНО Реализация");
+                    app.Visible = false;
 
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        for (int j = 1; j < dataGridView1.Columns.Count; j++)
+                        {
+                                worksheet.Cells[i + 4, j] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                        }
+                        backgroundWorker1.ReportProgress(i);
+                    }
+                    workbook.SaveAs(fileName);
+                    app.Quit();
+                }
+                else
+                if(radioButton2.Checked)
+                {
+                    string path = "D:/Project/CisAccount/Учет цистерн/Forms/ReportTemplates/СНО Приход.xlsx";
+                    string fileName = ((DataParametr)e.Argument).FileName;
+                    Excel.Application app = new Excel.Application();
+                    Excel.Workbook workbook = app.Workbooks.Open(path);
+                    Excel.Worksheet worksheet = workbook.Worksheets.get_Item("СНО Приход");
+                    app.Visible = false;
+
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        for (int j = 1; j < dataGridView1.Columns.Count; j++)
+                        {
+                            if (j == 1)
+                            {
+                                worksheet.Cells[i + 4, j] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            }
+                            else
+                            {
+                                if (j > 1)
+                                    worksheet.Cells[i + 4, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            }
+                        }
+                        worksheet.Cells[i + 4, 2] = $"=C{i + 4} + D{i + 4}";
+                        backgroundWorker1.ReportProgress(i);
+                    }
+                    workbook.SaveAs(fileName);
+                    app.Quit();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
