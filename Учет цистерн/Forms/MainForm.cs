@@ -469,6 +469,15 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(ReportForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
                 ReportForm reportForm = new ReportForm();
                 reportForm.Show();
             }
@@ -705,6 +714,14 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(SnoReportForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 SnoReportForm snoReporForm = new SnoReportForm();
                 snoReporForm.Show();
             }
