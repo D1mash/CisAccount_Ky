@@ -91,29 +91,45 @@ namespace Учет_цистерн.Forms.Отчеты
                     Excel.Worksheet worksheet = workbook.Worksheets.get_Item("СНО Реализация");
                     app.Visible = false;
 
+                    worksheet.Range["B3"].Value = "в ТОО Казыгурт-Юг реализация СНО за период с " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
+
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         for (int j = 2; j < dataGridView1.Columns.Count; j++)
                         {
                             if (j == 2)
                             {
-                                worksheet.Cells[i + 6, j - 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                worksheet.Cells[i + 6, j-1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                             }
                             else
                             {
-                                if (j > 2 && j <= 5)
+                                if (j > 2 && j <= 6)
                                 {
-                                    worksheet.Cells[i + 6, j] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                    worksheet.Cells[i + 6, j-1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                                 }
                             }
-                            if(j>6)
+                            if(j>7)
                             {
-                                worksheet.Cells[i + 6, j] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                worksheet.Cells[i + 6, j-2] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                             }
-
                         }
+
+                        worksheet.Cells[dataGridView1.Rows.Count + 6, 1] = "Итог";
+                        Excel.Range r1 = worksheet.Cells[dataGridView1.Rows.Count + 6, 3] as Excel.Range; 
+                        r1.Formula = String.Format($"=SUM(C{6}:C{dataGridView1.Rows.Count + 5})");
+
+                        Excel.Range r2 = worksheet.Cells[dataGridView1.Rows.Count + 6, 5] as Excel.Range;
+                        r2.Formula = String.Format($"=SUM(E{6}:E{dataGridView1.Rows.Count + 5})");
+
+                        Excel.Range r3 = worksheet.Cells[dataGridView1.Rows.Count + 6, 6] as Excel.Range;
+                        r3.Formula = String.Format($"=SUM(F{6}:F{dataGridView1.Rows.Count + 5})");
+
+                        Excel.Range range = worksheet.Range[worksheet.Cells[i + 6, 1], worksheet.Cells[dataGridView1.Rows.Count+6, 7]];
+                        FormattingExcelCells(range, true, true);
+
                         backgroundWorker1.ReportProgress(i);
                     }
+                    
                     workbook.SaveAs(fileName);
                     app.Quit();
                 }
@@ -126,6 +142,8 @@ namespace Учет_цистерн.Forms.Отчеты
                     Excel.Workbook workbook = app.Workbooks.Open(path);
                     Excel.Worksheet worksheet = workbook.Worksheets.get_Item("СНО Приход");
                     app.Visible = false;
+
+                    worksheet.Range["B1"].Value = "Приход СНО в ТОО Казыгурт-Юг за период с " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
 
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
@@ -144,6 +162,10 @@ namespace Учет_цистерн.Forms.Отчеты
                         worksheet.Cells[i + 4, 2] = $"=C{i + 4} + D{i + 4}";
                         backgroundWorker1.ReportProgress(i);
                     }
+
+                    Excel.Range range = (Excel.Range) worksheet.Range[worksheet.Cells[4, 1], worksheet.Cells[dataGridView1.Rows.Count+4, 5]];
+                    FormattingExcelCells(range, true, true);
+
                     workbook.SaveAs(fileName);
                     app.Quit();
                 }
@@ -199,5 +221,27 @@ namespace Учет_цистерн.Forms.Отчеты
         }
 
         DataParametr _inputParametr;
+
+        public void FormattingExcelCells(Excel.Range range, bool val1, bool val2)
+        {
+            //range.EntireColumn.AutoFit();
+            range.Font.Name = "Arial Cyr";
+            range.Font.Size = 9;
+            range.Font.FontStyle = "Bold";
+            if (val1 == true)
+            {
+                Excel.Borders border = range.Borders;
+                border.LineStyle = Excel.XlLineStyle.xlContinuous;
+                border.Weight = 2d;
+            }
+            if (val2 == true)
+            {
+                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            }
+            else
+            {
+                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            }
+        }
     }
 }
