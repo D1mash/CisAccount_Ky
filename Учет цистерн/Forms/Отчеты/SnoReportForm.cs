@@ -93,9 +93,24 @@ namespace Учет_цистерн.Forms.Отчеты
 
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
-                        for (int j = 1; j < dataGridView1.Columns.Count; j++)
+                        for (int j = 2; j < dataGridView1.Columns.Count; j++)
                         {
-                                worksheet.Cells[i + 4, j] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            if (j == 2)
+                            {
+                                worksheet.Cells[i + 6, j - 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            }
+                            else
+                            {
+                                if (j > 2 && j <= 5)
+                                {
+                                    worksheet.Cells[i + 6, j] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                }
+                            }
+                            if(j>6)
+                            {
+                                worksheet.Cells[i + 6, j] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            }
+
                         }
                         backgroundWorker1.ReportProgress(i);
                     }
@@ -142,7 +157,7 @@ namespace Учет_цистерн.Forms.Отчеты
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             ProgrBar.Value = e.ProgressPercentage;
-            label1.Text = "Обработка строки.. " + e.ProgressPercentage.ToString();
+            toolStripLabel1.Text = "Обработка строки.. " + e.ProgressPercentage.ToString();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -150,7 +165,7 @@ namespace Учет_цистерн.Forms.Отчеты
             if (e.Error == null)
             {
                 Thread.Sleep(1);
-                label1.Text = "Данные были успешно экспортированы";
+                toolStripLabel1.Text = "Данные были успешно экспортированы";
                 ProgrBar.Value = 0;
             }
         }
