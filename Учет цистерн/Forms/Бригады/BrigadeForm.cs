@@ -20,6 +20,14 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(BrigadeAddForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 BrigadeAddForm brigadeAddForm = new BrigadeAddForm();
                 brigadeAddForm.Show();
             }
@@ -42,6 +50,14 @@ namespace Учет_цистерн
                 dataTable = DbConnection.DBConnect(GetActiveBrigade);
                 Active = Convert.ToInt32(dataTable.Rows[0][0]);
 
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(BrigadeUpdateForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 BrigadeUpdateForm brigadeUpdateForm = new BrigadeUpdateForm
                 {
                     SelectID = SelectItemRow

@@ -86,6 +86,14 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(SnoComAddForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 SnoComAddForm snoComAddForm = new SnoComAddForm();
                 snoComAddForm.Show();
             }
@@ -99,6 +107,14 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(SnoComUpdateFrom))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 SnoComUpdateFrom snoComUpdateFrom = new SnoComUpdateFrom();
                 snoComUpdateFrom.SelectID = SelectItemRow;
                 snoComUpdateFrom.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();

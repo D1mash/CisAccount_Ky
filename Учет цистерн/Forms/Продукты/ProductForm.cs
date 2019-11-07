@@ -19,8 +19,17 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(addNewCargo))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 addNewCargo addCargo = new addNewCargo();
                 addCargo.Show();
+                
             }
             catch (SqlException ex)
             {
@@ -57,6 +66,14 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(UpdateProductForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 UpdateProductForm UpdateProductForm = new UpdateProductForm();
                 UpdateProductForm.textBox1.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 UpdateProductForm.SelectID = SelectItemRow;

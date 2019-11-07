@@ -161,6 +161,14 @@ namespace Учет_цистерн.Forms.СНО
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(SnoImplAddFormForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 SnoImplAddFormForm SnoImplAddFormForm = new SnoImplAddFormForm();
                 SnoImplAddFormForm.Show();
             }
@@ -174,6 +182,14 @@ namespace Учет_цистерн.Forms.СНО
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(SnoImplUpdateForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 SnoImplUpdateForm SnoImplUpdateForm = new SnoImplUpdateForm();
                 SnoImplUpdateForm.SelectID = SelectItemRow;
                 SnoImplUpdateForm.SelectContragentID = SelectContragentID;

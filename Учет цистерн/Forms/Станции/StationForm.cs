@@ -19,6 +19,14 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(AddNewStation_StationForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 AddNewStation_StationForm AddNewStation_StationForm = new AddNewStation_StationForm();
                 AddNewStation_StationForm.Show();
             }
@@ -125,6 +133,14 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(UpdtCurrentStation_StationForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 UpdtCurrentStation_StationForm UpdtCurrentStation_StationForm = new UpdtCurrentStation_StationForm();
                 UpdtCurrentStation_StationForm.textBox_Updt_Name_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[1].Value.ToString();
                 UpdtCurrentStation_StationForm.textBox_Updt_Code_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[2].Value.ToString();

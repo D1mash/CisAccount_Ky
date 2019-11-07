@@ -61,6 +61,14 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(ServiceCostAddForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 ServiceCostAddForm ServiceCostAddForm = new ServiceCostAddForm();
                 ServiceCostAddForm.Show();
             }
@@ -130,6 +138,14 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(ServiceCostUpdtForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 ServiceCostUpdtForm ServiceCostUpdtForm = new ServiceCostUpdtForm();
                 ServiceCostUpdtForm.SelectID = SelectItemRow;
                 ServiceCostUpdtForm.SelectSeasonID = SelectSeasonID;

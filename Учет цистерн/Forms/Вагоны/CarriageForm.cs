@@ -40,6 +40,14 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(CarriageAddForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 CarriageAddForm carriageAddForm = new CarriageAddForm();
                 carriageAddForm.Show();
             }
@@ -150,6 +158,14 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(CarriageUpdateForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 CarriageUpdateForm carriageUpdateForm = new CarriageUpdateForm();
                 carriageUpdateForm.SelectID = SelectItemRow;
                 carriageUpdateForm.SelectOwnerID = SelectOwnerID;

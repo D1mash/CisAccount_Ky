@@ -40,6 +40,14 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(OwnerAddForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 OwnerAddForm OwnerAddForm = new OwnerAddForm();
                 OwnerAddForm.Show();
             }
@@ -58,6 +66,14 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(OwnerUpdtForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 OwnerUpdtForm OwnerUpdtForm = new OwnerUpdtForm();
                 OwnerUpdtForm.SelectID = SelectItemRow;
                 OwnerUpdtForm.textBox1.Text = dataGVOwner.CurrentRow.Cells[1].Value.ToString();
