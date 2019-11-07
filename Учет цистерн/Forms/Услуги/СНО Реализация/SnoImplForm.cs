@@ -205,7 +205,7 @@ namespace Учет_цистерн.Forms.СНО
                 SnoImplUpdateForm.SelectID = SelectItemRow;
                 SnoImplUpdateForm.SelectContragentID = SelectContragentID;
                 SnoImplUpdateForm.SelectNdsRate = SelectNdsRate;
-                SnoImplUpdateForm.textBox6.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                SnoImplUpdateForm.textBox6.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 SnoImplUpdateForm.textBox1.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
                 SnoImplUpdateForm.textBox2.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
                 SnoImplUpdateForm.textBox3.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
