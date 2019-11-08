@@ -84,7 +84,7 @@ namespace Учет_цистерн.Forms.Отчеты
             {
                 if(radioButton1.Checked)
                 {
-                    string path = "D:/Project/CisAccount/Учет цистерн/Forms/ReportTemplates/СНО Реализ.xlsx";
+                    string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\СНО Реализ.xlsx";
                     string fileName = ((DataParametr)e.Argument).FileName;
                     Excel.Application app = new Excel.Application();
                     Excel.Workbook workbook = app.Workbooks.Open(path);
@@ -136,7 +136,7 @@ namespace Учет_цистерн.Forms.Отчеты
                 else
                 if(radioButton2.Checked)
                 {
-                    string path = "D:/Project/CisAccount/Учет цистерн/Forms/ReportTemplates/СНО Приход.xlsx";
+                    string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\СНО Приход.xlsx";
                     string fileName = ((DataParametr)e.Argument).FileName;
                     Excel.Application app = new Excel.Application();
                     Excel.Workbook workbook = app.Workbooks.Open(path);

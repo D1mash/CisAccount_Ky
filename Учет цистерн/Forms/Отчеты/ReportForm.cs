@@ -118,8 +118,9 @@ namespace Учет_цистерн
         {
             try
             {
+                string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
+                //var folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-                string path = Environment.CurrentDirectory+"CisAccount/Учет цистерн/Forms/ReportTemplates/Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
                 string fileName = ((DataParametr)e.Argument).FileName;
                 string ownerName = ((DataParametr)e.Argument).owner;
                 Excel.Application app = new Excel.Application();
