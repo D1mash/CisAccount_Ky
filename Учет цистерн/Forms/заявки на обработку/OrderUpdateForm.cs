@@ -76,10 +76,12 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             {
                 if (MessageBox.Show("Удалить выделенную запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
-                    DataTable dt = DbConnection.DBConnect(GetID);
-                    string DeleteRow = "delete from d__RenderedServiceBody where ID = " + SelectItemRow + " and Head_ID = " + dt.Rows[0][0].ToString();
+                    //string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+                    //DataTable dt = DbConnection.DBConnect(GetID);
+                    string DeleteRow = "delete from d__RenderedServiceBody where ID = " + SelectItemRow + " delete from temp where body_id = " + SelectItemRow;
                     DbConnection.DBConnect(DeleteRow);
+                    //string DeleteTemp = "delete from temp where body_id = " + SelectItemRow;
+                    //DbConnection.DBConnect(DeleteRow);
                     MessageBox.Show("Запись удалена!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateBody();
                 }
@@ -562,11 +564,27 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                     DbConnection.DBConnect(UpdateBody);
                 }
 
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    string FillBody = "exec dbo.UpdateRenderedServiceBody_Filter " + dataGridView1.Rows[i].Cells[3].Value + "," + dataGridView1.Rows[i].Cells[4].Value + "," + dataGridView1.Rows[i].Cells[5].Value + "," + dataGridView1.Rows[i].Cells[6].Value + "," + dataGridView1.Rows[i].Cells[7].Value + "," + SelectItemRow;
-                    DbConnection.DBConnect(FillBody);
-                }
+                //axis
+                string UpdateAxis = "update temp set axis = " + dataGridView1.Rows[e.RowIndex].Cells[3].Value + " where body_id = " + SelectItemRow;
+                DbConnection.DBConnect(UpdateAxis);
+                //gor
+                string UpdateGor = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[4].Value + "',2," + SelectItemRow;
+                DbConnection.DBConnect(UpdateGor);
+                //hol
+                string UpdateHol = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[5].Value + "',3," + SelectItemRow;
+                DbConnection.DBConnect(UpdateHol);
+                //tor
+                string UpdateTor = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[6].Value + "',4," + SelectItemRow;
+                DbConnection.DBConnect(UpdateTor);
+                //drkr
+                string UpdateDrkr = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[7].Value + "',5," + SelectItemRow;
+                DbConnection.DBConnect(UpdateDrkr);
+
+                //for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                //{
+                //    string FillBody = "exec dbo.UpdateRenderedServiceBody_Filter " + dataGridView1.Rows[i].Cells[3].Value + "," + dataGridView1.Rows[i].Cells[4].Value + "," + dataGridView1.Rows[i].Cells[5].Value + "," + dataGridView1.Rows[i].Cells[6].Value + "," + dataGridView1.Rows[i].Cells[7].Value + "," + SelectItemRow;
+                //    DbConnection.DBConnect(FillBody);
+                //}
             }
             catch (SqlException ex)
             {
