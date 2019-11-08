@@ -149,12 +149,12 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             {
                 if (MessageBox.Show("Удалить выделенную запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
-                    DataTable dt = DbConnection.DBConnect(GetID);
-                    string DeleteRow = "delete from d__RenderedServiceBody where ID = " + SelectItemRow + " and Head_ID = " + dt.Rows[0][0].ToString();
+                    //string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+                    //DataTable dt = DbConnection.DBConnect(GetID);
+                    string DeleteRow = "delete from d__RenderedServiceBody where ID = " + SelectItemRow + " delete from temp where body_id = "+SelectItemRow;
                     DbConnection.DBConnect(DeleteRow);
-                    string DeleteTemp = "delete from temp where body_id = " + SelectItemRow;
-                    DbConnection.DBConnect(DeleteRow);
+                    //string DeleteTemp = "delete from temp where body_id = " + SelectItemRow;
+                    //DbConnection.DBConnect(DeleteRow);
                     MessageBox.Show("Запись удалена!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateBody();
                 }
