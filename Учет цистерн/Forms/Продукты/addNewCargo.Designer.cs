@@ -95,6 +95,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(315, 166);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -107,7 +109,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление";
-            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -527,27 +527,27 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                     string UpdateBody = "exec dbo.UpdateRenderedServiceBody '" + dataGridView1.Rows[e.RowIndex].Cells[8].Value + "',2," + SelectItemRow;
                     DbConnection.DBConnect(UpdateBody);
                 }
-                ////axis
-                //string UpdateAxis = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[3].Value + "',5," + SelectItemRow;
-                //DbConnection.DBConnect(UpdateAxis);
-                ////gor
-                //string UpdateGor = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[4].Value + "',1," + SelectItemRow;
-                //DbConnection.DBConnect(UpdateGor);
-                ////hol
-                //string UpdateHol = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[5].Value + "',2," + SelectItemRow;
-                //DbConnection.DBConnect(UpdateHol);
-                ////tor
-                //string UpdateTor = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[6].Value + "',3," + SelectItemRow;
-                //DbConnection.DBConnect(UpdateTor);
-                ////drkr
-                //string UpdateDrkr = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[7].Value + "',4," + SelectItemRow;
-                //DbConnection.DBConnect(UpdateDrkr);
+                //axis
+                string UpdateAxis = "update temp set axis = " + dataGridView1.Rows[e.RowIndex].Cells[3].Value + " where body_id = " + SelectItemRow;
+                DbConnection.DBConnect(UpdateAxis);
+                //gor
+                string UpdateGor = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[4].Value + "',2," + SelectItemRow;
+                DbConnection.DBConnect(UpdateGor);
+                //hol
+                string UpdateHol = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[5].Value + "',3," + SelectItemRow;
+                DbConnection.DBConnect(UpdateHol);
+                //tor
+                string UpdateTor = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[6].Value + "',4," + SelectItemRow;
+                DbConnection.DBConnect(UpdateTor);
+                //drkr
+                string UpdateDrkr = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[7].Value + "',5," + SelectItemRow;
+                DbConnection.DBConnect(UpdateDrkr);
 
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    string FillBody = "exec dbo.UpdateRenderedServiceBody_Filter " + dataGridView1.Rows[i].Cells[3].Value + "," + dataGridView1.Rows[i].Cells[4].Value + "," + dataGridView1.Rows[i].Cells[5].Value + "," + dataGridView1.Rows[i].Cells[6].Value + "," + dataGridView1.Rows[i].Cells[7].Value + "," + SelectItemRow;
-                    DbConnection.DBConnect(FillBody);
-                }
+                //for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                //{
+                //    string FillBody = "exec dbo.UpdateRenderedServiceBody_Filter " + dataGridView1.Rows[i].Cells[3].Value + "," + dataGridView1.Rows[i].Cells[4].Value + "," + dataGridView1.Rows[i].Cells[5].Value + "," + dataGridView1.Rows[i].Cells[6].Value + "," + dataGridView1.Rows[i].Cells[7].Value + "," + SelectItemRow;
+                //    DbConnection.DBConnect(FillBody);
+                //}
             }
             catch (SqlException ex)
             {
