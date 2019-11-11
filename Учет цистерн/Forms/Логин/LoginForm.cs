@@ -13,6 +13,7 @@ namespace Учет_цистерн
             FillCombobox();
             this.ControlBox = false;
             textBox2.Select();
+            button1.Focus();
         }
 
         public int UserLastID { get; set; }
@@ -35,18 +36,23 @@ namespace Учет_цистерн
         {
             try
             {
-                string getUsers = "Select * from dbo.Users where AID = '" + comboBox1.SelectedValue.ToString() + "' and pass = '" + textBox2.Text.Trim() + "'";
-                DataTable dataTable = new DataTable();
-                dataTable = DbConnection.DBConnect(getUsers);
+                Boolean result;
+                string aid;
+                string password;
 
-                if (dataTable.Rows.Count == 1)
+                aid = comboBox1.SelectedValue.ToString();
+                password = textBox2.Text.Trim();
+
+                string CheckUser = "select dbo.CheckUser (" + aid + ", '" + password + "')";
+                DataTable dt = DbConnection.DBConnect(CheckUser);
+                result = Convert.ToBoolean(dt.Rows[0][0].ToString());
+                if(result == true)
                 {
                     this.Hide();
-                    string User_AID = dataTable.Rows[0][0].ToString();
-                    string ExecLogin = "exec dbo.Login " + User_AID;
-                    DataTable dt = new DataTable();
-                    dt = DbConnection.DBConnect(ExecLogin);
-                    MainForm objFrmMain = new MainForm(dataTable.Rows[0][3].ToString());
+                    string ExecLogin = "exec dbo.Login " + aid;
+                    DataTable ExecLoginDt = new DataTable();
+                    ExecLoginDt = DbConnection.DBConnect(ExecLogin);
+                    MainForm objFrmMain = new MainForm();
                     objFrmMain.Show();
                 }
                 else
@@ -54,6 +60,25 @@ namespace Учет_цистерн
                     MessageBox.Show("Неправильные имя пользователя или пароль!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox2.Clear();
                 }
+                //string getUsers = "Select * from dbo.Users where AID = '" + comboBox1.SelectedValue.ToString() + "' and pass = '" + textBox2.Text.Trim() + "'";
+                //DataTable dataTable = new DataTable();
+                //dataTable = DbConnection.DBConnect(getUsers);
+
+                //if (dataTable.Rows.Count == 1)
+                //{
+                //    this.Hide();
+                //    string User_AID = dataTable.Rows[0][0].ToString();
+                //    string ExecLogin = "exec dbo.Login " + User_AID;
+                //    DataTable dt = new DataTable();
+                //    dt = DbConnection.DBConnect(ExecLogin);
+                //    MainForm objFrmMain = new MainForm(dataTable.Rows[0][3].ToString());
+                //    objFrmMain.Show();
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Неправильные имя пользователя или пароль!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    textBox2.Clear();
+                //}
             }
             catch (SqlException ex)
             {
