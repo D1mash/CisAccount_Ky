@@ -13,7 +13,7 @@ namespace Учет_цистерн
             FillCombobox();
             this.ControlBox = false;
             textBox2.Select();
-            button1.Focus();
+            button1.Select();
         }
 
         public int UserLastID { get; set; }
@@ -93,6 +93,14 @@ namespace Учет_цистерн
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void LoginForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                button1.PerformClick();
+            }
         }
     }
 }
