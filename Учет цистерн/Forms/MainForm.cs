@@ -35,10 +35,6 @@ namespace Учет_цистерн
                 panel3.Visible = false;
                 textBox1.Visible = false;
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -57,10 +53,6 @@ namespace Учет_цистерн
                 dataGridView1.Columns[2].Width = 120;
                 dataGridView1.Columns[3].Width = 80;
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -77,10 +69,6 @@ namespace Учет_цистерн
                     contextMenuStrip_GlobalFilter.Show(dataGridView1, new Point(e.X, e.Y));
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -92,10 +80,6 @@ namespace Учет_цистерн
             try
             {
                 contextMenuStrip_Product.Show(button1, new Point(0, button1.Height));
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception exp)
             {
@@ -110,10 +94,6 @@ namespace Учет_цистерн
                 string Insert = "exec dbo.InsertGlobalFilter '" + Clipboard.GetText() + "'";
                 DbConnection.DBConnect(Insert);
                 GetFilter();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception exp)
             {
@@ -190,10 +170,6 @@ namespace Учет_цистерн
                     Environment.Exit(0);
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -214,10 +190,6 @@ namespace Учет_цистерн
                 frm.FormBorderStyle = FormBorderStyle.None;
                 frm.Dock = DockStyle.Fill;
                 ProductTabPage.Controls.Add(frm);
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception exp)
             {
@@ -240,10 +212,6 @@ namespace Учет_цистерн
                 frm.Dock = DockStyle.Fill;
                 StationTabPage.Controls.Add(frm);
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -264,10 +232,6 @@ namespace Учет_цистерн
                 frm.FormBorderStyle = FormBorderStyle.None;
                 frm.Dock = DockStyle.Fill;
                 BrigadeTabPage.Controls.Add(frm);
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception exp)
             {
@@ -290,10 +254,6 @@ namespace Учет_цистерн
                 frm.Dock = DockStyle.Fill;
                 OwnerTabPage.Controls.Add(frm);
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -304,7 +264,7 @@ namespace Учет_цистерн
         {
             try
             {
-                CarriageForm carriageForm = new CarriageForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.button6, this.tabControl1);
+                CarriageForm carriageForm = new CarriageForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.btn_Refrence, this.tabControl1);
                 tabControl1.Show();
                 TabPage CarriageTabPage = new TabPage("Вагоны");
                 tabControl1.TabPages.Add(CarriageTabPage);
@@ -315,10 +275,6 @@ namespace Учет_цистерн
                 carriageForm.Dock = DockStyle.Fill;
                 CarriageTabPage.Controls.Add(carriageForm);
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -327,14 +283,22 @@ namespace Учет_цистерн
 
         private void button2_Click(object sender, EventArgs e)
         {
-            contextMenuStrip_Services.Show(button2, new Point(0, button2.Height));
+            try
+            {
+                contextMenuStrip_Services.Show(button2, new Point(0, button2.Height));
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void button4_Click(object sender, EventArgs e)
         {
             try
             {
-                RenderedServiceForm RenderedServiceForm = new RenderedServiceForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.button6, this.tabControl1);
+                RenderedServiceForm RenderedServiceForm = new RenderedServiceForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.btn_Refrence, this.tabControl1);
                 tabControl1.Show();
                 TabPage CarriageTabPage = new TabPage("Обработанные вагоны");
                 tabControl1.TabPages.Add(CarriageTabPage);
@@ -344,10 +308,6 @@ namespace Учет_цистерн
                 RenderedServiceForm.FormBorderStyle = FormBorderStyle.None;
                 RenderedServiceForm.Dock = DockStyle.Fill;
                 CarriageTabPage.Controls.Add(RenderedServiceForm);
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception exp)
             {
@@ -382,10 +342,6 @@ namespace Учет_цистерн
                 }
                 DragStartPosition = Point.Empty;
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -419,10 +375,6 @@ namespace Учет_цистерн
                     }
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -449,10 +401,6 @@ namespace Учет_цистерн
                 int Index2 = tabControl1.TabPages.IndexOf(tp2);
                 tabControl1.TabPages[Index1] = tp2;
                 tabControl1.TabPages[Index2] = tp1;
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception exp)
             {
@@ -516,10 +464,6 @@ namespace Учет_цистерн
                     this.splitContainer1.SplitterDistance = 25;
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -540,10 +484,6 @@ namespace Учет_цистерн
                 ServiceCostForm.FormBorderStyle = FormBorderStyle.None;
                 ServiceCostForm.Dock = DockStyle.Fill;
                 CarriageTabPage.Controls.Add(ServiceCostForm);
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception exp)
             {
@@ -566,10 +506,6 @@ namespace Учет_цистерн
                 orderAllForm.FormBorderStyle = FormBorderStyle.None;
                 orderAllForm.Dock = DockStyle.Fill;
                 OrderAllTabPage.Controls.Add(orderAllForm);
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception exp)
             {
@@ -641,10 +577,6 @@ namespace Учет_цистерн
                     }
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -657,10 +589,6 @@ namespace Учет_цистерн
             {
                 if (e.RowIndex >= 0)
                     this.dataGridView1.Rows[e.RowIndex].Cells["checkBoxColumn"].Value = true;
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception exp)
             {
@@ -724,6 +652,33 @@ namespace Учет_цистерн
                 }
                 SnoReportForm snoReporForm = new SnoReportForm();
                 snoReporForm.Show();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void проверитьОбновлениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void просмотрСправкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Refrence_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                contextMenuStrip_Refrence.Show(btn_Refrence, new Point(0, button2.Height));
             }
             catch(Exception ex)
             {

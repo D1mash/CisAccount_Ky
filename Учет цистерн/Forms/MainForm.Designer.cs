@@ -62,7 +62,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btn_Refrence = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -74,6 +74,10 @@
             this.сНОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОРеализацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОПриходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip_Refrence = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.проверитьОбновлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.просмотрСправкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -88,6 +92,7 @@
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip_Services.SuspendLayout();
+            this.contextMenuStrip_Refrence.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip_Product
@@ -390,14 +395,15 @@
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.ReadOnly = true;
             // 
-            // button6
+            // btn_Refrence
             // 
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.Name = "button6";
-            this.button6.UseMnemonic = false;
-            this.button6.UseVisualStyleBackColor = false;
+            resources.ApplyResources(this.btn_Refrence, "btn_Refrence");
+            this.btn_Refrence.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btn_Refrence.FlatAppearance.BorderSize = 0;
+            this.btn_Refrence.Name = "btn_Refrence";
+            this.btn_Refrence.UseMnemonic = false;
+            this.btn_Refrence.UseVisualStyleBackColor = false;
+            this.btn_Refrence.Click += new System.EventHandler(this.btn_Refrence_Click);
             // 
             // button3
             // 
@@ -449,7 +455,7 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.btn_Refrence);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
@@ -499,6 +505,33 @@
             resources.ApplyResources(this.сНОПриходToolStripMenuItem, "сНОПриходToolStripMenuItem");
             this.сНОПриходToolStripMenuItem.Click += new System.EventHandler(this.сНОПриходToolStripMenuItem_Click);
             // 
+            // contextMenuStrip_Refrence
+            // 
+            this.contextMenuStrip_Refrence.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.проверитьОбновлениеToolStripMenuItem,
+            this.просмотрСправкиToolStripMenuItem,
+            this.оПрограммеToolStripMenuItem});
+            this.contextMenuStrip_Refrence.Name = "contextMenuStrip_Refrence";
+            resources.ApplyResources(this.contextMenuStrip_Refrence, "contextMenuStrip_Refrence");
+            // 
+            // проверитьОбновлениеToolStripMenuItem
+            // 
+            this.проверитьОбновлениеToolStripMenuItem.Name = "проверитьОбновлениеToolStripMenuItem";
+            resources.ApplyResources(this.проверитьОбновлениеToolStripMenuItem, "проверитьОбновлениеToolStripMenuItem");
+            this.проверитьОбновлениеToolStripMenuItem.Click += new System.EventHandler(this.проверитьОбновлениеToolStripMenuItem_Click);
+            // 
+            // просмотрСправкиToolStripMenuItem
+            // 
+            this.просмотрСправкиToolStripMenuItem.Name = "просмотрСправкиToolStripMenuItem";
+            resources.ApplyResources(this.просмотрСправкиToolStripMenuItem, "просмотрСправкиToolStripMenuItem");
+            this.просмотрСправкиToolStripMenuItem.Click += new System.EventHandler(this.просмотрСправкиToolStripMenuItem_Click);
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            resources.ApplyResources(this.оПрограммеToolStripMenuItem, "оПрограммеToolStripMenuItem");
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -527,6 +560,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.contextMenuStrip_Services.ResumeLayout(false);
+            this.contextMenuStrip_Refrence.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -561,7 +595,7 @@
         private System.Windows.Forms.ToolStripMenuItem сНОToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        public System.Windows.Forms.Button button6;
+        public System.Windows.Forms.Button btn_Refrence;
         public System.Windows.Forms.Button button3;
         public System.Windows.Forms.Button button2;
         public System.Windows.Forms.Button button1;
@@ -577,6 +611,10 @@
         private System.Windows.Forms.ToolStripMenuItem сНОРеализацияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сНОПриходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сНОToolStripMenuItem1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Refrence;
+        private System.Windows.Forms.ToolStripMenuItem проверитьОбновлениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem просмотрСправкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
     }
 }
 
