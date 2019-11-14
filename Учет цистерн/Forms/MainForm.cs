@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Учет_цистерн.Forms.заявки_на_обработку;
 using Учет_цистерн.Forms.Отчеты;
 using Учет_цистерн.Forms.СНО;
+using Учет_цистерн.Forms.Справка;
 using Учет_цистерн.Forms.Услуги.СНО_Приход;
 
 namespace Учет_цистерн
@@ -671,7 +672,8 @@ namespace Учет_цистерн
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AboutBox aboutBox = new AboutBox();
+            aboutBox.Show();
         }
 
         private void btn_Refrence_Click(object sender, EventArgs e)
