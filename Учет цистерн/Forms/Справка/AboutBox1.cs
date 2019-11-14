@@ -17,7 +17,7 @@ namespace Учет_цистерн.Forms.Справка
             this.Text = String.Format("О программе {0}", AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;
             this.labelVersion.Text = String.Format("Версия {0}", AssemblyVersion);
-            this.labelCopyright.Text = "Copyright © TOO Petroleum";
+            this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;
         }

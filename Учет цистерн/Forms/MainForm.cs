@@ -10,6 +10,7 @@ using Учет_цистерн.Forms.Отчеты;
 using Учет_цистерн.Forms.СНО;
 using Учет_цистерн.Forms.Справка;
 using Учет_цистерн.Forms.Услуги.СНО_Приход;
+using AutoUpdaterDotNET;
 
 namespace Учет_цистерн
 {
@@ -662,7 +663,12 @@ namespace Учет_цистерн
 
         private void проверитьОбновлениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AutoUpdater.Start("https://1drv.ms/u/s!AvGr7BDccV-cguQnmIH0vJpFB1AV7A?e=D0siRe/AutoUpdate.xml", myAssembly:null);
+            //AutoUpdater.ShowSkipButton = false;
+            //AutoUpdater.ShowRemindLaterButton = false;
+            //AutoUpdater.ReportErrors = true;
+            AutoUpdater.DownloadPath = Environment.CurrentDirectory;
+            AutoUpdater.RunUpdateAsAdmin = false;
         }
 
         private void просмотрСправкиToolStripMenuItem_Click(object sender, EventArgs e)
