@@ -11,6 +11,7 @@ using Учет_цистерн.Forms.СНО;
 using Учет_цистерн.Forms.Справка;
 using Учет_цистерн.Forms.Услуги.СНО_Приход;
 using AutoUpdaterDotNET;
+using System.Net;
 
 namespace Учет_цистерн
 {
@@ -663,10 +664,10 @@ namespace Учет_цистерн
 
         private void проверитьОбновлениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AutoUpdater.Start("https://1drv.ms/u/s!AvGr7BDccV-cguQnmIH0vJpFB1AV7A?e=D0siRe/AutoUpdate.xml", myAssembly:null);
-            //AutoUpdater.ShowSkipButton = false;
-            //AutoUpdater.ShowRemindLaterButton = false;
-            //AutoUpdater.ReportErrors = true;
+            AutoUpdater.Start("http://192.168.10.84/AutoUpdaterTest.xml", myAssembly:null); 
+            AutoUpdater.ShowSkipButton = false;
+            AutoUpdater.ShowRemindLaterButton = false;
+            AutoUpdater.ReportErrors = true;
             AutoUpdater.DownloadPath = Environment.CurrentDirectory;
             AutoUpdater.RunUpdateAsAdmin = false;
         }
