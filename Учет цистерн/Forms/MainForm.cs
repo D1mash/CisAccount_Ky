@@ -670,6 +670,7 @@ namespace Учет_цистерн
             AutoUpdater.ReportErrors = true;
             AutoUpdater.DownloadPath = Environment.CurrentDirectory;
             AutoUpdater.RunUpdateAsAdmin = false;
+            AutoUpdater.UpdateFormSize = new System.Drawing.Size(800, 600);
         }
 
         private void просмотрСправкиToolStripMenuItem_Click(object sender, EventArgs e)
