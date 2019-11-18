@@ -15,7 +15,7 @@ namespace Учет_цистерн
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             #region Splash
-            Application.Run(new SplashForm());
+            //Application.Run(new SplashForm());
             Application.Run(new LoginForm());
             #endregion
         }
