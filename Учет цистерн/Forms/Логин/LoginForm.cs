@@ -20,16 +20,28 @@ namespace Учет_цистерн
 
         public void FillCombobox()
         {
-            string Hostname = System.Environment.MachineName;
-            string GetLastUser = "select top 1 ID_USER from AUDIT_USER where HostIns = '"+Hostname+"' order by DATE_IN desc";
-            DataTable dt1 = DbConnection.DBConnect(GetLastUser);
-            UserLastID = Convert.ToInt32(dt1.Rows[0][0]);
-            string GetUser = "select * from dbo.Users";
-            DataTable dt = DbConnection.DBConnect(GetUser);
-            comboBox1.DataSource = dt;
-            comboBox1.DisplayMember = "FIO";
-            comboBox1.ValueMember = "AID";
-            comboBox1.DataBindings.Add("SelectedValue", this, "UserLastID", true, DataSourceUpdateMode.OnPropertyChanged);
+            try
+            {
+                string Hostname = System.Environment.MachineName;
+                string GetLastUser = "select top 1 ID_USER from AUDIT_USER where HostIns = '" + Hostname + "' order by DATE_IN desc";
+                DataTable dt1 = DbConnection.DBConnect(GetLastUser);
+                UserLastID = Convert.ToInt32(dt1.Rows[0][0]);
+                string GetUser = "select * from dbo.Users";
+                DataTable dt = DbConnection.DBConnect(GetUser);
+                comboBox1.DataSource = dt;
+                comboBox1.DisplayMember = "FIO";
+                comboBox1.ValueMember = "AID";
+                comboBox1.DataBindings.Add("SelectedValue", this, "UserLastID", true, DataSourceUpdateMode.OnPropertyChanged);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch
+            (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)

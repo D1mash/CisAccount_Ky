@@ -234,7 +234,6 @@
       <DependentUpon>SnoImplUpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ProgressReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\Обработанные вагоны\RenderedServiceForm.cs">
       <SubType>Form</SubType>

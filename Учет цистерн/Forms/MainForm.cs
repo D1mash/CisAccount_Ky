@@ -656,7 +656,7 @@ namespace Учет_цистерн
                 SnoReportForm snoReporForm = new SnoReportForm();
                 snoReporForm.Show();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -664,7 +664,7 @@ namespace Учет_цистерн
 
         private void проверитьОбновлениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AutoUpdater.Start("http://192.168.10.84/AutoUpdaterTest.xml", myAssembly:null); 
+            AutoUpdater.Start("http://192.168.10.84/AutoUpdaterTest.xml", myAssembly: null);
             AutoUpdater.ShowSkipButton = false;
             AutoUpdater.ShowRemindLaterButton = false;
             AutoUpdater.ReportErrors = true;
