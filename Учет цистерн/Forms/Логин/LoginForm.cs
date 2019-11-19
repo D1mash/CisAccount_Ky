@@ -28,13 +28,24 @@ namespace Учет_цистерн
                 string Hostname = System.Environment.MachineName;
                 string GetLastUser = "select top 1 ID_USER from AUDIT_USER where HostIns = '" + Hostname + "' order by DATE_IN desc";
                 DataTable dt1 = DbConnection.DBConnect(GetLastUser);
-                UserLastID = Convert.ToInt32(dt1.Rows[0][0]);
+
                 string GetUser = "select * from dbo.Users";
                 DataTable dt = DbConnection.DBConnect(GetUser);
-                comboBox1.DataSource = dt;
-                comboBox1.DisplayMember = "FIO";
-                comboBox1.ValueMember = "AID";
-                comboBox1.DataBindings.Add("SelectedValue", this, "UserLastID", true, DataSourceUpdateMode.OnPropertyChanged);
+
+                if (dt1.Rows.Count > 0)
+                {
+                    UserLastID = Convert.ToInt32(dt1.Rows[0][0]);
+                    comboBox1.DataSource = dt;
+                    comboBox1.DisplayMember = "FIO";
+                    comboBox1.ValueMember = "AID";
+                    comboBox1.DataBindings.Add("SelectedValue", this, "UserLastID", true, DataSourceUpdateMode.OnPropertyChanged);
+                }
+                else
+                {
+                    comboBox1.DataSource = dt;
+                    comboBox1.DisplayMember = "FIO";
+                    comboBox1.ValueMember = "AID";
+                }
             }
             catch (SqlException ex)
             {
