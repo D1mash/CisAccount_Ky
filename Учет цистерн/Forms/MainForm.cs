@@ -11,12 +11,14 @@ using Учет_цистерн.Forms.СНО;
 using Учет_цистерн.Forms.Справка;
 using Учет_цистерн.Forms.Услуги.СНО_Приход;
 using AutoUpdaterDotNET;
-using System.Net;
+using NLog;
 
 namespace Учет_цистерн
 {
     public partial class MainForm : Form
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         public MainForm()
         {
             InitializeComponent();
@@ -41,6 +43,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "MainForm_Load");
             }
         }
 
@@ -59,6 +62,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "GetFilter");
             }
         }
 
@@ -75,6 +79,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "dataGridView1_MouseClick_1");
             }          
         }
 
@@ -87,6 +92,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "button1_Click");
             }
         }
         //Глобальный фильтр, вставить вагоны
@@ -101,6 +107,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "Глобальный фильтр, вставить вагоны");
             }
         }
         //Глобальный фильтр, обновить вагоны
@@ -135,10 +142,12 @@ namespace Учет_цистерн
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, "удалитьToolStripMenuItem1_Click_SQL");
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "удалитьToolStripMenuItem1_Click");
             }
         }
         //Глобальный фильтр, удалить все вагоны
@@ -153,10 +162,12 @@ namespace Учет_цистерн
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, "GlobalудалитьToolStripMenuItem1_Click_SQL");
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "GlobalудалитьToolStripMenuItem1_Click_SQL");
             }
         }
 
@@ -176,6 +187,8 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "MainForm_FormClosing");
+                logger.Info(exp, "MainForm_FormClosing");
             }
         }
 
@@ -197,6 +210,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "ToolStripMenuItem1_Product_Click");
             }
         }
 
@@ -218,6 +232,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "toolStripMenuItem2_Station_Click");
             }
         }
 
@@ -239,6 +254,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "ToolStripMenuItem3_Brigade_Click");
             }
         }
 
@@ -260,6 +276,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "toolStripMenuItem4_Owner_Click");
             }
         }
 
@@ -281,6 +298,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "ToolStripMenuItem_Carriage_Click");
             }
         }
 
@@ -293,6 +311,7 @@ namespace Учет_цистерн
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, "button2_Click_MainForm");
             }
         }
 
@@ -315,6 +334,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "button4_Click_MainForm");
             }
         }
 
@@ -348,6 +368,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "tabControl1_MouseMove");
             }
         }
 
@@ -381,6 +402,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "tabControl1_DragOver");
             }
         }
 
@@ -408,6 +430,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "SwapTabPages");
             }
         }
 
@@ -435,6 +458,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "ToolStripMenuItem1_Click");
             }
         }
 
@@ -470,6 +494,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "tabControl2_Click");
             }
         }
 
@@ -491,6 +516,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "РасценкиToolStripMenuItem_Click");
             }
         }
 
@@ -513,6 +539,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "button7_Click_MainForm");
             }
         }
 
@@ -583,6 +610,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "dataGridView1_CellPainting_1");
             }
         }
 
@@ -596,6 +624,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "dataGridView1_CellClick_MainForm");
             }
         }
 
@@ -617,6 +646,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "сНОРеализацияToolStripMenuItem_Click");
             }
         }
 
@@ -638,6 +668,7 @@ namespace Учет_цистерн
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "сНОПриходToolStripMenuItem_Click");
             }
         }
 
@@ -659,18 +690,27 @@ namespace Учет_цистерн
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, "сНОToolStripMenuItem1_Click");
             }
         }
 
         private void проверитьОбновлениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AutoUpdater.Start("http://192.168.10.84/AutoUpdaterTest.xml", myAssembly: null);
-            AutoUpdater.ShowSkipButton = false;
-            AutoUpdater.ShowRemindLaterButton = false;
-            AutoUpdater.ReportErrors = true;
-            AutoUpdater.DownloadPath = Environment.CurrentDirectory;
-            AutoUpdater.RunUpdateAsAdmin = false;
-            AutoUpdater.UpdateFormSize = new System.Drawing.Size(800, 600);
+            try
+            {
+                AutoUpdater.Start("http://192.168.10.84/AutoUpdaterTest.xml", myAssembly: null);
+                AutoUpdater.ShowSkipButton = false;
+                AutoUpdater.ShowRemindLaterButton = false;
+                AutoUpdater.ReportErrors = true;
+                AutoUpdater.DownloadPath = Environment.CurrentDirectory;
+                AutoUpdater.RunUpdateAsAdmin = false;
+                AutoUpdater.UpdateFormSize = new System.Drawing.Size(800, 600);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, "проверитьОбновлениеToolStripMenuItem_Click");
+            }
         }
 
         private void просмотрСправкиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -693,6 +733,7 @@ namespace Учет_цистерн
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, "btn_Refrence_Click_MainForm");
             }
         }
     }

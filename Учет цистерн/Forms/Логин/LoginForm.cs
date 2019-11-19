@@ -2,11 +2,14 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using NLog;
 
 namespace Учет_цистерн
 {
     public partial class LoginForm : Form
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         public LoginForm()
         {
             InitializeComponent();
@@ -36,11 +39,14 @@ namespace Учет_цистерн
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, "LoginForm_FillCombobox_SQL");
             }
             catch
             (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, "LoginForm_FillCombobox");
+                logger.Info(ex, "LoginForm_FillCombobox");
             }
         }
 
@@ -95,10 +101,12 @@ namespace Учет_цистерн
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, "LoginForm_Button1_Click_SQL");
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "LoginForm_Button1_Click");
             }
         }
 
