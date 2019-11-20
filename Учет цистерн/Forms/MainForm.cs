@@ -524,7 +524,7 @@ namespace Учет_цистерн
         {
             try
             {
-                OrderAllForm orderAllForm = new OrderAllForm(this.tabControl1);
+                OrderAllForm orderAllForm = new OrderAllForm(this.tabControl1, this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.btn_Refrence, this.button7);
                 tabControl1.Show();
                 TabPage OrderAllTabPage = new TabPage("Заявки на обработку");
                 tabControl1.TabPages.Add(OrderAllTabPage);
