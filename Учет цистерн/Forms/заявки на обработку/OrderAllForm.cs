@@ -2,19 +2,40 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
+using NLog;
 
 namespace Учет_цистерн.Forms.заявки_на_обработку
 {
     public partial class OrderAllForm : Form
     {
         TradeWright.UI.Forms.TabControlExtra TabControlExtra;
+        private ToolStripProgressBar progBar;
+        private ToolStripLabel TlStpLabel;
+        private Button btn1;
+        private Button btn2;
+        private Button btn3;
+        private Button btn4;
+        private Button btn6;
+        private Button btn7;
         int SelectItemRow;
         BindingSource source = new BindingSource();
 
-        public OrderAllForm(TradeWright.UI.Forms.TabControlExtra tabControl1)
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
+        public OrderAllForm(TradeWright.UI.Forms.TabControlExtra tabControl1, ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1, Button button1, Button button2, Button button3, Button button4, Button btn_Refrence, Button button7)
         {
             InitializeComponent();
+            TabControlExtra = tabControl1;
+            progBar = toolStripProgressBar1;
+            TlStpLabel = toolStripLabel1;
+            btn1 = button1;
+            btn2 = button2;
+            btn3 = button3;
+            btn4 = button4;
+            btn6 = btn_Refrence;
+            btn7 = button7;
             TabControlExtra = tabControl1;
         }
 
@@ -27,21 +48,22 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         {
             this.source.Filter = this.dataGridView1.FilterString;
         }
-        private void GetDocument()
+        private DataTable GetDocument()
         {
+            DataTable dt = new DataTable();
             try
             {
                 string DateFrom = dateTimePicker1.Text;
                 string DateTo = dateTimePicker2.Text;
                 string GetDocument = "exec dbo.GetRenderedServiceDoc '" + DateFrom + "','" + DateTo + "'";
-                DataTable dt = DbConnection.DBConnect(GetDocument);
-                source.DataSource = dt;
-                dataGridView1.DataSource = source;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[8].Visible = false;
-                dataGridView1.Columns[9].Visible = false;
-                dataGridView1.Columns[10].Visible = false;
-                dataGridView1.Columns[11].Visible = false;
+                 dt = DbConnection.DBConnect(GetDocument);
+                //source.DataSource = dt;
+                //dataGridView1.DataSource = source;
+                //dataGridView1.Columns[0].Visible = false;
+                //dataGridView1.Columns[8].Visible = false;
+                //dataGridView1.Columns[9].Visible = false;
+                //dataGridView1.Columns[10].Visible = false;
+                //dataGridView1.Columns[11].Visible = false;
             }
             catch (SqlException ex)
             {
@@ -51,44 +73,41 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            return dt;
         }
-        private void GetDocumentGlobalFilter()
+
+        private DataTable GetDocumentGlobalFilter()
         {
+            DataTable dt = new DataTable();
             try
             {
                 int yes = 1;
                 string DateFrom = dateTimePicker1.Text;
                 string DateTo = dateTimePicker2.Text;
                 string GetDocument = "exec [dbo].[GetRenderedServiceDocGlobalFilter] '" + DateFrom + "','" + DateTo + "','" + yes + "'";
-                DataTable dt = DbConnection.DBConnect(GetDocument);
-                source.DataSource = dt;
-                dataGridView1.DataSource = source;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[8].Visible = false;
-                dataGridView1.Columns[9].Visible = false;
-                dataGridView1.Columns[10].Visible = false;
-                dataGridView1.Columns[11].Visible = false;
+                dt = DbConnection.DBConnect(GetDocument);
             }
-            catch (SqlException ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
+            return dt;   
         }
-        private void GetDocumentBody()
+
+        private DataTable GetDocumentBody()
         {
+            DataTable dt = new DataTable();
+
             try
             {
                 string DateFrom = dateTimePicker1.Text;
                 string DateTo = dateTimePicker2.Text;
                 string GetDocumentBody = "exec dbo.GetRenderedServiceDoc_Body '" + DateFrom + "','" + DateTo + "'";
-                DataTable dt = DbConnection.DBConnect(GetDocumentBody);
-                source.DataSource = dt;
-                dataGridView2.DataSource = source;
-                dataGridView2.Columns[0].Visible = false;
+                dt = DbConnection.DBConnect(GetDocumentBody);
+                //source.DataSource = dt;
+                //dataGridView2.DataSource = source;
+                //dataGridView2.Columns[0].Visible = false;
             }
             catch (SqlException ex)
             {
@@ -98,19 +117,24 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            return dt;
         }
-        private void GetDocumentBodyGlobalFilter()
+
+        private DataTable GetDocumentBodyGlobalFilter()
         {
+            DataTable dt = new DataTable();
+
             try
             {
                 int yes = 1;
                 string DateFrom = dateTimePicker1.Text;
                 string DateTo = dateTimePicker2.Text;
                 string GetDocumentBody = "exec [dbo].[GetRenderedServiceDocGlobalFilter_Body] '" + DateFrom + "','" + DateTo + "','" + yes + "'";
-                DataTable dt = DbConnection.DBConnect(GetDocumentBody);
-                source.DataSource = dt;
-                dataGridView2.DataSource = source;
-                dataGridView2.Columns[0].Visible = false;
+                dt = DbConnection.DBConnect(GetDocumentBody);
+                //source.DataSource = dt;
+                //dataGridView2.DataSource = source;
+                //dataGridView2.Columns[0].Visible = false;
             }
             catch (SqlException ex)
             {
@@ -120,6 +144,8 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            return dt;
         }
 
         private void OrderAllForm_Load(object sender, EventArgs e)
@@ -164,46 +190,6 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             }
         }
 
-        private void tabControl1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (tabControl1.SelectedTab == tabPage1)
-                {
-                    button2.Enabled = true;
-                    button3.Enabled = true;
-                    if (checkBox1.Checked)
-                    {
-                        GetDocumentGlobalFilter();
-                    }
-                    else
-                    {
-                        GetDocument();
-                    }
-                }
-                else if (tabControl1.SelectedTab == tabPage2)
-                {
-                    button2.Enabled = false;
-                    button3.Enabled = false;
-                    if (checkBox1.Checked)
-                    {
-                        GetDocumentBodyGlobalFilter();
-                    }
-                    else
-                    {
-                        GetDocumentBody();
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         //Кнопка Добавить
         private void button1_Click(object sender, EventArgs e)
         {
@@ -251,39 +237,136 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
 
         private void button4_Click(object sender, EventArgs e)
         {
-            try
+            DataTable dt;
+
+            if (!backgroundWorker1.IsBusy)
             {
-                if (tabControl1.SelectedTab == tabPage1)
+                try
                 {
-                    if (checkBox1.Checked)
+                    if (tabControl1.SelectedTab == tabPage1)
                     {
-                        GetDocumentGlobalFilter();
+                        button2.Enabled = true;
+                        button3.Enabled = true;
+                        if (checkBox1.Checked)
+                        {
+                            progBar.Visible = true;
+                            btn1.Enabled = false;
+                            btn2.Enabled = false;
+                            btn3.Enabled = false;
+                            btn4.Enabled = false;
+                            btn6.Enabled = false;
+                            btn7.Enabled = false;
+                            button1.Enabled = false;
+                            button2.Enabled = false;
+                            button3.Enabled = false;
+                            button4.Enabled = false;
+                            TabControlExtra.DisplayStyleProvider.ShowTabCloser = false;
+                            dt = GetDocumentGlobalFilter();
+                            progBar.Maximum = dt.Rows.Count;
+                            backgroundWorker1.RunWorkerAsync(dt);
+                        }
+                        else
+                        {
+                            progBar.Visible = true;
+                            btn1.Enabled = false;
+                            btn2.Enabled = false;
+                            btn3.Enabled = false;
+                            btn4.Enabled = false;
+                            btn6.Enabled = false;
+                            btn7.Enabled = false;
+                            button1.Enabled = false;
+                            button2.Enabled = false;
+                            button3.Enabled = false;
+                            button4.Enabled = false;
+                            TabControlExtra.DisplayStyleProvider.ShowTabCloser = false;
+                            dt = GetDocument();
+                            progBar.Maximum = dt.Rows.Count;
+                            backgroundWorker1.RunWorkerAsync(dt);
+                        }
                     }
-                    else
+                    else if (tabControl1.SelectedTab == tabPage2)
                     {
-                        GetDocument();
+                        button2.Enabled = false;
+                        button3.Enabled = false;
+                        if (checkBox1.Checked)
+                        {
+                            progBar.Visible = true;
+                            btn1.Enabled = false;
+                            btn2.Enabled = false;
+                            btn3.Enabled = false;
+                            btn4.Enabled = false;
+                            btn6.Enabled = false;
+                            btn7.Enabled = false;
+                            button1.Enabled = false;
+                            button2.Enabled = false;
+                            button3.Enabled = false;
+                            button4.Enabled = false;
+                            TabControlExtra.DisplayStyleProvider.ShowTabCloser = false;
+                            dt = GetDocumentBodyGlobalFilter();
+                            progBar.Maximum = dt.Rows.Count;
+                            backgroundWorker1.RunWorkerAsync(dt);
+                        }
+                        else
+                        {
+                            progBar.Visible = true;
+                            btn1.Enabled = false;
+                            btn2.Enabled = false;
+                            btn3.Enabled = false;
+                            btn4.Enabled = false;
+                            btn6.Enabled = false;
+                            btn7.Enabled = false;
+                            button1.Enabled = false;
+                            button2.Enabled = false;
+                            button3.Enabled = false;
+                            button4.Enabled = false;
+                            TabControlExtra.DisplayStyleProvider.ShowTabCloser = false;
+                            dt = GetDocumentBody();
+                            progBar.Maximum = dt.Rows.Count;
+                            backgroundWorker1.RunWorkerAsync(dt);
+                        }
                     }
                 }
-                else if (tabControl1.SelectedTab == tabPage2)
+                catch (Exception exp)
                 {
-                    if (checkBox1.Checked)
-                    {
-                        GetDocumentBodyGlobalFilter();
-                    }
-                    else
-                    {
-                        GetDocumentBody();
-                    }
+                    MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error(exp, "OrderAllForms_backgroundWorker1_DoWork");
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+            //try
+            //{
+            //    if (tabControl1.SelectedTab == tabPage1)
+            //    {
+            //        button2.Enabled = true;
+            //        button3.Enabled = true;
+            //        if (checkBox1.Checked)
+            //        {
+            //            GetDocumentGlobalFilter();
+            //        }
+            //        else
+            //        {
+            //            GetDocument();
+            //        }
+            //    }
+            //    else if (tabControl1.SelectedTab == tabPage2)
+            //    {
+            //        button2.Enabled = false;
+            //        button3.Enabled = false;
+            //        if (checkBox1.Checked)
+            //        {
+            //            GetDocumentBodyGlobalFilter();
+            //        }
+            //        else
+            //        {
+            //            GetDocumentBody();
+            //        }
+            //    }
+            //}
+            //catch (Exception exp)
+            //{
+            //    MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    logger.Error(exp, "OrderAllForms_backgroundWorker1_DoWork");
+            //}
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -680,6 +763,128 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
+            System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
+            DataTable dt = (DataTable)e.Argument;
+
+            int i = 1;
+            try
+            {
+                foreach(DataRow dr in dt.Rows)
+                {
+                    backgroundWorker1.ReportProgress(i);
+                    Thread.Sleep(1);
+                    i++;
+                }
+                e.Result = dt;
+
+                if(backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    backgroundWorker1.ReportProgress(0);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, "backgroundWorker1_DoWork_OrderAllforms");
+            }
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            if (!backgroundWorker1.CancellationPending)
+            {
+                progBar.Value = e.ProgressPercentage;
+                TlStpLabel.Text = "Обработка строки.. " + e.ProgressPercentage.ToString() + " из " + progBar.Maximum;
+            }
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                TlStpLabel.Text = "Готов";
+            }
+            else if (e.Error != null)
+            {
+                TlStpLabel.Text = "Ошибка" + e.Error.Message;
+            }
+            else
+            {
+                Application.UseWaitCursor = false;
+                System.Windows.Forms.Cursor.Current = Cursors.Default;
+                progBar.Visible = false;
+                btn1.Enabled = true;
+                btn2.Enabled = true;
+                btn3.Enabled = true;
+                btn4.Enabled = true;
+                btn6.Enabled = true;
+                btn7.Enabled = true;
+                button1.Enabled = true;
+                button4.Enabled = true;
+                TabControlExtra.DisplayStyleProvider.ShowTabCloser = true;
+                try
+                {
+                    if (tabControl1.SelectedTab == tabPage1)
+                    {
+                        button2.Enabled = true;
+                        button3.Enabled = true;
+                        if (checkBox1.Checked)
+                        {
+                            source.DataSource = e.Result;
+                            dataGridView1.DataSource = source;
+                            dataGridView1.Columns[0].Visible = false;
+                            dataGridView1.Columns[8].Visible = false;
+                            dataGridView1.Columns[9].Visible = false;
+                            dataGridView1.Columns[10].Visible = false;
+                            dataGridView1.Columns[11].Visible = false;
+
+                            TlStpLabel.Text = "Данные загружены...";
+                        }
+                        else
+                        {
+                            source.DataSource = e.Result;
+                            dataGridView1.DataSource = source;
+                            dataGridView1.Columns[0].Visible = false;
+                            dataGridView1.Columns[8].Visible = false;
+                            dataGridView1.Columns[9].Visible = false;
+                            dataGridView1.Columns[10].Visible = false;
+                            dataGridView1.Columns[11].Visible = false;
+                            TlStpLabel.Text = "Данные загружены...";
+                        }
+                    }
+                    else if (tabControl1.SelectedTab == tabPage2)
+                    {
+                        button2.Enabled = false;
+                        button3.Enabled = false;
+                        if (checkBox1.Checked)
+                        {
+                            source.DataSource = e.Result;
+                            dataGridView2.DataSource = source;
+                            dataGridView2.Columns[0].Visible = false;
+                            TlStpLabel.Text = "Данные загружены...";
+                        }
+                        else
+                        {
+                            source.DataSource = e.Result;
+                            dataGridView2.DataSource = source;
+                            dataGridView2.Columns[0].Visible = false;
+                            TlStpLabel.Text = "Данные загружены...";
+                        }
+                    }
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error(exp, "OrderAllForms_backgroundWorker1_DoWork");
+                }
             }
         }
     }
