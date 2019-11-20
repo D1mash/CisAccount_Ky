@@ -17,13 +17,14 @@ namespace Учет_цистерн
         private Button btn3;
         private Button btn4;
         private Button btn6;
+        private Button btn7;
         int SelectItemRow;
         int SelectOwnerID;
         int Rows;
 
         BindingSource source = new BindingSource();
 
-        public CarriageForm(ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1, Button button1, Button button2, Button button3, Button button4, Button button6, TradeWright.UI.Forms.TabControlExtra tabControl1)
+        public CarriageForm(ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1, Button button1, Button button2, Button button3, Button button4, Button button6, TradeWright.UI.Forms.TabControlExtra tabControl1, Button button7)
         {
             InitializeComponent();
             progBar = toolStripProgressBar1;
@@ -33,6 +34,7 @@ namespace Учет_цистерн
             btn3 = button3;
             btn4 = button4;
             btn6 = button6;
+            btn7 = button7;
             tabControlExtra = tabControl1;
         }
 
@@ -81,6 +83,7 @@ namespace Учет_цистерн
                 btn3.Enabled = false;
                 btn4.Enabled = false;
                 btn6.Enabled = false;
+                btn7.Enabled = false;
                 btnAdd.Enabled = false;
                 btnUpdate.Enabled = false;
                 btnDelete.Enabled = false;
@@ -251,6 +254,7 @@ namespace Учет_цистерн
                 btn3.Enabled = true;
                 btn4.Enabled = true;
                 btn6.Enabled = true;
+                btn7.Enabled = true;
                 btnAdd.Enabled = true;
                 btnUpdate.Enabled = true;
                 btnDelete.Enabled = true;

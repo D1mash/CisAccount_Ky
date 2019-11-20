@@ -284,7 +284,7 @@ namespace Учет_цистерн
         {
             try
             {
-                CarriageForm carriageForm = new CarriageForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.btn_Refrence, this.tabControl1);
+                CarriageForm carriageForm = new CarriageForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.btn_Refrence, this.tabControl1, this.button7);
                 tabControl1.Show();
                 TabPage CarriageTabPage = new TabPage("Вагоны");
                 tabControl1.TabPages.Add(CarriageTabPage);
