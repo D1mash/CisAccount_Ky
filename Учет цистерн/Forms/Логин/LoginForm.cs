@@ -16,7 +16,6 @@ namespace Учет_цистерн
             FillCombobox();
             this.ControlBox = false;
             textBox2.Select();
-            button1.Select();
         }
 
         public int UserLastID { get; set; }

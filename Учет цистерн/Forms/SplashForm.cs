@@ -28,7 +28,7 @@ namespace Учет_цистерн.Forms
 
         private void SetAndStartTimer()
         {
-            timer.Interval = 35;
+            timer.Interval = 10;
             timer.Tick += new EventHandler(t_Tick);
             timer.Start();
         }
