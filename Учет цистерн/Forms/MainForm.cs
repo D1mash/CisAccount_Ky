@@ -264,7 +264,7 @@ namespace Учет_цистерн
             {
                 OwnerForm frm = new OwnerForm();
                 tabControl1.Show();
-                TabPage OwnerTabPage = new TabPage("Собственники");
+                TabPage OwnerTabPage = new TabPage("Контрагенты");
                 tabControl1.TabPages.Add(OwnerTabPage);
                 tabControl1.SelectedTab = OwnerTabPage;
                 frm.TopLevel = false;

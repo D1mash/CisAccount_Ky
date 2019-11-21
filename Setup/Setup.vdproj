@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_376827513814497A8FD700E0F4D2D7EA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_512436CF0C27E95C11C348BE65F8D257"
         "OwnerKey" = "8:_F32283B0CB4A43BB8DD37133E8814497"
         "MsmSig" = "8:_UNDEFINED"
@@ -33,8 +39,38 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6790A428650AF975E864AD7431085736"
+        "OwnerKey" = "8:_F32283B0CB4A43BB8DD37133E8814497"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6790A428650AF975E864AD7431085736"
+        "OwnerKey" = "8:_ADCF57893C395BD2038879A470EA07F3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8BDDD7DEA12852DCEC3C9E575DBF3394"
         "OwnerKey" = "8:_F32283B0CB4A43BB8DD37133E8814497"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_ADCF57893C395BD2038879A470EA07F3"
+        "OwnerKey" = "8:_F32283B0CB4A43BB8DD37133E8814497"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BC6327DC2A524B2E93815F3DD836F21A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D0DF5968830A41E9BA8361BF3BB7FCF6"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -64,6 +100,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_ADCF57893C395BD2038879A470EA07F3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_177A1D5A1414C4A6CF89A184D5F176FA"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -77,6 +119,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_512436CF0C27E95C11C348BE65F8D257"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6790A428650AF975E864AD7431085736"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -205,6 +253,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_376827513814497A8FD700E0F4D2D7EA"
+            {
+            "SourcePath" = "8:..\\Учет цистерн\\Forms\\ReportTemplates\\СНО Реализ.xlsx"
+            "TargetName" = "8:СНО Реализ.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_9A4D8652E9674311B03AB5E74C3507CF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_512436CF0C27E95C11C348BE65F8D257"
             {
             "AssemblyRegister" = "3:1"
@@ -256,6 +324,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6790A428650AF975E864AD7431085736"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.IO.Compression, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+                "ScatterAssemblies"
+                {
+                    "_6790A428650AF975E864AD7431085736"
+                    {
+                    "Name" = "8:System.IO.Compression.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.IO.Compression.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_905DC310388D4193B75AA4BDA9997B73"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8BDDD7DEA12852DCEC3C9E575DBF3394"
             {
             "AssemblyRegister" = "3:1"
@@ -285,6 +384,77 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_ADCF57893C395BD2038879A470EA07F3"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_ADCF57893C395BD2038879A470EA07F3"
+                    {
+                    "Name" = "8:NLog.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:NLog.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_905DC310388D4193B75AA4BDA9997B73"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BC6327DC2A524B2E93815F3DD836F21A"
+            {
+            "SourcePath" = "8:..\\Учет цистерн\\Forms\\ReportTemplates\\СНО Приход.xlsx"
+            "TargetName" = "8:СНО Приход.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_9A4D8652E9674311B03AB5E74C3507CF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D0DF5968830A41E9BA8361BF3BB7FCF6"
+            {
+            "SourcePath" = "8:..\\Учет цистерн\\Forms\\ReportTemplates\\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx"
+            "TargetName" = "8:Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_9A4D8652E9674311B03AB5E74C3507CF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DD23AB6D8600346C191A72C0F9858E00"
@@ -356,6 +526,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_9A4D8652E9674311B03AB5E74C3507CF"
+                    {
+                    "Name" = "8:ReportTemplates"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_45DCAE739AFD4E05B312510524649EDB"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_B4789208E3E548C692109F3C64A0BAAD"
@@ -384,9 +565,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup"
+        "ProductName" = "8:Учет цистрен"
         "ProductCode" = "8:{F5E034C5-8BA2-4C90-B6DD-C27F3F193EB6}"
-        "PackageCode" = "8:{998897D1-09CC-43B5-ADE9-C61E24819C56}"
+        "PackageCode" = "8:{6BEAFAB3-80D0-4B17-A597-A8A8A5A20110}"
         "UpgradeCode" = "8:{10A5C367-1F05-4700-B4DB-D917A2B0E3BE}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
