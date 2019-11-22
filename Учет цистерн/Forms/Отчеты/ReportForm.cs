@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -84,7 +86,7 @@ namespace Учет_цистерн
 
         private void Btn_Excel_Click(object sender, EventArgs e)
         {
-           
+
             if (dataGridView1.Rows != null && dataGridView1.Rows.Count != 0)
             {
                 if (backgroundWorker.IsBusy)
@@ -94,7 +96,7 @@ namespace Учет_цистерн
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         _inputParametr1.FileName = saveFileDialog.FileName;
-                        _inputParametr1.owner =  comboBox2.Text;
+                        _inputParametr1.owner = comboBox2.Text;
                         progressBar.Minimum = 0;
                         progressBar.Value = 0;
                         backgroundWorker.RunWorkerAsync(_inputParametr1);
@@ -115,6 +117,15 @@ namespace Учет_цистерн
 
         DataParametr _inputParametr1;
 
+        [DllImport("user32.dll")]
+        static extern int GetWindowThreadProcessID(int hWnd, out int lpdwProcessId);
+
+        static Process GetExcelProcess(Excel.Application excelApp)
+        {
+            GetWindowThreadProcessID(excelApp.Hwnd, out int id);
+            return Process.GetProcessById(id);
+        }
+
         private void BackgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             try
@@ -125,7 +136,7 @@ namespace Учет_цистерн
                 string fileName = ((DataParametr)e.Argument).FileName;
                 string ownerName = ((DataParametr)e.Argument).owner;
                 Excel.Application app = new Excel.Application();
-                System.Diagnostics.Process excelProc = System.Diagnostics.Process.GetProcessesByName("EXCEL").Last();
+                Process appProcess = GetExcelProcess(app);
                 Excel.Workbook workbook = app.Workbooks.Open(path);
                 Excel.Worksheet worksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
                 app.Visible = false;
@@ -252,7 +263,7 @@ namespace Учет_цистерн
                 workbook.SaveAs(fileName);
                 workbook.Close(false, null, null);
                 app.Quit();
-                excelProc.Kill();
+                appProcess.Kill();
             }
             catch(Exception ex)
             {
