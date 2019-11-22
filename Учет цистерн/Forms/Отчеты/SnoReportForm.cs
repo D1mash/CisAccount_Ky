@@ -86,7 +86,9 @@ namespace Учет_цистерн.Forms.Отчеты
                 {
                     string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\СНО Реализ.xlsx";
                     string fileName = ((DataParametr)e.Argument).FileName;
+
                     Excel.Application app = new Excel.Application();
+                    System.Diagnostics.Process excelProc = System.Diagnostics.Process.GetProcessesByName("EXCEL").Last();
                     Excel.Workbook workbook = app.Workbooks.Open(path);
                     Excel.Worksheet worksheet = workbook.Worksheets.get_Item("СНО Реализация");
                     app.Visible = false;
@@ -132,6 +134,7 @@ namespace Учет_цистерн.Forms.Отчеты
                     
                     workbook.SaveAs(fileName);
                     app.Quit();
+                    excelProc.Kill();
                 }
                 else
                 if(radioButton2.Checked)
@@ -139,6 +142,7 @@ namespace Учет_цистерн.Forms.Отчеты
                     string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\СНО Приход.xlsx";
                     string fileName = ((DataParametr)e.Argument).FileName;
                     Excel.Application app = new Excel.Application();
+                    System.Diagnostics.Process excelProc = System.Diagnostics.Process.GetProcessesByName("EXCEL").Last();
                     Excel.Workbook workbook = app.Workbooks.Open(path);
                     Excel.Worksheet worksheet = workbook.Worksheets.get_Item("СНО Приход");
                     app.Visible = false;
@@ -178,6 +182,7 @@ namespace Учет_цистерн.Forms.Отчеты
 
                     workbook.SaveAs(fileName);
                     app.Quit();
+                    excelProc.Kill();
                 }
             }
             catch (Exception ex)
