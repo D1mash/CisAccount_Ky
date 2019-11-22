@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
@@ -124,6 +125,7 @@ namespace Учет_цистерн
                 string fileName = ((DataParametr)e.Argument).FileName;
                 string ownerName = ((DataParametr)e.Argument).owner;
                 Excel.Application app = new Excel.Application();
+                System.Diagnostics.Process excelProc = System.Diagnostics.Process.GetProcessesByName("EXCEL").Last();
                 Excel.Workbook workbook = app.Workbooks.Open(path);
                 Excel.Worksheet worksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
                 app.Visible = false;
@@ -248,7 +250,9 @@ namespace Учет_цистерн
                 FormattingExcelCells(range1, false, false);
 
                 workbook.SaveAs(fileName);
+                workbook.Close(false, null, null);
                 app.Quit();
+                excelProc.Kill();
             }
             catch(Exception ex)
             {

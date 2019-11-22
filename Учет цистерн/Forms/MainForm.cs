@@ -698,7 +698,7 @@ namespace Учет_цистерн
         {
             try
             {
-                AutoUpdater.Start("http://192.168.10.84/AutoUpdaterTest.xml", myAssembly: null);
+                AutoUpdater.Start("http://192.168.10.84/AutoUpdaterTest.xml");
                 AutoUpdater.ShowSkipButton = false;
                 AutoUpdater.ShowRemindLaterButton = false;
                 AutoUpdater.ReportErrors = true;
@@ -715,7 +715,7 @@ namespace Учет_цистерн
 
         private void просмотрСправкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Данная вкладка нахидится в разработке! Извините за неудобства ...", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
