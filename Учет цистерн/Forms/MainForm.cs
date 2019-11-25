@@ -12,12 +12,17 @@ using Учет_цистерн.Forms.Справка;
 using Учет_цистерн.Forms.Услуги.СНО_Приход;
 using AutoUpdaterDotNET;
 using NLog;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace Учет_цистерн
 {
     public partial class MainForm : Form
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
+
+        string sUrl = ConfigurationManager.AppSettings["Url"].ToString();
+        
 
         public MainForm()
         {
@@ -698,7 +703,7 @@ namespace Учет_цистерн
         {
             try
             {
-                AutoUpdater.Start("http://192.168.10.84/AutoUpdaterTest.xml");
+                AutoUpdater.Start(sUrl);
                 AutoUpdater.ShowSkipButton = false;
                 AutoUpdater.ShowRemindLaterButton = false;
                 AutoUpdater.ReportErrors = true;

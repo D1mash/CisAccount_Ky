@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -78,6 +80,15 @@ namespace Учет_цистерн.Forms.Отчеты
             dateTimePicker2.Value = endDate;
         }
 
+        [DllImport("user32.dll")]
+        static extern int GetWindowThreadProcessId(int hWnd, out int lpdwProcessId);
+
+        static Process GetExcelProcess(Excel.Application excelApp)
+        {
+            GetWindowThreadProcessId(excelApp.Hwnd, out int id);
+            return Process.GetProcessById(id);
+        }
+
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -88,7 +99,7 @@ namespace Учет_цистерн.Forms.Отчеты
                     string fileName = ((DataParametr)e.Argument).FileName;
 
                     Excel.Application app = new Excel.Application();
-                    System.Diagnostics.Process excelProc = System.Diagnostics.Process.GetProcessesByName("EXCEL").Last();
+                    Process appProcess = GetExcelProcess(app);
                     Excel.Workbook workbook = app.Workbooks.Open(path);
                     Excel.Worksheet worksheet = workbook.Worksheets.get_Item("СНО Реализация");
                     app.Visible = false;
@@ -134,7 +145,7 @@ namespace Учет_цистерн.Forms.Отчеты
                     
                     workbook.SaveAs(fileName);
                     app.Quit();
-                    excelProc.Kill();
+                    appProcess.Kill();
                 }
                 else
                 if(radioButton2.Checked)
@@ -142,7 +153,7 @@ namespace Учет_цистерн.Forms.Отчеты
                     string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\СНО Приход.xlsx";
                     string fileName = ((DataParametr)e.Argument).FileName;
                     Excel.Application app = new Excel.Application();
-                    System.Diagnostics.Process excelProc = System.Diagnostics.Process.GetProcessesByName("EXCEL").Last();
+                    Process appProcess = GetExcelProcess(app);
                     Excel.Workbook workbook = app.Workbooks.Open(path);
                     Excel.Worksheet worksheet = workbook.Worksheets.get_Item("СНО Приход");
                     app.Visible = false;
@@ -182,7 +193,7 @@ namespace Учет_цистерн.Forms.Отчеты
 
                     workbook.SaveAs(fileName);
                     app.Quit();
-                    excelProc.Kill();
+                    appProcess.Kill();
                 }
             }
             catch (Exception ex)
