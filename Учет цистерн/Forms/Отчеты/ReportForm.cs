@@ -56,7 +56,7 @@ namespace Учет_цистерн
 
         private int TotalRow(DataTable dataTable)
         {
-            int i = 1;
+            int i = 0;
             foreach (DataRow dr in dataTable.Rows)
             {
                 i++;
@@ -118,11 +118,11 @@ namespace Учет_цистерн
         DataParametr _inputParametr1;
 
         [DllImport("user32.dll")]
-        static extern int GetWindowThreadProcessID(int hWnd, out int lpdwProcessId);
+        static extern int GetWindowThreadProcessId(int hWnd, out int lpdwProcessId);
 
         static Process GetExcelProcess(Excel.Application excelApp)
         {
-            GetWindowThreadProcessID(excelApp.Hwnd, out int id);
+            GetWindowThreadProcessId(excelApp.Hwnd, out int id);
             return Process.GetProcessById(id);
         }
 
@@ -135,6 +135,7 @@ namespace Учет_цистерн
 
                 string fileName = ((DataParametr)e.Argument).FileName;
                 string ownerName = ((DataParametr)e.Argument).owner;
+
                 Excel.Application app = new Excel.Application();
                 Process appProcess = GetExcelProcess(app);
                 Excel.Workbook workbook = app.Workbooks.Open(path);
@@ -198,7 +199,6 @@ namespace Учет_цистерн
                                 if(dataGridView1.Rows[i].Cells[j].Value.ToString().Trim() == "True")
                                 {
                                     worksheet.Cells[i + 10, j + 3] = "✓";
-                                   
                                 }
                                 else
                                 {
@@ -261,7 +261,6 @@ namespace Учет_цистерн
                 FormattingExcelCells(range1, false, false);
 
                 workbook.SaveAs(fileName);
-                workbook.Close(false, null, null);
                 app.Quit();
                 appProcess.Kill();
             }
