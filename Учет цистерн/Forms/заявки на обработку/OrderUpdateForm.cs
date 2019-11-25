@@ -299,68 +299,78 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
 
         private void tabControl1_TabClosing(object sender, TabControlCancelEventArgs e)
         {
+            string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+            DataTable dt = DbConnection.DBConnect(GetID);
+
             if (e.TabPage.Text == "Заявка на обработку № " + GetStatus + ". Редактирование от " + GetDate)
             {
-                DialogResult result = MessageBox.Show("Документ изменён. Нажмите Да, если вы хотите сохранить изменения и закрыть документ, Нет - для возврата в документ.", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                string CheckState = "select ID_DOCSTATE from d__RenderedServiceHead where ID = "+dt.Rows[0][0].ToString();
+                DataTable CheckStateDt = DbConnection.DBConnect(CheckState);
+                int State = Convert.ToInt32(CheckStateDt.Rows[0][0].ToString());
+                if (State == 1)
                 {
-                    try
+                    DialogResult result = MessageBox.Show("Документ изменён. Нажмите Да, если вы хотите сохранить изменения и закрыть документ, Нет - для возврата в документ.", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
-                        DataTable dt = DbConnection.DBConnect(GetID);
-
-                        string CheckProduct = "select Carnumber from d__RenderedServiceBody where Product_ID is NULL and Head_ID = " + dt.Rows[0][0].ToString();
-                        DataTable dt1 = DbConnection.DBConnect(CheckProduct);
-
-                        string CheckCarNumber = "select * from d__RenderedServiceBody where CarNumber is NULL and Head_ID = " + dt.Rows[0][0].ToString();
-                        DataTable dt2 = DbConnection.DBConnect(CheckCarNumber);
-
-                        string CheckRows = "select * from d__RenderedServiceBody where Head_ID = " + dt.Rows[0][0].ToString();
-                        DataTable dt3 = DbConnection.DBConnect(CheckRows);
-                        if (dt3.Rows.Count > 0)
+                        try
                         {
-                            if (dt2.Rows.Count > 0)
+                            string CheckProduct = "select Carnumber from d__RenderedServiceBody where Product_ID is NULL and Head_ID = " + dt.Rows[0][0].ToString();
+                            DataTable dt1 = DbConnection.DBConnect(CheckProduct);
+
+                            string CheckCarNumber = "select * from d__RenderedServiceBody where CarNumber is NULL and Head_ID = " + dt.Rows[0][0].ToString();
+                            DataTable dt2 = DbConnection.DBConnect(CheckCarNumber);
+
+                            string CheckRows = "select * from d__RenderedServiceBody where Head_ID = " + dt.Rows[0][0].ToString();
+                            DataTable dt3 = DbConnection.DBConnect(CheckRows);
+                            if (dt3.Rows.Count > 0)
                             {
-                                MessageBox.Show("Введите вагон или удалите пустую строку!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                e.Cancel = true;
-                                return;
-                            }
-                            else
-                            {
-                                if (dt1.Rows.Count > 0)
+                                if (dt2.Rows.Count > 0)
                                 {
-                                    MessageBox.Show("У вагона " + dt1.Rows[0][0].ToString() + " не выбран продукт!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("Введите вагон или удалите пустую строку!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     e.Cancel = true;
                                     return;
                                 }
                                 else
                                 {
-                                    string RenrederServiceHead = "exec dbo.RenderedServiceUpdate '" + comboBox1.SelectedValue.ToString() + "','" + textBox1.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + comboBox2.SelectedValue.ToString() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + comboBox3.SelectedValue.ToString() + "',1,1";
-                                    DbConnection.DBConnect(RenrederServiceHead);
-                                    UpdateBody();
+                                    if (dt1.Rows.Count > 0)
+                                    {
+                                        MessageBox.Show("У вагона " + dt1.Rows[0][0].ToString() + " не выбран продукт!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        e.Cancel = true;
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        string RenrederServiceHead = "exec dbo.RenderedServiceUpdate '" + comboBox1.SelectedValue.ToString() + "','" + textBox1.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + comboBox2.SelectedValue.ToString() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + comboBox3.SelectedValue.ToString() + "',1,1";
+                                        DbConnection.DBConnect(RenrederServiceHead);
+                                        UpdateBody();
+                                    }
                                 }
                             }
+                            else
+                            {
+                                MessageBox.Show("В табличной части отсутствуют вагоны!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                e.Cancel = true;
+                                return;
+                            }
                         }
-                        else
+                        catch (SqlException ex)
                         {
-                            MessageBox.Show("В табличной части отсутствуют вагоны!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            e.Cancel = true;
-                            return;
+                            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        catch (Exception exp)
+                        {
+                            MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    catch (SqlException ex)
+                    else
                     {
-                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    catch (Exception exp)
-                    {
-                        MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        e.Cancel = true;
+                        return;
                     }
                 }
                 else
                 {
-                    e.Cancel = true;
-                    return;
+
                 }
             }
             else
