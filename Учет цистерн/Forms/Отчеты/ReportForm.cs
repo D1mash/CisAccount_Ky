@@ -13,13 +13,15 @@ namespace Учет_цистерн
 {
     public partial class ReportForm : Form
     {
-        public ReportForm()
-        {
-            InitializeComponent();
-        }
-
         BindingSource source = new BindingSource();
         DataTable getserv;
+        string UserFIO;
+
+        public ReportForm(string userFIO)
+        {
+            InitializeComponent();
+            this.UserFIO = userFIO;
+        }
 
         private void Button3_Click(object sender, EventArgs e)
         {
@@ -157,6 +159,8 @@ namespace Учет_цистерн
                 worksheet.Range["C6"].Value = "в ТОО Казыгурт-Юг c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
 
                 FormattingExcelCells(worksheet.Range["C6"], false, false);
+
+                worksheet.Range["K21"].Value = UserFIO;
 
                 worksheet.Range["B15:K23"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 17 + getserv.Rows.Count*2, 2]);
                 

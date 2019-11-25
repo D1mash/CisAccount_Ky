@@ -67,8 +67,10 @@ namespace Учет_цистерн
                 Boolean result;
                 string aid;
                 string password;
+                string FIO;
 
                 aid = comboBox1.SelectedValue.ToString();
+                FIO = comboBox1.Text;
                 password = textBox2.Text.Trim();
 
                 string CheckUser = "select dbo.CheckUser (" + aid + ", '" + password + "')";
@@ -80,7 +82,7 @@ namespace Учет_цистерн
                     string ExecLogin = "exec dbo.Login " + aid;
                     DataTable ExecLoginDt = new DataTable();
                     ExecLoginDt = DbConnection.DBConnect(ExecLogin);
-                    MainForm objFrmMain = new MainForm();
+                    MainForm objFrmMain = new MainForm(FIO);
                     objFrmMain.Show();
                 }
                 else
