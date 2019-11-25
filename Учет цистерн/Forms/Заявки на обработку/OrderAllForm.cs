@@ -201,20 +201,21 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             try
             {
                 string DocNum;
-                string GetDate = System.DateTime.Now.ToString();
+                string ServiceDate = System.DateTime.Now.ToShortDateString();
+                string DateIns = System.DateTime.Now.ToString();
                 string GetDocNum = "exec dbo.GetDocNum 1";
                 DataTable dt = new DataTable();
                 dt = DbConnection.DBConnect(GetDocNum);
                 DocNum = dt.Rows[0][0].ToString();
 
-                string CreateDocHead = "exec dbo.RenderedServiceHeadCreate " + DocNum + ", '" + GetDate + "'";
+                string CreateDocHead = "exec dbo.RenderedServiceHeadCreate " + DocNum + ", '" + ServiceDate + "','" + DateIns + "'";
                 DbConnection.DBConnect(CreateDocHead);
 
                 OrderAddForm OrderAddForm = new OrderAddForm(this.TabControlExtra);
                 TabControlExtra.Show();
-                TabPage OrderAddTabPage = new TabPage("Заявка на обработку № " + DocNum + " от " + GetDate);
+                TabPage OrderAddTabPage = new TabPage("Заявка на обработку № " + DocNum + " от " + DateIns);
                 OrderAddForm.GetStatus = DocNum;
-                OrderAddForm.GetDate = GetDate;
+                OrderAddForm.GetDate = ServiceDate;
                 TabControlExtra.TabPages.Add(OrderAddTabPage);
                 TabControlExtra.SelectedTab = OrderAddTabPage;
                 OrderAddForm.TopLevel = false;
@@ -222,7 +223,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 OrderAddForm.FormBorderStyle = FormBorderStyle.None;
                 OrderAddForm.Dock = DockStyle.Fill;
                 OrderAddTabPage.Controls.Add(OrderAddForm);
-                OrderAddForm.dateTimePicker1.Text = GetDate;
+                OrderAddForm.dateTimePicker1.Text = ServiceDate;
                 OrderAddForm.textBox1.Text = DocNum;
             }
             catch (SqlException ex)
