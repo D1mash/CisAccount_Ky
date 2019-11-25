@@ -20,7 +20,7 @@ namespace Учет_цистерн.Forms.Справка
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;
-            this.textBoxDescription.Text = "ПО разработано сотрудниками информационно аналитического отдела. \r\n\r\nАвторы: \r\nОмарбаев Д.А., разработчик вн, тел. 1235, d.omarbayev @petroleum.com.kz \r\n\r\nМахатов М.М.разработчик, вн.тел.1233, m.makhatov @petroleum.com.kz";
+            this.textBoxDescription.Text = "ПО разработано сотрудниками информационно аналитического отдела. \r\n\r\nАвторы: \r\nОмарбаев Д.А., разработчик вн, тел. 1235, d.omarbayev @petroleum.com.kz \r\n\r\nМахатов М.М., разработчик, вн.тел.1233, m.makhatov @petroleum.com.kz";
         }
 
         #region Методы доступа к атрибутам сборки
