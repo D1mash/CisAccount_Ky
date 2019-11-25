@@ -215,7 +215,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 TabControlExtra.Show();
                 TabPage OrderAddTabPage = new TabPage("Заявка на обработку № " + DocNum + " от " + DateIns);
                 OrderAddForm.GetStatus = DocNum;
-                OrderAddForm.GetDate = ServiceDate;
+                OrderAddForm.GetDate = DateIns;
                 TabControlExtra.TabPages.Add(OrderAddTabPage);
                 TabControlExtra.SelectedTab = OrderAddTabPage;
                 OrderAddForm.TopLevel = false;
