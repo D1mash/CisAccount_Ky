@@ -124,7 +124,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 44;
-            this.label2.Text = "Резервуар №1";
+            this.label2.Text = "Резервуар №2";
             // 
             // SnoComAddForm
             // 
