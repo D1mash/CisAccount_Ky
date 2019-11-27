@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -8,7 +9,10 @@ namespace Учет_цистерн
 {
     class DbConnection
     {
-        public static string connectionString = "Data Source=POTITPC-01\\PLMLOCAL;Initial Catalog=Batys;User ID=sa;Password=!sql123;";
+        //public static string connectionString = "Data Source=POTITPC-01\\PLMLOCAL;Initial Catalog=Batys;User ID=sa;Password=!sql123;";
+
+        public static string connectionString = ConfigurationManager.ConnectionStrings["Учет_цистерн.Properties.Settings.BatysConnectionString"].ConnectionString;
+
         public static DataTable DBConnect(string query)
         {
             SqlConnection conn;

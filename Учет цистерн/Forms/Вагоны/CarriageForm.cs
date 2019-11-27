@@ -198,7 +198,6 @@ namespace Учет_цистерн
                 foreach (DataRow dr in dataTable.Rows)
                 {
                     backgroundWorker1.ReportProgress(i);
-                    Thread.Sleep(1);
                     i++;
                 }
                 e.Result = dataTable;
