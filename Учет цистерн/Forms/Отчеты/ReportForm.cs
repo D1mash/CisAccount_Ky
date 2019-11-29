@@ -93,17 +93,20 @@ namespace Учет_цистерн
             {
                 if (backgroundWorker.IsBusy)
                     return;
-                using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Excel file (*.xlsx)|*.xlsx|All files(*.*)|*.*" })
+                //using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Excel file (*.xlsx)|*.xlsx|All files(*.*)|*.*" })
+                //{
+                //    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                //    {
+                //        //_inputParametr1.FileName = saveFileDialog.FileName;
+                else
                 {
-                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        _inputParametr1.FileName = saveFileDialog.FileName;
-                        _inputParametr1.owner = comboBox2.Text;
-                        progressBar.Minimum = 0;
-                        progressBar.Value = 0;
-                        backgroundWorker.RunWorkerAsync(_inputParametr1);
-                    }
+                    _inputParametr1.owner = comboBox2.Text;
+                    progressBar.Minimum = 0;
+                    progressBar.Value = 0;
+                    backgroundWorker.RunWorkerAsync(_inputParametr1);
                 }
+                //    }
+                //}
             }
             else
             {
@@ -113,7 +116,7 @@ namespace Учет_цистерн
 
         struct DataParametr
         {
-            public string FileName { get; set; }
+            //public string FileName { get; set; }
             public string owner { get; set; }
         }
 
@@ -135,7 +138,7 @@ namespace Учет_цистерн
                 string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
                 //var folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-                string fileName = ((DataParametr)e.Argument).FileName;
+                //string fileName = ((DataParametr)e.Argument).FileName;
                 string ownerName = ((DataParametr)e.Argument).owner;
 
                 Excel.Application app = new Excel.Application();
@@ -143,6 +146,7 @@ namespace Учет_цистерн
                 Excel.Workbook workbook = app.Workbooks.Open(path);
                 Excel.Worksheet worksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
                 app.Visible = false;
+                object misValue = System.Reflection.Missing.Value;
 
                 int cellRowIndex = 0;
                 int totalTOR4 = 0;
@@ -162,7 +166,7 @@ namespace Учет_цистерн
 
                 worksheet.Range["K21"].Value = UserFIO;
 
-                worksheet.Range["B15:K23"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 17 + getserv.Rows.Count*2, 2]);
+                worksheet.Range["B12:K23"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 17 + getserv.Rows.Count*2, 2]);
                 
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
@@ -264,9 +268,13 @@ namespace Учет_цистерн
                 Excel.Range range1 = worksheet.Range[worksheet.Cells[dataGridView1.Rows.Count + 12, 2], worksheet.Cells[dataGridView1.Rows.Count + getserv.Rows.Count * 2 + 19, 14]];
                 FormattingExcelCells(range1, false, false);
 
-                workbook.SaveAs(fileName);
+                app.DisplayAlerts = false;
+                workbook.SaveAs(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                workbook.Close(true, misValue, misValue);
                 app.Quit();
                 appProcess.Kill();
+
+                Process.Start(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xls");
             }
             catch(Exception ex)
             {

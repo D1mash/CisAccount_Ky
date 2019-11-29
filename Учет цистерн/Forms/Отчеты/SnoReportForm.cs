@@ -48,8 +48,8 @@ namespace Учет_цистерн.Forms.Отчеты
                 }
             }
             else
-            if(radioButton2.Checked)
-            { 
+            if (radioButton2.Checked)
+            {
                 try
                 {
                     string GetSNO = "exec dbo.GetCurrentSNO";
@@ -93,16 +93,17 @@ namespace Учет_цистерн.Forms.Отчеты
         {
             try
             {
-                if(radioButton1.Checked)
+                if (radioButton1.Checked)
                 {
                     string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\СНО Реализ.xlsx";
-                    string fileName = ((DataParametr)e.Argument).FileName;
+                    //string fileName = ((DataParametr)e.Argument).FileName;
 
                     Excel.Application app = new Excel.Application();
                     Process appProcess = GetExcelProcess(app);
                     Excel.Workbook workbook = app.Workbooks.Open(path);
                     Excel.Worksheet worksheet = workbook.Worksheets.get_Item("СНО Реализация");
                     app.Visible = false;
+                    object misValue = System.Reflection.Missing.Value;
 
                     worksheet.Range["B3"].Value = "в ТОО Казыгурт-Юг реализация СНО за период с " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
 
@@ -112,23 +113,23 @@ namespace Учет_цистерн.Forms.Отчеты
                         {
                             if (j == 2)
                             {
-                                worksheet.Cells[i + 6, j-1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                worksheet.Cells[i + 6, j - 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                             }
                             else
                             {
                                 if (j > 2 && j <= 6)
                                 {
-                                    worksheet.Cells[i + 6, j-1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                    worksheet.Cells[i + 6, j - 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                                 }
                             }
-                            if(j>7)
+                            if (j > 7)
                             {
-                                worksheet.Cells[i + 6, j-2] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                worksheet.Cells[i + 6, j - 2] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                             }
                         }
 
                         worksheet.Cells[dataGridView1.Rows.Count + 6, 1] = "Итог";
-                        Excel.Range r1 = worksheet.Cells[dataGridView1.Rows.Count + 6, 3] as Excel.Range; 
+                        Excel.Range r1 = worksheet.Cells[dataGridView1.Rows.Count + 6, 3] as Excel.Range;
                         r1.Formula = String.Format($"=SUM(C{6}:C{dataGridView1.Rows.Count + 5})");
 
                         Excel.Range r2 = worksheet.Cells[dataGridView1.Rows.Count + 6, 5] as Excel.Range;
@@ -137,26 +138,31 @@ namespace Учет_цистерн.Forms.Отчеты
                         Excel.Range r3 = worksheet.Cells[dataGridView1.Rows.Count + 6, 6] as Excel.Range;
                         r3.Formula = String.Format($"=SUM(F{6}:F{dataGridView1.Rows.Count + 5})");
 
-                        Excel.Range range = worksheet.Range[worksheet.Cells[i + 6, 1], worksheet.Cells[dataGridView1.Rows.Count+6, 7]];
+                        Excel.Range range = worksheet.Range[worksheet.Cells[i + 6, 1], worksheet.Cells[dataGridView1.Rows.Count + 6, 7]];
                         FormattingExcelCells(range, true, true);
 
                         backgroundWorker1.ReportProgress(i);
                     }
-                    
-                    workbook.SaveAs(fileName);
+
+                    app.DisplayAlerts = false;
+                    workbook.SaveAs(/*fileName*/@"D:\Отчеты\СНО Реализация.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    workbook.Close(true, misValue, misValue);
                     app.Quit();
                     appProcess.Kill();
+
+                    Process.Start(@"D:\Отчеты\СНО Реализация.xls");
                 }
                 else
-                if(radioButton2.Checked)
+                if (radioButton2.Checked)
                 {
                     string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\СНО Приход.xlsx";
-                    string fileName = ((DataParametr)e.Argument).FileName;
+                    //string fileName = ((DataParametr)e.Argument).FileName;
                     Excel.Application app = new Excel.Application();
                     Process appProcess = GetExcelProcess(app);
                     Excel.Workbook workbook = app.Workbooks.Open(path);
                     Excel.Worksheet worksheet = workbook.Worksheets.get_Item("СНО Приход");
                     app.Visible = false;
+                    object misValue = System.Reflection.Missing.Value;
 
                     worksheet.Range["B1"].Value = "Приход СНО в ТОО Казыгурт-Юг за период с " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
 
@@ -188,12 +194,16 @@ namespace Учет_цистерн.Forms.Отчеты
                     Excel.Range r3 = worksheet.Cells[dataGridView1.Rows.Count + 4, 4] as Excel.Range;
                     r3.Formula = String.Format($"=SUM(D{4}:D{dataGridView1.Rows.Count + 3})");
 
-                    Excel.Range range = (Excel.Range) worksheet.Range[worksheet.Cells[4, 1], worksheet.Cells[dataGridView1.Rows.Count+4, 5]];
+                    Excel.Range range = (Excel.Range)worksheet.Range[worksheet.Cells[4, 1], worksheet.Cells[dataGridView1.Rows.Count + 4, 5]];
                     FormattingExcelCells(range, true, true);
 
-                    workbook.SaveAs(fileName);
+                    app.DisplayAlerts = false;
+                    workbook.SaveAs(/*fileName*/@"D:\Отчеты\СНО Приход.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    workbook.Close(true, misValue, misValue);
                     app.Quit();
                     appProcess.Kill();
+
+                    Process.Start(@"D:\Отчеты\СНО Приход.xls");
                 }
             }
             catch (Exception ex)
@@ -220,33 +230,43 @@ namespace Учет_цистерн.Forms.Отчеты
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows != null && dataGridView1.Rows.Count != 0)
+            if (radioButton1.Checked || radioButton2.Checked)
             {
-                if (backgroundWorker1.IsBusy)
-                    return;
-                using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Excel file (*.xlsx)|*.xlsx|All files(*.*)|*.*" })
+                if (dataGridView1.Rows != null && dataGridView1.Rows.Count != 0)
                 {
-                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    if (backgroundWorker1.IsBusy)
+                        return;
+                    //using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Excel file (*.xlsx)|*.xlsx|All files(*.*)|*.*" })
+                    //{
+                    //    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    //    {
+                    //_inputParametr.FileName = saveFileDialog.FileName;
+                    else
                     {
-                        _inputParametr.FileName = saveFileDialog.FileName;
                         ProgrBar.Minimum = 0;
                         ProgrBar.Value = 0;
-                        backgroundWorker1.RunWorkerAsync(_inputParametr);
+                        backgroundWorker1.RunWorkerAsync();
                     }
+                    //    }
+                    //}
+                }
+                else
+                {
+                    MessageBox.Show("Обновите данные!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
             {
-                MessageBox.Show("Обновите данные!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Выберите вид отчета!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        struct DataParametr
-        {
-            public string FileName { get; set; }
-        }
+        //struct DataParametr
+        //{
+        //    public string FileName { get; set; }
+        //}
 
-        DataParametr _inputParametr;
+        //DataParametr _inputParametr;
 
         public void FormattingExcelCells(Excel.Range range, bool val1, bool val2)
         {
