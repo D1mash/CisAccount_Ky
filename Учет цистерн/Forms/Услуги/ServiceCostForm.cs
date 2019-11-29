@@ -151,6 +151,7 @@ namespace Учет_цистерн
                 ServiceCostUpdtForm.SelectSeasonID = SelectSeasonID;
                 ServiceCostUpdtForm.textBox2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 ServiceCostUpdtForm.textBox1.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                ServiceCostUpdtForm.textBox3.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
                 ServiceCostUpdtForm.dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 ServiceCostUpdtForm.dateTimePicker2.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
                 ServiceCostUpdtForm.Show();

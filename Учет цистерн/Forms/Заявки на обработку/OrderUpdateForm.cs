@@ -31,7 +31,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 string GetID = "select ID from d__RenderedServiceHead where NUM = '" + GetStatus + "'";
                 DataTable dt = DbConnection.DBConnect(GetID);
                 string ID = dt.Rows[0][0].ToString();
-                string RenrederServiceBody = "exec dbo.FillRenderedServiceBody NULL, NULL, NULL, NULL, " + ID;
+                string RenrederServiceBody = "exec dbo.FillRenderedServiceBody NULL, NULL, NULL, " + ID;
                 DbConnection.DBConnect(RenrederServiceBody);
                 UpdateBody();
             }
@@ -130,7 +130,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         }
                         else
                         {
-                            string RenrederServiceHead = "exec dbo.RenderedServiceUpdate '" + comboBox1.SelectedValue.ToString() + "','" + textBox1.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToShortDateString() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + comboBox3.SelectedValue.ToString() + "',1,1";
+                            string RenrederServiceHead = "exec dbo.RenderedServiceCreate '" + GetStatus + "','" + textBox1.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textBox2.Text.Trim() + "','" + comboBox3.SelectedValue.ToString() + "','" + comboBox2.SelectedValue.ToString() + "',1,1";
                             DbConnection.DBConnect(RenrederServiceHead);
                             UpdateBody();
                             TabControlExtra.TabPages.Remove(TabControlExtra.SelectedTab);
@@ -174,7 +174,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             {
                 GetData();
                 FillCombobox();
-                string GetData1 = "select NUM, ServiceDate, Operation, Invoice, s.Name,u.FIO from d__RenderedServiceHead h left join d__DocState s on s.ID = h.ID_DocState left join dbo.Users u on u.AID = h.ID_USER_INS where h.ID = " + SelectedID;
+                string GetData1 = "select h.Invoice, ServiceDate, Operation, Invoice, s.Name,u.FIO from d__RenderedServiceHead h left join d__DocState s on s.ID = h.ID_DocState left join dbo.Users u on u.AID = h.ID_USER_INS where h.ID = " + SelectedID;
                 DataTable dt = DbConnection.DBConnect(GetData1);
                 this.textBox1.Text = dt.Rows[0][0].ToString();
                 this.dateTimePicker1.Text = dt.Rows[0][1].ToString();
@@ -240,7 +240,6 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             dataGridView1.DataSource = GetDocumentDT;
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[2].Visible = false;
-            dataGridView1.Columns[3].Visible = false;
             //Продукты
             string GetProduct = "select * from d__Product";
             DataTable GetProductDT = DbConnection.DBConnect(GetProduct);
@@ -253,18 +252,18 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             ProductComboBox.ValueMember = "ID";
             ProductComboBox.DataPropertyName = "Product_ID";
             dataGridView1.Columns.Add(ProductComboBox);
-            //Бригадир
-            string GetBrigade = "select * from d__Brigade";
-            DataTable GetBrigadeDT = DbConnection.DBConnect(GetBrigade);
-            DataGridViewComboBoxColumn BrigadeComboBox = new DataGridViewComboBoxColumn();
-            BrigadeComboBox.DataSource = GetBrigadeDT;
-            BrigadeComboBox.FlatStyle = FlatStyle.Flat;
-            BrigadeComboBox.HeaderText = "Бригадир";
-            BrigadeComboBox.Name = "BrigadeComboBox";
-            BrigadeComboBox.DisplayMember = "Name";
-            BrigadeComboBox.ValueMember = "ID";
-            BrigadeComboBox.DataPropertyName = "Brigade_ID";
-            dataGridView1.Columns.Add(BrigadeComboBox);
+            ////Бригадир
+            //string GetBrigade = "select * from d__Brigade";
+            //DataTable GetBrigadeDT = DbConnection.DBConnect(GetBrigade);
+            //DataGridViewComboBoxColumn BrigadeComboBox = new DataGridViewComboBoxColumn();
+            //BrigadeComboBox.DataSource = GetBrigadeDT;
+            //BrigadeComboBox.FlatStyle = FlatStyle.Flat;
+            //BrigadeComboBox.HeaderText = "Бригадир";
+            //BrigadeComboBox.Name = "BrigadeComboBox";
+            //BrigadeComboBox.DisplayMember = "Name";
+            //BrigadeComboBox.ValueMember = "ID";
+            //BrigadeComboBox.DataPropertyName = "Brigade_ID";
+            //dataGridView1.Columns.Add(BrigadeComboBox);
             ////Услуги
             //string GetService = "select * from d__ServiceCost";
             //DataTable GetServiceDT = DbConnection.DBConnect(GetService);
@@ -289,13 +288,13 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             comboBox1.DisplayMember = "Name";
             comboBox1.ValueMember = "ID";
             comboBox1.DataBindings.Add("SelectedValue", this, "SelectContrID", true, DataSourceUpdateMode.OnPropertyChanged);
-            ////Бригадиры
-            //string Brigade = "select * from d__Brigade";
-            //DataTable BrigadeDT = DbConnection.DBConnect(Brigade);
-            //comboBox2.DataSource = BrigadeDT;
-            //comboBox2.DisplayMember = "Name";
-            //comboBox2.ValueMember = "ID";
-            //comboBox2.DataBindings.Add("SelectedValue", this, "SelectBrigadeID", true, DataSourceUpdateMode.OnPropertyChanged);
+            //Бригадиры
+            string Brigade = "select * from d__Brigade";
+            DataTable BrigadeDT = DbConnection.DBConnect(Brigade);
+            comboBox2.DataSource = BrigadeDT;
+            comboBox2.DisplayMember = "Name";
+            comboBox2.ValueMember = "ID";
+            comboBox2.DataBindings.Add("SelectedValue", this, "SelectBrigadeID", true, DataSourceUpdateMode.OnPropertyChanged);
             //Станции
             string Station = "select * from d__Station";
             DataTable StationDT = DbConnection.DBConnect(Station);
@@ -310,7 +309,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
             DataTable dt = DbConnection.DBConnect(GetID);
 
-            if (e.TabPage.Text == "Заявка на обработку № " + GetStatus + ". Редактирование от " + GetDate)
+            if (e.TabPage.Text == "Акт № " + GetStatus + ". Редактирование от " + GetDate)
             {
                 string CheckState = "select ID_DOCSTATE from d__RenderedServiceHead where ID = "+dt.Rows[0][0].ToString();
                 DataTable CheckStateDt = DbConnection.DBConnect(CheckState);
@@ -348,7 +347,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                                     }
                                     else
                                     {
-                                        string RenrederServiceHead = "exec dbo.RenderedServiceUpdate '" + comboBox1.SelectedValue.ToString() + "','" + textBox1.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToShortDateString() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + comboBox3.SelectedValue.ToString() + "',1,1";
+                                        string RenrederServiceHead = "exec dbo.RenderedServiceCreate '" + GetStatus + "','" + textBox1.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textBox2.Text.Trim() + "','" + comboBox3.SelectedValue.ToString() + "','" + comboBox2.SelectedValue.ToString() + "',1,1";
                                         DbConnection.DBConnect(RenrederServiceHead);
                                         UpdateBody();
                                     }
@@ -364,10 +363,14 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         catch (SqlException ex)
                         {
                             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true;
+                            return;
                         }
                         catch (Exception exp)
                         {
                             MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true;
+                            return;
                         }
                     }
                     else
@@ -395,9 +398,9 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 Decimal sum = 0;
                 for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                 {
-                    if (dataGridView1.Rows[i].Cells[10].Value.ToString() != string.Empty)
+                    if (dataGridView1.Rows[i].Cells[9].Value.ToString() != string.Empty)
                     {
-                        sum += Convert.ToDecimal(this.dataGridView1[10, i].Value);
+                        sum += Convert.ToDecimal(this.dataGridView1[9, i].Value);
                     }
                     Count = dataGridView1.RowCount;
                 }
@@ -418,59 +421,59 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         textBox4.Visible = true;
 
                         int Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
-                        panel2.Width = this.dataGridView1.Columns[4].Width + 1;
-                        Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
+                        panel2.Width = this.dataGridView1.Columns[3].Width + 1;
+                        Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
                         panel2.Location = new Point(Xdgvx2, this.dataGridView1.Height - (panel2.Height - 25));
                         panel2.Visible = true;
 
-                        int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
-                        panel3.Width = this.dataGridView1.Columns[5].Width + 1;
-                        Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
+                        int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
+                        panel3.Width = this.dataGridView1.Columns[4].Width + 1;
+                        Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
                         panel3.Location = new Point(Xdgvx3, this.dataGridView1.Height - (panel3.Height - 25));
                         panel3.Visible = true;
 
-                        int Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
-                        panel4.Width = this.dataGridView1.Columns[6].Width + 1;
-                        Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
+                        int Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
+                        panel4.Width = this.dataGridView1.Columns[5].Width + 1;
+                        Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
                         panel4.Location = new Point(Xdgvx4, this.dataGridView1.Height - (panel4.Height - 25));
                         panel4.Visible = true;
 
                         int Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
-                        panel5.Width = this.dataGridView1.Columns[7].Width + 1;
-                        Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
+                        panel5.Width = this.dataGridView1.Columns[6].Width + 1;
+                        Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
                         panel5.Location = new Point(Xdgvx5, this.dataGridView1.Height - (panel5.Height - 25));
                         panel5.Visible = true;
 
-                        int Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
-                        panel6.Width = this.dataGridView1.Columns[8].Width + 1;
-                        Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
+                        int Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
+                        panel6.Width = this.dataGridView1.Columns[7].Width + 1;
+                        Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
                         panel6.Location = new Point(Xdgvx6, this.dataGridView1.Height - (panel6.Height - 25));
                         panel6.Visible = true;
 
-                        int Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
-                        panel8.Width = this.dataGridView1.Columns[9].Width + 1;
-                        Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
+                        int Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
+                        panel8.Width = this.dataGridView1.Columns[8].Width + 1;
+                        Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
                         panel8.Location = new Point(Xdgvx7, this.dataGridView1.Height - (panel8.Height - 25));
                         panel8.Visible = true;
 
                         textBox5.Text = sum.ToString();
-                        int Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
-                        textBox5.Width = this.dataGridView1.Columns[10].Width + 1;
-                        Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
+                        int Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
+                        textBox5.Width = this.dataGridView1.Columns[9].Width + 1;
+                        Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
                         textBox5.Location = new Point(Xdgvx8, this.dataGridView1.Height - (textBox5.Height - 25));
                         textBox5.Visible = true;
 
-                        int Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
-                        panel9.Width = this.dataGridView1.Columns[11].Width + 2;
-                        Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
+                        int Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
+                        panel9.Width = this.dataGridView1.Columns[10].Width + 2;
+                        Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
                         panel9.Location = new Point(Xdgvx9, this.dataGridView1.Height - (panel9.Height - 25));
                         panel9.Visible = true;
 
-                        int Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
-                        panel7.Width = this.dataGridView1.Columns[12].Width + 2;
-                        Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(12, -1, true).Location.X;
-                        panel7.Location = new Point(Xdgvx10, this.dataGridView1.Height - (panel7.Height - 25));
-                        panel7.Visible = true;
+                        //int Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
+                        //panel7.Width = this.dataGridView1.Columns[11].Width + 2;
+                        //Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
+                        //panel7.Location = new Point(Xdgvx10, this.dataGridView1.Height - (panel7.Height - 25));
+                        //panel7.Visible = true;
                     }
                     else
                     {
@@ -486,59 +489,59 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         textBox4.Visible = true;
 
                         int Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
-                        panel2.Width = this.dataGridView1.Columns[4].Width + 1;
-                        Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
+                        panel2.Width = this.dataGridView1.Columns[3].Width + 1;
+                        Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
                         panel2.Location = new Point(Xdgvx2, this.dataGridView1.Height - (panel2.Height - 43));
                         panel2.Visible = true;
 
-                        int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
-                        panel3.Width = this.dataGridView1.Columns[5].Width + 1;
-                        Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
+                        int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
+                        panel3.Width = this.dataGridView1.Columns[4].Width + 1;
+                        Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
                         panel3.Location = new Point(Xdgvx3, this.dataGridView1.Height - (panel3.Height - 43));
                         panel3.Visible = true;
 
-                        int Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
-                        panel4.Width = this.dataGridView1.Columns[6].Width + 1;
-                        Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
+                        int Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
+                        panel4.Width = this.dataGridView1.Columns[5].Width + 1;
+                        Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
                         panel4.Location = new Point(Xdgvx4, this.dataGridView1.Height - (panel4.Height - 43));
                         panel4.Visible = true;
 
                         int Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
-                        panel5.Width = this.dataGridView1.Columns[7].Width + 1;
-                        Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
+                        panel5.Width = this.dataGridView1.Columns[6].Width + 1;
+                        Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
                         panel5.Location = new Point(Xdgvx5, this.dataGridView1.Height - (panel5.Height - 43));
                         panel5.Visible = true;
 
-                        int Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
-                        panel6.Width = this.dataGridView1.Columns[8].Width + 1;
-                        Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
+                        int Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
+                        panel6.Width = this.dataGridView1.Columns[7].Width + 1;
+                        Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
                         panel6.Location = new Point(Xdgvx6, this.dataGridView1.Height - (panel6.Height - 43));
                         panel6.Visible = true;
 
-                        int Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
-                        panel8.Width = this.dataGridView1.Columns[9].Width + 1;
-                        Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
+                        int Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
+                        panel8.Width = this.dataGridView1.Columns[8].Width + 1;
+                        Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
                         panel8.Location = new Point(Xdgvx7, this.dataGridView1.Height - (panel8.Height - 43));
                         panel8.Visible = true;
 
                         textBox5.Text = sum.ToString();
-                        int Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
-                        textBox5.Width = this.dataGridView1.Columns[10].Width + 1;
-                        Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
+                        int Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
+                        textBox5.Width = this.dataGridView1.Columns[9].Width + 1;
+                        Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
                         textBox5.Location = new Point(Xdgvx8, this.dataGridView1.Height - (textBox5.Height - 43));
                         textBox5.Visible = true;
 
-                        int Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
-                        panel9.Width = this.dataGridView1.Columns[11].Width + 2;
-                        Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
+                        int Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
+                        panel9.Width = this.dataGridView1.Columns[10].Width + 2;
+                        Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
                         panel9.Location = new Point(Xdgvx9, this.dataGridView1.Height - (panel9.Height - 43));
                         panel9.Visible = true;
 
-                        int Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
-                        panel7.Width = this.dataGridView1.Columns[12].Width + 2;
-                        Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(12, -1, true).Location.X;
-                        panel7.Location = new Point(Xdgvx10, this.dataGridView1.Height - (panel7.Height - 43));
-                        panel7.Visible = true;
+                        //int Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
+                        //panel7.Width = this.dataGridView1.Columns[11].Width + 2;
+                        //Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
+                        //panel7.Location = new Point(Xdgvx10, this.dataGridView1.Height - (panel7.Height - 43));
+                        //panel7.Visible = true;
                     }
                 }
             }
@@ -612,45 +615,44 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         UpdateBody();
                     }
                 }
-
                 //Проверка для продукта
-                if (dataGridView1.Rows[e.RowIndex].Cells[11].Value.ToString() == string.Empty)
+                if (dataGridView1.Rows[e.RowIndex].Cells[10].Value.ToString() == string.Empty)
                 {
                     string UpdateBody = "exec dbo.UpdateRenderedServiceBody NULL, 2, " + SelectItemRow;
                     DbConnection.DBConnect(UpdateBody);
                 }
                 else
                 {
-                    string UpdateBody = "exec dbo.UpdateRenderedServiceBody '" + dataGridView1.Rows[e.RowIndex].Cells[11].Value + "',2," + SelectItemRow;
+                    string UpdateBody = "exec dbo.UpdateRenderedServiceBody '" + dataGridView1.Rows[e.RowIndex].Cells[10].Value + "',2," + SelectItemRow;
                     DbConnection.DBConnect(UpdateBody);
                 }
 
-                //Проверка для бригадира
-                if (dataGridView1.Rows[e.RowIndex].Cells[12].Value.ToString() == string.Empty)
-                {
-                    string UpdateBody = "exec dbo.UpdateRenderedServiceBody NULL, 3, " + SelectItemRow;
-                    DbConnection.DBConnect(UpdateBody);
-                }
-                else
-                {
-                    string UpdateBody = "exec dbo.UpdateRenderedServiceBody '" + dataGridView1.Rows[e.RowIndex].Cells[12].Value + "',3," + SelectItemRow;
-                    DbConnection.DBConnect(UpdateBody);
-                }
+                ////Проверка для бригадира
+                //if (dataGridView1.Rows[e.RowIndex].Cells[12].Value.ToString() == string.Empty)
+                //{
+                //    string UpdateBody = "exec dbo.UpdateRenderedServiceBody NULL, 3, " + SelectItemRow;
+                //    DbConnection.DBConnect(UpdateBody);
+                //}
+                //else
+                //{
+                //    string UpdateBody = "exec dbo.UpdateRenderedServiceBody '" + dataGridView1.Rows[e.RowIndex].Cells[12].Value + "',3," + SelectItemRow;
+                //    DbConnection.DBConnect(UpdateBody);
+                //}
 
                 //axis
-                string UpdateAxis = "update temp set axis = " + dataGridView1.Rows[e.RowIndex].Cells[4].Value + " where body_id = " + SelectItemRow;
+                string UpdateAxis = "update temp set axis = " + dataGridView1.Rows[e.RowIndex].Cells[3].Value + " where body_id = " + SelectItemRow;
                 DbConnection.DBConnect(UpdateAxis);
                 //gor
-                string UpdateGor = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[5].Value + "',2," + SelectItemRow;
+                string UpdateGor = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[4].Value + "',2," + SelectItemRow;
                 DbConnection.DBConnect(UpdateGor);
                 //hol
-                string UpdateHol = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[6].Value + "',3," + SelectItemRow;
+                string UpdateHol = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[5].Value + "',3," + SelectItemRow;
                 DbConnection.DBConnect(UpdateHol);
                 //tor
-                string UpdateTor = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[7].Value + "',4," + SelectItemRow;
+                string UpdateTor = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[6].Value + "',4," + SelectItemRow;
                 DbConnection.DBConnect(UpdateTor);
                 //drkr
-                string UpdateDrkr = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[8].Value + "',5," + SelectItemRow;
+                string UpdateDrkr = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[7].Value + "',5," + SelectItemRow;
                 DbConnection.DBConnect(UpdateDrkr);
 
                 //for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -658,6 +660,8 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 //    string FillBody = "exec dbo.UpdateRenderedServiceBody_Filter " + dataGridView1.Rows[i].Cells[3].Value + "," + dataGridView1.Rows[i].Cells[4].Value + "," + dataGridView1.Rows[i].Cells[5].Value + "," + dataGridView1.Rows[i].Cells[6].Value + "," + dataGridView1.Rows[i].Cells[7].Value + "," + SelectItemRow;
                 //    DbConnection.DBConnect(FillBody);
                 //}
+
+                UpdateBody();
             }
             catch (SqlException ex)
             {

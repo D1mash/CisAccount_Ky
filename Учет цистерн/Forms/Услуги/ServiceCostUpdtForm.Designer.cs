@@ -40,6 +40,8 @@
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button2
@@ -90,7 +92,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(117, 153);
+            this.comboBox2.Location = new System.Drawing.Point(117, 177);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(200, 21);
             this.comboBox2.TabIndex = 13;
@@ -142,7 +144,7 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(23, 155);
+            this.checkBox5.Location = new System.Drawing.Point(23, 179);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(57, 17);
             this.checkBox5.TabIndex = 28;
@@ -157,11 +159,31 @@
             this.textBox2.Size = new System.Drawing.Size(200, 20);
             this.textBox2.TabIndex = 29;
             // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(23, 155);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(48, 17);
+            this.checkBox6.TabIndex = 31;
+            this.checkBox6.Text = "ТОР";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(117, 153);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(200, 20);
+            this.textBox3.TabIndex = 30;
+            // 
             // ServiceCostUpdtForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 277);
+            this.Controls.Add(this.checkBox6);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
@@ -200,5 +222,7 @@
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
         public System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.CheckBox checkBox6;
+        public System.Windows.Forms.TextBox textBox3;
     }
 }

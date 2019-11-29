@@ -31,6 +31,7 @@ namespace Учет_цистерн
             dateTimePicker1.Enabled = false;
             dateTimePicker2.Enabled = false;
             textBox1.Enabled = false;
+            textBox3.Enabled = false;
         }
 
         private void checkBox1_CheckStateChanged(object sender, EventArgs e)
@@ -58,6 +59,11 @@ namespace Учет_цистерн
             comboBox2.Enabled = (checkBox5.CheckState == CheckState.Checked);
         }
 
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox3.Enabled = (checkBox6.CheckState == CheckState.Checked);
+        }
+
         private void FillCombobox()
         {
             string Season = "select * from d__Season";
@@ -72,7 +78,7 @@ namespace Учет_цистерн
         {
             try
             {
-                string Update = "exec dbo.UpdateServiceCost '" + textBox2.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + textBox1.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString() + "," + selectID;
+                string Update = "exec dbo.UpdateServiceCost '" + textBox2.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + textBox1.Text.Replace(",", ".") + "," + textBox3.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString() + "," + selectID;
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(Update);
                 this.Close();

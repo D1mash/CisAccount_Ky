@@ -14,6 +14,7 @@ using AutoUpdaterDotNET;
 using NLog;
 using System.Configuration;
 using System.Collections.Specialized;
+using Учет_цистерн.Forms.Глобальный_фильтр;
 
 namespace Учет_цистерн
 {
@@ -54,7 +55,7 @@ namespace Учет_цистерн
             }
         }
 
-        private void GetFilter()
+        public void GetFilter()
         {
             try
             {
@@ -100,6 +101,21 @@ namespace Учет_цистерн
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 logger.Error(exp, "button1_Click");
+            }
+        }
+        //Глобальный фильтр, Добавить вагон
+        private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AddCarriage addCarriage = new AddCarriage();
+                addCarriage.Owner = this;
+                addCarriage.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, "Глобальный фильтр, Добавить вагоны");
             }
         }
         //Глобальный фильтр, вставить вагоны
