@@ -779,7 +779,6 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 foreach(DataRow dr in dt.Rows)
                 {
                     backgroundWorker1.ReportProgress(i);
-                    Thread.Sleep(1);
                     i++;
                 }
                 e.Result = dt;
