@@ -40,6 +40,7 @@ namespace Учет_цистерн
 
                 string GetCountServiceCost = "exec dbo.GetCountServiceCost '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
                 getserv = DbConnection.DBConnect(GetCountServiceCost);
+                SUM_Line(true);
             }
             else
             {
@@ -54,6 +55,7 @@ namespace Учет_цистерн
 
                 string GetCountServiceCost = "exec dbo.GetCountServiceCost_byOwner  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
                 getserv = DbConnection.DBConnect(GetCountServiceCost);
+                SUM_Line(true);
             }
         }
 
@@ -86,7 +88,25 @@ namespace Учет_цистерн
             dateTimePicker1.Value = startDate;
             dateTimePicker2.Value = endDate;
 
-            //dataGridView1_CellPainting(null, null);
+            SUM_Line(false);
+        }
+
+        private void SUM_Line(bool v)
+        {
+            panel1.Visible = v;
+            panel2.Visible = v;
+            panel3.Visible = v;
+            panel4.Visible = v;
+            panel5.Visible = v;
+            panel6.Visible = v;
+            panel7.Visible = v;
+            panel8.Visible = v;
+            panel9.Visible = v;
+            panel10.Visible = v;
+            panel11.Visible = v;
+            panel12.Visible = v;
+            textBox1.Visible = v;
+            textBox2.Visible = v;
         }
 
         private void Btn_Excel_Click(object sender, EventArgs e)
