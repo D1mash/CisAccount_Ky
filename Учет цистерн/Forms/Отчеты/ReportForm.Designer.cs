@@ -385,12 +385,12 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ReportForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Отчеты: Обработанные вагоны";
             this.Load += new System.EventHandler(this.ReportForm_Load);
-            this.SizeChanged += new System.EventHandler(this.ReportForm_SizeChanged);
             this.groupBox1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
