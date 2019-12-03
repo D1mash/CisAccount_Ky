@@ -174,9 +174,9 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             {
                 GetData();
                 FillCombobox();
-                string GetData1 = "select NUM, ServiceDate, Operation, Invoice, s.Name,u.FIO from d__RenderedServiceHead h left join d__DocState s on s.ID = h.ID_DocState left join dbo.Users u on u.AID = h.ID_USER_INS where h.ID = " + SelectedID;
+                string GetData1 = "select h.Invoice, ServiceDate, Operation, Invoice, s.Name,u.FIO from d__RenderedServiceHead h left join d__DocState s on s.ID = h.ID_DocState left join dbo.Users u on u.AID = h.ID_USER_INS where h.ID = " + SelectedID;
                 DataTable dt = DbConnection.DBConnect(GetData1);
-                this.textBox1.Text = dt.Rows[0][3].ToString();
+                this.textBox1.Text = dt.Rows[0][0].ToString();
                 this.dateTimePicker1.Text = dt.Rows[0][1].ToString();
                 this.textBox2.Text = dt.Rows[0][2].ToString();
                 this.textBox3.Text = dt.Rows[0][3].ToString();
@@ -363,10 +363,14 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         catch (SqlException ex)
                         {
                             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true;
+                            return;
                         }
                         catch (Exception exp)
                         {
                             MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true;
+                            return;
                         }
                     }
                     else
@@ -434,7 +438,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         panel4.Location = new Point(Xdgvx4, this.dataGridView1.Height - (panel4.Height - 25));
                         panel4.Visible = true;
 
-                        int Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
+                        int Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
                         panel5.Width = this.dataGridView1.Columns[6].Width + 1;
                         Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
                         panel5.Location = new Point(Xdgvx5, this.dataGridView1.Height - (panel5.Height - 25));
@@ -453,7 +457,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         panel8.Visible = true;
 
                         textBox5.Text = sum.ToString();
-                        int Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
+                        int Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
                         textBox5.Width = this.dataGridView1.Columns[9].Width + 1;
                         Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
                         textBox5.Location = new Point(Xdgvx8, this.dataGridView1.Height - (textBox5.Height - 25));
@@ -465,9 +469,9 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         panel9.Location = new Point(Xdgvx9, this.dataGridView1.Height - (panel9.Height - 25));
                         panel9.Visible = true;
 
-                        //int Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
-                        //panel7.Width = this.dataGridView1.Columns[12].Width + 2;
-                        //Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(12, -1, true).Location.X;
+                        //int Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
+                        //panel7.Width = this.dataGridView1.Columns[11].Width + 2;
+                        //Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
                         //panel7.Location = new Point(Xdgvx10, this.dataGridView1.Height - (panel7.Height - 25));
                         //panel7.Visible = true;
                     }
@@ -502,7 +506,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         panel4.Location = new Point(Xdgvx4, this.dataGridView1.Height - (panel4.Height - 43));
                         panel4.Visible = true;
 
-                        int Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
+                        int Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
                         panel5.Width = this.dataGridView1.Columns[6].Width + 1;
                         Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
                         panel5.Location = new Point(Xdgvx5, this.dataGridView1.Height - (panel5.Height - 43));
@@ -533,9 +537,9 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         panel9.Location = new Point(Xdgvx9, this.dataGridView1.Height - (panel9.Height - 43));
                         panel9.Visible = true;
 
-                        //int Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
-                        //panel7.Width = this.dataGridView1.Columns[12].Width + 2;
-                        //Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(12, -1, true).Location.X;
+                        //int Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
+                        //panel7.Width = this.dataGridView1.Columns[11].Width + 2;
+                        //Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
                         //panel7.Location = new Point(Xdgvx10, this.dataGridView1.Height - (panel7.Height - 43));
                         //panel7.Visible = true;
                     }
