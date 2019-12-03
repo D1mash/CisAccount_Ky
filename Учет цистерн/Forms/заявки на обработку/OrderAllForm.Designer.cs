@@ -49,7 +49,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -65,7 +64,6 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.panel12 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new ADGV.AdvancedDataGridView();
@@ -251,7 +249,6 @@
             this.groupBox2.Controls.Add(this.panel5);
             this.groupBox2.Controls.Add(this.panel4);
             this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.panel3);
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.panel1);
@@ -265,21 +262,21 @@
             // 
             // panel6
             // 
-            this.panel6.Location = new System.Drawing.Point(660, 703);
+            this.panel6.Location = new System.Drawing.Point(554, 702);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(100, 19);
             this.panel6.TabIndex = 5;
             // 
             // panel5
             // 
-            this.panel5.Location = new System.Drawing.Point(554, 703);
+            this.panel5.Location = new System.Drawing.Point(448, 702);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(100, 19);
             this.panel5.TabIndex = 5;
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(451, 703);
+            this.panel4.Location = new System.Drawing.Point(345, 702);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(100, 19);
             this.panel4.TabIndex = 5;
@@ -287,18 +284,11 @@
             // textBox2
             // 
             this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(345, 702);
+            this.textBox2.Location = new System.Drawing.Point(239, 701);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 5;
-            // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(239, 703);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(100, 19);
-            this.panel3.TabIndex = 4;
             // 
             // panel2
             // 
@@ -371,7 +361,6 @@
             this.groupBox3.Controls.Add(this.panel9);
             this.groupBox3.Controls.Add(this.textBox3);
             this.groupBox3.Controls.Add(this.panel10);
-            this.groupBox3.Controls.Add(this.panel11);
             this.groupBox3.Controls.Add(this.textBox4);
             this.groupBox3.Controls.Add(this.panel12);
             this.groupBox3.Controls.Add(this.dataGridView2);
@@ -446,13 +435,6 @@
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(100, 19);
             this.panel10.TabIndex = 4;
-            // 
-            // panel11
-            // 
-            this.panel11.Location = new System.Drawing.Point(564, 694);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(100, 19);
-            this.panel11.TabIndex = 3;
             // 
             // textBox4
             // 
@@ -599,7 +581,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel1;
@@ -615,7 +596,6 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Panel panel12;
         public ADGV.AdvancedDataGridView dataGridView2;
