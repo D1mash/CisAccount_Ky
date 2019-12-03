@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -84,6 +85,8 @@ namespace Учет_цистерн
 
             dateTimePicker1.Value = startDate;
             dateTimePicker2.Value = endDate;
+
+            //dataGridView1_CellPainting(null, null);
         }
 
         private void Btn_Excel_Click(object sender, EventArgs e)
@@ -93,17 +96,20 @@ namespace Учет_цистерн
             {
                 if (backgroundWorker.IsBusy)
                     return;
-                using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Excel file (*.xlsx)|*.xlsx|All files(*.*)|*.*" })
+                //using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Excel file (*.xlsx)|*.xlsx|All files(*.*)|*.*" })
+                //{
+                //    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                //    {
+                //        //_inputParametr1.FileName = saveFileDialog.FileName;
+                else
                 {
-                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        _inputParametr1.FileName = saveFileDialog.FileName;
-                        _inputParametr1.owner = comboBox2.Text;
-                        progressBar.Minimum = 0;
-                        progressBar.Value = 0;
-                        backgroundWorker.RunWorkerAsync(_inputParametr1);
-                    }
+                    _inputParametr1.owner = comboBox2.Text;
+                    progressBar.Minimum = 0;
+                    progressBar.Value = 0;
+                    backgroundWorker.RunWorkerAsync(_inputParametr1);
                 }
+                //    }
+                //}
             }
             else
             {
@@ -113,7 +119,7 @@ namespace Учет_цистерн
 
         struct DataParametr
         {
-            public string FileName { get; set; }
+            //public string FileName { get; set; }
             public string owner { get; set; }
         }
 
@@ -135,7 +141,7 @@ namespace Учет_цистерн
                 string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
                 //var folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-                string fileName = ((DataParametr)e.Argument).FileName;
+                //string fileName = ((DataParametr)e.Argument).FileName;
                 string ownerName = ((DataParametr)e.Argument).owner;
 
                 Excel.Application app = new Excel.Application();
@@ -143,6 +149,7 @@ namespace Учет_цистерн
                 Excel.Workbook workbook = app.Workbooks.Open(path);
                 Excel.Worksheet worksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
                 app.Visible = false;
+                object misValue = System.Reflection.Missing.Value;
 
                 int cellRowIndex = 0;
                 int totalTOR4 = 0;
@@ -162,7 +169,7 @@ namespace Учет_цистерн
 
                 worksheet.Range["K21"].Value = UserFIO;
 
-                worksheet.Range["B15:K23"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 17 + getserv.Rows.Count*2, 2]);
+                worksheet.Range["B12:K23"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 17 + getserv.Rows.Count*2, 2]);
                 
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
@@ -264,9 +271,13 @@ namespace Учет_цистерн
                 Excel.Range range1 = worksheet.Range[worksheet.Cells[dataGridView1.Rows.Count + 12, 2], worksheet.Cells[dataGridView1.Rows.Count + getserv.Rows.Count * 2 + 19, 14]];
                 FormattingExcelCells(range1, false, false);
 
-                workbook.SaveAs(fileName);
+                app.DisplayAlerts = false;
+                workbook.SaveAs(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                workbook.Close(true, misValue, misValue);
                 app.Quit();
                 appProcess.Kill();
+
+                Process.Start(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xls");
             }
             catch(Exception ex)
             {
@@ -321,6 +332,124 @@ namespace Учет_цистерн
                 Thread.Sleep(1);
                 LblStatus.Text = "Данные были успешно экспортированы";
                 progressBar.Value = 0;
+            }
+        }
+
+        int sz;
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            try
+            {
+                Decimal sum = 0;
+                int Count = 0;
+                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                {
+                    if (dataGridView1.Rows[i].Cells[12].Value.ToString() != string.Empty)
+                    {
+                        sum += Convert.ToDecimal(this.dataGridView1[12, i].Value);
+                    }
+                    Count = dataGridView1.RowCount;
+                }
+                
+                panel1.Width = this.dataGridView1.RowHeadersWidth;
+                panel1.Location = new Point(5, this.dataGridView1.Height - (panel1.Height - sz));
+                panel1.Visible = true;
+
+                int Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                panel2.Width = this.dataGridView1.Columns[1].Width + 1;
+                Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                panel2.Location = new Point(Xdgvx1, this.dataGridView1.Height - (panel2.Height - sz));
+                panel2.Visible = true;
+
+                textBox1.Text = "Всего строк: " + Count.ToString();
+                int Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                textBox1.Width = this.dataGridView1.Columns[2].Width + 1;
+                Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
+                textBox1.Location = new Point(Xdgvx2, this.dataGridView1.Height - (textBox1.Height - sz));
+                textBox1.Visible = true;
+
+                int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                panel3.Width = this.dataGridView1.Columns[3].Width + 1;
+                Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
+                panel3.Location = new Point(Xdgvx3, this.dataGridView1.Height - (panel3.Height - sz));
+                panel3.Visible = true;
+
+                int Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                panel4.Width = this.dataGridView1.Columns[4].Width + 1;
+                Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
+                panel4.Location = new Point(Xdgvx4, this.dataGridView1.Height - (panel4.Height - sz));
+                panel4.Visible = true;
+
+                int Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                panel5.Width = this.dataGridView1.Columns[5].Width + 1;
+                Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
+                panel5.Location = new Point(Xdgvx5, this.dataGridView1.Height - (panel5.Height - sz));
+                panel5.Visible = true;
+
+                int Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                panel6.Width = this.dataGridView1.Columns[6].Width + 1;
+                Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
+                panel6.Location = new Point(Xdgvx6, this.dataGridView1.Height - (panel6.Height - sz));
+                panel6.Visible = true;
+
+                int Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                panel7.Width = this.dataGridView1.Columns[7].Width + 1;
+                Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
+                panel7.Location = new Point(Xdgvx7, this.dataGridView1.Height - (panel7.Height - sz));
+                panel7.Visible = true;
+
+                int Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                panel8.Width = this.dataGridView1.Columns[8].Width + 1;
+                Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
+                panel8.Location = new Point(Xdgvx8, this.dataGridView1.Height - (panel8.Height - sz));
+                panel8.Visible = true;
+
+                int Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                panel9.Width = this.dataGridView1.Columns[9].Width + 1;
+                Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
+                panel9.Location = new Point(Xdgvx9, this.dataGridView1.Height - (panel9.Height - sz));
+                panel9.Visible = true;
+
+                int Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                panel10.Width = this.dataGridView1.Columns[10].Width + 1;
+                Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
+                panel10.Location = new Point(Xdgvx10, this.dataGridView1.Height - (panel10.Height - sz));
+                panel10.Visible = true;
+
+                int Xdgvx11 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                panel11.Width = this.dataGridView1.Columns[11].Width + 1;
+                Xdgvx11 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
+                panel11.Location = new Point(Xdgvx11, this.dataGridView1.Height - (panel11.Height - sz));
+                panel11.Visible = true;
+
+                textBox2.Text = "Сумма: " + sum.ToString();
+                int Xdgvx12 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                textBox2.Width = this.dataGridView1.Columns[12].Width + 1;
+                Xdgvx12 = this.dataGridView1.GetCellDisplayRectangle(12, -1, true).Location.X;
+                textBox2.Location = new Point(Xdgvx12, this.dataGridView1.Height - (textBox2.Height - sz));
+                textBox2.Visible = true;
+
+                int Xdgvx13 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                panel12.Width = this.dataGridView1.Columns[13].Width + 1;
+                Xdgvx13 = this.dataGridView1.GetCellDisplayRectangle(13, -1, true).Location.X;
+                panel12.Location = new Point(Xdgvx13, this.dataGridView1.Height - (panel12.Height - sz));
+                panel12.Visible = true;
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ReportForm_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.Size.Width > 800 && this.Size.Height > 600)
+            {
+                sz = 10;
+            }
+            else
+            {
+                sz = 15;
             }
         }
     }

@@ -40,6 +40,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Excel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -169,6 +183,20 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.panel12);
+            this.groupBox2.Controls.Add(this.panel11);
+            this.groupBox2.Controls.Add(this.panel10);
+            this.groupBox2.Controls.Add(this.panel9);
+            this.groupBox2.Controls.Add(this.panel8);
+            this.groupBox2.Controls.Add(this.panel7);
+            this.groupBox2.Controls.Add(this.panel6);
+            this.groupBox2.Controls.Add(this.panel5);
+            this.groupBox2.Controls.Add(this.panel4);
+            this.groupBox2.Controls.Add(this.panel3);
+            this.groupBox2.Controls.Add(this.panel2);
+            this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 93);
@@ -176,6 +204,111 @@
             this.groupBox2.Size = new System.Drawing.Size(784, 443);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(557, 266);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 8;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(133, 417);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 8;
+            // 
+            // panel12
+            // 
+            this.panel12.Location = new System.Drawing.Point(557, 241);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(100, 19);
+            this.panel12.TabIndex = 7;
+            // 
+            // panel11
+            // 
+            this.panel11.Location = new System.Drawing.Point(557, 292);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(100, 19);
+            this.panel11.TabIndex = 7;
+            // 
+            // panel10
+            // 
+            this.panel10.Location = new System.Drawing.Point(557, 317);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(100, 19);
+            this.panel10.TabIndex = 7;
+            // 
+            // panel9
+            // 
+            this.panel9.Location = new System.Drawing.Point(557, 342);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(100, 19);
+            this.panel9.TabIndex = 7;
+            // 
+            // panel8
+            // 
+            this.panel8.Location = new System.Drawing.Point(557, 367);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(100, 19);
+            this.panel8.TabIndex = 7;
+            // 
+            // panel7
+            // 
+            this.panel7.Location = new System.Drawing.Point(557, 392);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(100, 19);
+            this.panel7.TabIndex = 7;
+            // 
+            // panel6
+            // 
+            this.panel6.Location = new System.Drawing.Point(557, 417);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(100, 19);
+            this.panel6.TabIndex = 7;
+            // 
+            // panel5
+            // 
+            this.panel5.Location = new System.Drawing.Point(451, 418);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(100, 19);
+            this.panel5.TabIndex = 7;
+            // 
+            // panel4
+            // 
+            this.panel4.Location = new System.Drawing.Point(345, 417);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(100, 19);
+            this.panel4.TabIndex = 7;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Location = new System.Drawing.Point(239, 418);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(100, 19);
+            this.panel3.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(27, 418);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(100, 19);
+            this.panel2.TabIndex = 7;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(6, 419);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(15, 19);
+            this.panel1.TabIndex = 6;
             // 
             // dataGridView1
             // 
@@ -190,6 +323,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(778, 424);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             // 
             // backgroundWorker
             // 
@@ -247,23 +381,23 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ReportForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Отчеты: Обработанные вагоны";
             this.Load += new System.EventHandler(this.ReportForm_Load);
+            this.SizeChanged += new System.EventHandler(this.ReportForm_SizeChanged);
             this.groupBox1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -294,5 +428,19 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel10;
     }
 }
