@@ -731,10 +731,6 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 panel15.Location = new Point(Xdgvx10, this.dataGridView2.Height - (panel15.Height + 1));
                 panel15.Visible = true;
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
