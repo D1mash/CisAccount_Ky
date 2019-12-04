@@ -34,7 +34,8 @@ namespace Учет_цистерн
                 source.DataSource = dt;
                 dataGridView1.DataSource = source;
                 dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[14].Visible = true;
+                dataGridView1.Columns[14].Visible = false;
+                dataGridView1.Columns[15].Visible = false;
                 progressBar.Maximum = TotalRow(dt);
                 toolStripLabel1.Text = TotalRow(dt).ToString();
 
@@ -50,6 +51,8 @@ namespace Учет_цистерн
                 source.DataSource = dataTable;
                 dataGridView1.DataSource = source;
                 dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[14].Visible = false;
+                dataGridView1.Columns[15].Visible = false;
                 progressBar.Maximum = TotalRow(dataTable);
                 toolStripLabel1.Text = TotalRow(dataTable).ToString();
 
