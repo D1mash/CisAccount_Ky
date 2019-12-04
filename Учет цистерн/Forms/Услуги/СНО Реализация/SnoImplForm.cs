@@ -181,7 +181,7 @@ namespace Учет_цистерн.Forms.СНО
                     }
                 }
                 SnoImplAddFormForm SnoImplAddFormForm = new SnoImplAddFormForm();
-                SnoImplAddFormForm.Show();
+                SnoImplAddFormForm.ShowDialog();
             }
             catch (Exception exp)
             {
@@ -212,7 +212,7 @@ namespace Учет_цистерн.Forms.СНО
                 SnoImplUpdateForm.textBox4.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
                 SnoImplUpdateForm.textBox5.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString();
                 SnoImplUpdateForm.dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[9].Value.ToString();
-                SnoImplUpdateForm.Show();
+                SnoImplUpdateForm.ShowDialog();
             }
             catch (Exception ex)
             {

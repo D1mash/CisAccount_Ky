@@ -28,7 +28,7 @@ namespace Учет_цистерн
                     }
                 }
                 AddNewStation_StationForm AddNewStation_StationForm = new AddNewStation_StationForm();
-                AddNewStation_StationForm.Show();
+                AddNewStation_StationForm.ShowDialog();
             }
             catch (SqlException ex)
             {
@@ -146,7 +146,7 @@ namespace Учет_цистерн
                 UpdtCurrentStation_StationForm.textBox_Updt_Code_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[2].Value.ToString();
                 UpdtCurrentStation_StationForm.textBox_Updt_Code6_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[3].Value.ToString();
                 UpdtCurrentStation_StationForm.SelectStationID_Method = SelectItemRow;
-                UpdtCurrentStation_StationForm.Show();
+                UpdtCurrentStation_StationForm.ShowDialog();
             }
             catch (Exception ex)
             {

@@ -70,7 +70,7 @@ namespace Учет_цистерн
                     }
                 }
                 ServiceCostAddForm ServiceCostAddForm = new ServiceCostAddForm();
-                ServiceCostAddForm.Show();
+                ServiceCostAddForm.ShowDialog();
             }
             catch (SqlException ex)
             {
@@ -153,7 +153,7 @@ namespace Учет_цистерн
                 ServiceCostUpdtForm.textBox1.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
                 ServiceCostUpdtForm.dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 ServiceCostUpdtForm.dateTimePicker2.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                ServiceCostUpdtForm.Show();
+                ServiceCostUpdtForm.ShowDialog();
             }
             catch (Exception ex)
             {

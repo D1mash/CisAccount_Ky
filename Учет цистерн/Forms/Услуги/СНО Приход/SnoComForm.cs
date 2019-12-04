@@ -95,7 +95,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                     }
                 }
                 SnoComAddForm snoComAddForm = new SnoComAddForm();
-                snoComAddForm.Show();
+                snoComAddForm.ShowDialog();
             }
             catch (Exception exp)
             {
@@ -121,7 +121,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                 snoComUpdateFrom.textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 snoComUpdateFrom.textBox3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 snoComUpdateFrom.dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                snoComUpdateFrom.Show();
+                snoComUpdateFrom.ShowDialog();
             }
             catch(Exception ex)
             {
