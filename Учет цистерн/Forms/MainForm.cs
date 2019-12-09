@@ -460,7 +460,7 @@ namespace Учет_цистерн
                 }
 
                 ReportForm reportForm = new ReportForm(UserFIO);
-                reportForm.Show();
+                reportForm.ShowDialog();
             }
             catch (Exception exp)
             {
@@ -692,7 +692,7 @@ namespace Учет_цистерн
                     }
                 }
                 SnoReportForm snoReporForm = new SnoReportForm();
-                snoReporForm.Show();
+                snoReporForm.ShowDialog();
             }
             catch (Exception ex)
             {
