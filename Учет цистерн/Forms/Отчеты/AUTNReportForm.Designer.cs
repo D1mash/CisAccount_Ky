@@ -224,6 +224,7 @@
             this.Name = "AUTNReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Отчёт АУТН";
+            this.Load += new System.EventHandler(this.AUTNReportForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

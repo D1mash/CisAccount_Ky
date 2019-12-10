@@ -17,7 +17,6 @@ namespace Учет_цистерн.Forms.Отчеты
     public partial class AUTNReportForm : Form
     {
         BindingSource source = new BindingSource();
-        DataTable getserv;
 
         public AUTNReportForm()
         {
@@ -26,7 +25,7 @@ namespace Учет_цистерн.Forms.Отчеты
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string RefreshAll = "exec [dbo].[GetReportAUTN]";
+            string RefreshAll = "exec [dbo].[GetReportAUTN] '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
             DataTable dt;
             dt = DbConnection.DBConnect(RefreshAll);
             source.DataSource = dt;
@@ -171,6 +170,16 @@ namespace Учет_цистерн.Forms.Отчеты
             {
                 range.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
             }
+        }
+
+        private void AUTNReportForm_Load(object sender, EventArgs e)
+        {
+            DateTime now = DateTime.Now;
+            var startDate = new DateTime(now.Year, now.Month, 1);
+            var endDate = startDate.AddMonths(1).AddDays(-1);
+
+            dateTimePicker1.Value = startDate;
+            dateTimePicker2.Value = endDate;
         }
     }
 }
