@@ -96,7 +96,7 @@ namespace Учет_цистерн.Forms.Отчеты
                         }
                         else
                         {
-                            if (j > 9 && j < 18)
+                            if (j >= 8 && j < 18)
                             {
                                 if (dataGridView1.Rows[i].Cells[j].Value.ToString() == "1")
                                 {
@@ -114,6 +114,10 @@ namespace Учет_цистерн.Forms.Отчеты
                         }
 
                     }
+
+                    Excel.Range range = worksheet.Range[worksheet.Cells[i + 3, 1], worksheet.Cells[i + 3, dataGridView1.Columns.Count+1]];
+                    FormattingExcelCells(range, true, true);
+
                     backgroundWorker.ReportProgress(i);
                 }
 
@@ -144,6 +148,28 @@ namespace Учет_цистерн.Forms.Отчеты
                 Thread.Sleep(1);
                 LblStatus.Text = "Данные были успешно экспортированы";
                 progressBar.Value = 0;
+            }
+        }
+
+        public void FormattingExcelCells(Excel.Range range, bool val1, bool val2)
+        {
+            range.EntireColumn.AutoFit();
+            range.Font.Name = "Arial Cyr";
+            range.Font.Size = 9;
+            range.Font.FontStyle = "Bold";
+            if (val1 == true)
+            {
+                Excel.Borders border = range.Borders;
+                border.LineStyle = Excel.XlLineStyle.xlContinuous;
+                border.Weight = 2d;
+            }
+            if (val2 == true)
+            {
+                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            }
+            else
+            {
+                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
             }
         }
     }
