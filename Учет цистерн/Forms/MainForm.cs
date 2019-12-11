@@ -743,5 +743,27 @@ namespace Учет_цистерн
                 logger.Error(ex, "btn_Refrence_Click_MainForm");
             }
         }
+
+        private void аУТНToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(AUTNReportForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+                AUTNReportForm aUTNReportForm = new AUTNReportForm();
+                aUTNReportForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, " аУТНToolStripMenuItem_Click_MainForm");
+            }
+        }
     }
 }

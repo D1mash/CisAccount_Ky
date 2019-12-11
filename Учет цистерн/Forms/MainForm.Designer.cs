@@ -78,6 +78,7 @@
             this.проверитьОбновлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.просмотрСправкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.аУТНToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -144,6 +145,7 @@
             // 
             this.contextMenuStrip_Report.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
+            this.аУТНToolStripMenuItem,
             this.сНОToolStripMenuItem1});
             this.contextMenuStrip_Report.Name = "contextMenuStrip_Report";
             this.contextMenuStrip_Report.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -532,6 +534,12 @@
             resources.ApplyResources(this.оПрограммеToolStripMenuItem, "оПрограммеToolStripMenuItem");
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
+            // аУТНToolStripMenuItem
+            // 
+            this.аУТНToolStripMenuItem.Name = "аУТНToolStripMenuItem";
+            resources.ApplyResources(this.аУТНToolStripMenuItem, "аУТНToolStripMenuItem");
+            this.аУТНToolStripMenuItem.Click += new System.EventHandler(this.аУТНToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -615,6 +623,7 @@
         private System.Windows.Forms.ToolStripMenuItem проверитьОбновлениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem просмотрСправкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem аУТНToolStripMenuItem;
     }
 }
 
