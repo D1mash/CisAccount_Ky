@@ -14,6 +14,7 @@ using AutoUpdaterDotNET;
 using NLog;
 using System.Configuration;
 using System.Collections.Specialized;
+using Учет_цистерн.Forms;
 
 namespace Учет_цистерн
 {
@@ -54,7 +55,7 @@ namespace Учет_цистерн
             }
         }
 
-        private void GetFilter()
+        public void GetFilter()
         {
             try
             {
@@ -764,6 +765,13 @@ namespace Учет_цистерн
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 logger.Error(ex, " аУТНToolStripMenuItem_Click_MainForm");
             }
+        }
+
+        private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddGlobalFilterForm addGlobalFilterForm = new AddGlobalFilterForm();
+            addGlobalFilterForm.Owner = this;
+            addGlobalFilterForm.ShowDialog();
         }
     }
 }
