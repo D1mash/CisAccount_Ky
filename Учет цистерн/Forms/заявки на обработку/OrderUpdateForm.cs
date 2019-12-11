@@ -72,13 +72,8 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             {
                 if (MessageBox.Show("Удалить выделенную запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    //string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
-                    //DataTable dt = DbConnection.DBConnect(GetID);
-                    string DeleteRow = "delete from d__RenderedServiceBody where ID = " + SelectItemRow + " delete from temp where body_id = " + SelectItemRow;
+                    string DeleteRow = "delete from d__RenderedServiceBody where ID = " + SelectItemRow + " delete from temp where body_id = " + SelectItemRow + " delete from d__AUTN where body_id = " + SelectItemRow;
                     DbConnection.DBConnect(DeleteRow);
-                    //string DeleteTemp = "delete from temp where body_id = " + SelectItemRow;
-                    //DbConnection.DBConnect(DeleteRow);
-                    MessageBox.Show("Запись удалена!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateBody();
                 }
             }
@@ -89,6 +84,20 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //скопировать строку
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string CopyBody = "exec dbo.CopyRenderedServiceBody " + SelectItemRow;
+                DbConnection.DBConnect(CopyBody);
+                UpdateBody();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //Обновить кнопка

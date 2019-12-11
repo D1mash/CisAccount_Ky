@@ -151,7 +151,6 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 {
                     string DeleteRow = "delete from d__RenderedServiceBody where ID = " + SelectItemRow + " delete from temp where body_id = "+SelectItemRow+" delete from d__AUTN where body_id = "+SelectItemRow;
                     DbConnection.DBConnect(DeleteRow);
-                    MessageBox.Show("Запись удалена!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateBody();
                 }
             }
@@ -162,6 +161,20 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //скопировать строчку
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string CopyBody = "exec dbo.CopyRenderedServiceBody "+SelectItemRow;
+                DbConnection.DBConnect(CopyBody);
+                UpdateBody();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
