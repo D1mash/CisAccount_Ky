@@ -28,37 +28,59 @@ namespace Учет_цистерн
         {
             if (comboBox2.SelectedIndex == 0)
             {
-                string RefreshAll = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
-                DataTable dt;
-                dt = DbConnection.DBConnect(RefreshAll);
-                source.DataSource = dt;
-                dataGridView1.DataSource = source;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[14].Visible = false;
-                dataGridView1.Columns[15].Visible = false;
-                progressBar.Maximum = TotalRow(dt);
-                toolStripLabel1.Text = TotalRow(dt).ToString();
+                if (checkBox1.Checked)
+                {
+                    string Itog_All_Report = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
+                    DataTable dt;
+                    dt = DbConnection.DBConnect(Itog_All_Report);
+                    source.DataSource = dt;
+                    dataGridView1.DataSource = source;
+                }
+                else
+                {
+                    string RefreshAll = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
+                    DataTable dt;
+                    dt = DbConnection.DBConnect(RefreshAll);
+                    source.DataSource = dt;
+                    dataGridView1.DataSource = source;
+                    dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[14].Visible = false;
+                    dataGridView1.Columns[15].Visible = false;
+                    progressBar.Maximum = TotalRow(dt);
+                    toolStripLabel1.Text = TotalRow(dt).ToString();
 
-                string GetCountServiceCost = "exec dbo.GetCountServiceCost '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
-                getserv = DbConnection.DBConnect(GetCountServiceCost);
-                SUM_Line(true);
+                    string GetCountServiceCost = "exec dbo.GetCountServiceCost '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
+                    getserv = DbConnection.DBConnect(GetCountServiceCost);
+                }
+                //SUM_Line(true);
             }
             else
             {
-                string Refresh = "dbo.GetReportRenderedServices_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
-                DataTable dataTable;
-                dataTable = DbConnection.DBConnect(Refresh);
-                source.DataSource = dataTable;
-                dataGridView1.DataSource = source;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[14].Visible = false;
-                dataGridView1.Columns[15].Visible = false;
-                progressBar.Maximum = TotalRow(dataTable);
-                toolStripLabel1.Text = TotalRow(dataTable).ToString();
+                if (checkBox1.Checked)
+                {
+                    string Itog_All_Report = "exec dbo.Itog_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
+                    DataTable dt;
+                    dt = DbConnection.DBConnect(Itog_All_Report);
+                    source.DataSource = dt;
+                    dataGridView1.DataSource = source;
+                }
+                else 
+                {
+                    string Refresh = "dbo.GetReportRenderedServices_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
+                    DataTable dataTable;
+                    dataTable = DbConnection.DBConnect(Refresh);
+                    source.DataSource = dataTable;
+                    dataGridView1.DataSource = source;
+                    dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[14].Visible = false;
+                    dataGridView1.Columns[15].Visible = false;
+                    progressBar.Maximum = TotalRow(dataTable);
+                    toolStripLabel1.Text = TotalRow(dataTable).ToString();
 
-                string GetCountServiceCost = "exec dbo.GetCountServiceCost_byOwner  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
-                getserv = DbConnection.DBConnect(GetCountServiceCost);
-                SUM_Line(true);
+                    string GetCountServiceCost = "exec dbo.GetCountServiceCost_byOwner  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
+                    getserv = DbConnection.DBConnect(GetCountServiceCost);
+                }
+                //SUM_Line(true);
             }
         }
 
@@ -361,122 +383,122 @@ namespace Учет_цистерн
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            int sz = 0;
+            //int sz = 0;
 
-            try
-            {
-                Decimal sum = 0;
-                int Count = 0;
-                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-                {
-                    if (dataGridView1.Rows[i].Cells[12].Value.ToString() != string.Empty)
-                    {
-                        sum += Convert.ToDecimal(this.dataGridView1[12, i].Value);
-                    }
-                    Count = dataGridView1.RowCount;
-                }
+            //try
+            //{
+            //    Decimal sum = 0;
+            //    int Count = 0;
+            //    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            //    {
+            //        if (dataGridView1.Rows[i].Cells[12].Value.ToString() != string.Empty)
+            //        {
+            //            sum += Convert.ToDecimal(this.dataGridView1[12, i].Value);
+            //        }
+            //        Count = dataGridView1.RowCount;
+            //    }
 
-                foreach (var scroll in dataGridView1.Controls.OfType<HScrollBar>())
-                {
-                    if (scroll.Visible)
-                    {
-                        sz = -3;
-                    }
-                    else
-                    {
-                        sz = 15;
-                    }
-                }
+            //    foreach (var scroll in dataGridView1.Controls.OfType<HScrollBar>())
+            //    {
+            //        if (scroll.Visible)
+            //        {
+            //            sz = -3;
+            //        }
+            //        else
+            //        {
+            //            sz = 15;
+            //        }
+            //    }
                  
-                panel1.Width = this.dataGridView1.RowHeadersWidth;
-                panel1.Location = new Point(5, this.dataGridView1.Height - (panel1.Height - sz));
-                panel1.Visible = true;
+            //    panel1.Width = this.dataGridView1.RowHeadersWidth;
+            //    panel1.Location = new Point(5, this.dataGridView1.Height - (panel1.Height - sz));
+            //    panel1.Visible = true;
 
-                int Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
-                panel2.Width = this.dataGridView1.Columns[1].Width + 1;
-                Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
-                panel2.Location = new Point(Xdgvx1, this.dataGridView1.Height - (panel2.Height - sz));
-                panel2.Visible = true;
+            //    int Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
+            //    panel2.Width = this.dataGridView1.Columns[1].Width + 1;
+            //    Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+            //    panel2.Location = new Point(Xdgvx1, this.dataGridView1.Height - (panel2.Height - sz));
+            //    panel2.Visible = true;
 
-                textBox1.Text = "Всего строк: " + Count.ToString();
-                int Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
-                textBox1.Width = this.dataGridView1.Columns[2].Width + 1;
-                Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
-                textBox1.Location = new Point(Xdgvx2, this.dataGridView1.Height - (textBox1.Height - sz));
-                textBox1.Visible = true;
+            //    textBox1.Text = "Всего строк: " + Count.ToString();
+            //    int Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+            //    textBox1.Width = this.dataGridView1.Columns[2].Width + 1;
+            //    Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
+            //    textBox1.Location = new Point(Xdgvx2, this.dataGridView1.Height - (textBox1.Height - sz));
+            //    textBox1.Visible = true;
 
-                int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
-                panel3.Width = this.dataGridView1.Columns[3].Width + 1;
-                Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
-                panel3.Location = new Point(Xdgvx3, this.dataGridView1.Height - (panel3.Height - sz));
-                panel3.Visible = true;
+            //    int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
+            //    panel3.Width = this.dataGridView1.Columns[3].Width + 1;
+            //    Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
+            //    panel3.Location = new Point(Xdgvx3, this.dataGridView1.Height - (panel3.Height - sz));
+            //    panel3.Visible = true;
 
-                int Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
-                panel4.Width = this.dataGridView1.Columns[4].Width + 1;
-                Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
-                panel4.Location = new Point(Xdgvx4, this.dataGridView1.Height - (panel4.Height - sz));
-                panel4.Visible = true;
+            //    int Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
+            //    panel4.Width = this.dataGridView1.Columns[4].Width + 1;
+            //    Xdgvx4 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
+            //    panel4.Location = new Point(Xdgvx4, this.dataGridView1.Height - (panel4.Height - sz));
+            //    panel4.Visible = true;
 
-                int Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
-                panel5.Width = this.dataGridView1.Columns[5].Width + 1;
-                Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
-                panel5.Location = new Point(Xdgvx5, this.dataGridView1.Height - (panel5.Height - sz));
-                panel5.Visible = true;
+            //    int Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(4, -1, true).Location.X;
+            //    panel5.Width = this.dataGridView1.Columns[5].Width + 1;
+            //    Xdgvx5 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
+            //    panel5.Location = new Point(Xdgvx5, this.dataGridView1.Height - (panel5.Height - sz));
+            //    panel5.Visible = true;
 
-                int Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
-                panel6.Width = this.dataGridView1.Columns[6].Width + 1;
-                Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
-                panel6.Location = new Point(Xdgvx6, this.dataGridView1.Height - (panel6.Height - sz));
-                panel6.Visible = true;
+            //    int Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(5, -1, true).Location.X;
+            //    panel6.Width = this.dataGridView1.Columns[6].Width + 1;
+            //    Xdgvx6 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
+            //    panel6.Location = new Point(Xdgvx6, this.dataGridView1.Height - (panel6.Height - sz));
+            //    panel6.Visible = true;
 
-                int Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
-                panel7.Width = this.dataGridView1.Columns[7].Width + 1;
-                Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
-                panel7.Location = new Point(Xdgvx7, this.dataGridView1.Height - (panel7.Height - sz));
-                panel7.Visible = true;
+            //    int Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(6, -1, true).Location.X;
+            //    panel7.Width = this.dataGridView1.Columns[7].Width + 1;
+            //    Xdgvx7 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
+            //    panel7.Location = new Point(Xdgvx7, this.dataGridView1.Height - (panel7.Height - sz));
+            //    panel7.Visible = true;
 
-                int Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
-                panel8.Width = this.dataGridView1.Columns[8].Width + 1;
-                Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
-                panel8.Location = new Point(Xdgvx8, this.dataGridView1.Height - (panel8.Height - sz));
-                panel8.Visible = true;
+            //    int Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(7, -1, true).Location.X;
+            //    panel8.Width = this.dataGridView1.Columns[8].Width + 1;
+            //    Xdgvx8 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
+            //    panel8.Location = new Point(Xdgvx8, this.dataGridView1.Height - (panel8.Height - sz));
+            //    panel8.Visible = true;
 
-                int Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
-                panel9.Width = this.dataGridView1.Columns[9].Width + 1;
-                Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
-                panel9.Location = new Point(Xdgvx9, this.dataGridView1.Height - (panel9.Height - sz));
-                panel9.Visible = true;
+            //    int Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(8, -1, true).Location.X;
+            //    panel9.Width = this.dataGridView1.Columns[9].Width + 1;
+            //    Xdgvx9 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
+            //    panel9.Location = new Point(Xdgvx9, this.dataGridView1.Height - (panel9.Height - sz));
+            //    panel9.Visible = true;
 
-                int Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
-                panel10.Width = this.dataGridView1.Columns[10].Width + 1;
-                Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
-                panel10.Location = new Point(Xdgvx10, this.dataGridView1.Height - (panel10.Height - sz));
-                panel10.Visible = true;
+            //    int Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(9, -1, true).Location.X;
+            //    panel10.Width = this.dataGridView1.Columns[10].Width + 1;
+            //    Xdgvx10 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
+            //    panel10.Location = new Point(Xdgvx10, this.dataGridView1.Height - (panel10.Height - sz));
+            //    panel10.Visible = true;
 
-                int Xdgvx11 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
-                panel11.Width = this.dataGridView1.Columns[11].Width + 1;
-                Xdgvx11 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
-                panel11.Location = new Point(Xdgvx11, this.dataGridView1.Height - (panel11.Height - sz));
-                panel11.Visible = true;
+            //    int Xdgvx11 = this.dataGridView1.GetCellDisplayRectangle(10, -1, true).Location.X;
+            //    panel11.Width = this.dataGridView1.Columns[11].Width + 1;
+            //    Xdgvx11 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
+            //    panel11.Location = new Point(Xdgvx11, this.dataGridView1.Height - (panel11.Height - sz));
+            //    panel11.Visible = true;
 
-                textBox2.Text = "Сумма: " + sum.ToString();
-                int Xdgvx12 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
-                textBox2.Width = this.dataGridView1.Columns[12].Width + 1;
-                Xdgvx12 = this.dataGridView1.GetCellDisplayRectangle(12, -1, true).Location.X;
-                textBox2.Location = new Point(Xdgvx12, this.dataGridView1.Height - (textBox2.Height - sz));
-                textBox2.Visible = true;
+            //    textBox2.Text = "Сумма: " + sum.ToString();
+            //    int Xdgvx12 = this.dataGridView1.GetCellDisplayRectangle(11, -1, true).Location.X;
+            //    textBox2.Width = this.dataGridView1.Columns[12].Width + 1;
+            //    Xdgvx12 = this.dataGridView1.GetCellDisplayRectangle(12, -1, true).Location.X;
+            //    textBox2.Location = new Point(Xdgvx12, this.dataGridView1.Height - (textBox2.Height - sz));
+            //    textBox2.Visible = true;
 
-                int Xdgvx13 = this.dataGridView1.GetCellDisplayRectangle(12, -1, true).Location.X;
-                panel12.Width = this.dataGridView1.Columns[13].Width + 1;
-                Xdgvx13 = this.dataGridView1.GetCellDisplayRectangle(13, -1, true).Location.X;
-                panel12.Location = new Point(Xdgvx13, this.dataGridView1.Height - (panel12.Height - sz));
-                panel12.Visible = true;
+            //    int Xdgvx13 = this.dataGridView1.GetCellDisplayRectangle(12, -1, true).Location.X;
+            //    panel12.Width = this.dataGridView1.Columns[13].Width + 1;
+            //    Xdgvx13 = this.dataGridView1.GetCellDisplayRectangle(13, -1, true).Location.X;
+            //    panel12.Location = new Point(Xdgvx13, this.dataGridView1.Height - (panel12.Height - sz));
+            //    panel12.Visible = true;
 
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception exp)
+            //{
+            //    MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
     }
 }
