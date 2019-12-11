@@ -81,6 +81,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new ADGV.AdvancedDataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -88,6 +89,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -353,29 +355,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Controls.Add(this.panel21);
-            this.groupBox2.Controls.Add(this.panel20);
-            this.groupBox2.Controls.Add(this.panel19);
-            this.groupBox2.Controls.Add(this.panel18);
-            this.groupBox2.Controls.Add(this.panel17);
-            this.groupBox2.Controls.Add(this.panel16);
-            this.groupBox2.Controls.Add(this.panel15);
-            this.groupBox2.Controls.Add(this.panel14);
-            this.groupBox2.Controls.Add(this.panel13);
-            this.groupBox2.Controls.Add(this.panel12);
-            this.groupBox2.Controls.Add(this.panel11);
-            this.groupBox2.Controls.Add(this.panel10);
-            this.groupBox2.Controls.Add(this.panel7);
-            this.groupBox2.Controls.Add(this.panel9);
-            this.groupBox2.Controls.Add(this.panel8);
-            this.groupBox2.Controls.Add(this.panel6);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.panel5);
-            this.groupBox2.Controls.Add(this.panel4);
-            this.groupBox2.Controls.Add(this.panel3);
-            this.groupBox2.Controls.Add(this.panel2);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.panel1);
+            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.button6);
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.button4);
@@ -575,7 +555,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(246, 15);
+            this.button4.Location = new System.Drawing.Point(343, 15);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(74, 23);
             this.button4.TabIndex = 9;
@@ -605,6 +585,29 @@
             this.dataGridView1.AutoGenerateContextFilters = true;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Controls.Add(this.panel1);
+            this.dataGridView1.Controls.Add(this.panel2);
+            this.dataGridView1.Controls.Add(this.panel3);
+            this.dataGridView1.Controls.Add(this.panel4);
+            this.dataGridView1.Controls.Add(this.panel5);
+            this.dataGridView1.Controls.Add(this.panel6);
+            this.dataGridView1.Controls.Add(this.panel7);
+            this.dataGridView1.Controls.Add(this.panel8);
+            this.dataGridView1.Controls.Add(this.panel9);
+            this.dataGridView1.Controls.Add(this.panel10);
+            this.dataGridView1.Controls.Add(this.panel11);
+            this.dataGridView1.Controls.Add(this.panel12);
+            this.dataGridView1.Controls.Add(this.panel13);
+            this.dataGridView1.Controls.Add(this.panel14);
+            this.dataGridView1.Controls.Add(this.panel15);
+            this.dataGridView1.Controls.Add(this.panel16);
+            this.dataGridView1.Controls.Add(this.panel17);
+            this.dataGridView1.Controls.Add(this.panel18);
+            this.dataGridView1.Controls.Add(this.panel19);
+            this.dataGridView1.Controls.Add(this.panel20);
+            this.dataGridView1.Controls.Add(this.panel21);
+            this.dataGridView1.Controls.Add(this.textBox4);
+            this.dataGridView1.Controls.Add(this.textBox5);
             this.dataGridView1.DateWithTime = false;
             this.dataGridView1.Location = new System.Drawing.Point(3, 44);
             this.dataGridView1.Name = "dataGridView1";
@@ -614,6 +617,16 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(246, 15);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(91, 23);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Скопировать";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // OrderAddForm
             // 
@@ -635,8 +648,9 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.dataGridView1.ResumeLayout(false);
+            this.dataGridView1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -697,5 +711,6 @@
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel7;
+        public System.Windows.Forms.Button button2;
     }
 }

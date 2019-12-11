@@ -149,13 +149,8 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             {
                 if (MessageBox.Show("Удалить выделенную запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    //string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
-                    //DataTable dt = DbConnection.DBConnect(GetID);
-                    string DeleteRow = "delete from d__RenderedServiceBody where ID = " + SelectItemRow + " delete from temp where body_id = "+SelectItemRow;
+                    string DeleteRow = "delete from d__RenderedServiceBody where ID = " + SelectItemRow + " delete from temp where body_id = "+SelectItemRow+" delete from d__AUTN where body_id = "+SelectItemRow;
                     DbConnection.DBConnect(DeleteRow);
-                    //string DeleteTemp = "delete from temp where body_id = " + SelectItemRow;
-                    //DbConnection.DBConnect(DeleteRow);
-                    MessageBox.Show("Запись удалена!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateBody();
                 }
             }
@@ -166,6 +161,20 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //скопировать строчку
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string CopyBody = "exec dbo.CopyRenderedServiceBody "+SelectItemRow;
+                DbConnection.DBConnect(CopyBody);
+                UpdateBody();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -365,7 +374,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 {
                     if (scroll.Visible)
                     {
-                        sz = 25;
+                        sz = -15;
                     }
                     else
                     {
@@ -373,7 +382,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                     }
                 }
                 panel1.Width = this.dataGridView1.RowHeadersWidth + 1;
-                panel1.Location = new Point(2, this.dataGridView1.Height - (panel1.Height - sz));
+                panel1.Location = new Point(5, this.dataGridView1.Height - (panel1.Height - sz));
                 panel1.Visible = true;
 
                 textBox4.Text = "Всего строк: " + Count.ToString();
@@ -619,6 +628,45 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 //drkr
                 string UpdateDrkr = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[8].Value + "',5," + SelectItemRow;
                 DbConnection.DBConnect(UpdateDrkr);
+                //AvailableAUTN
+                string UpdateAvailableAUTN = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[11].Value + "',6," + SelectItemRow;
+                DbConnection.DBConnect(UpdateAvailableAUTN);
+                //Klapan
+                string UpdateKlapan = "exec [dbo].[UpdateBodyAutn] '" + dataGridView1.Rows[e.RowIndex].Cells[12].Value + "',1," + SelectItemRow;
+                DbConnection.DBConnect(UpdateKlapan);
+                //DemSkobi
+                string UpdateDemSkobi = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[13].Value + "',7," + SelectItemRow;
+                DbConnection.DBConnect(UpdateDemSkobi);
+                //Trafaret_PTC_Holding
+                string UpdateTrafaret_PTC_Holding = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[14].Value + "',8," + SelectItemRow;
+                DbConnection.DBConnect(UpdateTrafaret_PTC_Holding);
+                //UshkiZavareni
+                string UpdateUshkiZavareni = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[15].Value + "',9," + SelectItemRow;
+                DbConnection.DBConnect(UpdateUshkiZavareni);
+                //SkobiZavareni
+                string UpdateSkobiZavareni = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[16].Value + "',10," + SelectItemRow;
+                DbConnection.DBConnect(UpdateSkobiZavareni);
+                //ShaibaValikZavareni
+                string UpdateShaibaValikZavareni = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[17].Value + "',11," + SelectItemRow;
+                DbConnection.DBConnect(UpdateShaibaValikZavareni);
+                //VnutrLestnica
+                string UpdateVnutrLestnica = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[18].Value + "',12," + SelectItemRow;
+                DbConnection.DBConnect(UpdateVnutrLestnica);
+                //Greben
+                string UpdateGreben = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[19].Value + "',13," + SelectItemRow;
+                DbConnection.DBConnect(UpdateGreben);
+                //BarashkTip
+                string UpdateBarashkTip = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[20].Value + "',14," + SelectItemRow;
+                DbConnection.DBConnect(UpdateBarashkTip);
+                //AvailTriBoltov
+                string UpdateAvailTriBoltov = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[21].Value + "',15," + SelectItemRow;
+                DbConnection.DBConnect(UpdateAvailTriBoltov);
+                //AvailToExp
+                string UpdateAvailToExp = "exec [dbo].[UpdateBodyTemp] '" + dataGridView1.Rows[e.RowIndex].Cells[22].Value + "',16," + SelectItemRow;
+                DbConnection.DBConnect(UpdateAvailToExp);
+                //Note
+                string UpdateNote = "exec [dbo].[UpdateBodyAutn] '" + dataGridView1.Rows[e.RowIndex].Cells[23].Value + "',2," + SelectItemRow;
+                DbConnection.DBConnect(UpdateNote);
 
                 //for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 //{
