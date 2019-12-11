@@ -51,7 +51,7 @@ namespace Учет_цистерн
                     }
                 }
                 CarriageAddForm carriageAddForm = new CarriageAddForm();
-                carriageAddForm.Show();
+                carriageAddForm.ShowDialog();
             }
             catch (SqlException ex)
             {
@@ -174,7 +174,7 @@ namespace Учет_цистерн
                 carriageUpdateForm.SelectOwnerID = SelectOwnerID;
                 carriageUpdateForm.textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 carriageUpdateForm.textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                carriageUpdateForm.Show();
+                carriageUpdateForm.ShowDialog();
             }
             catch (Exception ex)
             {

@@ -49,7 +49,7 @@ namespace Учет_цистерн
                     }
                 }
                 OwnerAddForm OwnerAddForm = new OwnerAddForm();
-                OwnerAddForm.Show();
+                OwnerAddForm.ShowDialog();
             }
             catch (SqlException ex)
             {
@@ -79,7 +79,7 @@ namespace Учет_цистерн
                 OwnerUpdtForm.textBox1.Text = dataGVOwner.CurrentRow.Cells[1].Value.ToString();
                 OwnerUpdtForm.textBox2.Text = dataGVOwner.CurrentRow.Cells[2].Value.ToString();
                 //OwnerUpdtForm.textBox3.Text = dataGVOwner.CurrentRow.Cells[3].Value.ToString();
-                OwnerUpdtForm.Show();
+                OwnerUpdtForm.ShowDialog();
             }
             catch (Exception ex)
             {

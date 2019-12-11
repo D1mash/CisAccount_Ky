@@ -28,7 +28,7 @@ namespace Учет_цистерн
                     }
                 }
                 addNewCargo addCargo = new addNewCargo();
-                addCargo.Show();
+                addCargo.ShowDialog();
                 
             }
             catch (SqlException ex)
@@ -78,7 +78,7 @@ namespace Учет_цистерн
                 UpdateProductForm.textBox1.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 UpdateProductForm.SelectID = SelectItemRow;
                 UpdateProductForm.SelectHandlingID = SelectHandlingID;
-                UpdateProductForm.Show();
+                UpdateProductForm.ShowDialog();
             }
             catch (Exception ex)
             {
