@@ -36,6 +36,8 @@ namespace Учет_цистерн
                     dt = DbConnection.DBConnect(Itog_All_Report);
                     source.DataSource = dt;
                     dataGridView1.DataSource = source;
+                    progressBar.Maximum = TotalRow(dt);
+                    toolStripLabel1.Text = TotalRow(dt).ToString();
                 }
                 else
                 {
@@ -51,7 +53,7 @@ namespace Учет_цистерн
                     progressBar.Maximum = TotalRow(dt);
                     toolStripLabel1.Text = TotalRow(dt).ToString();
 
-                    string GetCountServiceCost = "exec dbo.GetCountServiceCost '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
+                    string GetCountServiceCost = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
                     getserv = DbConnection.DBConnect(GetCountServiceCost);
                 }
                 //SUM_Line(true);
@@ -66,6 +68,8 @@ namespace Учет_цистерн
                     dt = DbConnection.DBConnect(Itog_All_Report);
                     source.DataSource = dt;
                     dataGridView1.DataSource = source;
+                    progressBar.Maximum = TotalRow(dt);
+                    toolStripLabel1.Text = TotalRow(dt).ToString();
                 }
                 else 
                 {
@@ -81,7 +85,7 @@ namespace Учет_цистерн
                     progressBar.Maximum = TotalRow(dataTable);
                     toolStripLabel1.Text = TotalRow(dataTable).ToString();
 
-                    string GetCountServiceCost = "exec dbo.GetCountServiceCost_byOwner  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
+                    string GetCountServiceCost = "exec dbo.Itog_Report  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
                     getserv = DbConnection.DBConnect(GetCountServiceCost);
                 }
                 //SUM_Line(true);
@@ -299,17 +303,17 @@ namespace Учет_цистерн
                 for (int i = 0; i < getserv.Rows.Count; i++)
                 {
                     rowcount++;
-                        for (int j = 0; j < getserv.Columns.Count; j++)
+                    for (int j = 0; j < getserv.Columns.Count; j++)
+                    {
+                        if (j == 0)
                         {
-                            if (j == 0)
-                            {
-                                worksheet.Cells[i + cellRowIndex + 15+rowcount, j + 2] = getserv.Rows[i][j].ToString();
-                            }
-                            else
-                            {
-                                worksheet.Cells[i + cellRowIndex + 15+rowcount, j + 12] = getserv.Rows[i][j].ToString();
-                            }
+                            worksheet.Cells[i + cellRowIndex + 15 + rowcount, j + 2] = getserv.Rows[i][j].ToString();
                         }
+                        else
+                        {
+                            worksheet.Cells[i + cellRowIndex + 15 + rowcount, j + 12] = getserv.Rows[i][j].ToString();
+                        }
+                    }
                 }
 
                 worksheet.Cells[dataGridView1.Rows.Count + 14, 13] = cellRowIndex;
