@@ -30,6 +30,7 @@ namespace Учет_цистерн
             {
                 if (checkBox1.Checked)
                 {
+                    dataGridView1.DataSource = null;
                     string Itog_All_Report = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
                     DataTable dt;
                     dt = DbConnection.DBConnect(Itog_All_Report);
@@ -38,6 +39,7 @@ namespace Учет_цистерн
                 }
                 else
                 {
+                    dataGridView1.DataSource = null;
                     string RefreshAll = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
                     DataTable dt;
                     dt = DbConnection.DBConnect(RefreshAll);
@@ -58,6 +60,7 @@ namespace Учет_цистерн
             {
                 if (checkBox1.Checked)
                 {
+                    dataGridView1.DataSource = null;
                     string Itog_All_Report = "exec dbo.Itog_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
                     DataTable dt;
                     dt = DbConnection.DBConnect(Itog_All_Report);
@@ -66,6 +69,7 @@ namespace Учет_цистерн
                 }
                 else 
                 {
+                    dataGridView1.DataSource = null;
                     string Refresh = "dbo.GetReportRenderedServices_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
                     DataTable dataTable;
                     dataTable = DbConnection.DBConnect(Refresh);
