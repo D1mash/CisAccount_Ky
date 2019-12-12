@@ -430,6 +430,7 @@
     <EmbeddedResource Include="Forms\Станции\UpdtCurrentStation_StationForm.resx">
       <DependentUpon>UpdtCurrentStation_StationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Forms\ReportTemplates\Итог по станции.xlsx" />
     <None Include="Forms\ReportTemplates\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx" />
     <None Include="Forms\ReportTemplates\Реестр АУТН.xlsx" />
     <None Include="Forms\ReportTemplates\СНО Приход.xlsx" />
