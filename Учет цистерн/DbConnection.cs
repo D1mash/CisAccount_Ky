@@ -18,13 +18,20 @@ namespace Учет_цистерн
             SqlConnection conn;
             DataTable dataTable = new DataTable();
 
-            using (conn = new SqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                da.Fill(dataTable);
-                conn.Close();
-                conn.Dispose();
+                using (conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                    da.Fill(dataTable);
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             return dataTable;
         }
