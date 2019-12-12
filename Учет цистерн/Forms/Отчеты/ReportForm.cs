@@ -202,14 +202,22 @@ namespace Учет_цистерн
                     app.Visible = false;
                     object misValue = System.Reflection.Missing.Value;
 
-                    for(int i = 0; i < dataGridView1.Rows.Count; i++)
+                    int sum_uslug = 0;
+
+                    worksheet.Range["B13:H24"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 12, 2]);
+
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         for(int j = 0; j < dataGridView1.Columns.Count; j++)
                         {
                             worksheet.Cells[i+11, j+2] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                             backgroundWorker.ReportProgress(i);
                         }
+                        sum_uslug++;
                     }
+
+                    worksheet.Range["I8"].Value = sum_uslug;
+
 
                     app.DisplayAlerts = false;
                     workbook.SaveAs(@"D:\Отчеты\Итог по станции.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
