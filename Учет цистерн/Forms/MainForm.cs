@@ -61,11 +61,7 @@ namespace Учет_цистерн
             {
                 string Reffresh = "exec dbo.GetFilter";
                 dataGridView1.DataSource = DbConnection.DBConnect(Reffresh); ;
-                dataGridView1.RowHeadersWidth = 15;
-                dataGridView1.Columns[1].Visible = false;
-                dataGridView1.Columns[0].Width = 50;
-                dataGridView1.Columns[2].Width = 120;
-                dataGridView1.Columns[3].Width = 80;
+                dataGridView1.Columns[0].Visible = false;
             }
             catch (Exception exp)
             {
@@ -128,22 +124,14 @@ namespace Учет_цистерн
         {
             try
             {
-                string message = string.Empty;
                 string IDs = string.Empty;
                 List<Object> aList = new List<Object>();
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
-                    bool isSelected = Convert.ToBoolean(row.Cells["checkBoxColumn"].Value);
-                    if (isSelected)
-                    {
-                        aList.Add(row.Cells[1].Value.ToString());
-                        IDs = string.Join(" ", aList);
-                        string delete = "exec dbo.RemoveGlobalFilter '" + IDs + "'";
-                        DbConnection.DBConnect(delete);
-                    }
-                    else
-                    {
-                    }
+                    aList.Add(row.Cells[0].Value.ToString());
+                    IDs = string.Join(" ", aList);
+                    string delete = "exec dbo.RemoveGlobalFilter '" + IDs + "'";
+                    DbConnection.DBConnect(delete);
                 }
                 GetFilter();
             }
@@ -553,6 +541,7 @@ namespace Учет_цистерн
 
         private void dataGridView1_CellPainting_1(object sender, DataGridViewCellPaintingEventArgs e)
         {
+            int sz = 0;
             try
             {
                 int Count = 0;
@@ -565,74 +554,35 @@ namespace Учет_цистерн
                 {
                     if (scroll.Visible)
                     {
-                        panel1.Width = this.dataGridView1.RowHeadersWidth + 2;
-                        panel1.Location = new Point(5, this.dataGridView1.Height - (panel1.Height + 15));
-                        panel1.Visible = true;
-
-                        int Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
-                        panel2.Width = this.dataGridView1.Columns[0].Width + 1;
-                        Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
-                        panel2.Location = new Point(Xdgvx2, this.dataGridView1.Height - (panel2.Height + 15));
-                        panel2.Visible = true;
-
-                        textBox1.Text = "Всего строк: " + Count.ToString();
-                        int Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
-                        textBox1.Width = this.dataGridView1.Columns[2].Width + 1;
-                        Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
-                        textBox1.Location = new Point(Xdgvx1, this.dataGridView1.Height - (textBox1.Height + 15));
-                        textBox1.Visible = true;
-
-                        int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
-                        panel3.Width = this.dataGridView1.Columns[3].Width + 2;
-                        Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
-                        panel3.Location = new Point(Xdgvx3, this.dataGridView1.Height - (panel3.Height + 15));
-                        panel3.Visible = true;
+                        sz = -15;
                     }
                     else
                     {
-                        panel1.Width = this.dataGridView1.RowHeadersWidth + 1;
-                        panel1.Location = new Point(5, this.dataGridView1.Height - (panel1.Height - 1));
-                        panel1.Visible = true;
-
-                        int Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
-                        panel2.Width = this.dataGridView1.Columns[0].Width + 1;
-                        Xdgvx2 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
-                        panel2.Location = new Point(Xdgvx2, this.dataGridView1.Height - (panel2.Height - 1));
-                        panel2.Visible = true;
-
-                        textBox1.Text = "Всего строк: " + Count.ToString();
-                        int Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
-                        textBox1.Width = this.dataGridView1.Columns[2].Width + 1;
-                        Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
-                        textBox1.Location = new Point(Xdgvx1, this.dataGridView1.Height - (textBox1.Height - 1));
-                        textBox1.Visible = true;
-
-                        int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
-                        panel3.Width = this.dataGridView1.Columns[3].Width + 2;
-                        Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(3, -1, true).Location.X;
-                        panel3.Location = new Point(Xdgvx3, this.dataGridView1.Height - (panel3.Height - 1));
-                        panel3.Visible = true;
+                        sz = 1;
                     }
                 }
+
+                panel1.Width = this.dataGridView1.RowHeadersWidth;
+                panel1.Location = new Point(5, this.dataGridView1.Height - (panel1.Height - sz));
+                panel1.Visible = true;
+
+                textBox1.Text = "Всего строк: " + Count.ToString();
+                int Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
+                textBox1.Width = this.dataGridView1.Columns[1].Width + 1;
+                Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
+                textBox1.Location = new Point(Xdgvx1, this.dataGridView1.Height - (textBox1.Height - sz));
+                textBox1.Visible = true;
+
+                int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
+                panel3.Width = this.dataGridView1.Columns[2].Width + 2;
+                Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
+                panel3.Location = new Point(Xdgvx3, this.dataGridView1.Height - (panel3.Height - sz));
+                panel3.Visible = true;
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 logger.Error(exp, "dataGridView1_CellPainting_1");
-            }
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (e.RowIndex >= 0)
-                    this.dataGridView1.Rows[e.RowIndex].Cells["checkBoxColumn"].Value = true;
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error(exp, "dataGridView1_CellClick_MainForm");
             }
         }
 

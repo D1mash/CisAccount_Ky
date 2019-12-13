@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -72,8 +73,15 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             {
                 if (MessageBox.Show("Удалить выделенную запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string DeleteRow = "delete from d__RenderedServiceBody where ID = " + SelectItemRow + " delete from temp where body_id = " + SelectItemRow + " delete from d__AUTN where body_id = " + SelectItemRow;
-                    DbConnection.DBConnect(DeleteRow);
+                    string IDs = string.Empty;
+                    List<Object> aList = new List<Object>();
+                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                    {
+                        aList.Add(row.Cells[0].Value.ToString());
+                        IDs = string.Join(" ", aList);
+                        string delete = "exec dbo.DeleteRenderedBody '" + IDs + "'";
+                        DbConnection.DBConnect(delete);
+                    }
                     UpdateBody();
                 }
             }
