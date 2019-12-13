@@ -36,6 +36,8 @@ namespace Учет_цистерн
                     dt = DbConnection.DBConnect(Itog_All_Report);
                     source.DataSource = dt;
                     dataGridView1.DataSource = source;
+                    progressBar.Maximum = TotalRow(dt);
+                    toolStripLabel1.Text = TotalRow(dt).ToString();
                 }
                 else
                 {
@@ -51,7 +53,7 @@ namespace Учет_цистерн
                     progressBar.Maximum = TotalRow(dt);
                     toolStripLabel1.Text = TotalRow(dt).ToString();
 
-                    string GetCountServiceCost = "exec dbo.GetCountServiceCost '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
+                    string GetCountServiceCost = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
                     getserv = DbConnection.DBConnect(GetCountServiceCost);
                 }
                 //SUM_Line(true);
@@ -66,6 +68,8 @@ namespace Учет_цистерн
                     dt = DbConnection.DBConnect(Itog_All_Report);
                     source.DataSource = dt;
                     dataGridView1.DataSource = source;
+                    progressBar.Maximum = TotalRow(dt);
+                    toolStripLabel1.Text = TotalRow(dt).ToString();
                 }
                 else 
                 {
@@ -81,7 +85,7 @@ namespace Учет_цистерн
                     progressBar.Maximum = TotalRow(dataTable);
                     toolStripLabel1.Text = TotalRow(dataTable).ToString();
 
-                    string GetCountServiceCost = "exec dbo.GetCountServiceCost_byOwner  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
+                    string GetCountServiceCost = "exec dbo.Itog_Report  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
                     getserv = DbConnection.DBConnect(GetCountServiceCost);
                 }
                 //SUM_Line(true);
@@ -188,146 +192,184 @@ namespace Учет_цистерн
         {
             try
             {
-                string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
-                //var folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-                //string fileName = ((DataParametr)e.Argument).FileName;
-                string ownerName = ((DataParametr)e.Argument).owner;
-
-                Excel.Application app = new Excel.Application();
-                Process appProcess = GetExcelProcess(app);
-                Excel.Workbook workbook = app.Workbooks.Open(path);
-                Excel.Worksheet worksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
-                app.Visible = false;
-                object misValue = System.Reflection.Missing.Value;
-
-                int cellRowIndex = 0;
-                int totalTOR4 = 0;
-
-                if (ownerName == "Все")
+                if (checkBox1.Checked)
                 {
-                    worksheet.Range["C4"].Value = "всех";
-                }
-                else
-                {
-                    worksheet.Range["C4"].Value = ownerName;
-                }
+                    string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Итог по станции.xlsx";
+                    Excel.Application app = new Excel.Application();
+                    Process appProcess = GetExcelProcess(app);
+                    Excel.Workbook workbook = app.Workbooks.Open(path);
+                    Excel.Worksheet worksheet = workbook.Worksheets.get_Item("Итоговая  справка");
+                    app.Visible = false;
+                    object misValue = System.Reflection.Missing.Value;
 
-                worksheet.Range["C6"].Value = "в ТОО Казыгурт-Юг c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
+                    int sum_uslug = 0;
 
-                FormattingExcelCells(worksheet.Range["C6"], false, false);
+                    worksheet.Range["B13:H24"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 12, 2]);
 
-                worksheet.Range["K21"].Value = UserFIO;
-
-                worksheet.Range["B12:K23"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 17 + getserv.Rows.Count*2, 2]);
-                
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    worksheet.Cells[i + 10, 1] = i + 1;
-                    for (int j = 1; j < dataGridView1.Columns.Count-2; j++)
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
-                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check.
-                        //if (cellRowIndex == 1)
-                        //{
-                        //    worksheet.Cells[cellRowIndex, cellColumnIndex] = dataGridView1.Columns[j].HeaderText;
-                        //}
-                        if(j!=3 && j<4)
+                        for(int j = 0; j < dataGridView1.Columns.Count; j++)
                         {
-                            worksheet.Cells[i + 10, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            worksheet.Cells[i+11, j+2] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            backgroundWorker.ReportProgress(i);
                         }
-                        else
-                        {
-                            if(j == 3)
-                            {
-                                if (dataGridView1.Rows[i].Cells[j].Value.ToString().Trim() == "8")
-                                {
-                                    worksheet.Cells[i + 10, 5] = dataGridView1.Rows[i].Cells[j].Value.ToString();
-                                }
-                                else
-                                {
-                                    worksheet.Cells[i + 10, 4] = dataGridView1.Rows[i].Cells[j].Value.ToString();
-                                }
-                            }
-                        }
-                        if(j>=4 && j<=5)
-                        {
-                            worksheet.Cells[i + 10, j + 3] = dataGridView1.Rows[i].Cells[j].Value.ToString();
-                        }
-                        else
-                        {
-                            if(j>=6 && j <= 9)
-                            {
-                                if(dataGridView1.Rows[i].Cells[j].Value.ToString().Trim() == "True")
-                                {
-                                    worksheet.Cells[i + 10, j + 3] = "✓";
-                                }
-                                else
-                                {
-                                    worksheet.Cells[i + 10, j + 3] = " ";
-                                }
-                            }
-                        }
-                        if(j>9)
-                        {
-                            worksheet.Cells[i + 10, j + 3] = dataGridView1.Rows[i].Cells[j].Value.ToString();
-                        }
+                        sum_uslug++;
                     }
 
-                    //Excel.Range priceRange = worksheet.Range[worksheet.Cells[i + 10, 15], worksheet.Cells[dataGridView1.Rows.Count + 9, 15]];
-                    //priceRange.NumberFormat = "0.00";
-                
-                    Excel.Range range = worksheet.Range[worksheet.Cells[i + 10, 1], worksheet.Cells[i + 10, dataGridView1.Columns.Count]];
-                    FormattingExcelCells(range, true, true);
+                    worksheet.Range["I8"].Value = sum_uslug;
 
-                    backgroundWorker.ReportProgress(i);
 
-                    cellRowIndex++;
-                }
+                    app.DisplayAlerts = false;
+                    workbook.SaveAs(@"D:\Отчеты\Итог по станции.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    workbook.Close(true, misValue, misValue);
+                    app.Quit();
+                    appProcess.Kill();
 
-                worksheet.Cells[dataGridView1.Rows.Count + 12, 2] = "=C6";
-
-                if (ownerName == "Все")
-                {
-                    worksheet.Cells[dataGridView1.Rows.Count + 14, 2] = "Всего обработано вагонов - цистерн всех собственников по видам операций:";
+                    Process.Start(@"D:\Отчеты\Итог по станции.xls");
                 }
                 else
                 {
-                    worksheet.Cells[dataGridView1.Rows.Count + 14, 2] = "Всего обработано вагонов - цистерн " + ownerName + " по видам операций:";
-                }
+                    string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
+                    //var folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-                int rowcount = 0;
-                for (int i = 0; i < getserv.Rows.Count; i++)
-                {
-                    rowcount++;
+                    //string fileName = ((DataParametr)e.Argument).FileName;
+                    string ownerName = ((DataParametr)e.Argument).owner;
+
+                    Excel.Application app = new Excel.Application();
+                    Process appProcess = GetExcelProcess(app);
+                    Excel.Workbook workbook = app.Workbooks.Open(path);
+                    Excel.Worksheet worksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
+                    app.Visible = false;
+                    object misValue = System.Reflection.Missing.Value;
+
+                    int cellRowIndex = 0;
+                    int totalTOR4 = 0;
+
+                    if (ownerName == "Все")
+                    {
+                        worksheet.Range["C4"].Value = "всех";
+                    }
+                    else
+                    {
+                        worksheet.Range["C4"].Value = ownerName;
+                    }
+
+                    worksheet.Range["C6"].Value = "в ТОО Казыгурт-Юг c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
+
+                    FormattingExcelCells(worksheet.Range["C6"], false, false);
+
+                    worksheet.Range["K21"].Value = UserFIO;
+
+                    worksheet.Range["B15:K23"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 16 + getserv.Rows.Count * 2, 2]);
+
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        worksheet.Cells[i + 10, 1] = i + 1;
+                        for (int j = 1; j < dataGridView1.Columns.Count - 2; j++)
+                        {
+                            // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check.
+                            //if (cellRowIndex == 1)
+                            //{
+                            //    worksheet.Cells[cellRowIndex, cellColumnIndex] = dataGridView1.Columns[j].HeaderText;
+                            //}
+                            if (j != 3 && j < 4)
+                            {
+                                worksheet.Cells[i + 10, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            }
+                            else
+                            {
+                                if (j == 3)
+                                {
+                                    if (dataGridView1.Rows[i].Cells[j].Value.ToString().Trim() == "8")
+                                    {
+                                        worksheet.Cells[i + 10, 5] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                    }
+                                    else
+                                    {
+                                        worksheet.Cells[i + 10, 4] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                    }
+                                }
+                            }
+                            if (j >= 4 && j <= 5)
+                            {
+                                worksheet.Cells[i + 10, j + 3] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            }
+                            else
+                            {
+                                if (j >= 6 && j <= 9)
+                                {
+                                    if (dataGridView1.Rows[i].Cells[j].Value.ToString().Trim() == "True")
+                                    {
+                                        worksheet.Cells[i + 10, j + 3] = "✓";
+                                    }
+                                    else
+                                    {
+                                        worksheet.Cells[i + 10, j + 3] = " ";
+                                    }
+                                }
+                            }
+                            if (j > 9)
+                            {
+                                worksheet.Cells[i + 10, j + 3] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            }
+                        }
+
+                        //Excel.Range priceRange = worksheet.Range[worksheet.Cells[i + 10, 15], worksheet.Cells[dataGridView1.Rows.Count + 9, 15]];
+                        //priceRange.NumberFormat = "0.00";
+
+                        Excel.Range range = worksheet.Range[worksheet.Cells[i + 10, 1], worksheet.Cells[i + 10, dataGridView1.Columns.Count]];
+                        FormattingExcelCells(range, true, true);
+
+                        backgroundWorker.ReportProgress(i);
+
+                        cellRowIndex++;
+                    }
+
+                    worksheet.Cells[dataGridView1.Rows.Count + 12, 2] = "=C6";
+
+                    if (ownerName == "Все")
+                    {
+                        worksheet.Cells[dataGridView1.Rows.Count + 14, 2] = "Всего обработано вагонов - цистерн всех собственников по видам операций:";
+                    }
+                    else
+                    {
+                        worksheet.Cells[dataGridView1.Rows.Count + 14, 2] = "Всего обработано вагонов - цистерн " + ownerName + " по видам операций:";
+                    }
+
+                    int rowcount = 0;
+                    for (int i = 0; i < getserv.Rows.Count; i++)
+                    {
+                        rowcount++;
                         for (int j = 0; j < getserv.Columns.Count; j++)
                         {
                             if (j == 0)
                             {
-                                worksheet.Cells[i + cellRowIndex + 15+rowcount, j + 2] = getserv.Rows[i][j].ToString();
+                                worksheet.Cells[i + cellRowIndex + 15 + rowcount, j + 2] = getserv.Rows[i][j].ToString();
                             }
                             else
                             {
-                                worksheet.Cells[i + cellRowIndex + 15+rowcount, j + 12] = getserv.Rows[i][j].ToString();
+                                worksheet.Cells[i + cellRowIndex + 15 + rowcount, j + 12] = getserv.Rows[i][j].ToString();
                             }
                         }
+                    }
+
+                    worksheet.Cells[dataGridView1.Rows.Count + 14, 13] = cellRowIndex;
+
+                    worksheet.Cells[dataGridView1.Rows.Count + getserv.Rows.Count * 2 + 16, 13] = totalTOR4;
+
+                    worksheet.Cells[dataGridView1.Rows.Count + getserv.Rows.Count * 2 + 18, 14] = TotalSum();
+
+                    Excel.Range range1 = worksheet.Range[worksheet.Cells[dataGridView1.Rows.Count + 12, 2], worksheet.Cells[dataGridView1.Rows.Count + getserv.Rows.Count * 2 + 19, 14]];
+                    FormattingExcelCells(range1, false, false);
+
+                    app.DisplayAlerts = false;
+                    workbook.SaveAs(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    workbook.Close(true, misValue, misValue);
+                    app.Quit();
+                    appProcess.Kill();
+
+                    Process.Start(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xls");
                 }
-
-                worksheet.Cells[dataGridView1.Rows.Count + 14, 13] = cellRowIndex;
-
-                worksheet.Cells[dataGridView1.Rows.Count + getserv.Rows.Count*2 + 17, 13] = totalTOR4;
-
-                worksheet.Cells[dataGridView1.Rows.Count + getserv.Rows.Count*2 + 19, 14] = TotalSum();
-
-                Excel.Range range1 = worksheet.Range[worksheet.Cells[dataGridView1.Rows.Count + 12, 2], worksheet.Cells[dataGridView1.Rows.Count + getserv.Rows.Count * 2 + 19, 14]];
-                FormattingExcelCells(range1, false, false);
-
-                app.DisplayAlerts = false;
-                workbook.SaveAs(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                workbook.Close(true, misValue, misValue);
-                app.Quit();
-                appProcess.Kill();
-
-                Process.Start(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xls");
             }
             catch(Exception ex)
             {
