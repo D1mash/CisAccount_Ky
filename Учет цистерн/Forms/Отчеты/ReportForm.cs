@@ -26,22 +26,26 @@ namespace Учет_цистерн
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedIndex == 0)
+            if (checkBox1.Checked)
             {
-                if (checkBox1.Checked)
+                dataGridView1.DataSource = null;
+                comboBox2.Enabled = false;
+                comboBox2.SelectedIndex = 0;
+                string Itog_All_Report = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
+                DataTable dt;
+                dt = DbConnection.DBConnect(Itog_All_Report);
+                source.DataSource = dt;
+                dataGridView1.DataSource = source;
+                progressBar.Maximum = TotalRow(dt);
+                toolStripLabel1.Text = TotalRow(dt).ToString();
+            }
+            else
+            {
+                dataGridView1.DataSource = null;
+                comboBox2.Enabled = true;
+
+                if (comboBox2.SelectedIndex == 0)
                 {
-                    dataGridView1.DataSource = null;
-                    string Itog_All_Report = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
-                    DataTable dt;
-                    dt = DbConnection.DBConnect(Itog_All_Report);
-                    source.DataSource = dt;
-                    dataGridView1.DataSource = source;
-                    progressBar.Maximum = TotalRow(dt);
-                    toolStripLabel1.Text = TotalRow(dt).ToString();
-                }
-                else
-                {
-                    dataGridView1.DataSource = null;
                     string RefreshAll = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
                     DataTable dt;
                     dt = DbConnection.DBConnect(RefreshAll);
@@ -56,24 +60,8 @@ namespace Учет_цистерн
                     string GetCountServiceCost = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
                     getserv = DbConnection.DBConnect(GetCountServiceCost);
                 }
-                //SUM_Line(true);
-            }
-            else
-            {
-                if (checkBox1.Checked)
+                else
                 {
-                    dataGridView1.DataSource = null;
-                    string Itog_All_Report = "exec dbo.Itog_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
-                    DataTable dt;
-                    dt = DbConnection.DBConnect(Itog_All_Report);
-                    source.DataSource = dt;
-                    dataGridView1.DataSource = source;
-                    progressBar.Maximum = TotalRow(dt);
-                    toolStripLabel1.Text = TotalRow(dt).ToString();
-                }
-                else 
-                {
-                    dataGridView1.DataSource = null;
                     string Refresh = "dbo.GetReportRenderedServices_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
                     DataTable dataTable;
                     dataTable = DbConnection.DBConnect(Refresh);
@@ -88,7 +76,6 @@ namespace Учет_цистерн
                     string GetCountServiceCost = "exec dbo.Itog_Report  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
                     getserv = DbConnection.DBConnect(GetCountServiceCost);
                 }
-                //SUM_Line(true);
             }
         }
 
@@ -204,20 +191,56 @@ namespace Учет_цистерн
 
                     int sum_uslug = 0;
 
-                    worksheet.Range["B13:H24"].Cut(worksheet.Cells[dataGridView1.Rows.Count + 12, 2]);
 
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    worksheet.Range["B6"].Value = "c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
+
+                    worksheet.Range["B13:H24"].Cut(worksheet.Cells[dataGridView1.Rows.Count*2 + 11, 2]);
+                    int item = 0;
+                    for (int i=0; i < dataGridView1.Rows.Count; i++)
                     {
-                        for(int j = 0; j < dataGridView1.Columns.Count; j++)
+                        if (i % 2 == 0)
                         {
-                            worksheet.Cells[i+11, j+2] = dataGridView1.Rows[i].Cells[j].Value.ToString();
-                            backgroundWorker.ReportProgress(i);
+                            var k = 11+item;
+                            Excel.Range range = worksheet.Range[worksheet.Cells[i + k, 2], worksheet.Cells[i + k, 8]];
+                            range.Merge();
+                            FormattingExcelCells(range, true, false);
+                            for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                            {
+                                if (j == 0)
+                                {
+                                    worksheet.Cells[i + k, j + 2] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                }
+                                else
+                                {
+                                    worksheet.Cells[i + k, j + 8] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                }
+                            }
                         }
+                        else
+                        {
+                            var k = 11+item;
+                            Excel.Range range = worksheet.Range[worksheet.Cells[i + k, 2], worksheet.Cells[i + k, 8]];
+                            range.Merge();
+                            FormattingExcelCells(range, true, false);
+                            for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                            {
+                                if (j == 0)
+                                {
+                                    worksheet.Cells[i + k, j + 2] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                }
+                                else
+                                {
+                                    worksheet.Cells[i + k, j + 8] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                }
+                            }
+
+                        }
+                        backgroundWorker.ReportProgress(i);
                         sum_uslug++;
+                        item++;
                     }
 
                     worksheet.Range["I8"].Value = sum_uslug;
-
 
                     app.DisplayAlerts = false;
                     workbook.SaveAs(@"D:\Отчеты\Итог по станции.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
@@ -371,9 +394,9 @@ namespace Учет_цистерн
                     Process.Start(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xls");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -545,6 +568,11 @@ namespace Учет_цистерн
             //{
             //    MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //}
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Button3_Click(null, null);
         }
     }
 }
