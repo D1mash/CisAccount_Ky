@@ -182,22 +182,22 @@
     <Compile Include="Forms\Отчеты\ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Собственники\OwnerAddForm.cs">
+    <Compile Include="Forms\Контрагенты\OwnerAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Собственники\OwnerAddForm.Designer.cs">
+    <Compile Include="Forms\Контрагенты\OwnerAddForm.Designer.cs">
       <DependentUpon>OwnerAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Собственники\OwnerForm.cs">
+    <Compile Include="Forms\Контрагенты\OwnerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Собственники\OwnerForm.Designer.cs">
+    <Compile Include="Forms\Контрагенты\OwnerForm.Designer.cs">
       <DependentUpon>OwnerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Собственники\OwnerUpdtForm.cs">
+    <Compile Include="Forms\Контрагенты\OwnerUpdtForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Собственники\OwnerUpdtForm.Designer.cs">
+    <Compile Include="Forms\Контрагенты\OwnerUpdtForm.Designer.cs">
       <DependentUpon>OwnerUpdtForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Продукты\ProductForm.cs">
@@ -359,13 +359,13 @@
     <EmbeddedResource Include="Forms\Вагоны\CarriageUpdateForm.resx">
       <DependentUpon>CarriageUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Собственники\OwnerAddForm.resx">
+    <EmbeddedResource Include="Forms\Контрагенты\OwnerAddForm.resx">
       <DependentUpon>OwnerAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Собственники\OwnerForm.resx">
+    <EmbeddedResource Include="Forms\Контрагенты\OwnerForm.resx">
       <DependentUpon>OwnerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Собственники\OwnerUpdtForm.resx">
+    <EmbeddedResource Include="Forms\Контрагенты\OwnerUpdtForm.resx">
       <DependentUpon>OwnerUpdtForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Продукты\ProductForm.resx">

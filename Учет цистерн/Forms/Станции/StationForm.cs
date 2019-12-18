@@ -7,10 +7,13 @@ namespace Учет_цистерн
 {
     public partial class StationForm : Form
     {
-        public string connectionString = "Data Source=POTITPC-01\\PLMLOCAL;Initial Catalog=Batys;User ID=sa;Password=!sql123;";
-        public StationForm()
+        //public string connectionString = "Data Source=POTITPC-01\\PLMLOCAL;Initial Catalog=Batys;User ID=sa;Password=!sql123;";
+        string role;
+
+        public StationForm(string role)
         {
             InitializeComponent();
+            this.role = role;
         }
 
         int SelectItemRow;
@@ -65,6 +68,23 @@ namespace Учет_цистерн
         {
             try
             {
+                if (role == "1")
+                {
+                    btn_add_station_form.Enabled = true;
+                    btn_dlt_station_form.Enabled = true;
+                    btn_upd_station_form.Enabled = true;
+                    btn_refsh_station_form.Enabled = true;
+                }
+                else
+                {
+                    if (role == "2")
+                    {
+                        btn_add_station_form.Enabled = true;
+                        btn_dlt_station_form.Enabled = false;
+                        btn_upd_station_form.Enabled = false;
+                        btn_refsh_station_form.Enabled = true;
+                    }
+                }
                 string GetStation = "select ID, Name as [Наименование], Code, Code6 from d__Station";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(GetStation);

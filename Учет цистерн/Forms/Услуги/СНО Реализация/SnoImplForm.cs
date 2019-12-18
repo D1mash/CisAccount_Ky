@@ -8,10 +8,13 @@ namespace Учет_цистерн.Forms.СНО
 {
     public partial class SnoImplForm : Form
     {
+        string role;
+
         BindingSource source = new BindingSource();
-        public SnoImplForm()
+        public SnoImplForm(string role)
         {
             InitializeComponent();
+            this.role = role;
         }
 
         int SelectItemRow;
@@ -42,6 +45,31 @@ namespace Учет_цистерн.Forms.СНО
 
         private void SnoImplForm_Load(object sender, EventArgs e)
         {
+            if(role == "1")
+            {
+                button1.Enabled = true;
+                button2.Enabled = true;
+                button3.Enabled = true;
+                button4.Enabled = true;
+            }
+            else
+            {
+                if(role == "2")
+                {
+                    button1.Enabled = false;
+                    button2.Enabled = false;
+                    button3.Enabled = false;
+                    button4.Enabled = false;
+                }
+                else
+                {
+                button1.Enabled = true;
+                button2.Enabled = true;
+                button3.Enabled = true;
+                button4.Enabled = true;
+                }
+            }
+
             GetSNO();
 
             panel1.Visible = false;

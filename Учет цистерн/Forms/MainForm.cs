@@ -24,9 +24,9 @@ namespace Учет_цистерн
 
         string sUrl = ConfigurationManager.AppSettings["Url"].ToString();
 
-        string UserFIO;
+        string UserFIO, role;
 
-        public MainForm(string FIO)
+        public MainForm(string FIO, string role)
         {
             InitializeComponent();
             this.tabControl2.SelectedTab = tabPage2;
@@ -36,6 +36,7 @@ namespace Учет_цистерн
             toolStripTextBox1.Text = "SPID: " + dt.Rows[0][1].ToString() + "; UID: " + dt.Rows[0][0].ToString() + ";";
             this.Text = "Учет вагонов-цистерн. Батыс Петролеум ТОО - " + dt.Rows[0][2].ToString();
             this.UserFIO = FIO;
+            this.role = role;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -92,6 +93,33 @@ namespace Учет_цистерн
             try
             {
                 contextMenuStrip_Product.Show(button1, new Point(0, button1.Height));
+                if(role == "1")
+                {
+                    contextMenuStrip_Product.Items[0].Enabled = true;
+                    contextMenuStrip_Product.Items[1].Enabled = true;
+                    contextMenuStrip_Product.Items[2].Enabled = true;
+                    contextMenuStrip_Product.Items[3].Enabled = true;
+                    contextMenuStrip_Product.Items[4].Enabled = true;
+                }
+                else
+                {
+                    if(role == "2")
+                    {
+                        contextMenuStrip_Product.Items[0].Enabled = true;
+                        contextMenuStrip_Product.Items[1].Enabled = true;
+                        contextMenuStrip_Product.Items[2].Enabled = true;
+                        contextMenuStrip_Product.Items[3].Enabled = true;
+                        contextMenuStrip_Product.Items[4].Enabled = true;
+                    }
+                    else
+                    {
+                        contextMenuStrip_Product.Items[0].Enabled = false;
+                        contextMenuStrip_Product.Items[1].Enabled = false;
+                        contextMenuStrip_Product.Items[2].Enabled = false;
+                        contextMenuStrip_Product.Items[3].Enabled = false;
+                        contextMenuStrip_Product.Items[4].Enabled = false;
+                    }
+                }
             }
             catch (Exception exp)
             {
@@ -192,7 +220,7 @@ namespace Учет_цистерн
         {
             try
             {
-                Form_Product frm = new Form_Product();
+                Form_Product frm = new Form_Product(role);
                 tabControl1.Show();
                 TabPage ProductTabPage = new TabPage("Продукты");
                 tabControl1.TabPages.Add(ProductTabPage);
@@ -214,7 +242,7 @@ namespace Учет_цистерн
         {
             try
             {
-                StationForm frm = new StationForm();
+                StationForm frm = new StationForm(role);
                 tabControl1.Show();
                 TabPage StationTabPage = new TabPage("Станции");
                 tabControl1.TabPages.Add(StationTabPage);
@@ -236,7 +264,7 @@ namespace Учет_цистерн
         {
             try
             {
-                BrigadeForm frm = new BrigadeForm();
+                BrigadeForm frm = new BrigadeForm(role);
                 tabControl1.Show();
                 TabPage BrigadeTabPage = new TabPage("Бригады");
                 tabControl1.TabPages.Add(BrigadeTabPage);
@@ -258,7 +286,7 @@ namespace Учет_цистерн
         {
             try
             {
-                OwnerForm frm = new OwnerForm();
+                OwnerForm frm = new OwnerForm(role);
                 tabControl1.Show();
                 TabPage OwnerTabPage = new TabPage("Контрагенты");
                 tabControl1.TabPages.Add(OwnerTabPage);
@@ -280,7 +308,7 @@ namespace Учет_цистерн
         {
             try
             {
-                CarriageForm carriageForm = new CarriageForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.btn_Refrence, this.tabControl1, this.button7);
+                CarriageForm carriageForm = new CarriageForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.btn_Refrence, this.tabControl1, this.button7, role);
                 tabControl1.Show();
                 TabPage CarriageTabPage = new TabPage("Вагоны");
                 tabControl1.TabPages.Add(CarriageTabPage);
@@ -303,6 +331,24 @@ namespace Учет_цистерн
             try
             {
                 contextMenuStrip_Services.Show(button2, new Point(0, button2.Height));
+                if(role == "1")
+                {
+                    contextMenuStrip_Services.Items[0].Enabled = true;
+                    contextMenuStrip_Services.Items[1].Enabled = true;
+                }
+                else
+                {
+                    if(role == "2")
+                    {
+                        contextMenuStrip_Services.Items[0].Enabled = true;
+                        contextMenuStrip_Services.Items[1].Enabled = false;
+                    }
+                    else
+                    {
+                        contextMenuStrip_Services.Items[0].Enabled = false;
+                        contextMenuStrip_Services.Items[1].Enabled = true;
+                    }
+                }
             }
             catch(Exception ex)
             {
@@ -433,12 +479,34 @@ namespace Учет_цистерн
         private void Button3_Click(object sender, EventArgs e)
         {
             contextMenuStrip_Report.Show(button3, new Point(0, button3.Height));
+            if(role == "1")
+            {
+                contextMenuStrip_Report.Items[0].Enabled = true;
+                contextMenuStrip_Report.Items[1].Enabled = true;
+                contextMenuStrip_Report.Items[2].Enabled = true;
+            }
+            else
+            {
+                if(role == "2")
+                {
+                    contextMenuStrip_Report.Items[0].Enabled = true;
+                    contextMenuStrip_Report.Items[1].Enabled = true;
+                    contextMenuStrip_Report.Items[2].Enabled = false;
+                }
+                else
+                {
+                    contextMenuStrip_Report.Items[0].Enabled = false;
+                    contextMenuStrip_Report.Items[1].Enabled = false;
+                    contextMenuStrip_Report.Items[2].Enabled = true;
+                }
+            }
         }
 
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             try
             {
+                
                 foreach (Form form in Application.OpenForms)
                 {
                     if (form.GetType() == typeof(ReportForm))
@@ -520,7 +588,7 @@ namespace Учет_цистерн
         {
             try
             {
-                OrderAllForm orderAllForm = new OrderAllForm(this.tabControl1, this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.btn_Refrence, this.button7);
+                OrderAllForm orderAllForm = new OrderAllForm(this.tabControl1, this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.btn_Refrence, this.button7, role);
                 tabControl1.Show();
                 TabPage OrderAllTabPage = new TabPage("Заявки на обработку");
                 tabControl1.TabPages.Add(OrderAllTabPage);
@@ -590,7 +658,7 @@ namespace Учет_цистерн
         {
             try
             {
-                SnoImplForm SnoImplForm = new SnoImplForm();
+                SnoImplForm SnoImplForm = new SnoImplForm(role);
                 tabControl1.Show();
                 TabPage SnotabPage = new TabPage("СНО Реализация");
                 tabControl1.TabPages.Add(SnotabPage);
@@ -612,7 +680,7 @@ namespace Учет_цистерн
         {
             try
             {
-                SnoComForm snoComForm = new SnoComForm();
+                SnoComForm snoComForm = new SnoComForm(role);
                 tabControl1.Show();
                 TabPage SnotabPage = new TabPage("СНО приход");
                 tabControl1.TabPages.Add(SnotabPage);

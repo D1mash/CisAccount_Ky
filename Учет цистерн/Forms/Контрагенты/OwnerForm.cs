@@ -7,9 +7,12 @@ namespace Учет_цистерн
 {
     public partial class OwnerForm : Form
     {
-        public OwnerForm()
+        string role;
+
+        public OwnerForm(string role)
         {
             InitializeComponent();
+            this.role = role;
         }
 
         int SelectItemRow;
@@ -19,6 +22,24 @@ namespace Учет_цистерн
         {
             try
             {
+                if (role == "1")
+                {
+                    btnOwnerAdd.Enabled = true;
+                    btnOwnerUpdate.Enabled = true;
+                    btnOwnerDelete.Enabled = true;
+                    btnOwnerReffresh.Enabled = true;
+                }
+                else
+                {
+                    if (role == "2")
+                    {
+                        btnOwnerAdd.Enabled = true;
+                        btnOwnerUpdate.Enabled = false;
+                        btnOwnerDelete.Enabled = false;
+                        btnOwnerReffresh.Enabled = true;
+                    }
+                }
+
                 string Reffresh = "SELECT ID,Name [Наименование],FullName [Полное наименование] FROM [Batys].[dbo].[d__Owner]";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(Reffresh);

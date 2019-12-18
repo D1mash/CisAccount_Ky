@@ -8,7 +8,8 @@ namespace Учет_цистерн
 {
     public partial class BrigadeForm : Form
     {
-        public BrigadeForm()
+        string role;
+        public BrigadeForm(string role)
         {
             InitializeComponent();
         }
@@ -155,6 +156,31 @@ namespace Учет_цистерн
         {
             try
             {
+                if (role == "1")
+                {
+                    btnBrigadeAdd.Enabled = true;
+                    btnBrigadeUpdate.Enabled = true;
+                    btnBrigadeDelete.Enabled = true;
+                    btnBrigadeReffresh.Enabled = true;
+                }
+                else
+                {
+                    if (role == "2")
+                    {
+                        btnBrigadeAdd.Enabled = true;
+                        btnBrigadeUpdate.Enabled = false;
+                        btnBrigadeDelete.Enabled = false;
+                        btnBrigadeReffresh.Enabled = true;
+                    }
+                    else
+                    {
+                        btnBrigadeAdd.Enabled = false;
+                        btnBrigadeUpdate.Enabled = false;
+                        btnBrigadeDelete.Enabled = false;
+                        btnBrigadeReffresh.Enabled = false;
+                    }
+                }
+
                 string Reffresh = "SELECT ID,Name [Имя],Surname [Фамилия],Lastname [Отчество],FIO [ФИО],Active [Активный] FROM [Batys].[dbo].[d__Brigade]";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(Reffresh);

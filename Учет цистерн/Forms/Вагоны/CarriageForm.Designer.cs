@@ -143,6 +143,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "CarriageForm";
             this.Text = "Вагоны";
+            this.Load += new System.EventHandler(this.CarriageForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

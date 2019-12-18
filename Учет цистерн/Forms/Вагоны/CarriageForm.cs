@@ -21,21 +21,23 @@ namespace Учет_цистерн
         int SelectItemRow;
         int SelectOwnerID;
         int Rows;
+        string role;
 
         BindingSource source = new BindingSource();
 
-        public CarriageForm(ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1, Button button1, Button button2, Button button3, Button button4, Button button6, TradeWright.UI.Forms.TabControlExtra tabControl1, Button button7)
+        public CarriageForm(ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1, Button button1, Button button2, Button button3, Button button4, Button button6, TradeWright.UI.Forms.TabControlExtra tabControl1, Button button7, string role)
         {
             InitializeComponent();
-            progBar = toolStripProgressBar1;
-            TlStpLabel = toolStripLabel1;
-            btn1 = button1;
-            btn2 = button2;
-            btn3 = button3;
-            btn4 = button4;
-            btn6 = button6;
-            btn7 = button7;
-            tabControlExtra = tabControl1;
+            this.progBar = toolStripProgressBar1;
+            this.TlStpLabel = toolStripLabel1;
+            this.btn1 = button1;
+            this.btn2 = button2;
+            this.btn3 = button3;
+            this.btn4 = button4;
+            this.btn6 = button6;
+            this.btn7 = button7;
+            this.tabControlExtra = tabControl1;
+            this.role = role;
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -286,6 +288,27 @@ namespace Учет_цистерн
         private void advancedDataGridView1_SortStringChanged(object sender, EventArgs e)
         {
             this.source.Sort = this.dataGridView1.SortString;
+        }
+
+        private void CarriageForm_Load(object sender, EventArgs e)
+        {
+            if (role == "1")
+            {
+                btnAdd.Enabled = true;
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+                btnRefresh.Enabled = true;
+            }
+            else
+            {
+                if (role == "2")
+                {
+                    btnAdd.Enabled = true;
+                    btnUpdate.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnRefresh.Enabled = true;
+                }
+            }
         }
     }
 }

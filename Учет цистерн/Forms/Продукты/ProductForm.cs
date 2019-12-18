@@ -7,9 +7,11 @@ namespace Учет_цистерн
 {
     public partial class Form_Product : Form
     {
-        public Form_Product()
+        string role;
+        public Form_Product(string role)
         {
             InitializeComponent();
+            this.role = role;
         }
 
         int SelectItemRow;
@@ -141,6 +143,24 @@ namespace Учет_цистерн
         {
             try
             {
+                if(role == "1")
+                {
+                    button1.Enabled = true;
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                    button4.Enabled = true;
+                }
+                else
+                {
+                    if(role == "2")
+                    {
+                        button1.Enabled = true;
+                        button2.Enabled = false;
+                        button3.Enabled = false;
+                        button4.Enabled = true;
+                    }
+                }
+
                 string GetProduct = "select dp.ID, qh.ID as [Hangling_id],dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(GetProduct);
