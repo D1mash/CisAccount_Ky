@@ -2,6 +2,8 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using DevExpress.XtraGrid;
+
 namespace Учет_цистерн
 {
     public partial class ServiceCostForm : Form
@@ -22,9 +24,14 @@ namespace Учет_цистерн
                 string Reffresh = "exec dbo.GetServiceCost";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(Reffresh);
-                dataGridView1.DataSource = dataTable;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[2].Visible = false;
+                gridControl1.DataSource = dataTable;
+                gridView1.Columns[0].Visible = false;
+                gridView1.Columns[2].Visible = false;
+
+                GridColumnSummaryItem Service = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Услуга", "Кол-во: {0}");
+                GridColumnSummaryItem Cost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена", "{0}");
+                gridView1.Columns["Услуга"].Summary.Add(Service);
+                gridView1.Columns["Цена"].Summary.Add(Cost);
             }
             catch (SqlException ex)
             {
@@ -43,9 +50,9 @@ namespace Учет_цистерн
                 string Reffresh = "exec dbo.GetServiceCost";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(Reffresh);
-                dataGridView1.DataSource = dataTable;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[2].Visible = false;
+                gridControl1.DataSource = dataTable;
+                gridView1.Columns[0].Visible = false;
+                gridView1.Columns[2].Visible = false;
             }
             catch (SqlException ex)
             {
@@ -84,7 +91,7 @@ namespace Учет_цистерн
 
         private void Btn_Delete_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (gridView1.SelectedRowsCount > 0)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -109,20 +116,14 @@ namespace Учет_цистерн
                 MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             try
             {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow row = this.dataGridView1.Rows[
-                        e.RowIndex];
-                    string Id = row.Cells["ID"].Value.ToString();
-                    string SeasonID = row.Cells["SeasonID"].Value.ToString();
-                    SelectItemRow = Convert.ToInt32(Id);
-                    SelectSeasonID = Convert.ToInt32(SeasonID);
-                }
+                string Id = gridView1.GetFocusedDataRow()[0].ToString();
+                string SeasonID = gridView1.GetFocusedDataRow()[2].ToString();
+                SelectItemRow = Convert.ToInt32(Id);
+                SelectSeasonID = Convert.ToInt32(SeasonID);
             }
             catch (SqlException ex)
             {
@@ -133,7 +134,7 @@ namespace Учет_цистерн
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+       
         private void Btn_Updt_Click(object sender, EventArgs e)
         {
             try
@@ -149,10 +150,10 @@ namespace Учет_цистерн
                 ServiceCostUpdtForm ServiceCostUpdtForm = new ServiceCostUpdtForm();
                 ServiceCostUpdtForm.SelectID = SelectItemRow;
                 ServiceCostUpdtForm.SelectSeasonID = SelectSeasonID;
-                ServiceCostUpdtForm.textBox2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                ServiceCostUpdtForm.textBox1.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-                ServiceCostUpdtForm.dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                ServiceCostUpdtForm.dateTimePicker2.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                ServiceCostUpdtForm.textBox2.Text = gridView1.GetFocusedDataRow()[1].ToString();
+                ServiceCostUpdtForm.textBox1.Text = gridView1.GetFocusedDataRow()[5].ToString();
+                ServiceCostUpdtForm.dateTimePicker1.Text = gridView1.GetFocusedDataRow()[3].ToString();
+                ServiceCostUpdtForm.dateTimePicker2.Text = gridView1.GetFocusedDataRow()[4].ToString();
                 ServiceCostUpdtForm.ShowDialog();
             }
             catch (Exception ex)

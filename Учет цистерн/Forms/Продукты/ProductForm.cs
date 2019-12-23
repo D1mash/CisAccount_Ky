@@ -47,12 +47,12 @@ namespace Учет_цистерн
         {
             try
             {
-                string GetProduct = "select dp.ID, qh.ID as [Hangling_id],dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
+                string GetProduct = "select dp.ID, qh.ID as [Hangling_id],dp.Name [dpName], qh.Name [qhName] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(GetProduct);
-                dataGridView1.DataSource = dataTable;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[1].Visible = false;
+                gridControl1.DataSource = dataTable;
+                gridView1.Columns[0].Visible = false;
+                gridView1.Columns[1].Visible = false;
             }
             catch (SqlException ex)
             {
@@ -77,7 +77,7 @@ namespace Учет_цистерн
                     }
                 }
                 UpdateProductForm UpdateProductForm = new UpdateProductForm();
-                UpdateProductForm.textBox1.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                UpdateProductForm.textBox1.Text = gridView1.GetFocusedDataRow()[2].ToString();
                 UpdateProductForm.SelectID = SelectItemRow;
                 UpdateProductForm.SelectHandlingID = SelectHandlingID;
                 UpdateProductForm.ShowDialog();
@@ -88,18 +88,14 @@ namespace Учет_цистерн
             }
         }
 
-        private void dataGridView1_CellClick_SelectedRow(object sender, DataGridViewCellEventArgs e)
+        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             try
             {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                    string Id = row.Cells["ID"].Value.ToString();
-                    string HandID = row.Cells["Hangling_id"].Value.ToString();
-                    SelectItemRow = Convert.ToInt32(Id);
-                    SelectHandlingID = Convert.ToInt32(HandID);
-                }
+                string Id = gridView1.GetFocusedDataRow()[0].ToString();
+                string HandID = gridView1.GetFocusedDataRow()[1].ToString();
+                SelectItemRow = Convert.ToInt32(Id);
+                SelectHandlingID = Convert.ToInt32(HandID);
             }
             catch (SqlException ex)
             {
@@ -113,7 +109,7 @@ namespace Учет_цистерн
 
         private void button3_Click_Delete_Product(object sender, EventArgs e)
         {
-            if(this.dataGridView1.SelectedRows.Count > 0)
+            if(gridView1.SelectedRowsCount > 0)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -161,12 +157,12 @@ namespace Учет_цистерн
                     }
                 }
 
-                string GetProduct = "select dp.ID, qh.ID as [Hangling_id],dp.Name as [Название], qh.Name as [Обработка] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
+                string GetProduct = "select dp.ID, qh.ID as [Hangling_id],dp.Name [dpName], qh.Name [qhName] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(GetProduct);
-                dataGridView1.DataSource = dataTable;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[1].Visible = false;
+                gridControl1.DataSource = dataTable;
+                gridView1.Columns[0].Visible = false;
+                gridView1.Columns[1].Visible = false;
             }
             catch (SqlException ex)
             {

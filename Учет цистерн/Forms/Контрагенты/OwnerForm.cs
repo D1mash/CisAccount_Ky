@@ -40,11 +40,11 @@ namespace Учет_цистерн
                     }
                 }
 
-                string Reffresh = "SELECT ID,Name [Наименование],FullName [Полное наименование] FROM [Batys].[dbo].[d__Owner]";
+                string Reffresh = "SELECT ID,Name,FullName FROM [Batys].[dbo].[d__Owner]";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(Reffresh);
-                dataGVOwner.DataSource = dataTable;
-                dataGVOwner.Columns[0].Visible = false;
+                gridControl1.DataSource = dataTable;
+                gridView1.Columns[0].Visible = false;
             }
             catch (SqlException ex)
             {
@@ -97,8 +97,8 @@ namespace Учет_цистерн
                 }
                 OwnerUpdtForm OwnerUpdtForm = new OwnerUpdtForm();
                 OwnerUpdtForm.SelectID = SelectItemRow;
-                OwnerUpdtForm.textBox1.Text = dataGVOwner.CurrentRow.Cells[1].Value.ToString();
-                OwnerUpdtForm.textBox2.Text = dataGVOwner.CurrentRow.Cells[2].Value.ToString();
+                OwnerUpdtForm.textBox1.Text = gridView1.GetFocusedDataRow()[1].ToString();
+                OwnerUpdtForm.textBox2.Text = gridView1.GetFocusedDataRow()[2].ToString();
                 //OwnerUpdtForm.textBox3.Text = dataGVOwner.CurrentRow.Cells[3].Value.ToString();
                 OwnerUpdtForm.ShowDialog();
             }
@@ -107,18 +107,12 @@ namespace Учет_цистерн
                 MessageBox.Show("Для редактирования записи, необходимо указать строку! " + ex.Message,"",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
-
-        private void dataGVOwner_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             try
             {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow row = this.dataGVOwner.Rows[
-                        e.RowIndex];
-                    string Id = row.Cells["ID"].Value.ToString();
-                    SelectItemRow = Convert.ToInt32(Id);
-                }
+                string Id = gridView1.GetFocusedDataRow()[0].ToString();
+                SelectItemRow = Convert.ToInt32(Id);
             }
             catch (SqlException ex)
             {
@@ -129,17 +123,16 @@ namespace Учет_цистерн
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         //Обновление
         private void btnOwnerReffresh_Click(object sender, EventArgs e)
         {
             try
             {
-                string Reffresh = "SELECT ID,Name [Наименование],FullName [Полное наименование] FROM [Batys].[dbo].[d__Owner]";
+                string Reffresh = "SELECT ID,Name,FullName FROM [Batys].[dbo].[d__Owner]";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(Reffresh);
-                dataGVOwner.DataSource = dataTable;
-                dataGVOwner.Columns[0].Visible = false;
+                gridControl1.DataSource = dataTable;
+                gridView1.Columns[0].Visible = false;
             }
             catch (SqlException ex)
             {
@@ -154,7 +147,7 @@ namespace Учет_цистерн
         //Удаление
         private void btnOwnerDelete_Click(object sender, EventArgs e)
         {
-            if (dataGVOwner.SelectedRows.Count > 0)
+            if (gridView1.SelectedRowsCount > 0)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {

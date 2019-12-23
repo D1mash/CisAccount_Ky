@@ -12,6 +12,7 @@ namespace Учет_цистерн
         public BrigadeForm(string role)
         {
             InitializeComponent();
+            this.role = role;
         }
 
         int SelectItemRow;
@@ -63,9 +64,9 @@ namespace Учет_цистерн
                 {
                     SelectID = SelectItemRow
                 };
-                brigadeUpdateForm.textBox1.Text = dataGVBrigade.CurrentRow.Cells[1].Value.ToString();
-                brigadeUpdateForm.textBox2.Text = dataGVBrigade.CurrentRow.Cells[2].Value.ToString();
-                brigadeUpdateForm.textBox3.Text = dataGVBrigade.CurrentRow.Cells[3].Value.ToString();
+                brigadeUpdateForm.textBox1.Text = gridView1.GetFocusedDataRow()[1].ToString();
+                brigadeUpdateForm.textBox2.Text = gridView1.GetFocusedDataRow()[2].ToString();
+                brigadeUpdateForm.textBox3.Text = gridView1.GetFocusedDataRow()[3].ToString();
                 if (Active == 1)
                 {
                     brigadeUpdateForm.checkBox1.Checked = true;
@@ -84,7 +85,7 @@ namespace Учет_цистерн
 
         private void BtnBrigadeDelete_Click(object sender, EventArgs e)
         {
-            if (dataGVBrigade.SelectedRows.Count > 0)
+            if (gridView1.SelectedRowsCount > 0)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -93,6 +94,7 @@ namespace Учет_цистерн
                         string Delete = "delete from d__Brigade where ID = " + SelectItemRow;
                         DbConnection.DBConnect(Delete);
                         MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Refresh();
                     }
                     catch (SqlException ex)
                     {
@@ -110,15 +112,15 @@ namespace Учет_цистерн
             }
         }
 
-        private void BtnBrigadeReffresh_Click(object sender, EventArgs e)
+        private void Refresh()
         {
             try
             {
-                string Reffresh = "SELECT ID,Name [Имя],Surname [Фамилия],Lastname [Отчество],FIO [ФИО],Active [Активный] FROM [Batys].[dbo].[d__Brigade]";
+                string Reffresh = "SELECT ID,Name,Surname,Lastname,FIO,Active FROM [Batys].[dbo].[d__Brigade]";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(Reffresh);
-                dataGVBrigade.DataSource = dataTable;
-                dataGVBrigade.Columns[0].Visible = false;
+                gridControl1.DataSource = dataTable;
+                gridView1.Columns[0].Visible = false;
             }
             catch (SqlException ex)
             {
@@ -130,17 +132,18 @@ namespace Учет_цистерн
             }
         }
 
-        private void DataGVBrigade_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void BtnBrigadeReffresh_Click(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+
+
+        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             try
             {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow row = this.dataGVBrigade.Rows[
-                        e.RowIndex];
-                    string Id = row.Cells["ID"].Value.ToString();
-                    SelectItemRow = Convert.ToInt32(Id);
-                }
+                string Id = gridView1.GetFocusedDataRow()[0].ToString();
+                SelectItemRow = Convert.ToInt32(Id);
             }
             catch (SqlException ex)
             {
@@ -181,11 +184,7 @@ namespace Учет_цистерн
                     }
                 }
 
-                string Reffresh = "SELECT ID,Name [Имя],Surname [Фамилия],Lastname [Отчество],FIO [ФИО],Active [Активный] FROM [Batys].[dbo].[d__Brigade]";
-                DataTable dataTable = new DataTable();
-                dataTable = DbConnection.DBConnect(Reffresh);
-                dataGVBrigade.DataSource = dataTable;
-                dataGVBrigade.Columns[0].Visible = false;
+                Refresh();
             }
             catch (SqlException ex)
             {

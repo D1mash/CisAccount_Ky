@@ -42,17 +42,12 @@ namespace Учет_цистерн
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void dataGridView_Station_Form_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             try
             {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow row = this.dataGridView_Station_Form.Rows[e.RowIndex];
-                    string Id = row.Cells["ID"].Value.ToString();
-                    SelectItemRow = Convert.ToInt32(Id);
-                }
+                string Id = gridView1.GetFocusedDataRow()[0].ToString();
+                SelectItemRow = Convert.ToInt32(Id);
             }
             catch (SqlException ex)
             {
@@ -85,11 +80,11 @@ namespace Учет_цистерн
                         btn_refsh_station_form.Enabled = true;
                     }
                 }
-                string GetStation = "select ID, Name as [Наименование], Code, Code6 from d__Station";
+                string GetStation = "select ID, Name, Code, Code6 from d__Station";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(GetStation);
-                dataGridView_Station_Form.DataSource = dataTable;
-                dataGridView_Station_Form.Columns[0].Visible = false;
+                gridControl1.DataSource = dataTable;
+                gridView1.Columns[0].Visible = false;
             }
             catch (SqlException ex)
             {
@@ -105,11 +100,11 @@ namespace Учет_цистерн
         {
             try
             {
-                string GetStation = "select ID, Name as [Наименование], Code, Code6 from d__Station";
+                string GetStation = "select ID, Name, Code, Code6 from d__Station";
                 DataTable dTl = new DataTable();
                 dTl = DbConnection.DBConnect(GetStation);
-                dataGridView_Station_Form.DataSource = dTl;
-                dataGridView_Station_Form.Columns[0].Visible = false;
+                gridControl1.DataSource = dTl;
+                gridView1.Columns[0].Visible = false;
             }
             catch (SqlException ex)
             {
@@ -123,7 +118,7 @@ namespace Учет_цистерн
 
         private void btn_dlt_station_form_Click_1(object sender, EventArgs e)
         {
-            if (dataGridView_Station_Form.SelectedRows.Count > 0)
+            if (gridView1.SelectedRowsCount > 0)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -162,9 +157,9 @@ namespace Учет_цистерн
                     }
                 }
                 UpdtCurrentStation_StationForm UpdtCurrentStation_StationForm = new UpdtCurrentStation_StationForm();
-                UpdtCurrentStation_StationForm.textBox_Updt_Name_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[1].Value.ToString();
-                UpdtCurrentStation_StationForm.textBox_Updt_Code_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[2].Value.ToString();
-                UpdtCurrentStation_StationForm.textBox_Updt_Code6_StationForm.Text = dataGridView_Station_Form.CurrentRow.Cells[3].Value.ToString();
+                UpdtCurrentStation_StationForm.textBox_Updt_Name_StationForm.Text = gridView1.GetFocusedDataRow()[1].ToString();
+                UpdtCurrentStation_StationForm.textBox_Updt_Code_StationForm.Text = gridView1.GetFocusedDataRow()[2].ToString();
+                UpdtCurrentStation_StationForm.textBox_Updt_Code6_StationForm.Text = gridView1.GetFocusedDataRow()[3].ToString();
                 UpdtCurrentStation_StationForm.SelectStationID_Method = SelectItemRow;
                 UpdtCurrentStation_StationForm.ShowDialog();
             }
