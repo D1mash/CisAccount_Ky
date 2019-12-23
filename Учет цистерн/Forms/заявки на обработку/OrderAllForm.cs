@@ -20,23 +20,26 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         private Button btn6;
         private Button btn7;
         int SelectItemRow;
+        string role;
+
         BindingSource source = new BindingSource();
 
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
-        public OrderAllForm(TradeWright.UI.Forms.TabControlExtra tabControl1, ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1, Button button1, Button button2, Button button3, Button button4, Button btn_Refrence, Button button7)
+        public OrderAllForm(TradeWright.UI.Forms.TabControlExtra tabControl1, ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1, Button button1, Button button2, Button button3, Button button4, Button btn_Refrence, Button button7, string role)
         {
             InitializeComponent();
-            TabControlExtra = tabControl1;
-            progBar = toolStripProgressBar1;
-            TlStpLabel = toolStripLabel1;
-            btn1 = button1;
-            btn2 = button2;
-            btn3 = button3;
-            btn4 = button4;
-            btn6 = btn_Refrence;
-            btn7 = button7;
-            TabControlExtra = tabControl1;
+            this.TabControlExtra = tabControl1;
+            this.progBar = toolStripProgressBar1;
+            this.TlStpLabel = toolStripLabel1;
+            this.btn1 = button1;
+            this.btn2 = button2;
+            this.btn3 = button3;
+            this.btn4 = button4;
+            this.btn6 = btn_Refrence;
+            this.btn7 = button7;
+            this.TabControlExtra = tabControl1;
+            this.role = role;
         }
 
         private void dataGridView1_SortStringChanged(object sender, EventArgs e)
@@ -152,6 +155,32 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         {
             try
             {
+                if (role == "1")
+                {
+                    button1.Enabled = true;
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                    button4.Enabled = true;
+                }
+                else
+                {
+                    if (role == "2")
+                    {
+                        button1.Enabled = true;
+                        button2.Enabled = false;
+                        button3.Enabled = false;
+                        button4.Enabled = true;
+                    }
+                    else
+                    {
+
+                        button1.Enabled = false;
+                        button2.Enabled = false;
+                        button3.Enabled = false;
+                        button4.Enabled = false;
+                    }
+                }
+
                 DateTime now = DateTime.Now;
                 var startDate = new DateTime(now.Year, now.Month, 1);
                 var endDate = startDate.AddMonths(1).AddDays(-1);
