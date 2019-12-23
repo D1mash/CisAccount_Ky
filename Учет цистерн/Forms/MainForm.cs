@@ -15,6 +15,7 @@ using NLog;
 using System.Configuration;
 using System.Collections.Specialized;
 using Учет_цистерн.Forms;
+using System.Collections;
 
 namespace Учет_цистерн
 {
@@ -44,10 +45,6 @@ namespace Учет_цистерн
             try
             {
                 GetFilter();
-                panel1.Visible = false;
-                panel2.Visible = false;
-                panel3.Visible = false;
-                textBox1.Visible = false;
             }
             catch (Exception exp)
             {
@@ -61,31 +58,14 @@ namespace Учет_цистерн
             try
             {
                 string Reffresh = "exec dbo.GetFilter";
-                dataGridView1.DataSource = DbConnection.DBConnect(Reffresh); ;
-                dataGridView1.Columns[0].Visible = false;
+                gridControl1.DataSource = DbConnection.DBConnect(Reffresh); ;
+                gridView1.Columns[0].Visible = false;
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 logger.Error(exp, "GetFilter");
             }
-        }
-
-        private void dataGridView1_MouseClick_1(object sender, MouseEventArgs e)
-        {
-            try
-            {
-                if (e.Button == MouseButtons.Right)
-                {
-                    int currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-                    contextMenuStrip_GlobalFilter.Show(dataGridView1, new Point(e.X, e.Y));
-                }
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error(exp, "dataGridView1_MouseClick_1");
-            }          
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -152,13 +132,31 @@ namespace Учет_цистерн
         {
             try
             {
-                string IDs = string.Empty;
+                //string IDs = string.Empty;
+                //List<Object> aList = new List<Object>();
+                //foreach (DataGridViewRow row in gridView1.SelectedRows)
+                //{
+                //    aList.Add(row.Cells[0].Value.ToString());
+                //    IDs = string.Join(" ", aList);
+                //    string delete = "exec dbo.RemoveGlobalFilter '" + IDs + "'";
+                //    DbConnection.DBConnect(delete);
+                //}
+                ArrayList rows = new ArrayList();
                 List<Object> aList = new List<Object>();
-                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                string Arrays = string.Empty;
+
+                Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                for (int i = 0; i < selectedRowHandles.Length; i++)
                 {
-                    aList.Add(row.Cells[0].Value.ToString());
-                    IDs = string.Join(" ", aList);
-                    string delete = "exec dbo.RemoveGlobalFilter '" + IDs + "'";
+                    int selectedRowHandle = selectedRowHandles[i];
+                    if (selectedRowHandle >= 0)
+                        rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                }
+                foreach (DataRow row in rows)
+                {
+                    aList.Add(row["ID"]);
+                    Arrays = string.Join(" ", aList);
+                    string delete = "exec dbo.RemoveGlobalFilter '" + Arrays + "'";
                     DbConnection.DBConnect(delete);
                 }
                 GetFilter();
@@ -607,53 +605,6 @@ namespace Учет_цистерн
             }
         }
 
-        private void dataGridView1_CellPainting_1(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            int sz = 0;
-            try
-            {
-                int Count = 0;
-                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-                {
-                    Count = dataGridView1.RowCount;
-                }
-
-                foreach (var scroll in dataGridView1.Controls.OfType<HScrollBar>())
-                {
-                    if (scroll.Visible)
-                    {
-                        sz = -15;
-                    }
-                    else
-                    {
-                        sz = 1;
-                    }
-                }
-
-                panel1.Width = this.dataGridView1.RowHeadersWidth;
-                panel1.Location = new Point(5, this.dataGridView1.Height - (panel1.Height - sz));
-                panel1.Visible = true;
-
-                textBox1.Text = "Всего строк: " + Count.ToString();
-                int Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location.X;
-                textBox1.Width = this.dataGridView1.Columns[1].Width + 1;
-                Xdgvx1 = this.dataGridView1.GetCellDisplayRectangle(1, -1, true).Location.X;
-                textBox1.Location = new Point(Xdgvx1, this.dataGridView1.Height - (textBox1.Height - sz));
-                textBox1.Visible = true;
-
-                int Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
-                panel3.Width = this.dataGridView1.Columns[2].Width + 2;
-                Xdgvx3 = this.dataGridView1.GetCellDisplayRectangle(2, -1, true).Location.X;
-                panel3.Location = new Point(Xdgvx3, this.dataGridView1.Height - (panel3.Height - sz));
-                panel3.Visible = true;
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error(exp, "dataGridView1_CellPainting_1");
-            }
-        }
-
         private void сНОРеализацияToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -782,6 +733,23 @@ namespace Учет_цистерн
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 logger.Error(ex, " аУТНToolStripMenuItem_Click_MainForm");
+            }
+        }
+
+        private void gridControl1_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    //int currentMouseOverRow = gridView1.HitTest(e.X, e.Y).RowIndex;
+                    contextMenuStrip_GlobalFilter.Show(gridControl1, new Point(e.X, e.Y));
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "dataGridView1_MouseClick_1");
             }
         }
 
