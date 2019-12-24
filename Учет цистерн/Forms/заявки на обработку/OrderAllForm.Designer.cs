@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -42,47 +41,50 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.CurrentTabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new ADGV.AdvancedDataGridView();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new ADGV.AdvancedDataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.провестиДокументToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отменитьПроведениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.CurrentTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -221,16 +223,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // tabControl1
+            // CurrentTabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 61);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1340, 760);
-            this.tabControl1.TabIndex = 23;
+            this.CurrentTabControl.Controls.Add(this.tabPage1);
+            this.CurrentTabControl.Controls.Add(this.tabPage2);
+            this.CurrentTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CurrentTabControl.Location = new System.Drawing.Point(0, 61);
+            this.CurrentTabControl.Name = "CurrentTabControl";
+            this.CurrentTabControl.SelectedIndex = 0;
+            this.CurrentTabControl.Size = new System.Drawing.Size(1340, 760);
+            this.CurrentTabControl.TabIndex = 23;
             // 
             // tabPage1
             // 
@@ -245,14 +247,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.panel6);
-            this.groupBox2.Controls.Add(this.panel5);
-            this.groupBox2.Controls.Add(this.panel4);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.panel2);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.panel1);
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.gridControl1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
@@ -260,84 +255,99 @@
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             // 
-            // panel6
+            // gridControl1
             // 
-            this.panel6.Location = new System.Drawing.Point(554, 702);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(100, 19);
-            this.panel6.TabIndex = 5;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(3, 16);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(1320, 709);
+            this.gridControl1.TabIndex = 0;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            this.gridControl1.DoubleClick += new System.EventHandler(this.gridControl1_DoubleClick);
+            this.gridControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gridControl1_MouseClick);
             // 
-            // panel5
+            // gridView1
             // 
-            this.panel5.Location = new System.Drawing.Point(448, 702);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(100, 19);
-            this.panel5.TabIndex = 5;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsLayout.Columns.AddNewColumns = false;
+            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
+            this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             // 
-            // panel4
+            // gridColumn1
             // 
-            this.panel4.Location = new System.Drawing.Point(345, 702);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(100, 19);
-            this.panel4.TabIndex = 5;
+            this.gridColumn1.Caption = "HeadID";
+            this.gridColumn1.FieldName = "HeadID";
+            this.gridColumn1.Name = "gridColumn1";
             // 
-            // textBox2
+            // gridColumn2
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(239, 701);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.gridColumn2.Caption = "Статус";
+            this.gridColumn2.FieldName = "Статус";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
             // 
-            // panel2
+            // gridColumn3
             // 
-            this.panel2.Location = new System.Drawing.Point(27, 702);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(100, 19);
-            this.panel2.TabIndex = 3;
+            this.gridColumn3.Caption = "№ акта";
+            this.gridColumn3.FieldName = "№ акта";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "№ акта", "Кол-во: {0}")});
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 1;
             // 
-            // textBox1
+            // gridColumn4
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(133, 701);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.gridColumn4.Caption = "Дата услуги";
+            this.gridColumn4.FieldName = "Дата услуги";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 2;
             // 
-            // panel1
+            // gridColumn5
             // 
-            this.panel1.Location = new System.Drawing.Point(6, 703);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(15, 19);
-            this.panel1.TabIndex = 2;
+            this.gridColumn5.Caption = "Сумма";
+            this.gridColumn5.FieldName = "Сумма";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма", "{0:#.##}")});
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 3;
             // 
-            // dataGridView1
+            // gridColumn6
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoGenerateContextFilters = true;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.DateWithTime = false;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1320, 709);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.TimeFilter = false;
-            this.dataGridView1.SortStringChanged += new System.EventHandler(this.dataGridView1_SortStringChanged);
-            this.dataGridView1.FilterStringChanged += new System.EventHandler(this.dataGridView1_FilterStringChanged);
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
-            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
-            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
+            this.gridColumn6.Caption = "Дата создания";
+            this.gridColumn6.FieldName = "Дата создания";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 4;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Инициатор";
+            this.gridColumn7.FieldName = "Инициатор";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 5;
             // 
             // tabPage2
             // 
@@ -352,18 +362,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.panel16);
-            this.groupBox3.Controls.Add(this.panel15);
-            this.groupBox3.Controls.Add(this.panel14);
-            this.groupBox3.Controls.Add(this.panel13);
-            this.groupBox3.Controls.Add(this.panel7);
-            this.groupBox3.Controls.Add(this.panel8);
-            this.groupBox3.Controls.Add(this.panel9);
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.panel10);
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.panel12);
-            this.groupBox3.Controls.Add(this.dataGridView2);
+            this.groupBox3.Controls.Add(this.gridControl2);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
@@ -371,106 +370,132 @@
             this.groupBox3.TabIndex = 23;
             this.groupBox3.TabStop = false;
             // 
-            // panel16
+            // gridControl2
             // 
-            this.panel16.Location = new System.Drawing.Point(1094, 694);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(100, 19);
-            this.panel16.TabIndex = 7;
+            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl2.Location = new System.Drawing.Point(3, 16);
+            this.gridControl2.MainView = this.gridView2;
+            this.gridControl2.Name = "gridControl2";
+            this.gridControl2.Size = new System.Drawing.Size(1320, 709);
+            this.gridControl2.TabIndex = 1;
+            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
             // 
-            // panel15
+            // gridView2
             // 
-            this.panel15.Location = new System.Drawing.Point(988, 694);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(100, 19);
-            this.panel15.TabIndex = 6;
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn8,
+            this.gridColumn9,
+            this.gridColumn10,
+            this.gridColumn11,
+            this.gridColumn12,
+            this.gridColumn13,
+            this.gridColumn14,
+            this.gridColumn15,
+            this.gridColumn16,
+            this.gridColumn17,
+            this.gridColumn18});
+            this.gridView2.GridControl = this.gridControl2;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView2.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsBehavior.ReadOnly = true;
+            this.gridView2.OptionsLayout.Columns.AddNewColumns = false;
+            this.gridView2.OptionsSelection.MultiSelect = true;
+            this.gridView2.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
+            this.gridView2.OptionsView.ShowFooter = true;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
-            // panel14
+            // gridColumn8
             // 
-            this.panel14.Location = new System.Drawing.Point(882, 694);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(100, 19);
-            this.panel14.TabIndex = 6;
+            this.gridColumn8.Caption = "ID";
+            this.gridColumn8.FieldName = "ID";
+            this.gridColumn8.Name = "gridColumn8";
             // 
-            // panel13
+            // gridColumn9
             // 
-            this.panel13.Location = new System.Drawing.Point(776, 694);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(100, 19);
-            this.panel13.TabIndex = 6;
+            this.gridColumn9.Caption = "№ вагона";
+            this.gridColumn9.FieldName = "№ вагона";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "№ вагона", "Кол-во: {0}")});
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 0;
             // 
-            // panel7
+            // gridColumn10
             // 
-            this.panel7.Location = new System.Drawing.Point(12, 695);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(15, 19);
-            this.panel7.TabIndex = 5;
+            this.gridColumn10.Caption = "Продукт";
+            this.gridColumn10.FieldName = "Продукт";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 1;
             // 
-            // panel8
+            // gridColumn11
             // 
-            this.panel8.Location = new System.Drawing.Point(141, 695);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(100, 19);
-            this.panel8.TabIndex = 5;
+            this.gridColumn11.Caption = "Услуга";
+            this.gridColumn11.FieldName = "Услуга";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 2;
             // 
-            // panel9
+            // gridColumn12
             // 
-            this.panel9.Location = new System.Drawing.Point(247, 695);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(100, 19);
-            this.panel9.TabIndex = 5;
+            this.gridColumn12.Caption = "Цена";
+            this.gridColumn12.FieldName = "Цена";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена", "{0:#.##}")});
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 3;
             // 
-            // textBox3
+            // gridColumn13
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(33, 695);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 5;
+            this.gridColumn13.Caption = "Дата услуги";
+            this.gridColumn13.FieldName = "Дата услуги";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 4;
             // 
-            // panel10
+            // gridColumn14
             // 
-            this.panel10.Location = new System.Drawing.Point(458, 694);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(100, 19);
-            this.panel10.TabIndex = 4;
+            this.gridColumn14.Caption = "Собственник";
+            this.gridColumn14.FieldName = "Собственник";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 5;
             // 
-            // textBox4
+            // gridColumn15
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(353, 694);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 3;
+            this.gridColumn15.Caption = "Бригадир";
+            this.gridColumn15.FieldName = "Бригадир";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 6;
             // 
-            // panel12
+            // gridColumn16
             // 
-            this.panel12.Location = new System.Drawing.Point(670, 694);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(100, 19);
-            this.panel12.TabIndex = 2;
+            this.gridColumn16.Caption = "Операция";
+            this.gridColumn16.FieldName = "Операция";
+            this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.Visible = true;
+            this.gridColumn16.VisibleIndex = 7;
             // 
-            // dataGridView2
+            // gridColumn17
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToOrderColumns = true;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.AutoGenerateContextFilters = true;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.DateWithTime = false;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(1320, 709);
-            this.dataGridView2.TabIndex = 1;
-            this.dataGridView2.TimeFilter = false;
-            this.dataGridView2.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView2_CellPainting);
+            this.gridColumn17.Caption = "№ акта";
+            this.gridColumn17.FieldName = "№ акта";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 8;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "Станция";
+            this.gridColumn18.FieldName = "Станция";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 9;
             // 
             // contextMenuStrip1
             // 
@@ -526,35 +551,27 @@
             this.отменитьПроведениеToolStripMenuItem.Text = "Отменить проведение документа";
             this.отменитьПроведениеToolStripMenuItem.Click += new System.EventHandler(this.отменитьПроведениеToolStripMenuItem_Click);
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.WorkerReportsProgress = true;
-            this.backgroundWorker1.WorkerSupportsCancellation = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
             // OrderAllForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1340, 821);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.CurrentTabControl);
             this.Controls.Add(this.groupBox1);
             this.Name = "OrderAllForm";
             this.Text = "OrderAllForm";
             this.Load += new System.EventHandler(this.OrderAllForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.CurrentTabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -574,31 +591,11 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl CurrentTabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel1;
-        public ADGV.AdvancedDataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Panel panel12;
-        public ADGV.AdvancedDataGridView dataGridView2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изменитьToolStripMenuItem;
@@ -608,6 +605,27 @@
         private System.Windows.Forms.ToolStripMenuItem отменитьПроведениеToolStripMenuItem;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.CheckBox checkBox1;
-        public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl gridControl2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
     }
 }
