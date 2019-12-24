@@ -1101,7 +1101,7 @@
     <value>25</value>
   </data>
   <data name="button7.Text" xml:space="preserve">
-    <value>Заявки на обработку</value>
+    <value>Журнал актов</value>
   </data>
   <data name="button7.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>

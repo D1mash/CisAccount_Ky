@@ -132,15 +132,6 @@ namespace Учет_цистерн
         {
             try
             {
-                //string IDs = string.Empty;
-                //List<Object> aList = new List<Object>();
-                //foreach (DataGridViewRow row in gridView1.SelectedRows)
-                //{
-                //    aList.Add(row.Cells[0].Value.ToString());
-                //    IDs = string.Join(" ", aList);
-                //    string delete = "exec dbo.RemoveGlobalFilter '" + IDs + "'";
-                //    DbConnection.DBConnect(delete);
-                //}
                 ArrayList rows = new ArrayList();
                 List<Object> aList = new List<Object>();
                 string Arrays = string.Empty;
@@ -588,7 +579,7 @@ namespace Учет_цистерн
             {
                 OrderAllForm orderAllForm = new OrderAllForm(this.tabControl1, this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.btn_Refrence, this.button7, role);
                 tabControl1.Show();
-                TabPage OrderAllTabPage = new TabPage("Заявки на обработку");
+                TabPage OrderAllTabPage = new TabPage("Журнал актов");
                 tabControl1.TabPages.Add(OrderAllTabPage);
                 OrderAllTabPage.Name = "OrderAllTabPage";
                 tabControl1.SelectedTab = OrderAllTabPage;
