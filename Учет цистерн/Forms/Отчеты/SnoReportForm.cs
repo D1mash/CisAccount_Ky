@@ -17,7 +17,8 @@ namespace Учет_цистерн.Forms.Отчеты
 {
     public partial class SnoReportForm : Form
     {
-        BindingSource source = new BindingSource();
+        //BindingSource source = new BindingSource();
+        DataTable dataTable;
 
         public SnoReportForm()
         {
@@ -30,13 +31,16 @@ namespace Учет_цистерн.Forms.Отчеты
             {
                 try
                 {
+                    gridControl1.DataSource = null;
+                    gridView1.Columns.Clear();
+
                     string GetSNO = "exec dbo.GetSNO";
                     DataTable dataTable = new DataTable();
                     dataTable = DbConnection.DBConnect(GetSNO);
-                    source.DataSource = dataTable;
-                    dataGridView1.DataSource = source;
-                    dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.Columns[1].Visible = false;
+
+                    gridControl1.DataSource = dataTable;
+                    gridView1.Columns[0].Visible = false;
+                    gridView1.Columns[1].Visible = false;
                 }
                 catch (SqlException ex)
                 {
@@ -52,12 +56,15 @@ namespace Учет_цистерн.Forms.Отчеты
             {
                 try
                 {
+                    gridControl1.DataSource = null;
+                    gridView1.Columns.Clear();
+
                     string GetSNO = "exec dbo.GetCurrentSNO";
                     DataTable dataTable = new DataTable();
                     dataTable = DbConnection.DBConnect(GetSNO);
-                    source.DataSource = dataTable;
-                    dataGridView1.DataSource = source;
-                    dataGridView1.Columns[0].Visible = false;
+                    
+                    gridControl1.DataSource = dataTable;
+                    gridView1.Columns[0].Visible = false;
                 }
                 catch (SqlException ex)
                 {
@@ -107,38 +114,38 @@ namespace Учет_цистерн.Forms.Отчеты
 
                     worksheet.Range["B3"].Value = "в ТОО Казыгурт-Юг реализация СНО за период с " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
 
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
                     {
-                        for (int j = 2; j < dataGridView1.Columns.Count; j++)
+                        for (int j = 2; j < dataTable.Columns.Count; j++)
                         {
                             if (j == 2)
                             {
-                                worksheet.Cells[i + 6, j - 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                worksheet.Cells[i + 6, j - 1] = dataTable.Rows[i][j].ToString();
                             }
                             else
                             {
                                 if (j > 2 && j <= 6)
                                 {
-                                    worksheet.Cells[i + 6, j - 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                    worksheet.Cells[i + 6, j - 1] = dataTable.Rows[i][j].ToString();
                                 }
                             }
                             if (j > 7)
                             {
-                                worksheet.Cells[i + 6, j - 2] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                worksheet.Cells[i + 6, j - 2] = dataTable.Rows[i][j].ToString();
                             }
                         }
 
-                        worksheet.Cells[dataGridView1.Rows.Count + 6, 1] = "Итог";
-                        Excel.Range r1 = worksheet.Cells[dataGridView1.Rows.Count + 6, 3] as Excel.Range;
-                        r1.Formula = String.Format($"=SUM(C{6}:C{dataGridView1.Rows.Count + 5})");
+                        worksheet.Cells[dataTable.Rows.Count + 6, 1] = "Итог";
+                        Excel.Range r1 = worksheet.Cells[dataTable.Rows.Count + 6, 3] as Excel.Range;
+                        r1.Formula = String.Format($"=SUM(C{6}:C{dataTable.Rows.Count + 5})");
 
-                        Excel.Range r2 = worksheet.Cells[dataGridView1.Rows.Count + 6, 5] as Excel.Range;
-                        r2.Formula = String.Format($"=SUM(E{6}:E{dataGridView1.Rows.Count + 5})");
+                        Excel.Range r2 = worksheet.Cells[dataTable.Rows.Count + 6, 5] as Excel.Range;
+                        r2.Formula = String.Format($"=SUM(E{6}:E{dataTable.Rows.Count + 5})");
 
-                        Excel.Range r3 = worksheet.Cells[dataGridView1.Rows.Count + 6, 6] as Excel.Range;
-                        r3.Formula = String.Format($"=SUM(F{6}:F{dataGridView1.Rows.Count + 5})");
+                        Excel.Range r3 = worksheet.Cells[dataTable.Rows.Count + 6, 6] as Excel.Range;
+                        r3.Formula = String.Format($"=SUM(F{6}:F{dataTable.Rows.Count + 5})");
 
-                        Excel.Range range = worksheet.Range[worksheet.Cells[i + 6, 1], worksheet.Cells[dataGridView1.Rows.Count + 6, 7]];
+                        Excel.Range range = worksheet.Range[worksheet.Cells[i + 6, 1], worksheet.Cells[dataTable.Rows.Count + 6, 7]];
                         FormattingExcelCells(range, true, true);
 
                         backgroundWorker1.ReportProgress(i);
@@ -166,35 +173,35 @@ namespace Учет_цистерн.Forms.Отчеты
 
                     worksheet.Range["B1"].Value = "Приход СНО в ТОО Казыгурт-Юг за период с " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
 
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
                     {
-                        for (int j = 1; j < dataGridView1.Columns.Count; j++)
+                        for (int j = 1; j < dataTable.Columns.Count; j++)
                         {
                             if (j == 1)
                             {
-                                worksheet.Cells[i + 4, j] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                worksheet.Cells[i + 4, j] = dataTable.Rows[i][j].ToString();
                             }
                             else
                             {
                                 if (j > 1)
-                                    worksheet.Cells[i + 4, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                    worksheet.Cells[i + 4, j + 1] = dataTable.Rows[i][j].ToString();
                             }
                         }
                         worksheet.Cells[i + 4, 2] = $"=C{i + 4} + D{i + 4}";
                         backgroundWorker1.ReportProgress(i);
                     }
 
-                    worksheet.Cells[dataGridView1.Rows.Count + 4, 1] = "Итог";
-                    Excel.Range r1 = worksheet.Cells[dataGridView1.Rows.Count + 4, 2] as Excel.Range;
-                    r1.Formula = String.Format($"=SUM(B{4}:C{dataGridView1.Rows.Count + 3})");
+                    worksheet.Cells[dataTable.Rows.Count + 4, 1] = "Итог";
+                    Excel.Range r1 = worksheet.Cells[dataTable.Rows.Count + 4, 2] as Excel.Range;
+                    r1.Formula = String.Format($"=SUM(B{4}:C{dataTable.Rows.Count + 3})");
 
-                    Excel.Range r2 = worksheet.Cells[dataGridView1.Rows.Count + 4, 3] as Excel.Range;
-                    r2.Formula = String.Format($"=SUM(C{4}:C{dataGridView1.Rows.Count + 3})");
+                    Excel.Range r2 = worksheet.Cells[dataTable.Rows.Count + 4, 3] as Excel.Range;
+                    r2.Formula = String.Format($"=SUM(C{4}:C{dataTable.Rows.Count + 3})");
 
-                    Excel.Range r3 = worksheet.Cells[dataGridView1.Rows.Count + 4, 4] as Excel.Range;
-                    r3.Formula = String.Format($"=SUM(D{4}:D{dataGridView1.Rows.Count + 3})");
+                    Excel.Range r3 = worksheet.Cells[dataTable.Rows.Count + 4, 4] as Excel.Range;
+                    r3.Formula = String.Format($"=SUM(D{4}:D{dataTable.Rows.Count + 3})");
 
-                    Excel.Range range = (Excel.Range)worksheet.Range[worksheet.Cells[4, 1], worksheet.Cells[dataGridView1.Rows.Count + 4, 5]];
+                    Excel.Range range = (Excel.Range)worksheet.Range[worksheet.Cells[4, 1], worksheet.Cells[dataTable.Rows.Count + 4, 5]];
                     FormattingExcelCells(range, true, true);
 
                     app.DisplayAlerts = false;
@@ -232,23 +239,16 @@ namespace Учет_цистерн.Forms.Отчеты
         {
             if (radioButton1.Checked || radioButton2.Checked)
             {
-                if (dataGridView1.Rows != null && dataGridView1.Rows.Count != 0)
+                if (dataTable.Rows != null && dataTable.Rows.Count != 0)
                 {
                     if (backgroundWorker1.IsBusy)
                         return;
-                    //using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Excel file (*.xlsx)|*.xlsx|All files(*.*)|*.*" })
-                    //{
-                    //    if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                    //    {
-                    //_inputParametr.FileName = saveFileDialog.FileName;
                     else
                     {
                         ProgrBar.Minimum = 0;
                         ProgrBar.Value = 0;
                         backgroundWorker1.RunWorkerAsync();
                     }
-                    //    }
-                    //}
                 }
                 else
                 {
@@ -260,13 +260,6 @@ namespace Учет_цистерн.Forms.Отчеты
                 MessageBox.Show("Выберите вид отчета!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        //struct DataParametr
-        //{
-        //    public string FileName { get; set; }
-        //}
-
-        //DataParametr _inputParametr;
 
         public void FormattingExcelCells(Excel.Range range, bool val1, bool val2)
         {
