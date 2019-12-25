@@ -205,7 +205,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 string DocNum;
                 string ServiceDate = System.DateTime.Now.ToShortDateString();
                 string DateIns = System.DateTime.Now.ToString();
-                string GetDocNum = "exec dbo.GetDocNum 1";
+                string GetDocNum = "exec dbo.GetDocNum 1,'"+ ServiceDate + "'";
                 DataTable dt = new DataTable();
                 dt = DbConnection.DBConnect(GetDocNum);
                 DocNum = dt.Rows[0][0].ToString();
