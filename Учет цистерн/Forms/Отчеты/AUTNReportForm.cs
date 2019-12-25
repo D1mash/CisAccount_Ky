@@ -16,7 +16,8 @@ namespace Учет_цистерн.Forms.Отчеты
 {
     public partial class AUTNReportForm : Form
     {
-        BindingSource source = new BindingSource();
+        //BindingSource source = new BindingSource();
+        DataTable dt;
 
         public AUTNReportForm()
         {
@@ -28,8 +29,7 @@ namespace Учет_цистерн.Forms.Отчеты
             string RefreshAll = "exec [dbo].[GetReportAUTN] '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
             DataTable dt;
             dt = DbConnection.DBConnect(RefreshAll);
-            source.DataSource = dt;
-            dataGridView1.DataSource = source;
+            gridControl1.DataSource = dt;
             progressBar.Maximum = TotalRow(dt);
             toolStripLabel1.Text = TotalRow(dt).ToString();
         }
@@ -46,7 +46,7 @@ namespace Учет_цистерн.Forms.Отчеты
 
         private void btn_Excel_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows != null && dataGridView1.Rows.Count != 0)
+            if (dt.Rows != null && dt.Rows.Count != 0)
             {
                 if (backgroundWorker.IsBusy)
                     return;
@@ -84,20 +84,20 @@ namespace Учет_цистерн.Forms.Отчеты
                 app.Visible = false;
                 object misValue = System.Reflection.Missing.Value;
 
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                    for (int j = 0; j < dt.Columns.Count; j++)
                     {
                         worksheet.Cells[i + 3, 1] = i;
                         if (j < 8)
                         {
-                            worksheet.Cells[i + 3, j + 2] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            worksheet.Cells[i + 3, j + 2] = dt.Rows[i][j].ToString();
                         }
                         else
                         {
                             if (j >= 8 && j < 18)
                             {
-                                if (dataGridView1.Rows[i].Cells[j].Value.ToString() == "1")
+                                if (dt.Rows[i][j].ToString() == "1")
                                 {
                                     worksheet.Cells[i + 3, j + 2] = "Да";
                                 }
@@ -108,13 +108,13 @@ namespace Учет_цистерн.Forms.Отчеты
                             }
                             else
                             {
-                                worksheet.Cells[i + 3, j + 2] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                worksheet.Cells[i + 3, j + 2] = dt.Rows[i][j].ToString();
                             }
                         }
 
                     }
 
-                    Excel.Range range = worksheet.Range[worksheet.Cells[i + 3, 1], worksheet.Cells[i + 3, dataGridView1.Columns.Count+1]];
+                    Excel.Range range = worksheet.Range[worksheet.Cells[i + 3, 1], worksheet.Cells[i + 3, dt.Columns.Count+1]];
                     FormattingExcelCells(range, true, true);
 
                     backgroundWorker.ReportProgress(i);
@@ -158,6 +158,7 @@ namespace Учет_цистерн.Forms.Отчеты
             range.Font.FontStyle = "Bold";
             if (val1 == true)
             {
+
                 Excel.Borders border = range.Borders;
                 border.LineStyle = Excel.XlLineStyle.xlContinuous;
                 border.Weight = 2d;
