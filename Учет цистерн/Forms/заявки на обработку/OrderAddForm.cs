@@ -414,32 +414,43 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         UpdateBody();
                     }
                 }
-                //Проверка для продукта
+                //Проверка для операции
                 if (gridView1.GetFocusedDataRow()[2].ToString() == string.Empty)
+                {
+                    string UpdateBody = "exec dbo.UpdateRenderedServiceBody NULL, 3, " + SelectItemRow;
+                    DbConnection.DBConnect(UpdateBody);
+                }
+                else
+                {
+                    string UpdateBody = "exec dbo.UpdateRenderedServiceBody '" + gridView1.GetFocusedDataRow()[2].ToString() + "',3," + SelectItemRow;
+                    DbConnection.DBConnect(UpdateBody);
+                }
+                //Проверка для продукта
+                if (gridView1.GetFocusedDataRow()[3].ToString() == string.Empty)
                 {
                     string UpdateBody = "exec dbo.UpdateRenderedServiceBody NULL, 2, " + SelectItemRow;
                     DbConnection.DBConnect(UpdateBody);
                 }
                 else
                 {
-                    string UpdateBody = "exec dbo.UpdateRenderedServiceBody '" + gridView1.GetFocusedDataRow()[2].ToString() + "',2," + SelectItemRow;
+                    string UpdateBody = "exec dbo.UpdateRenderedServiceBody '" + gridView1.GetFocusedDataRow()[3].ToString() + "',2," + SelectItemRow;
                     DbConnection.DBConnect(UpdateBody);
                 }
 
                 //axis
-                string UpdateAxis = "update temp set axis = " + gridView1.GetFocusedDataRow()[3].ToString() + " where body_id = " + SelectItemRow;
+                string UpdateAxis = "update temp set axis = " + gridView1.GetFocusedDataRow()[4].ToString() + " where body_id = " + SelectItemRow;
                 DbConnection.DBConnect(UpdateAxis);
                 //gor
-                string UpdateGor = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[4].ToString() + "',2," + SelectItemRow;
+                string UpdateGor = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[5].ToString() + "',2," + SelectItemRow;
                 DbConnection.DBConnect(UpdateGor);
                 //hol
-                string UpdateHol = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[5].ToString() + "',3," + SelectItemRow;
+                string UpdateHol = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[6].ToString() + "',3," + SelectItemRow;
                 DbConnection.DBConnect(UpdateHol);
                 //tor
-                string UpdateTor = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[6].ToString() + "',4," + SelectItemRow;
+                string UpdateTor = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[7].ToString() + "',4," + SelectItemRow;
                 DbConnection.DBConnect(UpdateTor);
                 //drkr
-                string UpdateDrkr = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[7].ToString() + "',5," + SelectItemRow;
+                string UpdateDrkr = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[8].ToString() + "',5," + SelectItemRow;
                 DbConnection.DBConnect(UpdateDrkr);
                 //AvailableAUTN
                 string UpdateAvailableAUTN = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[10].ToString() + "',6," + SelectItemRow;
