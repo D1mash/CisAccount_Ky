@@ -58,19 +58,10 @@ namespace Учет_цистерн.Forms
             new_Rent.FormBorderStyle = FormBorderStyle.None;
             new_Rent.Dock = DockStyle.Fill;
             RentTabPage.Controls.Add(new_Rent);
+
+            button3_Click(null, null);
         }
-
-        //private void RefreshGrid()
-        //{
-        //    gridControl1.DataSource = null;
-        //    gridView1.Columns.Clear();
-
-        //    string Refresh_Grid = "";
-        //    DataTable dt = DbConnection.DBConnect(Refresh_Grid);
-        //    gridControl1.DataSource = dt;
-        //    gridView1.Columns[0].Visible = false;
-        //}
-
+        
         private void FillCombobox()
         {
             string getOwner = "Select ID, Name from d__Owner";
@@ -115,11 +106,13 @@ namespace Учет_цистерн.Forms
             string Id = gridView1.GetFocusedDataRow()[0].ToString();
             SelectItemRow = Convert.ToInt32(Id);
         }
-
-        //Изменение ячейки
-        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+      
+        //Обновить
+        private void button3_Click(object sender, EventArgs e)
         {
-
+            string refresh_Ch_of_Own = "select * from d__Rent_Status";
+            DataTable dt = DbConnection.DBConnect(refresh_Ch_of_Own);
+            gridControl1.DataSource = dt;
         }
     }
 }
