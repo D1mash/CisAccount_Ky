@@ -744,6 +744,20 @@ namespace Учет_цистерн
             }
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Change_of_Ownership change_Of_Ownership = new Change_of_Ownership(this.tabControl1);
+            tabControl1.Show();
+            TabPage chg_tabPage = new TabPage("Смена собственника");
+            tabControl1.TabPages.Add(chg_tabPage);
+            tabControl1.SelectedTab = chg_tabPage;
+            change_Of_Ownership.TopLevel = false;
+            change_Of_Ownership.Visible = true;
+            change_Of_Ownership.FormBorderStyle = FormBorderStyle.None;
+            change_Of_Ownership.Dock = DockStyle.Fill;
+            chg_tabPage.Controls.Add(change_Of_Ownership);
+        }
+
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddGlobalFilterForm addGlobalFilterForm = new AddGlobalFilterForm();
