@@ -59,17 +59,23 @@
     <Reference Include="AutoUpdater.NET, Version=1.5.8.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Autoupdater.NET.Official.1.5.8\lib\net40\AutoUpdater.NET.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.BonusSkins.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.6.8\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -97,6 +103,12 @@
     </Compile>
     <Compile Include="Forms\AddGlobalFilterForm.Designer.cs">
       <DependentUpon>AddGlobalFilterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Смена собственника\Change_of_Ownership.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Смена собственника\Change_of_Ownership.Designer.cs">
+      <DependentUpon>Change_of_Ownership.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SplashForm.cs">
       <SubType>Form</SubType>
@@ -157,6 +169,12 @@
     </Compile>
     <Compile Include="Forms\Продукты\addNewCargo.Designer.cs">
       <DependentUpon>addNewCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Смена собственника\New_Rent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Смена собственника\New_Rent.Designer.cs">
+      <DependentUpon>New_Rent.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Справка\AboutBox1.cs">
       <SubType>Form</SubType>
@@ -339,6 +357,9 @@
     <EmbeddedResource Include="Forms\AddGlobalFilterForm.resx">
       <DependentUpon>AddGlobalFilterForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Смена собственника\Change_of_Ownership.resx">
+      <DependentUpon>Change_of_Ownership.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -368,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Продукты\addNewCargo.resx">
       <DependentUpon>addNewCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Смена собственника\New_Rent.resx">
+      <DependentUpon>New_Rent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Справка\AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
