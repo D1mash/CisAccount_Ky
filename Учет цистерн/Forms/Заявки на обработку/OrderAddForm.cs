@@ -210,6 +210,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 label10.Text = GetDocStatusDT.Rows[0][1].ToString();
                 textBox1.Text = GetDocStatusDT.Rows[0][2].ToString();
                 dateTimePicker1.Text = GetDate;
+                textEdit1.Visible = false;
 
                 GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "№ вагона", "{0}");
                 GridColumnSummaryItem Cost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена", "{0}");
@@ -366,6 +367,31 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             {
                 string Id = gridView1.GetFocusedDataRow()[0].ToString();
                 SelectItemRow = Convert.ToInt32(Id);
+
+                string CarNumber = gridView1.GetFocusedDataRow()[1].ToString();
+                if(gridView1.DataRowCount == 0)
+                {
+                    textEdit1.Visible = false;
+                }
+                else
+                {
+                    if (CarNumber != string.Empty)
+                    {
+                        string query = "select [dbo].[CheckCarService] (" + CarNumber + "," + Id + ")";
+                        DataTable dt = DbConnection.DBConnect(query);
+                        int State = Convert.ToInt32(dt.Rows[0][0].ToString());
+                        if (State == 1)
+                        {
+                            textEdit1.Visible = true;
+                            string Message = "В/Ц " + CarNumber + " проходил обработку в течении последних 14 дней.";
+                            textEdit1.Text = Message;
+                        }
+                        else
+                        {
+                            textEdit1.Visible = false;
+                        }
+                    }
+                }
             }
             catch (SqlException ex)
             {
