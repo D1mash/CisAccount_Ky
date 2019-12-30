@@ -113,6 +113,7 @@ namespace Учет_цистерн.Forms
             string refresh_Ch_of_Own = "select * from d__Rent_Status";
             DataTable dt = DbConnection.DBConnect(refresh_Ch_of_Own);
             gridControl1.DataSource = dt;
+            gridView1.Columns[0].Visible = false; 
         }
     }
 }
