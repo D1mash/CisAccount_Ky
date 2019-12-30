@@ -57,6 +57,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             try
             {
                 gridControl1.DataSource = null;
+                gridView1.Columns.Clear();
                 GetData();
             }
             catch (SqlException ex)
