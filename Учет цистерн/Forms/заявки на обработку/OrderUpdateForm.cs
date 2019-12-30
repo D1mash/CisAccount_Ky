@@ -499,47 +499,56 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 //tor
                 string UpdateTor = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[7].ToString() + "',4," + SelectItemRow;
                 DbConnection.DBConnect(UpdateTor);
-                //drkr
+                //drkr 1
                 string UpdateDrkr = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[8].ToString() + "',5," + SelectItemRow;
                 DbConnection.DBConnect(UpdateDrkr);
+                //drkr 2
+                string UpdateDrkr2 = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[9].ToString() + "',17," + SelectItemRow;
+                DbConnection.DBConnect(UpdateDrkr2);
+                //changeTrafar
+                string changeTrafar = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[10].ToString() + "',18," + SelectItemRow;
+                DbConnection.DBConnect(changeTrafar);
+                //NaruzhOchistka
+                string NaruzhOchistka = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[11].ToString() + "',19," + SelectItemRow;
+                DbConnection.DBConnect(NaruzhOchistka);
                 //AvailableAUTN
-                string UpdateAvailableAUTN = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[10].ToString() + "',6," + SelectItemRow;
+                string UpdateAvailableAUTN = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[14].ToString() + "',6," + SelectItemRow;
                 DbConnection.DBConnect(UpdateAvailableAUTN);
                 //Klapan
-                string UpdateKlapan = "exec [dbo].[UpdateBodyAutn] '" + gridView1.GetFocusedDataRow()[11].ToString() + "',1," + SelectItemRow;
+                string UpdateKlapan = "exec [dbo].[UpdateBodyAutn] '" + gridView1.GetFocusedDataRow()[15].ToString() + "',1," + SelectItemRow;
                 DbConnection.DBConnect(UpdateKlapan);
                 //DemSkobi
-                string UpdateDemSkobi = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[12].ToString() + "',7," + SelectItemRow;
+                string UpdateDemSkobi = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[16].ToString() + "',7," + SelectItemRow;
                 DbConnection.DBConnect(UpdateDemSkobi);
                 //Trafaret_PTC_Holding
-                string UpdateTrafaret_PTC_Holding = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[13].ToString() + "',8," + SelectItemRow;
+                string UpdateTrafaret_PTC_Holding = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[17].ToString() + "',8," + SelectItemRow;
                 DbConnection.DBConnect(UpdateTrafaret_PTC_Holding);
                 //UshkiZavareni
-                string UpdateUshkiZavareni = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[14].ToString() + "',9," + SelectItemRow;
+                string UpdateUshkiZavareni = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[18].ToString() + "',9," + SelectItemRow;
                 DbConnection.DBConnect(UpdateUshkiZavareni);
                 //SkobiZavareni
-                string UpdateSkobiZavareni = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[15].ToString() + "',10," + SelectItemRow;
+                string UpdateSkobiZavareni = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[19].ToString() + "',10," + SelectItemRow;
                 DbConnection.DBConnect(UpdateSkobiZavareni);
                 //ShaibaValikZavareni
-                string UpdateShaibaValikZavareni = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[16].ToString() + "',11," + SelectItemRow;
+                string UpdateShaibaValikZavareni = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[20].ToString() + "',11," + SelectItemRow;
                 DbConnection.DBConnect(UpdateShaibaValikZavareni);
                 //VnutrLestnica
-                string UpdateVnutrLestnica = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[17].ToString() + "',12," + SelectItemRow;
+                string UpdateVnutrLestnica = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[21].ToString() + "',12," + SelectItemRow;
                 DbConnection.DBConnect(UpdateVnutrLestnica);
                 //Greben
-                string UpdateGreben = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[18].ToString() + "',13," + SelectItemRow;
+                string UpdateGreben = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[22].ToString() + "',13," + SelectItemRow;
                 DbConnection.DBConnect(UpdateGreben);
                 //BarashkTip
-                string UpdateBarashkTip = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[19].ToString() + "',14," + SelectItemRow;
+                string UpdateBarashkTip = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[23].ToString() + "',14," + SelectItemRow;
                 DbConnection.DBConnect(UpdateBarashkTip);
                 //AvailTriBoltov
-                string UpdateAvailTriBoltov = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[20].ToString() + "',15," + SelectItemRow;
+                string UpdateAvailTriBoltov = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[24].ToString() + "',15," + SelectItemRow;
                 DbConnection.DBConnect(UpdateAvailTriBoltov);
                 //AvailToExp
-                string UpdateAvailToExp = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[21].ToString() + "',16," + SelectItemRow;
+                string UpdateAvailToExp = "exec [dbo].[UpdateBodyTemp] '" + gridView1.GetFocusedDataRow()[25].ToString() + "',16," + SelectItemRow;
                 DbConnection.DBConnect(UpdateAvailToExp);
                 //Note
-                string UpdateNote = "exec [dbo].[UpdateBodyAutn] '" + gridView1.GetFocusedDataRow()[22].ToString() + "',2," + SelectItemRow;
+                string UpdateNote = "exec [dbo].[UpdateBodyAutn] '" + gridView1.GetFocusedDataRow()[26].ToString() + "',2," + SelectItemRow;
                 DbConnection.DBConnect(UpdateNote);
 
                 //for (int i = 0; i < dataGridView1.Rows.Count; i++)
