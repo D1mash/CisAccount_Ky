@@ -98,10 +98,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\AddGlobalFilterForm.cs">
+    <Compile Include="Forms\заявки на обработку\AddGlobalFilterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddGlobalFilterForm.Designer.cs">
+    <Compile Include="Forms\заявки на обработку\AddGlobalFilterForm.Designer.cs">
       <DependentUpon>AddGlobalFilterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Смена собственника\Change_of_Ownership.cs">
@@ -354,7 +354,7 @@
     <Compile Include="Forms\Станции\UpdtCurrentStation_StationForm.Designer.cs">
       <DependentUpon>UpdtCurrentStation_StationForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\AddGlobalFilterForm.resx">
+    <EmbeddedResource Include="Forms\заявки на обработку\AddGlobalFilterForm.resx">
       <DependentUpon>AddGlobalFilterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Смена собственника\Change_of_Ownership.resx">
