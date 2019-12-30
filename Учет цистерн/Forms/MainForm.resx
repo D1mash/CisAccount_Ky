@@ -1184,6 +1184,12 @@
   <metadata name="contextMenuStrip_Refrence.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1097, 47</value>
   </metadata>
+  <data name="пользователиToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="пользователиToolStripMenuItem.Text" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
   <data name="проверитьОбновлениеToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 22</value>
   </data>
@@ -1203,7 +1209,7 @@
     <value>О программе</value>
   </data>
   <data name="contextMenuStrip_Refrence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 70</value>
+    <value>205, 114</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip_Refrence.Name" xml:space="preserve">
     <value>contextMenuStrip_Refrence</value>
@@ -1573,6 +1579,12 @@
     <value>оПрограммеToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;оПрограммеToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;пользователиToolStripMenuItem.Name" xml:space="preserve">
+    <value>пользователиToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;пользователиToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

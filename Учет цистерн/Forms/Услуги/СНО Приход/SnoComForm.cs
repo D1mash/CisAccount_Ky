@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraGrid;
+using Учет_цистерн.Forms.Пользователи;
 
 namespace Учет_цистерн.Forms.Услуги.СНО_Приход
 {
@@ -105,14 +106,14 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
             {
                 foreach (Form form in Application.OpenForms)
                 {
-                    if (form.GetType() == typeof(SnoComAddForm))
+                    if (form.GetType() == typeof(AddUserForm))
                     {
                         form.Activate();
                         return;
                     }
                 }
-                SnoComAddForm snoComAddForm = new SnoComAddForm();
-                snoComAddForm.ShowDialog();
+                AddUserForm add = new AddUserForm();
+                add.ShowDialog();
             }
             catch (Exception exp)
             {

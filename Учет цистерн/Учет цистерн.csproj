@@ -134,6 +134,24 @@
     <Compile Include="Forms\Отчеты\SnoReportForm.Designer.cs">
       <DependentUpon>SnoReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Пользователи\AddUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Пользователи\AddUserForm.Designer.cs">
+      <DependentUpon>AddUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Пользователи\AllUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Пользователи\AllUserForm.Designer.cs">
+      <DependentUpon>AllUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Пользователи\UpdateUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Пользователи\UpdateUserForm.Designer.cs">
+      <DependentUpon>UpdateUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Продукты\addNewCargo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -338,6 +356,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Отчеты\SnoReportForm.resx">
       <DependentUpon>SnoReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Пользователи\AddUserForm.resx">
+      <DependentUpon>AddUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Пользователи\AllUserForm.resx">
+      <DependentUpon>AllUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Пользователи\UpdateUserForm.resx">
+      <DependentUpon>UpdateUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Продукты\addNewCargo.resx">
       <DependentUpon>addNewCargo.cs</DependentUpon>

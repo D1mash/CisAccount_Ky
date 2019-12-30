@@ -16,6 +16,7 @@ using System.Configuration;
 using System.Collections.Specialized;
 using Учет_цистерн.Forms;
 using System.Collections;
+using Учет_цистерн.Forms.Пользователи;
 
 namespace Учет_цистерн
 {
@@ -697,6 +698,20 @@ namespace Учет_цистерн
             try
             {
                 contextMenuStrip_Refrence.Show(btn_Refrence, new Point(0, button2.Height));
+                if(role == "1")
+                {
+                    contextMenuStrip_Refrence.Items[0].Enabled = true;
+                    contextMenuStrip_Refrence.Items[1].Enabled = true;
+                    contextMenuStrip_Refrence.Items[2].Enabled = true;
+                    contextMenuStrip_Refrence.Items[3].Enabled = true;
+                }
+                else
+                {
+                    contextMenuStrip_Refrence.Items[0].Enabled = false;
+                    contextMenuStrip_Refrence.Items[1].Enabled = true;
+                    contextMenuStrip_Refrence.Items[2].Enabled = true;
+                    contextMenuStrip_Refrence.Items[3].Enabled = true;
+                }
             }
             catch(Exception ex)
             {
@@ -741,6 +756,27 @@ namespace Учет_цистерн
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 logger.Error(exp, "dataGridView1_MouseClick_1");
+            }
+        }
+
+        private void пользователиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AllUserForm all = new AllUserForm(role);
+                tabControl1.Show();
+                TabPage UserTabPage = new TabPage("Пользователи");
+                tabControl1.TabPages.Add(UserTabPage);
+                tabControl1.SelectedTab = UserTabPage;
+                all.TopLevel = false;
+                all.Visible = true;
+                all.FormBorderStyle = FormBorderStyle.None;
+                all.Dock = DockStyle.Fill;
+                UserTabPage.Controls.Add(all);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
