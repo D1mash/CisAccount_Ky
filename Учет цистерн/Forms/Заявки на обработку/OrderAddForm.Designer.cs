@@ -81,7 +81,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1604, 99);
+            this.groupBox1.Size = new System.Drawing.Size(1787, 99);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             // 
@@ -140,7 +140,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 99);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1604, 708);
+            this.tabControl1.Size = new System.Drawing.Size(1787, 708);
             this.tabControl1.TabIndex = 23;
             // 
             // tabPage1
@@ -151,7 +151,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1596, 682);
+            this.tabPage1.Size = new System.Drawing.Size(1779, 682);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Тело документа";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -165,7 +165,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox4.Location = new System.Drawing.Point(3, 629);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1590, 50);
+            this.groupBox4.Size = new System.Drawing.Size(1773, 50);
             this.groupBox4.TabIndex = 24;
             this.groupBox4.TabStop = false;
             // 
@@ -224,7 +224,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1590, 69);
+            this.groupBox3.Size = new System.Drawing.Size(1773, 69);
             this.groupBox3.TabIndex = 23;
             this.groupBox3.TabStop = false;
             // 
@@ -343,7 +343,7 @@
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Location = new System.Drawing.Point(3, 72);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1590, 560);
+            this.groupBox2.Size = new System.Drawing.Size(1773, 560);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Вагоны";
@@ -356,7 +356,7 @@
             this.gridControl1.Location = new System.Drawing.Point(6, 44);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1578, 507);
+            this.gridControl1.Size = new System.Drawing.Size(1761, 507);
             this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -431,7 +431,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1604, 807);
+            this.ClientSize = new System.Drawing.Size(1787, 807);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox1);
             this.Name = "OrderAddForm";
