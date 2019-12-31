@@ -154,7 +154,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 }
                 DateTime now = DateTime.Now;
                 var startDate = new DateTime(now.Year, now.Month, 1);
-                var endDate = startDate.AddMonths(1).AddDays(-1);
+                var endDate = startDate.AddMonths(1).AddDays(-1).Date.AddHours(23).AddMinutes(59).AddSeconds(59);
                 dateTimePicker1.Value = startDate;
                 dateTimePicker2.Value = endDate;
 
