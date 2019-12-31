@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -68,7 +69,7 @@
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,7 +107,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1340, 61);
+            this.groupBox1.Size = new System.Drawing.Size(1340, 62);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             // 
@@ -114,7 +115,7 @@
             // 
             this.flowLayoutPanel3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(642, 21);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(674, 22);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(1, 21);
             this.flowLayoutPanel3.TabIndex = 7;
@@ -122,7 +123,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(649, 24);
+            this.checkBox1.Location = new System.Drawing.Point(681, 25);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(128, 17);
             this.checkBox1.TabIndex = 9;
@@ -133,18 +134,18 @@
             // 
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(554, 21);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(586, 22);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(1, 21);
             this.flowLayoutPanel2.TabIndex = 6;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.CustomFormat = "dd.MM.yyyy";
+            this.dateTimePicker2.CustomFormat = "dd.MM.yyyy HH:mm:ss";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.Location = new System.Drawing.Point(451, 22);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(97, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(127, 20);
             this.dateTimePicker2.TabIndex = 8;
             // 
             // label2
@@ -185,7 +186,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(561, 19);
+            this.button4.Location = new System.Drawing.Point(593, 20);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 3;
@@ -228,10 +229,10 @@
             this.CurrentTabControl.Controls.Add(this.tabPage1);
             this.CurrentTabControl.Controls.Add(this.tabPage2);
             this.CurrentTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CurrentTabControl.Location = new System.Drawing.Point(0, 61);
+            this.CurrentTabControl.Location = new System.Drawing.Point(0, 62);
             this.CurrentTabControl.Name = "CurrentTabControl";
             this.CurrentTabControl.SelectedIndex = 0;
-            this.CurrentTabControl.Size = new System.Drawing.Size(1340, 760);
+            this.CurrentTabControl.Size = new System.Drawing.Size(1340, 759);
             this.CurrentTabControl.TabIndex = 23;
             // 
             // tabPage1
@@ -240,7 +241,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1332, 734);
+            this.tabPage1.Size = new System.Drawing.Size(1332, 733);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Документы";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -251,7 +252,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1326, 728);
+            this.groupBox2.Size = new System.Drawing.Size(1326, 727);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             // 
@@ -261,7 +262,7 @@
             this.gridControl1.Location = new System.Drawing.Point(3, 16);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1320, 709);
+            this.gridControl1.Size = new System.Drawing.Size(1320, 708);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
