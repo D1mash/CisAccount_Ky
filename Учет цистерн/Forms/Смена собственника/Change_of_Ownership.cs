@@ -33,6 +33,12 @@ namespace Учет_цистерн.Forms
             dateEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
             dateEdit1.EditValue = DateTime.Today;
 
+            DateTime now = DateTime.Now;
+            var startDate = new DateTime(now.Year, now.Month, 1);
+            var endDate = startDate.AddMonths(1).AddDays(-1);
+            dateEdit2.EditValue = startDate;
+            dateEdit3.EditValue = endDate;
+
             FillCombobox();
         }
 
@@ -40,26 +46,34 @@ namespace Учет_цистерн.Forms
         //Создание заявки
         private void button1_Click(object sender, EventArgs e)
         {
-            string newRow = "exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "'";
-            DbConnection.DBConnect(newRow);
+            if(textBox1.Text != String.Empty)
+            {
+                string newRow = "exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "'";
+                DbConnection.DBConnect(newRow);
 
-            //Получаю id для вагонов что бы добавить и обновить
-            string id_Rent_Status = "SELECT [ID] FROM [Batys].[dbo].[d__Rent_Status] WHERE Number = '" + textBox1.Text.Trim() + "'";
-            DataTable dt = DbConnection.DBConnect(id_Rent_Status);
-            string id_Status = dt.Rows[0][0].ToString();
+                //Получаю id для вагонов что бы добавить и обновить
+                string id_Rent_Status = "SELECT [ID] FROM [Batys].[dbo].[d__Rent_Status] WHERE Number = '" + textBox1.Text.Trim() + "'";
+                DataTable dt = DbConnection.DBConnect(id_Rent_Status);
+                string id_Status = dt.Rows[0][0].ToString();
 
-            New_Rent new_Rent = new New_Rent(id_Status);
-            TabControlExtra.Show();
-            TabPage RentTabPage = new TabPage("Заявка №" + textBox1.Text);
-            TabControlExtra.TabPages.Add(RentTabPage);
-            TabControlExtra.SelectedTab = RentTabPage;
-            new_Rent.TopLevel = false;
-            new_Rent.Visible = true;
-            new_Rent.FormBorderStyle = FormBorderStyle.None;
-            new_Rent.Dock = DockStyle.Fill;
-            RentTabPage.Controls.Add(new_Rent);
+                New_Rent new_Rent = new New_Rent(id_Status);
+                TabControlExtra.Show();
+                TabPage RentTabPage = new TabPage("Заявка №" + textBox1.Text);
+                TabControlExtra.TabPages.Add(RentTabPage);
+                TabControlExtra.SelectedTab = RentTabPage;
+                new_Rent.TopLevel = false;
+                new_Rent.Visible = true;
+                new_Rent.FormBorderStyle = FormBorderStyle.None;
+                new_Rent.Dock = DockStyle.Fill;
+                RentTabPage.Controls.Add(new_Rent);
 
-            button3_Click(null, null);
+                button3_Click(null, null);
+            }
+            else
+            {
+                MessageBox.Show("Введите номер заявки", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         
         private void FillCombobox()
@@ -110,10 +124,13 @@ namespace Учет_цистерн.Forms
         //Обновить
         private void button3_Click(object sender, EventArgs e)
         {
-            string refresh_Ch_of_Own = "select * from d__Rent_Status";
+            gridControl1.DataSource = null;
+            gridView1.Columns.Clear();
+
+            string refresh_Ch_of_Own = "exec [dbo].[Refresh_Rent_Head] '" + dateEdit2.DateTime.ToShortDateString() + "', '" + dateEdit3.DateTime.ToShortDateString() + "'";
             DataTable dt = DbConnection.DBConnect(refresh_Ch_of_Own);
             gridControl1.DataSource = dt;
-            gridView1.Columns[0].Visible = false; 
+            gridView1.Columns[0].Visible = false;
         }
     }
 }

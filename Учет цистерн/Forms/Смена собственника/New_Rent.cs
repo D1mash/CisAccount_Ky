@@ -36,6 +36,8 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
         private void RefreshGrid()
         {
+            gridControl1.DataSource = null;
+            gridView1.Columns.Clear();
             string refresh = "Select Id,Number_Carriage [№ Вагона], Product [Продукт] from Rent_Carriage Where Status_Rent = '" + Status + "'" ;
             DataTable dt = DbConnection.DBConnect(refresh);
             gridControl1.DataSource = dt;
@@ -55,6 +57,11 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             string Id = gridView1.GetFocusedDataRow()[0].ToString();
             SelectItemRow = Convert.ToInt32(Id);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            RefreshGrid();
         }
     }
 }
