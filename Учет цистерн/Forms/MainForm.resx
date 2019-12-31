@@ -720,10 +720,10 @@
     <value>NoControl</value>
   </data>
   <data name="btn_Refrence.Location" type="System.Drawing.Point, System.Drawing">
-    <value>784, 16</value>
+    <value>756, 16</value>
   </data>
   <data name="btn_Refrence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 62</value>
+    <value>112, 62</value>
   </data>
   <data name="btn_Refrence.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -747,7 +747,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;btn_Refrence.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="button3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -784,10 +784,10 @@
     <value>NoControl</value>
   </data>
   <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>593, 16</value>
+    <value>634, 16</value>
   </data>
   <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 62</value>
+    <value>116, 62</value>
   </data>
   <data name="button3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -811,7 +811,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="button2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -866,10 +866,10 @@
     <value>NoControl</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 16</value>
+    <value>165, 16</value>
   </data>
   <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 62</value>
+    <value>116, 62</value>
   </data>
   <data name="button2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -893,7 +893,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="button1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -948,7 +948,7 @@
     <value>23, 16</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 62</value>
+    <value>136, 62</value>
   </data>
   <data name="button1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -972,7 +972,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="button4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1042,7 +1042,40 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="button5.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="button5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="button5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>287, 16</value>
+  </data>
+  <data name="button5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 62</value>
+  </data>
+  <data name="button5.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="button5.Text" xml:space="preserve">
+    <value>Смена собственника</value>
+  </data>
+  <data name="&gt;&gt;button5.Name" xml:space="preserve">
+    <value>button5</value>
+  </data>
+  <data name="&gt;&gt;button5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button5.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;button5.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="button7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1092,10 +1125,10 @@
     <value>NoControl</value>
   </data>
   <data name="button7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>403, 16</value>
+    <value>468, 16</value>
   </data>
   <data name="button7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 62</value>
+    <value>160, 62</value>
   </data>
   <data name="button7.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -1119,7 +1152,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button7.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1209,7 +1242,7 @@
     <value>О программе</value>
   </data>
   <data name="contextMenuStrip_Refrence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 114</value>
+    <value>205, 92</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip_Refrence.Name" xml:space="preserve">
     <value>contextMenuStrip_Refrence</value>
@@ -1563,6 +1596,12 @@
   <data name="&gt;&gt;сНОПриходToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;пользователиToolStripMenuItem.Name" xml:space="preserve">
+    <value>пользователиToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;пользователиToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;проверитьОбновлениеToolStripMenuItem.Name" xml:space="preserve">
     <value>проверитьОбновлениеToolStripMenuItem</value>
   </data>
@@ -1579,12 +1618,6 @@
     <value>оПрограммеToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;оПрограммеToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;пользователиToolStripMenuItem.Name" xml:space="preserve">
-    <value>пользователиToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;пользователиToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
