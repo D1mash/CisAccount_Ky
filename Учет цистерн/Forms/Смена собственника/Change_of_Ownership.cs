@@ -20,6 +20,7 @@ namespace Учет_цистерн.Forms
 
         int SelectItemRow;
         string SelectNumber_Rent;
+        int OwId;
 
         public Change_of_Ownership(TradeWright.UI.Forms.TabControlExtra tabControl1)
         {
@@ -123,6 +124,9 @@ namespace Учет_цистерн.Forms
 
             SelectNumber_Rent = gridView1.GetFocusedDataRow()[1].ToString();
 
+            string OwnerID = gridView1.GetFocusedDataRow()[4].ToString();
+            OwId = Convert.ToInt32(OwnerID);
+
             Update_Ch_of_Ow(SelectItemRow, SelectNumber_Rent);
         }
       
@@ -136,6 +140,7 @@ namespace Учет_цистерн.Forms
             DataTable dt = DbConnection.DBConnect(refresh_Ch_of_Own);
             gridControl1.DataSource = dt;
             gridView1.Columns[0].Visible = false;
+            gridView1.Columns[4].Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -152,11 +157,13 @@ namespace Учет_цистерн.Forms
 
         private void Update_Ch_of_Ow(int selectItemRow, string number)
         {
+
             Update_Change_of_Ownership update_change_Of_Ownership = new Update_Change_of_Ownership(SelectItemRow, SelectNumber_Rent);
             TabControlExtra.Show();
             TabPage Up_RentTabPage = new TabPage("Редактирование заявки № " + SelectNumber_Rent);
             TabControlExtra.TabPages.Add(Up_RentTabPage);
             TabControlExtra.SelectedTab = Up_RentTabPage;
+            update_change_Of_Ownership.SelectOwId = OwId;
             update_change_Of_Ownership.TopLevel = false;
             update_change_Of_Ownership.Visible = true;
             update_change_Of_Ownership.FormBorderStyle = FormBorderStyle.None;
