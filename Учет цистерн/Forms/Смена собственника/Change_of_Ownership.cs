@@ -19,6 +19,7 @@ namespace Учет_цистерн.Forms
         TradeWright.UI.Forms.TabControlExtra TabControlExtra;
 
         int SelectItemRow;
+        string SelectNumber_Rent;
 
         public Change_of_Ownership(TradeWright.UI.Forms.TabControlExtra tabControl1)
         {
@@ -58,7 +59,7 @@ namespace Учет_цистерн.Forms
 
                 New_Rent new_Rent = new New_Rent(id_Status);
                 TabControlExtra.Show();
-                TabPage RentTabPage = new TabPage("Заявка №" + textBox1.Text);
+                TabPage RentTabPage = new TabPage("Заявка № " + textBox1.Text);
                 TabControlExtra.TabPages.Add(RentTabPage);
                 TabControlExtra.SelectedTab = RentTabPage;
                 new_Rent.TopLevel = false;
@@ -71,7 +72,7 @@ namespace Учет_цистерн.Forms
             }
             else
             {
-                MessageBox.Show("Введите номер заявки", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введите номер заявки", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -119,6 +120,10 @@ namespace Учет_цистерн.Forms
         {
             string Id = gridView1.GetFocusedDataRow()[0].ToString();
             SelectItemRow = Convert.ToInt32(Id);
+
+            SelectNumber_Rent = gridView1.GetFocusedDataRow()[1].ToString();
+
+            Update_Ch_of_Ow(SelectItemRow, SelectNumber_Rent);
         }
       
         //Обновить
@@ -131,6 +136,32 @@ namespace Учет_цистерн.Forms
             DataTable dt = DbConnection.DBConnect(refresh_Ch_of_Own);
             gridControl1.DataSource = dt;
             gridView1.Columns[0].Visible = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(SelectItemRow > 0)
+            {
+                Update_Ch_of_Ow(SelectItemRow, SelectNumber_Rent);
+            }
+            else
+            {
+                MessageBox.Show("Выберите строку для редактирования", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void Update_Ch_of_Ow(int selectItemRow, string number)
+        {
+            Update_Change_of_Ownership update_change_Of_Ownership = new Update_Change_of_Ownership(SelectItemRow, SelectNumber_Rent);
+            TabControlExtra.Show();
+            TabPage Up_RentTabPage = new TabPage("Редактирование заявки № " + SelectNumber_Rent);
+            TabControlExtra.TabPages.Add(Up_RentTabPage);
+            TabControlExtra.SelectedTab = Up_RentTabPage;
+            update_change_Of_Ownership.TopLevel = false;
+            update_change_Of_Ownership.Visible = true;
+            update_change_Of_Ownership.FormBorderStyle = FormBorderStyle.None;
+            update_change_Of_Ownership.Dock = DockStyle.Fill;
+            Up_RentTabPage.Controls.Add(update_change_Of_Ownership);
         }
     }
 }

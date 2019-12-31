@@ -176,6 +176,12 @@
     <Compile Include="Forms\Смена собственника\New_Rent.Designer.cs">
       <DependentUpon>New_Rent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Смена собственника\Update_Change_of_Ownership.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Смена собственника\Update_Change_of_Ownership.Designer.cs">
+      <DependentUpon>Update_Change_of_Ownership.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Справка\AboutBox1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -392,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Смена собственника\New_Rent.resx">
       <DependentUpon>New_Rent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Смена собственника\Update_Change_of_Ownership.resx">
+      <DependentUpon>Update_Change_of_Ownership.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Справка\AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
