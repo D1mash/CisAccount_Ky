@@ -158,7 +158,7 @@ namespace Учет_цистерн.Forms
         private void Update_Ch_of_Ow(int selectItemRow, string number)
         {
 
-            Update_Change_of_Ownership update_change_Of_Ownership = new Update_Change_of_Ownership(SelectItemRow, SelectNumber_Rent);
+            Update_Change_of_Ownership update_change_Of_Ownership = new Update_Change_of_Ownership(SelectItemRow, SelectNumber_Rent, TabControlExtra);
             TabControlExtra.Show();
             TabPage Up_RentTabPage = new TabPage("Редактирование заявки № " + SelectNumber_Rent);
             TabControlExtra.TabPages.Add(Up_RentTabPage);

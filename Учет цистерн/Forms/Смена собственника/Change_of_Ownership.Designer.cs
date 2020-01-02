@@ -222,7 +222,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 54);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1340, 767);
+            this.groupBox2.Size = new System.Drawing.Size(1340, 695);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -232,7 +232,7 @@
             this.gridControl1.Location = new System.Drawing.Point(3, 16);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1334, 748);
+            this.gridControl1.Size = new System.Drawing.Size(1334, 676);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -251,7 +251,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1340, 821);
+            this.ClientSize = new System.Drawing.Size(1340, 749);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Change_of_Ownership";
