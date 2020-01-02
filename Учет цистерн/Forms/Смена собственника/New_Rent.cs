@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -68,24 +69,28 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             if (SelectItemRow > 0)
             {
-                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Удалить выделенную запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    try
+                    ArrayList rows = new ArrayList();
+                    List<Object> aList = new List<Object>();
+                    string Arrays = string.Empty;
+
+                    Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                    for (int i = 0; i < selectedRowHandles.Length; i++)
                     {
-                        string Delete = "delete from [dbo].[Rent_Carriage] where Id = "+SelectItemRow;
-                        DbConnection.DBConnect(Delete);
-                        MessageBox.Show("Запись удалена!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        RefreshGrid();
+                        int selectedRowHandle = selectedRowHandles[i];
+                        if (selectedRowHandle >= 0)
+                            rows.Add(gridView1.GetDataRow(selectedRowHandle));
                     }
-                    catch (Exception ex)
+                    foreach (DataRow row in rows)
                     {
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        aList.Add(row["Id"]);
+                        Arrays = string.Join(" ", aList);
+                        string delete = "exec dbo.DeleteRentBody '" + Arrays + "'";
+                        DbConnection.DBConnect(delete);
                     }
+                    RefreshGrid();
                 }
-            }
-            else
-            {
-                MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
