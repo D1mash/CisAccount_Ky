@@ -63,5 +63,30 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             RefreshGrid();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (SelectItemRow > 0)
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        string Delete = "delete from [dbo].[Rent_Carriage] where Id = "+SelectItemRow;
+                        DbConnection.DBConnect(Delete);
+                        MessageBox.Show("Запись удалена!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RefreshGrid();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

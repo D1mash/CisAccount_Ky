@@ -126,12 +126,15 @@ namespace Учет_цистерн.Forms
 
             string OwnerID = gridView1.GetFocusedDataRow()[4].ToString();
             OwId = Convert.ToInt32(OwnerID);
-
-            Update_Ch_of_Ow(SelectItemRow, SelectNumber_Rent);
         }
       
         //Обновить
         private void button3_Click(object sender, EventArgs e)
+        {
+            update();
+        }
+
+        private void update()
         {
             gridControl1.DataSource = null;
             gridView1.Columns.Clear();
@@ -169,6 +172,43 @@ namespace Учет_цистерн.Forms
             update_change_Of_Ownership.FormBorderStyle = FormBorderStyle.None;
             update_change_Of_Ownership.Dock = DockStyle.Fill;
             Up_RentTabPage.Controls.Add(update_change_Of_Ownership);
+        }
+
+        private void gridControl1_DoubleClick(object sender, EventArgs e)
+        {
+            if (SelectItemRow > 0)
+            {
+                Update_Ch_of_Ow(SelectItemRow, SelectNumber_Rent);
+            }
+            else
+            {
+                MessageBox.Show("Выберите строку для редактирования", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (SelectItemRow > 0)
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        string Delete = "delete from [dbo].[d__Rent_Status] where ID = " + SelectItemRow + " delete from [dbo].[Rent_Carriage] where Status_Rent = " + SelectItemRow;
+                        DbConnection.DBConnect(Delete);
+                        MessageBox.Show("Документ удалён!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        update();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
