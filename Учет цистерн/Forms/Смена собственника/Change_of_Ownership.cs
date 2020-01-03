@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors.Repository;
+using NLog;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Учет_цистерн.Forms
     public partial class Change_of_Ownership : Form
     {
         TradeWright.UI.Forms.TabControlExtra TabControlExtra;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         int SelectItemRow;
         string SelectNumber_Rent;
@@ -30,62 +32,84 @@ namespace Учет_цистерн.Forms
 
         private void Change_of_Ownership_Load(object sender, EventArgs e)
         {
-            dateEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
-            dateEdit1.Properties.Mask.EditMask = "d"; //'Short date' format 
-            dateEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
-            dateEdit1.EditValue = DateTime.Today;
+            try
+            {
+                dateEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
+                dateEdit1.Properties.Mask.EditMask = "d"; //'Short date' format 
+                dateEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
+                dateEdit1.EditValue = DateTime.Today;
 
-            DateTime now = DateTime.Now;
-            var startDate = new DateTime(now.Year, now.Month, 1);
-            var endDate = startDate.AddMonths(1).AddDays(-1);
-            dateEdit2.EditValue = startDate;
-            dateEdit3.EditValue = endDate;
+                DateTime now = DateTime.Now;
+                var startDate = new DateTime(now.Year, now.Month, 1);
+                var endDate = startDate.AddMonths(1).AddDays(-1);
+                dateEdit2.EditValue = startDate;
+                dateEdit3.EditValue = endDate;
 
-            FillCombobox();
+                FillCombobox();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, "Change_of_Ownership_Load");
+            }
         }
 
 
         //Создание заявки
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text != String.Empty)
+            try
             {
-                string newRow = "exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "'";
-                DbConnection.DBConnect(newRow);
+                if (textBox1.Text != String.Empty)
+                {
+                    string newRow = "exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "'";
+                    DbConnection.DBConnect(newRow);
 
-                //Получаю id для вагонов что бы добавить и обновить
-                string id_Rent_Status = "SELECT [ID] FROM [Batys].[dbo].[d__Rent_Status] WHERE Number = '" + textBox1.Text.Trim() + "'";
-                DataTable dt = DbConnection.DBConnect(id_Rent_Status);
-                string id_Status = dt.Rows[0][0].ToString();
+                    //Получаю id для вагонов что бы добавить и обновить
+                    string id_Rent_Status = "SELECT [ID] FROM [Batys].[dbo].[d__Rent_Status] WHERE Number = '" + textBox1.Text.Trim() + "'";
+                    DataTable dt = DbConnection.DBConnect(id_Rent_Status);
+                    string id_Status = dt.Rows[0][0].ToString();
 
-                New_Rent new_Rent = new New_Rent(id_Status);
-                TabControlExtra.Show();
-                TabPage RentTabPage = new TabPage("Заявка № " + textBox1.Text);
-                TabControlExtra.TabPages.Add(RentTabPage);
-                TabControlExtra.SelectedTab = RentTabPage;
-                new_Rent.TopLevel = false;
-                new_Rent.Visible = true;
-                new_Rent.FormBorderStyle = FormBorderStyle.None;
-                new_Rent.Dock = DockStyle.Fill;
-                RentTabPage.Controls.Add(new_Rent);
+                    New_Rent new_Rent = new New_Rent(id_Status);
+                    TabControlExtra.Show();
+                    TabPage RentTabPage = new TabPage("Заявка № " + textBox1.Text);
+                    TabControlExtra.TabPages.Add(RentTabPage);
+                    TabControlExtra.SelectedTab = RentTabPage;
+                    new_Rent.TopLevel = false;
+                    new_Rent.Visible = true;
+                    new_Rent.FormBorderStyle = FormBorderStyle.None;
+                    new_Rent.Dock = DockStyle.Fill;
+                    RentTabPage.Controls.Add(new_Rent);
 
-                button3_Click(null, null);
+                    button3_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Введите номер заявки", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Введите номер заявки", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex, "Change_of_Ownership_Load_btn1");
             }
-
         }
         
         private void FillCombobox()
         {
-            string getOwner = "Select ID, Name from d__Owner";
-            DataTable dt = DbConnection.DBConnect(getOwner);
+            try
+            {
+                string getOwner = "Select ID, Name from d__Owner";
+                DataTable dt = DbConnection.DBConnect(getOwner);
 
-            comboBox1.DataSource = dt;
-            comboBox1.ValueMember = "ID";
-            comboBox1.DisplayMember = "Name";
+                comboBox1.DataSource = dt;
+                comboBox1.ValueMember = "ID";
+                comboBox1.DisplayMember = "Name";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //Кнопка удалить
