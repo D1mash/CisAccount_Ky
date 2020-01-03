@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -380,12 +381,28 @@ namespace Учет_цистерн
                     FormattingExcelCells(range1, false, false);
 
                     app.DisplayAlerts = false;
-                    workbook.SaveAs(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                    workbook.Close(true, misValue, misValue);
-                    app.Quit();
-                    appProcess.Kill();
+                    string path_file = @"D:\Отчеты\Реестр за арендованных и  собственных вагон-цистерн компании.xls";
+                    if (File.Exists(path_file))
+                    {
+                        workbook.SaveAs(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
 
-                    Process.Start(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xls");
+                        workbook.Close(true, misValue, misValue);
+                        app.Quit();
+                        appProcess.Kill();
+
+                        Process.Start(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xls");
+                    }
+                    else
+                    {
+                        workbook.SaveAs(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании - " + DateTime.Now.ToShortDateString() + ".xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+
+                        workbook.Close(true, misValue, misValue);
+                        app.Quit();
+                        appProcess.Kill();
+
+                        Process.Start(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании - " + DateTime.Now.ToShortDateString() + ".xls");
+                    }
+                    
                 }
             }
             catch (Exception ex)
