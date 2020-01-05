@@ -720,7 +720,7 @@
     <value>NoControl</value>
   </data>
   <data name="btn_Refrence.Location" type="System.Drawing.Point, System.Drawing">
-    <value>756, 16</value>
+    <value>743, 16</value>
   </data>
   <data name="btn_Refrence.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 62</value>
@@ -784,7 +784,7 @@
     <value>NoControl</value>
   </data>
   <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>634, 16</value>
+    <value>621, 16</value>
   </data>
   <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 62</value>
@@ -1050,6 +1050,33 @@
   <data name="button5.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
+  <data name="button5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAQmSURBVFhH7ZdvaBNnHMfjdHOTdVNwbtOuuVyjgnXgxDkwY3RJrdUu0YoRUdS2SGFsezFxfaGk
+        u80hLtUGYu6uYXNj4tBqVRSt+saiiHsz8Y2IKIiM4Saz/+4ulq1rf/s9+svlMblLrqvd3uQDX2if379v
+        n7t77uoqUqRIkcd44zDZva/fUy5rSwRFW+WW9ffL2vV5QqxvKqX897iTqddFVf9QkLUzHkUfRIGNrqF2
+        iu2pRVQ6vryxLzXToxjf4tA/ORPOJOtX2O5Sq6ePR9G24CAtZ/CopR2Yu/+PEmo7diolmCTIxn6LYcMe
+        Vb+IAz8TEgPveOMPSyuOwHPeuP5KuarPF1Vjg6johzCvP6uO6Sa7b2nEGDgCE9HE0azmIzj4hDehV1BW
+        Xrzxnpcw/wusy979e2M2iU3iWU1xiBai8KhgO4z1P/P9BEW/LiZ7X6aU0SHK+mq+GeoXduko/K8obYMX
+        LK5IJ4Wdw84wLLzPNelzekkLwe5T7NfN9Qa3klpOYWfg7kl8A0HV11HoqTAnqU3Hvg+4GTddEjxD4fwI
+        38PzWNDLFZ+jUF6qq6tn+P3+YCAQWBMOhyfSsi10bKVn4CYYyyiUH7eq1fGF5armo5AlPp+vBI11oEZQ
+        QNpTWVlZSimWsOMLn+5fuVnO7kVBMb7jim7Rsi1o5hRnjJeBWkxplmD/ndysPkeXGRNvpIvwL4zRsiW4
+        SwvShqoCftjWsBS6ojVw92At1NYEmMEDlGqJKGvvpmcx4QthAYVsYAezov9tFqnGRopYEloR2LplbdXQ
+        sa9qoKfzA4CzQVPXkitgZW3VbUq1hJ5oc17BhxH/gtdMc0wJ/T0KWYI71nEhtvwJY7w21AU0SrUF5/zG
+        zfyElq0Rk4NlXDKwzyTPN8areED72cNDaSZK87LD+Qx+unnpAKXagnNuZWZq22k5lzKlf5pH1oKZ5Eev
+        oh76eVhUjCpKNYGzoXWpk9bmmAaOB09Tqi34GfY7N/MjWs5Qqj6chQH2YWkay5URpfQngO7wi2jkXrYx
+        U+dCtZRqycwkTMH+Q+k5tvcg++Jg32kZQxnhl/NVdjNTag7QFfKhmd4scyPQFfySUmzJfooLvk4xKYzq
+        yxQZBhqfS2Fb4HzdDDg0exg6FwJ0VAD8WB6hUF7wzN2VmeX0HEwMujH5MisSVa2Rlm2RJGlSw469S0bU
+        CUPQ7gKmi3sX766XYgX/acINuMMZPEzLhXn8GjLW06+WNDUln90ciTbXR1rvo+CntrcemXsgT4WPP5cA
+        1/5qiLT+sGlH2ywqyYFOjSRqWEwYAVoeO43NX5eggUvMWFoNLVHYJm2HppZd5hqppz6y520qtcSdSC10
+        /DXjBBzanWWikPobpZhI5eOPhYHCaomGqXz8qW9p3T1qRdrepPIiRYoU+f9xuf4BSA4Do8VhlxkAAAAA
+        SUVORK5CYII=
+</value>
+  </data>
+  <data name="button5.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="button5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1057,13 +1084,16 @@
     <value>287, 16</value>
   </data>
   <data name="button5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 62</value>
+    <value>162, 62</value>
   </data>
   <data name="button5.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
   </data>
   <data name="button5.Text" xml:space="preserve">
     <value>Смена собственника</value>
+  </data>
+  <data name="button5.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
   </data>
   <data name="&gt;&gt;button5.Name" xml:space="preserve">
     <value>button5</value>
@@ -1125,7 +1155,7 @@
     <value>NoControl</value>
   </data>
   <data name="button7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>468, 16</value>
+    <value>455, 16</value>
   </data>
   <data name="button7.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 62</value>
