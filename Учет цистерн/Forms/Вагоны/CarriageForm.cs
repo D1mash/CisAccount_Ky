@@ -72,6 +72,8 @@ namespace Учет_цистерн
 
             if (!backgroundWorker1.IsBusy)
             {
+                gridControl1.DataSource = null;
+                gridView1.Columns.Clear();
                 progBar.Visible = true;
                 progBar.Maximum = GetTotalRecords();
                 string GetCarriage = "Select dc.ID, dc.CarNumber [№ Вагона],dc.AXIS [Осность],do.ID [OwnerID], do.Name [Наименование],do.FullName [Полное наименование], dc.Current_owner[Текущий собственник] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";

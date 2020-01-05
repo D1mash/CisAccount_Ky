@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid;
 using NLog;
 using System;
 using System.Collections;
@@ -17,7 +18,16 @@ namespace Учет_цистерн.Forms
 
     public partial class Change_of_Ownership : Form
     {
-        TradeWright.UI.Forms.TabControlExtra TabControlExtra;
+        private TradeWright.UI.Forms.TabControlExtra TabControlExtra;
+        private ToolStripProgressBar progBar;
+        private ToolStripLabel TlStpLabel;
+        private Button btn1;
+        private Button btn2;
+        private Button btn3;
+        private Button btn4;
+        private Button btn6;
+        private Button btn7;
+
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
         int SelectItemRow;
@@ -25,9 +35,17 @@ namespace Учет_цистерн.Forms
         int OwId;
         string role;
 
-        public Change_of_Ownership(TradeWright.UI.Forms.TabControlExtra tabControl1, string role)
+        public Change_of_Ownership(ToolStripProgressBar toolStripProgressBar1, ToolStripLabel toolStripLabel1, Button button1, Button button2, Button button3, Button button4, Button btn_Refrence, TradeWright.UI.Forms.TabControlExtra tabControl1, Button button7, string role)
         {
             InitializeComponent();
+            this.progBar = toolStripProgressBar1;
+            this.TlStpLabel = toolStripLabel1;
+            this.btn1 = button1;
+            this.btn2 = button2;
+            this.btn3 = button3;
+            this.btn4 = button4;
+            this.btn6 = btn_Refrence;
+            this.btn7 = button7;
             this.TabControlExtra = tabControl1;
             this.role = role;
         }
@@ -139,34 +157,6 @@ namespace Учет_цистерн.Forms
             }
         }
 
-        //Кнопка удалить
-        //private void button3_Click(object sender, EventArgs e)
-        //{
-        //    if (MessageBox.Show("Удалить выделенную запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-        //    {
-        //        ArrayList rows = new ArrayList();
-        //        List<Object> aList = new List<Object>();
-        //        string Arrays = string.Empty;
-
-        //        Int32[] selectedRowHandles = gridView1.GetSelectedRows();
-        //        for (int i = 0; i < selectedRowHandles.Length; i++)
-        //        {
-        //            int selectedRowHandle = selectedRowHandles[i];
-        //            if (selectedRowHandle >= 0)
-        //                rows.Add(gridView1.GetDataRow(selectedRowHandle));
-        //        }
-        //        foreach (DataRow row in rows)
-        //        {
-        //            aList.Add(row["Id"]);
-        //            Arrays = string.Join(" ", aList);
-
-        //            //string delete = "exec dbo.DeleteRenderedBody '" + Arrays + "'";
-        //            //DbConnection.DBConnect(delete);
-        //        }
-        //        RefreshGrid();
-        //    }
-        //}
-
         //Выбор строки
         private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
@@ -187,14 +177,35 @@ namespace Учет_цистерн.Forms
 
         private void update()
         {
-            gridControl1.DataSource = null;
-            gridView1.Columns.Clear();
+            progBar.Visible = false;
+            try
+            {
+                if (!backgroundWorker1.IsBusy)
+                {
+                    gridControl1.DataSource = null;
+                    gridView1.Columns.Clear();
+                    progBar.Visible = true;
+                    progBar.Maximum = GetTotalRecords();
+                    btn1.Enabled = false;
+                    btn2.Enabled = false;
+                    btn3.Enabled = false;
+                    btn4.Enabled = false;
+                    btn6.Enabled = false;
+                    btn7.Enabled = false;
+                    button1.Enabled = false;
+                    button2.Enabled = false;
+                    button3.Enabled = false;
+                    button4.Enabled = false;
+                    TabControlExtra.DisplayStyleProvider.ShowTabCloser = false;
+                    string refresh_Ch_of_Own = "exec [dbo].[Refresh_Rent_Head] '" + dateEdit2.DateTime.ToShortDateString() + "', '" + dateEdit3.DateTime.ToShortDateString() + "'";
+                    backgroundWorker1.RunWorkerAsync(refresh_Ch_of_Own);
+                }
 
-            string refresh_Ch_of_Own = "exec [dbo].[Refresh_Rent_Head] '" + dateEdit2.DateTime.ToShortDateString() + "', '" + dateEdit3.DateTime.ToShortDateString() + "'";
-            DataTable dt = DbConnection.DBConnect(refresh_Ch_of_Own);
-            gridControl1.DataSource = dt;
-            gridView1.Columns[0].Visible = false;
-            gridView1.Columns[4].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -259,6 +270,97 @@ namespace Учет_цистерн.Forms
             else
             {
                 MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                Application.UseWaitCursor = true; //keeps waitcursor even when the thread ends.
+                System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
+                string Query = (string)e.Argument;
+
+                int i = 1;
+                DataTable dt = DbConnection.DBConnect(Query);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    backgroundWorker1.ReportProgress(i);
+                    i++;
+                }
+                e.Result = dt;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            if (!backgroundWorker1.CancellationPending)
+            {
+                progBar.Value = e.ProgressPercentage;
+                TlStpLabel.Text = "Обработка строки.. " + e.ProgressPercentage.ToString() + " из " + GetTotalRecords();
+            }
+        }
+
+        private int GetTotalRecords()
+        {
+            int i = 1;
+            try
+            {
+                
+                string refresh_Ch_of_Own = "exec [dbo].[Refresh_Rent_Head] '" + dateEdit2.DateTime.ToShortDateString() + "', '" + dateEdit3.DateTime.ToShortDateString() + "'";
+                DataTable dt = DbConnection.DBConnect(refresh_Ch_of_Own);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                return i;
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                TlStpLabel.Text = "Готов";
+            }
+            else if (e.Error != null)
+            {
+                TlStpLabel.Text = "Ошибка" + e.Error.Message;
+            }
+            else
+            {
+                Application.UseWaitCursor = false;
+                System.Windows.Forms.Cursor.Current = Cursors.Default;
+                
+                gridControl1.DataSource = e.Result;
+                gridView1.Columns[0].Visible = false;
+                gridView1.Columns[4].Visible = false;
+
+                GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Количество", "Кол.во={0}");
+                gridView1.Columns["№ Заявки"].Summary.Add(item1);
+
+                progBar.Visible = false;
+                btn1.Enabled = true;
+                btn2.Enabled = true;
+                btn3.Enabled = true;
+                btn4.Enabled = true;
+                btn6.Enabled = true;
+                btn7.Enabled = true;
+                button1.Enabled = true;
+                button2.Enabled = true;
+                button3.Enabled = true;
+                button4.Enabled = true;
+
+                TabControlExtra.DisplayStyleProvider.ShowTabCloser = true;
+                TlStpLabel.Text = "Данные загружены...";
             }
         }
     }
