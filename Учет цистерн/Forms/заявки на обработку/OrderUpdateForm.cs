@@ -212,6 +212,8 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 this.label9.Text = dt.Rows[0][4].ToString();
                 this.label10.Text = dt.Rows[0][5].ToString();
                 textEdit1.Visible = false;
+                memoEdit1.Visible = false;
+                simpleButton1.Visible = false;
 
                 GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "№ вагона", "{0}");
                 GridColumnSummaryItem Cost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена", "{0}");
@@ -421,6 +423,8 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 if (gridView1.DataRowCount == 0)
                 {
                     textEdit1.Visible = false;
+                    memoEdit1.Visible = false;
+                    simpleButton1.Visible = false;
                 }
                 else
                 {
@@ -432,12 +436,22 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         if (State == 1)
                         {
                             textEdit1.Visible = true;
+                            simpleButton1.Visible = true;
                             string Message = "В/Ц " + CarNumber + " проходил обработку в течении последних 14 дней.";
                             textEdit1.Text = Message;
                         }
                         else
                         {
                             textEdit1.Visible = false;
+                            simpleButton1.Visible = false;
+                        }
+
+                        string LastRent = "exec dbo.LastRent " + CarNumber;
+                        DataTable dt1 = DbConnection.DBConnect(LastRent);
+                        if (dt1.Columns.Count > 0)
+                        {
+                            memoEdit1.Visible = true;
+                            memoEdit1.Text = "Последняя заявка: " + dt1.Rows[0][1] + " от " + dt1.Rows[0][2] + "" + "\r\n" + "Продукт: " + dt1.Rows[0][5] + "" + "\r\n" + "Была передача: " + dt1.Rows[0][3];
                         }
                     }
                 }
@@ -451,7 +465,14 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            string CarNumber = gridView1.GetFocusedDataRow()[1].ToString();
+            string query = "exec [dbo].[LastRenderedService] " + CarNumber + ", " + SelectItemRow;
+            DataTable dt = DbConnection.DBConnect(query);
+            LastRenderedServiceForm last = new LastRenderedServiceForm(dt);
+            last.ShowDialog();
+        }
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             try
