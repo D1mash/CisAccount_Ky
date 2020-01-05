@@ -23,17 +23,44 @@ namespace Учет_цистерн.Forms
         int SelectItemRow;
         string SelectNumber_Rent;
         int OwId;
+        string role;
 
-        public Change_of_Ownership(TradeWright.UI.Forms.TabControlExtra tabControl1)
+        public Change_of_Ownership(TradeWright.UI.Forms.TabControlExtra tabControl1, string role)
         {
             InitializeComponent();
             this.TabControlExtra = tabControl1;
+            this.role = role;
         }
 
         private void Change_of_Ownership_Load(object sender, EventArgs e)
         {
             try
             {
+                if (role == "1")
+                {
+                    button1.Enabled = true;
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                    button4.Enabled = true;
+                }
+                else
+                {
+                    if (role == "2")
+                    {
+                        button1.Enabled = true;
+                        button2.Enabled = false;
+                        button3.Enabled = true;
+                        button4.Enabled = false;
+                    }
+                    else
+                    {
+                        button1.Enabled = false;
+                        button2.Enabled = false;
+                        button3.Enabled = false;
+                        button4.Enabled = false;
+                    }
+                }
+
                 dateEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
                 dateEdit1.Properties.Mask.EditMask = "d"; //'Short date' format 
                 dateEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
