@@ -213,6 +213,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 this.label10.Text = dt.Rows[0][5].ToString();
                 textEdit1.Visible = false;
                 memoEdit1.Visible = false;
+                simpleButton1.Visible = false;
 
                 GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "№ вагона", "{0}");
                 GridColumnSummaryItem Cost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена", "{0}");
@@ -423,6 +424,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 {
                     textEdit1.Visible = false;
                     memoEdit1.Visible = false;
+                    simpleButton1.Visible = false;
                 }
                 else
                 {
@@ -434,12 +436,14 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         if (State == 1)
                         {
                             textEdit1.Visible = true;
+                            simpleButton1.Visible = true;
                             string Message = "В/Ц " + CarNumber + " проходил обработку в течении последних 14 дней.";
                             textEdit1.Text = Message;
                         }
                         else
                         {
                             textEdit1.Visible = false;
+                            simpleButton1.Visible = false;
                         }
 
                         string LastRent = "exec dbo.LastRent " + CarNumber;
@@ -461,7 +465,14 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            string CarNumber = gridView1.GetFocusedDataRow()[1].ToString();
+            string query = "exec [dbo].[LastRenderedService] " + CarNumber + ", " + SelectItemRow;
+            DataTable dt = DbConnection.DBConnect(query);
+            LastRenderedServiceForm last = new LastRenderedServiceForm(dt);
+            last.ShowDialog();
+        }
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             try
