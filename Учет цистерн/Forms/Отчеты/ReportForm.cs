@@ -61,19 +61,25 @@ namespace Учет_цистерн
                     //source.DataSource = dt;
                     gridControl1.DataSource = dt;
                     gridView1.Columns[0].Visible = false;
-                    gridView1.Columns[14].Visible = false;
-                    gridView1.Columns[15].Visible = false;
+                    //gridView1.Columns[14].Visible = false;
+                    //gridView1.Columns[15].Visible = false;
 
-                    GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена", "SUM={0}");
-                    gridView1.Columns["Цена"].Summary.Add(item1);
+                    GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Стоимость услуги", "СУМ={0}");
+                    gridView1.Columns["Стоимость услуги"].Summary.Add(item1);
+                    GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Стоимость ТОР", "СУМ={0}");
+                    gridView1.Columns["Стоимость ТОР"].Summary.Add(item2);
 
                     progressBar.Maximum = TotalRow(dt);
                     toolStripLabel1.Text = TotalRow(dt).ToString();
 
+                    gridView1.Columns["Осность"].Width = 60;
+                    gridView1.Columns["Продукт"].Width = 60;
                     gridView1.Columns["Гор"].Width = 30;
                     gridView1.Columns["Хол"].Width = 30;
                     gridView1.Columns["ТОР"].Width = 30;
 
+                    gridView1.Columns["Осность"].OptionsColumn.FixedWidth = true;
+                    gridView1.Columns["Продукт"].OptionsColumn.FixedWidth = true;
                     gridView1.Columns["Гор"].OptionsColumn.FixedWidth = true;
                     gridView1.Columns["Хол"].OptionsColumn.FixedWidth = true;
                     gridView1.Columns["ТОР"].OptionsColumn.FixedWidth = true;
@@ -88,18 +94,22 @@ namespace Учет_цистерн
                     //source.DataSource = dataTable;
                     gridControl1.DataSource = dt;
                     gridView1.Columns[0].Visible = false;
-                    gridView1.Columns[14].Visible = false;
-                    gridView1.Columns[15].Visible = false;
+                    //gridView1.Columns[14].Visible = false;
+                    //gridView1.Columns[15].Visible = false;
                     progressBar.Maximum = TotalRow(dt);
                     toolStripLabel1.Text = TotalRow(dt).ToString();
 
-                    GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена", "SUM={0}");
-                    gridView1.Columns["Цена"].Summary.Add(item1);
+                    //GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена", "SUM={0}");
+                    //gridView1.Columns["Цена"].Summary.Add(item1);
 
+                    gridView1.Columns["Осность"].Width = 60;
+                    gridView1.Columns["Продукт"].Width = 60;
                     gridView1.Columns["Гор"].Width = 30;
                     gridView1.Columns["Хол"].Width = 30;
                     gridView1.Columns["ТОР"].Width = 30;
 
+                    gridView1.Columns["Осность"].OptionsColumn.FixedWidth = true;
+                    gridView1.Columns["Продукт"].OptionsColumn.FixedWidth = true;
                     gridView1.Columns["Гор"].OptionsColumn.FixedWidth = true;
                     gridView1.Columns["Хол"].OptionsColumn.FixedWidth = true;
                     gridView1.Columns["ТОР"].OptionsColumn.FixedWidth = true;
@@ -291,7 +301,8 @@ namespace Учет_цистерн
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         worksheet.Cells[i + 10, 1] = i + 1;
-                        for (int j = 1; j < dt.Columns.Count - 2; j++)
+
+                        for (int j = 1; j < dt.Columns.Count-2; j++)
                         {
                             if (j != 3 && j < 4)
                             {
@@ -317,7 +328,7 @@ namespace Учет_цистерн
                             }
                             else
                             {
-                                if (j >= 6 && j <= 9)
+                                if (j >= 6 && j <=10)
                                 {
                                     if (dt.Rows[i][j].ToString().Trim() == "True")
                                     {
@@ -329,9 +340,9 @@ namespace Учет_цистерн
                                     }
                                 }
                             }
-                            if (j > 9)
+                            if (j > 10)
                             {
-                                worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
+                               worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
                             }
                         }
 
@@ -402,7 +413,7 @@ namespace Учет_цистерн
 
                         Process.Start(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании - " + DateTime.Now.ToShortDateString() + ".xls");
                     }
-                    
+
                 }
             }
             catch (Exception ex)
@@ -459,7 +470,7 @@ namespace Учет_цистерн
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                sum += Convert.ToDouble(dt.Rows[i][12].ToString());
+                sum += Convert.ToDouble(dt.Rows[i][14].ToString());
             }
             return sum;
         }
