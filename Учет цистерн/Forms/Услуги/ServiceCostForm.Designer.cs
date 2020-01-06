@@ -58,7 +58,7 @@
             // 
             // Btn_Refresh
             // 
-            this.Btn_Refresh.Location = new System.Drawing.Point(12, 19);
+            this.Btn_Refresh.Location = new System.Drawing.Point(255, 19);
             this.Btn_Refresh.Name = "Btn_Refresh";
             this.Btn_Refresh.Size = new System.Drawing.Size(75, 23);
             this.Btn_Refresh.TabIndex = 3;
@@ -88,7 +88,7 @@
             // 
             // Btn_Add
             // 
-            this.Btn_Add.Location = new System.Drawing.Point(255, 19);
+            this.Btn_Add.Location = new System.Drawing.Point(12, 19);
             this.Btn_Add.Name = "Btn_Add";
             this.Btn_Add.Size = new System.Drawing.Size(75, 23);
             this.Btn_Add.TabIndex = 0;

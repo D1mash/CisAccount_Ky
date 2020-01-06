@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraGrid;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading;
@@ -71,9 +72,11 @@ namespace Учет_цистерн
 
             if (!backgroundWorker1.IsBusy)
             {
+                gridControl1.DataSource = null;
+                gridView1.Columns.Clear();
                 progBar.Visible = true;
                 progBar.Maximum = GetTotalRecords();
-                string GetCarriage = "Select dc.ID, dc.CarNumber,dc.AXIS,do.ID [OwnerID], do.Name,do.FullName From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
+                string GetCarriage = "Select dc.ID, dc.CarNumber [№ Вагона],dc.AXIS [Осность],do.ID [OwnerID], do.Name [Наименование],do.FullName [Полное наименование], dc.Current_owner[Текущий собственник] From d__Carriage dc Left Join d__Owner do on do.ID = dc.Owner_ID";
                 btn1.Enabled = false;
                 btn2.Enabled = false;
                 btn3.Enabled = false;
@@ -224,6 +227,9 @@ namespace Учет_цистерн
                 gridControl1.DataSource = source;
                 gridView1.Columns[0].Visible = false;
                 gridView1.Columns[3].Visible = false;
+
+                GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Количество", "Кол.во={0}");
+                gridView1.Columns["№ Вагона"].Summary.Add(item1);
 
                 progBar.Visible = false;
                 btn1.Enabled = true;

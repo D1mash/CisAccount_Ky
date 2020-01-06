@@ -8,9 +8,11 @@ namespace Учет_цистерн
 {
     public partial class ServiceCostForm : Form
     {
-        public ServiceCostForm()
+        string role;
+        public ServiceCostForm(string role)
         {
             InitializeComponent();
+            this.role = role;
         }
 
         int SelectItemRow;
@@ -21,6 +23,31 @@ namespace Учет_цистерн
         {
             try
             {
+                if (role == "1")
+                {
+                    Btn_Add.Enabled = true;
+                    Btn_Updt.Enabled = true;
+                    Btn_Delete.Enabled = true;
+                    Btn_Refresh.Enabled = true;
+                }
+                else
+                {
+                    if (role == "2")
+                    {
+                        Btn_Add.Enabled = true;
+                        Btn_Updt.Enabled = false;
+                        Btn_Delete.Enabled = false;
+                        Btn_Refresh.Enabled = true;
+                    }
+                    else
+                    {
+                        Btn_Add.Enabled = false;
+                        Btn_Updt.Enabled = false;
+                        Btn_Delete.Enabled = false;
+                        Btn_Refresh.Enabled = false;
+                    }
+                }
+
                 string Reffresh = "exec dbo.GetServiceCost";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(Reffresh);
