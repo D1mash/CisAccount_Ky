@@ -30,7 +30,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         {
             try
             {
-                string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+                string GetID = "select ID from d__RenderedServiceHead where NUM = '" + GetStatus+"'";
                 DataTable dt = DbConnection.DBConnect(GetID);
                 string Insert = "exec dbo.InsertCarnumber '" + Clipboard.GetText() + "'," + dt.Rows[0][0].ToString();
                 DbConnection.DBConnect(Insert);
@@ -99,10 +99,10 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         {
             try
             {
-                string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+                string GetID = "select ID from d__RenderedServiceHead where NUM = '" + GetStatus+"'";
                 DataTable dt = DbConnection.DBConnect(GetID);
 
-                string CheckProduct = "select Carnumber from d__RenderedServiceBody where Product_ID is NULL and Head_ID = " + dt.Rows[0][0].ToString();
+                string CheckProduct = "select Carnumber from d__RenderedServiceBody b left join temp t on t.body_id = b.ID where b.Product_ID is NULL and (t.drkr = 0 and t.dr1 = 0) and b.Head_ID = " + dt.Rows[0][0].ToString();
                 DataTable dt1 = DbConnection.DBConnect(CheckProduct);
 
                 string CheckCarNumber = "select * from d__RenderedServiceBody where CarNumber is NULL and Head_ID = " + dt.Rows[0][0].ToString();
@@ -231,7 +231,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         //Получаю данные из таблицы d__RenderedServiceBody, также комбобоксы по внешним ключам - продукты и услуги
         private void GetData()
         {
-            string ID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+            string ID = "select ID from d__RenderedServiceHead where NUM = '" + GetStatus+"'";
             DataTable GetIDDT = DbConnection.DBConnect(ID);
             string GetDocument = "exec dbo.GetRenderedServiceBody_v1 " + GetIDDT.Rows[0][0].ToString();
             DataTable GetDocumentDT = DbConnection.DBConnect(GetDocument);
@@ -293,10 +293,10 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 {
                     try
                     {
-                        string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+                        string GetID = "select ID from d__RenderedServiceHead where NUM = '" + GetStatus+"'";
                         DataTable dt = DbConnection.DBConnect(GetID);
 
-                        string CheckProduct = "select Carnumber from d__RenderedServiceBody where Product_ID is NULL and Head_ID = " + dt.Rows[0][0].ToString();
+                        string CheckProduct = "select Carnumber from d__RenderedServiceBody b left join temp t on t.body_id = b.ID where b.Product_ID is NULL and (t.drkr = 0 and t.dr1 = 0) and b.Head_ID = " + dt.Rows[0][0].ToString();
                         DataTable dt1 = DbConnection.DBConnect(CheckProduct);
 
                         string CheckCarNumber = "select * from d__RenderedServiceBody where CarNumber is NULL and Head_ID = " + dt.Rows[0][0].ToString();
@@ -346,7 +346,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 }
                 else if(result == DialogResult.No)
                 {
-                    string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+                    string GetID = "select ID from d__RenderedServiceHead where NUM = '" + GetStatus +"'";
                     DataTable GetDTID = DbConnection.DBConnect(GetID);
                     int ID = Convert.ToInt32(GetDTID.Rows[0][0].ToString());
                     string Delete = "delete from temp where head_id = " + ID + " delete from d__RenderedServiceBody where Head_ID = " + ID + " delete from d__RenderedServiceHead where ID = " + ID + " delete from d__AUTN where head_id = " +ID;
@@ -399,11 +399,21 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
 
                         string LastRent = "exec dbo.LastRent " + CarNumber;
                         DataTable dt1 = DbConnection.DBConnect(LastRent);
-                        if(dt1.Columns.Count > 0)
+                        if(dt1.Rows.Count > 0)
                         {
                             memoEdit1.Visible = true;
                             memoEdit1.Text = "Последняя заявка: " + dt1.Rows[0][1] + " от " + dt1.Rows[0][2] + ""+ "\r\n" + "Продукт: " + dt1.Rows[0][5] + "" + "\r\n" + "Была передача: " + dt1.Rows[0][3];
                         }
+                        else
+                        {
+                            memoEdit1.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        textEdit1.Visible = false;
+                        memoEdit1.Visible = false;
+                        simpleButton1.Visible = false;
                     }
                 }
             }
