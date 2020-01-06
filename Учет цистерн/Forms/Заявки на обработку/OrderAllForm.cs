@@ -210,12 +210,12 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 dt = DbConnection.DBConnect(GetDocNum);
                 DocNum = dt.Rows[0][0].ToString();
 
-                string CreateDocHead = "exec dbo.RenderedServiceHeadCreate " + DocNum + ", '" + ServiceDate + "','" + DateIns + "'";
+                string CreateDocHead = "exec dbo.RenderedServiceHeadCreate '" + DocNum + "', '" + ServiceDate + "','" + DateIns + "'";
                 DbConnection.DBConnect(CreateDocHead);
 
                 OrderAddForm OrderAddForm = new OrderAddForm(this.TabControlExtra);
                 TabControlExtra.Show();
-                TabPage OrderAddTabPage = new TabPage("Акт № " + DocNum + " от " + DateIns);
+                TabPage OrderAddTabPage = new TabPage("Акт № "+ DocNum + " от " + DateIns);
                 OrderAddForm.GetStatus = DocNum;
                 OrderAddForm.GetDate = DateIns;
                 TabControlExtra.TabPages.Add(OrderAddTabPage);
