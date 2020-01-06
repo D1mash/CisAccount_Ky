@@ -290,7 +290,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         {
             try
             {
-                string GetData = "select NUM, ServiceDate,Contragent_ID, Brigade_ID, Station_ID from d__RenderedServiceHead where ID = " + SelectItemRow;
+                string GetData = "select Invoice, ServiceDate,Contragent_ID, Brigade_ID, Station_ID from d__RenderedServiceHead where ID = " + SelectItemRow;
                 DataTable dt = DbConnection.DBConnect(GetData);
                 string DocNum = dt.Rows[0][0].ToString();
                 string GetDate = System.DateTime.Now.ToString();

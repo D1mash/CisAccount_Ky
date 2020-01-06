@@ -53,7 +53,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         {
             try
             {
-                string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+                string GetID = "select ID from d__RenderedServiceHead where NUM = '" + GetStatus +"'";
                 DataTable dt = DbConnection.DBConnect(GetID);
                 string Insert = "exec dbo.InsertCarnumber '" + Clipboard.GetText() + "'," + dt.Rows[0][0].ToString();
                 DbConnection.DBConnect(Insert);
@@ -134,7 +134,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         {
             try
             {
-                string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+                string GetID = "select ID from d__RenderedServiceHead where NUM = '" + GetStatus +"'";
                 DataTable dt = DbConnection.DBConnect(GetID);
 
                 string CheckProduct = "select Carnumber from d__RenderedServiceBody b left join temp t on t.body_id = b.ID where b.Product_ID is NULL and (t.drkr = 0 and t.dr1 = 0) and b.Head_ID = " + dt.Rows[0][0].ToString(); 
@@ -272,7 +272,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
         //Получаю данные из таблицы d__RenderedServiceBody, также комбобоксы по внешним ключам - продукты и услуги
         private void GetData()
         {
-            string ID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+            string ID = "select ID from d__RenderedServiceHead where NUM = '" + GetStatus +"'";
             DataTable GetIDDT = DbConnection.DBConnect(ID);
             string GetDocument = "exec dbo.GetRenderedServiceBody_v1 " + GetIDDT.Rows[0][0].ToString();
             DataTable GetDocumentDT = DbConnection.DBConnect(GetDocument);
@@ -328,7 +328,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
 
         private void tabControl1_TabClosing(object sender, TabControlCancelEventArgs e)
         {
-            string GetID = "select ID from d__RenderedServiceHead where NUM = " + GetStatus;
+            string GetID = "select ID from d__RenderedServiceHead where NUM = '" + GetStatus+"'";
             DataTable dt = DbConnection.DBConnect(GetID);
 
             if (e.TabPage.Text == "Акт № " + GetStatus + ". Редактирование от " + GetDate)
