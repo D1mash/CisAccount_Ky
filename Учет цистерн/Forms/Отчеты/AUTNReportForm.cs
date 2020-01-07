@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -17,6 +18,7 @@ namespace Учет_цистерн.Forms.Отчеты
     public partial class AUTNReportForm : Form
     {
         //BindingSource source = new BindingSource();
+        string Destination = ConfigurationManager.AppSettings["Dest"].ToString();
         DataTable dt;
 
         public AUTNReportForm()
@@ -121,12 +123,12 @@ namespace Учет_цистерн.Forms.Отчеты
                 }
 
                 app.DisplayAlerts = false;
-                workbook.SaveAs(/*fileName*/@"D:\Отчеты\Реестр АУТН.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                workbook.SaveAs(@"" + Destination + "Реестр АУТН.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                 workbook.Close(0);
                 app.Quit();
                 appProcess.Kill();
 
-                Process.Start(@"D:\Отчеты\Реестр АУТН.xls");
+                Process.Start(@"" + Destination + "Реестр АУТН.xlsx");
             }
             catch (Exception ex)
             {

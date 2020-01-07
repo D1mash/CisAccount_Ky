@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraGrid;
 using System;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -17,6 +18,7 @@ namespace Учет_цистерн
     public partial class ReportForm : Form
     {
         //BindingSource source = new BindingSource();
+        string Destination = ConfigurationManager.AppSettings["Dest"].ToString();
         DataTable dt;
         DataTable getserv;
         DataTable dt_tor;
@@ -288,12 +290,12 @@ namespace Учет_цистерн
                     worksheet.Cells[dt.Rows.Count + 15 + item, 10] = sum_uslug+multup_tor;
 
                     app.DisplayAlerts = false;
-                    workbook.SaveAs(@"D:\Отчеты\Итог по станции.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    workbook.SaveAs(@"" + Destination + "Итог по станции.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     workbook.Close(0);
                     app.Quit();
                     appProcess.Kill();
 
-                    Process.Start(@"D:\Отчеты\Итог по станции.xlsx");
+                    Process.Start(@"" + Destination + "Итог по станции.xlsx");
                 }
                 else
                 {
@@ -455,12 +457,12 @@ namespace Учет_цистерн
                     //string path_file = @"D:\Отчеты\Реестр за арендованных и  собственных вагон-цистерн компании.xlsx";
                     //if (File.Exists(path_file))
                     //{
-                        workbook.SaveAs(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                        workbook.Close(0);
-                        app.Quit();
-                        appProcess.Kill();
+                    workbook.SaveAs(@"" + Destination + "Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    workbook.Close(0);
+                    app.Quit();
+                    appProcess.Kill();
 
-                        Process.Start(@"D:\Отчеты\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx");
+                    Process.Start(@"" + Destination + "Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx");
                     //}
                     //else
                     //{
