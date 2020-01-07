@@ -29,7 +29,6 @@ namespace Учет_цистерн.Forms.Отчеты
         private void button3_Click(object sender, EventArgs e)
         {
             string RefreshAll = "exec [dbo].[GetReportAUTN] '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
-            DataTable dt;
             dt = DbConnection.DBConnect(RefreshAll);
             gridControl1.DataSource = dt;
             progressBar.Maximum = TotalRow(dt);
@@ -94,6 +93,18 @@ namespace Учет_цистерн.Forms.Отчеты
                         if (j < 8)
                         {
                             worksheet.Cells[i + 3, j + 2] = dt.Rows[i][j].ToString();
+                            if (j > 2 && j < 5)
+                            {
+                                if (bool.Parse(dt.Rows[i][j].ToString()) == true)
+                                {
+                                    worksheet.Cells[i + 3, j + 2] = "Да";
+                                }
+                                else
+                                {
+                                    worksheet.Cells[i + 3, j + 2] = "Нет";
+                                }
+                            }
+
                         }
                         else
                         {

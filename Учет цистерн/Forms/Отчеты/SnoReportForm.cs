@@ -37,7 +37,6 @@ namespace Учет_цистерн.Forms.Отчеты
                     gridView1.Columns.Clear();
 
                     string GetSNO = "exec dbo.GetSNO";
-                    DataTable dataTable = new DataTable();
                     dataTable = DbConnection.DBConnect(GetSNO);
 
                     gridControl1.DataSource = dataTable;
