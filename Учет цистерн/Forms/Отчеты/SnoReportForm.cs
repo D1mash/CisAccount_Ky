@@ -205,12 +205,12 @@ namespace Учет_цистерн.Forms.Отчеты
                     FormattingExcelCells(range, true, true);
 
                     app.DisplayAlerts = false;
-                    workbook.SaveAs(/*fileName*/@"D:\Отчеты\СНО Приход.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                    workbook.Close(true, misValue, misValue);
+                    workbook.SaveAs(/*fileName*/@"D:\Отчеты\СНО Приход.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    workbook.Close(0);
                     app.Quit();
                     appProcess.Kill();
 
-                    Process.Start(@"D:\Отчеты\СНО Приход.xls");
+                    Process.Start(@"D:\Отчеты\СНО Приход.xlsx");
                 }
             }
             catch (Exception ex)

@@ -121,8 +121,8 @@ namespace Учет_цистерн.Forms.Отчеты
                 }
 
                 app.DisplayAlerts = false;
-                workbook.SaveAs(/*fileName*/@"D:\Отчеты\Реестр АУТН.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                workbook.Close(true, misValue, misValue);
+                workbook.SaveAs(/*fileName*/@"D:\Отчеты\Реестр АУТН.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                workbook.Close(0);
                 app.Quit();
                 appProcess.Kill();
 
