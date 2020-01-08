@@ -102,7 +102,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                 string GetID = "select ID from d__RenderedServiceHead where NUM = '" + GetStatus+"'";
                 DataTable dt = DbConnection.DBConnect(GetID);
 
-                string CheckProduct = "select Carnumber from d__RenderedServiceBody b left join temp t on t.body_id = b.ID where b.Product_ID is NULL and (t.drkr = 0 and t.dr1 = 0) and b.Head_ID = " + dt.Rows[0][0].ToString();
+                string CheckProduct = "select Carnumber from d__RenderedServiceBody b left join temp t on t.body_id = b.ID where b.Product_ID is NULL and (t.drkr = 0 and t.dr1 = 0 and t.ChangeTrafar = 0 and t.NaruzhChistka = 0) and b.Head_ID = " + dt.Rows[0][0].ToString();
                 DataTable dt1 = DbConnection.DBConnect(CheckProduct);
 
                 string CheckCarNumber = "select * from d__RenderedServiceBody where CarNumber is NULL and Head_ID = " + dt.Rows[0][0].ToString();
@@ -296,7 +296,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
                         string GetID = "select ID from d__RenderedServiceHead where NUM = '" + GetStatus+"'";
                         DataTable dt = DbConnection.DBConnect(GetID);
 
-                        string CheckProduct = "select Carnumber from d__RenderedServiceBody b left join temp t on t.body_id = b.ID where b.Product_ID is NULL and (t.drkr = 0 and t.dr1 = 0) and b.Head_ID = " + dt.Rows[0][0].ToString();
+                        string CheckProduct = "select Carnumber from d__RenderedServiceBody b left join temp t on t.body_id = b.ID where b.Product_ID is NULL and (t.drkr = 0 and t.dr1 = 0 and t.ChangeTrafar = 0 and t.NaruzhChistka = 0) and b.Head_ID = " + dt.Rows[0][0].ToString();
                         DataTable dt1 = DbConnection.DBConnect(CheckProduct);
 
                         string CheckCarNumber = "select * from d__RenderedServiceBody where CarNumber is NULL and Head_ID = " + dt.Rows[0][0].ToString();
