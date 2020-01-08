@@ -36,7 +36,7 @@ namespace Учет_цистерн.Forms.Отчеты
                     gridControl1.DataSource = null;
                     gridView1.Columns.Clear();
 
-                    string GetSNO = "exec dbo.GetSNO '" + dateEdit1.DateTime.ToShortDateString() + "', '" + dateEdit2.DateTime.ToShortDateString() + "'";
+                    string GetSNO = "exec dbo.GetSNO_Report '" + dateEdit1.DateTime.ToShortDateString() + "', '" + dateEdit2.DateTime.ToShortDateString() + "'";
                     dataTable = DbConnection.DBConnect(GetSNO);
                     
                     gridControl1.DataSource = dataTable;
@@ -60,7 +60,7 @@ namespace Учет_цистерн.Forms.Отчеты
                     gridControl1.DataSource = null;
                     gridView1.Columns.Clear();
 
-                    string GetSNO = "exec dbo.GetCurrentSNO '" + dateEdit1.DateTime.ToShortDateString() + "', '" + dateEdit2.DateTime.ToShortDateString() + "'";
+                    string GetSNO = "exec dbo.GetCurrentSNO_Report '" + dateEdit1.DateTime.ToShortDateString() + "', '" + dateEdit2.DateTime.ToShortDateString() + "'";
                     dataTable = DbConnection.DBConnect(GetSNO);
                     
                     gridControl1.DataSource = dataTable;
