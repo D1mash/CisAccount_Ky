@@ -36,9 +36,9 @@ namespace Учет_цистерн.Forms.Отчеты
                     gridControl1.DataSource = null;
                     gridView1.Columns.Clear();
 
-                    string GetSNO = "exec dbo.GetSNO";
+                    string GetSNO = "exec dbo.GetSNO_Report '" + dateEdit1.DateTime.ToShortDateString() + "', '" + dateEdit2.DateTime.ToShortDateString() + "'";
                     dataTable = DbConnection.DBConnect(GetSNO);
-
+                    
                     gridControl1.DataSource = dataTable;
                     gridView1.Columns[0].Visible = false;
                     gridView1.Columns[1].Visible = false;
@@ -60,8 +60,7 @@ namespace Учет_цистерн.Forms.Отчеты
                     gridControl1.DataSource = null;
                     gridView1.Columns.Clear();
 
-                    string GetSNO = "exec dbo.GetCurrentSNO";
-                    DataTable dataTable = new DataTable();
+                    string GetSNO = "exec dbo.GetCurrentSNO_Report '" + dateEdit1.DateTime.ToShortDateString() + "', '" + dateEdit2.DateTime.ToShortDateString() + "'";
                     dataTable = DbConnection.DBConnect(GetSNO);
                     
                     gridControl1.DataSource = dataTable;
@@ -84,8 +83,8 @@ namespace Учет_цистерн.Forms.Отчеты
             var startDate = new DateTime(now.Year, now.Month, 1);
             var endDate = startDate.AddMonths(1).AddDays(-1);
 
-            dateTimePicker1.Value = startDate;
-            dateTimePicker2.Value = endDate;
+            dateEdit1.EditValue = startDate;
+            dateEdit2.EditValue = endDate;
         }
 
         [DllImport("user32.dll")]
@@ -113,7 +112,7 @@ namespace Учет_цистерн.Forms.Отчеты
                     app.Visible = false;
                     object misValue = System.Reflection.Missing.Value;
 
-                    worksheet.Range["B3"].Value = "в ТОО Казыгурт-Юг реализация СНО за период с " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
+                    worksheet.Range["B3"].Value = "в ТОО Казыгурт-Юг реализация СНО за период с " + dateEdit1.DateTime.ToShortDateString() + " по " + dateEdit2.DateTime.ToShortDateString();
 
                     for (int i = 0; i < dataTable.Rows.Count; i++)
                     {
@@ -172,7 +171,7 @@ namespace Учет_цистерн.Forms.Отчеты
                     app.Visible = false;
                     object misValue = System.Reflection.Missing.Value;
 
-                    worksheet.Range["B1"].Value = "Приход СНО в ТОО Казыгурт-Юг за период с " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
+                    worksheet.Range["B1"].Value = "Приход СНО в ТОО Казыгурт-Юг за период с " + dateEdit1.DateTime.ToShortDateString() + " по " + dateEdit2.DateTime.ToShortDateString();
 
                     for (int i = 0; i < dataTable.Rows.Count; i++)
                     {
@@ -238,27 +237,34 @@ namespace Учет_цистерн.Forms.Отчеты
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (radioButton1.Checked || radioButton2.Checked)
+            try
             {
-                if (dataTable.Rows != null && dataTable.Rows.Count != 0)
+                if (radioButton1.Checked || radioButton2.Checked)
                 {
-                    if (backgroundWorker1.IsBusy)
-                        return;
+                    if (dataTable.Rows.Count > 0)
+                    {
+                        if (backgroundWorker1.IsBusy)
+                            return;
+                        else
+                        {
+                            ProgrBar.Minimum = 0;
+                            ProgrBar.Value = 0;
+                            backgroundWorker1.RunWorkerAsync();
+                        }
+                    }
                     else
                     {
-                        ProgrBar.Minimum = 0;
-                        ProgrBar.Value = 0;
-                        backgroundWorker1.RunWorkerAsync();
+                        MessageBox.Show("Обновите данные!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Обновите данные!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Выберите вид отчета!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Выберите вид отчета!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
