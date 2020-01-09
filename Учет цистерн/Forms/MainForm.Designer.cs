@@ -81,6 +81,9 @@
             this.проверитьОбновлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.просмотрСправкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuRent_Car = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.заявкаНаПередачуВцToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сменаСобственникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -97,6 +100,7 @@
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip_Services.SuspendLayout();
             this.contextMenuStrip_Refrence.SuspendLayout();
+            this.contextMenuRent_Car.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip_Product
@@ -565,6 +569,26 @@
             resources.ApplyResources(this.оПрограммеToolStripMenuItem, "оПрограммеToolStripMenuItem");
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
+            // contextMenuRent_Car
+            // 
+            this.contextMenuRent_Car.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сменаСобственникаToolStripMenuItem,
+            this.заявкаНаПередачуВцToolStripMenuItem});
+            this.contextMenuRent_Car.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextMenuRent_Car, "contextMenuRent_Car");
+            // 
+            // заявкаНаПередачуВцToolStripMenuItem
+            // 
+            this.заявкаНаПередачуВцToolStripMenuItem.Name = "заявкаНаПередачуВцToolStripMenuItem";
+            resources.ApplyResources(this.заявкаНаПередачуВцToolStripMenuItem, "заявкаНаПередачуВцToolStripMenuItem");
+            this.заявкаНаПередачуВцToolStripMenuItem.Click += new System.EventHandler(this.заявкаНаПередачуВцToolStripMenuItem_Click);
+            // 
+            // сменаСобственникаToolStripMenuItem
+            // 
+            this.сменаСобственникаToolStripMenuItem.Name = "сменаСобственникаToolStripMenuItem";
+            resources.ApplyResources(this.сменаСобственникаToolStripMenuItem, "сменаСобственникаToolStripMenuItem");
+            this.сменаСобственникаToolStripMenuItem.Click += new System.EventHandler(this.сменаСобственникаToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -594,6 +618,7 @@
             this.groupBox1.PerformLayout();
             this.contextMenuStrip_Services.ResumeLayout(false);
             this.contextMenuStrip_Refrence.ResumeLayout(false);
+            this.contextMenuRent_Car.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -651,6 +676,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ContextMenuStrip contextMenuRent_Car;
+        private System.Windows.Forms.ToolStripMenuItem заявкаНаПередачуВцToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сменаСобственникаToolStripMenuItem;
     }
 }
 
