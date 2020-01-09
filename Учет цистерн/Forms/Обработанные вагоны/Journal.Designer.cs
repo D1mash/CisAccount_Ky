@@ -58,14 +58,16 @@
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
@@ -91,6 +93,7 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.simpleButton7);
             this.groupControl1.Controls.Add(this.comboBox2);
             this.groupControl1.Controls.Add(this.comboBox1);
             this.groupControl1.Controls.Add(this.simpleButton1);
@@ -130,9 +133,11 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(204, 490);
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Location = new System.Drawing.Point(192, 490);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(98, 46);
+            this.simpleButton1.Size = new System.Drawing.Size(110, 46);
             this.simpleButton1.TabIndex = 15;
             this.simpleButton1.Text = "СОХРАНИТЬ";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -391,6 +396,7 @@
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.simpleButton6);
             this.groupControl2.Controls.Add(this.simpleButton5);
             this.groupControl2.Controls.Add(this.simpleButton2);
             this.groupControl2.Controls.Add(this.simpleButton4);
@@ -399,12 +405,36 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1056, 102);
+            this.groupControl2.Size = new System.Drawing.Size(1056, 88);
             this.groupControl2.TabIndex = 1;
+            // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton5.Appearance.Options.UseFont = true;
+            this.simpleButton5.Location = new System.Drawing.Point(461, 30);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(98, 46);
+            this.simpleButton5.TabIndex = 5;
+            this.simpleButton5.Text = "Обновить";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton2.Appearance.Options.UseFont = true;
+            this.simpleButton2.Location = new System.Drawing.Point(125, 30);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(98, 46);
+            this.simpleButton2.TabIndex = 4;
+            this.simpleButton2.Text = "Добавить";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton4
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(333, 30);
+            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton4.Appearance.Options.UseFont = true;
+            this.simpleButton4.Location = new System.Drawing.Point(357, 30);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(98, 46);
             this.simpleButton4.TabIndex = 3;
@@ -413,9 +443,11 @@
             // 
             // simpleButton3
             // 
+            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton3.Appearance.Options.UseFont = true;
             this.simpleButton3.Location = new System.Drawing.Point(229, 30);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(98, 46);
+            this.simpleButton3.Size = new System.Drawing.Size(122, 46);
             this.simpleButton3.TabIndex = 2;
             this.simpleButton3.Text = "Редактировать";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
@@ -434,9 +466,9 @@
             // 
             this.groupControl4.Controls.Add(this.gridControl1);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl4.Location = new System.Drawing.Point(0, 102);
+            this.groupControl4.Location = new System.Drawing.Point(0, 88);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(1056, 647);
+            this.groupControl4.Size = new System.Drawing.Size(1056, 661);
             this.groupControl4.TabIndex = 2;
             this.groupControl4.Text = "Журнал";
             // 
@@ -446,7 +478,7 @@
             this.gridControl1.Location = new System.Drawing.Point(2, 20);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1052, 625);
+            this.gridControl1.Size = new System.Drawing.Size(1052, 639);
             this.gridControl1.TabIndex = 14;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -544,23 +576,25 @@
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             // 
-            // simpleButton2
+            // simpleButton6
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(125, 30);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(98, 46);
-            this.simpleButton2.TabIndex = 4;
-            this.simpleButton2.Text = "Добавить";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton6.Appearance.Options.UseFont = true;
+            this.simpleButton6.Location = new System.Drawing.Point(602, 30);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(339, 46);
+            this.simpleButton6.TabIndex = 6;
+            this.simpleButton6.Text = "Редактировать группу";
             // 
-            // simpleButton5
+            // simpleButton7
             // 
-            this.simpleButton5.Location = new System.Drawing.Point(437, 30);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(98, 46);
-            this.simpleButton5.TabIndex = 5;
-            this.simpleButton5.Text = "Обновить";
-            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton7.Appearance.Options.UseFont = true;
+            this.simpleButton7.Location = new System.Drawing.Point(18, 490);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(168, 46);
+            this.simpleButton7.TabIndex = 18;
+            this.simpleButton7.Text = "Просмотр";
             // 
             // Journal
             // 
@@ -640,5 +674,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SimpleButton simpleButton6;
+        private DevExpress.XtraEditors.SimpleButton simpleButton7;
     }
 }
