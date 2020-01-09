@@ -17,7 +17,7 @@ using System.Collections.Specialized;
 using Учет_цистерн.Forms;
 using System.Collections;
 using Учет_цистерн.Forms.Пользователи;
-using Учет_цистерн.Forms.Смена_собственника;
+using Учет_цистерн.Forms.Обработанные_вагоны;
 
 namespace Учет_цистерн
 {
@@ -783,38 +783,6 @@ namespace Учет_цистерн
 
         private void button5_Click(object sender, EventArgs e)
         {
-
-            try
-            {
-                contextMenuRent_Car.Show(button5, new Point(0, button1.Height));
-                if (role == "1")
-                {
-                    contextMenuRent_Car.Items[0].Enabled = true;
-                    contextMenuRent_Car.Items[1].Enabled = true;
-                }
-                else
-                {
-                    if (role == "2")
-                    {
-                        contextMenuRent_Car.Items[0].Enabled = true;
-                        contextMenuRent_Car.Items[1].Enabled = true;
-                    }
-                    else
-                    {
-                        contextMenuStrip_Product.Items[0].Enabled = false;
-                        contextMenuStrip_Product.Items[1].Enabled = false;
-                    }
-                }
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error(exp, "button1_Click");
-            }
-        }
-
-        private void сменаСобственникаToolStripMenuItem_Click(object sender, EventArgs e)
-        {
             Change_of_Ownership change_Of_Ownership = new Change_of_Ownership(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.btn_Refrence, this.tabControl1, this.button7, role);
             tabControl1.Show();
             TabPage chg_tabPage = new TabPage("Смена собственника");
@@ -827,18 +795,18 @@ namespace Учет_цистерн
             chg_tabPage.Controls.Add(change_Of_Ownership);
         }
 
-        private void заявкаНаПередачуВцToolStripMenuItem_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
-            Rent_Brodcast_Car rent_Brodcast_Car = new Rent_Brodcast_Car();
+            Journal journalForm = new Journal();
             tabControl1.Show();
-            TabPage chg_tabPage_Br = new TabPage("Заявка на передачу в/ц");
-            tabControl1.TabPages.Add(chg_tabPage_Br);
-            tabControl1.SelectedTab = chg_tabPage_Br;
-            rent_Brodcast_Car.TopLevel = false;
-            rent_Brodcast_Car.Visible = true;
-            rent_Brodcast_Car.FormBorderStyle = FormBorderStyle.None;
-            rent_Brodcast_Car.Dock = DockStyle.Fill;
-            chg_tabPage_Br.Controls.Add(rent_Brodcast_Car);
+            TabPage JournalPage = new TabPage("Обработанные вагоны");
+            tabControl1.TabPages.Add(JournalPage);
+            tabControl1.SelectedTab = JournalPage;
+            journalForm.TopLevel = false;
+            journalForm.Visible = true;
+            journalForm.FormBorderStyle = FormBorderStyle.None;
+            journalForm.Dock = DockStyle.Fill;
+            JournalPage.Controls.Add(journalForm);
         }
 
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
