@@ -68,6 +68,9 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
@@ -89,10 +92,14 @@
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.memoEdit1);
+            this.groupControl1.Controls.Add(this.panel1);
             this.groupControl1.Controls.Add(this.simpleButton7);
             this.groupControl1.Controls.Add(this.comboBox2);
             this.groupControl1.Controls.Add(this.comboBox1);
@@ -595,6 +602,34 @@
             this.simpleButton7.Size = new System.Drawing.Size(168, 46);
             this.simpleButton7.TabIndex = 18;
             this.simpleButton7.Text = "Просмотр";
+            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(18, 542);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(284, 73);
+            this.panel1.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(8, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(262, 50);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Данная в/ц проходила обработку      в течении последних 14 дней";
+            // 
+            // memoEdit1
+            // 
+            this.memoEdit1.Location = new System.Drawing.Point(18, 621);
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.memoEdit1.Properties.Appearance.Options.UseBackColor = true;
+            this.memoEdit1.Size = new System.Drawing.Size(284, 96);
+            this.memoEdit1.TabIndex = 20;
             // 
             // Journal
             // 
@@ -630,6 +665,8 @@
             this.groupControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -676,5 +713,8 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
         private DevExpress.XtraEditors.SimpleButton simpleButton7;
+        private DevExpress.XtraEditors.MemoEdit memoEdit1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
     }
 }

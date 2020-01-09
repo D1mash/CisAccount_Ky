@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid;
+using Учет_цистерн.Forms.заявки_на_обработку;
 
 namespace Учет_цистерн.Forms.Обработанные_вагоны
 {
@@ -75,6 +78,11 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             Refresh();
             Fillcombobox();
             Block();
+
+            panel1.Visible = false;
+            label1.Visible = false;
+            memoEdit1.Visible = false;
+            simpleButton7.Visible = false;
 
             GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
             GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
@@ -156,6 +164,54 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             comboBox1.DataBindings.Clear();
             comboBox2.DataBindings.Clear();
             Block();
+            string CarNumber = gridView1.GetFocusedDataRow()[3].ToString();
+            if (gridView1.DataRowCount == 0)
+            {
+                panel1.Visible = false;
+                label1.Visible = false;
+                memoEdit1.Visible = false;
+                simpleButton7.Visible = false;
+            }
+            else
+            {
+                if (CarNumber != string.Empty)
+                {
+                    string query = "select [dbo].[CheckCarService] (" + CarNumber + "," + Id + ")";
+                    DataTable dt = DbConnection.DBConnect(query);
+                    int State = Convert.ToInt32(dt.Rows[0][0].ToString());
+                    if (State == 1)
+                    {
+                        panel1.Visible = true;
+                        simpleButton7.Visible = true;
+                        label1.Visible = true;
+                    }
+                    else
+                    {
+                        panel1.Visible = false;
+                        label1.Visible = false;
+                        simpleButton7.Visible = false;
+                    }
+
+                    string LastRent = "exec dbo.LastRent " + CarNumber;
+                    DataTable dt1 = DbConnection.DBConnect(LastRent);
+                    if (dt1.Rows.Count > 0)
+                    {
+                        memoEdit1.Visible = true;
+                        memoEdit1.Text = "Последняя заявка: " + dt1.Rows[0][1] + " от " + dt1.Rows[0][2] + "" + "\r\n" + "Продукт: " + dt1.Rows[0][5] + "" + "\r\n" + "Была передача: " + dt1.Rows[0][3];
+                    }
+                    else
+                    {
+                        memoEdit1.Visible = false;
+                    }
+                }
+                else
+                {
+                    panel1.Visible = false;
+                    label1.Visible = false;
+                    memoEdit1.Visible = false;
+                    simpleButton7.Visible = false;
+                }
+            }
             Update(SelectItemRow);
         }
 
@@ -304,13 +360,32 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         {
             try
             {
-                string delete = "delete from d__RenderedService where ID = " + SelectItemRow;
-                DbConnection.DBConnect(delete);
-                Refresh();
+                if (MessageBox.Show("Удалить выделенную запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ArrayList rows = new ArrayList();
+                    List<Object> aList = new List<Object>();
+                    string Arrays = string.Empty;
+
+                    Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                    for (int i = 0; i < selectedRowHandles.Length; i++)
+                    {
+                        int selectedRowHandle = selectedRowHandles[i];
+                        if (selectedRowHandle >= 0)
+                            rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                    }
+                    foreach (DataRow row in rows)
+                    {
+                        aList.Add(row["ID"]);
+                        Arrays = string.Join(" ", aList);
+                        string delete = "exec dbo.DeleteRenderedService '" + Arrays + "'";
+                        DbConnection.DBConnect(delete);
+                    }
+                    Refresh();
+                }
             }
-            catch(Exception ex)
+            catch (Exception exp)
             {
-                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -435,6 +510,15 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         private void simpleButton5_Click(object sender, EventArgs e)
         {
             Refresh();
+        }
+
+        private void simpleButton7_Click(object sender, EventArgs e)
+        {
+            string CarNumber = gridView1.GetFocusedDataRow()[3].ToString();
+            string query = "exec [dbo].[LastRenderedService] " + CarNumber + ", " + SelectItemRow;
+            DataTable dt = DbConnection.DBConnect(query);
+            LastRenderedServiceForm last = new LastRenderedServiceForm(dt);
+            last.ShowDialog();
         }
     }
 }
