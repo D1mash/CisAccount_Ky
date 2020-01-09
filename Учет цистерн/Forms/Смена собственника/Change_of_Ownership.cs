@@ -90,7 +90,7 @@ namespace Учет_цистерн.Forms
                 //dateEdit2.EditValue = startDate;
                 //dateEdit3.EditValue = endDate;
 
-                //FillCombobox();
+                FillCombobox();
             }
             catch(Exception ex)
             {
@@ -107,24 +107,9 @@ namespace Учет_цистерн.Forms
             {
                 if (textBox1.Text != String.Empty)
                 {
-                    string newRow = "exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "'";
+                    string newRow = "exec dbo.Rent_Add_Head '" + textBox3.Text + "','" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textBox2.Text + "'";
                     DbConnection.DBConnect(newRow);
-
-                    //Получаю id для вагонов что бы добавить и обновить
-                    string id_Rent_Status = "SELECT [ID] FROM [Batys].[dbo].[d__Rent_Status] WHERE Number = '" + textBox1.Text.Trim() + "'";
-                    DataTable dt = DbConnection.DBConnect(id_Rent_Status);
-                    string id_Status = dt.Rows[0][0].ToString();
-
-                    New_Rent new_Rent = new New_Rent(id_Status);
-                    TabControlExtra.Show();
-                    TabPage RentTabPage = new TabPage("Заявка № " + textBox1.Text);
-                    TabControlExtra.TabPages.Add(RentTabPage);
-                    TabControlExtra.SelectedTab = RentTabPage;
-                    new_Rent.TopLevel = false;
-                    new_Rent.Visible = true;
-                    new_Rent.FormBorderStyle = FormBorderStyle.None;
-                    new_Rent.Dock = DockStyle.Fill;
-                    RentTabPage.Controls.Add(new_Rent);
+                 
 
                     button3_Click(null, null);
                 }
