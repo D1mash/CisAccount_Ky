@@ -94,7 +94,7 @@ namespace Учет_цистерн
                         string Delete = "delete from d__Brigade where ID = " + SelectItemRow;
                         DbConnection.DBConnect(Delete);
                         MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Refresh();
+                        Refreshh();
                     }
                     catch (SqlException ex)
                     {
@@ -112,7 +112,7 @@ namespace Учет_цистерн
             }
         }
 
-        private void Refresh()
+        private void Refreshh()
         {
             try
             {
@@ -134,7 +134,7 @@ namespace Учет_цистерн
 
         private void BtnBrigadeReffresh_Click(object sender, EventArgs e)
         {
-            Refresh();
+            Refreshh();
         }
 
 
@@ -184,7 +184,7 @@ namespace Учет_цистерн
                     }
                 }
 
-                Refresh();
+                Refreshh();
             }
             catch (SqlException ex)
             {

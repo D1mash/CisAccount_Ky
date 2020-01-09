@@ -18,17 +18,17 @@ namespace Учет_цистерн.Forms.Пользователи
             this.role = role;
         }
 
-        private void Refresh()
+        private void Refreshh()
         {
-            string Refresh = "exec dbo.GetUser";
-            DataTable dt = DbConnection.DBConnect(Refresh);
+            string Refreshh = "exec dbo.GetUser";
+            DataTable dt = DbConnection.DBConnect(Refreshh);
             gridControl1.DataSource = dt;
             gridView1.Columns[1].Visible = false;
         }
 
         private void AllUserForm_Load(object sender, EventArgs e)
         {
-            Refresh();
+            Refreshh();
 
             GridColumnSummaryItem Count = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "AID", "{0}");
             gridView1.Columns["AID"].Summary.Add(Count);
@@ -36,7 +36,7 @@ namespace Учет_цистерн.Forms.Пользователи
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Refresh();
+            Refreshh();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -100,7 +100,7 @@ namespace Учет_цистерн.Forms.Пользователи
                             string Delete = "delete from Users where AID = " + SelectItemRow;
                             DbConnection.DBConnect(Delete);
                             MessageBox.Show("Пользователь удалён!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Refresh();
+                            Refreshh();
                         }
                     }
                     catch (Exception exp)

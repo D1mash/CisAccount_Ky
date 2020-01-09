@@ -20,10 +20,10 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             InitializeComponent();
         }
 
-        private void Refresh()
+        public override void Refresh()
         {
             gridControl1.DataSource = null;
-            gridView1.Columns.Clear();
+            //gridView1.Columns.Clear();
             string refresh = "exec [dbo].[GetRenderedService] '"+dateTimePicker1.Value.ToShortDateString()+"'";
             DataTable dt = DbConnection.DBConnect(refresh);
             gridControl1.DataSource = dt;
@@ -41,18 +41,17 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             gridView1.Columns[16].Width = 350;
             gridView1.Columns[17].Width = 150;
             gridView1.Columns[18].Width = 150;
-
-            textEdit1.Text = "";
-            textEdit2.Text = "";
-            textEdit3.Text = "";
-            textEdit4.Text = "";
-            textEdit5.Text = "0";
-            textEdit6.Text = "0";
-            textEdit7.Text = "0";
-            textEdit8.Text = "0";
-            textEdit9.Text = "0";
-            textEdit10.Text = "0";
-            textEdit11.Text = "0";
+            //textEdit1.Text = "";
+            //textEdit2.Text = "";
+            //textEdit3.Text = "";
+            //textEdit4.Text = "";
+            //textEdit5.Text = "0";
+            //textEdit6.Text = "0";
+            //textEdit7.Text = "0";
+            //textEdit8.Text = "0";
+            //textEdit9.Text = "0";
+            //textEdit10.Text = "0";
+            //textEdit11.Text = "0";
         }
 
         private void Fillcombobox()
@@ -83,6 +82,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             label1.Visible = false;
             memoEdit1.Visible = false;
             simpleButton7.Visible = false;
+            simpleButton8.Visible = false;
 
             GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
             GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
@@ -140,6 +140,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     string Add = "exec [dbo].[FillRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL";
                     DbConnection.DBConnect(Add);
                     Refresh();
+                    textEdit1.Text = "";
                 }
                 else
                 {
@@ -155,15 +156,23 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             }
         }
 
-        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        private void GetCurrent()
         {
-            string Id = gridView1.GetFocusedDataRow()[0].ToString();
-            SelectItemRow = Convert.ToInt32(Id);
             SelectBrigadeID = gridView1.GetFocusedDataRow()[1].ToString();
             SelectProductID = gridView1.GetFocusedDataRow()[2].ToString();
             comboBox1.DataBindings.Clear();
             comboBox2.DataBindings.Clear();
             Block();
+            Update(SelectItemRow);
+        }
+
+        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            string Id = gridView1.GetFocusedDataRow()[0].ToString();
+            SelectItemRow = Convert.ToInt32(Id);
+
+            GetCurrent();
+
             string CarNumber = gridView1.GetFocusedDataRow()[3].ToString();
             if (gridView1.DataRowCount == 0)
             {
@@ -212,7 +221,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     simpleButton7.Visible = false;
                 }
             }
-            Update(SelectItemRow);
         }
 
         public void Update(int Id)
@@ -499,6 +507,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         {
             Unblock();
             textEdit1.Text = "";
+            int Temp = SelectItemRow;
             SelectItemRow = 0;
         }
 
@@ -519,6 +528,12 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             DataTable dt = DbConnection.DBConnect(query);
             LastRenderedServiceForm last = new LastRenderedServiceForm(dt);
             last.ShowDialog();
+        }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            simpleButton6.Visible = false;
+            simpleButton8.Visible = true;
         }
     }
 }
