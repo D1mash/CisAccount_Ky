@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.contextMenuStrip_Product = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_Product = new System.Windows.Forms.ContextMenuStrip();
             this.toolStripMenuItem1_Product = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2_Station = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3_Brigade = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4_Owner = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Carriage = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip_Report = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_Report = new System.Windows.Forms.ContextMenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.аУТНToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +50,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new TradeWright.UI.Forms.TabControlExtra();
-            this.contextMenuStrip_GlobalFilter = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_GlobalFilter = new System.Windows.Forms.ContextMenuStrip();
             this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,16 +71,19 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.contextMenuStrip_Services = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_Services = new System.Windows.Forms.ContextMenuStrip();
             this.расценкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОРеализацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОПриходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip_Refrence = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_Refrence = new System.Windows.Forms.ContextMenuStrip();
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проверитьОбновлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.просмотрСправкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip_Rent_Car = new System.Windows.Forms.ContextMenuStrip();
+            this.заявкаНаПередачуВцToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сменаСобственникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -98,6 +100,7 @@
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip_Services.SuspendLayout();
             this.contextMenuStrip_Refrence.SuspendLayout();
+            this.contextMenuStrip_Rent_Car.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip_Product
@@ -578,6 +581,26 @@
             resources.ApplyResources(this.оПрограммеToolStripMenuItem, "оПрограммеToolStripMenuItem");
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
+            // contextMenuStrip_Rent_Car
+            // 
+            this.contextMenuStrip_Rent_Car.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.заявкаНаПередачуВцToolStripMenuItem,
+            this.сменаСобственникаToolStripMenuItem});
+            this.contextMenuStrip_Rent_Car.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextMenuStrip_Rent_Car, "contextMenuStrip_Rent_Car");
+            // 
+            // заявкаНаПередачуВцToolStripMenuItem
+            // 
+            this.заявкаНаПередачуВцToolStripMenuItem.Name = "заявкаНаПередачуВцToolStripMenuItem";
+            resources.ApplyResources(this.заявкаНаПередачуВцToolStripMenuItem, "заявкаНаПередачуВцToolStripMenuItem");
+            this.заявкаНаПередачуВцToolStripMenuItem.Click += new System.EventHandler(this.заявкаНаПередачуВцToolStripMenuItem_Click);
+            // 
+            // сменаСобственникаToolStripMenuItem
+            // 
+            this.сменаСобственникаToolStripMenuItem.Name = "сменаСобственникаToolStripMenuItem";
+            resources.ApplyResources(this.сменаСобственникаToolStripMenuItem, "сменаСобственникаToolStripMenuItem");
+            this.сменаСобственникаToolStripMenuItem.Click += new System.EventHandler(this.сменаСобственникаToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -607,6 +630,7 @@
             this.groupBox1.PerformLayout();
             this.contextMenuStrip_Services.ResumeLayout(false);
             this.contextMenuStrip_Refrence.ResumeLayout(false);
+            this.contextMenuStrip_Rent_Car.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -665,6 +689,9 @@
         private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
         private System.Windows.Forms.Button button5;
         public System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Rent_Car;
+        private System.Windows.Forms.ToolStripMenuItem заявкаНаПередачуВцToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сменаСобственникаToolStripMenuItem;
     }
 }
 
