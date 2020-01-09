@@ -17,6 +17,7 @@ using System.Collections.Specialized;
 using Учет_цистерн.Forms;
 using System.Collections;
 using Учет_цистерн.Forms.Пользователи;
+using Учет_цистерн.Forms.Обработанные_вагоны;
 
 namespace Учет_цистерн
 {
@@ -792,6 +793,20 @@ namespace Учет_цистерн
             change_Of_Ownership.FormBorderStyle = FormBorderStyle.None;
             change_Of_Ownership.Dock = DockStyle.Fill;
             chg_tabPage.Controls.Add(change_Of_Ownership);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Journal journalForm = new Journal();
+            tabControl1.Show();
+            TabPage JournalPage = new TabPage("Обработанные вагоны");
+            tabControl1.TabPages.Add(JournalPage);
+            tabControl1.SelectedTab = JournalPage;
+            journalForm.TopLevel = false;
+            journalForm.Visible = true;
+            journalForm.FormBorderStyle = FormBorderStyle.None;
+            journalForm.Dock = DockStyle.Fill;
+            JournalPage.Controls.Add(journalForm);
         }
 
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
