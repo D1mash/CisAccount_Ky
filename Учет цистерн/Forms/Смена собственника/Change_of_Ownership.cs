@@ -54,30 +54,30 @@ namespace Учет_цистерн.Forms
         {
             try
             {
-                if (role == "1")
-                {
-                    button1.Enabled = true;
-                    button2.Enabled = true;
-                    button3.Enabled = true;
-                    button4.Enabled = true;
-                }
-                else
-                {
-                    if (role == "2")
-                    {
-                        button1.Enabled = true;
-                        button2.Enabled = false;
-                        button3.Enabled = true;
-                        button4.Enabled = false;
-                    }
-                    else
-                    {
-                        button1.Enabled = false;
-                        button2.Enabled = false;
-                        button3.Enabled = false;
-                        button4.Enabled = false;
-                    }
-                }
+                //if (role == "1")
+                //{
+                //    button1.Enabled = true;
+                //    button2.Enabled = true;
+                //    button3.Enabled = true;
+                //    button4.Enabled = true;
+                //}
+                //else
+                //{
+                //    if (role == "2")
+                //    {
+                //        button1.Enabled = true;
+                //        button2.Enabled = false;
+                //        button3.Enabled = true;
+                //        button4.Enabled = false;
+                //    }
+                //    else
+                //    {
+                //        button1.Enabled = false;
+                //        button2.Enabled = false;
+                //        button3.Enabled = false;
+                //        button4.Enabled = false;
+                //    }
+                //}
 
                 dateEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
                 dateEdit1.Properties.Mask.EditMask = "d"; //'Short date' format 
@@ -87,10 +87,10 @@ namespace Учет_цистерн.Forms
                 DateTime now = DateTime.Now;
                 var startDate = new DateTime(now.Year, now.Month, 1);
                 var endDate = startDate.AddMonths(1).AddDays(-1);
-                dateEdit2.EditValue = startDate;
-                dateEdit3.EditValue = endDate;
+                //dateEdit2.EditValue = startDate;
+                //dateEdit3.EditValue = endDate;
 
-                FillCombobox();
+                //FillCombobox();
             }
             catch(Exception ex)
             {
@@ -193,12 +193,12 @@ namespace Учет_цистерн.Forms
                     btn6.Enabled = false;
                     btn7.Enabled = false;
                     button1.Enabled = false;
-                    button2.Enabled = false;
-                    button3.Enabled = false;
+                    //button2.Enabled = false;
+                    //button3.Enabled = false;
                     button4.Enabled = false;
                     TabControlExtra.DisplayStyleProvider.ShowTabCloser = false;
-                    string refresh_Ch_of_Own = "exec [dbo].[Refresh_Rent_Head] '" + dateEdit2.DateTime.ToShortDateString() + "', '" + dateEdit3.DateTime.ToShortDateString() + "'";
-                    backgroundWorker1.RunWorkerAsync(refresh_Ch_of_Own);
+                    //string refresh_Ch_of_Own = "exec [dbo].[Refresh_Rent_Head] '" + dateEdit2.DateTime.ToShortDateString() + "', '" + dateEdit3.DateTime.ToShortDateString() + "'";
+                    //backgroundWorker1.RunWorkerAsync(refresh_Ch_of_Own);
                 }
 
             }
@@ -311,12 +311,12 @@ namespace Учет_цистерн.Forms
             try
             {
                 
-                string refresh_Ch_of_Own = "exec [dbo].[Refresh_Rent_Head] '" + dateEdit2.DateTime.ToShortDateString() + "', '" + dateEdit3.DateTime.ToShortDateString() + "'";
-                DataTable dt = DbConnection.DBConnect(refresh_Ch_of_Own);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    i++;
-                }
+                //string refresh_Ch_of_Own = "exec [dbo].[Refresh_Rent_Head] '" + dateEdit2.DateTime.ToShortDateString() + "', '" + dateEdit3.DateTime.ToShortDateString() + "'";
+                //DataTable dt = DbConnection.DBConnect(refresh_Ch_of_Own);
+                //foreach (DataRow dr in dt.Rows)
+                //{
+                //    i++;
+                //}
             }
             catch (Exception ex)
             {
@@ -355,14 +355,15 @@ namespace Учет_цистерн.Forms
                 btn6.Enabled = true;
                 btn7.Enabled = true;
                 button1.Enabled = true;
-                button2.Enabled = true;
-                button3.Enabled = true;
+                //button2.Enabled = true;
+                //button3.Enabled = true;
                 button4.Enabled = true;
 
                 TabControlExtra.DisplayStyleProvider.ShowTabCloser = true;
                 TlStpLabel.Text = "Данные загружены...";
             }
         }
+        
     }
 }
   
