@@ -62,6 +62,7 @@
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -71,7 +72,7 @@
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
@@ -99,6 +100,7 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.simpleButton9);
             this.groupControl1.Controls.Add(this.memoEdit1);
             this.groupControl1.Controls.Add(this.panel1);
             this.groupControl1.Controls.Add(this.simpleButton7);
@@ -127,7 +129,9 @@
             this.memoEdit1.Location = new System.Drawing.Point(18, 597);
             this.memoEdit1.Name = "memoEdit1";
             this.memoEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.memoEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.memoEdit1.Properties.Appearance.Options.UseBackColor = true;
+            this.memoEdit1.Properties.Appearance.Options.UseFont = true;
             this.memoEdit1.Size = new System.Drawing.Size(284, 96);
             this.memoEdit1.TabIndex = 20;
             // 
@@ -386,9 +390,10 @@
             // 
             // textEdit3
             // 
+            this.textEdit3.Enabled = false;
             this.textEdit3.Location = new System.Drawing.Point(136, 99);
             this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(166, 20);
+            this.textEdit3.Size = new System.Drawing.Size(83, 20);
             this.textEdit3.TabIndex = 5;
             // 
             // labelControl3
@@ -453,6 +458,16 @@
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(1056, 88);
             this.groupControl2.TabIndex = 1;
+            // 
+            // simpleButton8
+            // 
+            this.simpleButton8.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton8.Appearance.Options.UseFont = true;
+            this.simpleButton8.Location = new System.Drawing.Point(602, 30);
+            this.simpleButton8.Name = "simpleButton8";
+            this.simpleButton8.Size = new System.Drawing.Size(339, 46);
+            this.simpleButton8.TabIndex = 7;
+            this.simpleButton8.Text = "Завершить редактирование группы";
             // 
             // simpleButton6
             // 
@@ -541,79 +556,79 @@
             // 
             // gridView1
             // 
-            this.gridView1.Appearance.ColumnFilterButton.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.Appearance.ColumnFilterButton.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.ColumnFilterButton.Options.UseFont = true;
-            this.gridView1.Appearance.ColumnFilterButtonActive.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.Appearance.ColumnFilterButtonActive.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.ColumnFilterButtonActive.Options.UseFont = true;
-            this.gridView1.Appearance.CustomizationFormHint.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.Appearance.CustomizationFormHint.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.CustomizationFormHint.Options.UseFont = true;
-            this.gridView1.Appearance.DetailTip.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.Appearance.DetailTip.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.DetailTip.Options.UseFont = true;
-            this.gridView1.Appearance.Empty.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.Appearance.Empty.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.Empty.Options.UseFont = true;
-            this.gridView1.Appearance.EvenRow.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.Appearance.EvenRow.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.EvenRow.Options.UseFont = true;
-            this.gridView1.Appearance.FilterCloseButton.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.FilterCloseButton.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.FilterCloseButton.Options.UseFont = true;
-            this.gridView1.Appearance.FilterPanel.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.FilterPanel.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.FilterPanel.Options.UseFont = true;
-            this.gridView1.Appearance.FixedLine.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.FixedLine.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.FixedLine.Options.UseFont = true;
-            this.gridView1.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.FocusedCell.Options.UseFont = true;
-            this.gridView1.Appearance.FocusedRow.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.FocusedRow.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.FocusedRow.Options.UseFont = true;
-            this.gridView1.Appearance.FooterPanel.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.FooterPanel.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.FooterPanel.Options.UseFont = true;
-            this.gridView1.Appearance.GroupButton.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.GroupButton.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.GroupButton.Options.UseFont = true;
-            this.gridView1.Appearance.GroupFooter.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.GroupFooter.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.GroupFooter.Options.UseFont = true;
-            this.gridView1.Appearance.GroupPanel.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.GroupPanel.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.GroupPanel.Options.UseFont = true;
-            this.gridView1.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.GroupRow.Options.UseFont = true;
-            this.gridView1.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridView1.Appearance.HideSelectionRow.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.HideSelectionRow.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.HideSelectionRow.Options.UseFont = true;
-            this.gridView1.Appearance.HorzLine.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.HorzLine.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.HorzLine.Options.UseFont = true;
-            this.gridView1.Appearance.OddRow.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.OddRow.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.OddRow.Options.UseFont = true;
-            this.gridView1.Appearance.Preview.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.Preview.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.Preview.Options.UseFont = true;
-            this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.Row.Options.UseFont = true;
-            this.gridView1.Appearance.RowSeparator.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.RowSeparator.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.RowSeparator.Options.UseFont = true;
-            this.gridView1.Appearance.SelectedRow.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.SelectedRow.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.SelectedRow.Options.UseFont = true;
-            this.gridView1.Appearance.TopNewRow.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.TopNewRow.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.TopNewRow.Options.UseFont = true;
-            this.gridView1.Appearance.VertLine.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.VertLine.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.VertLine.Options.UseFont = true;
-            this.gridView1.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.Appearance.ViewCaption.Options.UseFont = true;
-            this.gridView1.AppearancePrint.EvenRow.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.AppearancePrint.EvenRow.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.AppearancePrint.EvenRow.Options.UseFont = true;
-            this.gridView1.AppearancePrint.FilterPanel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.AppearancePrint.FilterPanel.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.AppearancePrint.FilterPanel.Options.UseFont = true;
-            this.gridView1.AppearancePrint.FooterPanel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.AppearancePrint.FooterPanel.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.AppearancePrint.FooterPanel.Options.UseFont = true;
-            this.gridView1.AppearancePrint.GroupFooter.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.AppearancePrint.GroupFooter.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.AppearancePrint.GroupFooter.Options.UseFont = true;
-            this.gridView1.AppearancePrint.GroupRow.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.AppearancePrint.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.AppearancePrint.GroupRow.Options.UseFont = true;
-            this.gridView1.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.AppearancePrint.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.AppearancePrint.HeaderPanel.Options.UseFont = true;
-            this.gridView1.AppearancePrint.Lines.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.AppearancePrint.Lines.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.AppearancePrint.Lines.Options.UseFont = true;
-            this.gridView1.AppearancePrint.OddRow.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.AppearancePrint.OddRow.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.AppearancePrint.OddRow.Options.UseFont = true;
-            this.gridView1.AppearancePrint.Preview.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.AppearancePrint.Preview.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.AppearancePrint.Preview.Options.UseFont = true;
-            this.gridView1.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridView1.AppearancePrint.Row.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gridView1.AppearancePrint.Row.Options.UseFont = true;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
@@ -632,15 +647,14 @@
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             // 
-            // simpleButton8
+            // simpleButton9
             // 
-            this.simpleButton8.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.simpleButton8.Appearance.Options.UseFont = true;
-            this.simpleButton8.Location = new System.Drawing.Point(602, 30);
-            this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(339, 46);
-            this.simpleButton8.TabIndex = 7;
-            this.simpleButton8.Text = "Завершить редактирование группы";
+            this.simpleButton9.Location = new System.Drawing.Point(227, 97);
+            this.simpleButton9.Name = "simpleButton9";
+            this.simpleButton9.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton9.TabIndex = 21;
+            this.simpleButton9.Text = "Присвоить";
+            this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
             // 
             // Journal
             // 
@@ -728,5 +742,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.SimpleButton simpleButton8;
+        private DevExpress.XtraEditors.SimpleButton simpleButton9;
     }
 }
