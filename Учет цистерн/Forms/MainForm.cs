@@ -807,9 +807,9 @@ namespace Учет_цистерн
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Journal journalForm = new Journal();
+            Journal journalForm = new Journal(role);
             tabControl1.Show();
-            TabPage JournalPage = new TabPage("Обработанные вагоны");
+            TabPage JournalPage = new TabPage("Журнал обработанных вагонов");
             tabControl1.TabPages.Add(JournalPage);
             tabControl1.SelectedTab = JournalPage;
             journalForm.TopLevel = false;
