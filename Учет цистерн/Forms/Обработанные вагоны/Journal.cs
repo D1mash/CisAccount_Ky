@@ -15,6 +15,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         public string SelectBrigadeID { get; set; }
         public string SelectProductID { get; set; }
         string role;
+        int Temp;
 
         public Journal(string role)
         {
@@ -103,6 +104,17 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 memoEdit1.Visible = false;
                 simpleButton7.Visible = false;
                 simpleButton8.Visible = false;
+                simpleButton9.Enabled = false;
+                checkEdit1.Visible = false;
+                checkEdit2.Visible = false;
+                checkEdit11.Visible = false;
+                checkEdit4.Visible = false;
+                checkEdit5.Visible = false;
+                checkEdit6.Visible = false;
+                checkEdit7.Visible = false;
+                checkEdit8.Visible = false;
+                checkEdit9.Visible = false;
+                checkEdit10.Visible = false;
 
                 GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
                 GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
@@ -167,6 +179,28 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     Refresh();
                     textEdit1.Text = "";
                 }
+                else if(SelectItemRow == 1)
+                {
+                    ArrayList rows = new ArrayList();
+                    List<Object> aList = new List<Object>();
+                    string Arrays = string.Empty;
+
+                    Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                    for (int i = 0; i < selectedRowHandles.Length; i++)
+                    {
+                        int selectedRowHandle = selectedRowHandles[i];
+                        if (selectedRowHandle >= 0)
+                            rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                    }
+                    foreach (DataRow row in rows)
+                    {
+                        aList.Add(row["ID"]);
+                        Arrays = string.Join(" ", aList);
+                        string UpdateAll = "exec [dbo].[UpdateRenderedServiceAll] " + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + "," + comboBox2.SelectedValue.ToString() + "," + Temp + ",'" + Arrays +"'";
+                        DbConnection.DBConnect(UpdateAll);
+                    }
+                    Refresh();
+                }
                 else
                 {
                     string Update = "exec [dbo].[UpdateRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ","+SelectItemRow;
@@ -206,6 +240,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 SelectItemRow = Convert.ToInt32(Id);
 
                 GetCurrent();
+                simpleButton9.Enabled = false;
 
                 string CarNumber = gridView1.GetFocusedDataRow()[3].ToString();
                 if (gridView1.DataRowCount == 0)
@@ -442,6 +477,19 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void simpleButton9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string GetInvoice = "dbo.GetInvoice";
+                DataTable dt = DbConnection.DBConnect(GetInvoice);
+                textEdit3.Text = dt.Rows[0][0].ToString();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void textEdit6_Properties_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -553,7 +601,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         {
             Unblock();
             textEdit1.Text = "";
-            int Temp = SelectItemRow;
+            simpleButton9.Enabled = true;
+            Temp = SelectItemRow;
             SelectItemRow = 0;
         }
 
@@ -585,22 +634,126 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
 
         private void simpleButton6_Click(object sender, EventArgs e)
         {
+            Temp = SelectItemRow; 
+            SelectItemRow = 1;
             simpleButton6.Visible = false;
             simpleButton8.Visible = true;
+            simpleButton1.Enabled = true;
+
+            textEdit1.Enabled = false;
+            textEdit4.Enabled = false;
+            textEdit3.Enabled = false;
+            comboBox1.Enabled = false;
+            comboBox2.Enabled = false;
+
+            textEdit6.Enabled = false;
+            textEdit7.Enabled = false;
+            textEdit8.Enabled = false;
+            textEdit9.Enabled = false;
+            textEdit10.Enabled = false;
+            textEdit11.Enabled = false;
+            textEdit5.Enabled = false;
+
+            dateTimePicker1.Enabled = false;
+            simpleButton2.Enabled = false;
+            simpleButton3.Enabled = false;
+            simpleButton4.Enabled = false;
+            simpleButton5.Enabled = false;
+
+            checkEdit1.Visible = true;
+            checkEdit2.Visible = true;
+            checkEdit11.Visible = true;
+            checkEdit4.Visible = true;
+            checkEdit5.Visible = true;
+            checkEdit6.Visible = true;
+            checkEdit7.Visible = true;
+            checkEdit8.Visible = true;
+            checkEdit9.Visible = true;
+            checkEdit10.Visible = true;
+        }
+        private void simpleButton8_Click(object sender, EventArgs e)
+        {
+            simpleButton8.Visible = false;
+            simpleButton6.Visible = true;
+            simpleButton1.Enabled = false;
+
+            dateTimePicker1.Enabled = true;
+            simpleButton2.Enabled = true;
+            simpleButton3.Enabled = true;
+            simpleButton4.Enabled = true;
+            simpleButton5.Enabled = true;
+
+            checkEdit1.Visible = false;
+            checkEdit2.Visible = false;
+            checkEdit11.Visible = false;
+            checkEdit4.Visible = false;
+            checkEdit5.Visible = false;
+            checkEdit6.Visible = false;
+            checkEdit7.Visible = false;
+            checkEdit8.Visible = false;
+            checkEdit9.Visible = false;
+            checkEdit10.Visible = false;
+
+            checkEdit1.Checked = false;
+            checkEdit2.Checked = false;
+            checkEdit11.Checked = false;
+            checkEdit4.Checked = false;
+            checkEdit5.Checked = false;
+            checkEdit6.Checked = false;
+            checkEdit7.Checked = false;
+            checkEdit8.Checked = false;
+            checkEdit9.Checked = false;
+            checkEdit10.Checked = false;
         }
 
-        private void simpleButton9_Click(object sender, EventArgs e)
+        private void checkEdit1_Properties_CheckStateChanged(object sender, EventArgs e)
         {
-            try
-            {
-                string GetInvoice = "dbo.GetInvoice";
-                DataTable dt = DbConnection.DBConnect(GetInvoice);
-                textEdit3.Text = dt.Rows[0][0].ToString();
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            textEdit4.Enabled = (checkEdit1.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit2_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            comboBox1.Enabled = (checkEdit2.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit3_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            comboBox2.Enabled = (checkEdit11.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit4_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit6.Enabled = (checkEdit4.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit5_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit8.Enabled = (checkEdit5.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit6_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit7.Enabled = (checkEdit6.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit7_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit9.Enabled = (checkEdit7.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit8_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit10.Enabled = (checkEdit8.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit9_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit11.Enabled = (checkEdit9.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit10_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit5.Enabled = (checkEdit10.CheckState == CheckState.Checked);
         }
     }
 }
