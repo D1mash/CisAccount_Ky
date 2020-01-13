@@ -101,11 +101,27 @@ namespace Учет_цистерн.Forms
             //{
                 if (textBox1.Text != String.Empty)
                 {
-                string newRow = "exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textBox2.Text + "', '" + Multi_Car() + "'";
-                    DbConnection.DBConnect(newRow);
+                    string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textBox2.Text + "', @CurrentID = @Id output select @Id";
+                    DataTable HeadID = DbConnection.DBConnect(NewHead);
 
+                    string Id = HeadID.Rows[0][0].ToString();
 
-                    button3_Click(null, null);
+                    ArrayList list = new ArrayList();
+                    string Arrays = string.Empty;
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        list.Add(dt.Rows[i][0].ToString());
+                    }
+
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        Arrays = string.Join(" ", list[i]);
+                        string newRow = "exec dbo.Rent_Update_Body '"+Arrays+"',"+Id;
+                        DbConnection.DBConnect(newRow);
+                    }
+
+                button3_Click(null, null);
                 }
                 else
                 {
