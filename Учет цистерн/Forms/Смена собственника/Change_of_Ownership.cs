@@ -101,7 +101,7 @@ namespace Учет_цистерн.Forms
             //{
                 if (textBox1.Text != String.Empty)
                 {
-                    string newRow = "exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textBox2.Text + "', '" + Multi_Car() + "'";
+                string newRow = "exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textBox2.Text + "', '" + Multi_Car() + "'";
                     DbConnection.DBConnect(newRow);
 
 
@@ -349,7 +349,7 @@ namespace Учет_цистерн.Forms
             ArrayList list = new ArrayList();
             string Arrays = string.Empty;
 
-            for (int i=0; i < dt.Rows.Count; i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
                 list.Add(dt.Rows[i][0].ToString());
             }
