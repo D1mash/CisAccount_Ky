@@ -99,18 +99,18 @@ namespace Учет_цистерн.Forms
         {
             //try
             //{
-            //    if (textBox1.Text != String.Empty)
-            //    {
-            //        string newRow = "exec dbo.Rent_Add_Head '" + textBox3.Text + "','" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textBox2.Text + "'";
-            //        DbConnection.DBConnect(newRow);
+                if (textBox1.Text != String.Empty)
+                {
+                    string newRow = "exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textBox2.Text + "', '" + Multi_Car() + "'";
+                    DbConnection.DBConnect(newRow);
 
 
-            //        button3_Click(null, null);
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Введите номер заявки", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
+                    button3_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Введите номер заявки", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             //}
             //catch (Exception ex)
             //{
@@ -295,7 +295,27 @@ namespace Учет_цистерн.Forms
 
         private void вставитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                string Insert = "exec dbo.InsertMultiple_Carriage '" + Clipboard.GetText() + "'";
+                DbConnection.DBConnect(Insert);
+                
+                RefreshGrid();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(exp, "Множественная вставка вагонов, вставить вагонов");
+            }
+        }
+
+        DataTable dt;
+
+        private void RefreshGrid()
+        {
+            string Refresh = "exec Get_MultiCar";
+            dt = DbConnection.DBConnect(Refresh);
+            gridControl1.DataSource = dt;
         }
 
         //Выпадающее меню
@@ -313,6 +333,33 @@ namespace Учет_цистерн.Forms
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 logger.Error(exp, "dataGridView1_MouseClick_1");
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string Insert = "exec dbo.InsertMultiple_Carriage '" + textBox3.Text + "'";
+            DbConnection.DBConnect(Insert);
+
+            RefreshGrid();
+        }
+
+        //Список вагонов
+        string Multi_Car()
+        {
+            ArrayList list = new ArrayList();
+            string Arrays = string.Empty;
+
+            for (int i=0; i < dt.Rows.Count; i++)
+            {
+                list.Add(dt.Rows[i][0].ToString());
+            }
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                Arrays = string.Join(" ", list[i]);
+            }
+
+            return Arrays;
         }
     }
 }

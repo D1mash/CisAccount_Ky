@@ -125,6 +125,7 @@ namespace Учет_цистерн
                 logger.Error(exp, "Глобальный фильтр, вставить вагоны");
             }
         }
+
         //Глобальный фильтр, обновить вагоны
         private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
