@@ -169,7 +169,7 @@
             this.вставитьToolStripMenuItem,
             this.уадилитьToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(126, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
             // 
             // вставитьToolStripMenuItem
             // 
@@ -181,8 +181,8 @@
             // уадилитьToolStripMenuItem
             // 
             this.уадилитьToolStripMenuItem.Name = "уадилитьToolStripMenuItem";
-            this.уадилитьToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.уадилитьToolStripMenuItem.Text = "Уадилить";
+            this.уадилитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.уадилитьToolStripMenuItem.Text = "Удалить";
             this.уадилитьToolStripMenuItem.Click += new System.EventHandler(this.уадилитьToolStripMenuItem_Click);
             // 
             // groupControl1
