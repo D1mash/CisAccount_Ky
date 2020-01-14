@@ -167,7 +167,7 @@ namespace Учет_цистерн.Forms
         }
 
         //Выпадающее меню
-        private void gridControl1_MouseClick_1(object sender, MouseEventArgs e)
+        private void gridControl1_MouseClick(object sender, MouseEventArgs e)
         {
             try
             {
@@ -259,6 +259,7 @@ namespace Учет_цистерн.Forms
 
 
         public string GetDate { get; set; }
+        
     }
 }
   

@@ -47,8 +47,8 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.button1 = new DevExpress.XtraEditors.SimpleButton();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.button2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
@@ -207,6 +207,7 @@
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gridControl1_MouseClick);
             // 
             // gridView1
             // 
@@ -251,6 +252,14 @@
             this.groupControl4.Size = new System.Drawing.Size(374, 217);
             this.groupControl4.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(251, 170);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 42);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Сохранить";
+            // 
             // groupControl3
             // 
             this.groupControl3.Controls.Add(this.button2);
@@ -260,14 +269,6 @@
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(374, 89);
             this.groupControl3.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(251, 170);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 42);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Сохранить";
             // 
             // button2
             // 
