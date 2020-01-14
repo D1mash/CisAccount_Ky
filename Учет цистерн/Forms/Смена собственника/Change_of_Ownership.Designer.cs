@@ -169,19 +169,19 @@
             this.вставитьToolStripMenuItem,
             this.уадилитьToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 48);
             // 
             // вставитьToolStripMenuItem
             // 
             this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
-            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.вставитьToolStripMenuItem.Text = "Вставить";
             this.вставитьToolStripMenuItem.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
             // уадилитьToolStripMenuItem
             // 
             this.уадилитьToolStripMenuItem.Name = "уадилитьToolStripMenuItem";
-            this.уадилитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.уадилитьToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.уадилитьToolStripMenuItem.Text = "Удалить";
             this.уадилитьToolStripMenuItem.Click += new System.EventHandler(this.уадилитьToolStripMenuItem_Click);
             // 
@@ -259,6 +259,7 @@
             this.button1.Size = new System.Drawing.Size(113, 42);
             this.button1.TabIndex = 14;
             this.button1.Text = "Сохранить";
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // groupControl3
             // 
@@ -277,6 +278,7 @@
             this.button2.Size = new System.Drawing.Size(113, 42);
             this.button2.TabIndex = 15;
             this.button2.Text = "Добавить";
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // Change_of_Ownership
             // 

@@ -52,7 +52,7 @@ namespace Учет_цистерн.Forms
 
 
         //Создание заявки
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -184,7 +184,7 @@ namespace Учет_цистерн.Forms
         }
 
         //Построчная вставка
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click_1(object sender, EventArgs e)
         {
             string Insert = "exec dbo.InsertMultiple_Carriage '" + textBox3.Text + "'";
             DbConnection.DBConnect(Insert);
@@ -197,7 +197,7 @@ namespace Учет_цистерн.Forms
         {
             if (e.KeyCode == Keys.Enter)
             {
-                button2_Click(null, null);
+                button2_Click_1(null, null);
             }
         }
 
@@ -259,6 +259,7 @@ namespace Учет_цистерн.Forms
 
 
         public string GetDate { get; set; }
+
         
     }
 }
