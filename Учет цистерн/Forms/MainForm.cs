@@ -822,7 +822,7 @@ namespace Учет_цистерн
 
         private void сменаСобственникаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Change_of_Ownership change_Of_Ownership = new Change_of_Ownership(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.btn_Refrence, this.tabControl1, this.button7, role);
+            Change_of_Ownership change_Of_Ownership = new Change_of_Ownership(this.tabControl1, role);
             tabControl1.Show();
             TabPage chg_tabPage = new TabPage("Смена собственника");
             tabControl1.TabPages.Add(chg_tabPage);
