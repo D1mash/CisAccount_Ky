@@ -21,7 +21,7 @@ namespace Учет_цистерн.Forms
         private TradeWright.UI.Forms.TabControlExtra TabControlExtra;
         DataTable dt;
         private static Logger logger = LogManager.GetCurrentClassLogger();
-        
+
         string role;
 
         public Change_of_Ownership(TradeWright.UI.Forms.TabControlExtra tabControl1, string role)
@@ -29,37 +29,13 @@ namespace Учет_цистерн.Forms
             InitializeComponent();
             this.TabControlExtra = tabControl1;
             this.role = role;
+            this.TabControlExtra.TabClosing += new System.EventHandler<System.Windows.Forms.TabControlCancelEventArgs>(this.tabControl1_TabClosing);
         }
 
         private void Change_of_Ownership_Load(object sender, EventArgs e)
         {
             try
             {
-                //if (role == "1")
-                //{
-                //    button1.Enabled = true;
-                //    button2.Enabled = true;
-                //    button3.Enabled = true;
-                //    button4.Enabled = true;
-                //}
-                //else
-                //{
-                //    if (role == "2")
-                //    {
-                //        button1.Enabled = true;
-                //        button2.Enabled = false;
-                //        button3.Enabled = true;
-                //        button4.Enabled = false;
-                //    }
-                //    else
-                //    {
-                //        button1.Enabled = false;
-                //        button2.Enabled = false;
-                //        button3.Enabled = false;
-                //        button4.Enabled = false;
-                //    }
-                //}
-
                 dateEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
                 dateEdit1.Properties.Mask.EditMask = "d"; //'Short date' format 
                 dateEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
@@ -82,10 +58,10 @@ namespace Учет_цистерн.Forms
             {
                 if (textBox1.Text != String.Empty)
                 {
-                    string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textBox2.Text + "', @CurrentID = @Id output select @Id";
+                    string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textBox2.Text + "'";
                     DataTable HeadID = DbConnection.DBConnect(NewHead);
 
-                //Список вагонов для передачи в БД
+                    //Список вагонов для передачи в БД
                     string Id = HeadID.Rows[0][0].ToString();
 
                     ArrayList list = new ArrayList();
@@ -99,19 +75,21 @@ namespace Учет_цистерн.Forms
                     for (int i = 0; i < list.Count; i++)
                     {
                         Arrays = string.Join(" ", list[i]);
-                        string newRow = "exec dbo.Rent_ADD_Body '"+Arrays+"',"+Id;
+                        string newRow = "exec dbo.Rent_ADD_Body '" + Arrays + "'," + Id;
                         DbConnection.DBConnect(newRow);
                     }
 
                     //Очищение промежуточной таблицы
                     string Truncate = "exec dbo.Delete_Temp_MultiCar";
                     DbConnection.DBConnect(Truncate);
+
+                    RefreshGrid();
                 }
                 else
                 {
                     MessageBox.Show("Введите номер заявки", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-        }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -169,7 +147,7 @@ namespace Учет_цистерн.Forms
             {
                 string Insert = "exec dbo.InsertMultiple_Carriage '" + Clipboard.GetText() + "'";
                 DbConnection.DBConnect(Insert);
-                
+
                 RefreshGrid();
             }
             catch (Exception exp)
@@ -178,7 +156,7 @@ namespace Учет_цистерн.Forms
                 logger.Error(exp, "Множественная вставка вагонов, вставить вагонов");
             }
         }
-        
+
         //Обновление
         private void RefreshGrid()
         {
@@ -247,6 +225,40 @@ namespace Учет_цистерн.Forms
 
             RefreshGrid();
         }
+
+        private void tabControl1_TabClosing(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPage.Text == "Смена собственника от " + GetDate)
+            {
+                if (gridView1.RowCount > 0)
+                {
+                    DialogResult result = MessageBox.Show("Вы хотите закрыть вкладку? Данные будут удалены. Если вы хотите сохранить заявку нажмите кнопку Добавить", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        //Очищение промежуточной таблицы
+                        string Truncate = "exec dbo.Delete_Temp_MultiCar";
+                        DbConnection.DBConnect(Truncate);
+                        TabControlExtra.TabPages.Remove(TabControlExtra.SelectedTab);
+                    }
+                    else 
+                    {
+                        if(result == DialogResult.No)
+                        {
+                            e.Cancel = true;
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    TabControlExtra.TabPages.Remove(TabControlExtra.SelectedTab);
+                }
+            }
+        }
+
+
+        public string GetDate { get; set; }
     }
 }
   

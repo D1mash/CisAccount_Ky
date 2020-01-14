@@ -822,9 +822,12 @@ namespace Учет_цистерн
 
         private void сменаСобственникаToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string DateIns = System.DateTime.Now.ToString();
+
             Change_of_Ownership change_Of_Ownership = new Change_of_Ownership(this.tabControl1, role);
             tabControl1.Show();
-            TabPage chg_tabPage = new TabPage("Смена собственника");
+            TabPage chg_tabPage = new TabPage("Смена собственника от " + DateIns);
+            change_Of_Ownership.GetDate = DateIns;
             tabControl1.TabPages.Add(chg_tabPage);
             tabControl1.SelectedTab = chg_tabPage;
             change_Of_Ownership.TopLevel = false;
