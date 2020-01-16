@@ -132,6 +132,7 @@
             // 
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
@@ -384,6 +385,7 @@
             this.checkEdit2.Properties.Caption = "Вывести журнал заявок";
             this.checkEdit2.Size = new System.Drawing.Size(147, 19);
             this.checkEdit2.TabIndex = 1;
+            this.checkEdit2.Visible = false;
             // 
             // checkEdit1
             // 
