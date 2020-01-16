@@ -58,7 +58,7 @@ namespace Учет_цистерн.Forms
             {
                 if (textBox1.Text != String.Empty)
                 {
-                    string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textBox2.Text + "'";
+                    string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textBox2.Text + "', @CurrentID = @Id output; select @Id";
                     DataTable HeadID = DbConnection.DBConnect(NewHead);
 
                     //Список вагонов для передачи в БД
@@ -69,7 +69,7 @@ namespace Учет_цистерн.Forms
 
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        list.Add(dt.Rows[i][0].ToString());
+                        list.Add(dt.Rows[i][1].ToString());
                     }
 
                     for (int i = 0; i < list.Count; i++)
