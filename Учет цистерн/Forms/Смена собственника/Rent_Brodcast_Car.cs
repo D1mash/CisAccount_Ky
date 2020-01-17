@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraGrid;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,8 +16,6 @@ namespace Учет_цистерн.Forms.Смена_собственника
         int SelectItemRow1;
         int SelectItemRow2;
 
-        DataTable dt_carriage;
-
         public Rent_Brodcast_Car()
         {
             InitializeComponent();
@@ -31,9 +30,8 @@ namespace Учет_цистерн.Forms.Смена_собственника
             checkEdit6_CheckedChanged(null, null);
             checkEdit7_CheckedChanged(null, null);
             checkEdit8_CheckedChanged(null, null);
-
-            dt_carriage = new DataTable("Carriage");
         }
+
 
         private void FillCombobox()
         {
@@ -172,9 +170,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
             string Date_S;
             string Date_E;
             string Date_R;
-            //Поиск по номеру вагона
-            //if (checkEdit1.Checked)
-            //{
+            
             if (dateEdit1.DateTime.ToShortDateString() == "01.01.0001")
             {
                 Date_S = "01.01.1990";
@@ -201,347 +197,55 @@ namespace Учет_цистерн.Forms.Смена_собственника
             {
                 Date_R = dateEdit3.DateTime.ToShortDateString();
             }
-                    
+
+            if (checkEdit1.Checked)
+            {
+                gridControl3.DataSource = null;
+                gridView3.Columns.Clear();
+
+                string Search_1= "exec dbo.Rent_Search_By_Parametrs_2 " + "@Car_Num = '" + textEdit1.Text.Trim() + "', "+ "@Type = " + 2;
+                gridControl3.DataSource = DbConnection.DBConnect(Search_1);
+                gridView3.Columns[0].Visible = false;
+
+                gridControl1.DataSource = null;
+                gridView1.Columns.Clear();
+
                 gridControl2.DataSource = null;
                 gridView2.Columns.Clear();
 
-                string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Car_Num = '" + textEdit1.Text + "', " + "@Date_Start = '" + Date_S + "', " + " @Date_End = '" + Date_E + "', " + "@Date_Rec = '" + Date_R + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + "@Product = '" + textEdit3.Text + "'," + "@Rent_Num = '" + textEdit2.Text + "'";
+                string Search_2 = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Car_Num = '" + SelectItemRow2.ToString() + "', " + "@Date_Start = '" + Date_S + "', " + " @Date_End = '" + Date_E + "', " + "@Date_Rec = '" + Date_R + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + "@Product = '" + textEdit3.Text + "'," + "@Rent_Num = '" + textEdit2.Text + "'," + "@Type = " + 2;
+                gridControl1.DataSource = DbConnection.DBConnect(Search_2);
+                gridView1.Columns[0].Visible = false;
+
+                gridView3_RowCellClick(null, null);
+            }
+            else
+            {
+                gridControl3.DataSource = null;
+                gridView3.Columns.Clear();
+
+                gridControl2.DataSource = null;
+                gridView2.Columns.Clear();
+
+                gridControl1.DataSource = null;
+                gridView1.Columns.Clear();
+
+                string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Car_Num = '" + textEdit1.Text + "', " + "@Date_Start = '" + Date_S + "', " + " @Date_End = '" + Date_E + "', " + "@Date_Rec = '" + Date_R + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + "@Product = '" + textEdit3.Text + "'," + "@Rent_Num = '" + textEdit2.Text + "'," + "@Type = " + 1;
                 gridControl2.DataSource = DbConnection.DBConnect(Search);
                 gridView2.Columns[0].Visible = false;
+
                 gridView2_RowCellClick(null, null);
-            //}
+                gridView3_RowCellClick(null, null);
+            }
 
-            //if (checkEdit1.Checked & (checkEdit3.Checked | checkEdit4.Checked))
-            //{
-            //    //Поиск по Start Date и End Date и номеру вагона
-            //    if (checkEdit3.Checked & checkEdit4.Checked)
-            //    {
-            //        gridControl1.DataSource = null;
-            //        gridView1.Columns.Clear();
+            GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер заявки", "Кол.во={0}");
+            gridView2.Columns["Номер заявки"].Summary.Add(item1);
 
-            //        string Search = "exec dbo.Rent_Search_By_Parametrs " + "@Date_Start = '" + dateEdit1.DateTime.ToShortDateString() + "', @Date_End = '" + dateEdit2.DateTime.ToShortDateString() + "', " + "@Car_Num = '" + textEdit1.Text + "'";
-            //        gridControl1.DataSource = DbConnection.DBConnect(Search);
-            //        gridView1.Columns[0].Visible = false;
-            //    }
-            //    else
-            //    {
-            //        //Поиск по Start Date и номеру вагона
-            //        if (checkEdit3.Checked)
-            //        {
-            //            gridControl1.DataSource = null;
-            //            gridView1.Columns.Clear();
+            GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер заявки", "Кол.во={0}");
+            gridView1.Columns["Номер заявки"].Summary.Add(item2);
 
-            //            string Search = "exec dbo.Rent_Search_By_Parametrs " + "@Date_Start = '" + dateEdit1.DateTime.ToShortDateString() + "', " + "@Car_Num = '" + textEdit1.Text + "'";
-            //            gridControl1.DataSource = DbConnection.DBConnect(Search);
-            //            gridView1.Columns[0].Visible = false;
-            //        }
-            //        else
-            //        {
-            //            //Поиск по End Date и номеру вагона
-            //            if (checkEdit4.Checked)
-            //            {
-            //                gridControl1.DataSource = null;
-            //                gridView1.Columns.Clear();
-
-            //                string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_End = '" + dateEdit2.DateTime.ToShortDateString() + "', " + "@Car_Num = '" + textEdit1.Text + "'";
-            //                gridControl1.DataSource = DbConnection.DBConnect(Search);
-            //                gridView1.Columns[0].Visible = false;
-            //            }
-            //        }
-            //    }
-            //}
-
-            ////Поиск по дате заявки и номеру вагона
-            //if (checkEdit1.Checked & checkEdit5.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_Rec = '" + dateEdit3.DateTime.ToShortDateString() + "', " + " @Car_Num = '" + textEdit1.Text + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            ////Поиск по номеру заявки и номеру вагона
-            //if (checkEdit1.Checked & checkEdit6.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Rent_Num '" + textEdit2.Text + "'," + " @Car_Num = '" + textEdit1.Text + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            ////Поиск по собственнику и номеру вагона
-            //if (checkEdit1.Checked & checkEdit7.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + " @Car_Num = '" + textEdit1.Text + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            ////Поиск по продукту и номеру вагона
-            //if (checkEdit1.Checked & checkEdit8.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Product = '" + textEdit3.Text + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-
-            ////Поиск по Start Date и End Date
-            //if (checkEdit3.Checked & checkEdit4.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_Start = '" + dateEdit1.DateTime.ToShortDateString() + "', @Date_End = '" + dateEdit2.DateTime.ToShortDateString() + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            ////Поиск по Start Date
-            //if (checkEdit3.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_Start = '" + dateEdit1.DateTime.ToShortDateString() + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            ////Поиск по End Date
-            //if (checkEdit4.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_End = '" + dateEdit2.DateTime.ToShortDateString() + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            ////Поиск по дате заявки
-            //if (checkEdit5.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_Rec = '" + dateEdit3.DateTime.ToShortDateString() + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            ////Поиск по номеру заявки
-            //if (checkEdit6.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Rent_Num = '" + textEdit2.Text + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            ////Поиск по собственнику
-            //if (checkEdit7.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@OwnerId = '" + comboBox1.SelectedValue + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            ////Поиск по продукту
-            //if (checkEdit8.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Product = '" + textEdit3.Text + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            ////Поиск по дате заявки и номеру заявки
-            //if (checkEdit5.Checked & checkEdit6.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_Rec = '" + dateEdit3.DateTime.ToShortDateString() + "', " + "@Rent_Num ='" + textEdit2.Text + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            ////Поиск по дате заявки и собственнику
-            //if (checkEdit5.Checked & checkEdit7.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_Rec = '" + dateEdit3.DateTime.ToShortDateString() + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            ////Поиск по дате заявки и продукту
-            //if (checkEdit5.Checked & checkEdit8.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_Rec = '" + dateEdit3.DateTime.ToShortDateString() + "', " + "@Product = '" + textEdit3.Text + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            //if(checkEdit6.Checked & checkEdit7.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Rent_Num = '" + textEdit2.Text + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            //if(checkEdit6.Checked & checkEdit8.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Rent_Num = '" + textEdit2.Text + "', " + "@Product = '" + textEdit3.Text + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            //if (checkEdit7.Checked & checkEdit8.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@OwnerId = '" + comboBox1.SelectedValue + "', " + "@Product = '" + textEdit3.Text + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            //if(checkEdit3.Checked & checkEdit6.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_Start = '" + dateEdit1.DateTime.ToShortDateString() + "', " + "@Rent_Num = '" + textEdit2.Text + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            //if (checkEdit3.Checked & checkEdit7.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_Start = '" + dateEdit1.DateTime.ToShortDateString() + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            //if(checkEdit3.Checked & checkEdit8.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_Start = '" + dateEdit1.DateTime.ToShortDateString() + "', " + "@Product = '" + textEdit3.Text + "'";
-            //    gridControl1.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            //if(checkEdit4.Checked & checkEdit6.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_End = '" + dateEdit2.DateTime.ToShortDateString() + "', " + "@Rent_Num = '" + textEdit2.Text + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            //if(checkEdit4.Checked & checkEdit7.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2.Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_End = '" + dateEdit2.DateTime.ToShortDateString() + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
-            //if(checkEdit4.Checked & checkEdit8.Checked)
-            //{
-            //    gridControl2.DataSource = null;
-            //    gridView2 .Columns.Clear();
-
-            //    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Date_End = '" + dateEdit2.DateTime.ToShortDateString() + "', " + "@Product = '" + textEdit3.Text + "'";
-            //    gridControl2.DataSource = DbConnection.DBConnect(Search);
-            //    gridView2.Columns[0].Visible = false;
-
-            //    gridView2_RowCellClick(null, null);
-            //}
-
+            GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер В/Ц", "Кол.во={0}");
+            gridView3.Columns["Номер В/Ц"].Summary.Add(item3);
         }
 
         private void gridView3_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -567,7 +271,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
             gridControl3.DataSource = null;
             gridView3.Columns.Clear();
 
-            string Search = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Rent_Num  = '" + SelectItemRow1.ToString() + "'";
+            string Search = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Rent_Num  = '" + SelectItemRow1.ToString() + "',"+ "@Type = " + 1;
             gridControl3.DataSource = DbConnection.DBConnect(Search);
             gridView3.Columns[0].Visible = false;
         }
