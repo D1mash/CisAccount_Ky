@@ -53,7 +53,6 @@
             this.checkEdit5 = new DevExpress.XtraEditors.CheckEdit();
             this.dateEdit3 = new DevExpress.XtraEditors.DateEdit();
             this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
@@ -64,6 +63,7 @@
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -98,11 +98,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
             this.groupControl6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl2
@@ -386,13 +386,6 @@
             this.groupControl6.TabIndex = 1;
             this.groupControl6.Text = "Вагон - Цистерна";
             // 
-            // textEdit1
-            // 
-            this.textEdit1.Location = new System.Drawing.Point(125, 30);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(100, 20);
-            this.textEdit1.TabIndex = 2;
-            // 
             // checkEdit2
             // 
             this.checkEdit2.Location = new System.Drawing.Point(21, 66);
@@ -490,6 +483,17 @@
             this.simpleButton2.Text = "Изменить";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
+            // textEdit1
+            // 
+            this.textEdit1.Location = new System.Drawing.Point(111, 30);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.Mask.BeepOnError = true;
+            this.textEdit1.Properties.Mask.EditMask = "\\d\\d\\d\\d\\d\\d\\d\\d";
+            this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit1.Properties.Mask.ShowPlaceHolders = false;
+            this.textEdit1.Size = new System.Drawing.Size(137, 20);
+            this.textEdit1.TabIndex = 2;
+            // 
             // Rent_Brodcast_Car
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -536,11 +540,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).EndInit();
             this.groupControl6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -579,9 +583,9 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit6;
         private DevExpress.XtraEditors.CheckEdit checkEdit5;
         private DevExpress.XtraEditors.DateEdit dateEdit3;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.CheckEdit checkEdit2;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
     }
 }

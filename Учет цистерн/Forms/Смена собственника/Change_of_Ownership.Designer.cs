@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,6 +49,7 @@
             this.button1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.button2 = new DevExpress.XtraEditors.SimpleButton();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -63,6 +63,7 @@
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -74,15 +75,6 @@
             this.label3.Size = new System.Drawing.Size(85, 16);
             this.label3.TabIndex = 13;
             this.label3.Text = "Номер в/ц:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.Location = new System.Drawing.Point(103, 42);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(115, 20);
-            this.textBox3.TabIndex = 12;
-            this.textBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
             // 
             // label1
             // 
@@ -225,7 +217,7 @@
             // 
             // groupControl2
             // 
-            this.groupControl2.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupControl2.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupControl2.AppearanceCaption.Options.UseFont = true;
             this.groupControl2.Controls.Add(this.groupControl4);
             this.groupControl2.Controls.Add(this.groupControl3);
@@ -254,7 +246,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(251, 170);
+            this.button1.Location = new System.Drawing.Point(251, 160);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 42);
             this.button1.TabIndex = 14;
@@ -263,9 +255,9 @@
             // 
             // groupControl3
             // 
+            this.groupControl3.Controls.Add(this.textEdit1);
             this.groupControl3.Controls.Add(this.button2);
             this.groupControl3.Controls.Add(this.label3);
-            this.groupControl3.Controls.Add(this.textBox3);
             this.groupControl3.Location = new System.Drawing.Point(5, 32);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(374, 89);
@@ -279,6 +271,17 @@
             this.button2.TabIndex = 15;
             this.button2.Text = "Добавить";
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Location = new System.Drawing.Point(96, 42);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.Mask.BeepOnError = true;
+            this.textEdit1.Properties.Mask.EditMask = "\\d\\d\\d\\d\\d\\d\\d\\d";
+            this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit1.Properties.Mask.ShowPlaceHolders = false;
+            this.textEdit1.Size = new System.Drawing.Size(133, 20);
+            this.textEdit1.TabIndex = 2;
             // 
             // Change_of_Ownership
             // 
@@ -305,6 +308,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -319,7 +323,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem уадилитьToolStripMenuItem;
@@ -331,5 +334,6 @@
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.SimpleButton button1;
         private DevExpress.XtraEditors.SimpleButton button2;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
     }
 }

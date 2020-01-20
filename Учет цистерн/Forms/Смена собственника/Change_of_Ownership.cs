@@ -42,6 +42,10 @@ namespace Учет_цистерн.Forms
                 dateEdit1.EditValue = DateTime.Today;
 
                 FillCombobox();
+
+                textBox1.Text = String.Empty;
+                textBox2.Text = String.Empty;
+
             }
             catch (Exception ex)
             {
@@ -84,6 +88,8 @@ namespace Учет_цистерн.Forms
                     DbConnection.DBConnect(Truncate);
 
                     RefreshGrid();
+
+                    Change_of_Ownership_Load(null, null);
                 }
                 else
                 {
@@ -112,32 +118,6 @@ namespace Учет_цистерн.Forms
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        //Кнопка удаления
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //if (SelectItemRow > 0)
-            //{
-            //    if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            //    {
-            //        try
-            //        {
-            //            string Delete = "delete from [dbo].[d__Rent_Status] where ID = " + SelectItemRow + " delete from [dbo].[Rent_Carriage] where Status_Rent = " + SelectItemRow;
-            //            DbConnection.DBConnect(Delete);
-            //            MessageBox.Show("Документ удалён!", "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //            update();
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
         }
 
         //Множественная вставка
@@ -186,7 +166,7 @@ namespace Учет_цистерн.Forms
         //Построчная вставка
         private void button2_Click_1(object sender, EventArgs e)
         {
-            string Insert = "exec dbo.InsertMultiple_Carriage '" + textBox3.Text + "'";
+            string Insert = "exec dbo.InsertMultiple_Carriage '" + textEdit1.Text + "'";
             DbConnection.DBConnect(Insert);
 
             RefreshGrid();
@@ -230,7 +210,7 @@ namespace Учет_цистерн.Forms
         {
             if (e.TabPage.Text == "Смена собственника от " + GetDate)
             {
-                if (gridView1.RowCount > 0)
+                if (gridView1.RowCount > 1)
                 {
                     DialogResult result = MessageBox.Show("Вы хотите закрыть вкладку? Данные будут удалены. Если вы хотите сохранить заявку нажмите кнопку Добавить", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
