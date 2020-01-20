@@ -30,6 +30,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
             checkEdit6_CheckedChanged(null, null);
             checkEdit7_CheckedChanged(null, null);
             checkEdit8_CheckedChanged(null, null);
+            
         }
 
 
@@ -218,6 +219,10 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 gridView1.Columns[0].Visible = false;
 
                 gridView3_RowCellClick(null, null);
+
+                GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер В/Ц", "Кол.во={0}");
+                gridView3.Columns["Номер В/Ц"].Summary.Add(item3);
+
             }
             else
             {
@@ -236,16 +241,10 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
                 gridView2_RowCellClick(null, null);
                 gridView3_RowCellClick(null, null);
+
+                GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер заявки", "Кол.во={0}");
+                gridView2.Columns["Номер заявки"].Summary.Add(item1);
             }
-
-            GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер заявки", "Кол.во={0}");
-            gridView2.Columns["Номер заявки"].Summary.Add(item1);
-
-            GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер заявки", "Кол.во={0}");
-            gridView1.Columns["Номер заявки"].Summary.Add(item2);
-
-            GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер В/Ц", "Кол.во={0}");
-            gridView3.Columns["Номер В/Ц"].Summary.Add(item3);
         }
 
         private void gridView3_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -260,6 +259,9 @@ namespace Учет_цистерн.Forms.Смена_собственника
             string Search = "exec dbo.Rent_Search_By_Parametrs_3 " + "@Car_Num = '" + SelectItemRow2.ToString() + "'";
             gridControl1.DataSource = DbConnection.DBConnect(Search);
             gridView1.Columns[0].Visible = false;
+
+            GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер заявки", "Кол.во={0}");
+            gridView1.Columns["Номер заявки"].Summary.Add(item2);
         }
 
         private void gridView2_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -274,6 +276,9 @@ namespace Учет_цистерн.Forms.Смена_собственника
             string Search = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Rent_Num  = '" + SelectItemRow1.ToString() + "',"+ "@Type = " + 1;
             gridControl3.DataSource = DbConnection.DBConnect(Search);
             gridView3.Columns[0].Visible = false;
+
+            GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер В/Ц", "Кол.во={0}");
+            gridView3.Columns["Номер В/Ц"].Summary.Add(item3);
         }
     }
 }
