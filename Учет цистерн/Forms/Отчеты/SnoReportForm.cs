@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraGrid;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -36,12 +37,24 @@ namespace Учет_цистерн.Forms.Отчеты
                     gridControl1.DataSource = null;
                     gridView1.Columns.Clear();
 
-                    string GetSNO = "exec dbo.GetSNO_Report '" + dateEdit1.DateTime.ToShortDateString() + "', '" + dateEdit2.DateTime.ToShortDateString() + "'";
+                    string GetSNO = "exec dbo.GetSNO '" + dateEdit1.DateTime.ToShortDateString() + "', '" + dateEdit2.DateTime.ToShortDateString() + "'";
                     dataTable = DbConnection.DBConnect(GetSNO);
                     
                     gridControl1.DataSource = dataTable;
                     gridView1.Columns[0].Visible = false;
                     gridView1.Columns[1].Visible = false;
+
+                    GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Счет-фактура", "Кол.во={0}");
+                    gridView1.Columns["Счет-фактура"].Summary.Add(item1);
+
+                    GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма, без НДС", "СУМ={0}");
+                    gridView1.Columns["Сумма, без НДС"].Summary.Add(item2);
+
+                    GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Объем", "Объем={0}");
+                    gridView1.Columns["Объем"].Summary.Add(item3);
+
+                    GridColumnSummaryItem item4 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма, с НДС", "СУМ={0}");
+                    gridView1.Columns["Сумма, с НДС"].Summary.Add(item4);
                 }
                 catch (SqlException ex)
                 {
@@ -60,11 +73,20 @@ namespace Учет_цистерн.Forms.Отчеты
                     gridControl1.DataSource = null;
                     gridView1.Columns.Clear();
 
-                    string GetSNO = "exec dbo.GetCurrentSNO_Report '" + dateEdit1.DateTime.ToShortDateString() + "', '" + dateEdit2.DateTime.ToShortDateString() + "'";
+                    string GetSNO = "exec dbo.GetCurrentSNO '" + dateEdit1.DateTime.ToShortDateString() + "', '" + dateEdit2.DateTime.ToShortDateString() + "'";
                     dataTable = DbConnection.DBConnect(GetSNO);
                     
                     gridControl1.DataSource = dataTable;
                     gridView1.Columns[0].Visible = false;
+
+                    GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Остаток", "Объем = {0}");
+                    gridView1.Columns["Остаток"].Summary.Add(item1);
+
+                    GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Резервуар № 1", "Объем = {0}");
+                    gridView1.Columns["Резервуар № 1"].Summary.Add(item2);
+
+                    GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Резервуар № 2", "Объем = {0}");
+                    gridView1.Columns["Резервуар № 2"].Summary.Add(item3);
                 }
                 catch (SqlException ex)
                 {

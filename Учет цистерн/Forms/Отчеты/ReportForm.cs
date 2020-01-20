@@ -52,10 +52,7 @@ namespace Учет_цистерн
 
                 GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена услуги", "SUM={0}");
                 gridView1.Columns["Цена услуги"].Summary.Add(item1);
-
-                //GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена ТОР", "SUM={0}");
-                //gridView1.Columns["Цена ТОР"].Summary.Add(item2);
-
+                
                 progressBar.Maximum = TotalRow(dt);
                 toolStripLabel1.Text = TotalRow(dt).ToString();
             }
@@ -79,6 +76,9 @@ namespace Учет_цистерн
                     gridView1.Columns["Стоимость услуги"].Summary.Add(item1);
                     GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Стоимость ТОР", "СУМ={0}");
                     gridView1.Columns["Стоимость ТОР"].Summary.Add(item2);
+
+                    GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "№ акта", "Кол.во={0}");
+                    gridView1.Columns["№ акта"].Summary.Add(item3);
 
                     progressBar.Maximum = TotalRow(dt);
                     toolStripLabel1.Text = TotalRow(dt).ToString();
@@ -114,6 +114,9 @@ namespace Учет_цистерн
                     gridView1.Columns["Стоимость услуги"].Summary.Add(item1);
                     GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Стоимость ТОР", "СУМ={0}");
                     gridView1.Columns["Стоимость ТОР"].Summary.Add(item2);
+
+                    GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "№ акта", "Кол.во={0}");
+                    gridView1.Columns["№ акта"].Summary.Add(item3);
 
                     gridView1.Columns["Осность"].Width = 60;
                     gridView1.Columns["Продукт"].Width = 60;
