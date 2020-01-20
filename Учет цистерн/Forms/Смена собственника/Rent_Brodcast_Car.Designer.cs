@@ -57,11 +57,11 @@
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -135,8 +135,11 @@
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsClipboard.AllowCopy = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.OptionsClipboard.CopyColumnHeaders = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             // 
             // groupControl3
             // 
@@ -168,6 +171,8 @@
             this.gridView2.OptionsBehavior.Editable = false;
             this.gridView2.OptionsClipboard.AllowCopy = DevExpress.Utils.DefaultBoolean.True;
             this.gridView2.OptionsClipboard.CopyColumnHeaders = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView2.OptionsSelection.MultiSelect = true;
+            this.gridView2.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView2.OptionsView.ShowFooter = true;
             this.gridView2.OptionsView.ShowGroupPanel = false;
             this.gridView2.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView2_RowCellClick);
@@ -424,14 +429,6 @@
             this.groupControl5.TabIndex = 0;
             this.groupControl5.Text = "Панель инструментов";
             // 
-            // simpleButton4
-            // 
-            this.simpleButton4.Location = new System.Drawing.Point(313, 30);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(95, 27);
-            this.simpleButton4.TabIndex = 3;
-            this.simpleButton4.Text = "Отчёт";
-            // 
             // simpleButton7
             // 
             this.simpleButton7.Location = new System.Drawing.Point(668, 30);
@@ -440,14 +437,6 @@
             this.simpleButton7.TabIndex = 2;
             this.simpleButton7.Text = "Отчёт";
             // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Location = new System.Drawing.Point(212, 30);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(95, 27);
-            this.simpleButton3.TabIndex = 2;
-            this.simpleButton3.Text = "Удалить";
-            // 
             // simpleButton6
             // 
             this.simpleButton6.Location = new System.Drawing.Point(567, 30);
@@ -455,6 +444,7 @@
             this.simpleButton6.Size = new System.Drawing.Size(95, 27);
             this.simpleButton6.TabIndex = 1;
             this.simpleButton6.Text = "Удалить";
+            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
             // 
             // simpleButton5
             // 
@@ -463,6 +453,24 @@
             this.simpleButton5.Size = new System.Drawing.Size(95, 27);
             this.simpleButton5.TabIndex = 0;
             this.simpleButton5.Text = "Изменить";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Location = new System.Drawing.Point(313, 30);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(95, 27);
+            this.simpleButton4.TabIndex = 3;
+            this.simpleButton4.Text = "Отчёт";
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Location = new System.Drawing.Point(212, 30);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(95, 27);
+            this.simpleButton3.TabIndex = 2;
+            this.simpleButton3.Text = "Удалить";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // simpleButton1
             // 
@@ -480,6 +488,7 @@
             this.simpleButton2.Size = new System.Drawing.Size(95, 27);
             this.simpleButton2.TabIndex = 1;
             this.simpleButton2.Text = "Изменить";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // Rent_Brodcast_Car
             // 
