@@ -44,6 +44,11 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             gridView1.Columns[16].Width = 350;
             gridView1.Columns[17].Width = 150;
             gridView1.Columns[18].Width = 150;
+
+            if(gridView1.RowCount > 0)
+            {
+                gridView1_RowCellClick(null, null);
+            }
             //textEdit1.Text = "";
             //textEdit2.Text = "";
             //textEdit3.Text = "";
