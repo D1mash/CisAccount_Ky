@@ -21,7 +21,6 @@ namespace Учет_цистерн
         string Destination = ConfigurationManager.AppSettings["Dest"].ToString();
         DataTable dt;
         DataTable getserv;
-        DataTable dt_tor;
         string UserFIO;
 
         public ReportForm(string userFIO)
@@ -34,27 +33,38 @@ namespace Учет_цистерн
         {
             if (checkBox1.Checked)
             {
-                gridControl1.DataSource = null;
-                gridView1.Columns.Clear();
-
-                comboBox2.Enabled = false;
-                comboBox2.SelectedIndex = 0;
-                string Itog_All_Report = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
-                dt = DbConnection.DBConnect(Itog_All_Report);
-
-                string Itog_TOR = "exec dbo.TOR_COUNT '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
-                dt_tor = DbConnection.DBConnect(Itog_TOR);
-
-                //source.DataSource = dt;
-
-                gridControl1.DataSource = dt;
-                gridView1.Columns[3].Visible = false;
-
-                GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена услуги", "SUM={0}");
-                gridView1.Columns["Цена услуги"].Summary.Add(item1);
+                if(comboBox2.SelectedIndex == 0)
+                {
+                    gridControl1.DataSource = null;
+                    gridView1.Columns.Clear();
                 
-                progressBar.Maximum = TotalRow(dt);
-                toolStripLabel1.Text = TotalRow(dt).ToString();
+                    string Itog_All_Report = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
+                    dt = DbConnection.DBConnect(Itog_All_Report);
+
+                    gridControl1.DataSource = dt;
+
+                    GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена услуги", "SUM={0}");
+                    gridView1.Columns["Цена услуги"].Summary.Add(item1);
+                
+                    progressBar.Maximum = TotalRow(dt);
+                    toolStripLabel1.Text = TotalRow(dt).ToString();
+                }
+                else
+                {
+                    gridControl1.DataSource = null;
+                    gridView1.Columns.Clear();
+
+                    string Itog_Report = "exec dbo.Itog_Report  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
+                    dt = DbConnection.DBConnect(Itog_Report);
+                    
+                    gridControl1.DataSource = dt;
+
+                    GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена услуги", "SUM={0}");
+                    gridView1.Columns["Цена услуги"].Summary.Add(item1);
+
+                    progressBar.Maximum = TotalRow(dt);
+                    toolStripLabel1.Text = TotalRow(dt).ToString();
+                }
             }
             else
             {
@@ -224,7 +234,7 @@ namespace Учет_цистерн
 
                     int item = 0;
                     double sum_uslug = 0;
-                    double multup_tor = 0;
+                    
                     int total = 0;
 
                     for (int i = 0; i < gridView1.RowCount; i++)
@@ -262,10 +272,6 @@ namespace Учет_цистерн
                                 else
                                 {
                                     worksheet.Cells[i + k, j + 8] = dt.Rows[i][j].ToString();
-                                    if (j == 3)
-                                    {
-                                        sum_uslug += double.Parse(dt.Rows[i][j].ToString());
-                                    }
                                 }
                             }
 
@@ -277,18 +283,9 @@ namespace Учет_цистерн
                     }
                     //Кол.во обработанных
                     worksheet.Range["I8"].Value = total;
-
-                    //Цена ТОР
-                    worksheet.Cells[dt.Rows.Count + 11 + item, 10] = dt_tor.Rows[0][1];
                     
-                    //Кол.во ТОР
-                    worksheet.Cells[dt.Rows.Count + 11 + item, 9] = dt_tor.Rows[0][0];
-                   
-                    //Умножаю ТОР, что бы узнать количество 
-                    multup_tor = double.Parse(dt_tor.Rows[0][0].ToString()) * double.Parse(dt_tor.Rows[0][1].ToString());
-
                     //Итоговая сумма
-                    worksheet.Cells[dt.Rows.Count + 15 + item, 10] = sum_uslug+multup_tor;
+                    worksheet.Cells[dt.Rows.Count + 11 + item, 10] = sum_uslug;
 
                     app.DisplayAlerts = false;
                     workbook.SaveAs(@"" + Destination + "Итог по станции.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
@@ -328,8 +325,6 @@ namespace Учет_цистерн
                     worksheet.Range["C6"].Value = "в ТОО Казыгурт-Юг c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
 
                     FormattingExcelCells(worksheet.Range["C6"], false, false);
-
-                    worksheet.Range["K21"].Value = UserFIO;
 
                     worksheet.Range["B13:K22"].Cut(worksheet.Cells[dt.Rows.Count + 16 + getserv.Rows.Count * 2, 2]);
 
@@ -422,7 +417,7 @@ namespace Учет_цистерн
                     for (int i = 0; i < getserv.Rows.Count; i++)
                     {
                         rowcount++;
-                        for (int j = 0; j < getserv.Columns.Count - 1; j++)
+                        for (int j = 0; j < getserv.Columns.Count; j++)
                         {
                             if (j == 0)
                             {
@@ -436,16 +431,9 @@ namespace Учет_цистерн
                     }
 
                     worksheet.Cells[dt.Rows.Count + 14, 13] = cellRowIndex;
-
-                    ////Кол.во ТОР
-                    worksheet.Cells[dt.Rows.Count + getserv.Rows.Count * 2 + 16, 13] = totalTOR4;
-
-                    DataTable dataTable = DbConnection.DBConnect("select Cost from d__ServiceCost where ID = 79");
-                    ////Цена ТОР
-                    worksheet.Cells[dt.Rows.Count + getserv.Rows.Count * 2 + 16, 14] = dataTable.Rows[0][0];
-
+                    
                     ////Итоговая сумма
-                    worksheet.Cells[dt.Rows.Count + getserv.Rows.Count * 2 + 18, 14] = totalSumTor + totalSumCost;
+                    worksheet.Cells[dt.Rows.Count + getserv.Rows.Count * 2 + 16, 14] = totalSumTor + totalSumCost;
 
                     Excel.Range range1 = worksheet.Range[worksheet.Cells[dt.Rows.Count + 12, 2], worksheet.Cells[dt.Rows.Count + getserv.Rows.Count * 2 + 19, 14]];
                     FormattingExcelCells(range1, false, false);
@@ -503,11 +491,6 @@ namespace Учет_цистерн
                 progressBar.Value = 0;
             }
         }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            Button3_Click(null, null);
-        }
-
+        
     }
 }

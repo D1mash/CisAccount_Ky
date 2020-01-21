@@ -102,7 +102,6 @@
             this.checkBox1.TabIndex = 8;
             this.checkBox1.Text = "Итоговая справка";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label4
             // 
