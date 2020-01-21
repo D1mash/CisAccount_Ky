@@ -70,7 +70,7 @@ namespace Учет_цистерн
             }
         }
 
-        private void Btn_Refresh_Click(object sender, EventArgs e)
+        public void Btn_Refresh_Click(object sender, EventArgs e)
         {
             try
             {
@@ -104,6 +104,7 @@ namespace Учет_цистерн
                     }
                 }
                 ServiceCostAddForm ServiceCostAddForm = new ServiceCostAddForm();
+                ServiceCostAddForm.Owner = this;
                 ServiceCostAddForm.ShowDialog();
             }
             catch (SqlException ex)
@@ -127,6 +128,7 @@ namespace Учет_цистерн
                         string Delete = "delete from d__ServiceCost where ID = " + SelectItemRow;
                         DbConnection.DBConnect(Delete);
                         MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Btn_Refresh_Click(null,null);
                     }
                     catch (SqlException ex)
                     {
@@ -181,6 +183,7 @@ namespace Учет_цистерн
                 ServiceCostUpdtForm.textBox1.Text = gridView1.GetFocusedDataRow()[5].ToString();
                 ServiceCostUpdtForm.dateTimePicker1.Text = gridView1.GetFocusedDataRow()[3].ToString();
                 ServiceCostUpdtForm.dateTimePicker2.Text = gridView1.GetFocusedDataRow()[4].ToString();
+                ServiceCostUpdtForm.Owner = this;
                 ServiceCostUpdtForm.ShowDialog();
             }
             catch (Exception ex)

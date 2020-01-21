@@ -27,6 +27,8 @@ namespace Учет_цистерн
                     DbConnection.DBConnect(FillStation);
                     this.Close();
                     MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    StationForm main = this.Owner as StationForm;
+                    main.btn_refsh_station_form_Click_1(null,null);
                 }
                 else
                 {

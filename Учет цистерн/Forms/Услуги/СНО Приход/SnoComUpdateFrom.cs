@@ -61,6 +61,8 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                 DbConnection.DBConnect(UpdateCurrentSNO);
                 MessageBox.Show("Изменено!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 this.Close();
+                SnoComForm main = this.Owner as SnoComForm;
+                main.GetSNO();
             }
             catch (Exception ex)
             {

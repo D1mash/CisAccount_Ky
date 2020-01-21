@@ -40,6 +40,8 @@ namespace Учет_цистерн.Forms.СНО
                 DataTable dT = DbConnection.DBConnect(FillSNO);
                 MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
+                SnoImplForm main = this.Owner as SnoImplForm;
+                main.GetSNO();
             }
             catch (SqlException ex)
             {

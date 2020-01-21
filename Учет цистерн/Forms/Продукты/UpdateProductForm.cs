@@ -42,6 +42,8 @@ namespace Учет_цистерн
                 dtbl = DbConnection.DBConnect(UpdateCurrentProduct);
                 this.Close();
                 MessageBox.Show("Продукт изменён!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Form_Product owner = this.Owner as Form_Product;
+                owner.button4_Click_Refresh_Table(null,null);
             }
             catch (SqlException ex)
             {

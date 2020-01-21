@@ -30,6 +30,7 @@ namespace Учет_цистерн
                     }
                 }
                 addNewCargo addCargo = new addNewCargo();
+                addCargo.Owner = this;
                 addCargo.ShowDialog();
                 
             }
@@ -43,7 +44,7 @@ namespace Учет_цистерн
             }
         }
 
-        private void button4_Click_Refresh_Table(object sender, EventArgs e)
+        public void button4_Click_Refresh_Table(object sender, EventArgs e)
         {
             try
             {
@@ -80,6 +81,7 @@ namespace Учет_цистерн
                 UpdateProductForm.textBox1.Text = gridView1.GetFocusedDataRow()[2].ToString();
                 UpdateProductForm.SelectID = SelectItemRow;
                 UpdateProductForm.SelectHandlingID = SelectHandlingID;
+                UpdateProductForm.Owner = this;
                 UpdateProductForm.ShowDialog();
             }
             catch (Exception ex)
@@ -118,6 +120,7 @@ namespace Учет_цистерн
                         string DeleteCurrentProduct = "delete from d__Product where ID = " + SelectItemRow;
                         DbConnection.DBConnect(DeleteCurrentProduct);
                         MessageBox.Show("Продукт удалён!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        button4_Click_Refresh_Table(null,null);
                     }
                     catch (SqlException ex)
                     {

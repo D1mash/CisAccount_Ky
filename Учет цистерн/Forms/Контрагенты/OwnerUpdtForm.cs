@@ -54,6 +54,8 @@ namespace Учет_цистерн
                 dtbl = DbConnection.DBConnect(UpdateCurrentOwner);
                 this.Close();
                 MessageBox.Show("Запись изменена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                OwnerForm main = this.Owner as OwnerForm;
+                main.btnOwnerReffresh_Click(null, null);
             }
             catch (SqlException ex)
             {

@@ -22,7 +22,7 @@ namespace Учет_цистерн.Forms.СНО
         int SelectContragentID;
         int SelectNdsRate;
 
-        private void GetSNO()
+        public void GetSNO()
         {
             try
             {
@@ -115,6 +115,7 @@ namespace Учет_цистерн.Forms.СНО
                     }
                 }
                 SnoImplAddFormForm SnoImplAddFormForm = new SnoImplAddFormForm();
+                SnoImplAddFormForm.Owner = this;
                 SnoImplAddFormForm.ShowDialog();
             }
             catch (Exception exp)
@@ -146,6 +147,7 @@ namespace Учет_цистерн.Forms.СНО
                 SnoImplUpdateForm.textBox4.Text = gridView1.GetFocusedDataRow()[7].ToString();
                 SnoImplUpdateForm.textBox5.Text = gridView1.GetFocusedDataRow()[8].ToString();
                 SnoImplUpdateForm.dateTimePicker1.Text = gridView1.GetFocusedDataRow()[9].ToString();
+                SnoImplUpdateForm.Owner = this;
                 SnoImplUpdateForm.ShowDialog();
             }
             catch (Exception ex)

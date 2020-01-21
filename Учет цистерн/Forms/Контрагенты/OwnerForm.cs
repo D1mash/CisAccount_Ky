@@ -70,6 +70,7 @@ namespace Учет_цистерн
                     }
                 }
                 OwnerAddForm OwnerAddForm = new OwnerAddForm();
+                OwnerAddForm.Owner = this;
                 OwnerAddForm.ShowDialog();
             }
             catch (SqlException ex)
@@ -100,6 +101,7 @@ namespace Учет_цистерн
                 OwnerUpdtForm.textBox1.Text = gridView1.GetFocusedDataRow()[1].ToString();
                 OwnerUpdtForm.textBox2.Text = gridView1.GetFocusedDataRow()[2].ToString();
                 //OwnerUpdtForm.textBox3.Text = dataGVOwner.CurrentRow.Cells[3].Value.ToString();
+                OwnerUpdtForm.Owner = this;
                 OwnerUpdtForm.ShowDialog();
             }
             catch (Exception ex)
@@ -124,7 +126,7 @@ namespace Учет_цистерн
             }
         }
         //Обновление
-        private void btnOwnerReffresh_Click(object sender, EventArgs e)
+        public void btnOwnerReffresh_Click(object sender, EventArgs e)
         {
             try
             {
@@ -156,6 +158,7 @@ namespace Учет_цистерн
                         string Delete = "delete from d__Owner where ID = " + SelectItemRow;
                         DbConnection.DBConnect(Delete);
                         MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnOwnerReffresh_Click(null, null);
                     }
                     catch (SqlException ex)
                     {

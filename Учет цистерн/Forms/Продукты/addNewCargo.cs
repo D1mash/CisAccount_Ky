@@ -38,6 +38,8 @@ namespace Учет_цистерн
                     DbConnection.DBConnect(FillProduct);
                     this.Close();
                     MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Form_Product main = this.Owner as Form_Product;
+                    main.button4_Click_Refresh_Table(null,null);
                 }
                 else
                 {

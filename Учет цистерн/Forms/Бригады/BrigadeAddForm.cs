@@ -40,6 +40,8 @@ namespace Учет_цистерн
                 dataTable = DbConnection.DBConnect(AddNewBrigade);
                 this.Close();
                 MessageBox.Show("Сотрудник добавлен!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BrigadeForm main = this.Owner as BrigadeForm;
+                main.Refreshh();
             }
             catch (SqlException ex)
             {

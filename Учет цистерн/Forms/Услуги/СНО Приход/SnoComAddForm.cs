@@ -33,6 +33,8 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                     DataTable dataTable = DbConnection.DBConnect(FillSNOCom);
                     MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
+                    SnoComForm main = this.Owner as SnoComForm;
+                    main.GetSNO();
                 }
                 else
                 {

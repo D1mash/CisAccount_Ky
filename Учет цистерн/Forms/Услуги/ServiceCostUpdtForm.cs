@@ -77,6 +77,8 @@ namespace Учет_цистерн
                 dataTable = DbConnection.DBConnect(Update);
                 this.Close();
                 MessageBox.Show("Запись изменена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ServiceCostForm main = this.Owner as ServiceCostForm;
+                main.Btn_Refresh_Click(null, null);
             }
             catch (SqlException ex)
             {

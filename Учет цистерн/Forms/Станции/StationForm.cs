@@ -31,6 +31,7 @@ namespace Учет_цистерн
                     }
                 }
                 AddNewStation_StationForm AddNewStation_StationForm = new AddNewStation_StationForm();
+                AddNewStation_StationForm.Owner = this;
                 AddNewStation_StationForm.ShowDialog();
             }
             catch (SqlException ex)
@@ -96,7 +97,7 @@ namespace Учет_цистерн
             }
         }
 
-        private void btn_refsh_station_form_Click_1(object sender, EventArgs e)
+        public void btn_refsh_station_form_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -127,6 +128,7 @@ namespace Учет_цистерн
                         string DeleteCurrentStation = "delete from d__Station where ID = " + SelectItemRow;
                         DbConnection.DBConnect(DeleteCurrentStation);
                         MessageBox.Show("Запись удалена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btn_refsh_station_form_Click_1(null,null);
                     }
                     catch (SqlException ex)
                     {
@@ -161,6 +163,7 @@ namespace Учет_цистерн
                 UpdtCurrentStation_StationForm.textBox_Updt_Code_StationForm.Text = gridView1.GetFocusedDataRow()[2].ToString();
                 UpdtCurrentStation_StationForm.textBox_Updt_Code6_StationForm.Text = gridView1.GetFocusedDataRow()[3].ToString();
                 UpdtCurrentStation_StationForm.SelectStationID_Method = SelectItemRow;
+                UpdtCurrentStation_StationForm.Owner = this;
                 UpdtCurrentStation_StationForm.ShowDialog();
             }
             catch (Exception ex)

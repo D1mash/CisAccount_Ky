@@ -36,6 +36,8 @@ namespace Учет_цистерн
                 DbConnection.DBConnect(FillServiceCost);
                 this.Close();
                 MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ServiceCostForm main = this.Owner as ServiceCostForm;
+                main.Btn_Refresh_Click(null,null);
             }
             catch (SqlException ex)
             {

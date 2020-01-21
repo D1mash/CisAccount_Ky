@@ -58,6 +58,8 @@ namespace Учет_цистерн
                 dtbl = DbConnection.DBConnect(UpdateCurrentBrigade);
                 this.Close();
                 MessageBox.Show("Запись изменена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BrigadeForm main = this.Owner as BrigadeForm;
+                main.Refreshh();
             }
             catch (SqlException ex)
             {

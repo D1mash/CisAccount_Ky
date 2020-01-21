@@ -63,7 +63,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
             gridView1.Columns["Резервуар № 2"].Summary.Add(SecondContainerSum);
         }
 
-        private void GetSNO()
+        public void GetSNO()
         {
             try
             {
@@ -113,6 +113,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                     }
                 }
                 AddUserForm add = new AddUserForm();
+                add.Owner = this;
                 add.ShowDialog();
             }
             catch (Exception exp)
@@ -139,6 +140,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                 snoComUpdateFrom.textBox2.Text = gridView1.GetFocusedDataRow()[2].ToString();
                 snoComUpdateFrom.textBox3.Text = gridView1.GetFocusedDataRow()[3].ToString();
                 snoComUpdateFrom.dateTimePicker1.Text = gridView1.GetFocusedDataRow()[4].ToString();
+                snoComUpdateFrom.Owner = this;
                 snoComUpdateFrom.ShowDialog();
             }
             catch(Exception ex)

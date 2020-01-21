@@ -24,6 +24,8 @@ namespace Учет_цистерн
                 dataTable = DbConnection.DBConnect(AddNewOwner);
                 this.Close();
                 MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                OwnerForm main = this.Owner as OwnerForm;
+                main.btnOwnerReffresh_Click(null,null);
             }
             catch (SqlException ex)
             {

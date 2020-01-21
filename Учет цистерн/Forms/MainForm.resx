@@ -136,7 +136,7 @@
 </value>
   </data>
   <data name="toolStripMenuItem1_Product.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 24</value>
+    <value>180, 24</value>
   </data>
   <data name="toolStripMenuItem1_Product.Text" xml:space="preserve">
     <value>Продукты</value>
@@ -170,7 +170,7 @@
 </value>
   </data>
   <data name="toolStripMenuItem2_Station.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 24</value>
+    <value>180, 24</value>
   </data>
   <data name="toolStripMenuItem2_Station.Text" xml:space="preserve">
     <value>Станции</value>
@@ -199,7 +199,7 @@
 </value>
   </data>
   <data name="toolStripMenuItem3_Brigade.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 24</value>
+    <value>180, 24</value>
   </data>
   <data name="toolStripMenuItem3_Brigade.Text" xml:space="preserve">
     <value>Бригада</value>
@@ -256,10 +256,10 @@
 </value>
   </data>
   <data name="toolStripMenuItem4_Owner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 24</value>
+    <value>180, 24</value>
   </data>
   <data name="toolStripMenuItem4_Owner.Text" xml:space="preserve">
-    <value>Контрагенты</value>
+    <value>Собственники</value>
   </data>
   <data name="toolStripMenuItem_Carriage.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 11pt</value>
@@ -296,13 +296,13 @@
 </value>
   </data>
   <data name="toolStripMenuItem_Carriage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 24</value>
+    <value>180, 24</value>
   </data>
   <data name="toolStripMenuItem_Carriage.Text" xml:space="preserve">
     <value>Вагоны</value>
   </data>
   <data name="contextMenuStrip_Product.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 124</value>
+    <value>181, 146</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip_Product.Name" xml:space="preserve">
     <value>contextMenuStrip_Product</value>

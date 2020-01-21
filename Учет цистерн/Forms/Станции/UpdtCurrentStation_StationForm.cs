@@ -34,6 +34,8 @@ namespace Учет_цистерн
                 dtbl = DbConnection.DBConnect(Updt_CurrentStation);
                 this.Close();
                 MessageBox.Show("Станция изменена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                StationForm main = this.Owner as StationForm;
+                main.btn_refsh_station_form_Click_1(null,null);
             }
             catch (SqlException ex)
             {

@@ -31,6 +31,7 @@ namespace Учет_цистерн
                     }
                 }
                 BrigadeAddForm brigadeAddForm = new BrigadeAddForm();
+                brigadeAddForm.Owner = this;
                 brigadeAddForm.ShowDialog();
             }
             catch (SqlException ex)
@@ -75,6 +76,7 @@ namespace Учет_цистерн
                 {
                     brigadeUpdateForm.checkBox1.Checked = false;
                 }
+                brigadeUpdateForm.Owner = this;
                 brigadeUpdateForm.ShowDialog();
             }
             catch (Exception ex)
@@ -112,7 +114,7 @@ namespace Учет_цистерн
             }
         }
 
-        private void Refreshh()
+        public void Refreshh()
         {
             try
             {
