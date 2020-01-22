@@ -19,6 +19,7 @@ using System.Collections;
 using Учет_цистерн.Forms.Пользователи;
 using Учет_цистерн.Forms.Обработанные_вагоны;
 using Учет_цистерн.Forms.Смена_собственника;
+using Учет_цистерн.Forms.Доп.параметры;
 
 namespace Учет_цистерн
 {
@@ -964,6 +965,12 @@ namespace Учет_цистерн
             rent_Brodcast_Car.FormBorderStyle = FormBorderStyle.None;
             rent_Brodcast_Car.Dock = DockStyle.Fill;
             chg_tabPage.Controls.Add(rent_Brodcast_Car);
+        }
+
+        private void дополнительныеПараметрыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LastRent_Days last = new LastRent_Days();
+            last.ShowDialog();
         }
 
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
