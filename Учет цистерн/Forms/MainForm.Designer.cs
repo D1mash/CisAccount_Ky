@@ -85,6 +85,7 @@
             this.contextMenuStrip_Rent_Car = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.заявкаНаПередачуВцToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменаСобственникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.дополнительныеПараметрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -549,6 +550,7 @@
             // 
             this.contextMenuStrip_Refrence.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.пользователиToolStripMenuItem,
+            this.дополнительныеПараметрыToolStripMenuItem,
             this.проверитьОбновлениеToolStripMenuItem,
             this.просмотрСправкиToolStripMenuItem,
             this.оПрограммеToolStripMenuItem});
@@ -598,6 +600,12 @@
             this.сменаСобственникаToolStripMenuItem.Name = "сменаСобственникаToolStripMenuItem";
             resources.ApplyResources(this.сменаСобственникаToolStripMenuItem, "сменаСобственникаToolStripMenuItem");
             this.сменаСобственникаToolStripMenuItem.Click += new System.EventHandler(this.сменаСобственникаToolStripMenuItem_Click);
+            // 
+            // дополнительныеПараметрыToolStripMenuItem
+            // 
+            this.дополнительныеПараметрыToolStripMenuItem.Name = "дополнительныеПараметрыToolStripMenuItem";
+            resources.ApplyResources(this.дополнительныеПараметрыToolStripMenuItem, "дополнительныеПараметрыToolStripMenuItem");
+            this.дополнительныеПараметрыToolStripMenuItem.Click += new System.EventHandler(this.дополнительныеПараметрыToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -691,6 +699,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Rent_Car;
         private System.Windows.Forms.ToolStripMenuItem заявкаНаПередачуВцToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сменаСобственникаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem дополнительныеПараметрыToolStripMenuItem;
     }
 }
 
