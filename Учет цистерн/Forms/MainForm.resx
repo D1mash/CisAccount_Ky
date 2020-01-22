@@ -211,7 +211,7 @@
     <value>175, 24</value>
   </data>
   <data name="toolStripMenuItem3_Brigade.Text" xml:space="preserve">
-    <value>Бригада</value>
+    <value>Бригадиры</value>
   </data>
   <data name="toolStripMenuItem4_Owner.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 11pt</value>
@@ -310,11 +310,8 @@
   <data name="toolStripMenuItem_Carriage.Text" xml:space="preserve">
     <value>Вагоны</value>
   </data>
-  <metadata name="contextMenuStrip_Report.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>375, 47</value>
-  </metadata>
-  <data name="contextMenuStrip_Report.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 70</value>
+  <data name="contextMenuStrip_Product.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 146</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip_Report.Name" xml:space="preserve">
     <value>contextMenuStrip_Report</value>
@@ -1403,13 +1400,13 @@
     <value>СНО</value>
   </data>
   <data name="сНОРеализацияToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="сНОРеализацияToolStripMenuItem.Text" xml:space="preserve">
     <value>СНО Реализация</value>
   </data>
   <data name="сНОПриходToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="сНОПриходToolStripMenuItem.Text" xml:space="preserve">
     <value>СНО Приход</value>

@@ -214,6 +214,15 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(Form_Product))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
                 Form_Product frm = new Form_Product(role);
                 tabControl1.Show();
                 TabPage ProductTabPage = new TabPage("Продукты");
@@ -236,6 +245,15 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(StationForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
                 StationForm frm = new StationForm(role);
                 tabControl1.Show();
                 TabPage StationTabPage = new TabPage("Станции");
@@ -258,9 +276,18 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(BrigadeForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
                 BrigadeForm frm = new BrigadeForm(role);
                 tabControl1.Show();
-                TabPage BrigadeTabPage = new TabPage("Бригады");
+                TabPage BrigadeTabPage = new TabPage("Бригадиры");
                 tabControl1.TabPages.Add(BrigadeTabPage);
                 tabControl1.SelectedTab = BrigadeTabPage;
                 frm.TopLevel = false;
@@ -280,6 +307,15 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(OwnerForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
                 OwnerForm frm = new OwnerForm(role);
                 tabControl1.Show();
                 TabPage OwnerTabPage = new TabPage("Контрагенты");
@@ -302,7 +338,16 @@ namespace Учет_цистерн
         {
             try
             {
-                CarriageForm carriageForm = new CarriageForm(this.toolStripProgressBar1, this.toolStripLabel1, this.button1, this.button2, this.button3, this.button4, this.btn_Refrence, this.tabControl1, this.button7, role);
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(CarriageForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
+                CarriageForm carriageForm = new CarriageForm(role);
                 tabControl1.Show();
                 TabPage CarriageTabPage = new TabPage("Вагоны");
                 tabControl1.TabPages.Add(CarriageTabPage);
@@ -510,7 +555,7 @@ namespace Учет_цистерн
                     }
                 }
 
-                ReportForm reportForm = new ReportForm(UserFIO);
+                ReportForm reportForm = new ReportForm();
                 reportForm.ShowDialog();
             }
             catch (Exception exp)
@@ -560,6 +605,15 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(ServiceCostForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
                 ServiceCostForm ServiceCostForm = new ServiceCostForm(role);
                 tabControl1.Show();
                 TabPage CarriageTabPage = new TabPage("Расценки");
@@ -605,6 +659,15 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(SnoImplForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
                 SnoImplForm SnoImplForm = new SnoImplForm(role);
                 tabControl1.Show();
                 TabPage SnotabPage = new TabPage("СНО Реализация");
@@ -627,6 +690,14 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(SnoComForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
                 SnoComForm snoComForm = new SnoComForm(role);
                 tabControl1.Show();
                 TabPage SnotabPage = new TabPage("СНО приход");
@@ -693,6 +764,14 @@ namespace Учет_цистерн
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(AboutBox))
+                {
+                    form.Activate();
+                    return;
+                }
+            }
             AboutBox aboutBox = new AboutBox();
             aboutBox.Show();
         }
@@ -767,6 +846,15 @@ namespace Учет_цистерн
         {
             try
             {
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form.GetType() == typeof(AllUserForm))
+                    {
+                        form.Activate();
+                        return;
+                    }
+                }
+
                 AllUserForm all = new AllUserForm(role);
                 tabControl1.Show();
                 TabPage UserTabPage = new TabPage("Пользователи");
@@ -809,6 +897,15 @@ namespace Учет_цистерн
 
         private void button6_Click(object sender, EventArgs e)
         {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(Journal))
+                {
+                    form.Activate();
+                    return;
+                }
+            }
+
             Journal journalForm = new Journal(role);
             tabControl1.Show();
             TabPage JournalPage = new TabPage("Журнал обработанных вагонов");
@@ -823,6 +920,15 @@ namespace Учет_цистерн
 
         private void сменаСобственникаToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(Change_of_Ownership))
+                {
+                    form.Activate();
+                    return;
+                }
+            }
+
             string DateIns = System.DateTime.Now.ToString();
 
             Change_of_Ownership change_Of_Ownership = new Change_of_Ownership(this.tabControl1, role);
@@ -840,6 +946,15 @@ namespace Учет_цистерн
 
         private void заявкаНаПередачуВцToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(Rent_Brodcast_Car))
+                {
+                    form.Activate();
+                    return;
+                }
+            }
+
             Rent_Brodcast_Car rent_Brodcast_Car = new Rent_Brodcast_Car();
             tabControl1.Show();
             TabPage chg_tabPage = new TabPage("Заявка на передачу в/ц");
