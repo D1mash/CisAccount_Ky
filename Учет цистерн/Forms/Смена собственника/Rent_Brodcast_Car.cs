@@ -173,83 +173,89 @@ namespace Учет_цистерн.Forms.Смена_собственника
         //Кнопка Поиск
         public void simpleButton1_Click(object sender, EventArgs e)
         {
-            string Date_S;
-            string Date_E;
-            string Date_R;
-            
-            if (dateEdit1.DateTime.ToShortDateString() == "01.01.0001")
+            if (checkEdit1.Checked | checkEdit2.Checked | checkEdit3.Checked | checkEdit4.Checked | checkEdit5.Checked | checkEdit6.Checked | checkEdit7.Checked | checkEdit8.Checked)
             {
-                Date_S = "01.01.1990";
+                string Date_S;
+                string Date_E;
+                string Date_R;
+
+                if (dateEdit1.DateTime.ToShortDateString() == "01.01.0001")
+                {
+                    Date_S = "01.01.1990";
+                }
+                else
+                {
+                    Date_S = dateEdit1.DateTime.ToShortDateString();
+                }
+
+                if (dateEdit2.DateTime.ToShortDateString() == "01.01.0001")
+                {
+                    Date_E = "01.01.1990";
+                }
+                else
+                {
+                    Date_E = dateEdit2.DateTime.ToShortDateString();
+                }
+
+                if (dateEdit3.DateTime.ToShortDateString() == "01.01.0001")
+                {
+                    Date_R = "01.01.1990";
+                }
+                else
+                {
+                    Date_R = dateEdit3.DateTime.ToShortDateString();
+                }
+
+                if (checkEdit1.Checked)
+                {
+                    gridControl3.DataSource = null;
+                    gridView3.Columns.Clear();
+
+                    string Search_1 = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Car_Num = '" + textEdit1.Text.Trim() + "', " + "@Type = " + 2;
+                    gridControl3.DataSource = DbConnection.DBConnect(Search_1);
+                    gridView3.Columns[0].Visible = false;
+
+                    gridControl1.DataSource = null;
+                    gridView1.Columns.Clear();
+
+                    gridControl2.DataSource = null;
+                    gridView2.Columns.Clear();
+
+                    string Search_2 = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Car_Num = '" + SelectItemRow2.ToString() + "', " + "@Date_Start = '" + Date_S + "', " + " @Date_End = '" + Date_E + "', " + "@Date_Rec = '" + Date_R + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + "@Product = '" + textEdit3.Text + "'," + "@Rent_Num = '" + textEdit2.Text + "'," + "@Type = " + 2;
+                    gridControl1.DataSource = DbConnection.DBConnect(Search_2);
+                    gridView1.Columns[0].Visible = false;
+
+                    gridView3_RowCellClick(null, null);
+
+                    GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер В/Ц", "Кол.во={0}");
+                    gridView3.Columns["Номер В/Ц"].Summary.Add(item3);
+
+                }
+                else
+                {
+                    gridControl3.DataSource = null;
+                    gridView3.Columns.Clear();
+
+                    gridControl2.DataSource = null;
+                    gridView2.Columns.Clear();
+
+                    gridControl1.DataSource = null;
+                    gridView1.Columns.Clear();
+
+                    string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Car_Num = '" + textEdit1.Text + "', " + "@Date_Start = '" + Date_S + "', " + " @Date_End = '" + Date_E + "', " + "@Date_Rec = '" + Date_R + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + "@Product = '" + textEdit3.Text + "'," + "@Rent_Num = '" + textEdit2.Text + "'," + "@Type = " + 1;
+                    gridControl2.DataSource = DbConnection.DBConnect(Search);
+                    gridView2.Columns[0].Visible = false;
+                    gridView2.Columns[5].Visible = false;
+
+                    gridView2_RowCellClick(null, null);
+                    gridView3_RowCellClick(null, null);
+
+                    GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер заявки", "Кол.во={0}");
+                    gridView2.Columns["Номер заявки"].Summary.Add(item1);
+                }
             }
-            else
-            {
-                Date_S = dateEdit1.DateTime.ToShortDateString();
-            }
-
-            if(dateEdit2.DateTime.ToShortDateString() == "01.01.0001")
-            {
-                Date_E = "01.01.1990";
-            }
-            else
-            {
-                Date_E = dateEdit2.DateTime.ToShortDateString();
-            }
-
-            if(dateEdit3.DateTime.ToShortDateString() == "01.01.0001")
-            {
-                Date_R = "01.01.1990";
-            }
-            else
-            {
-                Date_R = dateEdit3.DateTime.ToShortDateString();
-            }
-
-            if (checkEdit1.Checked)
-            {
-                gridControl3.DataSource = null;
-                gridView3.Columns.Clear();
-
-                string Search_1= "exec dbo.Rent_Search_By_Parametrs_2 " + "@Car_Num = '" + textEdit1.Text.Trim() + "', "+ "@Type = " + 2;
-                gridControl3.DataSource = DbConnection.DBConnect(Search_1);
-                gridView3.Columns[0].Visible = false;
-
-                gridControl1.DataSource = null;
-                gridView1.Columns.Clear();
-
-                gridControl2.DataSource = null;
-                gridView2.Columns.Clear();
-
-                string Search_2 = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Car_Num = '" + SelectItemRow2.ToString() + "', " + "@Date_Start = '" + Date_S + "', " + " @Date_End = '" + Date_E + "', " + "@Date_Rec = '" + Date_R + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + "@Product = '" + textEdit3.Text + "'," + "@Rent_Num = '" + textEdit2.Text + "'," + "@Type = " + 2;
-                gridControl1.DataSource = DbConnection.DBConnect(Search_2);
-                gridView1.Columns[0].Visible = false;
-
-                gridView3_RowCellClick(null, null);
-
-                GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер В/Ц", "Кол.во={0}");
-                gridView3.Columns["Номер В/Ц"].Summary.Add(item3);
-
-            }
-            else
-            {
-                gridControl3.DataSource = null;
-                gridView3.Columns.Clear();
-
-                gridControl2.DataSource = null;
-                gridView2.Columns.Clear();
-
-                gridControl1.DataSource = null;
-                gridView1.Columns.Clear();
-
-                string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Car_Num = '" + textEdit1.Text + "', " + "@Date_Start = '" + Date_S + "', " + " @Date_End = '" + Date_E + "', " + "@Date_Rec = '" + Date_R + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + "@Product = '" + textEdit3.Text + "'," + "@Rent_Num = '" + textEdit2.Text + "'," + "@Type = " + 1;
-                gridControl2.DataSource = DbConnection.DBConnect(Search);
-                gridView2.Columns[0].Visible = false;
-                gridView2.Columns[5].Visible = false;
-
-                gridView2_RowCellClick(null, null);
-                gridView3_RowCellClick(null, null);
-
-                GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер заявки", "Кол.во={0}");
-                gridView2.Columns["Номер заявки"].Summary.Add(item1);
+            else {
+                MessageBox.Show("Выберите фильтр", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

@@ -28,7 +28,7 @@ namespace Учет_цистерн.Forms.Отчеты
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Refresh()
         {
             if (radioButton1.Checked)
             {
@@ -39,7 +39,7 @@ namespace Учет_цистерн.Forms.Отчеты
 
                     string GetSNO = "exec dbo.GetSNO '" + dateEdit1.DateTime.ToShortDateString() + "', '" + dateEdit2.DateTime.ToShortDateString() + "'";
                     dataTable = DbConnection.DBConnect(GetSNO);
-                    
+
                     gridControl1.DataSource = dataTable;
                     gridView1.Columns[0].Visible = false;
                     gridView1.Columns[1].Visible = false;
@@ -75,7 +75,7 @@ namespace Учет_цистерн.Forms.Отчеты
 
                     string GetSNO = "exec dbo.GetCurrentSNO '" + dateEdit1.DateTime.ToShortDateString() + "', '" + dateEdit2.DateTime.ToShortDateString() + "'";
                     dataTable = DbConnection.DBConnect(GetSNO);
-                    
+
                     gridControl1.DataSource = dataTable;
                     gridView1.Columns[0].Visible = false;
 
@@ -310,6 +310,26 @@ namespace Учет_цистерн.Forms.Отчеты
             {
                 range.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
             }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+
+        private void dateEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+
+        private void dateEdit2_EditValueChanged(object sender, EventArgs e)
+        {
+            Refresh();
         }
     }
 }

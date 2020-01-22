@@ -26,11 +26,12 @@ namespace Учет_цистерн.Forms.Отчеты
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Refresh()
         {
             string RefreshAll = "exec [dbo].[GetReportAUTN] '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
             dt = DbConnection.DBConnect(RefreshAll);
             gridControl1.DataSource = dt;
+            gridView1.BestFitColumns();
             progressBar.Maximum = TotalRow(dt);
             toolStripLabel1.Text = TotalRow(dt).ToString();
         }
@@ -194,6 +195,16 @@ namespace Учет_цистерн.Forms.Отчеты
 
             dateTimePicker1.Value = startDate;
             dateTimePicker2.Value = endDate;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            Refresh();
         }
     }
 }

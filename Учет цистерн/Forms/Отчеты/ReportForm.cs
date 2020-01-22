@@ -21,31 +21,30 @@ namespace Учет_цистерн
         string Destination = ConfigurationManager.AppSettings["Dest"].ToString();
         DataTable dt;
         DataTable getserv;
-        string UserFIO;
 
-        public ReportForm(string userFIO)
+        public ReportForm()
         {
             InitializeComponent();
-            this.UserFIO = userFIO;
         }
-
-        private void Button3_Click(object sender, EventArgs e)
+      
+        private void Refresh()
         {
             if (checkBox1.Checked)
             {
-                if(comboBox2.SelectedIndex == 0)
+                if (comboBox2.SelectedIndex == 0)
                 {
                     gridControl1.DataSource = null;
                     gridView1.Columns.Clear();
-                
+
                     string Itog_All_Report = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
                     dt = DbConnection.DBConnect(Itog_All_Report);
 
                     gridControl1.DataSource = dt;
-                    
+                    gridView1.BestFitColumns();
+
                     GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Кол.во", "Кол.во ={0}");
                     gridView1.Columns["Кол.во"].Summary.Add(item2);
-                
+
                     progressBar.Maximum = TotalRow(dt);
                     toolStripLabel1.Text = TotalRow(dt).ToString();
                 }
@@ -56,8 +55,9 @@ namespace Учет_цистерн
 
                     string Itog_Report = "exec dbo.Itog_Report  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
                     dt = DbConnection.DBConnect(Itog_Report);
-                    
+
                     gridControl1.DataSource = dt;
+                    gridView1.BestFitColumns();
 
                     GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Кол.во", "Кол.во ={0}");
                     gridView1.Columns["Кол.во"].Summary.Add(item2);
@@ -79,6 +79,7 @@ namespace Учет_цистерн
                     //source.DataSource = dt;
                     gridControl1.DataSource = dt;
                     gridView1.Columns[0].Visible = false;
+                    gridView1.BestFitColumns();
 
                     GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "СУМ={0}");
                     gridView1.Columns["Сумма услуг"].Summary.Add(item1);
@@ -91,18 +92,6 @@ namespace Учет_цистерн
 
                     progressBar.Maximum = TotalRow(dt);
                     toolStripLabel1.Text = TotalRow(dt).ToString();
-
-                    gridView1.Columns["Осность"].Width = 60;
-                    gridView1.Columns["Продукт"].Width = 60;
-                    gridView1.Columns["Гор"].Width = 30;
-                    gridView1.Columns["Хол"].Width = 30;
-                    gridView1.Columns["ТОР"].Width = 30;
-
-                    gridView1.Columns["Осность"].OptionsColumn.FixedWidth = true;
-                    gridView1.Columns["Продукт"].OptionsColumn.FixedWidth = true;
-                    gridView1.Columns["Гор"].OptionsColumn.FixedWidth = true;
-                    gridView1.Columns["Хол"].OptionsColumn.FixedWidth = true;
-                    gridView1.Columns["ТОР"].OptionsColumn.FixedWidth = true;
 
                     string GetCountServiceCost = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
                     getserv = DbConnection.DBConnect(GetCountServiceCost);
@@ -117,6 +106,7 @@ namespace Учет_цистерн
 
                     progressBar.Maximum = TotalRow(dt);
                     toolStripLabel1.Text = TotalRow(dt).ToString();
+                    gridView1.BestFitColumns();
 
                     GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "СУМ={0}");
                     gridView1.Columns["Сумма услуг"].Summary.Add(item1);
@@ -125,19 +115,7 @@ namespace Учет_цистерн
 
                     GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "№ акта", "Кол.во={0}");
                     gridView1.Columns["№ акта"].Summary.Add(item3);
-
-                    gridView1.Columns["Осность"].Width = 60;
-                    gridView1.Columns["Продукт"].Width = 60;
-                    gridView1.Columns["Гор"].Width = 30;
-                    gridView1.Columns["Хол"].Width = 30;
-                    gridView1.Columns["ТОР"].Width = 30;
-
-                    gridView1.Columns["Осность"].OptionsColumn.FixedWidth = true;
-                    gridView1.Columns["Продукт"].OptionsColumn.FixedWidth = true;
-                    gridView1.Columns["Гор"].OptionsColumn.FixedWidth = true;
-                    gridView1.Columns["Хол"].OptionsColumn.FixedWidth = true;
-                    gridView1.Columns["ТОР"].OptionsColumn.FixedWidth = true;
-
+                    
                     string GetCountServiceCost = "exec dbo.Itog_Report  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
                     getserv = DbConnection.DBConnect(GetCountServiceCost);
 
@@ -366,18 +344,7 @@ namespace Учет_цистерн
                             {
                                 if (j >= 6 && j <= 12)
                                 {
-                                    if (dt.Rows[i][j].ToString().Trim() == "True")
-                                    {
-                                        worksheet.Cells[i + 10, j + 3] = "✓";
-                                        if (j == 8)
-                                        {
-                                            totalTOR4++;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        worksheet.Cells[i + 10, j + 3] = " ";
-                                    }
+                                    worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
                                 }
                             }
                             if (j > 12)
@@ -497,6 +464,25 @@ namespace Учет_цистерн
                 progressBar.Value = 0;
             }
         }
-        
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            Refresh();
+        }
     }
 }
