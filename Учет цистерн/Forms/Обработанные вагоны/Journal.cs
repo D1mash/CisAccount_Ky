@@ -30,20 +30,11 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             string refresh = "exec [dbo].[GetRenderedService] '"+dateTimePicker1.Value.ToShortDateString()+"'";
             DataTable dt = DbConnection.DBConnect(refresh);
             gridControl1.DataSource = dt;
+            gridView1.BestFitColumns();
+            gridView1.Columns[3].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             gridView1.Columns[0].Visible = false;
             gridView1.Columns[1].Visible = false;
             gridView1.Columns[2].Visible = false;
-            gridView1.Columns[3].Width = 150;
-            gridView1.Columns[4].Width = 150;
-            gridView1.Columns[9].Width = 150;
-            gridView1.Columns[10].Width = 150;
-            gridView1.Columns[11].Width = 150;
-            gridView1.Columns[12].Width = 150;
-            gridView1.Columns[13].Width = 150;
-            gridView1.Columns[14].Width = 150;
-            gridView1.Columns[16].Width = 350;
-            gridView1.Columns[17].Width = 150;
-            gridView1.Columns[18].Width = 150;
 
             if(gridView1.RowCount > 0)
             {
@@ -110,16 +101,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 simpleButton7.Visible = false;
                 simpleButton8.Visible = false;
                 simpleButton9.Enabled = false;
-                checkEdit1.Visible = false;
-                checkEdit2.Visible = false;
-                checkEdit11.Visible = false;
-                checkEdit4.Visible = false;
-                checkEdit5.Visible = false;
-                checkEdit6.Visible = false;
-                checkEdit7.Visible = false;
-                checkEdit8.Visible = false;
-                checkEdit9.Visible = false;
-                checkEdit10.Visible = false;
 
                 GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
                 GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
@@ -140,15 +121,16 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             {
                 if (textEdit1.Text != string.Empty)
                 {
-                    string CheckOwner = "select o.Name from d__Carriage c left join d__Owner o on o.ID = c.Owner_ID where c.CarNumber = " + textEdit1.Text.Trim();
+                    string CheckOwner = "select c.Current_owner from d__Carriage c where c.CarNumber = " + textEdit1.Text.Trim();
                     DataTable dt = DbConnection.DBConnect(CheckOwner);
-                    if (dt.Rows.Count > 0)
+                    string Check = dt.Rows[0][0].ToString();
+                    if (Check == "")
                     {
-                        textEdit2.Text = dt.Rows[0][0].ToString();
+                        textEdit2.Text = "";
                     }
                     else
                     {
-                        textEdit2.Text = "";
+                        textEdit2.Text = dt.Rows[0][0].ToString();
                     }
                 }
             }
@@ -179,10 +161,20 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             {
                 if(SelectItemRow == 0)
                 {
-                    string Add = "exec [dbo].[FillRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL";
-                    DbConnection.DBConnect(Add);
-                    Refresh();
-                    textEdit1.Text = "";
+                    string CheckOwner = "select c.Current_owner from d__Carriage c where c.CarNumber = " + textEdit1.Text.Trim();
+                    DataTable dt = DbConnection.DBConnect(CheckOwner);
+                    string Check = dt.Rows[0][0].ToString();
+                    if (Check == "")
+                    {
+                        MessageBox.Show("У данного В/Ц отсутствует собственник!","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        string Add = "exec [dbo].[FillRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL";
+                        DbConnection.DBConnect(Add);
+                        Refresh();
+                        textEdit1.Text = "";
+                    }
                 }
                 else if(SelectItemRow == 1)
                 {
@@ -267,6 +259,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                             panel1.Visible = true;
                             simpleButton7.Visible = true;
                             label1.Visible = true;
+                            label1.Text = "Данная в/ц проходила обработку      в течении последних 14 дней";
                         }
                         else
                         {

@@ -51,6 +51,9 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsClipboard.CopyColumnHeaders = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.OptionsCustomization.AllowQuickHideColumns = false;
             this.gridView1.OptionsLayout.Columns.AddNewColumns = false;
             this.gridView1.OptionsSelection.MultiSelect = true;
@@ -67,7 +70,7 @@
             this.Controls.Add(this.gridControl1);
             this.Name = "LastRenderedServiceForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LastRenderedServiceForm";
+            this.Text = "Последняя обработка";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);

@@ -120,6 +120,8 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.AllowTouchScroll = true;
+            this.groupControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupControl1.Controls.Add(this.checkEdit11);
             this.groupControl1.Controls.Add(this.checkEdit2);
             this.groupControl1.Controls.Add(this.checkEdit1);
@@ -155,6 +157,7 @@
             this.checkEdit11.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit3_Properties_CheckStateChanged);
             this.checkEdit11.Size = new System.Drawing.Size(16, 19);
             this.checkEdit11.TabIndex = 25;
+            this.checkEdit11.Visible = false;
             // 
             // checkEdit2
             // 
@@ -164,6 +167,7 @@
             this.checkEdit2.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit2_Properties_CheckStateChanged);
             this.checkEdit2.Size = new System.Drawing.Size(16, 19);
             this.checkEdit2.TabIndex = 23;
+            this.checkEdit2.Visible = false;
             // 
             // checkEdit1
             // 
@@ -173,6 +177,7 @@
             this.checkEdit1.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit1_Properties_CheckStateChanged);
             this.checkEdit1.Size = new System.Drawing.Size(16, 19);
             this.checkEdit1.TabIndex = 22;
+            this.checkEdit1.Visible = false;
             // 
             // simpleButton9
             // 
@@ -191,6 +196,7 @@
             this.memoEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.memoEdit1.Properties.Appearance.Options.UseBackColor = true;
             this.memoEdit1.Properties.Appearance.Options.UseFont = true;
+            this.memoEdit1.Properties.ReadOnly = true;
             this.memoEdit1.Size = new System.Drawing.Size(299, 96);
             this.memoEdit1.TabIndex = 20;
             // 
@@ -210,7 +216,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(262, 50);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Данная в/ц проходила обработку      в течении последних 14 дней";
             // 
             // simpleButton7
             // 
@@ -287,6 +292,7 @@
             this.checkEdit10.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit10_Properties_CheckStateChanged);
             this.checkEdit10.Size = new System.Drawing.Size(16, 19);
             this.checkEdit10.TabIndex = 35;
+            this.checkEdit10.Visible = false;
             // 
             // checkEdit9
             // 
@@ -296,6 +302,7 @@
             this.checkEdit9.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit9_Properties_CheckStateChanged);
             this.checkEdit9.Size = new System.Drawing.Size(16, 19);
             this.checkEdit9.TabIndex = 34;
+            this.checkEdit9.Visible = false;
             // 
             // checkEdit8
             // 
@@ -305,6 +312,7 @@
             this.checkEdit8.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit8_Properties_CheckStateChanged);
             this.checkEdit8.Size = new System.Drawing.Size(16, 19);
             this.checkEdit8.TabIndex = 33;
+            this.checkEdit8.Visible = false;
             // 
             // checkEdit7
             // 
@@ -314,6 +322,7 @@
             this.checkEdit7.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit7_Properties_CheckStateChanged);
             this.checkEdit7.Size = new System.Drawing.Size(16, 19);
             this.checkEdit7.TabIndex = 32;
+            this.checkEdit7.Visible = false;
             // 
             // checkEdit6
             // 
@@ -323,6 +332,7 @@
             this.checkEdit6.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit6_Properties_CheckStateChanged);
             this.checkEdit6.Size = new System.Drawing.Size(16, 19);
             this.checkEdit6.TabIndex = 31;
+            this.checkEdit6.Visible = false;
             // 
             // checkEdit5
             // 
@@ -332,6 +342,7 @@
             this.checkEdit5.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit5_Properties_CheckStateChanged);
             this.checkEdit5.Size = new System.Drawing.Size(16, 19);
             this.checkEdit5.TabIndex = 30;
+            this.checkEdit5.Visible = false;
             // 
             // checkEdit4
             // 
@@ -341,6 +352,7 @@
             this.checkEdit4.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit4_Properties_CheckStateChanged);
             this.checkEdit4.Size = new System.Drawing.Size(16, 19);
             this.checkEdit4.TabIndex = 25;
+            this.checkEdit4.Visible = false;
             // 
             // labelControl5
             // 
@@ -619,6 +631,7 @@
             this.simpleButton5.Size = new System.Drawing.Size(98, 46);
             this.simpleButton5.TabIndex = 5;
             this.simpleButton5.Text = "Обновить";
+            this.simpleButton5.Visible = false;
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
             // simpleButton2

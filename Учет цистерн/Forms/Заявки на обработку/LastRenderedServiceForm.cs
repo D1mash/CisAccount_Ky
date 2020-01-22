@@ -11,6 +11,7 @@ namespace Учет_цистерн.Forms.заявки_на_обработку
             DataTable dTable = dt;
             gridControl1.DataSource = dTable;
             gridView1.Columns[0].Visible = false;
+            gridView1.BestFitColumns();
         }
     }
 }
