@@ -172,6 +172,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     {
                         string Add = "exec [dbo].[FillRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL";
                         DbConnection.DBConnect(Add);
+                        //string Autn = "exec [dbo].[FillAutn] "++","++","++","++","++","++","++","++","++","++","++","++","++","+;
                         Refresh();
                         textEdit1.Text = "";
                     }
@@ -200,10 +201,20 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 }
                 else
                 {
-                    string Update = "exec [dbo].[UpdateRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ","+SelectItemRow;
-                    DbConnection.DBConnect(Update);
-                    Refresh();
-                    Block();
+                    string CheckOwner = "select c.Current_owner from d__Carriage c where c.CarNumber = " + textEdit1.Text.Trim();
+                    DataTable dt = DbConnection.DBConnect(CheckOwner);
+                    string Check = dt.Rows[0][0].ToString();
+                    if (Check == "")
+                    {
+                        MessageBox.Show("У данного В/Ц отсутствует собственник!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        string Update = "exec [dbo].[UpdateRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + "," + SelectItemRow;
+                        DbConnection.DBConnect(Update);
+                        Refresh();
+                        Block();
+                    }
                 }
             }
             catch (Exception ex)
@@ -425,6 +436,20 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             comboBox1.Enabled = false;
             comboBox2.Enabled = false;
             simpleButton1.Enabled = false;
+
+            textEdit12.Enabled = false;
+            textEdit13.Enabled = false;
+            textEdit14.Enabled = false;
+            textEdit15.Enabled = false;
+            textEdit16.Enabled = false;
+            textEdit17.Enabled = false;
+            textEdit18.Enabled = false;
+            textEdit19.Enabled = false;
+            textEdit20.Enabled = false;
+            textEdit21.Enabled = false;
+            textEdit22.Enabled = false;
+            textEdit23.Enabled = false;
+            textEdit24.Enabled = false;
         }
         private void Unblock()
         {
@@ -441,6 +466,20 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             comboBox1.Enabled = true;
             comboBox2.Enabled = true;
             simpleButton1.Enabled = true;
+
+            textEdit12.Enabled = true;
+            textEdit13.Enabled = true;
+            textEdit14.Enabled = true;
+            textEdit15.Enabled = true;
+            textEdit16.Enabled = true;
+            textEdit17.Enabled = true;
+            textEdit18.Enabled = true;
+            textEdit19.Enabled = true;
+            textEdit20.Enabled = true;
+            textEdit21.Enabled = true;
+            textEdit22.Enabled = true;
+            textEdit23.Enabled = true;
+            textEdit24.Enabled = true;
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
@@ -668,6 +707,20 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             checkEdit8.Visible = true;
             checkEdit9.Visible = true;
             checkEdit10.Visible = true;
+
+            checkEdit3.Visible = true;
+            checkEdit12.Visible = true;
+            checkEdit13.Visible = true;
+            checkEdit14.Visible = true;
+            checkEdit15.Visible = true;
+            checkEdit16.Visible = true;
+            checkEdit17.Visible = true;
+            checkEdit18.Visible = true;
+            checkEdit19.Visible = true;
+            checkEdit20.Visible = true;
+            checkEdit21.Visible = true;
+            checkEdit22.Visible = true;
+            checkEdit23.Visible = true;
         }
         private void simpleButton8_Click(object sender, EventArgs e)
         {
@@ -702,6 +755,20 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             checkEdit8.Checked = false;
             checkEdit9.Checked = false;
             checkEdit10.Checked = false;
+
+            checkEdit3.Visible = false;
+            checkEdit12.Visible = false;
+            checkEdit13.Visible = false;
+            checkEdit14.Visible = false;
+            checkEdit15.Visible = false;
+            checkEdit16.Visible = false;
+            checkEdit17.Visible = false;
+            checkEdit18.Visible = false;
+            checkEdit19.Visible = false;
+            checkEdit20.Visible = false;
+            checkEdit21.Visible = false;
+            checkEdit22.Visible = false;
+            checkEdit23.Visible = false;
         }
 
         private void checkEdit1_Properties_CheckStateChanged(object sender, EventArgs e)
@@ -714,7 +781,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             comboBox1.Enabled = (checkEdit2.CheckState == CheckState.Checked);
         }
 
-        private void checkEdit3_Properties_CheckStateChanged(object sender, EventArgs e)
+        private void checkEdit11_Properties_CheckStateChanged(object sender, EventArgs e)
         {
             comboBox2.Enabled = (checkEdit11.CheckState == CheckState.Checked);
         }
@@ -752,6 +819,163 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         private void checkEdit10_Properties_CheckStateChanged(object sender, EventArgs e)
         {
             textEdit5.Enabled = (checkEdit10.CheckState == CheckState.Checked);
+        }
+
+        //AUTN
+        private void checkEdit3_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit12.Enabled = (checkEdit3.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit12_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void checkEdit17_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit18.Enabled = (checkEdit17.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit18_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void checkEdit12_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit13.Enabled = (checkEdit12.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit13_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void checkEdit13_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit14.Enabled = (checkEdit13.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit14_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void checkEdit14_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit15.Enabled = (checkEdit14.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit15_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void checkEdit15_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit16.Enabled = (checkEdit15.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit16_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void checkEdit22_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit23.Enabled = (checkEdit22.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit23_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void checkEdit21_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit22.Enabled = (checkEdit21.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit22_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void checkEdit20_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit21.Enabled = (checkEdit20.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit21_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void checkEdit19_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit20.Enabled = (checkEdit19.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit20_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void checkEdit18_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit19.Enabled = (checkEdit18.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit19_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void checkEdit16_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit17.Enabled = (checkEdit16.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit17_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void checkEdit23_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            textEdit24.Enabled = (checkEdit23.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit24_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
         }
     }
 }
