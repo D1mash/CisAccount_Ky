@@ -42,9 +42,9 @@ namespace Учет_цистерн
                     dt = DbConnection.DBConnect(Itog_All_Report);
 
                     gridControl1.DataSource = dt;
-
-                    GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена услуги", "SUM={0}");
-                    gridView1.Columns["Цена услуги"].Summary.Add(item1);
+                    
+                    GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Кол.во", "Кол.во ={0}");
+                    gridView1.Columns["Кол.во"].Summary.Add(item2);
                 
                     progressBar.Maximum = TotalRow(dt);
                     toolStripLabel1.Text = TotalRow(dt).ToString();
@@ -59,8 +59,8 @@ namespace Учет_цистерн
                     
                     gridControl1.DataSource = dt;
 
-                    GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Цена услуги", "SUM={0}");
-                    gridView1.Columns["Цена услуги"].Summary.Add(item1);
+                    GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Кол.во", "Кол.во ={0}");
+                    gridView1.Columns["Кол.во"].Summary.Add(item2);
 
                     progressBar.Maximum = TotalRow(dt);
                     toolStripLabel1.Text = TotalRow(dt).ToString();
@@ -233,9 +233,12 @@ namespace Учет_цистерн
                     worksheet.Range["B13:H24"].Cut(worksheet.Cells[gridView1.RowCount * 2 + 11, 2]);
 
                     int item = 0;
-                    double sum_uslug = 0;
                     
+                    //Кол.во услуг
                     int total = 0;
+
+                    //Сумм * Кол.во
+                    double final_sum = 0;
 
                     for (int i = 0; i < gridView1.RowCount; i++)
                     {
@@ -245,7 +248,7 @@ namespace Учет_цистерн
                             Excel.Range range = worksheet.Range[worksheet.Cells[i + k, 2], worksheet.Cells[i + k, 8]];
                             range.Merge();
                             FormattingExcelCells(range, false, false);
-                            for (int j = 0; j < dt.Columns.Count-1; j++)
+                            for (int j = 0; j < dt.Columns.Count; j++)
                             {
                                 if (j == 0)
                                 {
@@ -253,8 +256,9 @@ namespace Учет_цистерн
                                 }
                                 else
                                 {
-                                    worksheet.Cells[i + k, j + 8] = dt.Rows[i][j].ToString();
+                                        worksheet.Cells[i + k, j + 8] = dt.Rows[i][j].ToString();
                                 }
+
                             }
                         }
                         else
@@ -263,7 +267,7 @@ namespace Учет_цистерн
                             Excel.Range range = worksheet.Range[worksheet.Cells[i + k, 2], worksheet.Cells[i + k, 8]];
                             range.Merge();
                             FormattingExcelCells(range, false, false);
-                            for (int j = 0; j < dt.Columns.Count - 1; j++)
+                            for (int j = 0; j < dt.Columns.Count; j++)
                             {
                                 if (j == 0)
                                 {
@@ -276,8 +280,10 @@ namespace Учет_цистерн
                             }
 
                         }
+
+                        final_sum += int.Parse(dt.Rows[i][1].ToString()) * double.Parse(dt.Rows[i][2].ToString()); ;
                         total += int.Parse(dt.Rows[i][1].ToString());
-                        sum_uslug += double.Parse(dt.Rows[i][2].ToString());
+
                         backgroundWorker.ReportProgress(i);
                         item++;
                     }
@@ -285,7 +291,7 @@ namespace Учет_цистерн
                     worksheet.Range["I8"].Value = total;
                     
                     //Итоговая сумма
-                    worksheet.Cells[dt.Rows.Count + 11 + item, 10] = sum_uslug;
+                    worksheet.Cells[dt.Rows.Count + 11 + item, 10] = final_sum;
 
                     app.DisplayAlerts = false;
                     workbook.SaveAs(@"" + Destination + "Итог по станции.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
