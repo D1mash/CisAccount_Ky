@@ -450,7 +450,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
             }
             else
             {
-                MessageBox.Show("", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Выполните поиск", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -495,8 +495,9 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
         private void simpleButton7_Click(object sender, EventArgs e)
         {
-
-            Excel.Application xlApp;
+            if (gridView1.RowCount > 1)
+            {
+                Excel.Application xlApp;
             Excel.Workbook xlWorkBook;
             Excel.Worksheet xlWorkSheet;
             object misValue = System.Reflection.Missing.Value;
@@ -538,6 +539,12 @@ namespace Учет_цистерн.Forms.Смена_собственника
             releaseObject(xlApp);
 
             Process.Start(@"" + Destination + "Архив Смена собственника.xlsx");
+
+            }
+            else
+            {
+                MessageBox.Show("Выполните поиск", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

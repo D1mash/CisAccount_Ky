@@ -91,41 +91,8 @@ namespace Учет_цистерн.Forms.Отчеты
                     for (int j = 0; j < dt.Columns.Count; j++)
                     {
                         worksheet.Cells[i + 3, 1] = i;
-                        if (j < 8)
-                        {
-                            worksheet.Cells[i + 3, j + 2] = dt.Rows[i][j].ToString();
-                            if (j > 2 && j < 5)
-                            {
-                                if (bool.Parse(dt.Rows[i][j].ToString()) == true)
-                                {
-                                    worksheet.Cells[i + 3, j + 2] = "Да";
-                                }
-                                else
-                                {
-                                    worksheet.Cells[i + 3, j + 2] = "Нет";
-                                }
-                            }
-
-                        }
-                        else
-                        {
-                            if (j >= 8 && j < 18)
-                            {
-                                if (dt.Rows[i][j].ToString() == "1")
-                                {
-                                    worksheet.Cells[i + 3, j + 2] = "Да";
-                                }
-                                else
-                                {
-                                    worksheet.Cells[i + 3, j + 2] = "Нет";
-                                }
-                            }
-                            else
-                            {
-                                worksheet.Cells[i + 3, j + 2] = dt.Rows[i][j].ToString();
-                            }
-                        }
-
+                      
+                        worksheet.Cells[i + 3, j + 2] = dt.Rows[i][j].ToString();
                     }
 
                     Excel.Range range = worksheet.Range[worksheet.Cells[i + 3, 1], worksheet.Cells[i + 3, dt.Columns.Count+1]];
