@@ -796,7 +796,39 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
 
         private void simpleButton5_Click(object sender, EventArgs e)
         {
-            Refresh();
+            ChangeCurrentOwner change = new ChangeCurrentOwner();
+            change.Owner = this;
+            change.ShowDialog();
+        }
+
+        public void ChangeOwner(int Id)
+        {
+            try
+            {
+                ArrayList rows = new ArrayList();
+                List<Object> aList = new List<Object>();
+                string Arrays = string.Empty;
+
+                Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                for (int i = 0; i < selectedRowHandles.Length; i++)
+                {
+                    int selectedRowHandle = selectedRowHandles[i];
+                    if (selectedRowHandle >= 0)
+                        rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                }
+                foreach (DataRow row in rows)
+                {
+                    aList.Add(row["Номер вагона"]);
+                    Arrays = string.Join(" ", aList);
+                    string UpdateOwner = "exec dbo.UpdateCurrentOwner '"+Arrays+"',"+Id;
+                    DbConnection.DBConnect(UpdateOwner);
+                    Refresh();
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void simpleButton7_Click(object sender, EventArgs e)

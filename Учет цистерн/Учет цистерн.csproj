@@ -116,6 +116,12 @@
     <Compile Include="Forms\заявки на обработку\LastRenderedServiceForm.Designer.cs">
       <DependentUpon>LastRenderedServiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Обработанные вагоны\ChangeCurrentOwner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Обработанные вагоны\ChangeCurrentOwner.Designer.cs">
+      <DependentUpon>ChangeCurrentOwner.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Обработанные вагоны\Journal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -392,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\заявки на обработку\LastRenderedServiceForm.resx">
       <DependentUpon>LastRenderedServiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Обработанные вагоны\ChangeCurrentOwner.resx">
+      <DependentUpon>ChangeCurrentOwner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Обработанные вагоны\Journal.resx">
       <DependentUpon>Journal.cs</DependentUpon>
