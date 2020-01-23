@@ -98,6 +98,28 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 simpleButton8.Visible = false;
                 simpleButton9.Enabled = false;
 
+                if(gridView1.RowCount == 0)
+                {
+                    textEdit5.Text = "0";
+                    textEdit6.Text = "0";
+                    textEdit7.Text = "0";
+                    textEdit8.Text = "0";
+                    textEdit9.Text = "0";
+                    textEdit10.Text = "0";
+                    textEdit11.Text = "0";
+                    textEdit13.Text = "0";
+                    textEdit14.Text = "0";
+                    textEdit15.Text = "0";
+                    textEdit16.Text = "0";
+                    textEdit17.Text = "0";
+                    textEdit18.Text = "0";
+                    textEdit19.Text = "0";
+                    textEdit20.Text = "0";
+                    textEdit21.Text = "0";
+                    textEdit22.Text = "0";
+                    textEdit23.Text = "0";
+                }
+
                 if(gridView1.RowCount > 0)
                 {
                     gridView1_RowCellClick(null,null);
