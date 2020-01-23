@@ -3,12 +3,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Учет_цистерн.Forms.Смена_собственника
 {
@@ -20,6 +23,10 @@ namespace Учет_цистерн.Forms.Смена_собственника
         int Grid2Id;
         int Grid1Id;
         int OwnerId_v2;
+        string OwnerName;
+        string date;
+        string product;
+        string Destination = ConfigurationManager.AppSettings["Dest"].ToString();
 
         public Rent_Brodcast_Car()
         {
@@ -211,16 +218,16 @@ namespace Учет_цистерн.Forms.Смена_собственника
                     gridControl3.DataSource = null;
                     gridView3.Columns.Clear();
 
-                    string Search_1 = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Car_Num = '" + textEdit1.Text.Trim() + "', " + "@Type = " + 2;
-                    gridControl3.DataSource = DbConnection.DBConnect(Search_1);
-                    gridView3.Columns[0].Visible = false;
-
                     gridControl1.DataSource = null;
                     gridView1.Columns.Clear();
 
                     gridControl2.DataSource = null;
                     gridView2.Columns.Clear();
 
+                    string Search_1 = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Car_Num = '" + textEdit1.Text.Trim() + "', " + "@Type = " + 2;
+                    gridControl3.DataSource = DbConnection.DBConnect(Search_1);
+                    gridView3.Columns[0].Visible = false;
+                    
                     string Search_2 = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Car_Num = '" + SelectItemRow2.ToString() + "', " + "@Date_Start = '" + Date_S + "', " + " @Date_End = '" + Date_E + "', " + "@Date_Rec = '" + Date_R + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + "@Product = '" + textEdit3.Text + "'," + "@Rent_Num = '" + textEdit2.Text + "'," + "@Type = " + 2;
                     gridControl1.DataSource = DbConnection.DBConnect(Search_2);
                     gridView1.Columns[0].Visible = false;
@@ -282,8 +289,11 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             //Ловит номер заявки из грида 2
             string Id = gridView2.GetFocusedDataRow()[2].ToString();
+            date = gridView2.GetFocusedDataRow()[1].ToString();
+            product = gridView2.GetFocusedDataRow()[3].ToString();
             string OwnerID = gridView2.GetFocusedDataRow()[5].ToString();
             string RentID = gridView2.GetFocusedDataRow()[0].ToString();
+            OwnerName = gridView2.GetFocusedDataRow()[4].ToString();
             Grid2Id = Convert.ToInt32(RentID);
             SelectItemRow1 = Convert.ToInt32(Id);
             OwnerIDS = Convert.ToInt32(OwnerID);
@@ -397,6 +407,137 @@ namespace Учет_цистерн.Forms.Смена_собственника
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            if (gridView2.RowCount > 1)
+            {
+                Excel.Application xlApp;
+                Excel.Workbook xlWorkBook;
+                Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+
+                xlApp = new Excel.Application();
+                xlWorkBook = xlApp.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                xlWorkSheet.Range["B2"].Value = "Собственник:  " + OwnerName;
+
+                xlWorkSheet.Range["B4"].Value = "Заявка №: " + SelectItemRow1.ToString() + " от " + date;
+
+                xlWorkSheet.Range["B5"].Value = "Продукт: " + product;
+
+                for (int i = 0; i < gridView3.RowCount; i++)
+                {
+                    xlWorkSheet.Cells[i + 8, 2] = i;
+                    xlWorkSheet.Cells[i + 8, 3] = gridView3.GetRowCellValue(i, "Номер В/Ц");
+                }
+
+                Excel.Range range = xlWorkSheet.Range["B2", xlWorkSheet.Cells[gridView3.RowCount + 8, 3]];
+                FormattingExcelCells(range, false, false);
+
+                xlApp.DisplayAlerts = false;
+                xlWorkBook.SaveAs(@"" + Destination + "Заявка смена собственника.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlWorkBook.Close(true, misValue, misValue);
+                xlApp.Quit();
+
+                releaseObject(xlWorkSheet);
+                releaseObject(xlWorkBook);
+                releaseObject(xlApp);
+
+                Process.Start(@"" + Destination + "Заявка смена собственника.xlsx");
+            }
+            else
+            {
+                MessageBox.Show("", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+
+        public void FormattingExcelCells(Excel.Range range, bool val1, bool val2)
+        {
+            range.Font.Name = "Arial Cyr";
+            range.Font.Size = 9;
+            range.Font.FontStyle = "Bold";
+            if (val1 == true)
+            {
+                Excel.Borders border = range.Borders;
+                border.LineStyle = Excel.XlLineStyle.xlContinuous;
+                border.Weight = 2d;
+            }
+            if (val2 == true)
+            {
+                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            }
+            else
+            {
+                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            }
+        }
+
+        private void simpleButton7_Click(object sender, EventArgs e)
+        {
+
+            Excel.Application xlApp;
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlApp = new Excel.Application();
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+            xlWorkSheet.Range["B2"].Value = "История передачи собственникам в/ц №:  " + SelectItemRow2.ToString();
+
+
+            xlWorkSheet.Range["B4"].Value = "Дата";
+            xlWorkSheet.Range["C4"].Value = "Номер заявки";
+            xlWorkSheet.Range["D4"].Value = "Номер вагона";
+            xlWorkSheet.Range["E4"].Value = "Продукт";
+            xlWorkSheet.Range["F4"].Value = "Получивший собственник";
+
+
+
+            for (int i = 0; i < gridView1.RowCount; i++)
+            {
+                xlWorkSheet.Cells[i + 5, 2] = gridView1.GetRowCellValue(i, "Дата");
+                xlWorkSheet.Cells[i + 5, 3] = gridView1.GetRowCellValue(i, "Номер заявки");
+                xlWorkSheet.Cells[i + 5, 4] = gridView1.GetRowCellValue(i, "Номер вагона");
+                xlWorkSheet.Cells[i + 5, 5] = gridView1.GetRowCellValue(i, "Продукт");
+                xlWorkSheet.Cells[i + 5, 6] = gridView1.GetRowCellValue(i, "Получивший собственник");
+            }
+
+            Excel.Range range = xlWorkSheet.Range["B2", xlWorkSheet.Cells[gridView3.RowCount + 5, 6]];
+            FormattingExcelCells(range, false, false);
+
+            xlApp.DisplayAlerts = false;
+            xlWorkBook.SaveAs(@"" + Destination + "Архив Смена собственника.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+
+            releaseObject(xlWorkSheet);
+            releaseObject(xlWorkBook);
+            releaseObject(xlApp);
+
+            Process.Start(@"" + Destination + "Архив Смена собственника.xlsx");
         }
     }
 }
