@@ -267,7 +267,7 @@
             // 
             // checkEdit23
             // 
-            this.checkEdit23.Location = new System.Drawing.Point(23, 180);
+            this.checkEdit23.Location = new System.Drawing.Point(34, 180);
             this.checkEdit23.Name = "checkEdit23";
             this.checkEdit23.Properties.Caption = "";
             this.checkEdit23.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit23_Properties_CheckStateChanged);
@@ -289,7 +289,7 @@
             // 
             this.labelControl26.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl26.Appearance.Options.UseFont = true;
-            this.labelControl26.Location = new System.Drawing.Point(45, 182);
+            this.labelControl26.Location = new System.Drawing.Point(56, 182);
             this.labelControl26.Name = "labelControl26";
             this.labelControl26.Size = new System.Drawing.Size(119, 14);
             this.labelControl26.TabIndex = 37;
@@ -306,10 +306,9 @@
             // 
             // textEdit24
             // 
-            this.textEdit24.Location = new System.Drawing.Point(167, 180);
+            this.textEdit24.Location = new System.Drawing.Point(178, 180);
             this.textEdit24.Name = "textEdit24";
-            this.textEdit24.Properties.MaxLength = 1;
-            this.textEdit24.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit24_Properties_KeyPress);
+            this.textEdit24.Properties.MaxLength = 20;
             this.textEdit24.Size = new System.Drawing.Size(103, 20);
             this.textEdit24.TabIndex = 36;
             // 
@@ -598,8 +597,7 @@
             // 
             this.textEdit12.Location = new System.Drawing.Point(103, 48);
             this.textEdit12.Name = "textEdit12";
-            this.textEdit12.Properties.MaxLength = 1;
-            this.textEdit12.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit12_Properties_KeyPress);
+            this.textEdit12.Properties.MaxLength = 20;
             this.textEdit12.Size = new System.Drawing.Size(48, 20);
             this.textEdit12.TabIndex = 27;
             // 
@@ -897,12 +895,12 @@
             // 
             // textEdit10
             // 
-            this.textEdit10.Location = new System.Drawing.Point(272, 49);
+            this.textEdit10.Location = new System.Drawing.Point(261, 49);
             this.textEdit10.Name = "textEdit10";
             this.textEdit10.Properties.MaxLength = 1;
             this.textEdit10.Properties.EditValueChanged += new System.EventHandler(this.textEdit10_Properties_EditValueChanged);
             this.textEdit10.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit10_Properties_KeyPress);
-            this.textEdit10.Size = new System.Drawing.Size(51, 20);
+            this.textEdit10.Size = new System.Drawing.Size(62, 20);
             this.textEdit10.TabIndex = 24;
             // 
             // textEdit9
