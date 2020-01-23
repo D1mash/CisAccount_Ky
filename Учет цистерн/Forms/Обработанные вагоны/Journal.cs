@@ -844,8 +844,9 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     Arrays = string.Join(" ", aList);
                     string UpdateOwner = "exec dbo.UpdateCurrentOwner '"+Arrays+"',"+Id;
                     DbConnection.DBConnect(UpdateOwner);
-                    Refresh();
                 }
+                Refresh();
+                gridView1_RowCellClick(null,null);
             }
             catch (Exception exp)
             {
