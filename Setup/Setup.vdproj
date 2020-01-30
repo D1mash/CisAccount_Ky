@@ -147,7 +147,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_376827513814497A8FD700E0F4D2D7EA"
+        "MsmKey" = "8:_3B08559E68394CF28BDBE017DD6D2AF2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -375,6 +375,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8BE196CCC7D94AA58A9589591B0ECA90"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9D597C46A4ADAD49FC7237051A427F01"
         "OwnerKey" = "8:_F32283B0CB4A43BB8DD37133E8814497"
         "MsmSig" = "8:_UNDEFINED"
@@ -383,6 +389,12 @@
         {
         "MsmKey" = "8:_9D597C46A4ADAD49FC7237051A427F01"
         "OwnerKey" = "8:_E91506F10FF5E4B7D104FF3E7F8D18DC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9EFF9DCC25AF4CA69EA3B14DAC4CBF93"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -423,7 +435,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_BC6327DC2A524B2E93815F3DD836F21A"
+        "MsmKey" = "8:_C38EC523EEE14B1092D969E5F6AD592A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -465,12 +477,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D0DF5968830A41E9BA8361BF3BB7FCF6"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_DD23AB6D8600346C191A72C0F9858E00"
         "OwnerKey" = "8:_F32283B0CB4A43BB8DD37133E8814497"
         "MsmSig" = "8:_UNDEFINED"
@@ -485,6 +491,12 @@
         {
         "MsmKey" = "8:_E49B81B62D39C0AA8389A389B6DC8197"
         "OwnerKey" = "8:_ED8B2F139BDD1A62FE4A61E9F6254A7C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E866FF631DB843FEA6D4A067F04C39AE"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -521,6 +533,12 @@
         {
         "MsmKey" = "8:_F50AAEDAF86681C76470454D3CB239CF"
         "OwnerKey" = "8:_ED8B2F139BDD1A62FE4A61E9F6254A7C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FE5BD67D7B9D494F8B6D1DF5D6BE8319"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -886,12 +904,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_376827513814497A8FD700E0F4D2D7EA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3B08559E68394CF28BDBE017DD6D2AF2"
             {
-            "SourcePath" = "8:..\\Учет цистерн\\Forms\\ReportTemplates\\СНО Реализ.xlsx"
-            "TargetName" = "8:СНО Реализ.xlsx"
+            "SourcePath" = "8:..\\Учет цистерн\\Forms\\ReportTemplates\\Итог по станции.xlsx"
+            "TargetName" = "8:Итог по станции.xlsx"
             "Tag" = "8:"
-            "Folder" = "8:_9A4D8652E9674311B03AB5E74C3507CF"
+            "Folder" = "8:_D8428E7EB2884DCFBA8F252094F9D621"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1205,6 +1223,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8BE196CCC7D94AA58A9589591B0ECA90"
+            {
+            "SourcePath" = "8:..\\Учет цистерн\\Forms\\ReportTemplates\\СНО Реализ.xlsx"
+            "TargetName" = "8:СНО Реализ.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_D8428E7EB2884DCFBA8F252094F9D621"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9D597C46A4ADAD49FC7237051A427F01"
             {
             "AssemblyRegister" = "3:1"
@@ -1234,6 +1272,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9EFF9DCC25AF4CA69EA3B14DAC4CBF93"
+            {
+            "SourcePath" = "8:..\\Учет цистерн\\Forms\\ReportTemplates\\Реестр АУТН.xlsx"
+            "TargetName" = "8:Реестр АУТН.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_D8428E7EB2884DCFBA8F252094F9D621"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_ADCF57893C395BD2038879A470EA07F3"
@@ -1298,12 +1356,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BC6327DC2A524B2E93815F3DD836F21A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C38EC523EEE14B1092D969E5F6AD592A"
             {
             "SourcePath" = "8:..\\Учет цистерн\\Forms\\ReportTemplates\\СНО Приход.xlsx"
             "TargetName" = "8:СНО Приход.xlsx"
             "Tag" = "8:"
-            "Folder" = "8:_9A4D8652E9674311B03AB5E74C3507CF"
+            "Folder" = "8:_D8428E7EB2884DCFBA8F252094F9D621"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1380,26 +1438,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D0DF5968830A41E9BA8361BF3BB7FCF6"
-            {
-            "SourcePath" = "8:..\\Учет цистерн\\Forms\\ReportTemplates\\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx"
-            "TargetName" = "8:Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx"
-            "Tag" = "8:"
-            "Folder" = "8:_9A4D8652E9674311B03AB5E74C3507CF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DD23AB6D8600346C191A72C0F9858E00"
             {
             "AssemblyRegister" = "3:1"
@@ -1460,6 +1498,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E866FF631DB843FEA6D4A067F04C39AE"
+            {
+            "SourcePath" = "8:..\\Учет цистерн\\Forms\\ReportTemplates\\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx"
+            "TargetName" = "8:Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_D8428E7EB2884DCFBA8F252094F9D621"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E91506F10FF5E4B7D104FF3E7F8D18DC"
@@ -1555,6 +1613,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FE5BD67D7B9D494F8B6D1DF5D6BE8319"
+            {
+            "SourcePath" = "8:D:\\Personal\\d.omarbayev\\Desktop\\Паравозик.exe.config"
+            "TargetName" = "8:Паравозик.exe.config"
+            "Tag" = "8:"
+            "Folder" = "8:_43B76BA6108F416D86DA578B10EFB35D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -1604,13 +1682,13 @@
                         {
                         }
                     }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_9A4D8652E9674311B03AB5E74C3507CF"
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_D8428E7EB2884DCFBA8F252094F9D621"
                     {
                     "Name" = "8:ReportTemplates"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
-                    "Property" = "8:_45DCAE739AFD4E05B312510524649EDB"
+                    "Property" = "8:_7C2BC356EF934172A23A9792242F3C83"
                         "Folders"
                         {
                         }
@@ -1645,7 +1723,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Учет цистерн"
         "ProductCode" = "8:{AAD22592-0E56-4432-BFB1-CD11FF82BD8E}"
-        "PackageCode" = "8:{FA1EBCFE-51BF-4226-BBEB-EBFE4E594130}"
+        "PackageCode" = "8:{3906BF87-68A0-490D-AA13-00C65AAD6693}"
         "UpgradeCode" = "8:{630FF8C4-667E-4B0E-A1E6-7ACB95D9CBF5}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

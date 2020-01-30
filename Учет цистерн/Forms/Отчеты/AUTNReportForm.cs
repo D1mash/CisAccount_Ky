@@ -25,7 +25,7 @@ namespace Учет_цистерн.Forms.Отчеты
         {
             InitializeComponent();
         }
-
+        
         private void Refresh()
         {
             string RefreshAll = "exec [dbo].[GetReportAUTN] '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";

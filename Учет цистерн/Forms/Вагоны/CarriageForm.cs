@@ -12,7 +12,6 @@ namespace Учет_цистерн
     {
         int SelectItemRow;
         int SelectOwnerID;
-        int Rows;
         string role;
 
         public CarriageForm(string role)
