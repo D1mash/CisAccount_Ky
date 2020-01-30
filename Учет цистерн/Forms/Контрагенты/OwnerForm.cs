@@ -34,7 +34,7 @@ namespace Учет_цистерн
                     if (role == "2")
                     {
                         btnOwnerAdd.Enabled = true;
-                        btnOwnerUpdate.Enabled = false;
+                        btnOwnerUpdate.Enabled = true;
                         btnOwnerDelete.Enabled = false;
                         btnOwnerReffresh.Enabled = true;
                     }

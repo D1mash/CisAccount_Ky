@@ -77,7 +77,7 @@ namespace Учет_цистерн
                     {
                         btn_add_station_form.Enabled = true;
                         btn_dlt_station_form.Enabled = false;
-                        btn_upd_station_form.Enabled = false;
+                        btn_upd_station_form.Enabled = true;
                         btn_refsh_station_form.Enabled = true;
                     }
                 }

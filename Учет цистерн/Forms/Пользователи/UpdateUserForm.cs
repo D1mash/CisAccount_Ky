@@ -7,6 +7,7 @@ namespace Учет_цистерн.Forms.Пользователи
     public partial class UpdateUserForm : Form
     {
         int selectID;
+        string role;
 
         public int SelectID
         {
@@ -16,9 +17,10 @@ namespace Учет_цистерн.Forms.Пользователи
 
         public int SelectRoleId { get; set; }
 
-        public UpdateUserForm()
+        public UpdateUserForm(string role)
         {
             InitializeComponent();
+            this.role = role;
         }
 
         private void Fillcombobox()

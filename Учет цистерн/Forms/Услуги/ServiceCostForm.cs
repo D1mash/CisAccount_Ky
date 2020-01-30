@@ -35,17 +35,10 @@ namespace Учет_цистерн
                     if (role == "2")
                     {
                         Btn_Add.Enabled = true;
-                        Btn_Updt.Enabled = false;
+                        Btn_Updt.Enabled = true;
                         Btn_Delete.Enabled = false;
                         Btn_Refresh.Enabled = true;
-                    }
-                    else
-                    {
-                        Btn_Add.Enabled = false;
-                        Btn_Updt.Enabled = false;
-                        Btn_Delete.Enabled = false;
-                        Btn_Refresh.Enabled = false;
-                    }
+                    }   
                 }
 
                 string Reffresh = "exec dbo.GetServiceCost";

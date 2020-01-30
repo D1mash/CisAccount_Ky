@@ -48,6 +48,22 @@ namespace Учет_цистерн
         {
             try
             {
+                if (role == "1")
+                {
+                    button6.Enabled = true;
+                }
+                else
+                {
+                    if (role == "2")
+                    {
+                        button6.Enabled = true;
+                    }
+                    else
+                    {
+                        button6.Enabled = false;
+                    }
+                }
+
                 GetFilter();
             }
             catch (Exception exp)
@@ -111,6 +127,7 @@ namespace Учет_цистерн
                 logger.Error(exp, "button1_Click");
             }
         }
+
         //Глобальный фильтр, вставить вагоны
         private void вставитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -318,7 +335,7 @@ namespace Учет_цистерн
 
                 OwnerForm frm = new OwnerForm(role);
                 tabControl1.Show();
-                TabPage OwnerTabPage = new TabPage("Контрагенты");
+                TabPage OwnerTabPage = new TabPage("Собственники");
                 tabControl1.TabPages.Add(OwnerTabPage);
                 tabControl1.SelectedTab = OwnerTabPage;
                 frm.TopLevel = false;
@@ -791,7 +808,7 @@ namespace Учет_цистерн
                 else
                 {
                     contextMenuStrip_Refrence.Items[0].Enabled = false;
-                    contextMenuStrip_Refrence.Items[1].Enabled = true;
+                    contextMenuStrip_Refrence.Items[1].Enabled = false;
                     contextMenuStrip_Refrence.Items[2].Enabled = true;
                     contextMenuStrip_Refrence.Items[3].Enabled = true;
                 }
@@ -877,20 +894,20 @@ namespace Учет_цистерн
             contextMenuStrip_Rent_Car.Show(button5, new Point(0, button5.Height));
             if (role == "1")
             {
-                contextMenuStrip_Report.Items[0].Enabled = true;
-                contextMenuStrip_Report.Items[1].Enabled = true;
+                contextMenuStrip_Rent_Car.Items[0].Enabled = true;
+                contextMenuStrip_Rent_Car.Items[1].Enabled = true;
             }
             else
             {
                 if (role == "2")
                 {
-                    contextMenuStrip_Report.Items[0].Enabled = true;
-                    contextMenuStrip_Report.Items[1].Enabled = true;
+                    contextMenuStrip_Rent_Car.Items[0].Enabled = true;
+                    contextMenuStrip_Rent_Car.Items[1].Enabled = true;
                 }
                 else
                 {
-                    contextMenuStrip_Report.Items[0].Enabled = false;
-                    contextMenuStrip_Report.Items[1].Enabled = false;
+                    contextMenuStrip_Rent_Car.Items[0].Enabled = false;
+                    contextMenuStrip_Rent_Car.Items[1].Enabled = false;
                 }
             }
             }
@@ -955,7 +972,7 @@ namespace Учет_цистерн
                 }
             }
 
-            Rent_Brodcast_Car rent_Brodcast_Car = new Rent_Brodcast_Car();
+            Rent_Brodcast_Car rent_Brodcast_Car = new Rent_Brodcast_Car(role);
             tabControl1.Show();
             TabPage chg_tabPage = new TabPage("Заявка на передачу в/ц");
             tabControl1.TabPages.Add(chg_tabPage);

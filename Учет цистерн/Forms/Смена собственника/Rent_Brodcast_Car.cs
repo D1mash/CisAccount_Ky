@@ -27,14 +27,39 @@ namespace Учет_цистерн.Forms.Смена_собственника
         string date;
         string product;
         string Destination = ConfigurationManager.AppSettings["Dest"].ToString();
+        string role;
 
-        public Rent_Brodcast_Car()
+        public Rent_Brodcast_Car(string role)
         {
             InitializeComponent();
+            this.role = role;
         }
 
         private void Rent_Brodcast_Car_Load(object sender, EventArgs e)
         {
+            if (role == "1")
+            {
+                simpleButton1.Enabled = true;
+                simpleButton2.Enabled = true;
+                simpleButton3.Enabled = true;
+                simpleButton4.Enabled = true;
+                simpleButton6.Enabled = true;
+                simpleButton7.Enabled = true;
+            }
+            else
+            {
+                if (role == "2")
+                {
+
+                    simpleButton1.Enabled = true;
+                    simpleButton2.Enabled = true;
+                    simpleButton3.Enabled = false;
+                    simpleButton4.Enabled = true;
+                    simpleButton6.Enabled = false;
+                    simpleButton7.Enabled = true;
+                }
+            }
+
             checkEdit1_CheckedChanged(null, null);
             checkEdit3_CheckedChanged(null, null);
             checkEdit4_CheckedChanged(null, null);
@@ -42,7 +67,6 @@ namespace Учет_цистерн.Forms.Смена_собственника
             checkEdit6_CheckedChanged(null, null);
             checkEdit7_CheckedChanged(null, null);
             checkEdit8_CheckedChanged(null, null);
-            
         }
 
 

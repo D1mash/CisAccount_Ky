@@ -26,7 +26,7 @@ namespace Учет_цистерн.Forms.Пользователи
             gridView1.Columns[1].Visible = false;
         }
 
-        private void AllUserForm_Load(object sender, EventArgs e)
+        public void AllUserForm_Load(object sender, EventArgs e)
         {
             Refreshh();
 
@@ -72,7 +72,7 @@ namespace Учет_цистерн.Forms.Пользователи
                         return;
                     }
                 }
-                UpdateUserForm update = new UpdateUserForm();
+                UpdateUserForm update = new UpdateUserForm(role);
                 update.SelectID = SelectItemRow;
                 update.SelectRoleId = SelectRoleId;
                 update.textBox2.Text = gridView1.GetFocusedDataRow()[2].ToString();

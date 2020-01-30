@@ -152,7 +152,7 @@ namespace Учет_цистерн
                 if (role == "2")
                 {
                     btnAdd.Enabled = true;
-                    btnUpdate.Enabled = false;
+                    btnUpdate.Enabled = true;
                     btnDelete.Enabled = false;
                     btnRefresh.Enabled = true;
                 }
