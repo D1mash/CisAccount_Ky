@@ -18,7 +18,7 @@ namespace Учет_цистерн
     public partial class ReportForm : Form
     {
         //BindingSource source = new BindingSource();
-        string Destination = ConfigurationManager.AppSettings["Dest"].ToString();
+        //string Destination = ConfigurationManager.AppSettings["Dest"].ToString();
         DataTable dt;
         DataTable getserv;
 
@@ -110,6 +110,7 @@ namespace Учет_цистерн
 
                     GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "СУМ={0}");
                     gridView1.Columns["Сумма услуг"].Summary.Add(item1);
+
                     GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Стоимость ТОР", "СУМ={0}");
                     gridView1.Columns["Стоимость ТОР"].Summary.Add(item2);
 
@@ -272,12 +273,12 @@ namespace Учет_цистерн
                     worksheet.Cells[dt.Rows.Count + 11 + item, 10] = final_sum;
 
                     app.DisplayAlerts = false;
-                    workbook.SaveAs(@"" + Destination + "Итог по станции.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Итог по станции.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     workbook.Close(0);
                     app.Quit();
                     appProcess.Kill();
 
-                    Process.Start(@"" + Destination + "Итог по станции.xlsx");
+                    Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Итог по станции.xlsx");
                 }
                 else
                 {
@@ -413,12 +414,12 @@ namespace Учет_цистерн
                   
                     app.DisplayAlerts = false;
                     
-                    workbook.SaveAs(@"" + Destination + "Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     workbook.Close(0);
                     app.Quit();
                     appProcess.Kill();
 
-                    Process.Start(@"" + Destination + "Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx");
+                    Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx");
                    
                 }
             }

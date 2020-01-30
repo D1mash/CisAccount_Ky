@@ -18,7 +18,7 @@ namespace Учет_цистерн.Forms.Отчеты
     public partial class AUTNReportForm : Form
     {
         //BindingSource source = new BindingSource();
-        string Destination = ConfigurationManager.AppSettings["Dest"].ToString();
+        //string Destination = ConfigurationManager.AppSettings["Dest"].ToString();
         DataTable dt;
 
         public AUTNReportForm()
@@ -102,12 +102,12 @@ namespace Учет_цистерн.Forms.Отчеты
                 }
 
                 app.DisplayAlerts = false;
-                workbook.SaveAs(@"" + Destination + "Реестр АУТН.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр АУТН.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                 workbook.Close(0);
                 app.Quit();
                 appProcess.Kill();
 
-                Process.Start(@"" + Destination + "Реестр АУТН.xlsx");
+                Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр АУТН.xlsx");
             }
             catch (Exception ex)
             {

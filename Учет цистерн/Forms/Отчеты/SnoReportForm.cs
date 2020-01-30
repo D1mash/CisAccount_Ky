@@ -174,12 +174,12 @@ namespace Учет_цистерн.Forms.Отчеты
                     }
 
                     app.DisplayAlerts = false;
-                    workbook.SaveAs(@"" + Destination + "СНО Реализация.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\СНО Реализация.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     workbook.Close(0);
                     app.Quit();
                     appProcess.Kill();
 
-                    Process.Start(@"" + Destination + "СНО Реализация.xlsx");
+                    Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\СНО Реализация.xlsx");
                 }
                 else
                 if (radioButton2.Checked)
@@ -227,12 +227,12 @@ namespace Учет_цистерн.Forms.Отчеты
                     FormattingExcelCells(range, true, true);
 
                     app.DisplayAlerts = false;
-                    workbook.SaveAs(@"" + Destination + "СНО Приход.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\СНО Приход.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     workbook.Close(0);
                     app.Quit();
                     appProcess.Kill();
 
-                    Process.Start(@"" + Destination + "СНО Приход.xlsx");
+                    Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\СНО Приход.xlsx");
                 }
             }
             catch (Exception ex)
