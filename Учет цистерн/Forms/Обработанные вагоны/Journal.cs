@@ -54,7 +54,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             string Brigade = "Select * from d__Brigade";
             DataTable dt = DbConnection.DBConnect(Brigade);
             comboBox1.DataSource = dt;
-            comboBox1.DisplayMember = "Name";
+            comboBox1.DisplayMember = "Surname";
             comboBox1.ValueMember = "ID";
 
             string Product = "Select * from d__Product";
@@ -146,14 +146,13 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 {
                     string CheckOwner = "select c.Current_owner from d__Carriage c where c.CarNumber = " + textEdit1.Text.Trim();
                     DataTable dt = DbConnection.DBConnect(CheckOwner);
-                    string Check = dt.Rows[0][0].ToString();
-                    if (Check == "")
+                    if (dt.Rows.Count > 0)
                     {
-                        textEdit2.Text = "";
+                        textEdit2.Text = dt.Rows[0][0].ToString();
                     }
                     else
                     {
-                        textEdit2.Text = dt.Rows[0][0].ToString();
+                        textEdit2.Text = "";
                     }
                 }
             }
@@ -187,7 +186,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     string CheckOwner = "select c.Current_owner from d__Carriage c where c.CarNumber = " + textEdit1.Text.Trim();
                     DataTable dt = DbConnection.DBConnect(CheckOwner);
                     string Check = dt.Rows[0][0].ToString();
-                    if (Check == "")
+                    if (dt.Rows.Count < 1)
                     {
                         MessageBox.Show("У данного В/Ц отсутствует собственник!","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     }
@@ -571,7 +570,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 string Brigade = "Select * from d__Brigade";
                 DataTable dt1 = DbConnection.DBConnect(Brigade);
                 comboBox1.DataSource = dt1;
-                comboBox1.DisplayMember = "Name";
+                comboBox1.DisplayMember = "Surname";
                 comboBox1.ValueMember = "ID";
                 comboBox1.DataBindings.Clear();
                 comboBox1.DataBindings.Add("SelectedValue", this, "SelectBrigadeID", true, DataSourceUpdateMode.OnPropertyChanged);

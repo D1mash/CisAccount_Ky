@@ -26,16 +26,7 @@ namespace Учет_цистерн
         {
             try
             {
-                if (checkBox1.Checked)
-                {
-                    yes = 1;
-                    AddNewBrigade = "insert into d__Brigade values('" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + textBox3.Text.Trim() + ' ' + textBox1.Text.Substring(0, 1) + '.' + textBox2.Text.Substring(0, 1) + '.' + "'," + yes + ")";
-                }
-                else
-                {
-                    not = 0;
-                    AddNewBrigade = "insert into d__Brigade values('" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + textBox3.Text.Trim() + ' ' + textBox1.Text.Substring(0, 1) + '.' + textBox2.Text.Substring(0, 1) + '.' + "'," + not + ")";
-                }
+                AddNewBrigade = "insert into d__Brigade values('" + textBox1.Text.Trim() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + textBox2.Text.Trim() + ' ' + textBox1.Text.Substring(0, 1) + '.' + textBox3.Text.Substring(0, 1) + '.' + "')";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(AddNewBrigade);
                 this.Close();
