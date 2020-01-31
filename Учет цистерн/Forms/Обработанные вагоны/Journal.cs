@@ -36,6 +36,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             gridView1.Columns[1].Visible = false;
             gridView1.Columns[2].Visible = false;
 
+            //gridView1.ShowFindPanel();
             //textEdit1.Text = "";
             //textEdit2.Text = "";
             //textEdit3.Text = "";
