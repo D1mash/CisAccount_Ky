@@ -189,13 +189,23 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         DataTable dt = DbConnection.DBConnect(CheckOwner);
                         if (dt.Rows.Count > 0)
                         {
-                            string Add = "declare @Id int; exec [dbo].[FillRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL, @CurrentID = @Id output; select @Id";
-                            DataTable HeadID = DbConnection.DBConnect(Add);
-                            string Id = HeadID.Rows[0][0].ToString();
-                            string Autn = "exec [dbo].[FillAutn] " + textEdit18.Text.Trim() + ",'" + textEdit12.Text.Trim() + "'," + textEdit13.Text.Trim() + "," + textEdit14.Text.Trim() + "," + textEdit15.Text.Trim() + "," + textEdit16.Text.Trim() + "," + textEdit23.Text.Trim() + "," + textEdit22.Text.Trim() + "," + textEdit21.Text.Trim() + "," + textEdit20.Text.Trim() + "," + textEdit19.Text.Trim() + "," + textEdit17.Text.Trim() + ",'" + textEdit24.Text.Trim() + "'," + Id;
-                            DbConnection.DBConnect(Autn);
-                            Refresh();
-                            textEdit1.Text = "";
+                            if(textEdit3.Text != "")
+                            {
+                                string Add = "declare @Id int; exec [dbo].[FillRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL, @CurrentID = @Id output; select @Id";
+                                DataTable HeadID = DbConnection.DBConnect(Add);
+                                if (HeadID.Rows.Count > 0)
+                                {
+                                    string Id = HeadID.Rows[0][0].ToString();
+                                    string Autn = "exec [dbo].[FillAutn] " + textEdit18.Text.Trim() + ",'" + textEdit12.Text.Trim() + "'," + textEdit13.Text.Trim() + "," + textEdit14.Text.Trim() + "," + textEdit15.Text.Trim() + "," + textEdit16.Text.Trim() + "," + textEdit23.Text.Trim() + "," + textEdit22.Text.Trim() + "," + textEdit21.Text.Trim() + "," + textEdit20.Text.Trim() + "," + textEdit19.Text.Trim() + "," + textEdit17.Text.Trim() + ",'" + textEdit24.Text.Trim() + "'," + Id;
+                                    DbConnection.DBConnect(Autn);
+                                    Refresh();
+                                    textEdit1.Text = "";
+                                } 
+                            }
+                            else
+                            {
+                                MessageBox.Show("Номер акта не присвоен!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
                         else
                         {
