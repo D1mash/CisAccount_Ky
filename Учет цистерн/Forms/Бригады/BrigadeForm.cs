@@ -48,11 +48,6 @@ namespace Учет_цистерн
         {
             try
             {
-                string GetActiveBrigade = "select Active from d__Brigade where ID = " + SelectItemRow;
-                DataTable dataTable = new DataTable();
-                dataTable = DbConnection.DBConnect(GetActiveBrigade);
-                Active = Convert.ToInt32(dataTable.Rows[0][0]);
-
                 foreach (Form form in Application.OpenForms)
                 {
                     if (form.GetType() == typeof(BrigadeUpdateForm))
@@ -68,14 +63,6 @@ namespace Учет_цистерн
                 brigadeUpdateForm.textBox1.Text = gridView1.GetFocusedDataRow()[1].ToString();
                 brigadeUpdateForm.textBox2.Text = gridView1.GetFocusedDataRow()[2].ToString();
                 brigadeUpdateForm.textBox3.Text = gridView1.GetFocusedDataRow()[3].ToString();
-                if (Active == 1)
-                {
-                    brigadeUpdateForm.checkBox1.Checked = true;
-                }
-                else
-                {
-                    brigadeUpdateForm.checkBox1.Checked = false;
-                }
                 brigadeUpdateForm.Owner = this;
                 brigadeUpdateForm.ShowDialog();
             }
@@ -118,7 +105,7 @@ namespace Учет_цистерн
         {
             try
             {
-                string Reffresh = "SELECT ID,Name,Surname,Lastname,FIO,Active FROM [Batys].[dbo].[d__Brigade]";
+                string Reffresh = "SELECT ID,Name,Surname,Lastname,FIO FROM [Batys].[dbo].[d__Brigade]";
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(Reffresh);
                 gridControl1.DataSource = dataTable;
