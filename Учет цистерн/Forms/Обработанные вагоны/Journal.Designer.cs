@@ -608,7 +608,8 @@
             // 
             this.textEdit12.Location = new System.Drawing.Point(103, 48);
             this.textEdit12.Name = "textEdit12";
-            this.textEdit12.Properties.MaxLength = 20;
+            this.textEdit12.Properties.MaxLength = 1;
+            this.textEdit12.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit12_Properties_KeyPress);
             this.textEdit12.Size = new System.Drawing.Size(48, 20);
             this.textEdit12.TabIndex = 27;
             // 

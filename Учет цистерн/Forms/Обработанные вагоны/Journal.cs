@@ -107,6 +107,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     textEdit9.Text = "0";
                     textEdit10.Text = "0";
                     textEdit11.Text = "0";
+                    textEdit12.Text = "0";
                     textEdit13.Text = "0";
                     textEdit14.Text = "0";
                     textEdit15.Text = "0";
@@ -1176,6 +1177,13 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         private void checkEdit23_Properties_CheckStateChanged(object sender, EventArgs e)
         {
             textEdit24.Enabled = (checkEdit23.CheckState == CheckState.Checked);
+        }
+
+        private void textEdit12_Properties_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
         }
     }
 }
