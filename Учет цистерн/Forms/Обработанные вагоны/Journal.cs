@@ -108,18 +108,18 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     textEdit9.Text = "0";
                     textEdit10.Text = "0";
                     textEdit11.Text = "0";
-                    textEdit12.Text = "0";
-                    textEdit13.Text = "0";
-                    textEdit14.Text = "0";
-                    textEdit15.Text = "0";
-                    textEdit16.Text = "0";
-                    textEdit17.Text = "0";
-                    textEdit18.Text = "0";
-                    textEdit19.Text = "0";
-                    textEdit20.Text = "0";
-                    textEdit21.Text = "0";
-                    textEdit22.Text = "0";
-                    textEdit23.Text = "0";
+                    //textEdit12.Text = "0";
+                    //textEdit13.Text = "0";
+                    //textEdit14.Text = "0";
+                    //textEdit15.Text = "0";
+                    //textEdit16.Text = "0";
+                    //textEdit17.Text = "0";
+                    //textEdit18.Text = "0";
+                    //textEdit19.Text = "0";
+                    //textEdit20.Text = "0";
+                    //textEdit21.Text = "0";
+                    //textEdit22.Text = "0";
+                    //textEdit23.Text = "0";
                 }
 
                 if(gridView1.RowCount > 0)
@@ -198,7 +198,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                 if (HeadID.Rows.Count > 0)
                                 {
                                     string Id = HeadID.Rows[0][0].ToString();
-                                    string Autn = "exec [dbo].[FillAutn] " + textEdit18.Text.Trim() + ",'" + textEdit12.Text.Trim() + "'," + textEdit13.Text.Trim() + "," + textEdit14.Text.Trim() + "," + textEdit15.Text.Trim() + "," + textEdit16.Text.Trim() + "," + textEdit23.Text.Trim() + "," + textEdit22.Text.Trim() + "," + textEdit21.Text.Trim() + "," + textEdit20.Text.Trim() + "," + textEdit19.Text.Trim() + "," + textEdit17.Text.Trim() + ",'" + textEdit24.Text.Trim() + "'," + Id;
+                                    string Autn = "exec [dbo].[FillAutn] '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + textEdit24.Text.Trim() + "'," + Id;
                                     DbConnection.DBConnect(Autn);
                                     Refresh();
                                     textEdit1.Text = "";
@@ -234,7 +234,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         Arrays = string.Join(" ", aList);
                         string UpdateAll = "exec [dbo].[UpdateRenderedServiceAll] " + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + "," + comboBox2.SelectedValue.ToString() + "," + Temp + ",'" + Arrays +"'";
                         DbConnection.DBConnect(UpdateAll);
-                        string UpdateAutnAll = "exec dbo.UpdateAutnAll " + textEdit18.Text.Trim() + ",'" + textEdit12.Text.Trim() + "'," + textEdit13.Text.Trim() + "," + textEdit14.Text.Trim() + "," + textEdit15.Text.Trim() + "," + textEdit16.Text.Trim() + "," + textEdit23.Text.Trim() + "," + textEdit22.Text.Trim() + "," + textEdit21.Text.Trim() + "," + textEdit20.Text.Trim() + "," + textEdit19.Text.Trim() + "," + textEdit17.Text.Trim() + ",'" + textEdit24.Text.Trim() + "','" + Arrays+"'";
+                        string UpdateAutnAll = "exec dbo.UpdateAutnAll '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + textEdit24.Text.Trim() + "','" + Arrays+"'";
                         DbConnection.DBConnect(UpdateAutnAll);
                     }
                     Refresh();
@@ -252,7 +252,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     {
                         string Update = "exec [dbo].[UpdateRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + "," + SelectItemRow;
                         DbConnection.DBConnect(Update);
-                        string UpdateAutn = "exec dbo.UpdateAutn " + textEdit18.Text.Trim() + ",'" + textEdit12.Text.Trim() + "'," + textEdit13.Text.Trim() + "," + textEdit14.Text.Trim() + "," + textEdit15.Text.Trim() + "," + textEdit16.Text.Trim() + "," + textEdit23.Text.Trim() + "," + textEdit22.Text.Trim() + "," + textEdit21.Text.Trim() + "," + textEdit20.Text.Trim() + "," + textEdit19.Text.Trim() + "," + textEdit17.Text.Trim() + ",'" + textEdit24.Text.Trim() + "'," + SelectItemRow;
+                        string UpdateAutn = "exec dbo.UpdateAutn '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + textEdit24.Text.Trim() + "'," + SelectItemRow;
                         DbConnection.DBConnect(UpdateAutn);
                         Refresh();
                         Block();
@@ -443,143 +443,157 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 textEdit11.Text = Trafar1.ToString();
                 textEdit5.Text = Naruzhka1.ToString();
 
-                string GetAutn = "select * from d__Autn where Head_ID = " + Id;
+                string GetAutn = "select * from d__Autn_2 where Head_ID = " + Id;
                 DataTable Autn = DbConnection.DBConnect(GetAutn);
 
-                bool AvailAutn = Convert.ToBoolean(Autn.Rows[0][1].ToString());
-                int AvailAutn1;
-                if (AvailAutn == true)
-                {
-                    AvailAutn1 = 1;
-                }
-                else
-                {
-                    AvailAutn1 = 0;
-                }
-
-                bool DemSkobi = Convert.ToBoolean(Autn.Rows[0][3].ToString());
-                int DemSkobi1;
-                if (DemSkobi == true)
-                {
-                    DemSkobi1 = 1;
-                }
-                else
-                {
-                    DemSkobi1 = 0;
-                }
-
-                bool PTC = Convert.ToBoolean(Autn.Rows[0][4].ToString());
-                int PTC1;
-                if (PTC == true)
-                {
-                    PTC1 = 1;
-                }
-                else
-                {
-                    PTC1 = 0;
-                }
-
-                bool Ushki = Convert.ToBoolean(Autn.Rows[0][5].ToString());
-                int Ushki1;
-                if (Ushki == true)
-                {
-                    Ushki1 = 1;
-                }
-                else
-                {
-                    Ushki1 = 0;
-                }
-
-                bool Skobi = Convert.ToBoolean(Autn.Rows[0][6].ToString());
-                int Skobi1;
-                if (Skobi == true)
-                {
-                    Skobi1 = 1;
-                }
-                else
-                {
-                    Skobi1 = 0;
-                }
-
-                bool Shaiba = Convert.ToBoolean(Autn.Rows[0][7].ToString());
-                int Shaiba1;
-                if (Shaiba == true)
-                {
-                    Shaiba1 = 1;
-                }
-                else
-                {
-                    Shaiba1 = 0;
-                }
-
-                bool Lestn = Convert.ToBoolean(Autn.Rows[0][8].ToString());
-                int Lestn1;
-                if (Lestn == true)
-                {
-                    Lestn1 = 1;
-                }
-                else
-                {
-                    Lestn1 = 0;
-                }
-
-                bool Greben = Convert.ToBoolean(Autn.Rows[0][9].ToString());
-                int Greben1;
-                if (Greben == true)
-                {
-                    Greben1 = 1;
-                }
-                else
-                {
-                    Greben1 = 0;
-                }
-
-                bool Barashk = Convert.ToBoolean(Autn.Rows[0][10].ToString());
-                int Barashk1;
-                if (Barashk == true)
-                {
-                    Barashk1 = 1;
-                }
-                else
-                {
-                    Barashk1 = 0;
-                }
-
-                bool TriBolt = Convert.ToBoolean(Autn.Rows[0][11].ToString());
-                int TriBolt1;
-                if (TriBolt == true)
-                {
-                    TriBolt1 = 1;
-                }
-                else
-                {
-                    TriBolt1 = 0;
-                }
-
-                bool Exp = Convert.ToBoolean(Autn.Rows[0][12].ToString());
-                int Exp1;
-                if (Exp == true)
-                {
-                    Exp1 = 1;
-                }
-                else
-                {
-                    Exp1 = 0;
-                }
-
-                textEdit18.Text = AvailAutn1.ToString();
+                textEdit18.Text = Autn.Rows[0][1].ToString();
                 textEdit12.Text = Autn.Rows[0][2].ToString();
-                textEdit13.Text = DemSkobi1.ToString();
-                textEdit14.Text = PTC1.ToString();
-                textEdit15.Text = Ushki1.ToString();
-                textEdit16.Text = Skobi1.ToString();
-                textEdit23.Text = Shaiba1.ToString();
-                textEdit22.Text = Lestn1.ToString();
-                textEdit21.Text = Greben1.ToString();
-                textEdit20.Text = Barashk1.ToString();
-                textEdit19.Text = TriBolt1.ToString();
-                textEdit17.Text = Exp1.ToString();
+                textEdit13.Text = Autn.Rows[0][3].ToString();
+                textEdit14.Text = Autn.Rows[0][4].ToString();
+                textEdit15.Text = Autn.Rows[0][5].ToString();
+                textEdit16.Text = Autn.Rows[0][6].ToString();
+                textEdit23.Text = Autn.Rows[0][7].ToString();
+                textEdit22.Text = Autn.Rows[0][8].ToString();
+                textEdit21.Text = Autn.Rows[0][9].ToString();
+                textEdit20.Text = Autn.Rows[0][10].ToString();
+                textEdit19.Text = Autn.Rows[0][11].ToString();
+                textEdit17.Text = Autn.Rows[0][12].ToString();
                 textEdit24.Text = Autn.Rows[0][13].ToString();
+
+                //bool AvailAutn = Convert.ToBoolean(Autn.Rows[0][1].ToString());
+                //int AvailAutn1;
+                //if (AvailAutn == true)
+                //{
+                //    AvailAutn1 = 1;
+                //}
+                //else
+                //{
+                //    AvailAutn1 = 0;
+                //}
+
+                //bool DemSkobi = Convert.ToBoolean(Autn.Rows[0][3].ToString());
+                //int DemSkobi1;
+                //if (DemSkobi == true)
+                //{
+                //    DemSkobi1 = 1;
+                //}
+                //else
+                //{
+                //    DemSkobi1 = 0;
+                //}
+
+                //bool PTC = Convert.ToBoolean(Autn.Rows[0][4].ToString());
+                //int PTC1;
+                //if (PTC == true)
+                //{
+                //    PTC1 = 1;
+                //}
+                //else
+                //{
+                //    PTC1 = 0;
+                //}
+
+                //bool Ushki = Convert.ToBoolean(Autn.Rows[0][5].ToString());
+                //int Ushki1;
+                //if (Ushki == true)
+                //{
+                //    Ushki1 = 1;
+                //}
+                //else
+                //{
+                //    Ushki1 = 0;
+                //}
+
+                //bool Skobi = Convert.ToBoolean(Autn.Rows[0][6].ToString());
+                //int Skobi1;
+                //if (Skobi == true)
+                //{
+                //    Skobi1 = 1;
+                //}
+                //else
+                //{
+                //    Skobi1 = 0;
+                //}
+
+                //bool Shaiba = Convert.ToBoolean(Autn.Rows[0][7].ToString());
+                //int Shaiba1;
+                //if (Shaiba == true)
+                //{
+                //    Shaiba1 = 1;
+                //}
+                //else
+                //{
+                //    Shaiba1 = 0;
+                //}
+
+                //bool Lestn = Convert.ToBoolean(Autn.Rows[0][8].ToString());
+                //int Lestn1;
+                //if (Lestn == true)
+                //{
+                //    Lestn1 = 1;
+                //}
+                //else
+                //{
+                //    Lestn1 = 0;
+                //}
+
+                //bool Greben = Convert.ToBoolean(Autn.Rows[0][9].ToString());
+                //int Greben1;
+                //if (Greben == true)
+                //{
+                //    Greben1 = 1;
+                //}
+                //else
+                //{
+                //    Greben1 = 0;
+                //}
+
+                //bool Barashk = Convert.ToBoolean(Autn.Rows[0][10].ToString());
+                //int Barashk1;
+                //if (Barashk == true)
+                //{
+                //    Barashk1 = 1;
+                //}
+                //else
+                //{
+                //    Barashk1 = 0;
+                //}
+
+                //bool TriBolt = Convert.ToBoolean(Autn.Rows[0][11].ToString());
+                //int TriBolt1;
+                //if (TriBolt == true)
+                //{
+                //    TriBolt1 = 1;
+                //}
+                //else
+                //{
+                //    TriBolt1 = 0;
+                //}
+
+                //bool Exp = Convert.ToBoolean(Autn.Rows[0][12].ToString());
+                //int Exp1;
+                //if (Exp == true)
+                //{
+                //    Exp1 = 1;
+                //}
+                //else
+                //{
+                //    Exp1 = 0;
+                //}
+
+                //textEdit18.Text = AvailAutn1.ToString();
+                //textEdit12.Text = Autn.Rows[0][2].ToString();
+                //textEdit13.Text = DemSkobi1.ToString();
+                //textEdit14.Text = PTC1.ToString();
+                //textEdit15.Text = Ushki1.ToString();
+                //textEdit16.Text = Skobi1.ToString();
+                //textEdit23.Text = Shaiba1.ToString();
+                //textEdit22.Text = Lestn1.ToString();
+                //textEdit21.Text = Greben1.ToString();
+                //textEdit20.Text = Barashk1.ToString();
+                //textEdit19.Text = TriBolt1.ToString();
+                //textEdit17.Text = Exp1.ToString();
+                //textEdit24.Text = Autn.Rows[0][13].ToString();
 
                 string Brigade = "Select * from d__Brigade";
                 DataTable dt1 = DbConnection.DBConnect(Brigade);
@@ -971,6 +985,20 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             checkEdit8.Checked = false;
             checkEdit9.Checked = false;
             checkEdit10.Checked = false;
+
+            checkEdit3.Checked = false;
+            checkEdit12.Checked = false;
+            checkEdit13.Checked = false;
+            checkEdit14.Checked = false;
+            checkEdit15.Checked = false;
+            checkEdit16.Checked = false;
+            checkEdit17.Checked = false;
+            checkEdit18.Checked = false;
+            checkEdit19.Checked = false;
+            checkEdit20.Checked = false;
+            checkEdit21.Checked = false;
+            checkEdit22.Checked = false;
+            checkEdit23.Checked = false;
 
             checkEdit3.Visible = false;
             checkEdit12.Visible = false;
