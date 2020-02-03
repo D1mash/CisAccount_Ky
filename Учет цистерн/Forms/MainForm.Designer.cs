@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.contextMenuStrip_Product = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_Product = new System.Windows.Forms.ContextMenuStrip();
             this.toolStripMenuItem1_Product = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2_Station = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3_Brigade = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4_Owner = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Carriage = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip_Report = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_Report = new System.Windows.Forms.ContextMenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.аУТНToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +50,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new TradeWright.UI.Forms.TabControlExtra();
-            this.contextMenuStrip_GlobalFilter = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_GlobalFilter = new System.Windows.Forms.ContextMenuStrip();
             this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,20 +71,20 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.contextMenuStrip_Services = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_Services = new System.Windows.Forms.ContextMenuStrip();
             this.расценкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОРеализацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОПриходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip_Refrence = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_Refrence = new System.Windows.Forms.ContextMenuStrip();
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.дополнительныеПараметрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проверитьОбновлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.просмотрСправкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip_Rent_Car = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_Rent_Car = new System.Windows.Forms.ContextMenuStrip();
             this.заявкаНаПередачуВцToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменаСобственникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.дополнительныеПараметрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -563,6 +562,12 @@
             resources.ApplyResources(this.пользователиToolStripMenuItem, "пользователиToolStripMenuItem");
             this.пользователиToolStripMenuItem.Click += new System.EventHandler(this.пользователиToolStripMenuItem_Click);
             // 
+            // дополнительныеПараметрыToolStripMenuItem
+            // 
+            this.дополнительныеПараметрыToolStripMenuItem.Name = "дополнительныеПараметрыToolStripMenuItem";
+            resources.ApplyResources(this.дополнительныеПараметрыToolStripMenuItem, "дополнительныеПараметрыToolStripMenuItem");
+            this.дополнительныеПараметрыToolStripMenuItem.Click += new System.EventHandler(this.дополнительныеПараметрыToolStripMenuItem_Click);
+            // 
             // проверитьОбновлениеToolStripMenuItem
             // 
             this.проверитьОбновлениеToolStripMenuItem.Name = "проверитьОбновлениеToolStripMenuItem";
@@ -600,12 +605,6 @@
             this.сменаСобственникаToolStripMenuItem.Name = "сменаСобственникаToolStripMenuItem";
             resources.ApplyResources(this.сменаСобственникаToolStripMenuItem, "сменаСобственникаToolStripMenuItem");
             this.сменаСобственникаToolStripMenuItem.Click += new System.EventHandler(this.сменаСобственникаToolStripMenuItem_Click);
-            // 
-            // дополнительныеПараметрыToolStripMenuItem
-            // 
-            this.дополнительныеПараметрыToolStripMenuItem.Name = "дополнительныеПараметрыToolStripMenuItem";
-            resources.ApplyResources(this.дополнительныеПараметрыToolStripMenuItem, "дополнительныеПараметрыToolStripMenuItem");
-            this.дополнительныеПараметрыToolStripMenuItem.Click += new System.EventHandler(this.дополнительныеПараметрыToolStripMenuItem_Click);
             // 
             // MainForm
             // 
