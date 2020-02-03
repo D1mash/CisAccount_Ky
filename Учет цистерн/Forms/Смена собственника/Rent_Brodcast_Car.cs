@@ -274,15 +274,24 @@ namespace Учет_цистерн.Forms.Смена_собственника
                     gridView1.Columns.Clear();
 
                     string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Car_Num = '" + textEdit1.Text + "', " + "@Date_Start = '" + Date_S + "', " + " @Date_End = '" + Date_E + "', " + "@Date_Rec = '" + Date_R + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + "@Product = '" + textEdit3.Text + "'," + "@Rent_Num = '" + textEdit2.Text + "'," + "@Type = " + 1;
-                    gridControl2.DataSource = DbConnection.DBConnect(Search);
-                    gridView2.Columns[0].Visible = false;
-                    gridView2.Columns[5].Visible = false;
+                    DataTable dt = DbConnection.DBConnect(Search);
 
-                    gridView2_RowCellClick(null, null);
-                    gridView3_RowCellClick(null, null);
+                    if (dt.Rows.Count > 0)
+                    {
+                        gridControl2.DataSource = dt;
+                        gridView2.Columns[0].Visible = false;
+                        gridView2.Columns[5].Visible = false;
 
-                    GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер заявки", "Кол.во={0}");
-                    gridView2.Columns["Номер заявки"].Summary.Add(item1);
+                        gridView2_RowCellClick(null, null);
+                        gridView3_RowCellClick(null, null);
+                        
+                        GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер заявки", "Кол.во={0}");
+                        gridView2.Columns["Номер заявки"].Summary.Add(item1);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Отсутсвуют записи в базе данных","Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             else {
@@ -292,45 +301,59 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
         private void gridView3_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            //Ловит номер вагона из грида 3
-            string Id = gridView3.GetFocusedDataRow()[1].ToString();
-            SelectItemRow2 = Convert.ToInt32(Id);
+            try
+            {
+                //Ловит номер вагона из грида 3
+                string Id = gridView3.GetFocusedDataRow()[1].ToString();
+                SelectItemRow2 = Convert.ToInt32(Id);
 
-            gridControl1.DataSource = null;
-            gridView1.Columns.Clear();
+                gridControl1.DataSource = null;
+                gridView1.Columns.Clear();
 
-            string Search = "exec dbo.Rent_Search_By_Parametrs_3 " + "@Car_Num = '" + SelectItemRow2.ToString() + "'";
-            gridControl1.DataSource = DbConnection.DBConnect(Search);
-            gridView1.Columns[0].Visible = false;
-            gridView1.Columns[6].Visible = false;
-            gridView1.Columns[7].Visible = false;
+                string Search = "exec dbo.Rent_Search_By_Parametrs_3 " + "@Car_Num = '" + SelectItemRow2.ToString() + "'";
+                gridControl1.DataSource = DbConnection.DBConnect(Search);
+                gridView1.Columns[0].Visible = false;
+                gridView1.Columns[6].Visible = false;
+                gridView1.Columns[7].Visible = false;
 
-            GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер заявки", "Кол.во={0}");
-            gridView1.Columns["Номер заявки"].Summary.Add(item2);
+                GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер заявки", "Кол.во={0}");
+                gridView1.Columns["Номер заявки"].Summary.Add(item2);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void gridView2_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            //Ловит номер заявки из грида 2
-            string Id = gridView2.GetFocusedDataRow()[2].ToString();
-            date = gridView2.GetFocusedDataRow()[1].ToString();
-            product = gridView2.GetFocusedDataRow()[3].ToString();
-            string OwnerID = gridView2.GetFocusedDataRow()[5].ToString();
-            string RentID = gridView2.GetFocusedDataRow()[0].ToString();
-            OwnerName = gridView2.GetFocusedDataRow()[4].ToString();
-            Grid2Id = Convert.ToInt32(RentID);
-            SelectItemRow1 = Convert.ToInt32(Id);
-            OwnerIDS = Convert.ToInt32(OwnerID);
+            try
+            {
+                //Ловит номер заявки из грида 2
+                string Id = gridView2.GetFocusedDataRow()[2].ToString();
+                date = gridView2.GetFocusedDataRow()[1].ToString();
+                product = gridView2.GetFocusedDataRow()[3].ToString();
+                string OwnerID = gridView2.GetFocusedDataRow()[5].ToString();
+                string RentID = gridView2.GetFocusedDataRow()[0].ToString();
+                OwnerName = gridView2.GetFocusedDataRow()[4].ToString();
+                Grid2Id = Convert.ToInt32(RentID);
+                SelectItemRow1 = Convert.ToInt32(Id);
+                OwnerIDS = Convert.ToInt32(OwnerID);
 
-            gridControl3.DataSource = null;
-            gridView3.Columns.Clear();
+                gridControl3.DataSource = null;
+                gridView3.Columns.Clear();
 
-            string Search = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Rent_Num  = '" + SelectItemRow1.ToString() + "',"+ "@Type = " + 1;
-            gridControl3.DataSource = DbConnection.DBConnect(Search);
-            gridView3.Columns[0].Visible = false;
+                string Search = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Rent_Num  = '" + SelectItemRow1.ToString() + "'," + "@Type = " + 1;
+                gridControl3.DataSource = DbConnection.DBConnect(Search);
+                gridView3.Columns[0].Visible = false;
 
-            GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер В/Ц", "Кол.во={0}");
-            gridView3.Columns["Номер В/Ц"].Summary.Add(item3);
+                GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер В/Ц", "Кол.во={0}");
+                gridView3.Columns["Номер В/Ц"].Summary.Add(item3);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
