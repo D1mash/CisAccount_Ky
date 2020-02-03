@@ -140,6 +140,54 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             }
         }
 
+        private void LastRenderedService()
+        {
+            string GetParameter = "select Parameter from d__Parameter";
+            DataTable param = DbConnection.DBConnect(GetParameter);
+            string Params = param.Rows[0][0].ToString();
+
+            string query = "select [dbo].[CheckCarService] (" + textEdit1.Text.Trim() + ")";
+            DataTable dt1 = DbConnection.DBConnect(query);
+            int State = Convert.ToInt32(dt1.Rows[0][0].ToString());
+            if (State == 1)
+            {
+                panel1.Visible = true;
+                simpleButton7.Visible = true;
+                label1.Visible = true;
+                label1.Text = "Данная в/ц проходила обработку      в течении последних " + Params + " дней";
+            }
+            else
+            {
+                panel1.Visible = false;
+                label1.Visible = false;
+                simpleButton7.Visible = false;
+            }
+        }
+
+        private void LastRenderedService_1()
+        {
+            string GetParameter = "select Parameter from d__Parameter";
+            DataTable param = DbConnection.DBConnect(GetParameter);
+            string Params = param.Rows[0][0].ToString();
+
+            string query = "select [dbo].[CheckCarService_1] (" + textEdit1.Text.Trim() + "," + SelectItemRow + ")";
+            DataTable dt1 = DbConnection.DBConnect(query);
+            int State = Convert.ToInt32(dt1.Rows[0][0].ToString());
+            if (State == 1)
+            {
+                panel1.Visible = true;
+                simpleButton7.Visible = true;
+                label1.Visible = true;
+                label1.Text = "Данная в/ц проходила обработку      в течении последних " + Params + " дней";
+            }
+            else
+            {
+                panel1.Visible = false;
+                label1.Visible = false;
+                simpleButton7.Visible = false;
+            }
+        }
+
         private void textEdit1_Properties_EditValueChanged(object sender, EventArgs e)
         {
             try
@@ -156,6 +204,38 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     {
                         textEdit2.Text = "";
                     }
+
+                    if(textEdit1.Enabled == false)
+                    {
+                        LastRenderedService_1();
+                    }
+                    else if(SelectItemRow == 0)
+                    {
+                        LastRenderedService();
+                    }
+                    else if(SelectItemRow > 1 && textEdit1.Enabled == true)
+                    {
+                        LastRenderedService_1();
+                    }
+
+                    string LastRent = "exec dbo.LastRent " + textEdit1.Text.Trim();
+                    DataTable dt2 = DbConnection.DBConnect(LastRent);
+                    if (dt2.Rows.Count > 0)
+                    {
+                        memoEdit1.Visible = true;
+                        memoEdit1.Text = "Последняя заявка: " + dt2.Rows[0][1] + " от " + dt2.Rows[0][2] + "" + "\r\n" + "Продукт: " + dt2.Rows[0][5] + "" + "\r\n" + "Была передача: " + dt2.Rows[0][3];
+                    }
+                    else
+                    {
+                        memoEdit1.Visible = false;
+                    }
+                }
+                else
+                {
+                    panel1.Visible = false;
+                    label1.Visible = false;
+                    memoEdit1.Visible = false;
+                    simpleButton7.Visible = false;
                 }
             }
             catch (Exception ex)
@@ -183,15 +263,17 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         {
             try
             {
+                //Добавить
                 if(SelectItemRow == 0)
                 {
                     if (textEdit1.Text != string.Empty)
                     {
-                        string CheckOwner = "select c.Current_owner from d__Carriage c where c.CarNumber = " + textEdit1.Text.Trim();
+                        string CheckOwner = "select c.Current_owner from d__Carriage c where c.CarNumber = " + textEdit1.Text.Trim();                      
                         DataTable dt = DbConnection.DBConnect(CheckOwner);
-                        if (dt.Rows.Count > 0)
+                        string Check = dt.Rows[0][0].ToString();
+                        if (Check != "")
                         {
-                            if(textEdit3.Text != "")
+                            if(textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
                             {
                                 string Add = "declare @Id int; exec [dbo].[FillRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL, @CurrentID = @Id output; select @Id";
                                 DataTable HeadID = DbConnection.DBConnect(Add);
@@ -206,7 +288,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                             }
                             else
                             {
-                                MessageBox.Show("Номер акта не присвоен!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Заполните пустые поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                         else
@@ -215,6 +297,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         }
                     }
                 }
+                //Редактировать группу
                 else if(SelectItemRow == 1)
                 {
                     ArrayList rows = new ArrayList();
@@ -239,6 +322,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     }
                     Refresh();
                 }
+                //Редактировать
                 else
                 {
                     string CheckOwner = "select c.Current_owner from d__Carriage c where c.CarNumber = " + textEdit1.Text.Trim();
@@ -291,56 +375,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
 
                 GetCurrent();
                 simpleButton9.Enabled = false;
-
-                string CarNumber = gridView1.GetFocusedDataRow()[3].ToString();
-                if (gridView1.DataRowCount == 0)
-                {
-                    panel1.Visible = false;
-                    label1.Visible = false;
-                    memoEdit1.Visible = false;
-                    simpleButton7.Visible = false;
-                }
-                else
-                {
-                    if (CarNumber != string.Empty)
-                    {
-                        string query = "select [dbo].[CheckCarService] (" + CarNumber + "," + Id + ")";
-                        DataTable dt = DbConnection.DBConnect(query);
-                        int State = Convert.ToInt32(dt.Rows[0][0].ToString());
-                        if (State == 1)
-                        {
-                            panel1.Visible = true;
-                            simpleButton7.Visible = true;
-                            label1.Visible = true;
-                            label1.Text = "Данная в/ц проходила обработку      в течении последних 14 дней";
-                        }
-                        else
-                        {
-                            panel1.Visible = false;
-                            label1.Visible = false;
-                            simpleButton7.Visible = false;
-                        }
-
-                        string LastRent = "exec dbo.LastRent " + CarNumber;
-                        DataTable dt1 = DbConnection.DBConnect(LastRent);
-                        if (dt1.Rows.Count > 0)
-                        {
-                            memoEdit1.Visible = true;
-                            memoEdit1.Text = "Последняя заявка: " + dt1.Rows[0][1] + " от " + dt1.Rows[0][2] + "" + "\r\n" + "Продукт: " + dt1.Rows[0][5] + "" + "\r\n" + "Была передача: " + dt1.Rows[0][3];
-                        }
-                        else
-                        {
-                            memoEdit1.Visible = false;
-                        }
-                    }
-                    else
-                    {
-                        panel1.Visible = false;
-                        label1.Visible = false;
-                        memoEdit1.Visible = false;
-                        simpleButton7.Visible = false;
-                    }
-                }
             }
             catch (Exception ex)
             {
@@ -702,6 +736,14 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         DbConnection.DBConnect(delete);
                     }
                     Refresh();
+                    if(gridView1.RowCount > 0)
+                    {
+                        gridView1_RowCellClick(null,null);
+                    }
+                    else
+                    {
+                        textEdit1.Text = "";
+                    }
                 }
             }
             catch (Exception exp)
@@ -841,6 +883,9 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         private void simpleButton3_Click(object sender, EventArgs e)
         {
             Unblock();
+            string CarNum = textEdit1.Text.Trim();
+            textEdit1.Text = "";
+            textEdit1.Text = CarNum;            
         }
 
         private void simpleButton5_Click(object sender, EventArgs e)
@@ -885,11 +930,27 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         {
             try
             {
-                string CarNumber = gridView1.GetFocusedDataRow()[3].ToString();
-                string query = "exec [dbo].[LastRenderedService] " + CarNumber + ", " + SelectItemRow;
-                DataTable dt = DbConnection.DBConnect(query);
-                LastRenderedServiceForm last = new LastRenderedServiceForm(dt);
-                last.ShowDialog();
+                if (textEdit1.Enabled == false)
+                {
+                    string query = "exec [dbo].[LastRenderedService_1] " + textEdit1.Text.Trim() + "," + SelectItemRow;
+                    DataTable dt = DbConnection.DBConnect(query);
+                    LastRenderedServiceForm last = new LastRenderedServiceForm(dt);
+                    last.ShowDialog();
+                }
+                else if (SelectItemRow == 0)
+                {
+                    string query = "exec [dbo].[LastRenderedService] " + textEdit1.Text.Trim();
+                    DataTable dt = DbConnection.DBConnect(query);
+                    LastRenderedServiceForm last = new LastRenderedServiceForm(dt);
+                    last.ShowDialog();
+                }
+                else if (SelectItemRow > 1 && textEdit1.Enabled == true)
+                {
+                    string query = "exec [dbo].[LastRenderedService_1] " + textEdit1.Text.Trim() + "," + SelectItemRow;
+                    DataTable dt = DbConnection.DBConnect(query);
+                    LastRenderedServiceForm last = new LastRenderedServiceForm(dt);
+                    last.ShowDialog();
+                }
             }
             catch (Exception exp)
             {
@@ -949,10 +1010,19 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             checkEdit21.Visible = true;
             checkEdit22.Visible = true;
             checkEdit23.Visible = true;
+
+            textEdit1.Text = "";
+            textEdit2.Text = "";
+            textEdit3.Text = "";
         }
         private void simpleButton8_Click(object sender, EventArgs e)
         {
             Block();
+
+            if (gridView1.RowCount > 0)
+            {
+                gridView1_RowCellClick(null,null);
+            }
 
             simpleButton8.Visible = false;
             simpleButton6.Visible = true;

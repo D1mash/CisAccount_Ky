@@ -986,7 +986,10 @@ namespace Учет_цистерн
 
         private void дополнительныеПараметрыToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string GetParameter = "select Parameter from d__Parameter";
+            DataTable param = DbConnection.DBConnect(GetParameter);
             LastRent_Days last = new LastRent_Days();
+            last.textEdit1.Text = param.Rows[0][0].ToString();
             last.ShowDialog();
         }
 

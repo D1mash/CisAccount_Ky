@@ -79,6 +79,7 @@
             this.Controls.Add(this.textEdit1);
             this.Controls.Add(this.labelControl1);
             this.Name = "LastRent_Days";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Доп.параметры";
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -89,8 +90,8 @@
         #endregion
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        public DevExpress.XtraEditors.TextEdit textEdit1;
     }
 }
