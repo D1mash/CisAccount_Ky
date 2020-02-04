@@ -693,6 +693,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             textEdit22.Enabled = false;
             textEdit23.Enabled = false;
             textEdit24.Enabled = false;
+
+            checkEdit24.CheckState = CheckState.Unchecked;
         }
         private void Unblock()
         {
@@ -710,19 +712,22 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             comboBox2.Enabled = true;
             simpleButton1.Enabled = true;
 
-            textEdit12.Enabled = true;
-            textEdit13.Enabled = true;
-            textEdit14.Enabled = true;
-            textEdit15.Enabled = true;
-            textEdit16.Enabled = true;
-            textEdit17.Enabled = true;
-            textEdit18.Enabled = true;
-            textEdit19.Enabled = true;
-            textEdit20.Enabled = true;
-            textEdit21.Enabled = true;
-            textEdit22.Enabled = true;
-            textEdit23.Enabled = true;
-            textEdit24.Enabled = true;
+            if(checkEdit24.Checked)
+            {
+                textEdit12.Enabled = true;
+                textEdit13.Enabled = true;
+                textEdit14.Enabled = true;
+                textEdit15.Enabled = true;
+                textEdit16.Enabled = true;
+                textEdit17.Enabled = true;
+                textEdit18.Enabled = true;
+                textEdit19.Enabled = true;
+                textEdit20.Enabled = true;
+                textEdit21.Enabled = true;
+                textEdit22.Enabled = true;
+                textEdit23.Enabled = true;
+                textEdit24.Enabled = true;
+            }
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
@@ -896,6 +901,25 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             simpleButton9.Enabled = true;
             Temp = SelectItemRow;
             SelectItemRow = 0;
+            if (checkEdit24.Checked)
+            {
+                if(textEdit18.Text == string.Empty)
+                {
+                    textEdit12.Text = "0";
+                    textEdit13.Text = "0";
+                    textEdit14.Text = "0";
+                    textEdit15.Text = "0";
+                    textEdit16.Text = "0";
+                    textEdit17.Text = "0";
+                    textEdit18.Text = "0";
+                    textEdit19.Text = "0";
+                    textEdit20.Text = "0";
+                    textEdit21.Text = "0";
+                    textEdit22.Text = "0";
+                    textEdit23.Text = "0";
+                    textEdit24.Text = "0";
+                }
+            }
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
@@ -1015,19 +1039,22 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             checkEdit9.Visible = true;
             checkEdit10.Visible = true;
 
-            checkEdit3.Visible = true;
-            checkEdit12.Visible = true;
-            checkEdit13.Visible = true;
-            checkEdit14.Visible = true;
-            checkEdit15.Visible = true;
-            checkEdit16.Visible = true;
-            checkEdit17.Visible = true;
-            checkEdit18.Visible = true;
-            checkEdit19.Visible = true;
-            checkEdit20.Visible = true;
-            checkEdit21.Visible = true;
-            checkEdit22.Visible = true;
-            checkEdit23.Visible = true;
+            if (checkEdit24.Checked)
+            {
+                checkEdit3.Visible = true;
+                checkEdit12.Visible = true;
+                checkEdit13.Visible = true;
+                checkEdit14.Visible = true;
+                checkEdit15.Visible = true;
+                checkEdit16.Visible = true;
+                checkEdit17.Visible = true;
+                checkEdit18.Visible = true;
+                checkEdit19.Visible = true;
+                checkEdit20.Visible = true;
+                checkEdit21.Visible = true;
+                checkEdit22.Visible = true;
+                checkEdit23.Visible = true;
+            }
 
             textEdit1.Text = "";
             textEdit2.Text = "";
