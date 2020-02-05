@@ -68,58 +68,65 @@ namespace Учет_цистерн
             }
             else
             {
-                gridControl1.DataSource = null;
-                gridView1.Columns.Clear();
-                comboBox2.Enabled = true;
-
-                if (comboBox2.SelectedIndex == 0)
+                if (checkBox2.Checked)
                 {
-                    string RefreshAll = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
-                    dt = DbConnection.DBConnect(RefreshAll);
-                    //source.DataSource = dt;
-                    gridControl1.DataSource = dt;
-                    gridView1.Columns[0].Visible = false;
-                    gridView1.BestFitColumns();
-
-                    GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "СУМ={0}");
-                    gridView1.Columns["Сумма услуг"].Summary.Add(item1);
-
-                    GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Стоимость ТОР", "СУМ={0}");
-                    gridView1.Columns["Стоимость ТОР"].Summary.Add(item2);
-
-                    GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "№ акта", "Кол.во={0}");
-                    gridView1.Columns["№ акта"].Summary.Add(item3);
-
-                    progressBar.Maximum = TotalRow(dt);
-                    toolStripLabel1.Text = TotalRow(dt).ToString();
-
-                    string GetCountServiceCost = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
-                    getserv = DbConnection.DBConnect(GetCountServiceCost);
+                    gridControl1.DataSource = null;
+                    gridView1.Columns.Clear();
                 }
                 else
                 {
-                    string Refresh = "dbo.GetReportRenderedServices_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
-                    dt = DbConnection.DBConnect(Refresh);
-                    //source.DataSource = dataTable;
-                    gridControl1.DataSource = dt;
-                    gridView1.Columns[0].Visible = false;
+                    gridControl1.DataSource = null;
+                    gridView1.Columns.Clear();
+                    comboBox2.Enabled = true;
 
-                    progressBar.Maximum = TotalRow(dt);
-                    toolStripLabel1.Text = TotalRow(dt).ToString();
-                    gridView1.BestFitColumns();
+                    if (comboBox2.SelectedIndex == 0)
+                    {
+                        string RefreshAll = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + "@Type = " + 1;
+                        dt = DbConnection.DBConnect(RefreshAll);
+                        //source.DataSource = dt;
+                        gridControl1.DataSource = dt;
+                        gridView1.Columns[0].Visible = false;
+                        gridView1.BestFitColumns();
 
-                    GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "СУМ={0}");
-                    gridView1.Columns["Сумма услуг"].Summary.Add(item1);
+                        GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "СУМ={0}");
+                        gridView1.Columns["Сумма услуг"].Summary.Add(item1);
 
-                    GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Стоимость ТОР", "СУМ={0}");
-                    gridView1.Columns["Стоимость ТОР"].Summary.Add(item2);
+                        GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Стоимость ТОР", "СУМ={0}");
+                        gridView1.Columns["Стоимость ТОР"].Summary.Add(item2);
 
-                    GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "№ акта", "Кол.во={0}");
-                    gridView1.Columns["№ акта"].Summary.Add(item3);
-                    
-                    string GetCountServiceCost = "exec dbo.Itog_Report  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
-                    getserv = DbConnection.DBConnect(GetCountServiceCost);
+                        GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "№ акта", "Кол.во={0}");
+                        gridView1.Columns["№ акта"].Summary.Add(item3);
 
+                        progressBar.Maximum = TotalRow(dt);
+                        toolStripLabel1.Text = TotalRow(dt).ToString();
+
+                        string GetCountServiceCost = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
+                        getserv = DbConnection.DBConnect(GetCountServiceCost);
+                    }
+                    else
+                    {
+                        string Refresh = "dbo.GetReportRenderedServices_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
+                        dt = DbConnection.DBConnect(Refresh);
+                        //source.DataSource = dataTable;
+                        gridControl1.DataSource = dt;
+                        gridView1.Columns[0].Visible = false;
+
+                        progressBar.Maximum = TotalRow(dt);
+                        toolStripLabel1.Text = TotalRow(dt).ToString();
+                        gridView1.BestFitColumns();
+
+                        GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "СУМ={0}");
+                        gridView1.Columns["Сумма услуг"].Summary.Add(item1);
+
+                        GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Стоимость ТОР", "СУМ={0}");
+                        gridView1.Columns["Стоимость ТОР"].Summary.Add(item2);
+
+                        GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "№ акта", "Кол.во={0}");
+                        gridView1.Columns["№ акта"].Summary.Add(item3);
+
+                        string GetCountServiceCost = "exec dbo.Itog_Report  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + comboBox2.SelectedValue + "'";
+                        getserv = DbConnection.DBConnect(GetCountServiceCost);
+                    }
                 }
             }
         }
@@ -172,7 +179,17 @@ namespace Учет_цистерн
             }
             else
             {
-                MessageBox.Show("Обновите данные!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (checkBox2.Checked)
+                {
+                    _inputParametr1.owner = comboBox2.Text;
+                    progressBar.Minimum = 0;
+                    progressBar.Value = 0;
+                    backgroundWorker.RunWorkerAsync(_inputParametr1);
+                }
+                else
+                {
+                    MessageBox.Show("Обновите данные!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -235,7 +252,7 @@ namespace Учет_цистерн
                                 }
                                 else
                                 {
-                                        worksheet.Cells[i + k, j + 8] = dt.Rows[i][j].ToString();
+                                    worksheet.Cells[i + k, j + 8] = dt.Rows[i][j].ToString();
                                 }
 
                             }
@@ -282,145 +299,213 @@ namespace Учет_цистерн
                 }
                 else
                 {
-                    string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
-
-                    string ownerName = ((DataParametr)e.Argument).owner;
-
-                    Excel.Application app = new Excel.Application();
-                    Process appProcess = GetExcelProcess(app);
-                    Excel.Workbook workbook = app.Workbooks.Open(path);
-                    Excel.Worksheet worksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
-                    app.Visible = false;
-                    object misValue = System.Reflection.Missing.Value;
-
-                    int cellRowIndex = 0;
-                    int totalTOR4 = 0;
-                    double totalSumCost = 0;
-                    double totalSumTor = 0;
-
-                    if (ownerName == "Все")
+                    if (checkBox2.Checked)
                     {
-                        worksheet.Range["C4"].Value = "всех";
+                        DataTable dataTableAll, dataTable;
+
+                        string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
+
+                        Excel.Application app = new Excel.Application();
+                        Process appProcess = GetExcelProcess(app);
+                        Excel.Workbook workbook = app.Workbooks.Open(path);
+                        Excel.Worksheet worksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
+                        worksheet.Name = "Реестр";
+                        object misValue = System.Reflection.Missing.Value;
+
+                        string RefreshAllCount = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + "@Type = " + 2;
+                        dt = DbConnection.DBConnect(RefreshAllCount);
+
+                        string RefreshAll = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + "@Type = " + 1;
+                        dataTableAll = DbConnection.DBConnect(RefreshAll);
+                        
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            worksheet.Copy(Type.Missing, worksheet);
+                            //Excel.Worksheet xlFocused = app.Worksheets[i];
+                            //worksheet.Name = dt.Rows[i][0].ToString();
+                            //workbook.Worksheets[i].Name = dt.Rows[i][0].ToString();
+                        }
+
+
+                        for(int i = 0; i< workbook.Worksheets.Count; i++)
+                        {
+                            Excel.Worksheet SheetsName = workbook.Worksheets.get_Item(i);
+                            string Name = SheetsName.Name;
+
+                            MessageBox.Show(Name, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            //if (Name == "Реестр")
+                            //{
+
+                            //}
+                            //else
+                            //{
+                            //    for (int j = 0; j < dt.Rows.Count; j++)
+                            //    {
+                            //        string Refresh = "dbo.GetReportRenderedServices_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + dt.Rows[j][0].ToString() + "'";
+                            //        dataTable = DbConnection.DBConnect(Refresh);
+
+                            //        Excel.Worksheet FocusSheet = app.Worksheets[i];
+                            //        FocusSheet.Activate();
+
+                            //        worksheet.Range["C4"].Value = dt.Rows[j][0].ToString();
+
+                            //        worksheet.Range["C6"].Value = "в ТОО Казыгурт-Юг c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
+
+                            //        FormattingExcelCells(worksheet.Range["C6"], false, false);
+                            //    }
+                            //}
+                        }
+                       
+                        app.DisplayAlerts = false;
+
+                        workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Общий Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                        workbook.Close(0);
+                        app.Quit();
+                        appProcess.Kill();
+
+                        Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Общий Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx");
                     }
                     else
                     {
-                        worksheet.Range["C4"].Value = ownerName;
-                    }
+                        string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
 
-                    worksheet.Range["C6"].Value = "в ТОО Казыгурт-Юг c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
+                        string ownerName = ((DataParametr)e.Argument).owner;
 
-                    FormattingExcelCells(worksheet.Range["C6"], false, false);
+                        Excel.Application app = new Excel.Application();
+                        Process appProcess = GetExcelProcess(app);
+                        Excel.Workbook workbook = app.Workbooks.Open(path);
+                        Excel.Worksheet worksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
+                        app.Visible = false;
+                        object misValue = System.Reflection.Missing.Value;
 
-                    worksheet.Range["B13:K22"].Cut(worksheet.Cells[dt.Rows.Count + 16 + getserv.Rows.Count * 2, 2]);
+                        int cellRowIndex = 0;
+                        double totalSumCost = 0;
+                        double totalSumTor = 0;
 
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        worksheet.Cells[i + 10, 1] = i + 1;
-
-                        for (int j = 1; j < dt.Columns.Count; j++)
+                        if (ownerName == "Все")
                         {
-                            if (j != 3 && j < 4)
+                            worksheet.Range["C4"].Value = "всех";
+                        }
+                        else
+                        {
+                            worksheet.Range["C4"].Value = ownerName;
+                        }
+
+                        worksheet.Range["C6"].Value = "в ТОО Казыгурт-Юг c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
+
+                        FormattingExcelCells(worksheet.Range["C6"], false, false);
+
+                        worksheet.Range["B13:K22"].Cut(worksheet.Cells[dt.Rows.Count + 16 + getserv.Rows.Count * 2, 2]);
+
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            worksheet.Cells[i + 10, 1] = i + 1;
+
+                            for (int j = 1; j < dt.Columns.Count; j++)
                             {
-                                worksheet.Cells[i + 10, j + 1] = dt.Rows[i][j].ToString();
-                            }
-                            else
-                            {
-                                if (j == 3)
+                                if (j != 3 && j < 4)
                                 {
-                                    if (dt.Rows[i][j].ToString().Trim() == "8")
-                                    {
-                                        worksheet.Cells[i + 10, 5] = dt.Rows[i][j].ToString();
-                                    }
-                                    else
-                                    {
-                                        worksheet.Cells[i + 10, 4] = dt.Rows[i][j].ToString();
-                                    }
-                                }
-                            }
-                            if (j >= 4 && j <= 5)
-                            {
-                                worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
-                            }
-                            else
-                            {
-                                if (j >= 6 && j <= 12)
-                                {
-                                    worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
-                                }
-                            }
-                            if (j > 12)
-                            {
-                                worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
-                                if (j == 15)
-                                {
-                                    totalSumCost += double.Parse(dt.Rows[i][j].ToString());
+                                    worksheet.Cells[i + 10, j + 1] = dt.Rows[i][j].ToString();
                                 }
                                 else
                                 {
-                                    if (j == 16)
+                                    if (j == 3)
                                     {
-                                        totalSumTor += double.Parse(dt.Rows[i][j].ToString());
+                                        if (dt.Rows[i][j].ToString().Trim() == "8")
+                                        {
+                                            worksheet.Cells[i + 10, 5] = dt.Rows[i][j].ToString();
+                                        }
+                                        else
+                                        {
+                                            worksheet.Cells[i + 10, 4] = dt.Rows[i][j].ToString();
+                                        }
                                     }
+                                }
+                                if (j >= 4 && j <= 5)
+                                {
+                                    worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
+                                }
+                                else
+                                {
+                                    if (j >= 6 && j <= 12)
+                                    {
+                                        worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
+                                    }
+                                }
+                                if (j > 12)
+                                {
+                                    worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
+                                    if (j == 15)
+                                    {
+                                        totalSumCost += double.Parse(dt.Rows[i][j].ToString());
+                                    }
+                                    else
+                                    {
+                                        if (j == 16)
+                                        {
+                                            totalSumTor += double.Parse(dt.Rows[i][j].ToString());
+                                        }
+                                    }
+                                }
+                            }
+
+                            Excel.Range range = worksheet.Range[worksheet.Cells[i + 10, 1], worksheet.Cells[i + 10, dt.Columns.Count + 2]];
+                            FormattingExcelCells(range, true, true);
+
+                            backgroundWorker.ReportProgress(i);
+
+                            cellRowIndex++;
+                        }
+
+                        ////worksheet.Range[dt.Rows.Count+10, 13].NumberFormat = "#,##0.00";
+
+                        worksheet.Cells[dt.Rows.Count + 12, 2] = "=C6";
+
+                        if (ownerName == "Все")
+                        {
+                            worksheet.Cells[dt.Rows.Count + 14, 2] = "Всего обработано вагонов - цистерн всех собственников по видам операций:";
+                        }
+                        else
+                        {
+                            worksheet.Cells[dt.Rows.Count + 14, 2] = "Всего обработано вагонов - цистерн " + ownerName + " по видам операций:";
+                        }
+
+                        ////Итоговая сводка
+                        int rowcount = 0;
+                        for (int i = 0; i < getserv.Rows.Count; i++)
+                        {
+                            rowcount++;
+                            for (int j = 0; j < getserv.Columns.Count; j++)
+                            {
+                                if (j == 0)
+                                {
+                                    worksheet.Cells[i + cellRowIndex + 15 + rowcount, j + 2] = getserv.Rows[i][j].ToString();
+                                }
+                                else
+                                {
+                                    worksheet.Cells[i + cellRowIndex + 15 + rowcount, j + 12] = getserv.Rows[i][j].ToString();
                                 }
                             }
                         }
 
-                        Excel.Range range = worksheet.Range[worksheet.Cells[i + 10, 1], worksheet.Cells[i + 10, dt.Columns.Count+2]];
-                        FormattingExcelCells(range, true, true);
+                        worksheet.Cells[dt.Rows.Count + 14, 13] = cellRowIndex;
 
-                        backgroundWorker.ReportProgress(i);
+                        ////Итоговая сумма
+                        worksheet.Cells[dt.Rows.Count + getserv.Rows.Count * 2 + 16, 14] = totalSumTor + totalSumCost;
 
-                        cellRowIndex++;
+                        Excel.Range range1 = worksheet.Range[worksheet.Cells[dt.Rows.Count + 12, 2], worksheet.Cells[dt.Rows.Count + getserv.Rows.Count * 2 + 19, 14]];
+                        FormattingExcelCells(range1, false, false);
+
+                        app.DisplayAlerts = false;
+
+                        workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                        workbook.Close(0);
+                        app.Quit();
+                        appProcess.Kill();
+
+                        Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx");
                     }
-
-                    ////worksheet.Range[dt.Rows.Count+10, 13].NumberFormat = "#,##0.00";
-
-                    worksheet.Cells[dt.Rows.Count + 12, 2] = "=C6";
-
-                    if (ownerName == "Все")
-                    {
-                        worksheet.Cells[dt.Rows.Count + 14, 2] = "Всего обработано вагонов - цистерн всех собственников по видам операций:";
-                    }
-                    else
-                    {
-                        worksheet.Cells[dt.Rows.Count + 14, 2] = "Всего обработано вагонов - цистерн " + ownerName + " по видам операций:";
-                    }
-
-                    ////Итоговая сводка
-                    int rowcount = 0;
-                    for (int i = 0; i < getserv.Rows.Count; i++)
-                    {
-                        rowcount++;
-                        for (int j = 0; j < getserv.Columns.Count; j++)
-                        {
-                            if (j == 0)
-                            {
-                                worksheet.Cells[i + cellRowIndex + 15 + rowcount, j + 2] = getserv.Rows[i][j].ToString();
-                            }
-                            else
-                            {
-                                worksheet.Cells[i + cellRowIndex + 15 + rowcount, j + 12] = getserv.Rows[i][j].ToString();
-                            }
-                        }
-                    }
-
-                    worksheet.Cells[dt.Rows.Count + 14, 13] = cellRowIndex;
-                    
-                    ////Итоговая сумма
-                    worksheet.Cells[dt.Rows.Count + getserv.Rows.Count * 2 + 16, 14] = totalSumTor + totalSumCost;
-
-                    Excel.Range range1 = worksheet.Range[worksheet.Cells[dt.Rows.Count + 12, 2], worksheet.Cells[dt.Rows.Count + getserv.Rows.Count * 2 + 19, 14]];
-                    FormattingExcelCells(range1, false, false);
-                  
-                    app.DisplayAlerts = false;
-                    
-                    workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                    workbook.Close(0);
-                    app.Quit();
-                    appProcess.Kill();
-
-                    Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx");
-                   
                 }
             }
             catch (Exception ex)
@@ -468,7 +553,11 @@ namespace Учет_цистерн
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            Refresh();
+            if (checkBox1.Checked)
+            {
+                checkBox2.Checked = false;
+                Refresh();
+            }
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -484,6 +573,15 @@ namespace Учет_цистерн
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             Refresh();
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox2.Checked)
+            {
+                checkBox1.Checked = false;
+                Refresh();
+            }
         }
     }
 }

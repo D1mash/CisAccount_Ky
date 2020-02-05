@@ -49,6 +49,7 @@
             this.LblStatus = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -72,12 +73,13 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.checkBox2);
             this.groupBox5.Controls.Add(this.checkBox1);
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Controls.Add(this.comboBox2);
             this.groupBox5.Location = new System.Drawing.Point(214, 12);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(276, 74);
+            this.groupBox5.Size = new System.Drawing.Size(257, 74);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             // 
@@ -106,7 +108,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(84, 13);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(186, 21);
+            this.comboBox2.Size = new System.Drawing.Size(167, 21);
             this.comboBox2.TabIndex = 5;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
@@ -165,7 +167,7 @@
             // 
             this.btn_Excel.Image = global::Учет_цистерн.Properties.Resources.icons8_microsoft_excel_2019_36;
             this.btn_Excel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Excel.Location = new System.Drawing.Point(496, 17);
+            this.btn_Excel.Location = new System.Drawing.Point(478, 19);
             this.btn_Excel.Name = "btn_Excel";
             this.btn_Excel.Size = new System.Drawing.Size(123, 42);
             this.btn_Excel.TabIndex = 0;
@@ -256,6 +258,17 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(16, 22);
             this.toolStripLabel1.Text = "...";
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(152, 45);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(99, 17);
+            this.checkBox2.TabIndex = 9;
+            this.checkBox2.Text = "Общий реестр";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,5 +321,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
