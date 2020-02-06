@@ -26,8 +26,8 @@ namespace Учет_цистерн
         {
             InitializeComponent();
         }
-      
-        private void Refresh()
+        
+        private new void Refresh()
         {
             if (checkBox1.Checked)
             {
@@ -72,6 +72,13 @@ namespace Учет_цистерн
                 {
                     gridControl1.DataSource = null;
                     gridView1.Columns.Clear();
+
+                    string RefreshAll = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + "@Type = " + 1;
+                    dt = DbConnection.DBConnect(RefreshAll);
+
+                    progressBar.Maximum = TotalRow(dt);
+                    toolStripLabel1.Text = TotalRow(dt).ToString();
+
                 }
                 else
                 {
@@ -201,14 +208,14 @@ namespace Учет_цистерн
 
         DataParametr _inputParametr1;
 
-        [DllImport("user32.dll")]
-        static extern int GetWindowThreadProcessId(int hWnd, out int lpdwProcessId);
+        //[DllImport("user32.dll")]
+        //static extern int GetWindowThreadProcessId(int hWnd, out int lpdwProcessId);
 
-        static Process GetExcelProcess(Excel.Application excelApp)
-        {
-            GetWindowThreadProcessId(excelApp.Hwnd, out int id);
-            return Process.GetProcessById(id);
-        }
+        //static Process GetExcelProcess(Excel.Application excelApp)
+        //{
+        //    GetWindowThreadProcessId(excelApp.Hwnd, out int id);
+        //    return Process.GetProcessById(id);
+        //}
 
         private void BackgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
@@ -218,7 +225,6 @@ namespace Учет_цистерн
                 {
                     string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Итог по станции.xlsx";
                     Excel.Application app = new Excel.Application();
-                    Process appProcess = GetExcelProcess(app);
                     Excel.Workbook workbook = app.Workbooks.Open(path);
                     Excel.Worksheet worksheet = workbook.Worksheets.get_Item("Итоговая  справка");
                     app.Visible = false;
@@ -293,7 +299,10 @@ namespace Учет_цистерн
                     workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Итог по станции.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     workbook.Close(0);
                     app.Quit();
-                    appProcess.Kill();
+
+                    releaseObject(workbook);
+                    releaseObject(worksheet);
+                    releaseObject(app);
 
                     Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Итог по станции.xlsx");
                 }
@@ -566,7 +575,6 @@ namespace Учет_цистерн
                         string ownerName = ((DataParametr)e.Argument).owner;
 
                         Excel.Application app = new Excel.Application();
-                        Process appProcess = GetExcelProcess(app);
                         Excel.Workbook workbook = app.Workbooks.Open(path);
                         Excel.Worksheet worksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
                         app.Visible = false;
@@ -695,7 +703,10 @@ namespace Учет_цистерн
                         workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                         workbook.Close(0);
                         app.Quit();
-                        appProcess.Kill();
+
+                        releaseObject(workbook);
+                        releaseObject(worksheet);
+                        releaseObject(app);
 
                         Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx");
                     }
