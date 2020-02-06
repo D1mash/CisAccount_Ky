@@ -26,7 +26,7 @@ namespace Учет_цистерн.Forms.Отчеты
             InitializeComponent();
         }
         
-        private void Refresh()
+        private new void Refresh()
         {
             string RefreshAll = "exec [dbo].[GetReportAUTN] '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
             dt = DbConnection.DBConnect(RefreshAll);
@@ -65,14 +65,14 @@ namespace Учет_цистерн.Forms.Отчеты
             }
         }
 
-        [DllImport("user32.dll")]
-        static extern int GetWindowThreadProcessId(int hWnd, out int lpdwProcessId);
+        //[DllImport("user32.dll")]
+        //static extern int GetWindowThreadProcessId(int hWnd, out int lpdwProcessId);
 
-        static Process GetExcelProcess(Excel.Application excelApp)
-        {
-            GetWindowThreadProcessId(excelApp.Hwnd, out int id);
-            return Process.GetProcessById(id);
-        }
+        //static Process GetExcelProcess(Excel.Application excelApp)
+        //{
+        //    GetWindowThreadProcessId(excelApp.Hwnd, out int id);
+        //    return Process.GetProcessById(id);
+        //}
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -80,7 +80,7 @@ namespace Учет_цистерн.Forms.Отчеты
             {
                 string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Реестр АУТН.xlsx";
                 Excel.Application app = new Excel.Application();
-                Process appProcess = GetExcelProcess(app);
+                //Process appProcess = GetExcelProcess(app);
                 Excel.Workbook workbook = app.Workbooks.Open(path);
                 Excel.Worksheet worksheet = workbook.Worksheets.get_Item("АУТН");
                 app.Visible = false;
@@ -105,7 +105,11 @@ namespace Учет_цистерн.Forms.Отчеты
                 workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр АУТН.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                 workbook.Close(0);
                 app.Quit();
-                appProcess.Kill();
+                //appProcess.Kill();
+
+                releaseObject(workbook);
+                releaseObject(worksheet);
+                releaseObject(app);
 
                 Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр АУТН.xlsx");
             }
@@ -172,6 +176,24 @@ namespace Учет_цистерн.Forms.Отчеты
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             Refresh();
+        }
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
         }
     }
 }
