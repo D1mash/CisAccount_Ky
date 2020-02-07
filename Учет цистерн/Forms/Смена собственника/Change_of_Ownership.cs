@@ -43,8 +43,8 @@ namespace Учет_цистерн.Forms
 
                 FillCombobox();
 
-                textBox1.Text = String.Empty;
-                textBox2.Text = String.Empty;
+                textEdit2.Text = String.Empty;
+                textEdit3.Text = String.Empty;
 
             }
             catch (Exception ex)
@@ -60,9 +60,9 @@ namespace Учет_цистерн.Forms
         {
             try
             {
-                if (textBox1.Text != String.Empty)
+                if (textEdit2.Text != String.Empty)
                 {
-                    string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textBox1.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textBox2.Text + "', @CurrentID = @Id output; select @Id";
+                    string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textEdit2.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textEdit3.Text + "', @CurrentID = @Id output; select @Id";
                     DataTable HeadID = DbConnection.DBConnect(NewHead);
 
                     //Список вагонов для передачи в БД
@@ -172,15 +172,6 @@ namespace Учет_цистерн.Forms
             RefreshGrid();
         }
 
-        //Построчная вставка нажатием на Enter
-        private void textBox3_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button2_Click_1(null, null);
-            }
-        }
-
         //Мульти удаление
         private void уадилитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -240,7 +231,13 @@ namespace Учет_цистерн.Forms
 
         public string GetDate { get; set; }
 
-        
+        private void textEdit1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button2_Click_1(null, null);
+            }
+        }
     }
 }
   
