@@ -585,6 +585,7 @@
             this.textEdit14.Location = new System.Drawing.Point(103, 100);
             this.textEdit14.Name = "textEdit14";
             this.textEdit14.Properties.Mask.BeepOnError = true;
+            this.textEdit14.Properties.Mask.EditMask = "\\d";
             this.textEdit14.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit14.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit14.Properties.MaxLength = 1;
@@ -1091,6 +1092,7 @@
             this.textEdit4.Location = new System.Drawing.Point(127, 82);
             this.textEdit4.Name = "textEdit4";
             this.textEdit4.Properties.Mask.BeepOnError = true;
+            this.textEdit4.Properties.Mask.EditMask = "\\d";
             this.textEdit4.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit4.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit4.Size = new System.Drawing.Size(209, 20);
