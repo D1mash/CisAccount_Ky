@@ -92,11 +92,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 Fillcombobox();
                 Block();
 
-                panel1.Visible = false;
-                label1.Visible = false;
-                memoEdit1.Visible = false;
-                simpleButton7.Visible = false;
-                simpleButton8.Visible = false;
                 simpleButton9.Enabled = false;
 
                 if(gridView1.RowCount == 0)
@@ -108,6 +103,12 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     textEdit9.Text = "0";
                     textEdit10.Text = "0";
                     textEdit11.Text = "0";
+
+                    panel1.Visible = false;
+                    label1.Visible = false;
+                    memoEdit1.Visible = false;
+                    simpleButton7.Visible = false;
+                    simpleButton8.Visible = false;
                     //textEdit12.Text = "0";
                     //textEdit13.Text = "0";
                     //textEdit14.Text = "0";
@@ -122,7 +123,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     //textEdit23.Text = "0";
                 }
 
-                if(gridView1.RowCount > 0)
+                if (gridView1.RowCount > 0)
                 {
                     gridView1_RowCellClick(null,null);
                 }
@@ -154,7 +155,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 panel1.Visible = true;
                 simpleButton7.Visible = true;
                 label1.Visible = true;
-                label1.Text = "Данная в/ц проходила обработку      в течении последних " + Params + " дней";
+                label1.Text = "Данная в/ц проходила обработку в течении последних " + Params + " дней";
             }
             else
             {
@@ -178,7 +179,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 panel1.Visible = true;
                 simpleButton7.Visible = true;
                 label1.Visible = true;
-                label1.Text = "Данная в/ц проходила обработку      в течении последних " + Params + " дней";
+                label1.Text = "Данная в/ц проходила обработку в течении последних " + Params + " дней";
             }
             else
             {

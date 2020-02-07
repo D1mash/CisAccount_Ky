@@ -917,7 +917,7 @@
             this.simpleButton1.Appearance.Options.UseFont = true;
             this.simpleButton1.Location = new System.Drawing.Point(201, 514);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(135, 32);
+            this.simpleButton1.Size = new System.Drawing.Size(130, 32);
             this.simpleButton1.TabIndex = 15;
             this.simpleButton1.Text = "СОХРАНИТЬ";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -1028,7 +1028,7 @@
             this.simpleButton7.Appearance.Options.UseFont = true;
             this.simpleButton7.Location = new System.Drawing.Point(8, 514);
             this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(135, 32);
+            this.simpleButton7.Size = new System.Drawing.Size(119, 32);
             this.simpleButton7.TabIndex = 18;
             this.simpleButton7.Text = "Просмотр";
             this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
@@ -1055,7 +1055,7 @@
             // 
             // memoEdit1
             // 
-            this.memoEdit1.Location = new System.Drawing.Point(8, 619);
+            this.memoEdit1.Location = new System.Drawing.Point(8, 595);
             this.memoEdit1.Name = "memoEdit1";
             this.memoEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.memoEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1071,15 +1071,15 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(8, 552);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(328, 61);
+            this.panel1.Size = new System.Drawing.Size(328, 42);
             this.panel1.TabIndex = 19;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(18, 5);
+            this.label1.Location = new System.Drawing.Point(5, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(262, 50);
+            this.label1.Size = new System.Drawing.Size(319, 38);
             this.label1.TabIndex = 0;
             // 
             // textEdit3
