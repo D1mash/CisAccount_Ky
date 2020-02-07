@@ -1113,6 +1113,7 @@
             this.checkEdit24.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkEdit24.Properties.Appearance.Options.UseFont = true;
             this.checkEdit24.Properties.Caption = "Использовать АУТН";
+            this.checkEdit24.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit24_Properties_CheckStateChanged);
             this.checkEdit24.Size = new System.Drawing.Size(140, 20);
             this.checkEdit24.TabIndex = 8;
             // 
