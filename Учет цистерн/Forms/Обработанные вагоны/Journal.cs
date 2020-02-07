@@ -94,6 +94,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
 
                 simpleButton9.Enabled = false;
 
+                checkEdit24.Enabled = false;
+
                 if(gridView1.RowCount == 0)
                 {
                     textEdit5.Text = "0";
@@ -390,6 +392,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
 
                 GetCurrent();
                 simpleButton9.Enabled = false;
+                checkEdit24.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -880,6 +883,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         private void simpleButton2_Click(object sender, EventArgs e)
         {
             Unblock();
+            checkEdit24.Enabled = true;
             textEdit1.Text = "";
             simpleButton9.Enabled = true;
             Temp = SelectItemRow;
@@ -889,6 +893,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         private void simpleButton3_Click(object sender, EventArgs e)
         {
             Unblock();
+            checkEdit24.Enabled = true;
             string CarNum = textEdit1.Text.Trim();
             textEdit1.Text = "";
             textEdit1.Text = CarNum;            
@@ -1002,6 +1007,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             checkEdit8.Visible = true;
             checkEdit9.Visible = true;
             checkEdit10.Visible = true;
+
+            checkEdit24.Enabled = true;
 
             textEdit1.Text = "";
             textEdit2.Text = "";

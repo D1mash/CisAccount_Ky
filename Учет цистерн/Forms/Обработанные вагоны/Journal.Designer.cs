@@ -312,6 +312,10 @@
             // 
             this.textEdit17.Location = new System.Drawing.Point(275, 154);
             this.textEdit17.Name = "textEdit17";
+            this.textEdit17.Properties.Mask.BeepOnError = true;
+            this.textEdit17.Properties.Mask.EditMask = "\\d";
+            this.textEdit17.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit17.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit17.Properties.MaxLength = 1;
             this.textEdit17.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit17_Properties_KeyPress);
             this.textEdit17.Size = new System.Drawing.Size(48, 20);
@@ -349,6 +353,10 @@
             // 
             this.textEdit19.Location = new System.Drawing.Point(275, 128);
             this.textEdit19.Name = "textEdit19";
+            this.textEdit19.Properties.Mask.BeepOnError = true;
+            this.textEdit19.Properties.Mask.EditMask = "\\d";
+            this.textEdit19.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit19.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit19.Properties.MaxLength = 1;
             this.textEdit19.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit19_Properties_KeyPress);
             this.textEdit19.Size = new System.Drawing.Size(48, 20);
@@ -378,6 +386,10 @@
             // 
             this.textEdit20.Location = new System.Drawing.Point(275, 102);
             this.textEdit20.Name = "textEdit20";
+            this.textEdit20.Properties.Mask.BeepOnError = true;
+            this.textEdit20.Properties.Mask.EditMask = "\\d";
+            this.textEdit20.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit20.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit20.Properties.MaxLength = 1;
             this.textEdit20.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit20_Properties_KeyPress);
             this.textEdit20.Size = new System.Drawing.Size(48, 20);
@@ -407,6 +419,10 @@
             // 
             this.textEdit21.Location = new System.Drawing.Point(275, 76);
             this.textEdit21.Name = "textEdit21";
+            this.textEdit21.Properties.Mask.BeepOnError = true;
+            this.textEdit21.Properties.Mask.EditMask = "\\d";
+            this.textEdit21.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit21.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit21.Properties.MaxLength = 1;
             this.textEdit21.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit21_Properties_KeyPress);
             this.textEdit21.Size = new System.Drawing.Size(48, 20);
@@ -436,6 +452,10 @@
             // 
             this.textEdit22.Location = new System.Drawing.Point(275, 50);
             this.textEdit22.Name = "textEdit22";
+            this.textEdit22.Properties.Mask.BeepOnError = true;
+            this.textEdit22.Properties.Mask.EditMask = "\\d";
+            this.textEdit22.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit22.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit22.Properties.MaxLength = 1;
             this.textEdit22.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit22_Properties_KeyPress);
             this.textEdit22.Size = new System.Drawing.Size(48, 20);
@@ -465,6 +485,10 @@
             // 
             this.textEdit23.Location = new System.Drawing.Point(275, 24);
             this.textEdit23.Name = "textEdit23";
+            this.textEdit23.Properties.Mask.BeepOnError = true;
+            this.textEdit23.Properties.Mask.EditMask = "\\d";
+            this.textEdit23.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit23.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit23.Properties.MaxLength = 1;
             this.textEdit23.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit23_Properties_KeyPress);
             this.textEdit23.Size = new System.Drawing.Size(48, 20);
@@ -494,6 +518,10 @@
             // 
             this.textEdit16.Location = new System.Drawing.Point(103, 152);
             this.textEdit16.Name = "textEdit16";
+            this.textEdit16.Properties.Mask.BeepOnError = true;
+            this.textEdit16.Properties.Mask.EditMask = "\\d";
+            this.textEdit16.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit16.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit16.Properties.MaxLength = 1;
             this.textEdit16.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit16_Properties_KeyPress);
             this.textEdit16.Size = new System.Drawing.Size(48, 20);
@@ -523,6 +551,10 @@
             // 
             this.textEdit15.Location = new System.Drawing.Point(103, 126);
             this.textEdit15.Name = "textEdit15";
+            this.textEdit15.Properties.Mask.BeepOnError = true;
+            this.textEdit15.Properties.Mask.EditMask = "\\d";
+            this.textEdit15.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit15.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit15.Properties.MaxLength = 1;
             this.textEdit15.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit15_Properties_KeyPress);
             this.textEdit15.Size = new System.Drawing.Size(48, 20);
@@ -552,6 +584,9 @@
             // 
             this.textEdit14.Location = new System.Drawing.Point(103, 100);
             this.textEdit14.Name = "textEdit14";
+            this.textEdit14.Properties.Mask.BeepOnError = true;
+            this.textEdit14.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit14.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit14.Properties.MaxLength = 1;
             this.textEdit14.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit14_Properties_KeyPress);
             this.textEdit14.Size = new System.Drawing.Size(48, 20);
@@ -581,6 +616,10 @@
             // 
             this.textEdit13.Location = new System.Drawing.Point(103, 75);
             this.textEdit13.Name = "textEdit13";
+            this.textEdit13.Properties.Mask.BeepOnError = true;
+            this.textEdit13.Properties.Mask.EditMask = "\\d";
+            this.textEdit13.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit13.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit13.Properties.MaxLength = 1;
             this.textEdit13.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit13_Properties_KeyPress);
             this.textEdit13.Size = new System.Drawing.Size(48, 20);
@@ -610,6 +649,10 @@
             // 
             this.textEdit12.Location = new System.Drawing.Point(103, 48);
             this.textEdit12.Name = "textEdit12";
+            this.textEdit12.Properties.Mask.BeepOnError = true;
+            this.textEdit12.Properties.Mask.EditMask = "\\d";
+            this.textEdit12.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit12.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit12.Properties.MaxLength = 1;
             this.textEdit12.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit12_Properties_KeyPress);
             this.textEdit12.Size = new System.Drawing.Size(48, 20);
@@ -639,7 +682,12 @@
             // 
             this.textEdit18.Location = new System.Drawing.Point(103, 23);
             this.textEdit18.Name = "textEdit18";
+            this.textEdit18.Properties.Mask.BeepOnError = true;
+            this.textEdit18.Properties.Mask.EditMask = "\\d";
+            this.textEdit18.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit18.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit18.Properties.MaxLength = 1;
+            this.textEdit18.Properties.Name = "textEdit18";
             this.textEdit18.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit18_Properties_KeyPress);
             this.textEdit18.Size = new System.Drawing.Size(48, 20);
             this.textEdit18.TabIndex = 16;
@@ -777,6 +825,10 @@
             // 
             this.textEdit5.Location = new System.Drawing.Point(138, 102);
             this.textEdit5.Name = "textEdit5";
+            this.textEdit5.Properties.Mask.BeepOnError = true;
+            this.textEdit5.Properties.Mask.EditMask = "\\d";
+            this.textEdit5.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit5.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit5.Properties.MaxLength = 1;
             this.textEdit5.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit5_Properties_KeyPress);
             this.textEdit5.Size = new System.Drawing.Size(118, 20);
@@ -786,6 +838,10 @@
             // 
             this.textEdit11.Location = new System.Drawing.Point(261, 76);
             this.textEdit11.Name = "textEdit11";
+            this.textEdit11.Properties.Mask.BeepOnError = true;
+            this.textEdit11.Properties.Mask.EditMask = "\\d";
+            this.textEdit11.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit11.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit11.Properties.MaxLength = 1;
             this.textEdit11.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit11_Properties_KeyPress);
             this.textEdit11.Size = new System.Drawing.Size(62, 20);
@@ -815,6 +871,10 @@
             // 
             this.textEdit10.Location = new System.Drawing.Point(261, 49);
             this.textEdit10.Name = "textEdit10";
+            this.textEdit10.Properties.Mask.BeepOnError = true;
+            this.textEdit10.Properties.Mask.EditMask = "\\d";
+            this.textEdit10.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit10.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit10.Properties.MaxLength = 1;
             this.textEdit10.Properties.EditValueChanged += new System.EventHandler(this.textEdit10_Properties_EditValueChanged);
             this.textEdit10.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit10_Properties_KeyPress);
@@ -825,6 +885,10 @@
             // 
             this.textEdit9.Location = new System.Drawing.Point(261, 23);
             this.textEdit9.Name = "textEdit9";
+            this.textEdit9.Properties.Mask.BeepOnError = true;
+            this.textEdit9.Properties.Mask.EditMask = "\\d";
+            this.textEdit9.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit9.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit9.Properties.MaxLength = 1;
             this.textEdit9.Properties.EditValueChanged += new System.EventHandler(this.textEdit9_Properties_EditValueChanged);
             this.textEdit9.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit9_Properties_KeyPress);
@@ -845,6 +909,10 @@
             // 
             this.textEdit8.Location = new System.Drawing.Point(52, 75);
             this.textEdit8.Name = "textEdit8";
+            this.textEdit8.Properties.Mask.BeepOnError = true;
+            this.textEdit8.Properties.Mask.EditMask = "\\d";
+            this.textEdit8.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit8.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit8.Properties.MaxLength = 1;
             this.textEdit8.Properties.EditValueChanged += new System.EventHandler(this.textEdit8_Properties_EditValueChanged);
             this.textEdit8.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit8_Properties_KeyPress);
@@ -865,6 +933,10 @@
             // 
             this.textEdit7.Location = new System.Drawing.Point(52, 49);
             this.textEdit7.Name = "textEdit7";
+            this.textEdit7.Properties.Mask.BeepOnError = true;
+            this.textEdit7.Properties.Mask.EditMask = "\\d";
+            this.textEdit7.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit7.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit7.Properties.MaxLength = 1;
             this.textEdit7.Properties.EditValueChanged += new System.EventHandler(this.textEdit7_Properties_EditValueChanged);
             this.textEdit7.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit7_Properties_KeyPress);
@@ -885,6 +957,10 @@
             // 
             this.textEdit6.Location = new System.Drawing.Point(52, 23);
             this.textEdit6.Name = "textEdit6";
+            this.textEdit6.Properties.Mask.BeepOnError = true;
+            this.textEdit6.Properties.Mask.EditMask = "\\d";
+            this.textEdit6.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit6.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit6.Properties.MaxLength = 1;
             this.textEdit6.Properties.EditValueChanged += new System.EventHandler(this.textEdit6_Properties_EditValueChanged);
             this.textEdit6.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit6_Properties_KeyPress);
@@ -919,13 +995,17 @@
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(130, 32);
             this.simpleButton1.TabIndex = 15;
-            this.simpleButton1.Text = "СОХРАНИТЬ";
+            this.simpleButton1.Text = "Сохранить";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // textEdit1
             // 
             this.textEdit1.Location = new System.Drawing.Point(127, 4);
             this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.Mask.BeepOnError = true;
+            this.textEdit1.Properties.Mask.EditMask = "\\d\\d\\d\\d\\d\\d\\d\\d";
+            this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit1.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit1.Properties.EditValueChanged += new System.EventHandler(this.textEdit1_Properties_EditValueChanged);
             this.textEdit1.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit1_Properties_KeyPress);
             this.textEdit1.Size = new System.Drawing.Size(209, 20);
@@ -1010,6 +1090,9 @@
             // 
             this.textEdit4.Location = new System.Drawing.Point(127, 82);
             this.textEdit4.Name = "textEdit4";
+            this.textEdit4.Properties.Mask.BeepOnError = true;
+            this.textEdit4.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit4.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit4.Size = new System.Drawing.Size(209, 20);
             this.textEdit4.TabIndex = 7;
             // 
@@ -1108,7 +1191,7 @@
             // 
             // checkEdit24
             // 
-            this.checkEdit24.Location = new System.Drawing.Point(1049, 46);
+            this.checkEdit24.Location = new System.Drawing.Point(934, 46);
             this.checkEdit24.Name = "checkEdit24";
             this.checkEdit24.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkEdit24.Properties.Appearance.Options.UseFont = true;
@@ -1119,11 +1202,11 @@
             // 
             // simpleButton8
             // 
-            this.simpleButton8.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton8.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton8.Appearance.Options.UseFont = true;
-            this.simpleButton8.Location = new System.Drawing.Point(691, 30);
+            this.simpleButton8.Location = new System.Drawing.Point(672, 36);
             this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(339, 46);
+            this.simpleButton8.Size = new System.Drawing.Size(256, 36);
             this.simpleButton8.TabIndex = 7;
             this.simpleButton8.Text = "Завершить редактирование группы";
             this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
@@ -1132,53 +1215,53 @@
             // 
             this.simpleButton6.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton6.Appearance.Options.UseFont = true;
-            this.simpleButton6.Location = new System.Drawing.Point(691, 30);
+            this.simpleButton6.Location = new System.Drawing.Point(672, 37);
             this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(339, 46);
+            this.simpleButton6.Size = new System.Drawing.Size(256, 34);
             this.simpleButton6.TabIndex = 6;
             this.simpleButton6.Text = "Редактировать группу";
             this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
             // 
             // simpleButton5
             // 
-            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton5.Appearance.Options.UseFont = true;
-            this.simpleButton5.Location = new System.Drawing.Point(461, 30);
+            this.simpleButton5.Location = new System.Drawing.Point(452, 37);
             this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(224, 46);
+            this.simpleButton5.Size = new System.Drawing.Size(214, 34);
             this.simpleButton5.TabIndex = 5;
             this.simpleButton5.Text = "Редактировать собственника";
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Location = new System.Drawing.Point(125, 30);
+            this.simpleButton2.Location = new System.Drawing.Point(125, 37);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(98, 46);
+            this.simpleButton2.Size = new System.Drawing.Size(89, 34);
             this.simpleButton2.TabIndex = 4;
             this.simpleButton2.Text = "Добавить";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton4
             // 
-            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton4.Appearance.Options.UseFont = true;
-            this.simpleButton4.Location = new System.Drawing.Point(357, 30);
+            this.simpleButton4.Location = new System.Drawing.Point(348, 37);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(98, 46);
+            this.simpleButton4.Size = new System.Drawing.Size(98, 34);
             this.simpleButton4.TabIndex = 3;
             this.simpleButton4.Text = "Удаление";
             this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton3.Appearance.Options.UseFont = true;
-            this.simpleButton3.Location = new System.Drawing.Point(229, 30);
+            this.simpleButton3.Location = new System.Drawing.Point(220, 37);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(122, 46);
+            this.simpleButton3.Size = new System.Drawing.Size(122, 34);
             this.simpleButton3.TabIndex = 2;
             this.simpleButton3.Text = "Редактировать";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
