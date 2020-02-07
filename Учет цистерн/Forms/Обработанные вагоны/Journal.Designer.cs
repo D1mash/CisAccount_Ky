@@ -992,7 +992,7 @@
             // 
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(201, 514);
+            this.simpleButton1.Location = new System.Drawing.Point(206, 514);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(130, 32);
             this.simpleButton1.TabIndex = 15;
@@ -1008,7 +1008,6 @@
             this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit1.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit1.Properties.EditValueChanged += new System.EventHandler(this.textEdit1_Properties_EditValueChanged);
-            this.textEdit1.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit1_Properties_KeyPress);
             this.textEdit1.Size = new System.Drawing.Size(209, 20);
             this.textEdit1.TabIndex = 1;
             // 

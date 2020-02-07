@@ -246,21 +246,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void textEdit1_Properties_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            try
-            {
-                char chr = e.KeyChar;
-                if (!Char.IsDigit(chr) && chr != 8)
-                {
-                    e.Handled = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
@@ -276,22 +261,53 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         string Check = dt.Rows[0][0].ToString();
                         if (Check != "")
                         {
-                            if(textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
+                            if (checkEdit24.Checked)
                             {
-                                string Add = "declare @Id int; exec [dbo].[FillRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL, @CurrentID = @Id output; select @Id";
-                                DataTable HeadID = DbConnection.DBConnect(Add);
-                                if (HeadID.Rows.Count > 0)
+                                if (textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
                                 {
-                                    string Id = HeadID.Rows[0][0].ToString();
-                                    string Autn = "exec [dbo].[FillAutn] '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + textEdit24.Text.Trim() + "'," + Id;
-                                    DbConnection.DBConnect(Autn);
-                                    Refresh();
-                                    textEdit1.Text = "";
-                                } 
+                                    if (textEdit12.Text != "" && textEdit13.Text != "" && textEdit14.Text != "" && textEdit15.Text != "" && textEdit16.Text != "" && textEdit17.Text != "" && textEdit18.Text != "" && textEdit19.Text != "" && textEdit20.Text != ""
+                                    && textEdit21.Text != "" && textEdit22.Text != "" && textEdit23.Text != "" && textEdit24.Text != "")
+                                    {
+                                        string Add = "declare @Id int; exec [dbo].[FillRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL, @CurrentID = @Id output; select @Id";
+                                        DataTable HeadID = DbConnection.DBConnect(Add);
+                                        if (HeadID.Rows.Count > 0)
+                                        {
+                                            string Id = HeadID.Rows[0][0].ToString();
+                                            string Autn = "exec [dbo].[FillAutn] '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + textEdit24.Text.Trim() + "'," + Id;
+                                            DbConnection.DBConnect(Autn);
+                                            Refresh();
+                                            textEdit1.Text = "";
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Заполните пустые поля в АУТН!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Заполните пустые поля в Обработке!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Заполните пустые поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                if (textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
+                                {
+                                    string Add = "declare @Id int; exec [dbo].[FillRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL, @CurrentID = @Id output; select @Id";
+                                    DataTable HeadID = DbConnection.DBConnect(Add);
+                                    if (HeadID.Rows.Count > 0)
+                                    {
+                                        string Id = HeadID.Rows[0][0].ToString();
+                                        string Autn = "exec [dbo].[FillAutn] '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + textEdit24.Text.Trim() + "'," + Id;
+                                        DbConnection.DBConnect(Autn);
+                                        Refresh();
+                                        textEdit1.Text = "";
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Заполните пустые поля в Обработке!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
                             }
                         }
                         else
@@ -303,33 +319,75 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 //Редактировать группу
                 else if(SelectItemRow == 1)
                 {
-                    if (textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
+                    if (checkEdit24.Checked)
                     {
-                        ArrayList rows = new ArrayList();
-                        List<Object> aList = new List<Object>();
-                        string Arrays = string.Empty;
+                        if (textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
+                        {
+                            if (textEdit12.Text != "" && textEdit13.Text != "" && textEdit14.Text != "" && textEdit15.Text != "" && textEdit16.Text != "" && textEdit17.Text != "" && textEdit18.Text != "" && textEdit19.Text != "" && textEdit20.Text != ""
+                            && textEdit21.Text != "" && textEdit22.Text != "" && textEdit23.Text != "" && textEdit24.Text != "")
+                            {
+                                ArrayList rows = new ArrayList();
+                                List<Object> aList = new List<Object>();
+                                string Arrays = string.Empty;
 
-                        Int32[] selectedRowHandles = gridView1.GetSelectedRows();
-                        for (int i = 0; i < selectedRowHandles.Length; i++)
-                        {
-                            int selectedRowHandle = selectedRowHandles[i];
-                            if (selectedRowHandle >= 0)
-                                rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                                Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                                for (int i = 0; i < selectedRowHandles.Length; i++)
+                                {
+                                    int selectedRowHandle = selectedRowHandles[i];
+                                    if (selectedRowHandle >= 0)
+                                        rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                                }
+                                foreach (DataRow row in rows)
+                                {
+                                    aList.Add(row["ID"]);
+                                    Arrays = string.Join(" ", aList);
+                                    string UpdateAll = "exec [dbo].[UpdateRenderedServiceAll] " + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + "," + comboBox2.SelectedValue.ToString() + "," + Temp + ",'" + Arrays + "'";
+                                    DbConnection.DBConnect(UpdateAll);
+                                    string UpdateAutnAll = "exec dbo.UpdateAutnAll '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + textEdit24.Text.Trim() + "','" + Arrays + "'";
+                                    DbConnection.DBConnect(UpdateAutnAll);
+                                }
+                                Refresh();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Заполните пустые поля в АУТН!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
-                        foreach (DataRow row in rows)
+                        else
                         {
-                            aList.Add(row["ID"]);
-                            Arrays = string.Join(" ", aList);
-                            string UpdateAll = "exec [dbo].[UpdateRenderedServiceAll] " + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + "," + comboBox2.SelectedValue.ToString() + "," + Temp + ",'" + Arrays + "'";
-                            DbConnection.DBConnect(UpdateAll);
-                            string UpdateAutnAll = "exec dbo.UpdateAutnAll '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + textEdit24.Text.Trim() + "','" + Arrays + "'";
-                            DbConnection.DBConnect(UpdateAutnAll);
+                            MessageBox.Show("Заполните пустые поля в Обработке!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        Refresh();
                     }
                     else
                     {
-                        MessageBox.Show("Заполните пустые поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        if (textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
+                        {
+                            ArrayList rows = new ArrayList();
+                            List<Object> aList = new List<Object>();
+                            string Arrays = string.Empty;
+
+                            Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                            for (int i = 0; i < selectedRowHandles.Length; i++)
+                            {
+                                int selectedRowHandle = selectedRowHandles[i];
+                                if (selectedRowHandle >= 0)
+                                    rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                            }
+                            foreach (DataRow row in rows)
+                            {
+                                aList.Add(row["ID"]);
+                                Arrays = string.Join(" ", aList);
+                                string UpdateAll = "exec [dbo].[UpdateRenderedServiceAll] " + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + "," + comboBox2.SelectedValue.ToString() + "," + Temp + ",'" + Arrays + "'";
+                                DbConnection.DBConnect(UpdateAll);
+                                string UpdateAutnAll = "exec dbo.UpdateAutnAll '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + textEdit24.Text.Trim() + "','" + Arrays + "'";
+                                DbConnection.DBConnect(UpdateAutnAll);
+                            }
+                            Refresh();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Заполните пустые поля в Обработке!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
                 //Редактировать
@@ -344,18 +402,45 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     }
                     else
                     {
-                        if (textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
+                        if (checkEdit24.Checked)
                         {
-                            string Update = "exec [dbo].[UpdateRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + "," + SelectItemRow;
-                            DbConnection.DBConnect(Update);
-                            string UpdateAutn = "exec dbo.UpdateAutn '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + textEdit24.Text.Trim() + "'," + SelectItemRow;
-                            DbConnection.DBConnect(UpdateAutn);
-                            Refresh();
-                            Block();
+                            if (textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
+                            {
+                                if (textEdit12.Text != "" && textEdit13.Text != "" && textEdit14.Text != "" && textEdit15.Text != "" && textEdit16.Text != "" && textEdit17.Text != "" && textEdit18.Text != "" && textEdit19.Text != "" && textEdit20.Text != ""
+                                && textEdit21.Text != "" && textEdit22.Text != "" && textEdit23.Text != "" && textEdit24.Text != "")
+                                {
+                                    string Update = "exec [dbo].[UpdateRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + "," + SelectItemRow;
+                                    DbConnection.DBConnect(Update);
+                                    string UpdateAutn = "exec dbo.UpdateAutn '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + textEdit24.Text.Trim() + "'," + SelectItemRow;
+                                    DbConnection.DBConnect(UpdateAutn);
+                                    Refresh();
+                                    Block();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Заполните пустые поля в АУТН!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Заполните пустые поля в Обработке!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Заполните пустые поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            if (textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
+                            {
+                                string Update = "exec [dbo].[UpdateRenderedService] " + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + "," + SelectItemRow;
+                                DbConnection.DBConnect(Update);
+                                string UpdateAutn = "exec dbo.UpdateAutn '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + textEdit24.Text.Trim() + "'," + SelectItemRow;
+                                DbConnection.DBConnect(UpdateAutn);
+                                Refresh();
+                                Block();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Заполните пустые поля в Обработке!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
                     }
                 }
