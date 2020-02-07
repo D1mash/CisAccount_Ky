@@ -20,8 +20,6 @@ using Учет_цистерн.Forms.Пользователи;
 using Учет_цистерн.Forms.Обработанные_вагоны;
 using Учет_цистерн.Forms.Смена_собственника;
 using Учет_цистерн.Forms.Доп.параметры;
-using System.Globalization;
-using System.Threading;
 
 namespace Учет_цистерн
 {
@@ -65,20 +63,7 @@ namespace Учет_цистерн
                         button6.Enabled = false;
                     }
                 }
-
-                CultureInfo culture = CultureInfo.CreateSpecificCulture("ru-RU");
-
-                // The following line provides localization for the application's user interface.  
-                Thread.CurrentThread.CurrentUICulture = culture;
-
-                // The following line provides localization for data formats.  
-                Thread.CurrentThread.CurrentCulture = culture;
-
-                // Set this culture as the default culture for all threads in this application.  
-                // Note: The following properties are supported in the .NET Framework 4.5+ 
-                CultureInfo.DefaultThreadCurrentCulture = culture;
-                CultureInfo.DefaultThreadCurrentUICulture = culture;
-
+                
                 GetFilter();
             }
             catch (Exception exp)
