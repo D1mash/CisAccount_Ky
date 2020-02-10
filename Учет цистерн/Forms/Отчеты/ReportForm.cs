@@ -454,6 +454,8 @@ namespace Учет_цистерн
                                 double totalSumCost = 0;
                                 double totalSumTor = 0;
 
+                                worksheet.Name = dt.Rows[k][1].ToString();
+
                                 worksheet.Range["C4"].Value = dt.Rows[k][1].ToString();
 
                                 worksheet.Range["C6"].Value = "в ТОО Казыгурт-Юг c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
