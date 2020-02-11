@@ -208,14 +208,6 @@ namespace Учет_цистерн
 
         DataParametr _inputParametr1;
 
-        //[DllImport("user32.dll")]
-        //static extern int GetWindowThreadProcessId(int hWnd, out int lpdwProcessId);
-
-        //static Process GetExcelProcess(Excel.Application excelApp)
-        //{
-        //    GetWindowThreadProcessId(excelApp.Hwnd, out int id);
-        //    return Process.GetProcessById(id);
-        //}
 
         private void BackgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
@@ -316,8 +308,8 @@ namespace Учет_цистерн
 
                         Excel.Application app = new Excel.Application();
                         Excel.Workbook workbook = app.Workbooks.Open(path);
-                        Excel.Worksheet worksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
-                        worksheet.Name = "Реестр";
+                        Excel.Worksheet xlworksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
+                        xlworksheet.Name = "Реестр";
                         object misValue = System.Reflection.Missing.Value;
 
                         string RefreshAllCount = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + "@Type = " + 2;
@@ -325,15 +317,13 @@ namespace Учет_цистерн
                         
                         for (int i = 0; i < dt.Rows.Count; i++)
                         {
-                            worksheet.Copy(Type.Missing, worksheet);
+                            xlworksheet.Copy(Type.Missing, xlworksheet);
                         }
 
                         int k = 0;
 
-                        for(int i = 1; i < workbook.Worksheets.Count; i++)
+                        foreach(Excel.Worksheet worksheet in workbook.Worksheets)
                         {
-                            worksheet = workbook.Worksheets.get_Item(i+1);
-
                             if (worksheet.Name == "Реестр")
                             {
                                 string RefreshAll = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + "@Type = " + 1;
@@ -407,7 +397,7 @@ namespace Учет_цистерн
                                     Excel.Range range = worksheet.Range[worksheet.Cells[l + 10, 1], worksheet.Cells[l + 10, dataTable.Columns.Count + 2]];
                                     FormattingExcelCells(range, true, true);
 
-                                    backgroundWorker.ReportProgress(i);
+                                    //backgroundWorker.ReportProgress(i);
 
                                     cellRowIndex++;
                                 }
@@ -519,7 +509,7 @@ namespace Учет_цистерн
                                     Excel.Range range = worksheet.Range[worksheet.Cells[l + 10, 1], worksheet.Cells[l + 10, dataTable.Columns.Count + 2]];
                                     FormattingExcelCells(range, true, true);
 
-                                    backgroundWorker.ReportProgress(i);
+                                    //backgroundWorker.ReportProgress(i);
 
                                     cellRowIndex++;
                                 }
@@ -565,7 +555,7 @@ namespace Учет_цистерн
                         app.Quit();
 
                         releaseObject(workbook);
-                        releaseObject(worksheet);
+                        releaseObject(xlworksheet);
                         releaseObject(app);
 
                         Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Общий Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx");
