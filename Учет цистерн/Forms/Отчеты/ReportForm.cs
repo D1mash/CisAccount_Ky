@@ -221,13 +221,13 @@ namespace Учет_цистерн
                     Excel.Worksheet worksheet = workbook.Worksheets.get_Item("Итоговая  справка");
                     app.Visible = false;
                     object misValue = System.Reflection.Missing.Value;
-                    
+
                     worksheet.Range["B6"].Value = "c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
 
                     worksheet.Range["B13:H24"].Cut(worksheet.Cells[gridView1.RowCount * 2 + 11, 2]);
 
                     int item = 0;
-                    
+
                     //Кол.во услуг
                     int total = 0;
 
@@ -283,7 +283,7 @@ namespace Учет_цистерн
                     }
                     //Кол.во обработанных
                     worksheet.Range["I8"].Value = total;
-                    
+
                     //Итоговая сумма
                     worksheet.Cells[dt.Rows.Count + 11 + item, 10] = final_sum;
 
@@ -314,7 +314,7 @@ namespace Учет_цистерн
 
                         string RefreshAllCount = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + "@Type = " + 2;
                         dt = DbConnection.DBConnect(RefreshAllCount);
-                        
+
                         for (int i = 0; i < dt.Rows.Count; i++)
                         {
                             xlworksheet.Copy(Type.Missing, xlworksheet);
@@ -322,7 +322,9 @@ namespace Учет_цистерн
 
                         int k = 0;
 
-                        foreach(Excel.Worksheet worksheet in workbook.Worksheets)
+                        int iterator = 0;
+
+                        foreach (Excel.Worksheet worksheet in workbook.Worksheets)
                         {
                             if (worksheet.Name == "Реестр")
                             {
@@ -444,7 +446,7 @@ namespace Учет_цистерн
                                 double totalSumCost = 0;
                                 double totalSumTor = 0;
 
-                                worksheet.Name = dt.Rows[k][1].ToString();
+                                worksheet.Name = dt.Rows[k][1].ToString().Trim();
 
                                 worksheet.Range["C4"].Value = dt.Rows[k][1].ToString();
 
@@ -509,9 +511,10 @@ namespace Учет_цистерн
                                     Excel.Range range = worksheet.Range[worksheet.Cells[l + 10, 1], worksheet.Cells[l + 10, dataTable.Columns.Count + 2]];
                                     FormattingExcelCells(range, true, true);
 
-                                    //backgroundWorker.ReportProgress(i);
+                                    backgroundWorker.ReportProgress(iterator);
 
                                     cellRowIndex++;
+                                    iterator++;
                                 }
 
                                 worksheet.Cells[dataTable.Rows.Count + 12, 2] = "=C6";
@@ -708,7 +711,7 @@ namespace Учет_цистерн
             {
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+}
 
         public void FormattingExcelCells(Excel.Range range, bool val1, bool val2)
         {
