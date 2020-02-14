@@ -330,7 +330,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
             try
             {
                 //Ловит номер заявки из грида 2
-                string Id = gridView2.GetFocusedDataRow()[2].ToString();
+                string Id = gridView2.GetFocusedDataRow()[0].ToString();
                 date = gridView2.GetFocusedDataRow()[1].ToString();
                 product = gridView2.GetFocusedDataRow()[3].ToString();
                 string OwnerID = gridView2.GetFocusedDataRow()[5].ToString();
@@ -343,7 +343,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 gridControl3.DataSource = null;
                 gridView3.Columns.Clear();
 
-                string Search = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Rent_Num  = '" + SelectItemRow1.ToString() + "'," + "@Type = " + 1;
+                string Search = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Rent_id  = '" + SelectItemRow1.ToString() + "'," + "@Type = " + 1;
                 gridControl3.DataSource = DbConnection.DBConnect(Search);
                 gridView3.Columns[0].Visible = false;
 

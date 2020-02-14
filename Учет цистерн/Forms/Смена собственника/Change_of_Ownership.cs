@@ -60,7 +60,7 @@ namespace Учет_цистерн.Forms
         {
             try
             {
-                if (textEdit2.Text != String.Empty)
+                if (textEdit2.Text != String.Empty && textEdit3.Text != String.Empty)
                 {
                     string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textEdit2.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textEdit3.Text + "', @CurrentID = @Id output; select @Id";
                     DataTable HeadID = DbConnection.DBConnect(NewHead);
@@ -93,7 +93,14 @@ namespace Учет_цистерн.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Введите номер заявки", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (textEdit2.Text == String.Empty)
+                    {
+                        MessageBox.Show("Введите номер заявки", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введите продукт", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             catch (Exception ex)

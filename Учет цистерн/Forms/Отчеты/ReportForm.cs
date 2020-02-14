@@ -779,8 +779,15 @@ namespace Учет_цистерн
             if(checkBox2.Checked)
             {
                 checkBox1.Checked = false;
+                comboBox2.Enabled = false;
+                comboBox2.SelectedIndex = 0;
                 Refresh();
             }
+            else
+            {
+                comboBox2.Enabled = true;
+            }
+
         }
 
         private void releaseObject(object obj)
@@ -800,5 +807,6 @@ namespace Учет_цистерн
                 GC.Collect();
             }
         }
+
     }
 }
