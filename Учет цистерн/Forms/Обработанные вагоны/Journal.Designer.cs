@@ -114,7 +114,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.checkEdit24 = new DevExpress.XtraEditors.CheckEdit();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
@@ -183,7 +182,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit24.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -1176,7 +1174,6 @@
             // 
             // groupControl2
             // 
-            this.groupControl2.Controls.Add(this.checkEdit24);
             this.groupControl2.Controls.Add(this.simpleButton8);
             this.groupControl2.Controls.Add(this.simpleButton6);
             this.groupControl2.Controls.Add(this.simpleButton5);
@@ -1189,17 +1186,6 @@
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(1320, 88);
             this.groupControl2.TabIndex = 1;
-            // 
-            // checkEdit24
-            // 
-            this.checkEdit24.Location = new System.Drawing.Point(934, 46);
-            this.checkEdit24.Name = "checkEdit24";
-            this.checkEdit24.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkEdit24.Properties.Appearance.Options.UseFont = true;
-            this.checkEdit24.Properties.Caption = "Использовать АУТН";
-            this.checkEdit24.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit24_Properties_CheckStateChanged);
-            this.checkEdit24.Size = new System.Drawing.Size(140, 20);
-            this.checkEdit24.TabIndex = 8;
             // 
             // simpleButton8
             // 
@@ -1464,7 +1450,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit24.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -1571,6 +1556,5 @@
         private DevExpress.XtraEditors.TextEdit textEdit12;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControl1;
-        private DevExpress.XtraEditors.CheckEdit checkEdit24;
     }
 }

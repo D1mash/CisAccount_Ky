@@ -16,11 +16,87 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         public string SelectProductID { get; set; }
         string role;
         int Temp;
+        int TempUpdate = -1;
 
         public Journal(string role)
         {
             InitializeComponent();
             this.role = role;
+        }
+
+        private void Journal_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (role == "1")
+                {
+                    simpleButton4.Visible = true;
+                }
+                else
+                {
+                    if (role == "2")
+                    {
+                        simpleButton4.Visible = false;
+                    }
+                    else
+                    {
+                        simpleButton4.Visible = false;
+                    }
+                }
+
+                DateTime now = DateTime.Now;
+                dateTimePicker1.Value = now;
+
+                Refresh();
+                Fillcombobox();
+                Block();
+
+                simpleButton9.Enabled = false;
+                panel1.Visible = false;
+                label1.Visible = false;
+                memoEdit1.Visible = false;
+                simpleButton7.Visible = false;
+                simpleButton8.Visible = false;
+
+                if (gridView1.RowCount == 0)
+                {
+                    textEdit5.Text = "0";
+                    textEdit6.Text = "0";
+                    textEdit7.Text = "0";
+                    textEdit8.Text = "0";
+                    textEdit9.Text = "0";
+                    textEdit10.Text = "0";
+                    textEdit11.Text = "0";
+                    //textEdit12.Text = "0";
+                    //textEdit13.Text = "0";
+                    //textEdit14.Text = "0";
+                    //textEdit15.Text = "0";
+                    //textEdit16.Text = "0";
+                    //textEdit17.Text = "0";
+                    //textEdit18.Text = "0";
+                    //textEdit19.Text = "0";
+                    //textEdit20.Text = "0";
+                    //textEdit21.Text = "0";
+                    //textEdit22.Text = "0";
+                    //textEdit23.Text = "0";
+                }
+
+                if (gridView1.RowCount > 0)
+                {
+                    gridView1_RowCellClick(null, null);
+                }
+
+                GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
+                GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
+                GridColumnSummaryItem TorCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма ТОР", "{0}");
+                gridView1.Columns["Номер вагона"].Summary.Add(Carnumber);
+                gridView1.Columns["Сумма услуг"].Summary.Add(ServiceCost);
+                gridView1.Columns["Сумма ТОР"].Summary.Add(TorCost);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override void Refresh()
@@ -63,84 +139,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             comboBox2.DataSource = dt1;
             comboBox2.DisplayMember = "Name";
             comboBox2.ValueMember = "ID";
-        }
-
-        private void Journal_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                if (role == "1")
-                {
-                    simpleButton4.Visible = true;
-                }
-                else
-                {
-                    if (role == "2")
-                    {
-                        simpleButton4.Visible = false;
-                    }
-                    else
-                    {
-                        simpleButton4.Visible = false;
-                    }
-                }
-
-                DateTime now = DateTime.Now;
-                dateTimePicker1.Value = now;
-
-                Refresh();
-                Fillcombobox();
-                Block();
-
-                simpleButton9.Enabled = false;
-
-                checkEdit24.Enabled = false;
-
-                if(gridView1.RowCount == 0)
-                {
-                    textEdit5.Text = "0";
-                    textEdit6.Text = "0";
-                    textEdit7.Text = "0";
-                    textEdit8.Text = "0";
-                    textEdit9.Text = "0";
-                    textEdit10.Text = "0";
-                    textEdit11.Text = "0";
-
-                    panel1.Visible = false;
-                    label1.Visible = false;
-                    memoEdit1.Visible = false;
-                    simpleButton7.Visible = false;
-                    simpleButton8.Visible = false;
-                    //textEdit12.Text = "0";
-                    //textEdit13.Text = "0";
-                    //textEdit14.Text = "0";
-                    //textEdit15.Text = "0";
-                    //textEdit16.Text = "0";
-                    //textEdit17.Text = "0";
-                    //textEdit18.Text = "0";
-                    //textEdit19.Text = "0";
-                    //textEdit20.Text = "0";
-                    //textEdit21.Text = "0";
-                    //textEdit22.Text = "0";
-                    //textEdit23.Text = "0";
-                }
-
-                if (gridView1.RowCount > 0)
-                {
-                    gridView1_RowCellClick(null,null);
-                }
-
-                GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
-                GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
-                GridColumnSummaryItem TorCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма ТОР", "{0}");
-                gridView1.Columns["Номер вагона"].Summary.Add(Carnumber);
-                gridView1.Columns["Сумма услуг"].Summary.Add(ServiceCost);
-                gridView1.Columns["Сумма ТОР"].Summary.Add(TorCost);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void LastRenderedService()
@@ -208,17 +206,70 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         textEdit2.Text = "";
                     }
 
-                    if(textEdit1.Enabled == false)
+                    if (textEdit1.Text.Length > 7 && dt.Rows[0][0].ToString() == "Премиум Ойл Транс ТОО")
                     {
-                        LastRenderedService_1();
+                        if(SelectItemRow == 0)
+                        {
+                            textEdit12.Enabled = true;
+                            textEdit13.Enabled = true;
+                            textEdit14.Enabled = true;
+                            textEdit15.Enabled = true;
+                            textEdit16.Enabled = true;
+                            textEdit17.Enabled = true;
+                            textEdit18.Enabled = true;
+                            textEdit19.Enabled = true;
+                            textEdit20.Enabled = true;
+                            textEdit21.Enabled = true;
+                            textEdit22.Enabled = true;
+                            textEdit23.Enabled = true;
+                            textEdit24.Enabled = true;
+
+                            textEdit12.Text = "";
+                            textEdit13.Text = "";
+                            textEdit14.Text = "";
+                            textEdit15.Text = "";
+                            textEdit16.Text = "";
+                            textEdit17.Text = "";
+                            textEdit18.Text = "";
+                            textEdit19.Text = "";
+                            textEdit20.Text = "";
+                            textEdit21.Text = "";
+                            textEdit22.Text = "";
+                            textEdit23.Text = "";
+                            textEdit24.Text = "";
+                        }
+                        else if(SelectItemRow > 0 && TempUpdate == 0)
+                        {
+                            textEdit12.Enabled = true;
+                            textEdit13.Enabled = true;
+                            textEdit14.Enabled = true;
+                            textEdit15.Enabled = true;
+                            textEdit16.Enabled = true;
+                            textEdit17.Enabled = true;
+                            textEdit18.Enabled = true;
+                            textEdit19.Enabled = true;
+                            textEdit20.Enabled = true;
+                            textEdit21.Enabled = true;
+                            textEdit22.Enabled = true;
+                            textEdit23.Enabled = true;
+                            textEdit24.Enabled = true;
+                        }
                     }
-                    else if(SelectItemRow == 0)
+                    else
                     {
-                        LastRenderedService();
-                    }
-                    else if(SelectItemRow > 1 && textEdit1.Enabled == true)
-                    {
-                        LastRenderedService_1();
+                        textEdit12.Enabled = false;
+                        textEdit13.Enabled = false;
+                        textEdit14.Enabled = false;
+                        textEdit15.Enabled = false;
+                        textEdit16.Enabled = false;
+                        textEdit17.Enabled = false;
+                        textEdit18.Enabled = false;
+                        textEdit19.Enabled = false;
+                        textEdit20.Enabled = false;
+                        textEdit21.Enabled = false;
+                        textEdit22.Enabled = false;
+                        textEdit23.Enabled = false;
+                        textEdit24.Enabled = false;
                     }
 
                     string LastRent = "exec dbo.LastRent " + textEdit1.Text.Trim();
@@ -252,16 +303,16 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             try
             {
                 //Добавить
-                if(SelectItemRow == 0)
+                if (SelectItemRow == 0)
                 {
                     if (textEdit1.Text != string.Empty)
                     {
-                        string CheckOwner = "select c.Current_owner from d__Carriage c where c.CarNumber = " + textEdit1.Text.Trim();                      
+                        string CheckOwner = "select c.Current_owner from d__Carriage c where c.CarNumber = " + textEdit1.Text.Trim();
                         DataTable dt = DbConnection.DBConnect(CheckOwner);
                         string Check = dt.Rows[0][0].ToString();
                         if (Check != "")
                         {
-                            if (checkEdit24.Checked)
+                            if (textEdit1.Text.Length > 7 && dt.Rows[0][0].ToString() == "Премиум Ойл Транс ТОО")
                             {
                                 if (textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
                                 {
@@ -319,7 +370,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 //Редактировать группу
                 else if(SelectItemRow == 1)
                 {
-                    if (checkEdit24.Checked)
+                    if (textEdit1.Text.Length > 7 && textEdit2.Text == "Премиум Ойл Транс ТОО")
                     {
                         if (textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
                         {
@@ -402,7 +453,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     }
                     else
                     {
-                        if (checkEdit24.Checked)
+                        if (textEdit1.Text.Length > 7 && dt.Rows[0][0].ToString() == "Премиум Ойл Транс ТОО")
                         {
                             if (textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
                             {
@@ -451,6 +502,22 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             }
         }
 
+        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            try
+            {
+                string Id = gridView1.GetFocusedDataRow()[0].ToString();
+                SelectItemRow = Convert.ToInt32(Id);
+
+                GetCurrent();
+                simpleButton9.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void GetCurrent()
         {
             try
@@ -461,23 +528,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 comboBox2.DataBindings.Clear();
                 Block();
                 Update(SelectItemRow);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
-        {
-            try
-            {
-                string Id = gridView1.GetFocusedDataRow()[0].ToString();
-                SelectItemRow = Convert.ToInt32(Id);
-
-                GetCurrent();
-                simpleButton9.Enabled = false;
-                checkEdit24.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -769,7 +819,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             comboBox2.Enabled = false;
             simpleButton1.Enabled = false;
 
-            checkEdit24.CheckState = CheckState.Unchecked;
             textEdit12.Enabled = false;
             textEdit13.Enabled = false;
             textEdit14.Enabled = false;
@@ -968,7 +1017,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         private void simpleButton2_Click(object sender, EventArgs e)
         {
             Unblock();
-            checkEdit24.Enabled = true;
             textEdit1.Text = "";
             simpleButton9.Enabled = true;
             Temp = SelectItemRow;
@@ -977,11 +1025,11 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
+            TempUpdate = 0;
             Unblock();
-            checkEdit24.Enabled = true;
             string CarNum = textEdit1.Text.Trim();
             textEdit1.Text = "";
-            textEdit1.Text = CarNum;            
+            textEdit1.Text = CarNum;
         }
 
         private void simpleButton5_Click(object sender, EventArgs e)
@@ -1093,10 +1141,21 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             checkEdit9.Visible = true;
             checkEdit10.Visible = true;
 
-            checkEdit24.Enabled = true;
+            checkEdit3.Visible = true;
+            checkEdit12.Visible = true;
+            checkEdit13.Visible = true;
+            checkEdit14.Visible = true;
+            checkEdit15.Visible = true;
+            checkEdit16.Visible = true;
+            checkEdit17.Visible = true;
+            checkEdit18.Visible = true;
+            checkEdit19.Visible = true;
+            checkEdit20.Visible = true;
+            checkEdit21.Visible = true;
+            checkEdit22.Visible = true;
+            checkEdit23.Visible = true;
 
             textEdit1.Text = "";
-            textEdit2.Text = "";
             textEdit3.Text = "";
         }
         private void simpleButton8_Click(object sender, EventArgs e)
@@ -1367,56 +1426,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
 
             e.Handled = !validKeys.Contains((Keys)e.KeyChar);
-        }
-
-        private void checkEdit24_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            if (checkEdit24.Checked)
-            {
-                textEdit12.Enabled = true;
-                textEdit13.Enabled = true;
-                textEdit14.Enabled = true;
-                textEdit15.Enabled = true;
-                textEdit16.Enabled = true;
-                textEdit17.Enabled = true;
-                textEdit18.Enabled = true;
-                textEdit19.Enabled = true;
-                textEdit20.Enabled = true;
-                textEdit21.Enabled = true;
-                textEdit22.Enabled = true;
-                textEdit23.Enabled = true;
-                textEdit24.Enabled = true;
-            }
-            else
-            {
-                textEdit12.Enabled = false;
-                textEdit13.Enabled = false;
-                textEdit14.Enabled = false;
-                textEdit15.Enabled = false;
-                textEdit16.Enabled = false;
-                textEdit17.Enabled = false;
-                textEdit18.Enabled = false;
-                textEdit19.Enabled = false;
-                textEdit20.Enabled = false;
-                textEdit21.Enabled = false;
-                textEdit22.Enabled = false;
-                textEdit23.Enabled = false;
-                textEdit24.Enabled = false;
-
-                textEdit12.Text = "";
-                textEdit13.Text = "";
-                textEdit14.Text = "";
-                textEdit15.Text = "";
-                textEdit16.Text = "";
-                textEdit17.Text = "";
-                textEdit18.Text = "";
-                textEdit19.Text = "";
-                textEdit20.Text = "";
-                textEdit21.Text = "";
-                textEdit22.Text = "";
-                textEdit23.Text = "";
-                textEdit24.Text = "";
-            }
         }
     }
 }
