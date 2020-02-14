@@ -291,12 +291,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_620A7B5EA5A2412AACFFAE88CA08BF04"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_6790A428650AF975E864AD7431085736"
         "OwnerKey" = "8:_F32283B0CB4A43BB8DD37133E8814497"
         "MsmSig" = "8:_UNDEFINED"
@@ -305,6 +299,12 @@
         {
         "MsmKey" = "8:_6790A428650AF975E864AD7431085736"
         "OwnerKey" = "8:_19F5D770218BBD9454F0595FA6BF6B60"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_774C3B29D0034B9EB7F7C9DAE4D4E538"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -544,6 +544,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2302CC158AAA8EA6B0F54BF45B119EBF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F32283B0CB4A43BB8DD37133E8814497"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -677,12 +683,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_CBB7C0C2CBEB304AA07070FE9F94DB59"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2302CC158AAA8EA6B0F54BF45B119EBF"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -1141,26 +1141,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_620A7B5EA5A2412AACFFAE88CA08BF04"
-            {
-            "SourcePath" = "8:D:\\Personal\\d.omarbayev\\Desktop\\Icons\\icons8-поезд-48.ico"
-            "TargetName" = "8:icons8-поезд-48.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_905DC310388D4193B75AA4BDA9997B73"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6790A428650AF975E864AD7431085736"
             {
             "AssemblyRegister" = "3:1"
@@ -1190,6 +1170,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_774C3B29D0034B9EB7F7C9DAE4D4E538"
+            {
+            "SourcePath" = "8:..\\Учет цистерн\\Resources\\icons8-поезд-48.ico"
+            "TargetName" = "8:icons8-поезд-48.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_905DC310388D4193B75AA4BDA9997B73"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_86903177465F4C0031D15A43827FC6E1"
@@ -1723,7 +1723,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Учет цистерн"
         "ProductCode" = "8:{AAD22592-0E56-4432-BFB1-CD11FF82BD8E}"
-        "PackageCode" = "8:{3906BF87-68A0-490D-AA13-00C65AAD6693}"
+        "PackageCode" = "8:{407C077F-9CA8-4826-AF9E-E28585E209DE}"
         "UpgradeCode" = "8:{630FF8C4-667E-4B0E-A1E6-7ACB95D9CBF5}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1740,7 +1740,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:App Installer"
         "ARPURLINFOABOUT" = "8:http://petroleum.com.kz"
-        "ARPPRODUCTICON" = "8:_620A7B5EA5A2412AACFFAE88CA08BF04"
+        "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -1854,7 +1854,7 @@
             "Target" = "8:_F32283B0CB4A43BB8DD37133E8814497"
             "Folder" = "8:_B4789208E3E548C692109F3C64A0BAAD"
             "WorkingFolder" = "8:_905DC310388D4193B75AA4BDA9997B73"
-            "Icon" = "8:_620A7B5EA5A2412AACFFAE88CA08BF04"
+            "Icon" = "8:_774C3B29D0034B9EB7F7C9DAE4D4E538"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9FC4DDC8154D495DA2B738317FEBCE67"
@@ -1868,7 +1868,7 @@
             "Target" = "8:_F32283B0CB4A43BB8DD37133E8814497"
             "Folder" = "8:_1B3816730A5342368EF28B01045A9EE3"
             "WorkingFolder" = "8:_905DC310388D4193B75AA4BDA9997B73"
-            "Icon" = "8:_620A7B5EA5A2412AACFFAE88CA08BF04"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
@@ -2270,6 +2270,62 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_06EB029C043D481681DBA9D233D38026"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_905DC310388D4193B75AA4BDA9997B73"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Symbols"
+            "OutputProjectGuid" = "8:{8E23CC18-3C9F-4BBA-A0D6-CE49DBC2EA39}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CDC93D1A576144B182D5F4C143D981C3"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_905DC310388D4193B75AA4BDA9997B73"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:ReferenceCopyLocalPaths"
+            "OutputProjectGuid" = "8:{8E23CC18-3C9F-4BBA-A0D6-CE49DBC2EA39}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F32283B0CB4A43BB8DD37133E8814497"
             {
             "SourcePath" = "8:..\\Учет цистерн\\obj\\Debug\\Учет цистерн.exe"
