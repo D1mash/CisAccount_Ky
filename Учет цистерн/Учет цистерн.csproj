@@ -85,6 +85,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -598,26 +599,15 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Error-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ОК-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\exit48.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="System\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-microsoft-excel-2019-48.png" />
     <None Include="Resources\icons8-microsoft-excel-2019-36.png" />
     <None Include="Resources\icons8-поезд-48.ico" />
     <Content Include="Resources\Image1.png" />
     <None Include="Resources\Logo1.png" />
     <None Include="Resources\Logo.png" />
     <None Include="Resources\PLMIcon.png" />
-    <None Include="Resources\images.jpg" />
     <None Include="Resources\Splash.jpg" />
   </ItemGroup>
   <ItemGroup>
