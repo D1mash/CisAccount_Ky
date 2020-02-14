@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid;
@@ -163,6 +164,26 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 label1.Visible = false;
                 simpleButton7.Visible = false;
             }
+
+            string LastRent = "exec dbo.LastRent " + textEdit1.Text.Trim();
+            DataTable dt2 = DbConnection.DBConnect(LastRent);
+            if (dt2.Rows.Count > 0 && State != 1)
+            {
+                memoEdit1.Location = panel1.Location;
+                memoEdit1.Visible = true;
+                memoEdit1.Text = "Последняя заявка: " + dt2.Rows[0][1] + " от " + dt2.Rows[0][2] + "" + "\r\n" + "Продукт: " + dt2.Rows[0][5] + "" + "\r\n" + "Была передача: " + dt2.Rows[0][3];
+            }
+            else if (dt2.Rows.Count > 0 && State == 1)
+            {
+                memoEdit1.Location = new Point(8, 595);
+                memoEdit1.Visible = true;
+                memoEdit1.Text = "Последняя заявка: " + dt2.Rows[0][1] + " от " + dt2.Rows[0][2] + "" + "\r\n" + "Продукт: " + dt2.Rows[0][5] + "" + "\r\n" + "Была передача: " + dt2.Rows[0][3];
+            }
+            else
+            {
+                memoEdit1.Location = new Point(8,595);
+                memoEdit1.Visible = false;
+            }
         }
 
         private void LastRenderedService_1()
@@ -187,6 +208,26 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 label1.Visible = false;
                 simpleButton7.Visible = false;
             }
+
+            string LastRent = "exec dbo.LastRent " + textEdit1.Text.Trim();
+            DataTable dt2 = DbConnection.DBConnect(LastRent);
+            if (dt2.Rows.Count > 0 && State != 1)
+            {
+                memoEdit1.Location = panel1.Location;
+                memoEdit1.Visible = true;
+                memoEdit1.Text = "Последняя заявка: " + dt2.Rows[0][1] + " от " + dt2.Rows[0][2] + "" + "\r\n" + "Продукт: " + dt2.Rows[0][5] + "" + "\r\n" + "Была передача: " + dt2.Rows[0][3];
+            }
+            else if (dt2.Rows.Count > 0 && State == 1)
+            {
+                memoEdit1.Location = new Point(8, 595);
+                memoEdit1.Visible = true;
+                memoEdit1.Text = "Последняя заявка: " + dt2.Rows[0][1] + " от " + dt2.Rows[0][2] + "" + "\r\n" + "Продукт: " + dt2.Rows[0][5] + "" + "\r\n" + "Была передача: " + dt2.Rows[0][3];
+            }
+            else
+            {
+                memoEdit1.Location = new Point(8, 595);
+                memoEdit1.Visible = false;
+            }
         }
 
         private void textEdit1_Properties_EditValueChanged(object sender, EventArgs e)
@@ -204,6 +245,19 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     else
                     {
                         textEdit2.Text = "";
+                    }
+
+                    if (textEdit1.Enabled == false)
+                    {
+                        LastRenderedService_1();
+                    }
+                    else if(SelectItemRow == 0)
+                    {
+                        LastRenderedService();
+                    }
+                    else if(SelectItemRow > 1 && textEdit1.Enabled == true)
+                    {
+                        LastRenderedService_1();
                     }
 
                     if (textEdit1.Text.Length > 7 && dt.Rows[0][0].ToString() == "Премиум Ойл Транс ТОО")
@@ -270,18 +324,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         textEdit22.Enabled = false;
                         textEdit23.Enabled = false;
                         textEdit24.Enabled = false;
-                    }
-
-                    string LastRent = "exec dbo.LastRent " + textEdit1.Text.Trim();
-                    DataTable dt2 = DbConnection.DBConnect(LastRent);
-                    if (dt2.Rows.Count > 0)
-                    {
-                        memoEdit1.Visible = true;
-                        memoEdit1.Text = "Последняя заявка: " + dt2.Rows[0][1] + " от " + dt2.Rows[0][2] + "" + "\r\n" + "Продукт: " + dt2.Rows[0][5] + "" + "\r\n" + "Была передача: " + dt2.Rows[0][3];
-                    }
-                    else
-                    {
-                        memoEdit1.Visible = false;
                     }
                 }
                 else

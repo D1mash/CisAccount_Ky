@@ -308,7 +308,7 @@
             // 
             // textEdit17
             // 
-            this.textEdit17.EditValue = "17";
+            this.textEdit17.EditValue = "";
             this.textEdit17.Location = new System.Drawing.Point(181, 180);
             this.textEdit17.Name = "textEdit17";
             this.textEdit17.Properties.MaxLength = 20;
@@ -317,7 +317,7 @@
             // 
             // textEdit24
             // 
-            this.textEdit24.EditValue = "24";
+            this.textEdit24.EditValue = "";
             this.textEdit24.Location = new System.Drawing.Point(103, 128);
             this.textEdit24.Name = "textEdit24";
             this.textEdit24.Properties.Mask.BeepOnError = true;
@@ -351,7 +351,7 @@
             // 
             // textEdit19
             // 
-            this.textEdit19.EditValue = "19";
+            this.textEdit19.EditValue = "";
             this.textEdit19.Location = new System.Drawing.Point(272, 154);
             this.textEdit19.Name = "textEdit19";
             this.textEdit19.Properties.Mask.BeepOnError = true;
@@ -385,7 +385,7 @@
             // 
             // textEdit20
             // 
-            this.textEdit20.EditValue = "20";
+            this.textEdit20.EditValue = "";
             this.textEdit20.Location = new System.Drawing.Point(272, 128);
             this.textEdit20.Name = "textEdit20";
             this.textEdit20.Properties.Mask.BeepOnError = true;
@@ -419,7 +419,7 @@
             // 
             // textEdit21
             // 
-            this.textEdit21.EditValue = "21";
+            this.textEdit21.EditValue = "";
             this.textEdit21.Location = new System.Drawing.Point(272, 102);
             this.textEdit21.Name = "textEdit21";
             this.textEdit21.Properties.Mask.BeepOnError = true;
@@ -453,7 +453,7 @@
             // 
             // textEdit22
             // 
-            this.textEdit22.EditValue = "22";
+            this.textEdit22.EditValue = "";
             this.textEdit22.Location = new System.Drawing.Point(272, 76);
             this.textEdit22.Name = "textEdit22";
             this.textEdit22.Properties.Mask.BeepOnError = true;
@@ -487,7 +487,7 @@
             // 
             // textEdit23
             // 
-            this.textEdit23.EditValue = "23";
+            this.textEdit23.EditValue = "";
             this.textEdit23.Location = new System.Drawing.Point(272, 50);
             this.textEdit23.Name = "textEdit23";
             this.textEdit23.Properties.Mask.BeepOnError = true;
@@ -521,7 +521,7 @@
             // 
             // textEdit16
             // 
-            this.textEdit16.EditValue = "16";
+            this.textEdit16.EditValue = "";
             this.textEdit16.Location = new System.Drawing.Point(272, 24);
             this.textEdit16.Name = "textEdit16";
             this.textEdit16.Properties.Mask.BeepOnError = true;
@@ -555,7 +555,7 @@
             // 
             // textEdit15
             // 
-            this.textEdit15.EditValue = "15";
+            this.textEdit15.EditValue = "";
             this.textEdit15.Location = new System.Drawing.Point(103, 153);
             this.textEdit15.Name = "textEdit15";
             this.textEdit15.Properties.Mask.BeepOnError = true;
