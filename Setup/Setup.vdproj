@@ -544,6 +544,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2302CC158AAA8EA6B0F54BF45B119EBF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F32283B0CB4A43BB8DD37133E8814497"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -677,12 +683,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_CBB7C0C2CBEB304AA07070FE9F94DB59"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2302CC158AAA8EA6B0F54BF45B119EBF"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -1723,7 +1723,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Учет цистерн"
         "ProductCode" = "8:{AAD22592-0E56-4432-BFB1-CD11FF82BD8E}"
-        "PackageCode" = "8:{3906BF87-68A0-490D-AA13-00C65AAD6693}"
+        "PackageCode" = "8:{148CCD9B-CF41-4E5A-AFF3-DAF483A494B8}"
         "UpgradeCode" = "8:{630FF8C4-667E-4B0E-A1E6-7ACB95D9CBF5}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -2270,6 +2270,62 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_06EB029C043D481681DBA9D233D38026"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_905DC310388D4193B75AA4BDA9997B73"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Symbols"
+            "OutputProjectGuid" = "8:{8E23CC18-3C9F-4BBA-A0D6-CE49DBC2EA39}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CDC93D1A576144B182D5F4C143D981C3"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_905DC310388D4193B75AA4BDA9997B73"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:ReferenceCopyLocalPaths"
+            "OutputProjectGuid" = "8:{8E23CC18-3C9F-4BBA-A0D6-CE49DBC2EA39}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F32283B0CB4A43BB8DD37133E8814497"
             {
             "SourcePath" = "8:..\\Учет цистерн\\obj\\Debug\\Учет цистерн.exe"
