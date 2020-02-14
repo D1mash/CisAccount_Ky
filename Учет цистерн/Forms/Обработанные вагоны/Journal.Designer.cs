@@ -308,23 +308,25 @@
             // 
             // textEdit17
             // 
-            this.textEdit17.Location = new System.Drawing.Point(275, 154);
+            this.textEdit17.EditValue = "17";
+            this.textEdit17.Location = new System.Drawing.Point(181, 180);
             this.textEdit17.Name = "textEdit17";
-            this.textEdit17.Properties.Mask.BeepOnError = true;
-            this.textEdit17.Properties.Mask.EditMask = "\\d";
-            this.textEdit17.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-            this.textEdit17.Properties.Mask.ShowPlaceHolders = false;
-            this.textEdit17.Properties.MaxLength = 1;
-            this.textEdit17.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit17_Properties_KeyPress);
-            this.textEdit17.Size = new System.Drawing.Size(48, 20);
+            this.textEdit17.Properties.MaxLength = 20;
+            this.textEdit17.Size = new System.Drawing.Size(85, 20);
             this.textEdit17.TabIndex = 57;
             // 
             // textEdit24
             // 
-            this.textEdit24.Location = new System.Drawing.Point(178, 180);
+            this.textEdit24.EditValue = "24";
+            this.textEdit24.Location = new System.Drawing.Point(103, 128);
             this.textEdit24.Name = "textEdit24";
-            this.textEdit24.Properties.MaxLength = 20;
-            this.textEdit24.Size = new System.Drawing.Size(103, 20);
+            this.textEdit24.Properties.Mask.BeepOnError = true;
+            this.textEdit24.Properties.Mask.EditMask = "\\d";
+            this.textEdit24.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.textEdit24.Properties.Mask.ShowPlaceHolders = false;
+            this.textEdit24.Properties.MaxLength = 1;
+            this.textEdit24.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit24_Properties_KeyPress);
+            this.textEdit24.Size = new System.Drawing.Size(48, 20);
             this.textEdit24.TabIndex = 36;
             // 
             // labelControl19
@@ -349,7 +351,8 @@
             // 
             // textEdit19
             // 
-            this.textEdit19.Location = new System.Drawing.Point(275, 128);
+            this.textEdit19.EditValue = "19";
+            this.textEdit19.Location = new System.Drawing.Point(272, 154);
             this.textEdit19.Name = "textEdit19";
             this.textEdit19.Properties.Mask.BeepOnError = true;
             this.textEdit19.Properties.Mask.EditMask = "\\d";
@@ -382,7 +385,8 @@
             // 
             // textEdit20
             // 
-            this.textEdit20.Location = new System.Drawing.Point(275, 102);
+            this.textEdit20.EditValue = "20";
+            this.textEdit20.Location = new System.Drawing.Point(272, 128);
             this.textEdit20.Name = "textEdit20";
             this.textEdit20.Properties.Mask.BeepOnError = true;
             this.textEdit20.Properties.Mask.EditMask = "\\d";
@@ -415,7 +419,8 @@
             // 
             // textEdit21
             // 
-            this.textEdit21.Location = new System.Drawing.Point(275, 76);
+            this.textEdit21.EditValue = "21";
+            this.textEdit21.Location = new System.Drawing.Point(272, 102);
             this.textEdit21.Name = "textEdit21";
             this.textEdit21.Properties.Mask.BeepOnError = true;
             this.textEdit21.Properties.Mask.EditMask = "\\d";
@@ -448,7 +453,8 @@
             // 
             // textEdit22
             // 
-            this.textEdit22.Location = new System.Drawing.Point(275, 50);
+            this.textEdit22.EditValue = "22";
+            this.textEdit22.Location = new System.Drawing.Point(272, 76);
             this.textEdit22.Name = "textEdit22";
             this.textEdit22.Properties.Mask.BeepOnError = true;
             this.textEdit22.Properties.Mask.EditMask = "\\d";
@@ -481,7 +487,8 @@
             // 
             // textEdit23
             // 
-            this.textEdit23.Location = new System.Drawing.Point(275, 24);
+            this.textEdit23.EditValue = "23";
+            this.textEdit23.Location = new System.Drawing.Point(272, 50);
             this.textEdit23.Name = "textEdit23";
             this.textEdit23.Properties.Mask.BeepOnError = true;
             this.textEdit23.Properties.Mask.EditMask = "\\d";
@@ -514,7 +521,8 @@
             // 
             // textEdit16
             // 
-            this.textEdit16.Location = new System.Drawing.Point(103, 152);
+            this.textEdit16.EditValue = "16";
+            this.textEdit16.Location = new System.Drawing.Point(272, 24);
             this.textEdit16.Name = "textEdit16";
             this.textEdit16.Properties.Mask.BeepOnError = true;
             this.textEdit16.Properties.Mask.EditMask = "\\d";
@@ -547,7 +555,8 @@
             // 
             // textEdit15
             // 
-            this.textEdit15.Location = new System.Drawing.Point(103, 126);
+            this.textEdit15.EditValue = "15";
+            this.textEdit15.Location = new System.Drawing.Point(103, 153);
             this.textEdit15.Name = "textEdit15";
             this.textEdit15.Properties.Mask.BeepOnError = true;
             this.textEdit15.Properties.Mask.EditMask = "\\d";
@@ -580,7 +589,7 @@
             // 
             // textEdit14
             // 
-            this.textEdit14.Location = new System.Drawing.Point(103, 100);
+            this.textEdit14.Location = new System.Drawing.Point(103, 102);
             this.textEdit14.Name = "textEdit14";
             this.textEdit14.Properties.Mask.BeepOnError = true;
             this.textEdit14.Properties.Mask.EditMask = "\\d";
@@ -613,7 +622,7 @@
             // 
             // textEdit13
             // 
-            this.textEdit13.Location = new System.Drawing.Point(103, 75);
+            this.textEdit13.Location = new System.Drawing.Point(103, 76);
             this.textEdit13.Name = "textEdit13";
             this.textEdit13.Properties.Mask.BeepOnError = true;
             this.textEdit13.Properties.Mask.EditMask = "\\d";
@@ -646,7 +655,7 @@
             // 
             // textEdit12
             // 
-            this.textEdit12.Location = new System.Drawing.Point(103, 48);
+            this.textEdit12.Location = new System.Drawing.Point(103, 50);
             this.textEdit12.Name = "textEdit12";
             this.textEdit12.Properties.Mask.BeepOnError = true;
             this.textEdit12.Properties.Mask.EditMask = "\\d";
@@ -679,7 +688,7 @@
             // 
             // textEdit18
             // 
-            this.textEdit18.Location = new System.Drawing.Point(103, 23);
+            this.textEdit18.Location = new System.Drawing.Point(103, 24);
             this.textEdit18.Name = "textEdit18";
             this.textEdit18.Properties.Mask.BeepOnError = true;
             this.textEdit18.Properties.Mask.EditMask = "\\d";
