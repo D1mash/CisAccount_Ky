@@ -164,7 +164,7 @@
             this.MinimizeBox = false;
             this.Name = "AddUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AddUserForm";
+            this.Text = "Создание пользователя";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.AddUserForm_Load);
             this.ResumeLayout(false);

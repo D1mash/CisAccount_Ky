@@ -172,7 +172,7 @@
             this.MinimizeBox = false;
             this.Name = "UpdateUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "UpdateUserForm";
+            this.Text = "Изменение данных пользователя";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.UpdateUserForm_Load);
             this.ResumeLayout(false);

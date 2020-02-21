@@ -26,7 +26,6 @@ namespace Учет_цистерн.Forms.Смена_собственника
         string OwnerName;
         string date;
         string product;
-        string Destination = ConfigurationManager.AppSettings["Dest"].ToString();
         string role;
 
         public Rent_Brodcast_Car(string role)
@@ -37,7 +36,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
         private void Rent_Brodcast_Car_Load(object sender, EventArgs e)
         {
-            if (role == "1")
+            if (role == "1" | role == "1002")
             {
                 simpleButton1.Enabled = true;
                 simpleButton2.Enabled = true;
@@ -467,46 +466,53 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            if (gridView2.RowCount > 1)
+            try
             {
-                Excel.Application xlApp;
-                Excel.Workbook xlWorkBook;
-                Excel.Worksheet xlWorkSheet;
-                object misValue = System.Reflection.Missing.Value;
-
-                xlApp = new Excel.Application();
-                xlWorkBook = xlApp.Workbooks.Add(misValue);
-                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-                xlWorkSheet.Range["B2"].Value = "Собственник:  " + OwnerName;
-
-                xlWorkSheet.Range["B4"].Value = "Заявка №: " + SelectItemRow1.ToString() + " от " + date;
-
-                xlWorkSheet.Range["B5"].Value = "Продукт: " + product;
-
-                for (int i = 0; i < gridView3.RowCount; i++)
+                if (gridView2.RowCount > 1)
                 {
-                    xlWorkSheet.Cells[i + 8, 2] = i;
-                    xlWorkSheet.Cells[i + 8, 3] = gridView3.GetRowCellValue(i, "Номер В/Ц");
+                    Excel.Application xlApp;
+                    Excel.Workbook xlWorkBook;
+                    Excel.Worksheet xlWorkSheet;
+                    object misValue = System.Reflection.Missing.Value;
+
+                    xlApp = new Excel.Application();
+                    xlWorkBook = xlApp.Workbooks.Add(misValue);
+                    xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                    xlWorkSheet.Range["B2"].Value = "Собственник:  " + OwnerName;
+
+                    xlWorkSheet.Range["B4"].Value = "Заявка №: " + SelectItemRow1.ToString() + " от " + date;
+
+                    xlWorkSheet.Range["B5"].Value = "Продукт: " + product;
+
+                    for (int i = 0; i < gridView3.RowCount; i++)
+                    {
+                        xlWorkSheet.Cells[i + 8, 2] = i;
+                        xlWorkSheet.Cells[i + 8, 3] = gridView3.GetRowCellValue(i, "Номер В/Ц");
+                    }
+
+                    Excel.Range range = xlWorkSheet.Range["B2", xlWorkSheet.Cells[gridView3.RowCount + 8, 3]];
+                    FormattingExcelCells(range, false, false);
+
+                    xlApp.DisplayAlerts = false;
+                    xlWorkBook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Заявка смена собственника.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    xlWorkBook.Close(true, misValue, misValue);
+                    xlApp.Quit();
+
+                    releaseObject(xlWorkSheet);
+                    releaseObject(xlWorkBook);
+                    releaseObject(xlApp);
+
+                    Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Заявка смена собственника.xlsx");
                 }
-
-                Excel.Range range = xlWorkSheet.Range["B2", xlWorkSheet.Cells[gridView3.RowCount + 8, 3]];
-                FormattingExcelCells(range, false, false);
-
-                xlApp.DisplayAlerts = false;
-                xlWorkBook.SaveAs(@"" + Destination + "Заявка смена собственника.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                xlWorkBook.Close(true, misValue, misValue);
-                xlApp.Quit();
-
-                releaseObject(xlWorkSheet);
-                releaseObject(xlWorkBook);
-                releaseObject(xlApp);
-
-                Process.Start(@"" + Destination + "Заявка смена собственника.xlsx");
+                else
+                {
+                    MessageBox.Show("Выполните поиск", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Выполните поиск", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.ToString(), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -551,56 +557,64 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
         private void simpleButton7_Click(object sender, EventArgs e)
         {
-            if (gridView1.RowCount > 1)
+            try
             {
-                Excel.Application xlApp;
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
+                if (gridView1.RowCount > 1)
+                {
+                    Excel.Application xlApp;
+                    Excel.Workbook xlWorkBook;
+                    Excel.Worksheet xlWorkSheet;
+                    object misValue = System.Reflection.Missing.Value;
 
-            xlApp = new Excel.Application();
-            xlWorkBook = xlApp.Workbooks.Add(misValue);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                    xlApp = new Excel.Application();
+                    xlWorkBook = xlApp.Workbooks.Add(misValue);
+                    xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            xlWorkSheet.Range["B2"].Value = "История передачи собственникам в/ц №:  " + SelectItemRow2.ToString();
-
-
-            xlWorkSheet.Range["B4"].Value = "Дата";
-            xlWorkSheet.Range["C4"].Value = "Номер заявки";
-            xlWorkSheet.Range["D4"].Value = "Номер вагона";
-            xlWorkSheet.Range["E4"].Value = "Продукт";
-            xlWorkSheet.Range["F4"].Value = "Получивший собственник";
+                    xlWorkSheet.Range["B2"].Value = "История передачи собственникам в/ц №:  " + SelectItemRow2.ToString();
 
 
+                    xlWorkSheet.Range["B4"].Value = "Дата";
+                    xlWorkSheet.Range["C4"].Value = "Номер заявки";
+                    xlWorkSheet.Range["D4"].Value = "Номер вагона";
+                    xlWorkSheet.Range["E4"].Value = "Продукт";
+                    xlWorkSheet.Range["F4"].Value = "Получивший собственник";
 
-            for (int i = 0; i < gridView1.RowCount; i++)
+
+
+                    for (int i = 0; i < gridView1.RowCount; i++)
+                    {
+                        xlWorkSheet.Cells[i + 5, 2] = gridView1.GetRowCellValue(i, "Дата");
+                        xlWorkSheet.Cells[i + 5, 3] = gridView1.GetRowCellValue(i, "Номер заявки");
+                        xlWorkSheet.Cells[i + 5, 4] = gridView1.GetRowCellValue(i, "Номер вагона");
+                        xlWorkSheet.Cells[i + 5, 5] = gridView1.GetRowCellValue(i, "Продукт");
+                        xlWorkSheet.Cells[i + 5, 6] = gridView1.GetRowCellValue(i, "Получивший собственник");
+                    }
+
+                    Excel.Range range = xlWorkSheet.Range["B2", xlWorkSheet.Cells[gridView3.RowCount + 5, 6]];
+                    FormattingExcelCells(range, false, false);
+
+                    xlApp.DisplayAlerts = false;
+                    xlWorkBook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Архив Смена собственника.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    xlWorkBook.Close(true, misValue, misValue);
+                    xlApp.Quit();
+
+                    releaseObject(xlWorkSheet);
+                    releaseObject(xlWorkBook);
+                    releaseObject(xlApp);
+
+                    Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Архив Смена собственника.xlsx");
+
+                }
+                else
+                {
+                    MessageBox.Show("Выполните поиск", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
             {
-                xlWorkSheet.Cells[i + 5, 2] = gridView1.GetRowCellValue(i, "Дата");
-                xlWorkSheet.Cells[i + 5, 3] = gridView1.GetRowCellValue(i, "Номер заявки");
-                xlWorkSheet.Cells[i + 5, 4] = gridView1.GetRowCellValue(i, "Номер вагона");
-                xlWorkSheet.Cells[i + 5, 5] = gridView1.GetRowCellValue(i, "Продукт");
-                xlWorkSheet.Cells[i + 5, 6] = gridView1.GetRowCellValue(i, "Получивший собственник");
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            Excel.Range range = xlWorkSheet.Range["B2", xlWorkSheet.Cells[gridView3.RowCount + 5, 6]];
-            FormattingExcelCells(range, false, false);
-
-            xlApp.DisplayAlerts = false;
-            xlWorkBook.SaveAs(@"" + Destination + "Архив Смена собственника.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            xlWorkBook.Close(true, misValue, misValue);
-            xlApp.Quit();
-
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlApp);
-
-            Process.Start(@"" + Destination + "Архив Смена собственника.xlsx");
-
-            }
-            else
-            {
-                MessageBox.Show("Выполните поиск", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
     }
 }
