@@ -954,6 +954,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         private void simpleButton2_Click(object sender, EventArgs e)
         {
             Unblock();
+            textEdit1.Focus();
             textEdit1.Text = "";
             simpleButton9.Enabled = true;
             Temp = SelectItemRow;
@@ -1416,5 +1417,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 //e.HighPriority = true;
             }
         }
+
     }
 }
