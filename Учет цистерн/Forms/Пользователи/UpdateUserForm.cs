@@ -66,10 +66,17 @@ namespace Учет_цистерн.Forms.Пользователи
         {
             try
             {
-                string Update = "exec dbo.UpdateUser '" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + textBox4.Text.Trim() + "','" + textBox1.Text.Trim() + "'," + comboBox1.SelectedValue.ToString() + "," + selectID;
-                DbConnection.DBConnect(Update);
-                MessageBox.Show("Пользователь изменён!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                if(textBox1.Text == string.Empty)
+                {
+                    MessageBox.Show("Введите пароль!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    string Update = "exec dbo.UpdateUser '" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "','" + textBox4.Text.Trim() + "','" + textBox1.Text.Trim() + "'," + comboBox1.SelectedValue.ToString() + "," + selectID;
+                    DbConnection.DBConnect(Update);
+                    MessageBox.Show("Пользователь изменён!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
             }
             catch(Exception ex)
             {
