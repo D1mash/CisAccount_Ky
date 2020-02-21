@@ -102,16 +102,37 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
 
         public override void Refresh()
         {
-            gridControl1.DataSource = null;
-            //gridView1.Columns.Clear();
-            string refresh = "exec [dbo].[GetRenderedService] '"+dateTimePicker1.Value.ToShortDateString()+"'";
-            DataTable dt = DbConnection.DBConnect(refresh);
-            gridControl1.DataSource = dt;
-            gridView1.BestFitColumns();
-            gridView1.Columns[3].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            gridView1.Columns[0].Visible = false;
-            gridView1.Columns[1].Visible = false;
-            gridView1.Columns[2].Visible = false;
+            if (role == "1")
+            {
+                gridControl1.DataSource = null;
+                //gridView1.Columns.Clear();
+                string refresh = "exec [dbo].[GetRenderedService] '" + dateTimePicker1.Value.ToShortDateString() + "'";
+                DataTable dt = DbConnection.DBConnect(refresh);
+                gridControl1.DataSource = dt;
+                gridView1.BestFitColumns();
+                gridView1.Columns[3].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+                gridView1.Columns[0].Visible = false;
+                gridView1.Columns[1].Visible = false;
+                gridView1.Columns[2].Visible = false;
+                gridView1.Columns[18].Visible = false;
+            }
+            else
+            {
+                if(role == "3")
+                {
+                    gridControl1.DataSource = null;
+                    //gridView1.Columns.Clear();
+                    string refresh = "exec [dbo].[GetRenderedService] '" + dateTimePicker1.Value.ToShortDateString() + "'";
+                    DataTable dt = DbConnection.DBConnect(refresh);
+                    gridControl1.DataSource = dt;
+                    gridView1.BestFitColumns();
+                    gridView1.Columns[3].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+                    gridView1.Columns[0].Visible = false;
+                    gridView1.Columns[1].Visible = false;
+                    gridView1.Columns[2].Visible = false;
+                }
+            }
+            
 
             //gridView1.ShowFindPanel();
             //textEdit1.Text = "";
