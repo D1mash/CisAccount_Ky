@@ -13,8 +13,7 @@ namespace Учет_цистерн
         }
 
         int selectID;
-        int yes;
-        int not;
+
         string UpdateCurrentBrigade;
 
         public int SelectID
