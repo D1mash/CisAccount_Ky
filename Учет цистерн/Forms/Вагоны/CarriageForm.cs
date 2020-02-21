@@ -155,6 +155,13 @@ namespace Учет_цистерн
                     btnDelete.Enabled = false;
                     btnRefresh.Enabled = true;
                 }
+                else
+                {
+                    btnAdd.Enabled = true;
+                    btnUpdate.Enabled = true;
+                    btnDelete.Enabled = true;
+                    btnRefresh.Enabled = true;
+                }
             }
 
             Refresh();

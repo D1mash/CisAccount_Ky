@@ -38,6 +38,13 @@ namespace Учет_цистерн
                         btnOwnerDelete.Enabled = false;
                         btnOwnerReffresh.Enabled = true;
                     }
+                    else
+                    {
+                        btnOwnerAdd.Enabled = true;
+                        btnOwnerUpdate.Enabled = true;
+                        btnOwnerDelete.Enabled = true;
+                        btnOwnerReffresh.Enabled = true;
+                    }
                 }
 
                 string Reffresh = "SELECT ID,Name,FullName FROM [Batys].[dbo].[d__Owner]";

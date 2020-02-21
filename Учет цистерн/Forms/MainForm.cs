@@ -48,22 +48,6 @@ namespace Учет_цистерн
         {
             try
             {
-                if (role == "1")
-                {
-                    button6.Enabled = true;
-                }
-                else
-                {
-                    if (role == "2")
-                    {
-                        button6.Enabled = true;
-                    }
-                    else
-                    {
-                        button6.Enabled = false;
-                    }
-                }
-                
                 GetFilter();
             }
             catch (Exception exp)
@@ -113,11 +97,11 @@ namespace Учет_цистерн
                     }
                     else
                     {
-                        contextMenuStrip_Product.Items[0].Enabled = false;
-                        contextMenuStrip_Product.Items[1].Enabled = false;
-                        contextMenuStrip_Product.Items[2].Enabled = false;
-                        contextMenuStrip_Product.Items[3].Enabled = false;
-                        contextMenuStrip_Product.Items[4].Enabled = false;
+                        contextMenuStrip_Product.Items[0].Enabled = true;
+                        contextMenuStrip_Product.Items[1].Enabled = true;
+                        contextMenuStrip_Product.Items[2].Enabled = true;
+                        contextMenuStrip_Product.Items[3].Enabled = true;
+                        contextMenuStrip_Product.Items[4].Enabled = true;
                     }
                 }
             }

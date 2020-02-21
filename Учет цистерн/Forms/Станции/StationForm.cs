@@ -80,6 +80,13 @@ namespace Учет_цистерн
                         btn_upd_station_form.Enabled = true;
                         btn_refsh_station_form.Enabled = true;
                     }
+                    else
+                    {
+                        btn_add_station_form.Enabled = true;
+                        btn_dlt_station_form.Enabled = true;
+                        btn_upd_station_form.Enabled = true;
+                        btn_refsh_station_form.Enabled = true;
+                    }
                 }
                 string GetStation = "select ID, Name, Code, Code6 from d__Station";
                 DataTable dataTable = new DataTable();

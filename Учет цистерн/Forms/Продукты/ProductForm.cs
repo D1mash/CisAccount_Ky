@@ -158,6 +158,13 @@ namespace Учет_цистерн
                         button3.Enabled = false;
                         button4.Enabled = true;
                     }
+                    else
+                    {
+                        button1.Enabled = true;
+                        button2.Enabled = true;
+                        button3.Enabled = true;
+                        button4.Enabled = true;
+                    }
                 }
 
                 string GetProduct = "select dp.ID, qh.ID as [Hangling_id],dp.Name [dpName], qh.Name [qhName] from d__Product dp left join qHangling qh on qh.ID = dp.Handling_id";

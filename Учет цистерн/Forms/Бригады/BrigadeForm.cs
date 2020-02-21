@@ -157,10 +157,20 @@ namespace Учет_цистерн
                 }
                 else
                 {
-                    btnBrigadeAdd.Enabled = true;
-                    btnBrigadeUpdate.Enabled = true;
-                    btnBrigadeDelete.Enabled = false;
-                    btnBrigadeReffresh.Enabled = true;
+                    if (role == "2")
+                    {
+                        btnBrigadeAdd.Enabled = true;
+                        btnBrigadeUpdate.Enabled = true;
+                        btnBrigadeDelete.Enabled = false;
+                        btnBrigadeReffresh.Enabled = true;
+                    }
+                    else
+                    {
+                        btnBrigadeAdd.Enabled = true;
+                        btnBrigadeUpdate.Enabled = true;
+                        btnBrigadeDelete.Enabled = true;
+                        btnBrigadeReffresh.Enabled = true;
+                    }
                 }
 
                 Refreshh();
