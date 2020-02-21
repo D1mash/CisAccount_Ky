@@ -385,7 +385,7 @@ namespace Учет_цистерн
                     }
                     else
                     {
-                        contextMenuStrip_Services.Items[0].Enabled = false;
+                        contextMenuStrip_Services.Items[0].Enabled = true;
                         contextMenuStrip_Services.Items[1].Enabled = true;
                     }
                 }
@@ -519,27 +519,6 @@ namespace Учет_цистерн
         private void Button3_Click(object sender, EventArgs e)
         {
             contextMenuStrip_Report.Show(button3, new Point(0, button3.Height));
-            if(role == "1")
-            {
-                contextMenuStrip_Report.Items[0].Enabled = true;
-                contextMenuStrip_Report.Items[1].Enabled = true;
-                contextMenuStrip_Report.Items[2].Enabled = true;
-            }
-            else
-            {
-                if(role == "2")
-                {
-                    contextMenuStrip_Report.Items[0].Enabled = true;
-                    contextMenuStrip_Report.Items[1].Enabled = true;
-                    contextMenuStrip_Report.Items[2].Enabled = false;
-                }
-                else
-                {
-                    contextMenuStrip_Report.Items[0].Enabled = false;
-                    contextMenuStrip_Report.Items[1].Enabled = false;
-                    contextMenuStrip_Report.Items[2].Enabled = true;
-                }
-            }
         }
 
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -782,7 +761,7 @@ namespace Учет_цистерн
             try
             {
                 contextMenuStrip_Refrence.Show(btn_Refrence, new Point(0, button2.Height));
-                if(role == "1")
+                if(role == "1002")
                 {
                     contextMenuStrip_Refrence.Items[0].Enabled = true;
                     contextMenuStrip_Refrence.Items[1].Enabled = true;
@@ -791,10 +770,20 @@ namespace Учет_цистерн
                 }
                 else
                 {
-                    contextMenuStrip_Refrence.Items[0].Enabled = false;
-                    contextMenuStrip_Refrence.Items[1].Enabled = false;
-                    contextMenuStrip_Refrence.Items[2].Enabled = true;
-                    contextMenuStrip_Refrence.Items[3].Enabled = true;
+                    if (role == "1")
+                    {
+                        contextMenuStrip_Refrence.Items[0].Enabled = false;
+                        contextMenuStrip_Refrence.Items[1].Enabled = true;
+                        contextMenuStrip_Refrence.Items[2].Enabled = true;
+                        contextMenuStrip_Refrence.Items[3].Enabled = true;
+                    }
+                    else
+                    {
+                        contextMenuStrip_Refrence.Items[0].Enabled = false;
+                        contextMenuStrip_Refrence.Items[1].Enabled = false;
+                        contextMenuStrip_Refrence.Items[2].Enabled = true;
+                        contextMenuStrip_Refrence.Items[3].Enabled = true;
+                    }
                 }
             }
             catch(Exception ex)
@@ -890,8 +879,8 @@ namespace Учет_цистерн
                 }
                 else
                 {
-                    contextMenuStrip_Rent_Car.Items[0].Enabled = false;
-                    contextMenuStrip_Rent_Car.Items[1].Enabled = false;
+                    contextMenuStrip_Rent_Car.Items[0].Enabled = true;
+                    contextMenuStrip_Rent_Car.Items[1].Enabled = true;
                 }
             }
             }

@@ -44,6 +44,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     {
                         checkEdit24.Visible = true;
                         simpleButton4.Visible = false;
+                        simpleButton2.Enabled = false;
                     }
                 }
 

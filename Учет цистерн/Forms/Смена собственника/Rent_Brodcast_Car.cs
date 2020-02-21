@@ -58,6 +58,15 @@ namespace Учет_цистерн.Forms.Смена_собственника
                     simpleButton6.Enabled = false;
                     simpleButton7.Enabled = true;
                 }
+                else
+                {
+                    simpleButton1.Enabled = true;
+                    simpleButton2.Enabled = false;
+                    simpleButton3.Enabled = false;
+                    simpleButton4.Enabled = false;
+                    simpleButton6.Enabled = false;
+                    simpleButton7.Enabled = true;
+                }
             }
 
             checkEdit1_CheckedChanged(null, null);

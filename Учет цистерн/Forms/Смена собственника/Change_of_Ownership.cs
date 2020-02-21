@@ -36,6 +36,24 @@ namespace Учет_цистерн.Forms
         {
             try
             {
+
+                if (role == "1")
+                {
+                    button1.Enabled = true;
+                }
+                else
+                {
+                    if (role == "2")
+                    {
+
+                        button1.Enabled = true;
+                    }
+                    else
+                    {
+                        button1.Enabled = false;
+                    }
+                }
+
                 dateEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
                 dateEdit1.Properties.Mask.EditMask = "d"; //'Short date' format 
                 dateEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;

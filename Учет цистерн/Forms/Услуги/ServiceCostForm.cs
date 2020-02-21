@@ -38,7 +38,14 @@ namespace Учет_цистерн
                         Btn_Updt.Enabled = true;
                         Btn_Delete.Enabled = false;
                         Btn_Refresh.Enabled = true;
-                    }   
+                    }
+                    else
+                    {
+                        Btn_Add.Enabled = true;
+                        Btn_Updt.Enabled = true;
+                        Btn_Delete.Enabled = true;
+                        Btn_Refresh.Enabled = true;
+                    }
                 }
 
                 string Reffresh = "exec dbo.GetServiceCost";
