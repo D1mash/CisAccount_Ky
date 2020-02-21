@@ -13,8 +13,6 @@ namespace Учет_цистерн
             InitializeComponent();
         }
 
-        int yes;
-        int not;
         string AddNewBrigade;
 
         private void BtnClose_Click(object sender, EventArgs e)

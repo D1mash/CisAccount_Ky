@@ -50,7 +50,7 @@ namespace Учет_цистерн
             CarriageForm_Load(null, null);
         }
 
-        private void Refresh()
+        private new void Refresh()
         {
             gridControl1.DataSource = null;
             gridView1.Columns.Clear();

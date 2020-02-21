@@ -28,7 +28,7 @@ namespace Учет_цистерн.Forms.Отчеты
             InitializeComponent();
         }
 
-        private void Refresh()
+        private new void Refresh()
         {
             if (radioButton1.Checked)
             {
