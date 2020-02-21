@@ -30,7 +30,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         {
             try
             {
-                if (role == "1")
+                if (role == "1" | role == "1002")
                 {
                     simpleButton4.Visible = true;
                 }
@@ -105,7 +105,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
 
         public override void Refresh()
         {
-            if (role == "1" | role == "2")
+            if (role == "1" | role == "2" | role == "1002")
             {
                 gridControl1.DataSource = null;
                 gridView1.Columns.Clear();
