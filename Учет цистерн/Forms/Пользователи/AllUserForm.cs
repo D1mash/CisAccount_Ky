@@ -97,7 +97,7 @@ namespace Учет_цистерн.Forms.Пользователи
                     {
                         if (MessageBox.Show("Вы действительно хотите удалить эту запись?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            string Delete = "delete from Users where AID = " + SelectItemRow;
+                            string Delete = "update Users set IsDeleted = 1 where AID = " + SelectItemRow;
                             DbConnection.DBConnect(Delete);
                             MessageBox.Show("Пользователь удалён!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Refreshh();

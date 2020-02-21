@@ -72,7 +72,7 @@ namespace Учет_цистерн
         {
             try
             {
-                string Update = "exec dbo.UpdateServiceCost '" + textBox2.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + textBox1.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString() + "," + selectID;
+                string Update = "exec [dbo].[UpdateServiceCostForm] '" + textBox2.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + textBox1.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString() + "," + selectID;
                 DataTable dataTable = new DataTable();
                 dataTable = DbConnection.DBConnect(Update);
                 this.Close();
