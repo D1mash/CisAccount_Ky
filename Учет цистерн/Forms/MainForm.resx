@@ -449,7 +449,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 626</value>
+    <value>161, 660</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1067,7 +1067,7 @@
     <value>621, 17</value>
   </metadata>
   <data name="расценкиToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="расценкиToolStripMenuItem.Text" xml:space="preserve">
     <value>Расценки</value>
@@ -1085,13 +1085,13 @@
     <value>СНО Приход</value>
   </data>
   <data name="сНОToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="сНОToolStripMenuItem.Text" xml:space="preserve">
     <value>СНО</value>
   </data>
   <data name="contextMenuStrip_Services.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 48</value>
+    <value>181, 70</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip_Services.Name" xml:space="preserve">
     <value>contextMenuStrip_Services</value>

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
 using Учет_цистерн.Forms.заявки_на_обработку;
 
 namespace Учет_цистерн.Forms.Обработанные_вагоны
@@ -41,6 +42,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     }
                     else
                     {
+                        checkEdit24.Visible = true;
                         simpleButton4.Visible = false;
                     }
                 }
@@ -102,11 +104,12 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
 
         public override void Refresh()
         {
-            if (role == "1")
+            if (role == "1" | role == "2")
             {
                 gridControl1.DataSource = null;
-                //gridView1.Columns.Clear();
-                string refresh = "exec [dbo].[GetRenderedService] '" + dateTimePicker1.Value.ToShortDateString() + "'";
+                gridView1.Columns.Clear();
+
+                string refresh = "exec [dbo].[GetRenderedService] '" + dateTimePicker1.Value.ToShortDateString() + "', " + "@Type = " + 1;
                 DataTable dt = DbConnection.DBConnect(refresh);
                 gridControl1.DataSource = dt;
                 gridView1.BestFitColumns();
@@ -114,15 +117,15 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 gridView1.Columns[0].Visible = false;
                 gridView1.Columns[1].Visible = false;
                 gridView1.Columns[2].Visible = false;
-                gridView1.Columns[18].Visible = false;
             }
             else
             {
-                if(role == "3")
+                if (role == "3")
                 {
                     gridControl1.DataSource = null;
-                    //gridView1.Columns.Clear();
-                    string refresh = "exec [dbo].[GetRenderedService] '" + dateTimePicker1.Value.ToShortDateString() + "'";
+                    gridView1.Columns.Clear();
+
+                    string refresh = "exec [dbo].[GetRenderedService] '" + dateTimePicker1.Value.ToShortDateString() + "', " + "@Type = " + 2;
                     DataTable dt = DbConnection.DBConnect(refresh);
                     gridControl1.DataSource = dt;
                     gridView1.BestFitColumns();
@@ -130,10 +133,12 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     gridView1.Columns[0].Visible = false;
                     gridView1.Columns[1].Visible = false;
                     gridView1.Columns[2].Visible = false;
+                    
+
                 }
+
             }
             
-
             //gridView1.ShowFindPanel();
             //textEdit1.Text = "";
             //textEdit2.Text = "";
@@ -1357,6 +1362,58 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
 
             e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void checkEdit24_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkEdit24.Checked)
+            {
+                gridControl1.DataSource = null;
+                gridView1.Columns.Clear();
+
+                string refresh = "exec [dbo].[GetRenderedService] '" + dateTimePicker1.Value.ToShortDateString() + "', " + "@Type = " + 1;
+                DataTable dt = DbConnection.DBConnect(refresh);
+                gridControl1.DataSource = dt;
+                gridView1.BestFitColumns();
+                gridView1.Columns[3].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+                gridView1.Columns[0].Visible = false;
+                gridView1.Columns[1].Visible = false;
+                gridView1.Columns[2].Visible = false;
+            }
+            else
+            {
+                Refresh();
+            }
+        }
+
+        private void gridView1_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+
+            if (View.Columns.Count == 32)
+            {
+                if (e.RowHandle >= 0)
+                {
+                    string category = View.GetRowCellDisplayText(e.RowHandle, View.Columns["Удалён"]);
+                    if (category == "Отмечено")
+                    {
+                        e.Appearance.BackColor = Color.LightPink;
+                        //e.HighPriority = true;
+                    }
+                }
+            }
+            else
+            {
+                e.Appearance.BackColor = Color.White;
+                //e.HighPriority = true;
+            }
+
+            if (View.IsRowSelected(e.RowHandle))
+            {
+                e.Appearance.ForeColor = Color.DarkBlue;
+                //e.Appearance.BackColor = Color.LightYellow;
+                //e.HighPriority = true;
+            }
         }
     }
 }
