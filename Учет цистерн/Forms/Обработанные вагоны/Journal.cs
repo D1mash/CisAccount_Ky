@@ -1413,7 +1413,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             if (View.IsRowSelected(e.RowHandle))
             {
                 e.Appearance.ForeColor = Color.DarkBlue;
-                //e.Appearance.BackColor = Color.LightYellow;
+                e.Appearance.BackColor = Color.LightBlue;
                 //e.HighPriority = true;
             }
         }
