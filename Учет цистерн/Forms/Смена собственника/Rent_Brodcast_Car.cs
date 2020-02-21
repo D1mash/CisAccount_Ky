@@ -62,7 +62,8 @@ namespace Учет_цистерн.Forms.Смена_собственника
                     simpleButton1.Enabled = true;
                     simpleButton2.Enabled = false;
                     simpleButton3.Enabled = false;
-                    simpleButton4.Enabled = false;
+                    simpleButton4.Enabled = true;
+                    simpleButton5.Enabled = false;
                     simpleButton6.Enabled = false;
                     simpleButton7.Enabled = true;
                 }
@@ -559,7 +560,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             try
             {
-                if (gridView1.RowCount > 1)
+                if (gridView1.RowCount >= 1)
                 {
                     Excel.Application xlApp;
                     Excel.Workbook xlWorkBook;
