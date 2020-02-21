@@ -194,6 +194,8 @@ namespace Учет_цистерн.Forms
             string Insert = "exec dbo.InsertMultiple_Carriage '" + textEdit1.Text + "'";
             DbConnection.DBConnect(Insert);
 
+            textEdit1.Text = String.Empty;
+
             RefreshGrid();
         }
 
