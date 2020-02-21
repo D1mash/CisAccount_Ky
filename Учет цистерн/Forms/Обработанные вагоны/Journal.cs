@@ -1418,5 +1418,282 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             }
         }
 
+        private void textEdit1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit4.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                simpleButton1.Focus();
+            }
+        }
+
+        private void textEdit4_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit6.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit1.Focus();
+            }
+        }
+
+        private void textEdit6_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit7.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit4.Focus();
+            }
+        }
+
+        private void textEdit7_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit8.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit6.Focus();
+            }
+        }
+
+        private void textEdit8_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit9.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit7.Focus();
+            }
+        }
+
+        private void textEdit9_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit10.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit8.Focus();
+            }
+        }
+
+        private void textEdit10_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit11.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit9.Focus();
+            }
+        }
+
+        private void textEdit11_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit5.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit10.Focus();
+            }
+        }
+
+        private void textEdit5_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                if(textEdit18.Enabled == false)
+                {
+                    simpleButton1.Focus();
+                }
+                else
+                {
+                    textEdit18.Focus();
+                }
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit11.Focus();
+            }
+        }
+
+        private void textEdit12_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit13.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit18.Focus();
+            }
+        }
+
+        private void textEdit13_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit14.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit12.Focus();
+            }
+        }
+
+        private void textEdit14_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit24.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit13.Focus();
+            }
+        }
+
+        private void textEdit24_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit14.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit12.Focus();
+            }
+        }
+
+        private void textEdit15_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit16.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit24.Focus();
+            }
+        }
+
+        private void textEdit16_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit23.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit15.Focus();
+            }
+        }
+
+        private void textEdit23_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit22.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit16.Focus();
+            }
+        }
+
+        private void textEdit22_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit21.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit23.Focus();
+            }
+        }
+
+        private void textEdit21_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit20.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit22.Focus();
+            }
+        }
+
+        private void textEdit20_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit19.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit21.Focus();
+            }
+        }
+
+        private void textEdit19_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit17.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit20.Focus();
+            }
+        }
+
+        private void textEdit17_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                simpleButton1.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit19.Focus();
+            }
+        }
+
+        private void simpleButton1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit1.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                if(textEdit17.Enabled == false)
+                {
+                    textEdit5.Focus();
+                }
+                else
+                {
+                    textEdit17.Focus();
+                }
+            }
+        }
     }
 }

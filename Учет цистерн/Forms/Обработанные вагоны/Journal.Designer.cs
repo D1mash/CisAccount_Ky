@@ -316,6 +316,7 @@
             this.textEdit17.Properties.MaxLength = 20;
             this.textEdit17.Size = new System.Drawing.Size(85, 20);
             this.textEdit17.TabIndex = 57;
+            this.textEdit17.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit17_KeyUp);
             // 
             // textEdit24
             // 
@@ -330,6 +331,7 @@
             this.textEdit24.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit24_Properties_KeyPress);
             this.textEdit24.Size = new System.Drawing.Size(48, 20);
             this.textEdit24.TabIndex = 36;
+            this.textEdit24.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit24_KeyUp);
             // 
             // labelControl19
             // 
@@ -364,6 +366,7 @@
             this.textEdit19.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit19_Properties_KeyPress);
             this.textEdit19.Size = new System.Drawing.Size(48, 20);
             this.textEdit19.TabIndex = 54;
+            this.textEdit19.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit19_KeyUp);
             // 
             // labelControl21
             // 
@@ -398,6 +401,7 @@
             this.textEdit20.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit20_Properties_KeyPress);
             this.textEdit20.Size = new System.Drawing.Size(48, 20);
             this.textEdit20.TabIndex = 51;
+            this.textEdit20.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit20_KeyUp);
             // 
             // labelControl22
             // 
@@ -432,6 +436,7 @@
             this.textEdit21.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit21_Properties_KeyPress);
             this.textEdit21.Size = new System.Drawing.Size(48, 20);
             this.textEdit21.TabIndex = 48;
+            this.textEdit21.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit21_KeyUp);
             // 
             // labelControl23
             // 
@@ -466,6 +471,7 @@
             this.textEdit22.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit22_Properties_KeyPress);
             this.textEdit22.Size = new System.Drawing.Size(48, 20);
             this.textEdit22.TabIndex = 45;
+            this.textEdit22.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit22_KeyUp);
             // 
             // labelControl24
             // 
@@ -500,6 +506,7 @@
             this.textEdit23.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit23_Properties_KeyPress);
             this.textEdit23.Size = new System.Drawing.Size(48, 20);
             this.textEdit23.TabIndex = 42;
+            this.textEdit23.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit23_KeyUp);
             // 
             // labelControl25
             // 
@@ -534,6 +541,7 @@
             this.textEdit16.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit16_Properties_KeyPress);
             this.textEdit16.Size = new System.Drawing.Size(48, 20);
             this.textEdit16.TabIndex = 39;
+            this.textEdit16.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit16_KeyUp);
             // 
             // labelControl18
             // 
@@ -568,6 +576,7 @@
             this.textEdit15.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit15_Properties_KeyPress);
             this.textEdit15.Size = new System.Drawing.Size(48, 20);
             this.textEdit15.TabIndex = 36;
+            this.textEdit15.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit15_KeyUp);
             // 
             // labelControl17
             // 
@@ -601,6 +610,7 @@
             this.textEdit14.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit14_Properties_KeyPress);
             this.textEdit14.Size = new System.Drawing.Size(48, 20);
             this.textEdit14.TabIndex = 33;
+            this.textEdit14.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit14_KeyUp);
             // 
             // labelControl16
             // 
@@ -634,6 +644,7 @@
             this.textEdit13.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit13_Properties_KeyPress);
             this.textEdit13.Size = new System.Drawing.Size(48, 20);
             this.textEdit13.TabIndex = 30;
+            this.textEdit13.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit13_KeyUp);
             // 
             // labelControl15
             // 
@@ -667,6 +678,7 @@
             this.textEdit12.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit12_Properties_KeyPress);
             this.textEdit12.Size = new System.Drawing.Size(48, 20);
             this.textEdit12.TabIndex = 27;
+            this.textEdit12.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit12_KeyUp);
             // 
             // labelControl14
             // 
@@ -843,6 +855,7 @@
             this.textEdit5.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit5_Properties_KeyPress);
             this.textEdit5.Size = new System.Drawing.Size(118, 20);
             this.textEdit5.TabIndex = 28;
+            this.textEdit5.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit5_KeyUp);
             // 
             // textEdit11
             // 
@@ -856,6 +869,7 @@
             this.textEdit11.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit11_Properties_KeyPress);
             this.textEdit11.Size = new System.Drawing.Size(62, 20);
             this.textEdit11.TabIndex = 27;
+            this.textEdit11.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit11_KeyUp);
             // 
             // labelControl13
             // 
@@ -890,6 +904,7 @@
             this.textEdit10.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit10_Properties_KeyPress);
             this.textEdit10.Size = new System.Drawing.Size(62, 20);
             this.textEdit10.TabIndex = 24;
+            this.textEdit10.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit10_KeyUp);
             // 
             // textEdit9
             // 
@@ -904,6 +919,7 @@
             this.textEdit9.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit9_Properties_KeyPress);
             this.textEdit9.Size = new System.Drawing.Size(62, 20);
             this.textEdit9.TabIndex = 22;
+            this.textEdit9.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit9_KeyUp);
             // 
             // labelControl11
             // 
@@ -928,6 +944,7 @@
             this.textEdit8.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit8_Properties_KeyPress);
             this.textEdit8.Size = new System.Drawing.Size(48, 20);
             this.textEdit8.TabIndex = 20;
+            this.textEdit8.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit8_KeyUp);
             // 
             // labelControl10
             // 
@@ -952,6 +969,7 @@
             this.textEdit7.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit7_Properties_KeyPress);
             this.textEdit7.Size = new System.Drawing.Size(48, 20);
             this.textEdit7.TabIndex = 18;
+            this.textEdit7.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit7_KeyUp);
             // 
             // labelControl9
             // 
@@ -976,6 +994,7 @@
             this.textEdit6.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit6_Properties_KeyPress);
             this.textEdit6.Size = new System.Drawing.Size(48, 20);
             this.textEdit6.TabIndex = 16;
+            this.textEdit6.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit6_KeyUp);
             // 
             // labelControl8
             // 
@@ -1007,6 +1026,7 @@
             this.simpleButton1.TabIndex = 15;
             this.simpleButton1.Text = "Сохранить";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.simpleButton1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.simpleButton1_KeyUp);
             // 
             // textEdit1
             // 
@@ -1019,6 +1039,7 @@
             this.textEdit1.Properties.EditValueChanged += new System.EventHandler(this.textEdit1_Properties_EditValueChanged);
             this.textEdit1.Size = new System.Drawing.Size(209, 20);
             this.textEdit1.TabIndex = 1;
+            this.textEdit1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit1_KeyUp);
             // 
             // labelControl7
             // 
@@ -1042,6 +1063,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(127, 108);
             this.comboBox1.Name = "comboBox1";
@@ -1080,6 +1102,7 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(127, 135);
             this.comboBox2.Name = "comboBox2";
@@ -1105,6 +1128,7 @@
             this.textEdit4.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit4.Size = new System.Drawing.Size(209, 20);
             this.textEdit4.TabIndex = 7;
+            this.textEdit4.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit4_KeyUp);
             // 
             // simpleButton9
             // 
