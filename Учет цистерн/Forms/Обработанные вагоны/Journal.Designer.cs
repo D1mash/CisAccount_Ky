@@ -1205,7 +1205,7 @@
             this.checkEdit24.Name = "checkEdit24";
             this.checkEdit24.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.checkEdit24.Properties.Appearance.Options.UseFont = true;
-            this.checkEdit24.Properties.Caption = "Отобразить удаленные";
+            this.checkEdit24.Properties.Caption = "Скрыть удаленные";
             this.checkEdit24.Size = new System.Drawing.Size(153, 19);
             this.checkEdit24.TabIndex = 8;
             this.checkEdit24.Visible = false;
