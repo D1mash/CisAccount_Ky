@@ -1,6 +1,8 @@
-﻿using System;
+﻿using DevExpress.XtraGrid.Views.Grid;
+using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Учет_цистерн
@@ -180,6 +182,18 @@ namespace Учет_цистерн
             else
             {
                 MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+
+            if (View.IsRowSelected(e.RowHandle))
+            {
+                e.Appearance.ForeColor = Color.DarkBlue;
+                e.Appearance.BackColor = Color.LightBlue;
+                //e.HighPriority = true;
             }
         }
     }

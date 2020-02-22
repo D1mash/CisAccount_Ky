@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -616,6 +617,42 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
+        }
+
+        private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+
+            if (View.IsRowSelected(e.RowHandle))
+            {
+                e.Appearance.ForeColor = Color.DarkBlue;
+                e.Appearance.BackColor = Color.LightBlue;
+                //e.HighPriority = true;
+            }
+        }
+
+        private void gridView2_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+
+            if (View.IsRowSelected(e.RowHandle))
+            {
+                e.Appearance.ForeColor = Color.DarkBlue;
+                e.Appearance.BackColor = Color.LightBlue;
+                //e.HighPriority = true;
+            }
+        }
+
+        private void gridView3_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+
+            if (View.IsRowSelected(e.RowHandle))
+            {
+                e.Appearance.ForeColor = Color.DarkBlue;
+                e.Appearance.BackColor = Color.LightBlue;
+                e.HighPriority = true;
+            }
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using TradeWright.UI.Forms;
@@ -165,6 +167,18 @@ namespace Учет_цистерн
             }
 
             Refresh();
+        }
+
+        private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+
+            if (View.IsRowSelected(e.RowHandle))
+            {
+                e.Appearance.ForeColor = Color.DarkBlue;
+                e.Appearance.BackColor = Color.LightBlue;
+                //e.HighPriority = true;
+            }
         }
     }
 }
