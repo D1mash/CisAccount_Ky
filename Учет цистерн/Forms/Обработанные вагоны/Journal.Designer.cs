@@ -272,7 +272,7 @@
             this.groupControl5.Controls.Add(this.checkEdit17);
             this.groupControl5.Controls.Add(this.textEdit18);
             this.groupControl5.Controls.Add(this.labelControl20);
-            this.groupControl5.Location = new System.Drawing.Point(8, 297);
+            this.groupControl5.Location = new System.Drawing.Point(8, 304);
             this.groupControl5.Name = "groupControl5";
             this.groupControl5.Size = new System.Drawing.Size(328, 211);
             this.groupControl5.TabIndex = 36;
@@ -742,7 +742,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(34, 6);
+            this.labelControl1.Location = new System.Drawing.Point(34, 13);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(59, 14);
             this.labelControl1.TabIndex = 0;
@@ -771,7 +771,7 @@
             this.groupControl3.Controls.Add(this.labelControl9);
             this.groupControl3.Controls.Add(this.textEdit6);
             this.groupControl3.Controls.Add(this.labelControl8);
-            this.groupControl3.Location = new System.Drawing.Point(8, 162);
+            this.groupControl3.Location = new System.Drawing.Point(8, 169);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(328, 129);
             this.groupControl3.TabIndex = 14;
@@ -1029,7 +1029,7 @@
             // 
             // checkEdit11
             // 
-            this.checkEdit11.Location = new System.Drawing.Point(12, 136);
+            this.checkEdit11.Location = new System.Drawing.Point(12, 143);
             this.checkEdit11.Name = "checkEdit11";
             this.checkEdit11.Properties.Caption = "";
             this.checkEdit11.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit11_Properties_CheckStateChanged);
@@ -1039,11 +1039,11 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(206, 514);
+            this.simpleButton1.Location = new System.Drawing.Point(236, 521);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(130, 32);
+            this.simpleButton1.Size = new System.Drawing.Size(100, 25);
             this.simpleButton1.TabIndex = 15;
             this.simpleButton1.Text = "Сохранить";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -1051,14 +1051,16 @@
             // 
             // textEdit1
             // 
-            this.textEdit1.Location = new System.Drawing.Point(127, 4);
+            this.textEdit1.Location = new System.Drawing.Point(127, 6);
             this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textEdit1.Properties.Appearance.Options.UseFont = true;
             this.textEdit1.Properties.Mask.BeepOnError = true;
             this.textEdit1.Properties.Mask.EditMask = "\\d\\d\\d\\d\\d\\d\\d\\d";
             this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit1.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit1.Properties.EditValueChanged += new System.EventHandler(this.textEdit1_Properties_EditValueChanged);
-            this.textEdit1.Size = new System.Drawing.Size(209, 20);
+            this.textEdit1.Size = new System.Drawing.Size(209, 26);
             this.textEdit1.TabIndex = 1;
             this.textEdit1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Key_Down);
             this.textEdit1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit1_KeyUp);
@@ -1067,7 +1069,7 @@
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(38, 137);
+            this.labelControl7.Location = new System.Drawing.Point(38, 144);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(47, 14);
             this.labelControl7.TabIndex = 12;
@@ -1075,7 +1077,7 @@
             // 
             // checkEdit2
             // 
-            this.checkEdit2.Location = new System.Drawing.Point(12, 109);
+            this.checkEdit2.Location = new System.Drawing.Point(12, 116);
             this.checkEdit2.Name = "checkEdit2";
             this.checkEdit2.Properties.Caption = "";
             this.checkEdit2.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit2_Properties_CheckStateChanged);
@@ -1087,7 +1089,7 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(127, 108);
+            this.comboBox1.Location = new System.Drawing.Point(127, 115);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(209, 21);
             this.comboBox1.TabIndex = 16;
@@ -1096,7 +1098,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(35, 32);
+            this.labelControl2.Location = new System.Drawing.Point(35, 39);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(73, 14);
             this.labelControl2.TabIndex = 2;
@@ -1106,7 +1108,7 @@
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(35, 110);
+            this.labelControl6.Location = new System.Drawing.Point(35, 117);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(53, 14);
             this.labelControl6.TabIndex = 10;
@@ -1114,7 +1116,7 @@
             // 
             // checkEdit1
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(12, 83);
+            this.checkEdit1.Location = new System.Drawing.Point(12, 90);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "";
             this.checkEdit1.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit1_Properties_CheckStateChanged);
@@ -1126,7 +1128,7 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(127, 135);
+            this.comboBox2.Location = new System.Drawing.Point(127, 142);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(209, 21);
             this.comboBox2.TabIndex = 17;
@@ -1134,7 +1136,7 @@
             // textEdit2
             // 
             this.textEdit2.Enabled = false;
-            this.textEdit2.Location = new System.Drawing.Point(127, 30);
+            this.textEdit2.Location = new System.Drawing.Point(127, 37);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Properties.ReadOnly = true;
             this.textEdit2.Size = new System.Drawing.Size(209, 20);
@@ -1142,7 +1144,7 @@
             // 
             // textEdit4
             // 
-            this.textEdit4.Location = new System.Drawing.Point(127, 82);
+            this.textEdit4.Location = new System.Drawing.Point(127, 89);
             this.textEdit4.Name = "textEdit4";
             this.textEdit4.Properties.Mask.BeepOnError = true;
             this.textEdit4.Properties.Mask.EditMask = "\\d";
@@ -1155,7 +1157,9 @@
             // 
             // simpleButton9
             // 
-            this.simpleButton9.Location = new System.Drawing.Point(218, 54);
+            this.simpleButton9.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.simpleButton9.Appearance.Options.UseFont = true;
+            this.simpleButton9.Location = new System.Drawing.Point(218, 61);
             this.simpleButton9.Name = "simpleButton9";
             this.simpleButton9.Size = new System.Drawing.Size(118, 23);
             this.simpleButton9.TabIndex = 21;
@@ -1164,11 +1168,11 @@
             // 
             // simpleButton7
             // 
-            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.simpleButton7.Appearance.Options.UseFont = true;
-            this.simpleButton7.Location = new System.Drawing.Point(8, 514);
+            this.simpleButton7.Location = new System.Drawing.Point(8, 521);
             this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(119, 32);
+            this.simpleButton7.Size = new System.Drawing.Size(100, 25);
             this.simpleButton7.TabIndex = 18;
             this.simpleButton7.Text = "Просмотр";
             this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
@@ -1177,7 +1181,7 @@
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(35, 58);
+            this.labelControl3.Location = new System.Drawing.Point(35, 65);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(65, 14);
             this.labelControl3.TabIndex = 4;
@@ -1187,7 +1191,7 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(35, 84);
+            this.labelControl4.Location = new System.Drawing.Point(35, 91);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(57, 14);
             this.labelControl4.TabIndex = 6;
@@ -1225,8 +1229,10 @@
             // textEdit3
             // 
             this.textEdit3.Enabled = false;
-            this.textEdit3.Location = new System.Drawing.Point(127, 56);
+            this.textEdit3.Location = new System.Drawing.Point(127, 63);
             this.textEdit3.Name = "textEdit3";
+            this.textEdit3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textEdit3.Properties.Appearance.Options.UseFont = true;
             this.textEdit3.Size = new System.Drawing.Size(83, 20);
             this.textEdit3.TabIndex = 5;
             // 
