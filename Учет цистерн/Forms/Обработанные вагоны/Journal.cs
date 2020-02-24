@@ -1549,6 +1549,18 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             }
         }
 
+        private void textEdit18_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                textEdit12.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                textEdit5.Focus();
+            }
+        }
+
         private void textEdit12_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Down)
@@ -1589,11 +1601,11 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         {
             if (e.KeyCode == Keys.Down)
             {
-                textEdit14.Focus();
+                textEdit15.Focus();
             }
             else if (e.KeyCode == Keys.Up)
             {
-                textEdit12.Focus();
+                textEdit14.Focus();
             }
         }
 

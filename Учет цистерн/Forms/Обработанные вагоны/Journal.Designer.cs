@@ -726,6 +726,7 @@
             this.textEdit18.Size = new System.Drawing.Size(48, 20);
             this.textEdit18.TabIndex = 16;
             this.textEdit18.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Key_Down);
+            this.textEdit18.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit18_KeyUp);
             // 
             // labelControl20
             // 
