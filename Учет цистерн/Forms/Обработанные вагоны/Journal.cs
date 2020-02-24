@@ -351,6 +351,20 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         textEdit22.Enabled = false;
                         textEdit23.Enabled = false;
                         textEdit24.Enabled = false;
+
+                        textEdit12.Text = "";
+                        textEdit13.Text = "";
+                        textEdit14.Text = "";
+                        textEdit15.Text = "";
+                        textEdit16.Text = "";
+                        textEdit17.Text = "";
+                        textEdit18.Text = "";
+                        textEdit19.Text = "";
+                        textEdit20.Text = "";
+                        textEdit21.Text = "";
+                        textEdit22.Text = "";
+                        textEdit23.Text = "";
+                        textEdit24.Text = "";
                     }
                 }
                 else
@@ -397,6 +411,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                             DbConnection.DBConnect(Autn);
                                             Refresh();
                                             textEdit1.Text = "";
+                                            textEdit1.Focus();
                                         }
                                     }
                                     else
@@ -422,6 +437,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                         DbConnection.DBConnect(Autn);
                                         Refresh();
                                         textEdit1.Text = "";
+                                        textEdit1.Focus();
                                     }
                                 }
                                 else
@@ -1693,6 +1709,14 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 {
                     textEdit17.Focus();
                 }
+            }
+        }
+
+        private void Enter_Key_Down(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                simpleButton1.PerformClick();
             }
         }
     }
