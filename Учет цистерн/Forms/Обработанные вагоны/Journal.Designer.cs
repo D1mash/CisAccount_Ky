@@ -1159,9 +1159,9 @@
             // 
             this.simpleButton9.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton9.Appearance.Options.UseFont = true;
-            this.simpleButton9.Location = new System.Drawing.Point(218, 61);
+            this.simpleButton9.Location = new System.Drawing.Point(249, 61);
             this.simpleButton9.Name = "simpleButton9";
-            this.simpleButton9.Size = new System.Drawing.Size(118, 23);
+            this.simpleButton9.Size = new System.Drawing.Size(85, 23);
             this.simpleButton9.TabIndex = 21;
             this.simpleButton9.Text = "Присвоить";
             this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
@@ -1229,11 +1229,11 @@
             // textEdit3
             // 
             this.textEdit3.Enabled = false;
-            this.textEdit3.Location = new System.Drawing.Point(127, 63);
+            this.textEdit3.Location = new System.Drawing.Point(128, 63);
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textEdit3.Properties.Appearance.Options.UseFont = true;
-            this.textEdit3.Size = new System.Drawing.Size(83, 20);
+            this.textEdit3.Size = new System.Drawing.Size(115, 20);
             this.textEdit3.TabIndex = 5;
             // 
             // groupControl2
