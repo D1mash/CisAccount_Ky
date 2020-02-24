@@ -102,6 +102,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
             if (checkEdit1.Checked)
             {
                 textEdit1.Enabled = (checkEdit1.CheckState == CheckState.Checked);
+                textEdit1.Focus();
             }
             else
             {
@@ -175,6 +176,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
             if (checkEdit6.Checked)
             {
                 textEdit2.Enabled = (checkEdit6.CheckState == CheckState.Checked);
+                textEdit2.Focus();
             }
             else
             {
@@ -203,6 +205,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
             if (checkEdit8.Checked)
             {
                 textEdit3.Enabled = (checkEdit8.CheckState == CheckState.Checked);
+                textEdit3.Focus();
             }
             else
             {

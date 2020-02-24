@@ -449,6 +449,8 @@
             // 
             // simpleButton7
             // 
+            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton7.Appearance.Options.UseFont = true;
             this.simpleButton7.Location = new System.Drawing.Point(668, 30);
             this.simpleButton7.Name = "simpleButton7";
             this.simpleButton7.Size = new System.Drawing.Size(95, 27);
@@ -458,6 +460,8 @@
             // 
             // simpleButton6
             // 
+            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton6.Appearance.Options.UseFont = true;
             this.simpleButton6.Location = new System.Drawing.Point(567, 30);
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(95, 27);
@@ -467,6 +471,8 @@
             // 
             // simpleButton5
             // 
+            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton5.Appearance.Options.UseFont = true;
             this.simpleButton5.Location = new System.Drawing.Point(466, 30);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(95, 27);
@@ -476,6 +482,8 @@
             // 
             // simpleButton4
             // 
+            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton4.Appearance.Options.UseFont = true;
             this.simpleButton4.Location = new System.Drawing.Point(313, 30);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(95, 27);
@@ -485,6 +493,8 @@
             // 
             // simpleButton3
             // 
+            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton3.Appearance.Options.UseFont = true;
             this.simpleButton3.Location = new System.Drawing.Point(212, 30);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(95, 27);
@@ -494,6 +504,8 @@
             // 
             // simpleButton1
             // 
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton1.Appearance.Options.UseFont = true;
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(10, 30);
             this.simpleButton1.Name = "simpleButton1";
@@ -504,6 +516,8 @@
             // 
             // simpleButton2
             // 
+            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton2.Appearance.Options.UseFont = true;
             this.simpleButton2.Location = new System.Drawing.Point(111, 30);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(95, 27);

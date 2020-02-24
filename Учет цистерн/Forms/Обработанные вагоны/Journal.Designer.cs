@@ -1039,7 +1039,7 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton1.Appearance.Options.UseFont = true;
             this.simpleButton1.Location = new System.Drawing.Point(236, 521);
             this.simpleButton1.Name = "simpleButton1";
@@ -1157,7 +1157,7 @@
             // 
             // simpleButton9
             // 
-            this.simpleButton9.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.simpleButton9.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton9.Appearance.Options.UseFont = true;
             this.simpleButton9.Location = new System.Drawing.Point(218, 61);
             this.simpleButton9.Name = "simpleButton9";
@@ -1168,7 +1168,7 @@
             // 
             // simpleButton7
             // 
-            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton7.Appearance.Options.UseFont = true;
             this.simpleButton7.Location = new System.Drawing.Point(8, 521);
             this.simpleButton7.Name = "simpleButton7";
@@ -1238,6 +1238,7 @@
             // 
             // groupControl2
             // 
+            this.groupControl2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupControl2.Controls.Add(this.checkEdit24);
             this.groupControl2.Controls.Add(this.simpleButton8);
             this.groupControl2.Controls.Add(this.simpleButton6);
@@ -1249,14 +1250,14 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1024, 88);
+            this.groupControl2.Size = new System.Drawing.Size(1024, 67);
             this.groupControl2.TabIndex = 1;
             // 
             // checkEdit24
             // 
-            this.checkEdit24.Location = new System.Drawing.Point(965, 45);
+            this.checkEdit24.Location = new System.Drawing.Point(927, 34);
             this.checkEdit24.Name = "checkEdit24";
-            this.checkEdit24.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.checkEdit24.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkEdit24.Properties.Appearance.Options.UseFont = true;
             this.checkEdit24.Properties.Caption = "Скрыть удаленные";
             this.checkEdit24.Size = new System.Drawing.Size(153, 19);
@@ -1266,66 +1267,66 @@
             // 
             // simpleButton8
             // 
-            this.simpleButton8.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton8.Appearance.Options.UseFont = true;
-            this.simpleButton8.Location = new System.Drawing.Point(672, 36);
+            this.simpleButton8.Location = new System.Drawing.Point(646, 26);
             this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(256, 36);
+            this.simpleButton8.Size = new System.Drawing.Size(250, 30);
             this.simpleButton8.TabIndex = 7;
             this.simpleButton8.Text = "Завершить редактирование группы";
             this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
             // 
             // simpleButton6
             // 
-            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton6.Appearance.Options.UseFont = true;
-            this.simpleButton6.Location = new System.Drawing.Point(672, 37);
+            this.simpleButton6.Location = new System.Drawing.Point(646, 26);
             this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(256, 34);
+            this.simpleButton6.Size = new System.Drawing.Size(250, 30);
             this.simpleButton6.TabIndex = 6;
             this.simpleButton6.Text = "Редактировать группу";
             this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
             // 
             // simpleButton5
             // 
-            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton5.Appearance.Options.UseFont = true;
-            this.simpleButton5.Location = new System.Drawing.Point(452, 37);
+            this.simpleButton5.Location = new System.Drawing.Point(430, 26);
             this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(214, 34);
+            this.simpleButton5.Size = new System.Drawing.Size(210, 30);
             this.simpleButton5.TabIndex = 5;
             this.simpleButton5.Text = "Редактировать собственника";
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Location = new System.Drawing.Point(125, 37);
+            this.simpleButton2.Location = new System.Drawing.Point(125, 26);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(89, 34);
+            this.simpleButton2.Size = new System.Drawing.Size(85, 30);
             this.simpleButton2.TabIndex = 4;
             this.simpleButton2.Text = "Добавить";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton4
             // 
-            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton4.Appearance.Options.UseFont = true;
-            this.simpleButton4.Location = new System.Drawing.Point(348, 37);
+            this.simpleButton4.Location = new System.Drawing.Point(335, 26);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(98, 34);
+            this.simpleButton4.Size = new System.Drawing.Size(90, 30);
             this.simpleButton4.TabIndex = 3;
             this.simpleButton4.Text = "Удаление";
             this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton3.Appearance.Options.UseFont = true;
-            this.simpleButton3.Location = new System.Drawing.Point(220, 37);
+            this.simpleButton3.Location = new System.Drawing.Point(215, 26);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(122, 34);
+            this.simpleButton3.Size = new System.Drawing.Size(115, 30);
             this.simpleButton3.TabIndex = 2;
             this.simpleButton3.Text = "Редактировать";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
@@ -1333,10 +1334,11 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "dd.MM.yyyy";
+            this.dateTimePicker1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(13, 43);
+            this.dateTimePicker1.Location = new System.Drawing.Point(13, 30);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(106, 21);
+            this.dateTimePicker1.Size = new System.Drawing.Size(106, 22);
             this.dateTimePicker1.TabIndex = 0;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -1344,9 +1346,9 @@
             // 
             this.groupControl4.Controls.Add(this.gridControl1);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl4.Location = new System.Drawing.Point(0, 88);
+            this.groupControl4.Location = new System.Drawing.Point(0, 67);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(1024, 654);
+            this.groupControl4.Size = new System.Drawing.Size(1024, 675);
             this.groupControl4.TabIndex = 2;
             // 
             // gridControl1
@@ -1355,7 +1357,7 @@
             this.gridControl1.Location = new System.Drawing.Point(2, 20);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1020, 632);
+            this.gridControl1.Size = new System.Drawing.Size(1020, 653);
             this.gridControl1.TabIndex = 14;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});

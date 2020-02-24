@@ -103,7 +103,7 @@
             this.dateEdit1.EditValue = null;
             this.dateEdit1.Location = new System.Drawing.Point(134, 59);
             this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F);
+            this.dateEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateEdit1.Properties.Appearance.Options.UseFont = true;
             this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -179,6 +179,7 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.gridControl1.Location = new System.Drawing.Point(2, 21);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
@@ -236,6 +237,8 @@
             // 
             this.textEdit3.Location = new System.Drawing.Point(134, 134);
             this.textEdit3.Name = "textEdit3";
+            this.textEdit3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textEdit3.Properties.Appearance.Options.UseFont = true;
             this.textEdit3.Size = new System.Drawing.Size(115, 20);
             this.textEdit3.TabIndex = 16;
             // 
@@ -243,11 +246,15 @@
             // 
             this.textEdit2.Location = new System.Drawing.Point(134, 33);
             this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textEdit2.Properties.Appearance.Options.UseFont = true;
             this.textEdit2.Size = new System.Drawing.Size(115, 20);
             this.textEdit2.TabIndex = 15;
             // 
             // button1
             // 
+            this.button1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Appearance.Options.UseFont = true;
             this.button1.Location = new System.Drawing.Point(251, 160);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 42);
@@ -269,6 +276,8 @@
             // 
             this.textEdit1.Location = new System.Drawing.Point(96, 42);
             this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textEdit1.Properties.Appearance.Options.UseFont = true;
             this.textEdit1.Properties.Mask.BeepOnError = true;
             this.textEdit1.Properties.Mask.EditMask = "\\d\\d\\d\\d\\d\\d\\d\\d";
             this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
@@ -279,6 +288,8 @@
             // 
             // button2
             // 
+            this.button2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Appearance.Options.UseFont = true;
             this.button2.Location = new System.Drawing.Point(251, 31);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 42);
