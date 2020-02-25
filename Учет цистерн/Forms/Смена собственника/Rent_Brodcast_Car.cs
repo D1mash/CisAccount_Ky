@@ -264,15 +264,22 @@ namespace Учет_цистерн.Forms.Смена_собственника
                     string Search_1 = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Car_Num = '" + textEdit1.Text.Trim() + "', " + "@Type = " + 2;
                     gridControl3.DataSource = DbConnection.DBConnect(Search_1);
                     gridView3.Columns[0].Visible = false;
-                    
-                    string Search_2 = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Car_Num = '" + SelectItemRow2.ToString() + "', " + "@Date_Start = '" + Date_S + "', " + " @Date_End = '" + Date_E + "', " + "@Date_Rec = '" + Date_R + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + "@Product = '" + textEdit3.Text + "'," + "@Rent_Num = '" + textEdit2.Text + "'," + "@Type = " + 2;
-                    gridControl1.DataSource = DbConnection.DBConnect(Search_2);
-                    gridView1.Columns[0].Visible = false;
 
-                    gridView3_RowCellClick(null, null);
+                    if (gridView3.RowCount > 0)
+                    {
+                        string Search_2 = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Car_Num = '" + SelectItemRow2.ToString() + "', " + "@Date_Start = '" + Date_S + "', " + " @Date_End = '" + Date_E + "', " + "@Date_Rec = '" + Date_R + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + "@Product = '" + textEdit3.Text + "'," + "@Rent_Num = '" + textEdit2.Text + "'," + "@Type = " + 2;
+                        gridControl1.DataSource = DbConnection.DBConnect(Search_2);
+                        gridView1.Columns[0].Visible = false;
 
-                    GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер В/Ц", "Кол.во={0}");
-                    gridView3.Columns["Номер В/Ц"].Summary.Add(item3);
+                        gridView3_RowCellClick(null, null);
+
+                        GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер В/Ц", "Кол.во={0}");
+                        gridView3.Columns["Номер В/Ц"].Summary.Add(item3);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Запись с таким номером ВЦ в заявках отсутствует", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
 
                 }
                 else
