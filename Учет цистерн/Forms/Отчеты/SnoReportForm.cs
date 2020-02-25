@@ -109,15 +109,6 @@ namespace Учет_цистерн.Forms.Отчеты
             dateEdit2.EditValue = endDate;
         }
 
-        //[DllImport("user32.dll")]
-        //static extern int GetWindowThreadProcessId(int hWnd, out int lpdwProcessId);
-
-        //static Process GetExcelProcess(Excel.Application excelApp)
-        //{
-        //    GetWindowThreadProcessId(excelApp.Hwnd, out int id);
-        //    return Process.GetProcessById(id);
-        //}
-
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -128,7 +119,6 @@ namespace Учет_цистерн.Forms.Отчеты
                     //string fileName = ((DataParametr)e.Argument).FileName;
 
                     Excel.Application app = new Excel.Application();
-                    //Process appProcess = GetExcelProcess(app);
                     Excel.Workbook workbook = app.Workbooks.Open(path);
                     Excel.Worksheet worksheet = workbook.Worksheets.get_Item("СНО Реализация");
                     app.Visible = false;
@@ -140,20 +130,27 @@ namespace Учет_цистерн.Forms.Отчеты
                     {
                         for (int j = 2; j < dataTable.Columns.Count; j++)
                         {
-                            if (j == 2)
+                            if (j >= 2 && j <= 3)
                             {
                                 worksheet.Cells[i + 6, j - 1] = dataTable.Rows[i][j].ToString();
                             }
                             else
                             {
-                                if (j > 2 && j <= 6)
+                                if (j > 3 && j <= 6)
                                 {
-                                    worksheet.Cells[i + 6, j - 1] = dataTable.Rows[i][j].ToString();
+                                    worksheet.Cells[i + 6, j - 1] = Convert.ToDecimal(dataTable.Rows[i][j].ToString());
+                                    //worksheet.Range[$"C{i+6}:E{i+6}"].NumberFormat = "General";
                                 }
-                            }
-                            if (j > 7)
-                            {
-                                worksheet.Cells[i + 6, j - 2] = dataTable.Rows[i][j].ToString();
+                                else
+                                if (j == 8)
+                                {
+                                    worksheet.Cells[i + 6, j - 2] = Convert.ToDecimal(dataTable.Rows[i][j].ToString());
+                                }
+                                else 
+                                if (j == 9)
+                                {
+                                    worksheet.Cells[i + 6, j - 2] = dataTable.Rows[i][j].ToString();
+                                }
                             }
                         }
 
@@ -177,7 +174,6 @@ namespace Учет_цистерн.Forms.Отчеты
                     workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\СНО Реализация.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     workbook.Close(0);
                     app.Quit();
-                    //appProcess.Kill();
 
                     releaseObject(workbook);
                     releaseObject(worksheet);
@@ -189,9 +185,7 @@ namespace Учет_цистерн.Forms.Отчеты
                 if (radioButton2.Checked)
                 {
                     string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\СНО Приход.xlsx";
-                    //string fileName = ((DataParametr)e.Argument).FileName;
                     Excel.Application app = new Excel.Application();
-                    //Process appProcess = GetExcelProcess(app);
                     Excel.Workbook workbook = app.Workbooks.Open(path);
                     Excel.Worksheet worksheet = workbook.Worksheets.get_Item("СНО Приход");
                     app.Visible = false;
@@ -234,7 +228,6 @@ namespace Учет_цистерн.Forms.Отчеты
                     workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\СНО Приход.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     workbook.Close(0);
                     app.Quit();
-                    //appProcess.Kill();
 
                     releaseObject(workbook);
                     releaseObject(worksheet);
