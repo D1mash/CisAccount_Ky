@@ -65,8 +65,12 @@ namespace Учет_цистерн.Forms.СНО
         {
             try
             {
+                decimal result;
                 if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text))
-                    textBox3.Text = (Convert.ToDecimal(textBox1.Text) * Convert.ToDecimal(textBox2.Text)).ToString();
+                {
+                    result = (Convert.ToDecimal(textBox1.Text) * Convert.ToDecimal(textBox2.Text));
+                    textBox3.Text = result.ToString("0.##");
+                }
             }
             catch (SqlException ex)
             {
@@ -82,8 +86,12 @@ namespace Учет_цистерн.Forms.СНО
         {
             try
             {
+                decimal result;
                 if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text))
-                    textBox3.Text = (Convert.ToDecimal(textBox1.Text) * Convert.ToDecimal(textBox2.Text)).ToString();
+                {
+                    result = (Convert.ToDecimal(textBox1.Text) * Convert.ToDecimal(textBox2.Text));
+                    textBox3.Text = result.ToString("0.##");
+                }
             }
             catch (SqlException ex)
             {
@@ -97,12 +105,12 @@ namespace Учет_цистерн.Forms.СНО
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            string temp = "";
-            string sum = "";
+            decimal temp;
+            decimal sum;
 
-            temp = ((Convert.ToDecimal(textBox3.Text) * Convert.ToDecimal(comboBox2.SelectedValue.ToString())) / 100).ToString();
-            sum = (Convert.ToDecimal(textBox3.Text) + Convert.ToDecimal(temp)).ToString();
-            textBox5.Text = sum;
+            temp = ((Convert.ToDecimal(textBox3.Text) * Convert.ToDecimal(comboBox2.SelectedValue.ToString())) / 100);
+            sum = (Convert.ToDecimal(textBox3.Text) + Convert.ToDecimal(temp));
+            textBox5.Text = sum.ToString("0.##");
         }
 
         //private void textBox4_TextChanged(object sender, EventArgs e)
@@ -144,7 +152,7 @@ namespace Учет_цистерн.Forms.СНО
                     e.Handled = true;
                 }
 
-                if (Regex.IsMatch(textBox1.Text, @"\,\d\d") && e.KeyChar != 8)
+                if (Regex.IsMatch(textBox1.Text, @"\,\d\d\d") && e.KeyChar != 8)
                 {
                     e.Handled = true;
                 }
@@ -228,6 +236,11 @@ namespace Учет_цистерн.Forms.СНО
                 {
                     e.Handled = true;
                 }
+
+                if (Regex.IsMatch(textBox3.Text, @"\,\d\d") && e.KeyChar != 8)
+                {
+                    e.Handled = true;
+                }
             }
             catch (SqlException ex)
             {
@@ -249,6 +262,32 @@ namespace Учет_цистерн.Forms.СНО
             if (e.KeyCode == Keys.Enter)
             {
                 button1_Click(null, null);
+            }
+        }
+
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != ','))
+                {
+                    e.Handled = true;
+                }
+
+                if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+
+                if (Regex.IsMatch(textBox5.Text, @"\,\d\d") && e.KeyChar != 8)
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

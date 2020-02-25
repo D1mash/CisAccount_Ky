@@ -61,7 +61,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                     e.Handled = true;
                 }
 
-                if (Regex.IsMatch(textBox2.Text, @"\,\d\d") && e.KeyChar != 8)
+                if (Regex.IsMatch(textBox2.Text, @"\,\d\d\d") && e.KeyChar != 8)
                 {
                     e.Handled = true;
                 }
@@ -87,7 +87,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                     e.Handled = true;
                 }
 
-                if (Regex.IsMatch(textBox3.Text, @"\,\d\d") && e.KeyChar != 8)
+                if (Regex.IsMatch(textBox3.Text, @"\,\d\d\d") && e.KeyChar != 8)
                 {
                     e.Handled = true;
                 }
@@ -113,7 +113,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                     e.Handled = true;
                 }
 
-                if (Regex.IsMatch(textBox4.Text, @"\,\d\d") && e.KeyChar != 8)
+                if (Regex.IsMatch(textBox4.Text, @"\,\d\d\d") && e.KeyChar != 8)
                 {
                     e.Handled = true;
                 }
