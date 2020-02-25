@@ -126,7 +126,9 @@
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsCustomization.AllowQuickHideColumns = false;
+            this.gridView1.OptionsCustomization.AllowSort = false;
             this.gridView1.OptionsLayout.Columns.AddNewColumns = false;
+            this.gridView1.OptionsMenu.EnableColumnMenu = false;
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ShowFooter = true;
