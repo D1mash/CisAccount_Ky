@@ -136,6 +136,11 @@ namespace Учет_цистерн.Forms.СНО
                 {
                     e.Handled = true;
                 }
+
+                if (Regex.IsMatch(textBox1.Text, @"\,\d\d") && e.KeyChar != 8)
+                {
+                    e.Handled = true;
+                }
             }
             catch (SqlException ex)
             {
