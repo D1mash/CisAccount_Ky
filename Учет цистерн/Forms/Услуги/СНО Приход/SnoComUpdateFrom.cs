@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Учет_цистерн.Forms.Услуги.СНО_Приход
@@ -46,7 +39,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
 
         private void checkBox1_CheckStateChanged(object sender, EventArgs e)
         {
-            textBox3.Enabled = (checkBox3.CheckState == CheckState.Checked);
+            textBox3.Enabled = (checkBox1.CheckState == CheckState.Checked);
         }
 
         private void checkBox7_CheckStateChanged(object sender, EventArgs e)
@@ -58,7 +51,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
         {
             try
             {
-                string UpdateCurrentSNO = "exec dbo.UpdateCurrentSNO '" + textBox1.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "'," + selectID;
+                string UpdateCurrentSNO = "exec dbo.UpdateCurrentSNO '" + textBox1.Text.Replace(",", ".") + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "'," + selectID;
                 DbConnection.DBConnect(UpdateCurrentSNO);
                 MessageBox.Show("Изменено!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 this.Close();
