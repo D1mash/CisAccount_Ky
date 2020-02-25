@@ -113,7 +113,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                         return;
                     }
                 }
-                AddUserForm add = new AddUserForm();
+                SnoComAddForm add = new SnoComAddForm();
                 add.Owner = this;
                 add.ShowDialog();
             }

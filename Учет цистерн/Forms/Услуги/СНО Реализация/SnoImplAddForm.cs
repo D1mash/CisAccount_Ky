@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Учет_цистерн.Forms.СНО
@@ -135,6 +136,11 @@ namespace Учет_цистерн.Forms.СНО
                 {
                     e.Handled = true;
                 }
+
+                if (Regex.IsMatch(textBox1.Text, @"\,\d\d") && e.KeyChar != 8)
+                {
+                    e.Handled = true;
+                }
             }
             catch (SqlException ex)
             {
@@ -157,6 +163,11 @@ namespace Учет_цистерн.Forms.СНО
                 }
 
                 if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+
+                if (Regex.IsMatch(textBox2.Text, @"\,\d\d") && e.KeyChar != 8)
                 {
                     e.Handled = true;
                 }
