@@ -39,7 +39,7 @@ namespace Учет_цистерн
             string GetConnection = "exec dbo.GetConnection";
             DataTable dt = DbConnection.DBConnect(GetConnection);
             toolStripTextBox1.Text = "SPID: " + dt.Rows[0][1].ToString() + "; UID: " + dt.Rows[0][0].ToString() + ";";
-            this.Text = "Учет вагонов-цистерн. Батыс Петролеум ТОО - " + dt.Rows[0][2].ToString();
+            this.Text = "Учет вагонов-цистерн. " + dt.Rows[0][2].ToString();
             this.UserFIO = FIO;
             this.role = role;
         }
