@@ -51,12 +51,19 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
         {
             try
             {
-                string UpdateCurrentSNO = "exec dbo.UpdateCurrentSNO '" + textBox1.Text.Replace(",", ".") + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "'," + selectID;
-                DbConnection.DBConnect(UpdateCurrentSNO);
-                MessageBox.Show("Изменено!","",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                this.Close();
-                SnoComForm main = this.Owner as SnoComForm;
-                main.GetSNO();
+                if (textBox1.Text != String.Empty && textBox2.Text != String.Empty && textBox3.Text != String.Empty)
+                {
+                    string UpdateCurrentSNO = "exec dbo.UpdateCurrentSNO '" + textBox1.Text.Replace(",", ".") + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "'," + selectID;
+                    DbConnection.DBConnect(UpdateCurrentSNO);
+                    MessageBox.Show("Изменено!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                    SnoComForm main = this.Owner as SnoComForm;
+                    main.GetSNO();
+                }
+                else
+                {
+                    MessageBox.Show("Заполните все поля!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -144,6 +151,14 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Multi_Save(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                button1_Click(null,null);
             }
         }
     }

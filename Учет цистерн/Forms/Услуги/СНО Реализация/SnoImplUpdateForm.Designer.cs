@@ -31,7 +31,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -51,6 +50,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(125, 26);
             this.comboBox1.Name = "comboBox1";
@@ -74,15 +74,6 @@
             this.textBox5.Size = new System.Drawing.Size(236, 20);
             this.textBox5.TabIndex = 38;
             this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox5_KeyPress);
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(12, 0);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(236, 20);
-            this.textBox4.TabIndex = 36;
-            this.textBox4.Visible = false;
-            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // textBox3
             // 
@@ -122,6 +113,7 @@
             this.textBox2.TabIndex = 30;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Multi_Save);
             // 
             // textBox1
             // 
@@ -131,6 +123,7 @@
             this.textBox1.TabIndex = 29;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Multi_Save);
             // 
             // checkBox1
             // 
@@ -226,9 +219,11 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(236, 20);
             this.textBox6.TabIndex = 49;
+            this.textBox6.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Multi_Save);
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(125, 157);
             this.comboBox2.Name = "comboBox2";
@@ -253,7 +248,6 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -275,7 +269,6 @@
         public System.Windows.Forms.ComboBox comboBox1;
         public System.Windows.Forms.DateTimePicker dateTimePicker1;
         public System.Windows.Forms.TextBox textBox5;
-        public System.Windows.Forms.TextBox textBox4;
         public System.Windows.Forms.TextBox textBox3;
         public System.Windows.Forms.Button button2;
         public System.Windows.Forms.Button button1;

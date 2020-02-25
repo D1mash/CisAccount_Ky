@@ -146,6 +146,7 @@
             this.Name = "SnoComForm";
             this.Text = "SnoComForm";
             this.Load += new System.EventHandler(this.SnoComForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SnoComForm_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

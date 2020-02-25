@@ -145,7 +145,6 @@ namespace Учет_цистерн.Forms.СНО
                 SnoImplUpdateForm.textBox1.Text = gridView1.GetFocusedDataRow()[4].ToString();
                 SnoImplUpdateForm.textBox2.Text = gridView1.GetFocusedDataRow()[5].ToString();
                 SnoImplUpdateForm.textBox3.Text = gridView1.GetFocusedDataRow()[6].ToString();
-                SnoImplUpdateForm.textBox4.Text = gridView1.GetFocusedDataRow()[7].ToString();
                 SnoImplUpdateForm.textBox5.Text = gridView1.GetFocusedDataRow()[8].ToString();
                 SnoImplUpdateForm.dateTimePicker1.Text = gridView1.GetFocusedDataRow()[9].ToString();
                 SnoImplUpdateForm.Owner = this;
@@ -196,6 +195,19 @@ namespace Учет_цистерн.Forms.СНО
                 e.Appearance.ForeColor = Color.DarkBlue;
                 e.Appearance.BackColor = Color.LightBlue;
                 //e.HighPriority = true;
+            }
+        }
+
+        private void SnoImplForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                if (view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn) != null && view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString() != String.Empty)
+                    Clipboard.SetText(view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString());
+                else
+                    MessageBox.Show("Значение в выбранной ячейке является нулевым или пустым!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                e.Handled = true;
             }
         }
     }

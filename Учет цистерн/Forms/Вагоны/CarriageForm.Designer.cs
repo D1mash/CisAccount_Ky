@@ -145,6 +145,7 @@
             this.Name = "CarriageForm";
             this.Text = "Вагоны";
             this.Load += new System.EventHandler(this.CarriageForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CarriageForm_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

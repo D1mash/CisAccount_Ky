@@ -49,7 +49,6 @@ namespace Учет_цистерн.Forms.СНО
             textBox1.Enabled = false;
             textBox2.Enabled = false;
             textBox3.Enabled = false;
-            textBox4.Enabled = false;
             textBox5.Enabled = false;
             textBox6.Enabled = false;
             dateTimePicker1.Enabled = false;
@@ -59,12 +58,19 @@ namespace Учет_цистерн.Forms.СНО
         {
             try
             {
-                string UpdateSNO = "exec dbo.UpdateSNO " + comboBox1.SelectedValue.ToString() + ",'"+textBox6.Text.Trim()+"'," + textBox1.Text.Replace(",", ".") + "," + textBox2.Text.Replace(",", ".") + "," + textBox3.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString() + "," + textBox5.Text.Replace(",", ".") + ",'" + dateTimePicker1.Value.Date.ToString() + "'," + selectID;
-                DataTable dT = DbConnection.DBConnect(UpdateSNO);
-                MessageBox.Show("Запись изменена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-                SnoImplForm main = this.Owner as SnoImplForm;
-                main.GetSNO();
+                if (textBox6.Text != String.Empty && textBox1.Text != String.Empty && textBox2.Text != String.Empty)
+                {
+                    string UpdateSNO = "exec dbo.UpdateSNO " + comboBox1.SelectedValue.ToString() + ",'" + textBox6.Text.Trim() + "'," + textBox1.Text.Replace(",", ".") + "," + textBox2.Text.Replace(",", ".") + "," + textBox3.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString() + "," + textBox5.Text.Replace(",", ".") + ",'" + dateTimePicker1.Value.Date.ToString() + "'," + selectID;
+                    DataTable dT = DbConnection.DBConnect(UpdateSNO);
+                    MessageBox.Show("Запись изменена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                    SnoImplForm main = this.Owner as SnoImplForm;
+                    main.GetSNO();
+                }
+                else
+                {
+                    MessageBox.Show("Заполните все поля!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (SqlException ex)
             {
@@ -163,30 +169,6 @@ namespace Учет_цистерн.Forms.СНО
             sum = (Convert.ToDecimal(textBox3.Text) + Convert.ToDecimal(temp)).ToString();
             textBox5.Text = sum;
         }
-
-        //private void textBox4_TextChanged(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        string temp = "";
-        //        string sum = "";
-        //        if (string.IsNullOrEmpty(textBox4.Text))
-        //        {
-        //            textBox4.Text = "0";
-        //        }
-        //        temp = ((Convert.ToDecimal(textBox3.Text) * Convert.ToDecimal(textBox4.Text)) / 100).ToString();
-        //        sum = (Convert.ToDecimal(textBox3.Text) + Convert.ToDecimal(temp)).ToString();
-        //        textBox5.Text = sum;
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    catch (Exception exp)
-        //    {
-        //        MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -325,6 +307,14 @@ namespace Учет_цистерн.Forms.СНО
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Multi_Save(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                button1_Click(null, null);
             }
         }
     }

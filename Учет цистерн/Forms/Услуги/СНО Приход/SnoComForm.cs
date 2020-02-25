@@ -191,5 +191,18 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                 //e.HighPriority = true;
             }
         }
+
+        private void SnoComForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                if (view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn) != null && view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString() != String.Empty)
+                    Clipboard.SetText(view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString());
+                else
+                    MessageBox.Show("Значение в выбранной ячейке является нулевым или пустым!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                e.Handled = true;
+            }
+        }
     }
 }

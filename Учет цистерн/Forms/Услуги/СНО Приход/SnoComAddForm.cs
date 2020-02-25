@@ -123,5 +123,13 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void Multi_Save(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                button1_Click(null,null);
+            }
+        }
     }
 }
