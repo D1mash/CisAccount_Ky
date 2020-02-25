@@ -199,12 +199,18 @@ namespace Учет_цистерн.Forms.Отчеты
                         {
                             if (j == 1)
                             {
-                                worksheet.Cells[i + 4, j] = dataTable.Rows[i][j].ToString();
+                                worksheet.Cells[i + 4, j] = Convert.ToDecimal(dataTable.Rows[i][j].ToString());
                             }
                             else
                             {
-                                if (j > 1)
+                                if (j > 1 && j <4)
+                                {
+                                    worksheet.Cells[i + 4, j + 1] = Convert.ToDecimal(dataTable.Rows[i][j].ToString());
+                                }
+                                else
+                                {
                                     worksheet.Cells[i + 4, j + 1] = dataTable.Rows[i][j].ToString();
+                                }
                             }
                         }
                         worksheet.Cells[i + 4, 2] = $"=C{i + 4} + D{i + 4}";
