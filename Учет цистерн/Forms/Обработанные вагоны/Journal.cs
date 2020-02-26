@@ -90,13 +90,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 {
                     gridView1_RowCellClick(null, null);
                 }
-
-                GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
-                GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
-                GridColumnSummaryItem TorCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма ТОР", "{0}");
-                gridView1.Columns["Номер вагона"].Summary.Add(Carnumber);
-                gridView1.Columns["Сумма услуг"].Summary.Add(ServiceCost);
-                gridView1.Columns["Сумма ТОР"].Summary.Add(TorCost);
             }
             catch (Exception ex)
             {
@@ -119,6 +112,13 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 gridView1.Columns[0].Visible = false;
                 gridView1.Columns[1].Visible = false;
                 gridView1.Columns[2].Visible = false;
+
+                GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
+                GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
+                GridColumnSummaryItem TorCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма ТОР", "{0}");
+                gridView1.Columns["Номер вагона"].Summary.Add(Carnumber);
+                gridView1.Columns["Сумма услуг"].Summary.Add(ServiceCost);
+                gridView1.Columns["Сумма ТОР"].Summary.Add(TorCost);
             }
             else
             {
@@ -135,8 +135,13 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     gridView1.Columns[0].Visible = false;
                     gridView1.Columns[1].Visible = false;
                     gridView1.Columns[2].Visible = false;
-                    
 
+                    GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
+                    GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
+                    GridColumnSummaryItem TorCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма ТОР", "{0}");
+                    gridView1.Columns["Номер вагона"].Summary.Add(Carnumber);
+                    gridView1.Columns["Сумма услуг"].Summary.Add(ServiceCost);
+                    gridView1.Columns["Сумма ТОР"].Summary.Add(TorCost);
                 }
 
             }

@@ -195,6 +195,8 @@
             this.gridView1.Appearance.GroupPanel.Options.UseFont = true;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsClipboard.CopyColumnHeaders = DevExpress.Utils.DefaultBoolean.False;
             this.gridView1.OptionsCustomization.AllowSort = false;
             this.gridView1.OptionsMenu.EnableColumnMenu = false;
