@@ -79,7 +79,7 @@ namespace Учет_цистерн.Forms
         {
             try
             {
-                if (textEdit2.Text != String.Empty && textEdit3.Text != String.Empty)
+                if (textEdit2.Text != String.Empty && textEdit3.Text != String.Empty && comboBox1.SelectedValue.ToString() != "-1")
                 {
                     string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textEdit2.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textEdit3.Text + "', @CurrentID = @Id output; select @Id";
                     DataTable HeadID = DbConnection.DBConnect(NewHead);
@@ -102,10 +102,6 @@ namespace Учет_цистерн.Forms
                         DbConnection.DBConnect(newRow);
                     }
 
-                    //Очищение промежуточной таблицы
-                    string Truncate = "exec dbo.Delete_Temp_MultiCar";
-                    DbConnection.DBConnect(Truncate);
-
                     RefreshGrid();
 
                     Change_of_Ownership_Load(null, null);
@@ -114,11 +110,18 @@ namespace Учет_цистерн.Forms
                 {
                     if (textEdit2.Text == String.Empty)
                     {
-                        MessageBox.Show("Введите номер заявки", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Введите номер заявки!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Введите продукт", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if(textEdit3.Text == String.Empty)
+                        {
+                            MessageBox.Show("Введите продукт!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не выбран собственник!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
             }
@@ -136,6 +139,11 @@ namespace Учет_цистерн.Forms
                 string getOwner = "Select ID, Name from d__Owner";
                 DataTable dt = DbConnection.DBConnect(getOwner);
 
+                
+                var dr = dt.NewRow();
+                dr["Id"] = -1;
+                dr["Name"] = String.Empty;
+                dt.Rows.InsertAt(dr, 0);
                 comboBox1.DataSource = dt;
                 comboBox1.ValueMember = "ID";
                 comboBox1.DisplayMember = "Name";
@@ -151,8 +159,27 @@ namespace Учет_цистерн.Forms
         {
             try
             {
-                string Insert = "exec dbo.InsertMultiple_Carriage '" + Clipboard.GetText() + "'";
-                DbConnection.DBConnect(Insert);
+                ArrayList list = new ArrayList();
+
+                string Arrays = string.Empty;
+
+                string Arr = string.Empty;
+
+                Arr = Clipboard.GetText();
+
+                string[] word = Arr.Split(new char[] {'\r','\n'}, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach(string s in word)
+                {
+                    list.Add(s);
+                }
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    Arrays = string.Join(" ", list[i]);
+                    string newRow = "exec dbo.InsertMultiple_Carriage '" + Arrays + "'";
+                    DbConnection.DBConnect(newRow);
+                }
 
                 RefreshGrid();
             }
@@ -166,10 +193,16 @@ namespace Учет_цистерн.Forms
         //Обновление
         private void RefreshGrid()
         {
+            gridControl1.DataSource = null;
+            gridView1.Columns.Clear();
+
             string Refresh = "exec Get_MultiCar";
             dt = DbConnection.DBConnect(Refresh);
             gridControl1.DataSource = dt;
             gridView1.Columns[0].Visible = false;
+
+            GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "Кол.во: {0}");
+            gridView1.Columns["Номер вагона"].Summary.Add(Carnumber);
         }
 
         //Выпадающее меню
@@ -270,7 +303,7 @@ namespace Учет_цистерн.Forms
         private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
             GridView View = sender as GridView;
-
+            
             if (View.IsRowSelected(e.RowHandle))
             {
                 e.Appearance.ForeColor = Color.DarkBlue;
