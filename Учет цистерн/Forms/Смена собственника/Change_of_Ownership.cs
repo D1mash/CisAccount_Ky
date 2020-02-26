@@ -51,7 +51,7 @@ namespace Учет_цистерн.Forms
                     }
                     else
                     {
-                        button1.Enabled = false;
+                        button1.Enabled = true;
                     }
                 }
 
