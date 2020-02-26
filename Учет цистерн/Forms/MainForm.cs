@@ -374,7 +374,7 @@ namespace Учет_цистерн
                 if(role == "1")
                 {
                     contextMenuStrip_Services.Items[0].Enabled = true;
-                    contextMenuStrip_Services.Items[1].Enabled = true;
+                    contextMenuStrip_Services.Items[1].Enabled = false;
                 }
                 else
                 {
@@ -519,6 +519,21 @@ namespace Учет_цистерн
         private void Button3_Click(object sender, EventArgs e)
         {
             contextMenuStrip_Report.Show(button3, new Point(0, button3.Height));
+            if (role == "1")
+            {
+                contextMenuStrip_Report.Items[2].Enabled = false;
+            }
+            else
+            {
+                if (role == "2")
+                {
+                    contextMenuStrip_Report.Items[2].Enabled = false;
+                }
+                else
+                {
+                    contextMenuStrip_Report.Items[1].Enabled = true;
+                }
+            }
         }
 
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)
