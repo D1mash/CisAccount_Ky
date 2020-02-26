@@ -729,6 +729,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 textEdit11.Text = Trafar1.ToString();
                 textEdit5.Text = Naruzhka1.ToString();
 
+                Num = Convert.ToInt32(dt.Rows[0][26].ToString());
+
                 string GetAutn = "select * from d__Autn_2 where Head_ID = " + Id;
                 DataTable Autn = DbConnection.DBConnect(GetAutn);
 
