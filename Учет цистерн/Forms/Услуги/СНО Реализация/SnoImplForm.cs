@@ -34,6 +34,7 @@ namespace Учет_цистерн.Forms.СНО
                 gridControl1.DataSource = source;
                 gridView1.Columns[0].Visible = false;
                 gridView1.Columns[1].Visible = false;
+                gridView1.MoveLast();
             }
             catch (SqlException ex)
             {

@@ -74,6 +74,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                 source.DataSource = dataTable;
                 gridControl1.DataSource = source;
                 gridView1.Columns[0].Visible = false;
+                gridView1.MoveLast();
             }
             catch (SqlException ex)
             {
