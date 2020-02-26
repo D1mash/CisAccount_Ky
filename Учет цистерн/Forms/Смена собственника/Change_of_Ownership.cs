@@ -55,9 +55,6 @@ namespace Учет_цистерн.Forms
                     }
                 }
 
-                dateEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
-                dateEdit1.Properties.Mask.EditMask = "d"; //'Short date' format 
-                dateEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
                 dateEdit1.EditValue = DateTime.Today;
 
                 FillCombobox();
@@ -81,7 +78,7 @@ namespace Учет_цистерн.Forms
             {
                 if (textEdit2.Text != String.Empty && textEdit3.Text != String.Empty && comboBox1.SelectedValue.ToString() != "-1")
                 {
-                    string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textEdit2.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textEdit3.Text + "', @CurrentID = @Id output; select @Id";
+                    string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textEdit2.Text + "','" + System.DateTime.Now.ToString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textEdit3.Text + "', @CurrentID = @Id output; select @Id";
                     DataTable HeadID = DbConnection.DBConnect(NewHead);
 
                     //Список вагонов для передачи в БД
@@ -225,12 +222,26 @@ namespace Учет_цистерн.Forms
         //Построчная вставка
         private void button2_Click_1(object sender, EventArgs e)
         {
-            string Insert = "exec dbo.InsertMultiple_Carriage '" + textEdit1.Text + "'";
-            DbConnection.DBConnect(Insert);
+            if (textEdit1.Text != String.Empty)
+            {
+                try
+                {
+                    string Insert = "exec dbo.InsertMultiple_Carriage '" + textEdit1.Text + "'";
+                    DbConnection.DBConnect(Insert);
 
-            textEdit1.Text = String.Empty;
+                    textEdit1.Text = String.Empty;
 
-            RefreshGrid();
+                    RefreshGrid();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Введите номер ВЦ!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         //Мульти удаление
