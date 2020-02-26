@@ -112,6 +112,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 gridView1.Columns[0].Visible = false;
                 gridView1.Columns[1].Visible = false;
                 gridView1.Columns[2].Visible = false;
+                gridView1.MoveLast();
 
                 GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
                 GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
@@ -135,6 +136,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     gridView1.Columns[0].Visible = false;
                     gridView1.Columns[1].Visible = false;
                     gridView1.Columns[2].Visible = false;
+                    gridView1.MoveLast();
 
                     GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
                     GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
