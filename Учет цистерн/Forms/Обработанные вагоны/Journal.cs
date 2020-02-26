@@ -295,23 +295,72 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         LastRenderedService_1();
                     }
 
-                    if (textEdit1.Text.Length > 7 && dt.Rows[0][0].ToString() == "Премиум Ойл Транс ТОО")
+                    if(dt.Rows.Count > 0)
                     {
-                        if(SelectItemRow == 0)
+                        if (textEdit1.Text.Length > 7 && dt.Rows[0][0].ToString() == "Премиум Ойл Транс ТОО")
                         {
-                            textEdit12.Enabled = true;
-                            textEdit13.Enabled = true;
-                            textEdit14.Enabled = true;
-                            textEdit15.Enabled = true;
-                            textEdit16.Enabled = true;
-                            textEdit17.Enabled = true;
-                            textEdit18.Enabled = true;
-                            textEdit19.Enabled = true;
-                            textEdit20.Enabled = true;
-                            textEdit21.Enabled = true;
-                            textEdit22.Enabled = true;
-                            textEdit23.Enabled = true;
-                            textEdit24.Enabled = true;
+                            if (SelectItemRow == 0)
+                            {
+                                textEdit12.Enabled = true;
+                                textEdit13.Enabled = true;
+                                textEdit14.Enabled = true;
+                                textEdit15.Enabled = true;
+                                textEdit16.Enabled = true;
+                                textEdit17.Enabled = true;
+                                textEdit18.Enabled = true;
+                                textEdit19.Enabled = true;
+                                textEdit20.Enabled = true;
+                                textEdit21.Enabled = true;
+                                textEdit22.Enabled = true;
+                                textEdit23.Enabled = true;
+                                textEdit24.Enabled = true;
+
+                                textEdit12.Text = "";
+                                textEdit13.Text = "";
+                                textEdit14.Text = "";
+                                textEdit15.Text = "";
+                                textEdit16.Text = "";
+                                textEdit17.Text = "";
+                                textEdit18.Text = "";
+                                textEdit19.Text = "";
+                                textEdit20.Text = "";
+                                textEdit21.Text = "";
+                                textEdit22.Text = "";
+                                textEdit23.Text = "";
+                                textEdit24.Text = "";
+                            }
+                            else if (TempUpdate == 0)
+                            {
+                                textEdit12.Enabled = true;
+                                textEdit13.Enabled = true;
+                                textEdit14.Enabled = true;
+                                textEdit15.Enabled = true;
+                                textEdit16.Enabled = true;
+                                textEdit17.Enabled = true;
+                                textEdit18.Enabled = true;
+                                textEdit19.Enabled = true;
+                                textEdit20.Enabled = true;
+                                textEdit21.Enabled = true;
+                                textEdit22.Enabled = true;
+                                textEdit23.Enabled = true;
+                                textEdit24.Enabled = true;
+                            }
+                        }
+                        else
+                        {
+                            textEdit12.Enabled = false;
+                            textEdit13.Enabled = false;
+                            textEdit14.Enabled = false;
+                            textEdit15.Enabled = false;
+                            textEdit16.Enabled = false;
+                            textEdit17.Enabled = false;
+                            textEdit18.Enabled = false;
+                            textEdit19.Enabled = false;
+                            textEdit20.Enabled = false;
+                            textEdit21.Enabled = false;
+                            textEdit22.Enabled = false;
+                            textEdit23.Enabled = false;
+                            textEdit24.Enabled = false;
 
                             textEdit12.Text = "";
                             textEdit13.Text = "";
@@ -327,52 +376,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                             textEdit23.Text = "";
                             textEdit24.Text = "";
                         }
-                        else if(TempUpdate == 0)
-                        {
-                            textEdit12.Enabled = true;
-                            textEdit13.Enabled = true;
-                            textEdit14.Enabled = true;
-                            textEdit15.Enabled = true;
-                            textEdit16.Enabled = true;
-                            textEdit17.Enabled = true;
-                            textEdit18.Enabled = true;
-                            textEdit19.Enabled = true;
-                            textEdit20.Enabled = true;
-                            textEdit21.Enabled = true;
-                            textEdit22.Enabled = true;
-                            textEdit23.Enabled = true;
-                            textEdit24.Enabled = true;
-                        }
-                    }
-                    else
-                    {
-                        textEdit12.Enabled = false;
-                        textEdit13.Enabled = false;
-                        textEdit14.Enabled = false;
-                        textEdit15.Enabled = false;
-                        textEdit16.Enabled = false;
-                        textEdit17.Enabled = false;
-                        textEdit18.Enabled = false;
-                        textEdit19.Enabled = false;
-                        textEdit20.Enabled = false;
-                        textEdit21.Enabled = false;
-                        textEdit22.Enabled = false;
-                        textEdit23.Enabled = false;
-                        textEdit24.Enabled = false;
-
-                        textEdit12.Text = "";
-                        textEdit13.Text = "";
-                        textEdit14.Text = "";
-                        textEdit15.Text = "";
-                        textEdit16.Text = "";
-                        textEdit17.Text = "";
-                        textEdit18.Text = "";
-                        textEdit19.Text = "";
-                        textEdit20.Text = "";
-                        textEdit21.Text = "";
-                        textEdit22.Text = "";
-                        textEdit23.Text = "";
-                        textEdit24.Text = "";
                     }
                 }
                 else
