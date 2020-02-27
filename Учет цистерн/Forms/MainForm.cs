@@ -29,9 +29,9 @@ namespace Учет_цистерн
 
         string sUrl = ConfigurationManager.AppSettings["Url"].ToString();
 
-        string UserFIO, role;
+        string UserFIO, role, UserID;
 
-        public MainForm(string FIO, string role)
+        public MainForm(string FIO, string role, string aid)
         {
             InitializeComponent();
             this.tabControl2.SelectedTab = tabPage2;
@@ -42,6 +42,7 @@ namespace Учет_цистерн
             this.Text = "Учет вагонов-цистерн. " + dt.Rows[0][2].ToString();
             this.UserFIO = FIO;
             this.role = role;
+            this.UserID = aid;
         }
 
         private void MainForm_Load(object sender, EventArgs e)

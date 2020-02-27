@@ -85,7 +85,7 @@ namespace Учет_цистерн
                     DataTable dataRole = DbConnection.DBConnect(GetRole);
                     role = dataRole.Rows[0][0].ToString();
 
-                    MainForm objFrmMain = new MainForm(FIO, role);
+                    MainForm objFrmMain = new MainForm(FIO, role, aid);
                     objFrmMain.Show();
                 }
                 else
