@@ -199,7 +199,7 @@ namespace Учет_цистерн
 
                 if (result == DialogResult.Yes)
                 {
-                    string Truncate = "exec dbo.Delete_Temp_MultiCar";
+                    string Truncate = "exec dbo.Delete_Temp_MultiCar '"+UserID+"'";
                     DbConnection.DBConnect(Truncate);
 
                     string UpdateAuditUser = "UPDATE AUDIT_USER SET DATE_OUT = GETDATE(), IS_DEAD = 1 WHERE ID_USER = '"+UserID+"' and (IS_DEAD IS NULL OR DATE_OUT IS NULL)";

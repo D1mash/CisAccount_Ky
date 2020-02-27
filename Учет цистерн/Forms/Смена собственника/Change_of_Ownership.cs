@@ -282,7 +282,7 @@ namespace Учет_цистерн.Forms
                     if (result == DialogResult.Yes)
                     {
                         //Очищение промежуточной таблицы
-                        string Truncate = "exec dbo.Delete_Temp_MultiCar";
+                        string Truncate = "exec dbo.Delete_Temp_MultiCar '"+User_ID+"'";
                         DbConnection.DBConnect(Truncate);
                         TabControlExtra.TabPages.Remove(TabControlExtra.SelectedTab);
                     }
