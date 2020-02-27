@@ -164,7 +164,7 @@ namespace Учет_цистерн.Forms
 
                 Arr = Clipboard.GetText();
 
-                string[] word = Arr.Split(new char[] {'\r','\n'}, StringSplitOptions.RemoveEmptyEntries);
+                string[] word = Arr.Split(new char[] {' ','\r','\n'}, StringSplitOptions.RemoveEmptyEntries);
 
                 foreach(string s in word)
                 {
