@@ -8,8 +8,11 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
 {
     public partial class SnoComAddForm : Form
     {
-        public SnoComAddForm()
+        string UserAID;
+
+        public SnoComAddForm(string User_ID)
         {
+            this.UserAID = User_ID;
             InitializeComponent();
         }
 
@@ -24,7 +27,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
             {
                 if (textBox2.Text != string.Empty  && textBox3.Text != string.Empty && textBox4.Text != string.Empty) 
                 {
-                    string FillSNOCom = "exec dbo.FillCurrentSNO '" + textBox2.Text.Replace(",", ".") + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textBox3.Text.Trim() + "','" + textBox4.Text.Trim() + "'";
+                    string FillSNOCom = "exec dbo.FillCurrentSNO '"+UserAID+"','" + textBox2.Text.Replace(",", ".") + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textBox3.Text.Trim() + "','" + textBox4.Text.Trim() + "'";
                     DataTable dataTable = DbConnection.DBConnect(FillSNOCom);
                     MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();

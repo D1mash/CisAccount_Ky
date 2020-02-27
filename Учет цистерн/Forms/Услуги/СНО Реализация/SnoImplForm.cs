@@ -10,13 +10,14 @@ namespace Учет_цистерн.Forms.СНО
 {
     public partial class SnoImplForm : Form
     {
-        string role;
+        string role, User_ID;
 
         BindingSource source = new BindingSource();
-        public SnoImplForm(string role)
+        public SnoImplForm(string role, string UserID)
         {
             InitializeComponent();
             this.role = role;
+            this.User_ID = UserID;
         }
 
         int SelectItemRow;
@@ -116,7 +117,7 @@ namespace Учет_цистерн.Forms.СНО
                         return;
                     }
                 }
-                SnoImplAddFormForm SnoImplAddFormForm = new SnoImplAddFormForm();
+                SnoImplAddFormForm SnoImplAddFormForm = new SnoImplAddFormForm(User_ID);
                 SnoImplAddFormForm.Owner = this;
                 SnoImplAddFormForm.ShowDialog();
             }
@@ -138,7 +139,7 @@ namespace Учет_цистерн.Forms.СНО
                         return;
                     }
                 }
-                SnoImplUpdateForm SnoImplUpdateForm = new SnoImplUpdateForm();
+                SnoImplUpdateForm SnoImplUpdateForm = new SnoImplUpdateForm(User_ID);
                 SnoImplUpdateForm.SelectID = SelectItemRow;
                 SnoImplUpdateForm.SelectContragentID = SelectContragentID;
                 SnoImplUpdateForm.SelectNdsRate = SelectNdsRate;

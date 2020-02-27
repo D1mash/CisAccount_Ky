@@ -24,12 +24,14 @@ namespace Учет_цистерн.Forms
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
         string role;
+        string User_ID;
 
-        public Change_of_Ownership(TradeWright.UI.Forms.TabControlExtra tabControl1, string role)
+        public Change_of_Ownership(TradeWright.UI.Forms.TabControlExtra tabControl1, string role, string UserID)
         {
             InitializeComponent();
             this.TabControlExtra = tabControl1;
             this.role = role;
+            this.User_ID = UserID;
             this.TabControlExtra.TabClosing += new System.EventHandler<System.Windows.Forms.TabControlCancelEventArgs>(this.tabControl1_TabClosing);
         }
 
@@ -78,7 +80,7 @@ namespace Учет_цистерн.Forms
             {
                 if (textEdit2.Text != String.Empty && textEdit3.Text != String.Empty && comboBox1.SelectedValue.ToString() != "-1")
                 {
-                    string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textEdit2.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textEdit3.Text + "', @CurrentID = @Id output; select @Id";
+                    string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textEdit2.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textEdit3.Text + "','"+User_ID+"', @CurrentID = @Id output; select @Id";
                     DataTable HeadID = DbConnection.DBConnect(NewHead);
 
                     //Список вагонов для передачи в БД
@@ -95,7 +97,7 @@ namespace Учет_цистерн.Forms
                     for (int i = 0; i < list.Count; i++)
                     {
                         Arrays = string.Join(" ", list[i]);
-                        string newRow = "exec dbo.Rent_ADD_Body '" + Arrays + "'," + Id;
+                        string newRow = "exec dbo.Rent_ADD_Body '" + Arrays + "','"+User_ID+"'," + Id;
                         DbConnection.DBConnect(newRow);
                     }
 
@@ -174,7 +176,7 @@ namespace Учет_цистерн.Forms
                 for (int i = 0; i < list.Count; i++)
                 {
                     Arrays = string.Join(" ", list[i]);
-                    string newRow = "exec dbo.InsertMultiple_Carriage '" + Arrays + "'";
+                    string newRow = "exec dbo.InsertMultiple_Carriage '"+User_ID+"','" + Arrays + "'";
                     DbConnection.DBConnect(newRow);
                 }
 
@@ -193,7 +195,7 @@ namespace Учет_цистерн.Forms
             gridControl1.DataSource = null;
             gridView1.Columns.Clear();
 
-            string Refresh = "exec Get_MultiCar";
+            string Refresh = "exec Get_MultiCar '"+User_ID+"'";
             dt = DbConnection.DBConnect(Refresh);
             gridControl1.DataSource = dt;
             gridView1.Columns[0].Visible = false;
@@ -226,7 +228,7 @@ namespace Учет_цистерн.Forms
             {
                 try
                 {
-                    string Insert = "exec dbo.InsertMultiple_Carriage '" + textEdit1.Text + "'";
+                    string Insert = "exec dbo.InsertMultiple_Carriage '"+User_ID+"','" + textEdit1.Text + "'";
                     DbConnection.DBConnect(Insert);
 
                     textEdit1.Text = String.Empty;
@@ -262,7 +264,7 @@ namespace Учет_цистерн.Forms
             {
                 aList.Add(row["ID"]);
                 Arrays = string.Join(" ", aList);
-                string delete = "exec dbo.Remove_TempMultiCar '" + Arrays + "'";
+                string delete = "exec dbo.Remove_TempMultiCar '"+User_ID+"','" + Arrays + "'";
                 DbConnection.DBConnect(delete);
             }
 

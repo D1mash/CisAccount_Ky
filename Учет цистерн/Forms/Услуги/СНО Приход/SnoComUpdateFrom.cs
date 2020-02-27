@@ -6,9 +6,11 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
 {
     public partial class SnoComUpdateFrom : Form
     {
-        public SnoComUpdateFrom()
+        string User_AID;
+        public SnoComUpdateFrom(string User_ID)
         {
             InitializeComponent();
+            this.User_AID = User_ID;
         }
 
         int selectID;
@@ -53,7 +55,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
             {
                 if (textBox1.Text != String.Empty && textBox2.Text != String.Empty && textBox3.Text != String.Empty)
                 {
-                    string UpdateCurrentSNO = "exec dbo.UpdateCurrentSNO '" + textBox1.Text.Replace(",", ".") + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "'," + selectID;
+                    string UpdateCurrentSNO = "exec dbo.UpdateCurrentSNO '"+User_AID+"','" + textBox1.Text.Replace(",", ".") + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textBox2.Text.Trim() + "','" + textBox3.Text.Trim() + "'," + selectID;
                     DbConnection.DBConnect(UpdateCurrentSNO);
                     MessageBox.Show("Изменено!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();

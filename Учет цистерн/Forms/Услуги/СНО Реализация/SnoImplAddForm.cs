@@ -8,13 +8,15 @@ namespace Учет_цистерн.Forms.СНО
 {
     public partial class SnoImplAddFormForm : Form
     {
-        public SnoImplAddFormForm()
+        string User_AID;
+        public SnoImplAddFormForm(string User_ID)
         {
             InitializeComponent();
             FillComboBox();
             textBox1.Text = "0";
             textBox2.Text = "0";
             comboBox2.SelectedIndex = 8;
+            this.User_AID = User_ID;
             //textBox4.Text = "0";
         }
 
@@ -39,7 +41,7 @@ namespace Учет_цистерн.Forms.СНО
             {
                 if (textBox6.Text != String.Empty && textBox1.Text != String.Empty && textBox2.Text != String.Empty)
                 {
-                    string FillSNO = "exec dbo.FillSNO " + comboBox1.SelectedValue.ToString() + ",'" + textBox6.Text.Trim() + "'," + textBox1.Text.Replace(",", ".") + "," + textBox2.Text.Replace(",", ".") + "," + textBox3.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString() + "," + textBox5.Text.Replace(",", ".") + ",'" + dateTimePicker1.Value.Date.ToString() + "'";
+                    string FillSNO = "exec dbo.FillSNO '"+User_AID+"'," + comboBox1.SelectedValue.ToString() + ",'" + textBox6.Text.Trim() + "'," + textBox1.Text.Replace(",", ".") + "," + textBox2.Text.Replace(",", ".") + "," + textBox3.Text.Replace(",", ".") + "," + comboBox2.SelectedValue.ToString() + "," + textBox5.Text.Replace(",", ".") + ",'" + dateTimePicker1.Value.Date.ToString() + "'";
                     DataTable dT = DbConnection.DBConnect(FillSNO);
                     MessageBox.Show("Запись добавлена!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();

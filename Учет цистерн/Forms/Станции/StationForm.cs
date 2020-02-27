@@ -10,12 +10,13 @@ namespace Учет_цистерн
     public partial class StationForm : Form
     {
         //public string connectionString = "Data Source=POTITPC-01\\PLMLOCAL;Initial Catalog=Batys;User ID=sa;Password=!sql123;";
-        string role;
+        string role, User_ID;
 
-        public StationForm(string role)
+        public StationForm(string role,string UserID)
         {
             InitializeComponent();
             this.role = role;
+            this.User_ID = UserID;
         }
 
         int SelectItemRow;
@@ -32,7 +33,7 @@ namespace Учет_цистерн
                         return;
                     }
                 }
-                AddNewStation_StationForm AddNewStation_StationForm = new AddNewStation_StationForm();
+                AddNewStation_StationForm AddNewStation_StationForm = new AddNewStation_StationForm(User_ID);
                 AddNewStation_StationForm.Owner = this;
                 AddNewStation_StationForm.ShowDialog();
             }

@@ -62,7 +62,7 @@ namespace Учет_цистерн
         {
             try
             {
-                string Reffresh = "exec dbo.GetFilter";
+                string Reffresh = "exec dbo.GetFilter '"+UserID+"'";
                 gridControl1.DataSource = DbConnection.DBConnect(Reffresh); ;
                 gridView1.Columns[0].Visible = false;
             }
@@ -118,7 +118,7 @@ namespace Учет_цистерн
         {
             try
             {
-                string Insert = "exec dbo.InsertGlobalFilter '" + Clipboard.GetText() + "'";
+                string Insert = "exec dbo.InsertGlobalFilter '"+UserID+"','" + Clipboard.GetText() + "'";
                 DbConnection.DBConnect(Insert);
                 GetFilter();
             }
@@ -154,7 +154,7 @@ namespace Учет_цистерн
                 {
                     aList.Add(row["ID"]);
                     Arrays = string.Join(" ", aList);
-                    string delete = "exec dbo.RemoveGlobalFilter '" + Arrays + "'";
+                    string delete = "exec dbo.RemoveGlobalFilter '"+UserID+"','" + Arrays + "'";
                     DbConnection.DBConnect(delete);
                 }
                 GetFilter();
@@ -175,7 +175,7 @@ namespace Учет_цистерн
         {
             try
             {
-                string DeleteAll = "delete from dbo.GlobalFilter where UserID = dbo.GET_USER_AID()";
+                string DeleteAll = "delete from dbo.GlobalFilter where UserID = '"+UserID+"'";
                 DbConnection.DBConnect(DeleteAll);
                 GetFilter();
             }
@@ -233,7 +233,7 @@ namespace Учет_цистерн
                     }
                 }
 
-                Form_Product frm = new Form_Product(role);
+                Form_Product frm = new Form_Product(role, UserID);
                 tabControl1.Show();
                 TabPage ProductTabPage = new TabPage("Продукты");
                 tabControl1.TabPages.Add(ProductTabPage);
@@ -264,7 +264,7 @@ namespace Учет_цистерн
                     }
                 }
 
-                StationForm frm = new StationForm(role);
+                StationForm frm = new StationForm(role,UserID);
                 tabControl1.Show();
                 TabPage StationTabPage = new TabPage("Станции");
                 tabControl1.TabPages.Add(StationTabPage);
@@ -672,7 +672,7 @@ namespace Учет_цистерн
                     }
                 }
 
-                SnoImplForm SnoImplForm = new SnoImplForm(role);
+                SnoImplForm SnoImplForm = new SnoImplForm(role, UserID);
                 tabControl1.Show();
                 TabPage SnotabPage = new TabPage("СНО Реализация");
                 tabControl1.TabPages.Add(SnotabPage);
@@ -702,7 +702,7 @@ namespace Учет_цистерн
                         return;
                     }
                 }
-                SnoComForm snoComForm = new SnoComForm(role);
+                SnoComForm snoComForm = new SnoComForm(role, UserID);
                 tabControl1.Show();
                 TabPage SnotabPage = new TabPage("СНО приход");
                 tabControl1.TabPages.Add(SnotabPage);
@@ -920,7 +920,7 @@ namespace Учет_цистерн
                 }
             }
 
-            Journal journalForm = new Journal(role);
+            Journal journalForm = new Journal(role,UserID);
             tabControl1.Show();
             TabPage JournalPage = new TabPage("Журнал обработанных вагонов");
             tabControl1.TabPages.Add(JournalPage);
@@ -945,7 +945,7 @@ namespace Учет_цистерн
 
             string DateIns = System.DateTime.Now.ToString();
 
-            Change_of_Ownership change_Of_Ownership = new Change_of_Ownership(this.tabControl1, role);
+            Change_of_Ownership change_Of_Ownership = new Change_of_Ownership(this.tabControl1, role, UserID);
             tabControl1.Show();
             TabPage chg_tabPage = new TabPage("Смена собственника от " + DateIns);
             change_Of_Ownership.GetDate = DateIns;
@@ -992,7 +992,7 @@ namespace Учет_цистерн
 
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddGlobalFilterForm addGlobalFilterForm = new AddGlobalFilterForm();
+            AddGlobalFilterForm addGlobalFilterForm = new AddGlobalFilterForm(UserID);
             addGlobalFilterForm.Owner = this;
             addGlobalFilterForm.ShowDialog();
         }

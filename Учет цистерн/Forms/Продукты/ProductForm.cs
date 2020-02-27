@@ -10,10 +10,12 @@ namespace Учет_цистерн
     public partial class Form_Product : Form
     {
         string role;
-        public Form_Product(string role)
+        string User_ID;
+        public Form_Product(string role, string UserID)
         {
             InitializeComponent();
             this.role = role;
+            this.User_ID = UserID;
         }
 
         int SelectItemRow;
@@ -31,7 +33,7 @@ namespace Учет_цистерн
                         return;
                     }
                 }
-                addNewCargo addCargo = new addNewCargo();
+                addNewCargo addCargo = new addNewCargo(User_ID);
                 addCargo.Owner = this;
                 addCargo.ShowDialog();
                 

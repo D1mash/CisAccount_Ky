@@ -9,10 +9,12 @@ namespace Учет_цистерн
     {
         public string connectionString = "Data Source=POTITPC-01\\PLMLOCAL;Initial Catalog=Batys;User ID=sa;Password=!sql123;";
 
-        public addNewCargo()
+        string User_AID;
+        public addNewCargo(string User_ID)
         {
             InitializeComponent();
             FillCombobox();
+            this.User_AID = User_ID;
         }
 
         private void FillCombobox()
@@ -29,7 +31,7 @@ namespace Учет_цистерн
         {
             try
             {
-                string FillProduct = "exec [dbo].[FillProduct] '" + textBox1.Text.Trim() + "'," + comboBox1.SelectedValue.ToString();
+                string FillProduct = "exec [dbo].[FillProduct] '"+User_AID+"','" + textBox1.Text.Trim() + "'," + comboBox1.SelectedValue.ToString();
                 string SelectDubl = "select * from d__Product where Name = '" + textBox1.Text.Trim() + "'";
                 DataTable dt = new DataTable();
                 dt = DbConnection.DBConnect(SelectDubl);

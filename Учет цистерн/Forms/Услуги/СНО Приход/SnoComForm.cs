@@ -17,12 +17,13 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
     public partial class SnoComForm : Form
     {
         BindingSource source = new BindingSource();
-        string role;
+        string role, User_ID;
 
-        public SnoComForm(string role)
+        public SnoComForm(string role, string UserID)
         {
             InitializeComponent();
             this.role = role;
+            this.User_ID = UserID;
         }
 
         int SelectItemRow;
@@ -114,7 +115,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                         return;
                     }
                 }
-                SnoComAddForm add = new SnoComAddForm();
+                SnoComAddForm add = new SnoComAddForm(User_ID);
                 add.Owner = this;
                 add.ShowDialog();
             }
@@ -136,7 +137,7 @@ namespace Учет_цистерн.Forms.Услуги.СНО_Приход
                         return;
                     }
                 }
-                SnoComUpdateFrom snoComUpdateFrom = new SnoComUpdateFrom();
+                SnoComUpdateFrom snoComUpdateFrom = new SnoComUpdateFrom(User_ID);
                 snoComUpdateFrom.SelectID = SelectItemRow;
                 snoComUpdateFrom.textBox1.Text = gridView1.GetFocusedDataRow()[1].ToString();
                 snoComUpdateFrom.textBox2.Text = gridView1.GetFocusedDataRow()[2].ToString();

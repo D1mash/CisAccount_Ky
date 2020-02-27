@@ -8,14 +8,16 @@ namespace Учет_цистерн.Forms
 {
     public partial class AddGlobalFilterForm : Form
     {
-        public AddGlobalFilterForm()
+        string User_ID;
+        public AddGlobalFilterForm(string UserID)
         {
             InitializeComponent();
+            this.User_ID = UserID;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string AddCarriage = "exec dbo.AddGlobalFilter "+textBox1.Text.Trim();
+            string AddCarriage = "exec dbo.AddGlobalFilter '"+User_ID+"',"+textBox1.Text.Trim();
             DbConnection.DBConnect(AddCarriage);
             MainForm main = this.Owner as MainForm;
             main.GetFilter();
