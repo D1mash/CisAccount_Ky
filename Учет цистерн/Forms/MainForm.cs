@@ -194,13 +194,21 @@ namespace Учет_цистерн
         {
             try
             {
-                e.Cancel = true;
-                if (MessageBox.Show("Завершить работу с программой?", "Завершение программы", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                dynamic result = MessageBox.Show("Завершить работу с программой?", "Завершение программы", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
                 {
+                    string Truncate = "exec dbo.Delete_Temp_MultiCar";
+                    DbConnection.DBConnect(Truncate);
+
                     string UpdateAuditUser = "UPDATE AUDIT_USER SET DATE_OUT = GETDATE(), IS_DEAD = 1 WHERE ID_SESSION = @@spid and (IS_DEAD IS NULL OR DATE_OUT IS NULL)";
-                    DataTable dataTable = new DataTable();
-                    dataTable = DbConnection.DBConnect(UpdateAuditUser);
+                    DbConnection.DBConnect(UpdateAuditUser);
+                    
                     Environment.Exit(0);
+                }
+                else
+                {
+                    e.Cancel = true;
                 }
             }
             catch (Exception exp)
