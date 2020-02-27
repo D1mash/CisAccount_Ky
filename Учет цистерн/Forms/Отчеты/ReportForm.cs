@@ -76,8 +76,9 @@ namespace Учет_цистерн
                     string RefreshAll = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + "@Type = " + 1;
                     dt = DbConnection.DBConnect(RefreshAll);
 
-                    progressBar.Maximum = TotalRow(dt);
-                    toolStripLabel1.Text = TotalRow(dt).ToString();
+                    int col = TotalRow(dt) * 2;
+                    progressBar.Maximum = col;
+                    toolStripLabel1.Text = col.ToString();
 
                 }
                 else
@@ -269,7 +270,7 @@ namespace Учет_цистерн
                                 }
                                 else
                                 {
-                                    worksheet.Cells[i + k, j + 8] = dt.Rows[i][j].ToString();
+                                    worksheet.Cells[i + k, j + 8] = Convert.ToDecimal(dt.Rows[i][j].ToString());
                                 }
                             }
 
@@ -399,9 +400,11 @@ namespace Учет_цистерн
                                     Excel.Range range = worksheet.Range[worksheet.Cells[l + 10, 1], worksheet.Cells[l + 10, dataTable.Columns.Count + 2]];
                                     FormattingExcelCells(range, true, true);
 
-                                    //backgroundWorker.ReportProgress(i);
+                                    backgroundWorker.ReportProgress(iterator);
 
                                     cellRowIndex++;
+
+                                    iterator++;
                                 }
 
                                 worksheet.Cells[dataTable.Rows.Count + 12, 2] = "=C6";
@@ -421,7 +424,7 @@ namespace Учет_цистерн
                                         }
                                         else
                                         {
-                                            worksheet.Cells[l + cellRowIndex + 15 + rowcount, j + 12] = Itog_Rep.Rows[l][j].ToString();
+                                            worksheet.Cells[l + cellRowIndex + 15 + rowcount, j + 12] = Convert.ToDecimal(Itog_Rep.Rows[l][j].ToString());
                                         }
                                     }
                                 }
@@ -534,7 +537,7 @@ namespace Учет_цистерн
                                         }
                                         else
                                         {
-                                            worksheet.Cells[l + cellRowIndex + 15 + rowcount, j + 12] = Itog_Rep.Rows[l][j].ToString();
+                                            worksheet.Cells[l + cellRowIndex + 15 + rowcount, j + 12] = Convert.ToDecimal(Itog_Rep.Rows[l][j].ToString());
                                         }
                                     }
                                 }
@@ -680,7 +683,7 @@ namespace Учет_цистерн
                                 }
                                 else
                                 {
-                                    worksheet.Cells[i + cellRowIndex + 15 + rowcount, j + 12] = getserv.Rows[i][j].ToString();
+                                    worksheet.Cells[i + cellRowIndex + 15 + rowcount, j + 12] = Convert.ToDecimal(getserv.Rows[i][j].ToString());
                                 }
                             }
                         }
@@ -706,7 +709,7 @@ namespace Учет_цистерн
                         Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx");
                     }
                 }
-            }
+        }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
