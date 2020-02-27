@@ -19,6 +19,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         string role;
         int Temp;
         int TempUpdate = -1;
+        int GroupUpdate = -1;
         int Num;
 
         public Journal(string role)
@@ -464,7 +465,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     }
                 }
                 //Редактировать группу
-                else if(SelectItemRow == 1)
+                else if(GroupUpdate == 1)
                 {
                     if (textEdit1.Text.Length > 7 && textEdit2.Text == "Премиум Ойл Транс ТОО")
                     {
@@ -621,12 +622,23 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         {
             try
             {
-                SelectBrigadeID = gridView1.GetFocusedDataRow()[1].ToString();
-                SelectProductID = gridView1.GetFocusedDataRow()[2].ToString();
-                comboBox1.DataBindings.Clear();
-                comboBox2.DataBindings.Clear();
-                Block();
-                Update(SelectItemRow);
+                if(GroupUpdate == 1)
+                {
+                    SelectBrigadeID = gridView1.GetFocusedDataRow()[1].ToString();
+                    SelectProductID = gridView1.GetFocusedDataRow()[2].ToString();
+                    comboBox1.DataBindings.Clear();
+                    comboBox2.DataBindings.Clear();
+                    Update(SelectItemRow);
+                }
+                else
+                {
+                    SelectBrigadeID = gridView1.GetFocusedDataRow()[1].ToString();
+                    SelectProductID = gridView1.GetFocusedDataRow()[2].ToString();
+                    comboBox1.DataBindings.Clear();
+                    comboBox2.DataBindings.Clear();
+                    Block();
+                    Update(SelectItemRow);
+                }
             }
             catch (Exception ex)
             {
@@ -1072,8 +1084,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
 
         private void simpleButton6_Click(object sender, EventArgs e)
         {
-            Temp = SelectItemRow; 
-            SelectItemRow = 1;
+            Temp = SelectItemRow;
+            GroupUpdate = 1;
             simpleButton6.Visible = false;
             simpleButton8.Visible = true;
             simpleButton1.Enabled = true;
@@ -1128,6 +1140,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         }
         private void simpleButton8_Click(object sender, EventArgs e)
         {
+            GroupUpdate = -1;
             Block();
 
             if (gridView1.RowCount > 0)
