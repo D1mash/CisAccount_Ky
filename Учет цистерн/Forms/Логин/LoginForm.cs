@@ -81,7 +81,7 @@ namespace Учет_цистерн
                     DataTable ExecLoginDt = new DataTable();
                     ExecLoginDt = DbConnection.DBConnect(ExecLogin);
 
-                    string GetRole = "select dbo.GET_ROLE()";
+                    string GetRole = "select dbo.GET_ROLE('"+aid+"')";
                     DataTable dataRole = DbConnection.DBConnect(GetRole);
                     role = dataRole.Rows[0][0].ToString();
 
