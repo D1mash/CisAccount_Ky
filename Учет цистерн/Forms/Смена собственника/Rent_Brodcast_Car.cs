@@ -385,28 +385,42 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            Rent_Update_v1 update_v1 = new Rent_Update_v1();
-            update_v1.dateTimePicker1.Text = gridView2.GetFocusedDataRow()[1].ToString();
-            update_v1.textEdit1.Text = gridView2.GetFocusedDataRow()[2].ToString();
-            update_v1.textEdit2.Text = gridView2.GetFocusedDataRow()[3].ToString();
-            update_v1.SelectOwnerID = OwnerIDS;
-            update_v1.SelectedID = Grid2Id;
-            update_v1.Owner = this;
-            update_v1.ShowDialog();
+            if(gridView2.SelectedRowsCount > 0)
+            {
+                Rent_Update_v1 update_v1 = new Rent_Update_v1();
+                update_v1.dateTimePicker1.Text = gridView2.GetFocusedDataRow()[1].ToString();
+                update_v1.textEdit1.Text = gridView2.GetFocusedDataRow()[2].ToString();
+                update_v1.textEdit2.Text = gridView2.GetFocusedDataRow()[3].ToString();
+                update_v1.SelectOwnerID = OwnerIDS;
+                update_v1.SelectedID = Grid2Id;
+                update_v1.Owner = this;
+                update_v1.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Для редактирования записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void simpleButton5_Click(object sender, EventArgs e)
         {
-            Rent_Update_v2 update_v2 = new Rent_Update_v2();
-            update_v2.textEdit3.Text = gridView1.GetFocusedDataRow()[3].ToString();
-            update_v2.dateTimePicker1.Text = gridView1.GetFocusedDataRow()[1].ToString();
-            update_v2.textEdit1.Text = gridView1.GetFocusedDataRow()[2].ToString();
-            update_v2.textEdit2.Text = gridView1.GetFocusedDataRow()[4].ToString();
-            update_v2.HeadID = Grid2Id;
-            update_v2.BodyID = Grid1Id;
-            update_v2.SelectOwnerID = OwnerId_v2;
-            update_v2.Owner = this;
-            update_v2.ShowDialog();
+            if(gridView1.SelectedRowsCount > 0)
+            {
+                Rent_Update_v2 update_v2 = new Rent_Update_v2();
+                update_v2.textEdit3.Text = gridView1.GetFocusedDataRow()[3].ToString();
+                update_v2.dateTimePicker1.Text = gridView1.GetFocusedDataRow()[1].ToString();
+                update_v2.textEdit1.Text = gridView1.GetFocusedDataRow()[2].ToString();
+                update_v2.textEdit2.Text = gridView1.GetFocusedDataRow()[4].ToString();
+                update_v2.HeadID = Grid2Id;
+                update_v2.BodyID = Grid1Id;
+                update_v2.SelectOwnerID = OwnerId_v2;
+                update_v2.Owner = this;
+                update_v2.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Для редактирования записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -421,27 +435,34 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             try
             {
-                if (MessageBox.Show("Удалить выделенные записи?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if(gridView2.SelectedRowsCount > 0)
                 {
-                    ArrayList rows = new ArrayList();
-                    List<object> aList = new List<Object>();
-                    string Arrays = string.Empty;
+                    if (MessageBox.Show("Удалить выделенные записи?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        ArrayList rows = new ArrayList();
+                        List<object> aList = new List<Object>();
+                        string Arrays = string.Empty;
 
-                    Int32[] selectedRowHandles = gridView2.GetSelectedRows();
-                    for (int i = 0; i < selectedRowHandles.Length; i++)
-                    {
-                        int selectedRowHandle = selectedRowHandles[i];
-                        if (selectedRowHandle >= 0)
-                            rows.Add(gridView2.GetDataRow(selectedRowHandle));
+                        Int32[] selectedRowHandles = gridView2.GetSelectedRows();
+                        for (int i = 0; i < selectedRowHandles.Length; i++)
+                        {
+                            int selectedRowHandle = selectedRowHandles[i];
+                            if (selectedRowHandle >= 0)
+                                rows.Add(gridView2.GetDataRow(selectedRowHandle));
+                        }
+                        foreach (DataRow row in rows)
+                        {
+                            aList.Add(row["ID"]);
+                            Arrays = string.Join(" ", aList);
+                            string delete = "exec dbo.Rent_Delete_v1 '" + Arrays + "'";
+                            DbConnection.DBConnect(delete);
+                        }
+                        simpleButton1_Click(null, null);
                     }
-                    foreach (DataRow row in rows)
-                    {
-                        aList.Add(row["ID"]);
-                        Arrays = string.Join(" ", aList);
-                        string delete = "exec dbo.Rent_Delete_v1 '" + Arrays + "'";
-                        DbConnection.DBConnect(delete);
-                    }
-                    simpleButton1_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception exp)
@@ -454,27 +475,34 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             try
             {
-                if (MessageBox.Show("Удалить выделенные записи?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if(gridView1.SelectedRowsCount > 0)
                 {
-                    ArrayList rows = new ArrayList();
-                    List<object> aList = new List<Object>();
-                    string Arrays = string.Empty;
+                    if (MessageBox.Show("Удалить выделенные записи?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        ArrayList rows = new ArrayList();
+                        List<object> aList = new List<Object>();
+                        string Arrays = string.Empty;
 
-                    Int32[] selectedRowHandles = gridView1.GetSelectedRows();
-                    for (int i = 0; i < selectedRowHandles.Length; i++)
-                    {
-                        int selectedRowHandle = selectedRowHandles[i];
-                        if (selectedRowHandle >= 0)
-                            rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                        Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                        for (int i = 0; i < selectedRowHandles.Length; i++)
+                        {
+                            int selectedRowHandle = selectedRowHandles[i];
+                            if (selectedRowHandle >= 0)
+                                rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                        }
+                        foreach (DataRow row in rows)
+                        {
+                            aList.Add(row["BodyID"]);
+                            Arrays = string.Join(" ", aList);
+                            string delete = "exec dbo.Rent_Delete_v2 '" + Arrays + "'";
+                            DbConnection.DBConnect(delete);
+                        }
+                        simpleButton1_Click(null, null);
                     }
-                    foreach (DataRow row in rows)
-                    {
-                        aList.Add(row["BodyID"]);
-                        Arrays = string.Join(" ", aList);
-                        string delete = "exec dbo.Rent_Delete_v2 '" + Arrays + "'";
-                        DbConnection.DBConnect(delete);
-                    }
-                    simpleButton1_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception exp)
