@@ -78,50 +78,81 @@ namespace Учет_цистерн.Forms
         {
             try
             {
-                if (textEdit2.Text != String.Empty && textEdit3.Text != String.Empty && comboBox1.SelectedValue.ToString() != "-1")
+                ArrayList list_1 = new ArrayList();
+                string Arrays_1 = string.Empty;
+
+                DataTable dtCheck = new DataTable();
+                string Ch = string.Empty;
+
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textEdit2.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textEdit3.Text + "','"+User_ID+"', @CurrentID = @Id output; select @Id";
-                    DataTable HeadID = DbConnection.DBConnect(NewHead);
-
-                    //Список вагонов для передачи в БД
-                    string Id = HeadID.Rows[0][0].ToString();
-
-                    ArrayList list = new ArrayList();
-                    string Arrays = string.Empty;
-
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        list.Add(dt.Rows[i][1].ToString());
-                    }
-
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        Arrays = string.Join(" ", list[i]);
-                        string newRow = "exec dbo.Rent_ADD_Body '" + Arrays + "','"+User_ID+"'," + Id;
-                        DbConnection.DBConnect(newRow);
-                    }
-
-                    RefreshGrid();
-
-                    Change_of_Ownership_Load(null, null);
+                    list_1.Add(dt.Rows[i][1].ToString());
                 }
-                else
+
+                for (int i = 0; i < list_1.Count; i++)
                 {
-                    if (textEdit2.Text == String.Empty)
+                    Arrays_1 = string.Join(" ", list_1[i]);
+                    string newRow = "exec dbo.CheckRent '"+Arrays_1+"','"+ dateEdit1.DateTime.ToShortDateString() + "','"+User_ID+"'";
+                    DbConnection.DBConnect(newRow);
+                }
+
+                RefreshGrid();
+
+                string CheckCorrect = "exec dbo.CheckCorrectIsOk '"+User_ID+"'";
+                dtCheck = DbConnection.DBConnect(CheckCorrect);
+                Ch = dtCheck.Rows[0][0].ToString();
+
+                if ( Ch == "0")
+                {
+                    if (textEdit2.Text != String.Empty && textEdit3.Text != String.Empty && comboBox1.SelectedValue.ToString() != "-1")
                     {
-                        MessageBox.Show("Введите номер заявки!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textEdit2.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textEdit3.Text + "','" + User_ID + "', @CurrentID = @Id output; select @Id";
+                        DataTable HeadID = DbConnection.DBConnect(NewHead);
+
+                        //Список вагонов для передачи в БД
+                        string Id = HeadID.Rows[0][0].ToString();
+
+                        ArrayList list = new ArrayList();
+                        string Arrays = string.Empty;
+
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            list.Add(dt.Rows[i][1].ToString());
+                        }
+
+                        for (int i = 0; i < list.Count; i++)
+                        {
+                            Arrays = string.Join(" ", list[i]);
+                            string newRow = "exec dbo.Rent_ADD_Body '" + Arrays + "','" + User_ID + "'," + Id;
+                            DbConnection.DBConnect(newRow);
+                        }
+
+                        RefreshGrid();
+
+                        Change_of_Ownership_Load(null, null);
                     }
                     else
                     {
-                        if(textEdit3.Text == String.Empty)
+                        if (textEdit2.Text == String.Empty)
                         {
-                            MessageBox.Show("Введите продукт!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Введите номер заявки!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            MessageBox.Show("Не выбран собственник!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (textEdit3.Text == String.Empty)
+                            {
+                                MessageBox.Show("Введите продукт!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Не выбран собственник!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Вагон уже имеется в заявках на "+ dateEdit1.DateTime.ToShortDateString(),"",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
