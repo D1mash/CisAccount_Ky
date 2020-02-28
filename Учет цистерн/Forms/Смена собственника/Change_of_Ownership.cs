@@ -197,21 +197,21 @@ namespace Учет_цистерн.Forms
 
                 Arr = Clipboard.GetText();
 
-                string[] word = Arr.Split(new char[] {' ','\r','\n'}, StringSplitOptions.RemoveEmptyEntries);
+                string[] word = Arr.Split(new char[] { ' ', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
-                foreach(string s in word)
+                foreach (string s in word)
                 {
                     list.Add(s);
                 }
 
                 for (int i = 0; i < list.Count; i++)
                 {
-                    Arrays = string.Join(" ", list[i]);
-                    string newRow = "exec dbo.InsertMultiple_Carriage '"+User_ID+"','" + Arrays + "'";
+                    string newRow = "exec dbo.InsertMultiple_Carriage '" + User_ID + "','" + list[i] + "'";
                     DbConnection.DBConnect(newRow);
                 }
 
                 RefreshGrid();
+
             }
             catch (Exception exp)
             {
@@ -230,7 +230,6 @@ namespace Учет_цистерн.Forms
             dt = DbConnection.DBConnect(Refresh);
             gridControl1.DataSource = dt;
             gridView1.Columns[0].Visible = false;
-            gridView1.Columns[3].Visible = false;
 
             GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "Кол.во: {0}");
             gridView1.Columns["Номер вагона"].Summary.Add(Carnumber);
@@ -347,24 +346,31 @@ namespace Учет_цистерн.Forms
 
         private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
-            GridView View = sender as GridView;
-
-            if (e.RowHandle >= 0)
+            try
             {
-                Object asd = View.GetRowCellValue(e.RowHandle, View.Columns["IsCorrect"]);
-                //string category = View.GetRowCellDisplayText(e.RowHandle, View.Columns["IsCorrect"]);
-                if ((bool)asd == true)
+                GridView View = sender as GridView;
+
+                if (e.RowHandle >= 0)
                 {
-                    e.Appearance.BackColor = Color.LightPink;
+                    //object asd = View.GetRowCellValue(e.RowHandle, View.Columns["IsCorrect"]);
+                    string category = View.GetRowCellDisplayText(e.RowHandle, View.Columns["IsCorrect"]);
+                    if (category == "Отмечено")
+                    {
+                        e.Appearance.BackColor = Color.LightPink;
+                        //e.HighPriority = true;
+                    }
+                }
+
+                if (View.IsRowSelected(e.RowHandle))
+                {
+                    e.Appearance.ForeColor = Color.DarkBlue;
+                    e.Appearance.BackColor = Color.LightBlue;
                     //e.HighPriority = true;
                 }
             }
-
-            if (View.IsRowSelected(e.RowHandle))
+            catch(Exception ex)
             {
-                e.Appearance.ForeColor = Color.DarkBlue;
-                e.Appearance.BackColor = Color.LightBlue;
-                //e.HighPriority = true;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
