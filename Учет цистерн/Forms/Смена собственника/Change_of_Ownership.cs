@@ -230,6 +230,7 @@ namespace Учет_цистерн.Forms
             dt = DbConnection.DBConnect(Refresh);
             gridControl1.DataSource = dt;
             gridView1.Columns[0].Visible = false;
+            gridView1.Columns[3].Visible = false;
 
             GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "Кол.во: {0}");
             gridView1.Columns["Номер вагона"].Summary.Add(Carnumber);
@@ -347,7 +348,17 @@ namespace Учет_цистерн.Forms
         private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
             GridView View = sender as GridView;
-            
+
+            if (e.RowHandle >= 0)
+            {
+                string category = View.GetRowCellDisplayText(e.RowHandle, View.Columns["IsCorrect"]);
+                if (category == "Отмечено")
+                {
+                    e.Appearance.BackColor = Color.LightPink;
+                    //e.HighPriority = true;
+                }
+            }
+
             if (View.IsRowSelected(e.RowHandle))
             {
                 e.Appearance.ForeColor = Color.DarkBlue;
