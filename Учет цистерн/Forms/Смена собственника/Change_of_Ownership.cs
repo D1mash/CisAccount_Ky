@@ -351,8 +351,9 @@ namespace Учет_цистерн.Forms
 
             if (e.RowHandle >= 0)
             {
-                string category = View.GetRowCellDisplayText(e.RowHandle, View.Columns["IsCorrect"]);
-                if (category == "Отмечено")
+                Object asd = View.GetRowCellValue(e.RowHandle, View.Columns["IsCorrect"]);
+                //string category = View.GetRowCellDisplayText(e.RowHandle, View.Columns["IsCorrect"]);
+                if ((bool)asd == true)
                 {
                     e.Appearance.BackColor = Color.LightPink;
                     //e.HighPriority = true;
