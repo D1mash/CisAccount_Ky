@@ -77,8 +77,8 @@ namespace Учет_цистерн
                     dt = DbConnection.DBConnect(RefreshAll);
 
                     int col = TotalRow(dt) * 2;
-                    progressBar.Maximum = col;
-                    toolStripLabel1.Text = col.ToString();
+                    progressBar.Value = 0;
+                    toolStripLabel1.Text = "Всего строк: " + col.ToString();
 
                 }
                 else
@@ -323,7 +323,7 @@ namespace Учет_цистерн
 
                         int k = 0;
 
-                        int iterator = 0;
+                        //int iterator = 0;
 
                         foreach (Excel.Worksheet worksheet in workbook.Worksheets)
                         {
@@ -344,6 +344,8 @@ namespace Учет_цистерн
                                 FormattingExcelCells(worksheet.Range["C6"], false, false);
 
                                 worksheet.Range["B13:K22"].Cut(worksheet.Cells[dataTable.Rows.Count + 16 + Itog_Rep.Rows.Count * 2, 2]);
+
+                                worksheet.Range["P:P"].NumberFormat = "@";
 
                                 for (int l = 0; l < dataTable.Rows.Count; l++)
                                 {
@@ -382,16 +384,36 @@ namespace Учет_цистерн
                                         }
                                         if (j > 12)
                                         {
-                                            worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
-                                            if (j == 15)
+                                            if (j == 13)
                                             {
-                                                totalSumCost += double.Parse(dataTable.Rows[l][j].ToString());
+                                                worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
                                             }
                                             else
                                             {
-                                                if (j == 16)
+                                                if (j == 14)
                                                 {
-                                                    totalSumTor += double.Parse(dataTable.Rows[l][j].ToString());
+                                                    worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
+                                                }
+                                                else
+                                                {
+                                                    if (j == 15)
+                                                    {
+                                                        worksheet.Cells[l + 10, j + 3] = Convert.ToDecimal(dataTable.Rows[l][j].ToString());
+                                                        totalSumCost += double.Parse(dataTable.Rows[l][j].ToString());
+                                                    }
+                                                    else
+                                                    {
+                                                        if (j == 16)
+                                                        {
+                                                            worksheet.Cells[l + 10, j + 3] = Convert.ToDecimal(dataTable.Rows[l][j].ToString());
+                                                            totalSumTor += double.Parse(dataTable.Rows[l][j].ToString());
+                                                        }
+                                                        else
+                                                        {
+                                                            if (j == 17)
+                                                                worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
@@ -399,12 +421,11 @@ namespace Учет_цистерн
 
                                     Excel.Range range = worksheet.Range[worksheet.Cells[l + 10, 1], worksheet.Cells[l + 10, dataTable.Columns.Count + 2]];
                                     FormattingExcelCells(range, true, true);
-
-                                    backgroundWorker.ReportProgress(iterator);
-
+                                    
                                     cellRowIndex++;
+                                    //iterator++;
 
-                                    iterator++;
+                                    //backgroundWorker.ReportProgress(iterator);
                                 }
 
                                 worksheet.Cells[dataTable.Rows.Count + 12, 2] = "=C6";
@@ -459,6 +480,8 @@ namespace Учет_цистерн
 
                                 worksheet.Range["B13:K22"].Cut(worksheet.Cells[dataTable.Rows.Count + 16 + Itog_Rep.Rows.Count * 2, 2]);
 
+                                worksheet.Range["P:P"].NumberFormat = "@";
+
                                 for (int l = 0; l < dataTable.Rows.Count; l++)
                                 {
                                     worksheet.Cells[l + 10, 1] = l + 1;
@@ -496,16 +519,36 @@ namespace Учет_цистерн
                                         }
                                         if (j > 12)
                                         {
-                                            worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
-                                            if (j == 15)
+                                            if (j == 13)
                                             {
-                                                totalSumCost += double.Parse(dataTable.Rows[l][j].ToString());
+                                                worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
                                             }
                                             else
                                             {
-                                                if (j == 16)
+                                                if (j == 14)
                                                 {
-                                                    totalSumTor += double.Parse(dataTable.Rows[l][j].ToString());
+                                                    worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
+                                                }
+                                                else
+                                                {
+                                                    if (j == 15)
+                                                    {
+                                                        worksheet.Cells[l + 10, j + 3] = Convert.ToDecimal(dataTable.Rows[l][j].ToString());
+                                                        totalSumCost += double.Parse(dataTable.Rows[l][j].ToString());
+                                                    }
+                                                    else
+                                                    {
+                                                        if (j == 16)
+                                                        {
+                                                            worksheet.Cells[l + 10, j + 3] = Convert.ToDecimal(dataTable.Rows[l][j].ToString());
+                                                            totalSumTor += double.Parse(dataTable.Rows[l][j].ToString());
+                                                        }
+                                                        else
+                                                        {
+                                                            if (j == 17)
+                                                                worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
@@ -513,11 +556,12 @@ namespace Учет_цистерн
 
                                     Excel.Range range = worksheet.Range[worksheet.Cells[l + 10, 1], worksheet.Cells[l + 10, dataTable.Columns.Count + 2]];
                                     FormattingExcelCells(range, true, true);
-
-                                    backgroundWorker.ReportProgress(iterator);
-
+                                    
                                     cellRowIndex++;
-                                    iterator++;
+
+                                    //iterator++;
+
+                                    //backgroundWorker.ReportProgress(iterator);
                                 }
 
                                 worksheet.Cells[dataTable.Rows.Count + 12, 2] = "=C6";
@@ -597,6 +641,8 @@ namespace Учет_цистерн
 
                         worksheet.Range["B13:K22"].Cut(worksheet.Cells[dt.Rows.Count + 16 + getserv.Rows.Count * 2, 2]);
 
+                        worksheet.Range["P:P"].NumberFormat = "@";
+
                         for (int i = 0; i < dt.Rows.Count; i++)
                         {
                             worksheet.Cells[i + 10, 1] = i + 1;
@@ -634,18 +680,39 @@ namespace Учет_цистерн
                                 }
                                 if (j > 12)
                                 {
-                                    worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
-                                    if (j == 15)
+                                    if(j == 13)
                                     {
-                                        totalSumCost += double.Parse(dt.Rows[i][j].ToString());
+                                        worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
                                     }
                                     else
                                     {
-                                        if (j == 16)
+                                        if (j == 14)
                                         {
-                                            totalSumTor += double.Parse(dt.Rows[i][j].ToString());
+                                            worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
+                                        }
+                                        else
+                                        {
+                                            if (j == 15)
+                                            {
+                                                worksheet.Cells[i + 10, j + 3] = Convert.ToDecimal(dt.Rows[i][j].ToString());
+                                                totalSumCost += double.Parse(dt.Rows[i][j].ToString());
+                                            }
+                                            else
+                                            {
+                                                if (j == 16)
+                                                {
+                                                    worksheet.Cells[i + 10, j + 3] = Convert.ToDecimal(dt.Rows[i][j].ToString());
+                                                    totalSumTor += double.Parse(dt.Rows[i][j].ToString());
+                                                }
+                                                else
+                                                {
+                                                    if (j == 17)
+                                                        worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
+                                                }
+                                            }
                                         }
                                     }
+                                    
                                 }
                             }
 
@@ -739,8 +806,15 @@ namespace Учет_цистерн
 
         private void BackgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-            progressBar.Value = e.ProgressPercentage;
-            LblStatus.Text = "Обработка строки.. " + e.ProgressPercentage.ToString() /*+ " из " + TotalRow()*/;
+            if (checkBox2.Checked)
+            {
+
+            }
+            else
+            {
+                progressBar.Value = e.ProgressPercentage;
+                LblStatus.Text = "Обработка строки.. " + e.ProgressPercentage.ToString() /*+ " из " + TotalRow()*/;
+            }
         }
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
