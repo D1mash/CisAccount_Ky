@@ -230,6 +230,7 @@ namespace Учет_цистерн.Forms
             dt = DbConnection.DBConnect(Refresh);
             gridControl1.DataSource = dt;
             gridView1.Columns[0].Visible = false;
+            gridView1.Columns[3].Visible = false;
 
             GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "Кол.во: {0}");
             gridView1.Columns["Номер вагона"].Summary.Add(Carnumber);
