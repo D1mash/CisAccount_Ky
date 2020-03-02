@@ -999,7 +999,15 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 {
                     gridView1_RowCellClick(null, null);
                 }
-            }            
+            }
+            else
+            {
+                Refresh();
+                if (gridView1.RowCount > 0)
+                {
+                    gridView1_RowCellClick(null, null);
+                }
+            }
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
