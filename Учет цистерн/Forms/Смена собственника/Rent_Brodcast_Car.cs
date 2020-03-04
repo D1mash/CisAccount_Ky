@@ -21,8 +21,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
         int SelectItemRow1;
         int SelectItemRow2;
         int OwnerIDS;
-        int Grid2Id;
-        int Grid1Id;
+        int Grid2Id, Grid1Id, Grid3Id;
         int OwnerId_v2;
         string OwnerName;
         string date;
@@ -412,7 +411,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 update_v2.dateTimePicker1.Text = gridView1.GetFocusedDataRow()[1].ToString();
                 update_v2.textEdit1.Text = gridView1.GetFocusedDataRow()[2].ToString();
                 update_v2.textEdit2.Text = gridView1.GetFocusedDataRow()[4].ToString();
-                update_v2.HeadID = Grid2Id;
+                update_v2.HeadID = Grid3Id;
                 update_v2.BodyID = Grid1Id;
                 update_v2.SelectOwnerID = OwnerId_v2;
                 update_v2.Owner = this;
@@ -428,7 +427,9 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             string Id = gridView1.GetFocusedDataRow()[6].ToString();
             string OwnerID = gridView1.GetFocusedDataRow()[7].ToString();
+            string HeadID = gridView1.GetFocusedDataRow()[0].ToString();
             Grid1Id = Convert.ToInt32(Id);
+            Grid3Id = Convert.ToInt32(HeadID);
             OwnerId_v2 = Convert.ToInt32(OwnerID);
         }
 
