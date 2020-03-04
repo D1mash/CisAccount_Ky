@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using Учет_цистерн.Forms.заявки_на_обработку;
 
@@ -118,6 +120,22 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 {
                     gridView1.MoveLast();
                 }
+                else
+                {
+                    if (Section == "1")
+                    {
+                        ColumnView View = (ColumnView)gridControl1.FocusedView;
+                        // obtaining the column bound to the Country field 
+                        GridColumn column = View.Columns["ID"];
+                        if (column != null)
+                        {
+                            int rhFound = View.LocateByDisplayText(View.FocusedRowHandle + 1, column, Convert.ToString(SelectItemRow));
+                            View.FocusedRowHandle = rhFound;
+                            View.FocusedColumn = column;
+                        }
+                    }
+                    
+                }
                 
 
                 GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
@@ -146,8 +164,26 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     {
                         gridView1.MoveLast();
                     }
+                    else
+                    {
+                        if (Section == "1")
+                        {
+                            ColumnView View = (ColumnView)gridControl1.FocusedView;
+                            // obtaining the column bound to the Country field 
+                            GridColumn column = View.Columns["ID"];
+                            gridView1.FocusedRowHandle = SelectItemRow;
+                            if (column != null)
+                            {
+                                int rhFound = View.LocateByDisplayText(View.FocusedRowHandle + 1, column, Convert.ToString(SelectItemRow));
+                                View.FocusedRowHandle = SelectItemRow;
+                                View.FocusedColumn = column;
+                            }
 
-                    GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
+                        }
+                    }
+
+
+                        GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
                     GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
                     GridColumnSummaryItem TorCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма ТОР", "{0}");
                     gridView1.Columns["Номер вагона"].Summary.Add(Carnumber);
@@ -1477,11 +1513,17 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 //e.HighPriority = true;
             }
 
-            if (View.IsRowSelected(e.RowHandle))
+            //if (View.IsRowSelected(e.RowHandle))
+            //{
+            //    e.Appearance.ForeColor = Color.DarkBlue;
+            //    e.Appearance.BackColor = Color.LightBlue;
+            //    //e.HighPriority = true;
+            //}
+
+            if(View.FocusedRowHandle == e.RowHandle)
             {
                 e.Appearance.ForeColor = Color.DarkBlue;
                 e.Appearance.BackColor = Color.LightBlue;
-                //e.HighPriority = true;
             }
         }
 
