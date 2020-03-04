@@ -14,10 +14,12 @@ namespace Учет_цистерн.Forms.Смена_собственника
     {
         public int SelectOwnerID { get; set; }
         public int SelectedID { get; set; }
+        string UserAID;
 
-        public Rent_Update_v1()
+        public Rent_Update_v1(string User_ID)
         {
             InitializeComponent();
+            this.UserAID = User_ID;
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -51,7 +53,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             try
             {
-                string Update = "dbo.Rent_Update_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + textEdit1.Text.Trim() + "','" + textEdit2.Text.Trim() + "'," + comboBox1.SelectedValue.ToString() + "," + SelectedID;
+                string Update = "dbo.Rent_Update_v1 '"+ UserAID + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textEdit1.Text.Trim() + "','" + textEdit2.Text.Trim() + "'," + comboBox1.SelectedValue.ToString() + "," + SelectedID;
                 DbConnection.DBConnect(Update);
                 Rent_Brodcast_Car main = this.Owner as Rent_Brodcast_Car;
                 main.simpleButton1_Click(null, null);

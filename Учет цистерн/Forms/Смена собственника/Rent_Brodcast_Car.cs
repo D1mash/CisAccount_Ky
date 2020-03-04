@@ -27,12 +27,13 @@ namespace Учет_цистерн.Forms.Смена_собственника
         string OwnerName;
         string date;
         string product;
-        string role;
+        string role, User_ID;
 
-        public Rent_Brodcast_Car(string role)
+        public Rent_Brodcast_Car(string role, string UserID)
         {
             InitializeComponent();
             this.role = role;
+            this.User_ID = UserID;
         }
 
         private void Rent_Brodcast_Car_Load(object sender, EventArgs e)
@@ -387,7 +388,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             if(gridView2.SelectedRowsCount > 0)
             {
-                Rent_Update_v1 update_v1 = new Rent_Update_v1();
+                Rent_Update_v1 update_v1 = new Rent_Update_v1(User_ID);
                 update_v1.dateTimePicker1.Text = gridView2.GetFocusedDataRow()[1].ToString();
                 update_v1.textEdit1.Text = gridView2.GetFocusedDataRow()[2].ToString();
                 update_v1.textEdit2.Text = gridView2.GetFocusedDataRow()[3].ToString();
@@ -406,7 +407,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             if(gridView1.SelectedRowsCount > 0)
             {
-                Rent_Update_v2 update_v2 = new Rent_Update_v2();
+                Rent_Update_v2 update_v2 = new Rent_Update_v2(User_ID);
                 update_v2.textEdit3.Text = gridView1.GetFocusedDataRow()[3].ToString();
                 update_v2.dateTimePicker1.Text = gridView1.GetFocusedDataRow()[1].ToString();
                 update_v2.textEdit1.Text = gridView1.GetFocusedDataRow()[2].ToString();

@@ -54,7 +54,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 DateTime now = DateTime.Now;
                 dateTimePicker1.Value = now;
 
-                Refresh();
+                Refreshh("2");
                 Fillcombobox();
                 Block();
 
@@ -99,22 +99,26 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             }
         }
 
-        public override void Refresh()
+        public void Refreshh(string Section)
         {
             if (role == "1" | role == "2" | role == "1002")
             {
                 gridControl1.DataSource = null;
                 gridView1.Columns.Clear();
 
-                string refresh = "exec [dbo].[GetRenderedService] '" + dateTimePicker1.Value.ToShortDateString() + "', " + "@Type = " + 1;
-                DataTable dt = DbConnection.DBConnect(refresh);
+                string Refreshh = "exec [dbo].[GetRenderedService] '" + dateTimePicker1.Value.ToShortDateString() + "', " + "@Type = " + 1;
+                DataTable dt = DbConnection.DBConnect(Refreshh);
                 gridControl1.DataSource = dt;
                 gridView1.BestFitColumns();
                 gridView1.Columns[3].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
                 gridView1.Columns[0].Visible = false;
                 gridView1.Columns[1].Visible = false;
                 gridView1.Columns[2].Visible = false;
-                gridView1.MoveLast();
+                if(Section == "2")
+                {
+                    gridView1.MoveLast();
+                }
+                
 
                 GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
                 GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
@@ -130,15 +134,18 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     gridControl1.DataSource = null;
                     gridView1.Columns.Clear();
 
-                    string refresh = "exec [dbo].[GetRenderedService] '" + dateTimePicker1.Value.ToShortDateString() + "', " + "@Type = " + 2;
-                    DataTable dt = DbConnection.DBConnect(refresh);
+                    string Refreshh = "exec [dbo].[GetRenderedService] '" + dateTimePicker1.Value.ToShortDateString() + "', " + "@Type = " + 2;
+                    DataTable dt = DbConnection.DBConnect(Refreshh);
                     gridControl1.DataSource = dt;
                     gridView1.BestFitColumns();
                     gridView1.Columns[3].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
                     gridView1.Columns[0].Visible = false;
                     gridView1.Columns[1].Visible = false;
                     gridView1.Columns[2].Visible = false;
-                    gridView1.MoveLast();
+                    if (Section == "2")
+                    {
+                        gridView1.MoveLast();
+                    }
 
                     GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
                     GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
@@ -422,7 +429,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                             string Id = HeadID.Rows[0][0].ToString();
                                             string Autn = "exec [dbo].[FillAutn] '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit24.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "'," + Id;
                                             DbConnection.DBConnect(Autn);
-                                            Refresh();
+                                            Refreshh("2");
                                             textEdit1.Text = "";
                                             textEdit1.Focus();
                                         }
@@ -448,7 +455,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                         string Id = HeadID.Rows[0][0].ToString();
                                         string Autn = "exec [dbo].[FillAutn] '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit24.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "'," + Id;
                                         DbConnection.DBConnect(Autn);
-                                        Refresh();
+                                        Refreshh("2");
                                         textEdit1.Text = "";
                                         textEdit1.Focus();
                                     }
@@ -495,7 +502,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                     string UpdateAutnAll = "exec dbo.UpdateAutnAll '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit24.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + Arrays + "'";
                                     DbConnection.DBConnect(UpdateAutnAll);
                                 }
-                                Refresh();
+                                Refreshh("1");
                             //}
                             //else
                             //{
@@ -531,7 +538,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                 string UpdateAutnAll = "exec dbo.UpdateAutnAll '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit24.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + Arrays + "'";
                                 DbConnection.DBConnect(UpdateAutnAll);
                             }
-                            Refresh();
+                            Refreshh("1");
                         }
                         else
                         {
@@ -562,7 +569,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                     DbConnection.DBConnect(Update);
                                     string UpdateAutn = "exec dbo.UpdateAutn '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit24.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "'," + SelectItemRow;
                                     DbConnection.DBConnect(UpdateAutn);
-                                    Refresh();
+                                    Refreshh("1");
                                     Block();
                                     TempUpdate = -1;
                                 //}
@@ -584,7 +591,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                 DbConnection.DBConnect(Update);
                                 string UpdateAutn = "exec dbo.UpdateAutn '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit24.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "'," + SelectItemRow;
                                 DbConnection.DBConnect(UpdateAutn);
-                                Refresh();
+                                Refreshh("1");
                                 Block();
                                 TempUpdate = -1;
                             }
@@ -853,7 +860,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         string delete = "exec dbo.DeleteRenderedService '" + Arrays + "'";
                         DbConnection.DBConnect(delete);
                     }
-                    Refresh();
+                    Refreshh("2");
                     if(gridView1.RowCount > 0)
                     {
                         gridView1_RowCellClick(null,null);
@@ -994,7 +1001,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             {
                 dateTimePicker1.Value = DateTime.Today;
 
-                Refresh();
+                Refreshh("2");
                 if (gridView1.RowCount > 0)
                 {
                     gridView1_RowCellClick(null, null);
@@ -1002,7 +1009,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             }
             else
             {
-                Refresh();
+                Refreshh("2");
                 if (gridView1.RowCount > 0)
                 {
                     gridView1_RowCellClick(null, null);
@@ -1058,7 +1065,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     string UpdateOwner = "exec dbo.UpdateCurrentOwner '"+Arrays+"',"+Id;
                     DbConnection.DBConnect(UpdateOwner);
                 }
-                Refresh();
+                Refreshh("1");
                 gridView1_RowCellClick(null,null);
             }
             catch (Exception exp)
@@ -1433,8 +1440,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 gridControl1.DataSource = null;
                 gridView1.Columns.Clear();
 
-                string refresh = "exec [dbo].[GetRenderedService] '" + dateTimePicker1.Value.ToShortDateString() + "', " + "@Type = " + 1;
-                DataTable dt = DbConnection.DBConnect(refresh);
+                string Refreshh = "exec [dbo].[GetRenderedService] '" + dateTimePicker1.Value.ToShortDateString() + "', " + "@Type = " + 1;
+                DataTable dt = DbConnection.DBConnect(Refreshh);
                 gridControl1.DataSource = dt;
                 gridView1.BestFitColumns();
                 gridView1.Columns[3].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
@@ -1444,7 +1451,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             }
             else
             {
-                Refresh();
+                Refreshh("2");
             }
         }
 
