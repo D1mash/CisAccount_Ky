@@ -247,11 +247,11 @@ namespace Учет_цистерн
                             {
                                 if (j == 0)
                                 {
-                                    worksheet.Cells[i + k, j + 2] = dt.Rows[j][j].ToString();
+                                    worksheet.Cells[i + k, j + 2] = dt.Rows[i][j].ToString();
                                 }
                                 else
                                 {
-                                    worksheet.Cells[i + k, j + 8] = dt.Rows[i][j].ToString();
+                                    worksheet.Cells[i + k, j + 8] = Convert.ToDecimal(dt.Rows[i][j].ToString());
                                 }
 
                             }
