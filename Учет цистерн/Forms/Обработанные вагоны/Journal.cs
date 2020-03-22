@@ -22,6 +22,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         int Temp;
         int TempUpdate = -1;
         int GroupUpdate = -1;
+        int UpdateAutn = -1;
         int Num;
 
         public Journal(string role, string UserID)
@@ -66,6 +67,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 memoEdit1.Visible = false;
                 simpleButton7.Visible = false;
                 simpleButton8.Visible = false;
+                simpleButton11.Visible = false;
 
                 if (gridView1.RowCount == 0)
                 {
@@ -582,6 +584,29 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         }
                     }
                 }
+                //Редактировать АУТН
+                else if (UpdateAutn == 1)
+                {
+                    ArrayList rows = new ArrayList();
+                    List<Object> aList = new List<Object>();
+                    string Arrays = string.Empty;
+
+                    Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                    for (int i = 0; i < selectedRowHandles.Length; i++)
+                    {
+                        int selectedRowHandle = selectedRowHandles[i];
+                        if (selectedRowHandle >= 0)
+                            rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                    }
+                    foreach (DataRow row in rows)
+                    {
+                        aList.Add(row["ID"]);
+                        Arrays = string.Join(" ", aList);
+                        string UpdateAutnAll = "exec dbo.UpdateAutnAll '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit24.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + Arrays + "'";
+                        DbConnection.DBConnect(UpdateAutnAll);
+                    }
+                    Refreshh("1");
+                }
                 //Редактировать
                 else
                 {
@@ -667,6 +692,14 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             try
             {
                 if(GroupUpdate == 1)
+                {
+                    SelectBrigadeID = gridView1.GetFocusedDataRow()[1].ToString();
+                    SelectProductID = gridView1.GetFocusedDataRow()[2].ToString();
+                    comboBox1.DataBindings.Clear();
+                    comboBox2.DataBindings.Clear();
+                    Update(SelectItemRow);
+                }
+                else if(UpdateAutn == 1)
                 {
                     SelectBrigadeID = gridView1.GetFocusedDataRow()[1].ToString();
                     SelectProductID = gridView1.GetFocusedDataRow()[2].ToString();
@@ -1815,6 +1848,35 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     textEdit17.Focus();
                 }
             }
+        }
+
+        private void simpleButton10_Click(object sender, EventArgs e)
+        {
+            UpdateAutn = 1;
+            textEdit12.Enabled = true;
+            textEdit13.Enabled = true;
+            textEdit14.Enabled = true;
+            textEdit15.Enabled = true;
+            textEdit16.Enabled = true;
+            textEdit17.Enabled = true;
+            textEdit18.Enabled = true;
+            textEdit19.Enabled = true;
+            textEdit20.Enabled = true;
+            textEdit21.Enabled = true;
+            textEdit22.Enabled = true;
+            textEdit23.Enabled = true;
+            textEdit24.Enabled = true;
+            simpleButton1.Enabled = true;
+            simpleButton10.Visible = false;
+            simpleButton11.Visible = true;
+        }
+
+        private void simpleButton11_Click(object sender, EventArgs e)
+        {
+            simpleButton11.Visible = false;
+            simpleButton10.Visible = true;
+            UpdateAutn = 1;
+            Block();
         }
 
         private void Enter_Key_Down(object sender, KeyEventArgs e)

@@ -125,6 +125,8 @@
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.xtraScrollableControl1.SuspendLayout();
@@ -196,9 +198,9 @@
             this.groupControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupControl1.Controls.Add(this.xtraScrollableControl1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupControl1.Location = new System.Drawing.Point(1024, 0);
+            this.groupControl1.Location = new System.Drawing.Point(1238, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(346, 742);
+            this.groupControl1.Size = new System.Drawing.Size(346, 762);
             this.groupControl1.TabIndex = 0;
             // 
             // xtraScrollableControl1
@@ -228,7 +230,7 @@
             this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControl1.Location = new System.Drawing.Point(2, 20);
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-            this.xtraScrollableControl1.Size = new System.Drawing.Size(342, 720);
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(342, 740);
             this.xtraScrollableControl1.TabIndex = 0;
             // 
             // groupControl5
@@ -1239,6 +1241,8 @@
             // groupControl2
             // 
             this.groupControl2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupControl2.Controls.Add(this.simpleButton11);
+            this.groupControl2.Controls.Add(this.simpleButton10);
             this.groupControl2.Controls.Add(this.checkEdit24);
             this.groupControl2.Controls.Add(this.simpleButton8);
             this.groupControl2.Controls.Add(this.simpleButton6);
@@ -1250,7 +1254,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1024, 67);
+            this.groupControl2.Size = new System.Drawing.Size(1238, 98);
             this.groupControl2.TabIndex = 1;
             // 
             // checkEdit24
@@ -1346,9 +1350,9 @@
             // 
             this.groupControl4.Controls.Add(this.gridControl1);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl4.Location = new System.Drawing.Point(0, 67);
+            this.groupControl4.Location = new System.Drawing.Point(0, 98);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(1024, 675);
+            this.groupControl4.Size = new System.Drawing.Size(1238, 664);
             this.groupControl4.TabIndex = 2;
             // 
             // gridControl1
@@ -1357,7 +1361,7 @@
             this.gridControl1.Location = new System.Drawing.Point(2, 20);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1020, 653);
+            this.gridControl1.Size = new System.Drawing.Size(1234, 642);
             this.gridControl1.TabIndex = 14;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1460,11 +1464,33 @@
             this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle);
             // 
+            // simpleButton10
+            // 
+            this.simpleButton10.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton10.Appearance.Options.UseFont = true;
+            this.simpleButton10.Location = new System.Drawing.Point(430, 60);
+            this.simpleButton10.Name = "simpleButton10";
+            this.simpleButton10.Size = new System.Drawing.Size(210, 30);
+            this.simpleButton10.TabIndex = 9;
+            this.simpleButton10.Text = "Редактировать АУТН";
+            this.simpleButton10.Click += new System.EventHandler(this.simpleButton10_Click);
+            // 
+            // simpleButton11
+            // 
+            this.simpleButton11.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.simpleButton11.Appearance.Options.UseFont = true;
+            this.simpleButton11.Location = new System.Drawing.Point(430, 60);
+            this.simpleButton11.Name = "simpleButton11";
+            this.simpleButton11.Size = new System.Drawing.Size(250, 30);
+            this.simpleButton11.TabIndex = 10;
+            this.simpleButton11.Text = "Завершить редактирование АУТН";
+            this.simpleButton11.Click += new System.EventHandler(this.simpleButton11_Click);
+            // 
             // Journal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 742);
+            this.ClientSize = new System.Drawing.Size(1584, 762);
             this.Controls.Add(this.groupControl4);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
@@ -1640,5 +1666,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControl1;
         private DevExpress.XtraEditors.CheckEdit checkEdit24;
+        private DevExpress.XtraEditors.SimpleButton simpleButton10;
+        private DevExpress.XtraEditors.SimpleButton simpleButton11;
     }
 }
