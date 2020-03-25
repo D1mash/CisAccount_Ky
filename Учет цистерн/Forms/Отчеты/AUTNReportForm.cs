@@ -161,21 +161,48 @@ namespace Учет_цистерн.Forms.Отчеты
         private void AUTNReportForm_Load(object sender, EventArgs e)
         {
             DateTime now = DateTime.Now;
-            var startDate = new DateTime(now.Year, now.Month, 1);
-            var endDate = startDate.AddMonths(1).AddDays(-1);
+            //var startDate = new DateTime(now.Year, now.Month, 1);
+            //var endDate = startDate.AddMonths(1).AddDays(-1);
+
+            var startDate = now;
+            var endDate = now;
 
             dateTimePicker1.Value = startDate;
             dateTimePicker2.Value = endDate;
+
+            checkBox1_CheckedChanged(null, null);
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            Refresh();
+            if (dateTimePicker1.Checked)
+            {
+                Refresh();
+                if (checkBox1.Checked)
+                {
+                    return;
+                }
+                else
+                {
+                    dateTimePicker2.Value = dateTimePicker1.Value;
+                }
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            Refresh();
+            if (dateTimePicker2.Checked)
+            {
+                Refresh();
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void releaseObject(object obj)
@@ -193,6 +220,19 @@ namespace Учет_цистерн.Forms.Отчеты
             finally
             {
                 GC.Collect();
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                dateTimePicker2.Enabled = (checkBox1.CheckState == CheckState.Checked);
+            }
+            else
+            {
+                dateTimePicker2.Enabled = false;
+                dateTimePicker2.Value = dateTimePicker1.Value;
             }
         }
     }
