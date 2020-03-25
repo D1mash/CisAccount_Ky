@@ -392,6 +392,7 @@
     <Compile Include="Forms\Станции\UpdtCurrentStation_StationForm.Designer.cs">
       <DependentUpon>UpdtCurrentStation_StationForm.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\journal-add.jpg" />
     <EmbeddedResource Include="Forms\Доп.параметры\LastRent_Days.resx">
       <DependentUpon>LastRent_Days.cs</DependentUpon>
     </EmbeddedResource>
@@ -604,6 +605,9 @@
   <ItemGroup>
     <None Include="Resources\icons8-microsoft-excel-2019-36.png" />
     <None Include="Resources\icons8-поезд-48.ico" />
+    <None Include="Resources\edit_32x32.png" />
+    <None Include="Resources\add_32x32.png" />
+    <None Include="Resources\delete_32x32.png" />
     <Content Include="Resources\Image1.png" />
     <None Include="Resources\Logo1.png" />
     <None Include="Resources\Logo.png" />
