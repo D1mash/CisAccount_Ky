@@ -1,4 +1,6 @@
 ﻿using DevExpress.XtraGrid;
+using DocumentFormat.OpenXml.Spreadsheet;
+using SpreadsheetLight;
 using System;
 using System.Configuration;
 using System.Data;
@@ -176,134 +178,23 @@ namespace Учет_цистерн
 
         private void Btn_Excel_Click(object sender, EventArgs e)
         {
-            //if (gridView1.RowCount != 0)
-            //{
-            //    if (backgroundWorker.IsBusy)
-            //        return;
-            //    else
-            //    {
-            //        _inputParametr1.owner = comboBox2.Text;
-            //        //progressBar.Minimum = 0;
-            //        //progressBar.Value = 0;
-            //        backgroundWorker.RunWorkerAsync(_inputParametr1);
-            //    }
-
-            //}
-            //else
-            //{
-            //    if (checkBox2.Checked)
-            //    {
-            //        _inputParametr1.owner = comboBox2.Text;
-            //        //progressBar.Minimum = 0;
-            //        //progressBar.Value = 0;
-            //        backgroundWorker.RunWorkerAsync(_inputParametr1);
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Обновите данные!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    }
-            //}
-
             if (gridView1.RowCount != 0)
             {
                 try
                 {
                     if (checkBox1.Checked)
                     {
-                        string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Итог по станции.xlsx";
-                        Excel.Application app = new Excel.Application();
-                        Excel.Workbook workbook = app.Workbooks.Open(path);
-                        Excel.Worksheet worksheet = workbook.Worksheets.get_Item("Итоговая  справка");
-                        app.Visible = false;
-                        object misValue = System.Reflection.Missing.Value;
-
-                        worksheet.Range["B6"].Value = "c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
-
-                        worksheet.Range["B13:H24"].Cut(worksheet.Cells[gridView1.RowCount * 2 + 11, 2]);
-
-                        int item = 0;
-
-                        //Кол.во услуг
-                        int total = 0;
-
-                        //Сумм * Кол.во
-                        double final_sum = 0;
-
-                        for (int i = 0; i < gridView1.RowCount; i++)
-                        {
-                            if (i % 2 == 0)
-                            {
-                                var k = 11 + item;
-                                Excel.Range range = worksheet.Range[worksheet.Cells[i + k, 2], worksheet.Cells[i + k, 8]];
-                                range.Merge();
-                                FormattingExcelCells(range, false, false);
-                                for (int j = 0; j < dt.Columns.Count; j++)
-                                {
-                                    if (j == 0)
-                                    {
-                                        worksheet.Cells[i + k, j + 2] = dt.Rows[i][j].ToString();
-                                    }
-                                    else
-                                    {
-                                        worksheet.Cells[i + k, j + 8] = Convert.ToDecimal(dt.Rows[i][j].ToString());
-                                    }
-
-                                }
-                            }
-                            else
-                            {
-                                var k = 11 + item;
-                                Excel.Range range = worksheet.Range[worksheet.Cells[i + k, 2], worksheet.Cells[i + k, 8]];
-                                range.Merge();
-                                FormattingExcelCells(range, false, false);
-                                for (int j = 0; j < dt.Columns.Count; j++)
-                                {
-                                    if (j == 0)
-                                    {
-                                        worksheet.Cells[i + k, j + 2] = dt.Rows[i][j].ToString();
-                                    }
-                                    else
-                                    {
-                                        worksheet.Cells[i + k, j + 8] = Convert.ToDecimal(dt.Rows[i][j].ToString());
-                                    }
-                                }
-
-                            }
-
-                            final_sum += int.Parse(dt.Rows[i][1].ToString()) * double.Parse(dt.Rows[i][2].ToString()); ;
-                            total += int.Parse(dt.Rows[i][1].ToString());
-
-                            //backgroundWorker.ReportProgress(i);
-                            item++;
-                        }
-                        //Кол.во обработанных
-                        worksheet.Range["I8"].Value = total;
-
-                        //Итоговая сумма
-                        worksheet.Cells[dt.Rows.Count + 11 + item, 10] = final_sum;
-
-                        app.DisplayAlerts = false;
-                        workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Итог по станции.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                        workbook.Close(0);
-                        app.Quit();
-
-                        releaseObject(workbook);
-                        releaseObject(worksheet);
-                        releaseObject(app);
-
-                        Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Итог по станции.xlsx");
+                        
                     }
                     else
                     {
                         string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
 
-                        string ownerName = comboBox2.Text;
+                        SLDocument sl = new SLDocument(path);
+                        
+                        sl.SelectWorksheet("ТОО Казыкурт");
 
-                        Excel.Application app = new Excel.Application();
-                        Excel.Workbook workbook = app.Workbooks.Open(path);
-                        Excel.Worksheet worksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
-                        app.Visible = false;
-                        object misValue = System.Reflection.Missing.Value;
+                        string ownerName = comboBox2.Text;
 
                         int cellRowIndex = 0;
                         double totalSumCost = 0;
@@ -311,30 +202,34 @@ namespace Учет_цистерн
 
                         if (ownerName == "Все")
                         {
-                            worksheet.Range["C4"].Value = "всех";
+                            sl.SetCellValue("C4", "всех");
                         }
                         else
                         {
-                            worksheet.Range["C4"].Value = ownerName;
+                            sl.SetCellValue("C4", ownerName);
                         }
 
-                        worksheet.Range["C6"].Value = "в ТОО Казыгурт-Юг c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
+                        sl.SetCellValue("C6", "в ТОО Казыгурт-Юг c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString());
 
-                        FormattingExcelCells(worksheet.Range["C6"], false, false);
-
-                        worksheet.Range["B13:K22"].Cut(worksheet.Cells[dt.Rows.Count + 16 + getserv.Rows.Count * 2, 2]);
-
-                        worksheet.Range["P:P"].NumberFormat = "@";
+                        var val = dt.Rows.Count + 16 + getserv.Rows.Count * 2;
+                        sl.CopyCell("B13", "K20", "B"+val, true);
 
                         for (int i = 0; i < dt.Rows.Count; i++)
                         {
-                            worksheet.Cells[i + 10, 1] = i + 1;
+                            sl.SetCellValue(i + 10, 1,  i + 1);
 
                             for (int j = 1; j < dt.Columns.Count; j++)
                             {
-                                if (j != 3 && j < 4)
+                                if (j == 1 | j == 2)
                                 {
-                                    worksheet.Cells[i + 10, j + 1] = dt.Rows[i][j].ToString();
+                                    if (j == 1)
+                                    {
+                                        sl.SetCellValue(i + 10, j + 1, dt.Rows[i][j].ToString());
+                                    }
+                                    else
+                                    {
+                                        sl.SetCellValue(i + 10, j + 1, Convert.ToInt32(dt.Rows[i][j].ToString()));
+                                    }
                                 }
                                 else
                                 {
@@ -342,55 +237,62 @@ namespace Учет_цистерн
                                     {
                                         if (dt.Rows[i][j].ToString().Trim() == "8")
                                         {
-                                            worksheet.Cells[i + 10, 5] = dt.Rows[i][j].ToString();
+                                            sl.SetCellValue(i + 10, 5, Convert.ToInt32(dt.Rows[i][j].ToString()));
                                         }
                                         else
                                         {
-                                            worksheet.Cells[i + 10, 4] = dt.Rows[i][j].ToString();
+                                            sl.SetCellValue(i + 10, 4, Convert.ToInt32(dt.Rows[i][j].ToString()));
                                         }
                                     }
                                 }
                                 if (j >= 4 && j <= 5)
                                 {
-                                    worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
+                                    if (j != 5)
+                                    {
+                                        sl.SetCellValue(i + 10, j + 3, dt.Rows[i][j].ToString());
+                                    }
+                                    else
+                                    {
+                                        sl.SetCellValue(i + 10, j + 3, Convert.ToInt32(dt.Rows[i][j].ToString()));
+                                    }
                                 }
                                 else
                                 {
                                     if (j >= 6 && j <= 12)
                                     {
-                                        worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
+                                        sl.SetCellValue(i + 10, j + 3, dt.Rows[i][j].ToString());
                                     }
                                 }
                                 if (j > 12)
                                 {
                                     if (j == 13)
                                     {
-                                        worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
+                                        sl.SetCellValue(i + 10, j + 3, dt.Rows[i][j].ToString());
                                     }
                                     else
                                     {
                                         if (j == 14)
                                         {
-                                            worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
+                                            sl.SetCellValue(i + 10, j + 3, dt.Rows[i][j].ToString());
                                         }
                                         else
                                         {
                                             if (j == 15)
                                             {
-                                                worksheet.Cells[i + 10, j + 3] = Convert.ToDecimal(dt.Rows[i][j].ToString());
+                                                sl.SetCellValue(i + 10, j + 3, Convert.ToDecimal(dt.Rows[i][j].ToString()));
                                                 totalSumCost += double.Parse(dt.Rows[i][j].ToString());
                                             }
                                             else
                                             {
                                                 if (j == 16)
                                                 {
-                                                    worksheet.Cells[i + 10, j + 3] = Convert.ToDecimal(dt.Rows[i][j].ToString());
+                                                    sl.SetCellValue(i + 10, j + 3, Convert.ToDecimal(dt.Rows[i][j].ToString()));
                                                     totalSumTor += double.Parse(dt.Rows[i][j].ToString());
                                                 }
                                                 else
                                                 {
                                                     if (j == 17)
-                                                        worksheet.Cells[i + 10, j + 3] = dt.Rows[i][j].ToString();
+                                                        sl.SetCellValue(i + 10, j + 3, dt.Rows[i][j].ToString());
                                                 }
                                             }
                                         }
@@ -399,25 +301,31 @@ namespace Учет_цистерн
                                 }
                             }
 
-                            Excel.Range range = worksheet.Range[worksheet.Cells[i + 10, 1], worksheet.Cells[i + 10, dt.Columns.Count + 2]];
-                            FormattingExcelCells(range, true, true);
-
                             //backgroundWorker.ReportProgress(i);
 
                             cellRowIndex++;
                         }
 
-                        ////worksheet.Range[dt.Rows.Count+10, 13].NumberFormat = "#,##0.00";
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            for (int j = 1; j < dt.Columns.Count + 3; j++)
+                            {
+                                sl.SetCellStyle(i + 10, j, FormattingExcelCells(sl,true));
+                            }
+                        }
 
-                        worksheet.Cells[dt.Rows.Count + 12, 2] = "=C6";
+                        sl.SetCellValue(dt.Rows.Count + 12, 2, "=C6");
+                        sl.SetCellStyle(dt.Rows.Count + 12, 2, FormattingExcelCells(sl, false));
 
                         if (ownerName == "Все")
                         {
-                            worksheet.Cells[dt.Rows.Count + 14, 2] = "Всего обработано вагонов - цистерн всех собственников по видам операций:";
+                            sl.SetCellValue(dt.Rows.Count + 14, 2, "Всего обработано вагонов - цистерн всех собственников по видам операций:");
+                            sl.SetCellStyle(dt.Rows.Count + 14, 2, FormattingExcelCells(sl, false));
                         }
                         else
                         {
-                            worksheet.Cells[dt.Rows.Count + 14, 2] = "Всего обработано вагонов - цистерн " + ownerName + " по видам операций:";
+                            sl.SetCellValue(dt.Rows.Count + 14, 2, "Всего обработано вагонов - цистерн " + ownerName + " по видам операций:");
+                            sl.SetCellStyle(dt.Rows.Count + 14, 2, FormattingExcelCells(sl, false));
                         }
 
                         ////Итоговая сводка
@@ -429,33 +337,22 @@ namespace Учет_цистерн
                             {
                                 if (j == 0)
                                 {
-                                    worksheet.Cells[i + cellRowIndex + 15 + rowcount, j + 2] = getserv.Rows[i][j].ToString();
+                                    sl.SetCellValue(i + cellRowIndex + 15 + rowcount, j + 2, getserv.Rows[i][j].ToString());
+                                    sl.SetCellStyle(i + cellRowIndex + 15 + rowcount, j + 2, FormattingExcelCells(sl, false));
                                 }
                                 else
                                 {
-                                    worksheet.Cells[i + cellRowIndex + 15 + rowcount, j + 12] = Convert.ToDecimal(getserv.Rows[i][j].ToString());
+                                    sl.SetCellValue(i + cellRowIndex + 15 + rowcount, j + 12, Convert.ToDecimal(getserv.Rows[i][j].ToString()));
+                                    sl.SetCellStyle(i + cellRowIndex + 15 + rowcount, j + 12, FormattingExcelCells(sl, false));
                                 }
                             }
                         }
+                        
+                        //Итоговая сумма
+                        sl.SetCellValue(dt.Rows.Count + getserv.Rows.Count * 2 + 16, 14, totalSumTor + totalSumCost);
 
-                        worksheet.Cells[dt.Rows.Count + 14, 13] = cellRowIndex;
-
-                        ////Итоговая сумма
-                        worksheet.Cells[dt.Rows.Count + getserv.Rows.Count * 2 + 16, 14] = totalSumTor + totalSumCost;
-
-                        Excel.Range range1 = worksheet.Range[worksheet.Cells[dt.Rows.Count + 12, 2], worksheet.Cells[dt.Rows.Count + getserv.Rows.Count * 2 + 19, 14]];
-                        FormattingExcelCells(range1, false, false);
-
-                        app.DisplayAlerts = false;
-
-                        workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                        workbook.Close(0);
-                        app.Quit();
-
-                        releaseObject(workbook);
-                        releaseObject(worksheet);
-                        releaseObject(app);
-
+                        sl.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx");
+                    
                         Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx");
                     }
                 }
@@ -468,316 +365,7 @@ namespace Учет_цистерн
             {
                 if (checkBox2.Checked)
                 {
-                    DataTable dataTable, Itog_Rep;
 
-                    string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx";
-
-                    Excel.Application app = new Excel.Application();
-                    Excel.Workbook workbook = app.Workbooks.Open(path);
-                    Excel.Worksheet xlworksheet = workbook.Worksheets.get_Item("ТОО Казыкурт");
-                    xlworksheet.Name = "Реестр";
-                    object misValue = System.Reflection.Missing.Value;
-
-                    string RefreshAllCount = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + "@Type = " + 2;
-                    dt = DbConnection.DBConnect(RefreshAllCount);
-
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        xlworksheet.Copy(Type.Missing, xlworksheet);
-                    }
-
-                    int k = 0;
-
-                    //int iterator = 0;
-
-                    foreach (Excel.Worksheet worksheet in workbook.Worksheets)
-                    {
-                        if (worksheet.Name == "Реестр")
-                        {
-                            string RefreshAll = "exec dbo.GetReportAllRenderedService_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'," + "@Type = " + 1;
-                            dataTable = DbConnection.DBConnect(RefreshAll);
-
-                            string GetCountServiceCost = "exec dbo.Itog_All_Report '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "'";
-                            Itog_Rep = DbConnection.DBConnect(GetCountServiceCost);
-
-                            int cellRowIndex = 0;
-                            double totalSumCost = 0;
-                            double totalSumTor = 0;
-
-                            worksheet.Range["C6"].Value = "в ТОО Казыгурт-Юг c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
-
-                            FormattingExcelCells(worksheet.Range["C6"], false, false);
-
-                            worksheet.Range["B13:K22"].Cut(worksheet.Cells[dataTable.Rows.Count + 16 + Itog_Rep.Rows.Count * 2, 2]);
-
-                            worksheet.Range["P:P"].NumberFormat = "@";
-
-                            for (int l = 0; l < dataTable.Rows.Count; l++)
-                            {
-                                worksheet.Cells[l + 10, 1] = l + 1;
-
-                                for (int j = 1; j < dataTable.Columns.Count; j++)
-                                {
-                                    if (j != 3 && j < 4)
-                                    {
-                                        worksheet.Cells[l + 10, j + 1] = dataTable.Rows[l][j].ToString();
-                                    }
-                                    else
-                                    {
-                                        if (j == 3)
-                                        {
-                                            if (dataTable.Rows[l][j].ToString().Trim() == "8")
-                                            {
-                                                worksheet.Cells[l + 10, 5] = dataTable.Rows[l][j].ToString();
-                                            }
-                                            else
-                                            {
-                                                worksheet.Cells[l + 10, 4] = dataTable.Rows[l][j].ToString();
-                                            }
-                                        }
-                                    }
-                                    if (j >= 4 && j <= 5)
-                                    {
-                                        worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
-                                    }
-                                    else
-                                    {
-                                        if (j >= 6 && j <= 12)
-                                        {
-                                            worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
-                                        }
-                                    }
-                                    if (j > 12)
-                                    {
-                                        if (j == 13)
-                                        {
-                                            worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
-                                        }
-                                        else
-                                        {
-                                            if (j == 14)
-                                            {
-                                                worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
-                                            }
-                                            else
-                                            {
-                                                if (j == 15)
-                                                {
-                                                    worksheet.Cells[l + 10, j + 3] = Convert.ToDecimal(dataTable.Rows[l][j].ToString());
-                                                    totalSumCost += double.Parse(dataTable.Rows[l][j].ToString());
-                                                }
-                                                else
-                                                {
-                                                    if (j == 16)
-                                                    {
-                                                        worksheet.Cells[l + 10, j + 3] = Convert.ToDecimal(dataTable.Rows[l][j].ToString());
-                                                        totalSumTor += double.Parse(dataTable.Rows[l][j].ToString());
-                                                    }
-                                                    else
-                                                    {
-                                                        if (j == 17)
-                                                            worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                                Excel.Range range = worksheet.Range[worksheet.Cells[l + 10, 1], worksheet.Cells[l + 10, dataTable.Columns.Count + 2]];
-                                FormattingExcelCells(range, true, true);
-
-                                cellRowIndex++;
-                                //iterator++;
-
-                                //backgroundWorker.ReportProgress(iterator);
-                            }
-
-                            worksheet.Cells[dataTable.Rows.Count + 12, 2] = "=C6";
-
-                            worksheet.Cells[dataTable.Rows.Count + 14, 2] = "Всего обработано вагонов - цистерн всех собственников по видам операций:";
-
-                            ////Итоговая сводка
-                            int rowcount = 0;
-                            for (int l = 0; l < Itog_Rep.Rows.Count; l++)
-                            {
-                                rowcount++;
-                                for (int j = 0; j < Itog_Rep.Columns.Count; j++)
-                                {
-                                    if (j == 0)
-                                    {
-                                        worksheet.Cells[l + cellRowIndex + 15 + rowcount, j + 2] = Itog_Rep.Rows[l][j].ToString();
-                                    }
-                                    else
-                                    {
-                                        worksheet.Cells[l + cellRowIndex + 15 + rowcount, j + 12] = Convert.ToDecimal(Itog_Rep.Rows[l][j].ToString());
-                                    }
-                                }
-                            }
-
-                            worksheet.Cells[dataTable.Rows.Count + 14, 13] = cellRowIndex;
-
-                            ////Итоговая сумма
-                            worksheet.Cells[dataTable.Rows.Count + Itog_Rep.Rows.Count * 2 + 16, 14] = totalSumTor + totalSumCost;
-
-                            Excel.Range range1 = worksheet.Range[worksheet.Cells[dataTable.Rows.Count + 12, 2], worksheet.Cells[dataTable.Rows.Count + Itog_Rep.Rows.Count * 2 + 19, 14]];
-                            FormattingExcelCells(range1, false, false);
-                        }
-                        else
-                        {
-                            string Refresh = "dbo.GetReportRenderedServices_v1 '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + dt.Rows[k][0].ToString() + "'";
-                            dataTable = DbConnection.DBConnect(Refresh);
-
-                            string GetCountServiceCost = "exec dbo.Itog_Report  '" + dateTimePicker1.Value.Date.ToString() + "','" + dateTimePicker2.Value.Date.ToString() + "','" + dt.Rows[k][0].ToString() + "'";
-                            Itog_Rep = DbConnection.DBConnect(GetCountServiceCost);
-
-                            int cellRowIndex = 0;
-                            double totalSumCost = 0;
-                            double totalSumTor = 0;
-
-                            worksheet.Name = dt.Rows[k][1].ToString().Trim();
-
-                            worksheet.Range["C4"].Value = dt.Rows[k][1].ToString();
-
-                            worksheet.Range["C6"].Value = "в ТОО Казыгурт-Юг c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString();
-
-                            FormattingExcelCells(worksheet.Range["C6"], false, false);
-
-                            worksheet.Range["B13:K22"].Cut(worksheet.Cells[dataTable.Rows.Count + 16 + Itog_Rep.Rows.Count * 2, 2]);
-
-                            worksheet.Range["P:P"].NumberFormat = "@";
-
-                            for (int l = 0; l < dataTable.Rows.Count; l++)
-                            {
-                                worksheet.Cells[l + 10, 1] = l + 1;
-
-                                for (int j = 1; j < dataTable.Columns.Count; j++)
-                                {
-                                    if (j != 3 && j < 4)
-                                    {
-                                        worksheet.Cells[l + 10, j + 1] = dataTable.Rows[l][j].ToString();
-                                    }
-                                    else
-                                    {
-                                        if (j == 3)
-                                        {
-                                            if (dataTable.Rows[l][j].ToString().Trim() == "8")
-                                            {
-                                                worksheet.Cells[l + 10, 5] = dataTable.Rows[l][j].ToString();
-                                            }
-                                            else
-                                            {
-                                                worksheet.Cells[l + 10, 4] = dataTable.Rows[l][j].ToString();
-                                            }
-                                        }
-                                    }
-                                    if (j >= 4 && j <= 5)
-                                    {
-                                        worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
-                                    }
-                                    else
-                                    {
-                                        if (j >= 6 && j <= 12)
-                                        {
-                                            worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
-                                        }
-                                    }
-                                    if (j > 12)
-                                    {
-                                        if (j == 13)
-                                        {
-                                            worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
-                                        }
-                                        else
-                                        {
-                                            if (j == 14)
-                                            {
-                                                worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
-                                            }
-                                            else
-                                            {
-                                                if (j == 15)
-                                                {
-                                                    worksheet.Cells[l + 10, j + 3] = Convert.ToDecimal(dataTable.Rows[l][j].ToString());
-                                                    totalSumCost += double.Parse(dataTable.Rows[l][j].ToString());
-                                                }
-                                                else
-                                                {
-                                                    if (j == 16)
-                                                    {
-                                                        worksheet.Cells[l + 10, j + 3] = Convert.ToDecimal(dataTable.Rows[l][j].ToString());
-                                                        totalSumTor += double.Parse(dataTable.Rows[l][j].ToString());
-                                                    }
-                                                    else
-                                                    {
-                                                        if (j == 17)
-                                                            worksheet.Cells[l + 10, j + 3] = dataTable.Rows[l][j].ToString();
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                                Excel.Range range = worksheet.Range[worksheet.Cells[l + 10, 1], worksheet.Cells[l + 10, dataTable.Columns.Count + 2]];
-                                FormattingExcelCells(range, true, true);
-
-                                cellRowIndex++;
-
-                                //iterator++;
-
-                                //backgroundWorker.ReportProgress(iterator);
-                            }
-
-                            worksheet.Cells[dataTable.Rows.Count + 12, 2] = "=C6";
-
-                            worksheet.Cells[dataTable.Rows.Count + 14, 2] = "Всего обработано вагонов - цистерн " + dt.Rows[k][1].ToString() + " по видам операций:";
-
-                            ////Итоговая сводка
-                            int rowcount = 0;
-                            for (int l = 0; l < Itog_Rep.Rows.Count; l++)
-                            {
-                                rowcount++;
-                                for (int j = 0; j < Itog_Rep.Columns.Count; j++)
-                                {
-                                    if (j == 0)
-                                    {
-                                        worksheet.Cells[l + cellRowIndex + 15 + rowcount, j + 2] = Itog_Rep.Rows[l][j].ToString();
-                                    }
-                                    else
-                                    {
-                                        worksheet.Cells[l + cellRowIndex + 15 + rowcount, j + 12] = Convert.ToDecimal(Itog_Rep.Rows[l][j].ToString());
-                                    }
-                                }
-                            }
-
-                            worksheet.Cells[dataTable.Rows.Count + 14, 13] = cellRowIndex;
-
-                            ////Итоговая сумма
-                            worksheet.Cells[dataTable.Rows.Count + Itog_Rep.Rows.Count * 2 + 16, 14] = totalSumTor + totalSumCost;
-
-                            Excel.Range range1 = worksheet.Range[worksheet.Cells[dataTable.Rows.Count + 12, 2], worksheet.Cells[dataTable.Rows.Count + Itog_Rep.Rows.Count * 2 + 19, 14]];
-                            FormattingExcelCells(range1, false, false);
-
-                            k++;
-                        }
-                    }
-
-                    app.DisplayAlerts = false;
-
-                    workbook.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Общий Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                    workbook.Close(0);
-                    app.Quit();
-
-                    releaseObject(workbook);
-                    releaseObject(xlworksheet);
-                    releaseObject(app);
-
-                    Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Общий Реестр  за арендованных и  собственных вагон-цистерн компании.xlsx");
-                }
-                else
-                {
-                    MessageBox.Show("Обновите данные!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -1364,24 +952,32 @@ namespace Учет_цистерн
             //}
         }
 
-        public void FormattingExcelCells(Excel.Range range, bool val1, bool val2)
+        public SLStyle FormattingExcelCells(SLDocument sl, bool val)
         {
-            range.Font.Name = "Arial Cyr";
-            range.Font.Size = 9;
-            range.Font.FontStyle = "Bold";
-            if (val1 == true)
+            SLStyle style1 = sl.CreateStyle();
+
+            if (val == true)
             {
-                Excel.Borders border = range.Borders;
-                border.LineStyle = Excel.XlLineStyle.xlContinuous;
-                border.Weight = 2d;
-            }
-            if (val2 == true)
-            {
-                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                style1.SetBottomBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
+                style1.SetTopBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
+                style1.SetLeftBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
+                style1.SetRightBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
+                style1.Font.FontName = "Arial Cyr";
+                style1.Font.FontSize = 9;
+                style1.Font.Bold = true;
+                style1.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+
+                return style1;
             }
             else
             {
-                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                SLStyle style2 = sl.CreateStyle();
+                style2.Font.FontName = "Arial Cyr";
+                style2.Font.FontSize = 9;
+                style2.Font.Bold = true;
+                //style2.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+
+                return style2;
             }
         }
 
