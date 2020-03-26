@@ -32,7 +32,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Excel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -45,6 +44,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -66,13 +66,13 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.dateTimePicker2);
             this.groupBox3.Controls.Add(this.dateTimePicker1);
-            this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(6, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(202, 74);
+            this.groupBox3.Size = new System.Drawing.Size(219, 74);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Период";
@@ -81,7 +81,7 @@
             // 
             this.dateTimePicker2.CustomFormat = "dd.MM.yyyy";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(60, 47);
+            this.dateTimePicker2.Location = new System.Drawing.Point(78, 47);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(133, 20);
             this.dateTimePicker2.TabIndex = 1;
@@ -91,25 +91,16 @@
             // 
             this.dateTimePicker1.CustomFormat = "dd.MM.yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(60, 22);
+            this.dateTimePicker1.Location = new System.Drawing.Point(77, 22);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(133, 20);
             this.dateTimePicker1.TabIndex = 1;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Конец:";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 26);
+            this.label1.Location = new System.Drawing.Point(23, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 0;
@@ -119,7 +110,7 @@
             // 
             this.btn_Excel.Image = global::Учет_цистерн.Properties.Resources.icons8_microsoft_excel_2019_36;
             this.btn_Excel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Excel.Location = new System.Drawing.Point(214, 19);
+            this.btn_Excel.Location = new System.Drawing.Point(231, 19);
             this.btn_Excel.Name = "btn_Excel";
             this.btn_Excel.Size = new System.Drawing.Size(121, 42);
             this.btn_Excel.TabIndex = 0;
@@ -210,6 +201,17 @@
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(12, 48);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(60, 17);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "Конец:";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // AUTNReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -243,7 +245,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_Excel;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -256,5 +257,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
