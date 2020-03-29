@@ -184,7 +184,89 @@ namespace Учет_цистерн
                 {
                     if (checkBox1.Checked)
                     {
-                        
+                        string path = AppDomain.CurrentDomain.BaseDirectory + @"ReportTemplates\Итог по станции.xlsx";
+
+                        SLDocument sl = new SLDocument(path);
+                        sl.SelectWorksheet("Итоговая  справка");
+
+                        sl.SetCellValue("B6", "c " + dateTimePicker1.Value.ToShortDateString() + " по " + dateTimePicker2.Value.ToShortDateString());
+
+                        var val = gridView1.RowCount * 2 + 11;
+                        sl.CopyCell("B13", "H24", "B"+val, true);
+                        //worksheet.Range["B13:H24"].Cut(worksheet.Cells[gridView1.RowCount * 2 + 11, 2]);
+
+                        int item = 0;
+
+                        //Кол.во услуг
+                        int total = 0;
+
+                        //Сумм * Кол.во
+                        double final_sum = 0;
+
+                        for (int i = 0; i < gridView1.RowCount; i++)
+                        {
+                            if (i % 2 == 0)
+                            {
+                                var k = 11 + item;
+                                //Excel.Range range = worksheet.Range[worksheet.Cells[i + k, 2], worksheet.Cells[i + k, 8]];
+                                //range.Merge();
+
+                                sl.MergeWorksheetCells(i + k, 2, i + k, 8);
+                                
+                                for (int j = 0; j < dt.Columns.Count; j++)
+                                {
+                                    if (j == 0)
+                                    {
+                                        sl.SetCellValue(i + k, j + 2, dt.Rows[i][j].ToString());
+                                        sl.SetCellStyle(i + k, j + 2, FormattingExcelCells(sl, false));
+                                    }
+                                    else
+                                    {
+                                        sl.SetCellValue(i + k, j + 8, Convert.ToDecimal(dt.Rows[i][j].ToString()));
+                                        sl.SetCellStyle(i + k, j + 8, FormattingExcelCells(sl, false));
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                var k = 11 + item;
+                                //Excel.Range range = worksheet.Range[worksheet.Cells[i + k, 2], worksheet.Cells[i + k, 8]];
+                                //range.Merge();
+
+                                sl.MergeWorksheetCells(i + k, 2, i + k, 8);
+
+                                //FormattingExcelCells(range, false, false);
+                                for (int j = 0; j < dt.Columns.Count; j++)
+                                {
+                                    if (j == 0)
+                                    {
+                                        sl.SetCellValue(i + k, j + 2, dt.Rows[i][j].ToString());
+                                        sl.SetCellStyle(i + k, j + 2, FormattingExcelCells(sl, false));
+                                    }
+                                    else
+                                    {
+                                        sl.SetCellValue(i + k, j + 8, Convert.ToDecimal(dt.Rows[i][j].ToString()));
+                                        sl.SetCellStyle(i + k, j + 8, FormattingExcelCells(sl, false));
+                                    }
+                                }
+
+                            }
+
+                            final_sum += int.Parse(dt.Rows[i][1].ToString()) * double.Parse(dt.Rows[i][2].ToString()); ;
+                            total += int.Parse(dt.Rows[i][1].ToString());
+
+                            //backgroundWorker.ReportProgress(i);
+                            item++;
+                        }
+                        //Кол.во обработанных
+                        sl.SetCellValue("I8", total);
+
+                        //Итоговая сумма
+                        sl.SetCellValue(dt.Rows.Count + 11 + item, 10, final_sum);
+
+                        sl.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Итог по станции.xlsx");
+
+                        Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"Report\Итог по станции.xlsx");
                     }
                     else
                     {
