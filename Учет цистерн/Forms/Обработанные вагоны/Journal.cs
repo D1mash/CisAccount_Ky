@@ -1010,6 +1010,13 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 textEdit6.Text = "0";
                 textEdit10.Text = "0";
             }
+            else if(textEdit9.Text == "0")
+            {
+                textEdit7.Text = "0";
+                textEdit8.Text = "0";
+                textEdit6.Text = "0";
+                textEdit10.Text = "0";
+            }
         }
 
         private void textEdit10_Properties_EditValueChanged(object sender, EventArgs e)
@@ -1021,6 +1028,13 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 textEdit6.Text = "0";
                 textEdit9.Text = "0";
             }
+            else if(textEdit10.Text == "0")
+            {
+                textEdit7.Text = "0";
+                textEdit8.Text = "0";
+                textEdit6.Text = "0";
+                textEdit9.Text = "0";
+            }
         }
 
         private void textEdit7_Properties_EditValueChanged(object sender, EventArgs e)
@@ -1029,6 +1043,13 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             {
                 textEdit6.Text = "0";
                 textEdit8.Text = "1";
+                textEdit9.Text = "0";
+                textEdit10.Text = "0";
+            }
+            else if(textEdit7.Text == "0")
+            {
+                textEdit6.Text = "0";
+                textEdit8.Text = "0";
                 textEdit9.Text = "0";
                 textEdit10.Text = "0";
             }
@@ -1050,6 +1071,12 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             if (textEdit8.Text == "1")
             {
                 textEdit6.Text = "0";
+            }
+            else if(textEdit8.Text == "0")
+            {
+                textEdit7.Text = "0";
+                textEdit9.Text = "0";
+                textEdit10.Text = "0";
             }
         }
 
