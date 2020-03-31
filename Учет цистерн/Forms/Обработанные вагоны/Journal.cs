@@ -460,7 +460,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                     //if (textEdit12.Text != "" && textEdit13.Text != "" && textEdit14.Text != "" && textEdit15.Text != "" && textEdit16.Text != "" && textEdit17.Text != "" && textEdit18.Text != "" && textEdit19.Text != "" && textEdit20.Text != ""
                                     //&& textEdit21.Text != "" && textEdit22.Text != "" && textEdit23.Text != "" && textEdit24.Text != "")
                                     //{
-                                        string Add = "declare @Id int; exec [dbo].[FillRenderedService] '"+ User_ID + "',"+Num+",'" + dateTimePicker1.Value.Date.ToString() + "'," + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL, @CurrentID = @Id output; select @Id";
+                                        string Add = "declare @Id int; exec [dbo].[FillRenderedService] '"+ User_ID + "',"+Num+",'"+textEdit2.Text.Trim()+"','" + dateTimePicker1.Value.Date.ToString() + "'," + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL, @CurrentID = @Id output; select @Id";
                                         DataTable HeadID = DbConnection.DBConnect(Add);
                                         if (HeadID.Rows.Count > 0)
                                         {
@@ -622,7 +622,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                 //if (textEdit12.Text != "" && textEdit13.Text != "" && textEdit14.Text != "" && textEdit15.Text != "" && textEdit16.Text != "" && textEdit17.Text != "" && textEdit18.Text != "" && textEdit19.Text != "" && textEdit20.Text != ""
                                 //&& textEdit21.Text != "" && textEdit22.Text != "" && textEdit23.Text != "" && textEdit24.Text != "")
                                 //{
-                                    string Update = "exec [dbo].[UpdateRenderedService] '"+User_ID+"'," + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + "," + SelectItemRow;
+                                    string Update = "exec [dbo].[UpdateRenderedService] '"+User_ID+"'," + textEdit1.Text.Trim() + ",'"+textEdit2.Text.Trim()+"'," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + "," + SelectItemRow;
                                     DbConnection.DBConnect(Update);
                                     Refreshh("1");
                                     Block();
@@ -1136,8 +1136,10 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             try
             {
                 ArrayList rows = new ArrayList();
-                List<Object> aList = new List<Object>();
-                string Arrays = string.Empty;
+                List<Object> CarList = new List<Object>();
+                List<Object> IdList = new List<Object>();
+                string CarArrays = string.Empty;
+                string IdArrays = string.Empty;
 
                 Int32[] selectedRowHandles = gridView1.GetSelectedRows();
                 for (int i = 0; i < selectedRowHandles.Length; i++)
@@ -1148,9 +1150,11 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 }
                 foreach (DataRow row in rows)
                 {
-                    aList.Add(row["Номер вагона"]);
-                    Arrays = string.Join(" ", aList);
-                    string UpdateOwner = "exec dbo.UpdateCurrentOwner '"+Arrays+"',"+Id;
+                    CarList.Add(row["Номер вагона"]);
+                    CarArrays = string.Join(" ", CarList);
+                    IdList.Add(row["ID"]);
+                    IdArrays = string.Join(" ", IdList);
+                    string UpdateOwner = "exec dbo.UpdateCurrentOwner '"+ CarArrays + "','"+ IdArrays + "',"+Id;
                     DbConnection.DBConnect(UpdateOwner);
                 }
                 Refreshh("1");
