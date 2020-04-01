@@ -38,7 +38,6 @@
             this.toolStripMenuItem_Carriage = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Report = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.аУТНToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сНОToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -154,7 +153,6 @@
             // 
             this.contextMenuStrip_Report.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.аУТНToolStripMenuItem,
             this.сНОToolStripMenuItem1});
             this.contextMenuStrip_Report.Name = "contextMenuStrip_Report";
             this.contextMenuStrip_Report.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -165,12 +163,6 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             this.toolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem1_Click);
-            // 
-            // аУТНToolStripMenuItem
-            // 
-            this.аУТНToolStripMenuItem.Name = "аУТНToolStripMenuItem";
-            resources.ApplyResources(this.аУТНToolStripMenuItem, "аУТНToolStripMenuItem");
-            this.аУТНToolStripMenuItem.Click += new System.EventHandler(this.аУТНToolStripMenuItem_Click);
             // 
             // сНОToolStripMenuItem1
             // 
@@ -685,7 +677,6 @@
         private System.Windows.Forms.ToolStripMenuItem проверитьОбновлениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem просмотрСправкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem аУТНToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPage1;
         private DevExpress.XtraGrid.GridControl gridControl1;

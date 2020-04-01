@@ -319,12 +319,6 @@
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Обработанные вагоны</value>
   </data>
-  <data name="аУТНToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
-  <data name="аУТНToolStripMenuItem.Text" xml:space="preserve">
-    <value>АУТН</value>
-  </data>
   <data name="сНОToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 22</value>
   </data>
@@ -1067,7 +1061,7 @@
     <value>621, 17</value>
   </metadata>
   <data name="расценкиToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>126, 22</value>
   </data>
   <data name="расценкиToolStripMenuItem.Text" xml:space="preserve">
     <value>Расценки</value>
@@ -1085,13 +1079,13 @@
     <value>СНО Приход</value>
   </data>
   <data name="сНОToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>126, 22</value>
   </data>
   <data name="сНОToolStripMenuItem.Text" xml:space="preserve">
     <value>СНО</value>
   </data>
   <data name="contextMenuStrip_Services.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 70</value>
+    <value>127, 48</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip_Services.Name" xml:space="preserve">
     <value>contextMenuStrip_Services</value>
@@ -1389,12 +1383,6 @@
     <value>toolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;аУТНToolStripMenuItem.Name" xml:space="preserve">
-    <value>аУТНToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;аУТНToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;сНОToolStripMenuItem1.Name" xml:space="preserve">

@@ -528,20 +528,13 @@ namespace Учет_цистерн
         private void Button3_Click(object sender, EventArgs e)
         {
             contextMenuStrip_Report.Show(button3, new Point(0, button3.Height));
-            if (role == "1")
+            if (role == "3" | role == "1002")
             {
-                contextMenuStrip_Report.Items[2].Enabled = false;
+                contextMenuStrip_Report.Items[1].Enabled = true;
             }
             else
             {
-                if (role == "2")
-                {
-                    contextMenuStrip_Report.Items[2].Enabled = false;
-                }
-                else
-                {
-                    contextMenuStrip_Report.Items[1].Enabled = true;
-                }
+                contextMenuStrip_Report.Items[1].Enabled = false;
             }
         }
 
