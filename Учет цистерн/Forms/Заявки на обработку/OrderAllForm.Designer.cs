@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -69,7 +68,7 @@
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -232,7 +231,7 @@
             this.CurrentTabControl.Location = new System.Drawing.Point(0, 62);
             this.CurrentTabControl.Name = "CurrentTabControl";
             this.CurrentTabControl.SelectedIndex = 0;
-            this.CurrentTabControl.Size = new System.Drawing.Size(1340, 687);
+            this.CurrentTabControl.Size = new System.Drawing.Size(1340, 759);
             this.CurrentTabControl.TabIndex = 23;
             // 
             // tabPage1
@@ -241,7 +240,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1332, 661);
+            this.tabPage1.Size = new System.Drawing.Size(1332, 733);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Документы";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -252,7 +251,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1326, 655);
+            this.groupBox2.Size = new System.Drawing.Size(1326, 727);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             // 
@@ -262,7 +261,7 @@
             this.gridControl1.Location = new System.Drawing.Point(3, 16);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1320, 636);
+            this.gridControl1.Size = new System.Drawing.Size(1320, 708);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -558,7 +557,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1340, 749);
+            this.ClientSize = new System.Drawing.Size(1340, 821);
             this.Controls.Add(this.CurrentTabControl);
             this.Controls.Add(this.groupBox1);
             this.Name = "OrderAllForm";
