@@ -30,6 +30,10 @@
         {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.checkedComboBoxEdit1 = new DevExpress.XtraEditors.CheckedComboBoxEdit();
+            this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.checkEdit23 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit16 = new DevExpress.XtraEditors.CheckEdit();
@@ -130,6 +134,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.xtraScrollableControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit23.Properties)).BeginInit();
@@ -200,11 +206,15 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupControl1.Location = new System.Drawing.Point(1024, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(346, 749);
+            this.groupControl1.Size = new System.Drawing.Size(346, 820);
             this.groupControl1.TabIndex = 0;
             // 
             // xtraScrollableControl1
             // 
+            this.xtraScrollableControl1.Controls.Add(this.lookUpEdit1);
+            this.xtraScrollableControl1.Controls.Add(this.checkedComboBoxEdit1);
+            this.xtraScrollableControl1.Controls.Add(this.labelControl28);
+            this.xtraScrollableControl1.Controls.Add(this.labelControl27);
             this.xtraScrollableControl1.Controls.Add(this.groupControl5);
             this.xtraScrollableControl1.Controls.Add(this.labelControl1);
             this.xtraScrollableControl1.Controls.Add(this.groupControl3);
@@ -230,8 +240,52 @@
             this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControl1.Location = new System.Drawing.Point(2, 20);
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-            this.xtraScrollableControl1.Size = new System.Drawing.Size(342, 727);
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(342, 798);
             this.xtraScrollableControl1.TabIndex = 0;
+            // 
+            // lookUpEdit1
+            // 
+            this.lookUpEdit1.Location = new System.Drawing.Point(127, 742);
+            this.lookUpEdit1.Name = "lookUpEdit1";
+            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit1.Size = new System.Drawing.Size(209, 20);
+            this.lookUpEdit1.TabIndex = 42;
+            this.lookUpEdit1.Visible = false;
+            this.lookUpEdit1.EditValueChanged += new System.EventHandler(this.lookUpEdit1_EditValueChanged);
+            // 
+            // checkedComboBoxEdit1
+            // 
+            this.checkedComboBoxEdit1.Location = new System.Drawing.Point(127, 768);
+            this.checkedComboBoxEdit1.Name = "checkedComboBoxEdit1";
+            this.checkedComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.checkedComboBoxEdit1.Properties.ItemAutoHeight = true;
+            this.checkedComboBoxEdit1.Size = new System.Drawing.Size(209, 20);
+            this.checkedComboBoxEdit1.TabIndex = 41;
+            this.checkedComboBoxEdit1.Visible = false;
+            // 
+            // labelControl28
+            // 
+            this.labelControl28.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelControl28.Appearance.Options.UseFont = true;
+            this.labelControl28.Location = new System.Drawing.Point(34, 770);
+            this.labelControl28.Name = "labelControl28";
+            this.labelControl28.Size = new System.Drawing.Size(65, 14);
+            this.labelControl28.TabIndex = 39;
+            this.labelControl28.Text = "Номера в/ц";
+            this.labelControl28.Visible = false;
+            // 
+            // labelControl27
+            // 
+            this.labelControl27.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelControl27.Appearance.Options.UseFont = true;
+            this.labelControl27.Location = new System.Drawing.Point(34, 744);
+            this.labelControl27.Name = "labelControl27";
+            this.labelControl27.Size = new System.Drawing.Size(78, 14);
+            this.labelControl27.TabIndex = 37;
+            this.labelControl27.Text = "Номер заявки";
+            this.labelControl27.Visible = false;
             // 
             // groupControl5
             // 
@@ -274,7 +328,7 @@
             this.groupControl5.Controls.Add(this.checkEdit17);
             this.groupControl5.Controls.Add(this.textEdit18);
             this.groupControl5.Controls.Add(this.labelControl20);
-            this.groupControl5.Location = new System.Drawing.Point(8, 304);
+            this.groupControl5.Location = new System.Drawing.Point(8, 306);
             this.groupControl5.Name = "groupControl5";
             this.groupControl5.Size = new System.Drawing.Size(328, 211);
             this.groupControl5.TabIndex = 36;
@@ -744,7 +798,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(34, 13);
+            this.labelControl1.Location = new System.Drawing.Point(34, 14);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(59, 14);
             this.labelControl1.TabIndex = 0;
@@ -773,7 +827,7 @@
             this.groupControl3.Controls.Add(this.labelControl9);
             this.groupControl3.Controls.Add(this.textEdit6);
             this.groupControl3.Controls.Add(this.labelControl8);
-            this.groupControl3.Location = new System.Drawing.Point(8, 169);
+            this.groupControl3.Location = new System.Drawing.Point(8, 171);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(328, 129);
             this.groupControl3.TabIndex = 14;
@@ -1031,7 +1085,7 @@
             // 
             // checkEdit11
             // 
-            this.checkEdit11.Location = new System.Drawing.Point(12, 143);
+            this.checkEdit11.Location = new System.Drawing.Point(12, 145);
             this.checkEdit11.Name = "checkEdit11";
             this.checkEdit11.Properties.Caption = "";
             this.checkEdit11.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit11_Properties_CheckStateChanged);
@@ -1043,7 +1097,7 @@
             // 
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(236, 521);
+            this.simpleButton1.Location = new System.Drawing.Point(236, 523);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 25);
             this.simpleButton1.TabIndex = 15;
@@ -1053,7 +1107,7 @@
             // 
             // textEdit1
             // 
-            this.textEdit1.Location = new System.Drawing.Point(127, 6);
+            this.textEdit1.Location = new System.Drawing.Point(127, 7);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textEdit1.Properties.Appearance.Options.UseFont = true;
@@ -1071,7 +1125,7 @@
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(38, 144);
+            this.labelControl7.Location = new System.Drawing.Point(38, 146);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(47, 14);
             this.labelControl7.TabIndex = 12;
@@ -1079,7 +1133,7 @@
             // 
             // checkEdit2
             // 
-            this.checkEdit2.Location = new System.Drawing.Point(12, 116);
+            this.checkEdit2.Location = new System.Drawing.Point(12, 118);
             this.checkEdit2.Name = "checkEdit2";
             this.checkEdit2.Properties.Caption = "";
             this.checkEdit2.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit2_Properties_CheckStateChanged);
@@ -1091,7 +1145,7 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(127, 115);
+            this.comboBox1.Location = new System.Drawing.Point(127, 117);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(209, 21);
             this.comboBox1.TabIndex = 16;
@@ -1100,7 +1154,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(35, 39);
+            this.labelControl2.Location = new System.Drawing.Point(35, 41);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(73, 14);
             this.labelControl2.TabIndex = 2;
@@ -1110,7 +1164,7 @@
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(35, 117);
+            this.labelControl6.Location = new System.Drawing.Point(35, 119);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(53, 14);
             this.labelControl6.TabIndex = 10;
@@ -1118,7 +1172,7 @@
             // 
             // checkEdit1
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(12, 90);
+            this.checkEdit1.Location = new System.Drawing.Point(12, 92);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "";
             this.checkEdit1.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit1_Properties_CheckStateChanged);
@@ -1130,7 +1184,7 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(127, 142);
+            this.comboBox2.Location = new System.Drawing.Point(127, 144);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(209, 21);
             this.comboBox2.TabIndex = 17;
@@ -1138,7 +1192,7 @@
             // textEdit2
             // 
             this.textEdit2.Enabled = false;
-            this.textEdit2.Location = new System.Drawing.Point(127, 37);
+            this.textEdit2.Location = new System.Drawing.Point(127, 39);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Properties.ReadOnly = true;
             this.textEdit2.Size = new System.Drawing.Size(209, 20);
@@ -1146,7 +1200,7 @@
             // 
             // textEdit4
             // 
-            this.textEdit4.Location = new System.Drawing.Point(127, 89);
+            this.textEdit4.Location = new System.Drawing.Point(127, 91);
             this.textEdit4.Name = "textEdit4";
             this.textEdit4.Properties.Mask.BeepOnError = true;
             this.textEdit4.Properties.Mask.EditMask = "\\d";
@@ -1161,7 +1215,7 @@
             // 
             this.simpleButton9.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton9.Appearance.Options.UseFont = true;
-            this.simpleButton9.Location = new System.Drawing.Point(249, 61);
+            this.simpleButton9.Location = new System.Drawing.Point(249, 63);
             this.simpleButton9.Name = "simpleButton9";
             this.simpleButton9.Size = new System.Drawing.Size(85, 23);
             this.simpleButton9.TabIndex = 21;
@@ -1172,7 +1226,7 @@
             // 
             this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton7.Appearance.Options.UseFont = true;
-            this.simpleButton7.Location = new System.Drawing.Point(8, 521);
+            this.simpleButton7.Location = new System.Drawing.Point(8, 523);
             this.simpleButton7.Name = "simpleButton7";
             this.simpleButton7.Size = new System.Drawing.Size(100, 25);
             this.simpleButton7.TabIndex = 18;
@@ -1183,7 +1237,7 @@
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(35, 65);
+            this.labelControl3.Location = new System.Drawing.Point(35, 67);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(65, 14);
             this.labelControl3.TabIndex = 4;
@@ -1193,7 +1247,7 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(35, 91);
+            this.labelControl4.Location = new System.Drawing.Point(35, 93);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(57, 14);
             this.labelControl4.TabIndex = 6;
@@ -1201,7 +1255,7 @@
             // 
             // memoEdit1
             // 
-            this.memoEdit1.Location = new System.Drawing.Point(8, 595);
+            this.memoEdit1.Location = new System.Drawing.Point(8, 597);
             this.memoEdit1.Name = "memoEdit1";
             this.memoEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.memoEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1215,7 +1269,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(8, 552);
+            this.panel1.Location = new System.Drawing.Point(8, 554);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(328, 42);
             this.panel1.TabIndex = 19;
@@ -1231,7 +1285,7 @@
             // textEdit3
             // 
             this.textEdit3.Enabled = false;
-            this.textEdit3.Location = new System.Drawing.Point(128, 63);
+            this.textEdit3.Location = new System.Drawing.Point(128, 65);
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textEdit3.Properties.Appearance.Options.UseFont = true;
@@ -1386,7 +1440,7 @@
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl4.Location = new System.Drawing.Point(0, 63);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(1024, 686);
+            this.groupControl4.Size = new System.Drawing.Size(1024, 757);
             this.groupControl4.TabIndex = 2;
             // 
             // gridControl1
@@ -1395,7 +1449,7 @@
             this.gridControl1.Location = new System.Drawing.Point(2, 20);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1020, 664);
+            this.gridControl1.Size = new System.Drawing.Size(1020, 735);
             this.gridControl1.TabIndex = 14;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1504,7 +1558,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1370, 820);
             this.Controls.Add(this.groupControl4);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
@@ -1515,6 +1569,8 @@
             this.groupControl1.ResumeLayout(false);
             this.xtraScrollableControl1.ResumeLayout(false);
             this.xtraScrollableControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
@@ -1682,5 +1738,9 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit24;
         private DevExpress.XtraEditors.SimpleButton simpleButton10;
         private DevExpress.XtraEditors.SimpleButton simpleButton11;
+        private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit1;
+        private DevExpress.XtraEditors.LabelControl labelControl28;
+        private DevExpress.XtraEditors.LabelControl labelControl27;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
     }
 }
