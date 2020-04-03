@@ -208,7 +208,15 @@ namespace Учет_цистерн
                             }
 
                             final_sum += int.Parse(dt.Rows[i][1].ToString()) * double.Parse(dt.Rows[i][2].ToString()); ;
-                            total += int.Parse(dt.Rows[i][1].ToString());
+
+                            if (i<dt.Rows.Count-1)
+                            {
+                                total += int.Parse(dt.Rows[i][1].ToString());
+                            }
+                            else
+                            {
+                                continue;
+                            }
 
                             //backgroundWorker.ReportProgress(i);
                             item++;
@@ -217,7 +225,8 @@ namespace Учет_цистерн
                         sl.SetCellValue("I8", total);
 
                         //Итоговая сумма
-                        sl.SetCellValue(dt.Rows.Count + 11 + item, 10, final_sum);
+                        sl.SetCellValue(dt.Rows.Count + 12 + item, 10, final_sum);
+                        sl.SetCellStyle(dt.Rows.Count + 12 + item, 10, FormattingExcelCells(sl, false));
 
                         sl.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Итог по станции.xlsx");
                     }
@@ -241,15 +250,22 @@ namespace Учет_цистерн
                                 {
                                     sl.SetCellValue(i + 3, 1, i);
                                     sl.SetCellStyle(i + 3, 1, FormattingExcelCells(sl, true));
-                                    sl.SetCellValue(i + 3, j + 2, dt.Rows[i][j].ToString());
-                                    sl.SetCellStyle(i + 3, j + 2, FormattingExcelCells(sl, true));
+                                    if (j == 1)
+                                    {
+                                        sl.SetCellValue(i + 3, j + 2, Convert.ToInt32(dt.Rows[i][j].ToString()));
+                                        sl.SetCellStyle(i + 3, j + 2, FormattingExcelCells(sl, true));
+                                    }
+                                    else
+                                    {
+                                        sl.SetCellValue(i + 3, j + 2, dt.Rows[i][j].ToString());
+                                        sl.SetCellStyle(i + 3, j + 2, FormattingExcelCells(sl, true));
+                                    }
                                 }
-
-                                //Excel.Range range = worksheet.Range[worksheet.Cells[i + 3, 1], worksheet.Cells[i + 3, dt.Columns.Count + 1]];
-                                //FormattingExcelCells(range, true, true);
 
                                 //backgroundWorker.ReportProgress(i);
                             }
+                            sl.AutoFitColumn(1, 9);
+
 
                             sl.SaveAs(AppDomain.CurrentDomain.BaseDirectory + @"Report\Реестр АУТН.xlsx");
 
@@ -422,6 +438,7 @@ namespace Учет_цистерн
 
                                         //Итоговая сводка
                                         int rowcount = 0;
+                                        int total = 0;
                                         for (int i = 0; i < Itog_Rep.Rows.Count; i++)
                                         {
                                             rowcount++;
@@ -438,7 +455,19 @@ namespace Учет_цистерн
                                                     sl.SetCellStyle(i + cellRowIndex + 15 + rowcount, j + 12, FormattingExcelCells(sl, false));
                                                 }
                                             }
+                                            if (i < Itog_Rep.Rows.Count - 1)
+                                            {
+                                                total += int.Parse(Itog_Rep.Rows[i][1].ToString());
+                                            }
+                                            else
+                                            {
+                                                continue;
+                                            }
                                         }
+
+                                        sl.SetCellValue(dataTable.Rows.Count + 14, 13, total);
+                                        sl.SetCellStyle(dataTable.Rows.Count + 14, 13, FormattingExcelCells(sl, false));
+                                    
 
                                         //Итоговая сумма
                                         sl.SetCellValue(dataTable.Rows.Count + Itog_Rep.Rows.Count * 2 + 16, 14, totalSumTor + totalSumCost);
@@ -574,6 +603,7 @@ namespace Учет_цистерн
 
                                         //Итоговая сводка
                                         int rowcount = 0;
+                                        int total = 0;
                                         for (int i = 0; i < Itog_Rep.Rows.Count; i++)
                                         {
                                             rowcount++;
@@ -590,7 +620,20 @@ namespace Учет_цистерн
                                                     sl.SetCellStyle(i + cellRowIndex + 15 + rowcount, j + 12, FormattingExcelCells(sl, false));
                                                 }
                                             }
+
+                                            if (i < Itog_Rep.Rows.Count - 1)
+                                            {
+                                                total += int.Parse(Itog_Rep.Rows[i][1].ToString());
+                                            }
+                                            else
+                                            {
+                                                continue;
+                                            }
                                         }
+
+                                        sl.SetCellValue(dataTable.Rows.Count + 14, 13, total);
+                                        sl.SetCellStyle(dataTable.Rows.Count + 14, 13, FormattingExcelCells(sl, false));
+                                    
 
                                         sl.SetCellValue(dataTable.Rows.Count + 14, 13, cellRowIndex);
 
@@ -753,6 +796,8 @@ namespace Учет_цистерн
 
                                 ////Итоговая сводка
                                 int rowcount = 0;
+                                int total = 0;
+
                                 for (int i = 0; i < getserv.Rows.Count; i++)
                                 {
                                     rowcount++;
@@ -769,7 +814,19 @@ namespace Учет_цистерн
                                             sl.SetCellStyle(i + cellRowIndex + 15 + rowcount, j + 12, FormattingExcelCells(sl, false));
                                         }
                                     }
+
+                                    if (i < getserv.Rows.Count - 1)
+                                    {
+                                        total += int.Parse(getserv.Rows[i][1].ToString());
+                                    }
+                                    else
+                                    {
+                                        continue;
+                                    }
                                 }
+
+                                sl.SetCellValue(dt.Rows.Count + 14, 13, total);
+                                sl.SetCellStyle(dt.Rows.Count + 14, 13, FormattingExcelCells(sl, false));
 
                                 //Итоговая сумма
                                 sl.SetCellValue(dt.Rows.Count + getserv.Rows.Count * 2 + 16, 14, totalSumTor + totalSumCost);
@@ -828,16 +885,17 @@ namespace Учет_цистерн
         
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            //if (checkBox1.Checked)
-            //{
-            //    checkBox2.Checked = false;
-            //    checkBox5.Checked = false;
-            //    Refresh();
-            //}
-            //else
-            //{
-            //    Refresh();
-            //}
+            if (checkBox1.Checked)
+            {
+                checkBox2.Checked = false;
+                checkBox5.Checked = false;
+                //Refresh();
+            }
+            else
+            {
+                checkBox1.Checked = false;
+                //Refresh();
+            }
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -847,29 +905,17 @@ namespace Учет_цистерн
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            //if (dateTimePicker1.Checked)
-            //{
-            //    Refresh();
-            //    if (checkBox3.Checked)
-            //    {
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        dateTimePicker2.Value = dateTimePicker1.Value;
-            //    }
-            //}
-            //else
-            //{
-            //    return;
-            //}
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-            if (dateTimePicker2.Checked)
+            if (dateTimePicker1.Checked)
             {
                 //Refresh();
+                if (checkBox3.Checked)
+                {
+                    return;
+                }
+                else
+                {
+                    dateTimePicker2.Value = dateTimePicker1.Value;
+                }
             }
             else
             {

@@ -206,7 +206,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupControl1.Location = new System.Drawing.Point(1024, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(346, 820);
+            this.groupControl1.Size = new System.Drawing.Size(346, 749);
             this.groupControl1.TabIndex = 0;
             // 
             // xtraScrollableControl1
@@ -240,7 +240,7 @@
             this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControl1.Location = new System.Drawing.Point(2, 20);
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-            this.xtraScrollableControl1.Size = new System.Drawing.Size(342, 798);
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(342, 727);
             this.xtraScrollableControl1.TabIndex = 0;
             // 
             // lookUpEdit1
@@ -1440,7 +1440,7 @@
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl4.Location = new System.Drawing.Point(0, 63);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(1024, 757);
+            this.groupControl4.Size = new System.Drawing.Size(1024, 686);
             this.groupControl4.TabIndex = 2;
             // 
             // gridControl1
@@ -1449,7 +1449,7 @@
             this.gridControl1.Location = new System.Drawing.Point(2, 20);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1020, 735);
+            this.gridControl1.Size = new System.Drawing.Size(1020, 664);
             this.gridControl1.TabIndex = 14;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1558,7 +1558,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 820);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.groupControl4);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
