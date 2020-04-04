@@ -2065,16 +2065,19 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             checkEdit22.Visible = false;
             checkEdit23.Visible = false;
 
-            checkEdit1.Checked = false;
-            checkEdit2.Checked = false;
-            checkEdit11.Checked = false;
-            checkEdit4.Checked = false;
-            checkEdit5.Checked = false;
-            checkEdit6.Checked = false;
-            checkEdit7.Checked = false;
-            checkEdit8.Checked = false;
-            checkEdit9.Checked = false;
-            checkEdit10.Checked = false;
+            checkEdit3.Checked = false;
+            checkEdit12.Checked = false;
+            checkEdit13.Checked = false;
+            checkEdit14.Checked = false;
+            checkEdit15.Checked = false;
+            checkEdit16.Checked = false;
+            checkEdit17.Checked = false;
+            checkEdit18.Checked = false;
+            checkEdit19.Checked = false;
+            checkEdit20.Checked = false;
+            checkEdit21.Checked = false;
+            checkEdit22.Checked = false;
+            checkEdit23.Checked = false;
 
             Block();
         }
