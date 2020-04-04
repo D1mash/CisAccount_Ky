@@ -319,14 +319,8 @@
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Обработанные вагоны</value>
   </data>
-  <data name="сНОToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
-  <data name="сНОToolStripMenuItem1.Text" xml:space="preserve">
-    <value>СНО</value>
-  </data>
   <data name="contextMenuStrip_Report.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 70</value>
+    <value>201, 26</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip_Report.Name" xml:space="preserve">
     <value>contextMenuStrip_Report</value>
@@ -1383,12 +1377,6 @@
     <value>toolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;сНОToolStripMenuItem1.Name" xml:space="preserve">
-    <value>сНОToolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;сНОToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;gridView1.Name" xml:space="preserve">

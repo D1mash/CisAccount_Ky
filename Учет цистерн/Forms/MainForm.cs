@@ -525,19 +525,6 @@ namespace Учет_цистерн
             }
         }
 
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            contextMenuStrip_Report.Show(button3, new Point(0, button3.Height));
-            if (role == "3" | role == "1002")
-            {
-                contextMenuStrip_Report.Items[1].Enabled = true;
-            }
-            else
-            {
-                contextMenuStrip_Report.Items[1].Enabled = false;
-            }
-        }
-
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             try
@@ -552,7 +539,7 @@ namespace Учет_цистерн
                     }
                 }
 
-                ReportForm reportForm = new ReportForm();
+                ReportForm reportForm = new ReportForm(role);
                 reportForm.ShowDialog();
             }
             catch (Exception exp)
@@ -972,6 +959,11 @@ namespace Учет_цистерн
             rent_Brodcast_Car.FormBorderStyle = FormBorderStyle.None;
             rent_Brodcast_Car.Dock = DockStyle.Fill;
             chg_tabPage.Controls.Add(rent_Brodcast_Car);
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            contextMenuStrip_Report.Show(button3, new Point(0, button3.Height));
         }
 
         private void дополнительныеПараметрыToolStripMenuItem_Click(object sender, EventArgs e)

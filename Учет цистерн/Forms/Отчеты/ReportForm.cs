@@ -23,10 +23,12 @@ namespace Учет_цистерн
         //string Destination = ConfigurationManager.AppSettings["Dest"].ToString();
         DataTable dt;
         DataTable getserv;
+        string role;
 
-        public ReportForm()
+        public ReportForm(string role)
         {
             InitializeComponent();
+            this.role = role;
         }
         
         private new void Refresh()
@@ -123,6 +125,16 @@ namespace Учет_цистерн
 
         private void ReportForm_Load(object sender, EventArgs e)
         {
+            if(role == "1" || role == "2")
+            {
+                checkBox4.Enabled = false;
+                checkBox6.Enabled = false;
+            }
+            else
+            {
+                return;
+            }
+
             String Owner = "Select * from d__Owner";
             DataTable OwnerDT = DbConnection.DBConnect(Owner);
             var dr = OwnerDT.NewRow();

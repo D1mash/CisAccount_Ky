@@ -38,7 +38,6 @@
             this.toolStripMenuItem_Carriage = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Report = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.сНОToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -152,8 +151,7 @@
             // contextMenuStrip_Report
             // 
             this.contextMenuStrip_Report.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.сНОToolStripMenuItem1});
+            this.toolStripMenuItem1});
             this.contextMenuStrip_Report.Name = "contextMenuStrip_Report";
             this.contextMenuStrip_Report.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             resources.ApplyResources(this.contextMenuStrip_Report, "contextMenuStrip_Report");
@@ -163,12 +161,6 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             this.toolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem1_Click);
-            // 
-            // сНОToolStripMenuItem1
-            // 
-            this.сНОToolStripMenuItem1.Name = "сНОToolStripMenuItem1";
-            resources.ApplyResources(this.сНОToolStripMenuItem1, "сНОToolStripMenuItem1");
-            this.сНОToolStripMenuItem1.Click += new System.EventHandler(this.сНОToolStripMenuItem1_Click);
             // 
             // splitContainer1
             // 
@@ -429,7 +421,7 @@
             this.button3.Name = "button3";
             this.button3.UseMnemonic = false;
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // button2
             // 
@@ -672,7 +664,6 @@
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem сНОРеализацияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сНОПриходToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сНОToolStripMenuItem1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Refrence;
         private System.Windows.Forms.ToolStripMenuItem проверитьОбновлениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem просмотрСправкиToolStripMenuItem;
