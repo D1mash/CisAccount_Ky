@@ -543,7 +543,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         {
                             if (textEdit1.Text.Length > 7 && dt.Rows[0][0].ToString() == "Премиум Ойл Транс ТОО")
                             {
-                                if (textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
+                                if ((textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
+                                    (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                                 {
                                     //if (textEdit12.Text != "" && textEdit13.Text != "" && textEdit14.Text != "" && textEdit15.Text != "" && textEdit16.Text != "" && textEdit17.Text != "" && textEdit18.Text != "" && textEdit19.Text != "" && textEdit20.Text != ""
                                     //&& textEdit21.Text != "" && textEdit22.Text != "" && textEdit23.Text != "" && textEdit24.Text != "")
@@ -572,7 +573,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                             }
                             else
                             {
-                                if (textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
+                                if ((textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
+                                    (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                                 {
                                     string Add = "declare @Id int; exec [dbo].[FillRenderedService] '" + User_ID + "'," + Num + ",'" + textEdit2.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "'," + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL, @CurrentID = @Id output; select @Id";
                                     DataTable HeadID = DbConnection.DBConnect(Add);
@@ -603,45 +605,41 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 {
                     if (textEdit1.Text.Length > 7 && textEdit2.Text == "Премиум Ойл Транс ТОО")
                     {
-                        if (textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
+                        if ((textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
+                                    (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                         {
-                            //if (textEdit12.Text != "" && textEdit13.Text != "" && textEdit14.Text != "" && textEdit15.Text != "" && textEdit16.Text != "" && textEdit17.Text != "" && textEdit18.Text != "" && textEdit19.Text != "" && textEdit20.Text != ""
-                            //&& textEdit21.Text != "" && textEdit22.Text != "" && textEdit23.Text != "" && textEdit24.Text != "")
-                            //{
-                                ArrayList rows = new ArrayList();
-                                List<Object> aList = new List<Object>();
-                                string Arrays = string.Empty;
+                            string Oper,Brigade,Product,HOL,TOR,GOR,DR1,DR2,Trafar,Naruzh = string.Empty;
+                        
+                            if (checkEdit1.Checked){Oper = textEdit4.Text.Trim();}
+                            else{Oper = "";}
 
-                                Int32[] selectedRowHandles = gridView1.GetSelectedRows();
-                                for (int i = 0; i < selectedRowHandles.Length; i++)
-                                {
-                                    int selectedRowHandle = selectedRowHandles[i];
-                                    if (selectedRowHandle >= 0)
-                                        rows.Add(gridView1.GetDataRow(selectedRowHandle));
-                                }
-                                foreach (DataRow row in rows)
-                                {
-                                    aList.Add(row["ID"]);
-                                    Arrays = string.Join(" ", aList);
-                                    string UpdateAll = "exec [dbo].[UpdateRenderedServiceAll] '"+User_ID+"'," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + "," + comboBox2.SelectedValue.ToString() + "," + Temp + ",'" + Arrays + "'";
-                                    DbConnection.DBConnect(UpdateAll);
-                                }
-                                Refreshh("1");
-                            //}
-                            //else
-                            //{
-                            //    MessageBox.Show("Заполните пустые поля в АУТН!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            //}
-                        }
-                        else
-                        {
-                            MessageBox.Show("Заполните пустые поля в Обработке!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                    else
-                    {
-                        if (textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
-                        {
+                            if (checkEdit2.Checked) { Brigade = comboBox1.SelectedValue.ToString(); }
+                            else { Brigade = ""; }
+
+                            if (checkEdit11.Checked) { Product = comboBox2.SelectedValue.ToString(); }
+                            else { Product = ""; }
+
+                            if (checkEdit4.Checked) { HOL = textEdit6.Text.Trim(); }
+                            else { HOL = ""; }
+
+                            if (checkEdit6.Checked) { TOR = textEdit7.Text.Trim(); }
+                            else { TOR = ""; }
+
+                            if (checkEdit5.Checked) { GOR = textEdit8.Text.Trim(); }
+                            else { GOR = ""; }
+
+                            if (checkEdit7.Checked) { DR1 = textEdit9.Text.Trim(); }
+                            else { DR1 = ""; }
+
+                            if (checkEdit8.Checked) { DR2 = textEdit10.Text.Trim(); }
+                            else { DR2 = ""; }
+
+                            if (checkEdit9.Checked) { Trafar = textEdit11.Text.Trim(); }
+                            else { Trafar = ""; }
+
+                            if (checkEdit10.Checked) { Naruzh = textEdit5.Text.Trim(); }
+                            else { Naruzh = ""; }
+
                             ArrayList rows = new ArrayList();
                             List<Object> aList = new List<Object>();
                             string Arrays = string.Empty;
@@ -657,7 +655,79 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                             {
                                 aList.Add(row["ID"]);
                                 Arrays = string.Join(" ", aList);
-                                string UpdateAll = "exec [dbo].[UpdateRenderedServiceAll] '"+User_ID+"'," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + "," + comboBox2.SelectedValue.ToString() + "," + Temp + ",'" + Arrays + "'";
+                            }
+                            string[] split = Arrays.Split(new Char[] { ' ', ',', '.', ':', '\t' });
+                            foreach (string s in split)
+                            {
+                                string UpdateAll = "exec [dbo].[UpdateRenderedServiceAll] '" + User_ID + "','" + Oper + "','" + HOL + "','" + GOR + "','" + TOR + "','" + DR1 + "','" + DR2 + "','" + Trafar + "','" + Naruzh + "','" + Brigade + "','" + Product + "'," + Temp + ",'" + s + "'";
+                                DbConnection.DBConnect(UpdateAll);
+                            }
+                            Refreshh("1");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Заполните пустые поля в Обработке!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        if ((textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
+                                    (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
+                        {
+                            string Oper, Brigade, Product, HOL, TOR, GOR, DR1, DR2, Trafar, Naruzh = string.Empty;
+
+                            if (checkEdit1.Checked) { Oper = textEdit4.Text.Trim(); }
+                            else { Oper = ""; }
+
+                            if (checkEdit2.Checked) { Brigade = comboBox1.SelectedValue.ToString(); }
+                            else { Brigade = ""; }
+
+                            if (checkEdit11.Checked) { Product = comboBox2.SelectedValue.ToString(); }
+                            else { Product = ""; }
+
+                            if(checkEdit4.Checked | checkEdit6.Checked | checkEdit5.Checked | checkEdit7.Checked | checkEdit8.Checked)
+                            {
+                                HOL = textEdit6.Text.Trim();
+                                TOR = textEdit7.Text.Trim();
+                                GOR = textEdit8.Text.Trim();
+                                DR1 = textEdit9.Text.Trim();
+                                DR2 = textEdit10.Text.Trim();
+                            }
+                            else
+                            {
+                                HOL = "";
+                                TOR = "";
+                                GOR = "";
+                                DR1 = "";
+                                DR2 = "";
+                            }
+
+                            if (checkEdit9.Checked) { Trafar = textEdit11.Text.Trim(); }
+                            else { Trafar = ""; }
+
+                            if (checkEdit10.Checked) { Naruzh = textEdit5.Text.Trim(); }
+                            else { Naruzh = ""; }
+
+                            ArrayList rows = new ArrayList();
+                            List<Object> aList = new List<Object>();
+                            string Arrays = string.Empty;  
+
+                            Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                            for (int i = 0; i < selectedRowHandles.Length; i++)
+                            {
+                                int selectedRowHandle = selectedRowHandles[i];
+                                if (selectedRowHandle >= 0)
+                                    rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                            }
+                            foreach (DataRow row in rows)
+                            {
+                                aList.Add(row["ID"]);
+                                Arrays = string.Join(" ", aList);
+                            }
+                            string[] split = Arrays.Split(new Char[] { ' ', ',', '.', ':', '\t' });
+                            foreach(string s in split)
+                            {
+                                string UpdateAll = "exec [dbo].[UpdateRenderedServiceAll] '" + User_ID + "','" + Oper + "','" + HOL + "','" + GOR + "','" + TOR + "','" + DR1 + "','" + DR2 + "','" + Trafar + "','" + Naruzh + "','" + Brigade + "','" + Product + "'," + Temp + ",'" + s + "'";
                                 DbConnection.DBConnect(UpdateAll);
                             }
                             Refreshh("1");
@@ -671,6 +741,22 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 //Редактировать АУТН
                 else if (UpdateAutn == 1)
                 {
+                    string Avail, Klapan, DemSkob, PTC, Ushki, Skobi, Shaiba, Lest, Greben, Barash, TriBolt, Exp, Note = string.Empty;
+
+                    if (checkEdit17.Checked) { Avail = textEdit18.Text.Trim(); } else { Avail = ""; } //Пригодность 
+                    if (checkEdit3.Checked) { Klapan = textEdit12.Text.Trim(); } else { Klapan = ""; } //3 кл 
+                    if (checkEdit12.Checked) { DemSkob = textEdit13.Text.Trim(); } else { DemSkob = ""; } //дем скобы
+                    if (checkEdit13.Checked) { PTC = textEdit14.Text.Trim(); } else { PTC = ""; } //трафар ПТС
+                    if (checkEdit14.Checked) { Ushki = textEdit24.Text.Trim(); } else { Ushki = ""; } //Ушки 
+                    if (checkEdit15.Checked) { Skobi = textEdit15.Text.Trim(); } else { Skobi = ""; } //Скобы 
+                    if (checkEdit22.Checked) { Shaiba = textEdit16.Text.Trim(); } else { Shaiba = ""; } //Шайба и валик 
+                    if (checkEdit21.Checked) { Lest = textEdit23.Text.Trim(); } else { Lest = ""; } //ЛЕстница 
+                    if (checkEdit20.Checked) { Greben = textEdit22.Text.Trim(); } else { Greben = ""; } //Гребнь 
+                    if (checkEdit19.Checked) { Barash = textEdit21.Text.Trim(); } else { Barash = ""; } //ВЦ бараш тип
+                    if (checkEdit18.Checked) { TriBolt = textEdit20.Text.Trim(); } else { TriBolt = ""; } //3 болта
+                    if (checkEdit16.Checked) { Exp = textEdit19.Text.Trim(); } else { Exp = ""; } //годный на эксп
+                    if (checkEdit23.Checked) { Note = textEdit17.Text.Trim(); } else { Note = ""; } //Причина негод
+
                     ArrayList rows = new ArrayList();
                     List<Object> aList = new List<Object>();
                     string Arrays = string.Empty;
@@ -686,7 +772,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     {
                         aList.Add(row["ID"]);
                         Arrays = string.Join(" ", aList);
-                        string UpdateAutnAll = "exec dbo.UpdateAutnAll '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit24.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "','" + Arrays + "'";
+                        string UpdateAutnAll = "exec dbo.UpdateAutnAll '" + Avail + "','" + Klapan + "','" + DemSkob + "','" + PTC + "','" + Ushki + "','" + Skobi + "','" + Shaiba + "','" + Lest + "','" + Greben + "','" + Barash + "','" + TriBolt + "','" + Exp + "','" + Note + "','" + Arrays + "'";
                         DbConnection.DBConnect(UpdateAutnAll);
                     }
                     Refreshh("1");
@@ -705,7 +791,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     {
                         if (textEdit1.Text.Length > 7 && dt.Rows[0][0].ToString() == "Премиум Ойл Транс ТОО")
                         {
-                            if (textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
+                            if ((textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
+                                    (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                             {
                                 //if (textEdit12.Text != "" && textEdit13.Text != "" && textEdit14.Text != "" && textEdit15.Text != "" && textEdit16.Text != "" && textEdit17.Text != "" && textEdit18.Text != "" && textEdit19.Text != "" && textEdit20.Text != ""
                                 //&& textEdit21.Text != "" && textEdit22.Text != "" && textEdit23.Text != "" && textEdit24.Text != "")
@@ -728,7 +815,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         }
                         else
                         {
-                            if (textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
+                            if ((textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
+                                    (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                             {
                                 string Update = "exec [dbo].[UpdateRenderedService] '"+User_ID+"'," + textEdit1.Text.Trim() + ",'" + textEdit2.Text.Trim() + "'," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + "," + SelectItemRow;
                                 DbConnection.DBConnect(Update);
@@ -1098,6 +1186,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             if(textEdit9.Text == "1")
             {
                 textEdit7.Text = "0";
+                textEdit9.Text = "1";
                 textEdit8.Text = "1";
                 textEdit6.Text = "0";
                 textEdit10.Text = "0";
@@ -1106,7 +1195,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             {
                 textEdit7.Text = "0";
                 textEdit8.Text = "0";
-                textEdit6.Text = "0";
                 textEdit10.Text = "0";
             }
         }
@@ -1116,6 +1204,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             if (textEdit10.Text == "1")
             {
                 textEdit7.Text = "0";
+                textEdit10.Text = "1";
                 textEdit8.Text = "1";
                 textEdit6.Text = "0";
                 textEdit9.Text = "0";
@@ -1124,7 +1213,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             {
                 textEdit7.Text = "0";
                 textEdit8.Text = "0";
-                textEdit6.Text = "0";
                 textEdit9.Text = "0";
             }
         }
@@ -1135,12 +1223,12 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             {
                 textEdit6.Text = "0";
                 textEdit8.Text = "1";
+                textEdit7.Text = "1";
                 textEdit9.Text = "0";
                 textEdit10.Text = "0";
             }
             else if(textEdit7.Text == "0")
             {
-                textEdit6.Text = "0";
                 textEdit8.Text = "0";
                 textEdit9.Text = "0";
                 textEdit10.Text = "0";
@@ -1329,20 +1417,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             checkEdit9.Visible = true;
             checkEdit10.Visible = true;
 
-            //checkEdit3.Visible = true;
-            //checkEdit12.Visible = true;
-            //checkEdit13.Visible = true;
-            //checkEdit14.Visible = true;
-            //checkEdit15.Visible = true;
-            //checkEdit16.Visible = true;
-            //checkEdit17.Visible = true;
-            //checkEdit18.Visible = true;
-            //checkEdit19.Visible = true;
-            //checkEdit20.Visible = true;
-            //checkEdit21.Visible = true;
-            //checkEdit22.Visible = true;
-            //checkEdit23.Visible = true;
-
             textEdit1.Text = "";
             textEdit3.Text = "";
         }
@@ -1387,34 +1461,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             checkEdit8.Checked = false;
             checkEdit9.Checked = false;
             checkEdit10.Checked = false;
-
-            //checkEdit3.Checked = false;
-            //checkEdit12.Checked = false;
-            //checkEdit13.Checked = false;
-            //checkEdit14.Checked = false;
-            //checkEdit15.Checked = false;
-            //checkEdit16.Checked = false;
-            //checkEdit17.Checked = false;
-            //checkEdit18.Checked = false;
-            //checkEdit19.Checked = false;
-            //checkEdit20.Checked = false;
-            //checkEdit21.Checked = false;
-            //checkEdit22.Checked = false;
-            //checkEdit23.Checked = false;
-
-            //checkEdit3.Visible = false;
-            //checkEdit12.Visible = false;
-            //checkEdit13.Visible = false;
-            //checkEdit14.Visible = false;
-            //checkEdit15.Visible = false;
-            //checkEdit16.Visible = false;
-            //checkEdit17.Visible = false;
-            //checkEdit18.Visible = false;
-            //checkEdit19.Visible = false;
-            //checkEdit20.Visible = false;
-            //checkEdit21.Visible = false;
-            //checkEdit22.Visible = false;
-            //checkEdit23.Visible = false;
         }
 
         private void checkEdit1_Properties_CheckStateChanged(object sender, EventArgs e)
@@ -1968,29 +2014,71 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         private void simpleButton10_Click(object sender, EventArgs e)
         {
             UpdateAutn = 1;
-            textEdit12.Enabled = true;
-            textEdit13.Enabled = true;
-            textEdit14.Enabled = true;
-            textEdit15.Enabled = true;
-            textEdit16.Enabled = true;
-            textEdit17.Enabled = true;
-            textEdit18.Enabled = true;
-            textEdit19.Enabled = true;
-            textEdit20.Enabled = true;
-            textEdit21.Enabled = true;
-            textEdit22.Enabled = true;
-            textEdit23.Enabled = true;
-            textEdit24.Enabled = true;
+            //textEdit12.Enabled = true;
+            //textEdit13.Enabled = true;
+            //textEdit14.Enabled = true;
+            //textEdit15.Enabled = true;
+            //textEdit16.Enabled = true;
+            //textEdit17.Enabled = true;
+            //textEdit18.Enabled = true;
+            //textEdit19.Enabled = true;
+            //textEdit20.Enabled = true;
+            //textEdit21.Enabled = true;
+            //textEdit22.Enabled = true;
+            //textEdit23.Enabled = true;
+            //textEdit24.Enabled = true;
             simpleButton1.Enabled = true;
             simpleButton10.Visible = false;
             simpleButton11.Visible = true;
+
+            checkEdit3.Visible = true;
+            checkEdit12.Visible = true;
+            checkEdit13.Visible = true;
+            checkEdit14.Visible = true;
+            checkEdit15.Visible = true;
+            checkEdit16.Visible = true;
+            checkEdit17.Visible = true;
+            checkEdit18.Visible = true;
+            checkEdit19.Visible = true;
+            checkEdit20.Visible = true;
+            checkEdit21.Visible = true;
+            checkEdit22.Visible = true;
+            checkEdit23.Visible = true;
         }
 
         private void simpleButton11_Click(object sender, EventArgs e)
         {
             simpleButton11.Visible = false;
             simpleButton10.Visible = true;
-            UpdateAutn = 1;
+            UpdateAutn = -1;
+            checkEdit3.Visible = false;
+            checkEdit12.Visible = false;
+            checkEdit13.Visible = false;
+            checkEdit14.Visible = false;
+            checkEdit15.Visible = false;
+            checkEdit16.Visible = false;
+            checkEdit17.Visible = false;
+            checkEdit18.Visible = false;
+            checkEdit19.Visible = false;
+            checkEdit20.Visible = false;
+            checkEdit21.Visible = false;
+            checkEdit22.Visible = false;
+            checkEdit23.Visible = false;
+
+            checkEdit3.Checked = false;
+            checkEdit12.Checked = false;
+            checkEdit13.Checked = false;
+            checkEdit14.Checked = false;
+            checkEdit15.Checked = false;
+            checkEdit16.Checked = false;
+            checkEdit17.Checked = false;
+            checkEdit18.Checked = false;
+            checkEdit19.Checked = false;
+            checkEdit20.Checked = false;
+            checkEdit21.Checked = false;
+            checkEdit22.Checked = false;
+            checkEdit23.Checked = false;
+
             Block();
         }
 
