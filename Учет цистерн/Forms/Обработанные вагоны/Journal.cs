@@ -541,7 +541,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         string Check = dt.Rows[0][0].ToString();
                         if (Check != "")
                         {
-                            if (textEdit1.Text.Length > 7 && dt.Rows[0][0].ToString() == "Премиум Ойл Транс ТОО")
+                            if (textEdit1.Text.Length > 7 && dt.Rows[0][0].ToString() == "PTC Operator TOO")
                             {
                                 if ((textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
                                     (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
@@ -603,7 +603,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 //Редактировать группу
                 else if(GroupUpdate == 1)
                 {
-                    if (textEdit1.Text.Length > 7 && textEdit2.Text == "Премиум Ойл Транс ТОО")
+                    if (textEdit1.Text.Length > 7 && textEdit2.Text == "PTC Operator TOO")
                     {
                         if ((textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
                                     (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
@@ -789,7 +789,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     }
                     else
                     {
-                        if (textEdit1.Text.Length > 7 && dt.Rows[0][0].ToString() == "Премиум Ойл Транс ТОО")
+                        if (textEdit1.Text.Length > 7 && dt.Rows[0][0].ToString() == "PTC Operator TOO")
                         {
                             if ((textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
                                     (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))

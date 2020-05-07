@@ -69,13 +69,13 @@
             this.textEdit13 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
-            this.textEdit12 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.checkEdit17 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit18 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.textEdit25 = new DevExpress.XtraEditors.TextEdit();
             this.checkEdit10 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit9 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit8 = new DevExpress.XtraEditors.CheckEdit();
@@ -129,6 +129,7 @@
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.textEdit12 = new DevExpress.XtraEditors.TextEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -161,11 +162,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit12.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit13.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit17.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit25.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit10.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit9.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).BeginInit();
@@ -194,6 +195,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit24.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -204,7 +206,7 @@
             this.groupControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupControl1.Controls.Add(this.xtraScrollableControl1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupControl1.Location = new System.Drawing.Point(1042, 0);
+            this.groupControl1.Location = new System.Drawing.Point(1024, 0);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(346, 749);
             this.groupControl1.TabIndex = 0;
@@ -289,6 +291,7 @@
             // 
             // groupControl5
             // 
+            this.groupControl5.Controls.Add(this.textEdit12);
             this.groupControl5.Controls.Add(this.checkEdit23);
             this.groupControl5.Controls.Add(this.checkEdit16);
             this.groupControl5.Controls.Add(this.labelControl26);
@@ -323,7 +326,6 @@
             this.groupControl5.Controls.Add(this.textEdit13);
             this.groupControl5.Controls.Add(this.labelControl15);
             this.groupControl5.Controls.Add(this.checkEdit3);
-            this.groupControl5.Controls.Add(this.textEdit12);
             this.groupControl5.Controls.Add(this.labelControl14);
             this.groupControl5.Controls.Add(this.checkEdit17);
             this.groupControl5.Controls.Add(this.textEdit18);
@@ -733,21 +735,6 @@
             this.checkEdit3.TabIndex = 28;
             this.checkEdit3.Visible = false;
             // 
-            // textEdit12
-            // 
-            this.textEdit12.Location = new System.Drawing.Point(103, 50);
-            this.textEdit12.Name = "textEdit12";
-            this.textEdit12.Properties.Mask.BeepOnError = true;
-            this.textEdit12.Properties.Mask.EditMask = "\\d";
-            this.textEdit12.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-            this.textEdit12.Properties.Mask.ShowPlaceHolders = false;
-            this.textEdit12.Properties.MaxLength = 1;
-            this.textEdit12.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit12_Properties_KeyPress);
-            this.textEdit12.Size = new System.Drawing.Size(48, 20);
-            this.textEdit12.TabIndex = 27;
-            this.textEdit12.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Key_Down);
-            this.textEdit12.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit12_KeyUp);
-            // 
             // labelControl14
             // 
             this.labelControl14.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -806,6 +793,7 @@
             // 
             // groupControl3
             // 
+            this.groupControl3.Controls.Add(this.textEdit25);
             this.groupControl3.Controls.Add(this.checkEdit10);
             this.groupControl3.Controls.Add(this.checkEdit9);
             this.groupControl3.Controls.Add(this.checkEdit8);
@@ -832,6 +820,13 @@
             this.groupControl3.Size = new System.Drawing.Size(328, 129);
             this.groupControl3.TabIndex = 14;
             this.groupControl3.Text = "Обработка";
+            // 
+            // textEdit25
+            // 
+            this.textEdit25.Location = new System.Drawing.Point(120, 26);
+            this.textEdit25.Name = "textEdit25";
+            this.textEdit25.Size = new System.Drawing.Size(100, 20);
+            this.textEdit25.TabIndex = 36;
             // 
             // checkEdit10
             // 
@@ -1308,7 +1303,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1042, 63);
+            this.groupControl2.Size = new System.Drawing.Size(1024, 63);
             this.groupControl2.TabIndex = 1;
             // 
             // simpleButton11
@@ -1440,8 +1435,15 @@
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl4.Location = new System.Drawing.Point(0, 63);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(1042, 686);
+            this.groupControl4.Size = new System.Drawing.Size(1024, 686);
             this.groupControl4.TabIndex = 2;
+            // 
+            // textEdit12
+            // 
+            this.textEdit12.Location = new System.Drawing.Point(54, 49);
+            this.textEdit12.Name = "textEdit12";
+            this.textEdit12.Size = new System.Drawing.Size(97, 20);
+            this.textEdit12.TabIndex = 59;
             // 
             // gridControl1
             // 
@@ -1449,7 +1451,7 @@
             this.gridControl1.Location = new System.Drawing.Point(2, 20);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1038, 664);
+            this.gridControl1.Size = new System.Drawing.Size(1020, 664);
             this.gridControl1.TabIndex = 14;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1558,7 +1560,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1388, 749);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.groupControl4);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
@@ -1597,12 +1599,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit12.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit13.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit17.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit25.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit10.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit9.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).EndInit();
@@ -1631,6 +1633,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit24.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
@@ -1732,7 +1735,6 @@
         private DevExpress.XtraEditors.TextEdit textEdit13;
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.CheckEdit checkEdit3;
-        private DevExpress.XtraEditors.TextEdit textEdit12;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControl1;
         private DevExpress.XtraEditors.CheckEdit checkEdit24;
@@ -1742,5 +1744,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl28;
         private DevExpress.XtraEditors.LabelControl labelControl27;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private DevExpress.XtraEditors.TextEdit textEdit25;
+        private DevExpress.XtraEditors.TextEdit textEdit12;
     }
 }
