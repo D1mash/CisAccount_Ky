@@ -237,7 +237,7 @@ namespace Учет_цистерн
 
                             final_sum += int.Parse(dt.Rows[i][1].ToString()) * double.Parse(dt.Rows[i][2].ToString()); ;
 
-                            if (i<dt.Rows.Count-1)
+                            if (i<dt.Rows.Count)
                             {
                                 total += int.Parse(dt.Rows[i][1].ToString());
                             }
