@@ -2081,20 +2081,20 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
 
             Block();
         }
-
-        private void gridView1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Down)
-            {
-                gridView1_RowCellClick(null,null);
-            }
-        }
+        
 
         private void gridView1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Up)
             {
                 gridView1_RowCellClick(null, null);
+            }
+            else
+            {
+                if (e.KeyCode == Keys.Down)
+                {
+                    gridView1_RowCellClick(null, null);
+                }
             }
         }
 
