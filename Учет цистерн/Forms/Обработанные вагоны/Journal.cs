@@ -1293,6 +1293,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             simpleButton9.Enabled = true;
             Temp = SelectItemRow;
             SelectItemRow = 0;
+            Clear_AUTN();
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
@@ -2080,8 +2081,34 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             checkEdit23.Checked = false;
 
             Block();
+            Clear_AUTN();
         }
-        
+
+        private void Clear_AUTN()
+        {
+
+            textEdit4.Text = string.Empty;
+            textEdit5.Text = string.Empty;
+            textEdit6.Text = string.Empty;
+            textEdit8.Text = string.Empty;
+            textEdit7.Text = string.Empty;
+            textEdit9.Text = string.Empty;
+            textEdit10.Text = string.Empty;
+            textEdit11.Text = string.Empty;
+            textEdit12.Text = string.Empty;
+            textEdit13.Text = string.Empty;
+            textEdit14.Text = string.Empty;
+            textEdit15.Text = string.Empty;
+            textEdit16.Text = string.Empty;
+            textEdit17.Text = string.Empty;
+            textEdit18.Text = string.Empty;
+            textEdit19.Text = string.Empty;
+            textEdit20.Text = string.Empty;
+            textEdit21.Text = string.Empty;
+            textEdit22.Text = string.Empty;
+            textEdit23.Text = string.Empty;
+            textEdit24.Text = string.Empty;
+        }
 
         private void gridView1_KeyUp(object sender, KeyEventArgs e)
         {
