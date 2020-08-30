@@ -1229,7 +1229,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             }
             else if(textEdit7.Text == "0")
             {
-                textEdit8.Text = "0";
+                //textEdit8.Text = "0";
                 textEdit9.Text = "0";
                 textEdit10.Text = "0";
             }
