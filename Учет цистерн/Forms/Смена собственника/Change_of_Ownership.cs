@@ -378,9 +378,9 @@ namespace Учет_цистерн.Forms
         private void textEdit3_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = char.ToUpper(e.KeyChar);// Заглавные буквы
-
-            char l = e.KeyChar;
-            if ((l < 'А' || l > 'я') && l != '\b' && l != '.')
+            
+            char number = e.KeyChar;
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8 && (e.KeyChar <= 39 || e.KeyChar >= 46) && number != 47 && number != 61 && (e.KeyChar < 'А' || e.KeyChar > 'я')) 
             {
                 e.Handled = true;
             }
