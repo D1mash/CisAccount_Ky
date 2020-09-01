@@ -245,6 +245,7 @@
             this.textEdit3.Properties.Appearance.Options.UseFont = true;
             this.textEdit3.Size = new System.Drawing.Size(115, 20);
             this.textEdit3.TabIndex = 16;
+            this.textEdit3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit3_KeyPress);
             // 
             // textEdit2
             // 

@@ -2086,15 +2086,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
 
         private void Clear_AUTN()
         {
-
-            textEdit4.Text = string.Empty;
-            textEdit5.Text = string.Empty;
-            textEdit6.Text = string.Empty;
-            textEdit8.Text = string.Empty;
-            textEdit7.Text = string.Empty;
-            textEdit9.Text = string.Empty;
-            textEdit10.Text = string.Empty;
-            textEdit11.Text = string.Empty;
             textEdit12.Text = string.Empty;
             textEdit13.Text = string.Empty;
             textEdit14.Text = string.Empty;
