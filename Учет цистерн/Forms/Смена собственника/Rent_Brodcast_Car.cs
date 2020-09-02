@@ -681,6 +681,37 @@ namespace Учет_цистерн.Forms.Смена_собственника
             }
         }
 
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArrayList rows = new ArrayList();
+                List<Object> aList = new List<Object>();
+                string Arrays = string.Empty;
+
+                Int32[] selectedRowHandles = gridView3.GetSelectedRows();
+                for (int i = 0; i < selectedRowHandles.Length; i++)
+                {
+                    int selectedRowHandle = selectedRowHandles[i];
+                    if (selectedRowHandle >= 0)
+                        rows.Add(gridView3.GetDataRow(selectedRowHandle));
+                }
+
+
+                foreach (DataRow row in rows)
+                {
+                    aList.Add(row["ID"]);
+                    Arrays = string.Join(" ", aList);
+                    //string delete = "exec dbo.Remove_TempMultiCar '" + User_ID + "','" + Arrays + "'";
+                    //DbConnection.DBConnect(delete);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
             GridView View = sender as GridView;
