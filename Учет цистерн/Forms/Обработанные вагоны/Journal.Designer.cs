@@ -30,6 +30,28 @@
         {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
+            this.checkEdit31 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit30 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit29 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit28 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit27 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit26 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit25 = new DevExpress.XtraEditors.CheckEdit();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
+            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+            this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
+            this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
+            this.labelControl31 = new DevExpress.XtraEditors.LabelControl();
+            this.dateTimePicker8 = new System.Windows.Forms.DateTimePicker();
+            this.labelControl33 = new DevExpress.XtraEditors.LabelControl();
+            this.dateTimePicker9 = new System.Windows.Forms.DateTimePicker();
+            this.labelControl34 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.textEdit12 = new DevExpress.XtraEditors.TextEdit();
             this.checkEdit23 = new DevExpress.XtraEditors.CheckEdit();
@@ -130,6 +152,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.xtraScrollableControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
+            this.groupControl7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit31.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit30.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit29.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit28.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit27.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit26.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit25.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).BeginInit();
@@ -205,6 +236,7 @@
             // 
             // xtraScrollableControl1
             // 
+            this.xtraScrollableControl1.Controls.Add(this.groupControl7);
             this.xtraScrollableControl1.Controls.Add(this.groupControl5);
             this.xtraScrollableControl1.Controls.Add(this.labelControl1);
             this.xtraScrollableControl1.Controls.Add(this.groupControl3);
@@ -232,6 +264,224 @@
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
             this.xtraScrollableControl1.Size = new System.Drawing.Size(342, 791);
             this.xtraScrollableControl1.TabIndex = 0;
+            // 
+            // groupControl7
+            // 
+            this.groupControl7.Controls.Add(this.checkEdit31);
+            this.groupControl7.Controls.Add(this.checkEdit30);
+            this.groupControl7.Controls.Add(this.checkEdit29);
+            this.groupControl7.Controls.Add(this.checkEdit28);
+            this.groupControl7.Controls.Add(this.checkEdit27);
+            this.groupControl7.Controls.Add(this.checkEdit26);
+            this.groupControl7.Controls.Add(this.checkEdit25);
+            this.groupControl7.Controls.Add(this.dateTimePicker4);
+            this.groupControl7.Controls.Add(this.labelControl29);
+            this.groupControl7.Controls.Add(this.dateTimePicker5);
+            this.groupControl7.Controls.Add(this.labelControl30);
+            this.groupControl7.Controls.Add(this.dateTimePicker3);
+            this.groupControl7.Controls.Add(this.labelControl28);
+            this.groupControl7.Controls.Add(this.dateTimePicker2);
+            this.groupControl7.Controls.Add(this.labelControl27);
+            this.groupControl7.Controls.Add(this.dateTimePicker6);
+            this.groupControl7.Controls.Add(this.labelControl31);
+            this.groupControl7.Controls.Add(this.dateTimePicker8);
+            this.groupControl7.Controls.Add(this.labelControl33);
+            this.groupControl7.Controls.Add(this.dateTimePicker9);
+            this.groupControl7.Controls.Add(this.labelControl34);
+            this.groupControl7.Location = new System.Drawing.Point(8, 306);
+            this.groupControl7.Name = "groupControl7";
+            this.groupControl7.Size = new System.Drawing.Size(328, 211);
+            this.groupControl7.TabIndex = 38;
+            this.groupControl7.Text = "Даты и Время";
+            // 
+            // checkEdit31
+            // 
+            this.checkEdit31.Location = new System.Drawing.Point(3, 182);
+            this.checkEdit31.Name = "checkEdit31";
+            this.checkEdit31.Properties.Caption = "";
+            this.checkEdit31.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit31_Properties_CheckStateChanged);
+            this.checkEdit31.Size = new System.Drawing.Size(16, 19);
+            this.checkEdit31.TabIndex = 42;
+            this.checkEdit31.Visible = false;
+            // 
+            // checkEdit30
+            // 
+            this.checkEdit30.Location = new System.Drawing.Point(3, 155);
+            this.checkEdit30.Name = "checkEdit30";
+            this.checkEdit30.Properties.Caption = "";
+            this.checkEdit30.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit30_Properties_CheckStateChanged);
+            this.checkEdit30.Size = new System.Drawing.Size(16, 19);
+            this.checkEdit30.TabIndex = 41;
+            this.checkEdit30.Visible = false;
+            // 
+            // checkEdit29
+            // 
+            this.checkEdit29.Location = new System.Drawing.Point(3, 128);
+            this.checkEdit29.Name = "checkEdit29";
+            this.checkEdit29.Properties.Caption = "";
+            this.checkEdit29.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit29_Properties_CheckStateChanged);
+            this.checkEdit29.Size = new System.Drawing.Size(16, 19);
+            this.checkEdit29.TabIndex = 40;
+            this.checkEdit29.Visible = false;
+            // 
+            // checkEdit28
+            // 
+            this.checkEdit28.Location = new System.Drawing.Point(3, 101);
+            this.checkEdit28.Name = "checkEdit28";
+            this.checkEdit28.Properties.Caption = "";
+            this.checkEdit28.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit28_Properties_CheckStateChanged);
+            this.checkEdit28.Size = new System.Drawing.Size(16, 19);
+            this.checkEdit28.TabIndex = 39;
+            this.checkEdit28.Visible = false;
+            // 
+            // checkEdit27
+            // 
+            this.checkEdit27.Location = new System.Drawing.Point(3, 77);
+            this.checkEdit27.Name = "checkEdit27";
+            this.checkEdit27.Properties.Caption = "";
+            this.checkEdit27.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit27_Properties_CheckStateChanged);
+            this.checkEdit27.Size = new System.Drawing.Size(16, 19);
+            this.checkEdit27.TabIndex = 38;
+            this.checkEdit27.Visible = false;
+            // 
+            // checkEdit26
+            // 
+            this.checkEdit26.Location = new System.Drawing.Point(3, 50);
+            this.checkEdit26.Name = "checkEdit26";
+            this.checkEdit26.Properties.Caption = "";
+            this.checkEdit26.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit26_Properties_CheckStateChanged);
+            this.checkEdit26.Size = new System.Drawing.Size(16, 19);
+            this.checkEdit26.TabIndex = 37;
+            this.checkEdit26.Visible = false;
+            // 
+            // checkEdit25
+            // 
+            this.checkEdit25.Location = new System.Drawing.Point(3, 23);
+            this.checkEdit25.Name = "checkEdit25";
+            this.checkEdit25.Properties.Caption = "";
+            this.checkEdit25.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit25_Properties_CheckStateChanged);
+            this.checkEdit25.Size = new System.Drawing.Size(16, 19);
+            this.checkEdit25.TabIndex = 36;
+            this.checkEdit25.Visible = false;
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker4.Location = new System.Drawing.Point(160, 185);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(142, 21);
+            this.dateTimePicker4.TabIndex = 15;
+            // 
+            // labelControl29
+            // 
+            this.labelControl29.Location = new System.Drawing.Point(24, 185);
+            this.labelControl29.Name = "labelControl29";
+            this.labelControl29.Size = new System.Drawing.Size(58, 13);
+            this.labelControl29.TabIndex = 14;
+            this.labelControl29.Text = "Дата ВУ-19";
+            // 
+            // dateTimePicker5
+            // 
+            this.dateTimePicker5.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker5.Location = new System.Drawing.Point(160, 158);
+            this.dateTimePicker5.Name = "dateTimePicker5";
+            this.dateTimePicker5.Size = new System.Drawing.Size(142, 21);
+            this.dateTimePicker5.TabIndex = 13;
+            // 
+            // labelControl30
+            // 
+            this.labelControl30.Location = new System.Drawing.Point(24, 158);
+            this.labelControl30.Name = "labelControl30";
+            this.labelControl30.Size = new System.Drawing.Size(51, 13);
+            this.labelControl30.TabIndex = 12;
+            this.labelControl30.Text = "Прибытие";
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker3.Location = new System.Drawing.Point(160, 131);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(142, 21);
+            this.dateTimePicker3.TabIndex = 11;
+            // 
+            // labelControl28
+            // 
+            this.labelControl28.Location = new System.Drawing.Point(24, 131);
+            this.labelControl28.Name = "labelControl28";
+            this.labelControl28.Size = new System.Drawing.Size(54, 13);
+            this.labelControl28.TabIndex = 10;
+            this.labelControl28.Text = "Конец ТОР";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(160, 104);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(142, 21);
+            this.dateTimePicker2.TabIndex = 9;
+            // 
+            // labelControl27
+            // 
+            this.labelControl27.Location = new System.Drawing.Point(24, 104);
+            this.labelControl27.Name = "labelControl27";
+            this.labelControl27.Size = new System.Drawing.Size(60, 13);
+            this.labelControl27.TabIndex = 8;
+            this.labelControl27.Text = "Начало ТОР";
+            // 
+            // dateTimePicker6
+            // 
+            this.dateTimePicker6.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.dateTimePicker6.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker6.Location = new System.Drawing.Point(160, 77);
+            this.dateTimePicker6.Name = "dateTimePicker6";
+            this.dateTimePicker6.Size = new System.Drawing.Size(142, 21);
+            this.dateTimePicker6.TabIndex = 5;
+            // 
+            // labelControl31
+            // 
+            this.labelControl31.Location = new System.Drawing.Point(24, 80);
+            this.labelControl31.Name = "labelControl31";
+            this.labelControl31.Size = new System.Drawing.Size(100, 13);
+            this.labelControl31.TabIndex = 4;
+            this.labelControl31.Text = "Время по тех.карте";
+            // 
+            // dateTimePicker8
+            // 
+            this.dateTimePicker8.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.dateTimePicker8.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker8.Location = new System.Drawing.Point(160, 50);
+            this.dateTimePicker8.Name = "dateTimePicker8";
+            this.dateTimePicker8.Size = new System.Drawing.Size(142, 21);
+            this.dateTimePicker8.TabIndex = 3;
+            // 
+            // labelControl33
+            // 
+            this.labelControl33.Location = new System.Drawing.Point(24, 53);
+            this.labelControl33.Name = "labelControl33";
+            this.labelControl33.Size = new System.Drawing.Size(88, 13);
+            this.labelControl33.TabIndex = 2;
+            this.labelControl33.Text = "Конец обработки";
+            // 
+            // dateTimePicker9
+            // 
+            this.dateTimePicker9.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.dateTimePicker9.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker9.Location = new System.Drawing.Point(160, 23);
+            this.dateTimePicker9.Name = "dateTimePicker9";
+            this.dateTimePicker9.Size = new System.Drawing.Size(142, 21);
+            this.dateTimePicker9.TabIndex = 1;
+            // 
+            // labelControl34
+            // 
+            this.labelControl34.Location = new System.Drawing.Point(24, 26);
+            this.labelControl34.Name = "labelControl34";
+            this.labelControl34.Size = new System.Drawing.Size(94, 13);
+            this.labelControl34.TabIndex = 0;
+            this.labelControl34.Text = "Начало обработки";
             // 
             // groupControl5
             // 
@@ -274,9 +524,9 @@
             this.groupControl5.Controls.Add(this.checkEdit17);
             this.groupControl5.Controls.Add(this.textEdit18);
             this.groupControl5.Controls.Add(this.labelControl20);
-            this.groupControl5.Location = new System.Drawing.Point(8, 306);
+            this.groupControl5.Location = new System.Drawing.Point(8, 745);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(328, 211);
+            this.groupControl5.Size = new System.Drawing.Size(328, 36);
             this.groupControl5.TabIndex = 36;
             this.groupControl5.Text = "АУТН";
             this.groupControl5.Visible = false;
@@ -1509,6 +1759,16 @@
             this.groupControl1.ResumeLayout(false);
             this.xtraScrollableControl1.ResumeLayout(false);
             this.xtraScrollableControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).EndInit();
+            this.groupControl7.ResumeLayout(false);
+            this.groupControl7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit31.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit30.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit29.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit28.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit27.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit26.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit25.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
@@ -1676,5 +1936,27 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton10;
         private DevExpress.XtraEditors.SimpleButton simpleButton11;
         private DevExpress.XtraEditors.TextEdit textEdit12;
+        private DevExpress.XtraEditors.GroupControl groupControl7;
+        private DevExpress.XtraEditors.CheckEdit checkEdit31;
+        private DevExpress.XtraEditors.CheckEdit checkEdit30;
+        private DevExpress.XtraEditors.CheckEdit checkEdit29;
+        private DevExpress.XtraEditors.CheckEdit checkEdit28;
+        private DevExpress.XtraEditors.CheckEdit checkEdit27;
+        private DevExpress.XtraEditors.CheckEdit checkEdit26;
+        private DevExpress.XtraEditors.CheckEdit checkEdit25;
+        private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private DevExpress.XtraEditors.LabelControl labelControl29;
+        private System.Windows.Forms.DateTimePicker dateTimePicker5;
+        private DevExpress.XtraEditors.LabelControl labelControl30;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private DevExpress.XtraEditors.LabelControl labelControl28;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private DevExpress.XtraEditors.LabelControl labelControl27;
+        private System.Windows.Forms.DateTimePicker dateTimePicker6;
+        private DevExpress.XtraEditors.LabelControl labelControl31;
+        private System.Windows.Forms.DateTimePicker dateTimePicker8;
+        private DevExpress.XtraEditors.LabelControl labelControl33;
+        private System.Windows.Forms.DateTimePicker dateTimePicker9;
+        private DevExpress.XtraEditors.LabelControl labelControl34;
     }
 }

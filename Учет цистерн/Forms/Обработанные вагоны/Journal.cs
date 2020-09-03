@@ -119,7 +119,23 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 gridView1.Columns[0].Visible = false;
                 gridView1.Columns[1].Visible = false;
                 gridView1.Columns[2].Visible = false;
-                if(Section == "2")
+
+                gridView1.Columns[18].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                gridView1.Columns[18].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+                gridView1.Columns[19].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                gridView1.Columns[19].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+                gridView1.Columns[20].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                gridView1.Columns[20].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+                gridView1.Columns[21].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                gridView1.Columns[21].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+                gridView1.Columns[22].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                gridView1.Columns[22].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+                gridView1.Columns[23].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                gridView1.Columns[23].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+                gridView1.Columns[24].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                gridView1.Columns[24].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+
+                if (Section == "2")
                 {
                     gridView1.MoveLast();
                 }
@@ -163,6 +179,22 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     gridView1.Columns[0].Visible = false;
                     gridView1.Columns[1].Visible = false;
                     gridView1.Columns[2].Visible = false;
+
+                    gridView1.Columns[19].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                    gridView1.Columns[19].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+                    gridView1.Columns[20].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                    gridView1.Columns[20].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+                    gridView1.Columns[21].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                    gridView1.Columns[21].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+                    gridView1.Columns[22].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                    gridView1.Columns[22].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+                    gridView1.Columns[23].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                    gridView1.Columns[23].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+                    gridView1.Columns[24].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                    gridView1.Columns[24].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+                    gridView1.Columns[25].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                    gridView1.Columns[25].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+
                     if (Section == "2")
                     {
                         gridView1.MoveLast();
@@ -447,69 +479,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 //Добавить
                 if (SelectItemRow == 0)
                 {
-                    //if(lookUpEdit1.Text != string.Empty)
-                    //{
-                    //    if(checkedComboBoxEdit1.Text != string.Empty)
-                    //    {
-                    //        string Rent = lookUpEdit1.EditValue.ToString();
-                    //        string CheckOwner = "select o.Name from d__Rent_Status s left join d__Owner o on o.ID = s.OwnerId where s.ID = " + Rent;
-                    //        DataTable dt = DbConnection.DBConnect(CheckOwner);
-                    //        if(dt.Rows[0][0].ToString() == "Премиум Ойл Транс ТОО")
-                    //        {
-                    //            if (textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
-                    //            {
-                    //                ArrayList rows = new ArrayList();
-                    //                List<Object> aList = new List<Object>();
-                    //                List<Object> list = new List<Object>();
-                    //                aList = checkedComboBoxEdit1.Properties.Items.GetCheckedValues();
-
-                    //                foreach (String row in aList)
-                    //                {
-                    //                    list.Add(row);
-                    //                    string array = string.Join(" ", list);
-                    //                    string GetOwner = "select Current_owner from d__Carriage where CarNumber = " + array;
-                    //                    DataTable Owner = DbConnection.DBConnect(GetOwner);
-                    //                    string Add = "declare @Id int; exec [dbo].[FillRenderedService] '" + User_ID + "'," + Num + ",'" + Owner.Rows[0][0].ToString() + "','" + dateTimePicker1.Value.Date.ToString() + "'," + array + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL, @CurrentID = @Id output; select @Id";
-                    //                    DataTable HeadID = DbConnection.DBConnect(Add);
-                    //                    if (HeadID.Rows.Count > 0)
-                    //                    {
-                    //                        string Id = HeadID.Rows[0][0].ToString();
-                    //                        string Autn = "exec [dbo].[FillAutn] '" + textEdit18.Text.Trim() + "','" + textEdit12.Text.Trim() + "','" + textEdit13.Text.Trim() + "','" + textEdit14.Text.Trim() + "','" + textEdit24.Text.Trim() + "','" + textEdit15.Text.Trim() + "','" + textEdit16.Text.Trim() + "','" + textEdit23.Text.Trim() + "','" + textEdit22.Text.Trim() + "','" + textEdit21.Text.Trim() + "','" + textEdit20.Text.Trim() + "','" + textEdit19.Text.Trim() + "','" + textEdit17.Text.Trim() + "'," + Id;
-                    //                        DbConnection.DBConnect(Autn);
-                    //                        Refreshh("2");
-                    //                        textEdit1.Text = "";
-                    //                        textEdit1.Focus();
-                    //                    }
-                    //                }                                 
-                    //            }
-                    //            else
-                    //            {
-                    //                MessageBox.Show("Заполните пустые поля в Обработке!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //            }
-                    //        }
-                    //        else
-                    //        {
-                    //            if (textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "")
-                    //            {
-
-                    //            }
-                    //            else
-                    //            {
-                    //                MessageBox.Show("Заполните пустые поля в Обработке!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //            }
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-                    //        MessageBox.Show("Выберите вагоны!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Выберите заявку!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //}
-
-
                     if (textEdit1.Text != string.Empty)
                     {
                         string CheckOwner = "select c.Current_owner from d__Carriage c where c.CarNumber = " + textEdit1.Text.Trim();
@@ -525,7 +494,33 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                     //if (textEdit12.Text != "" && textEdit13.Text != "" && textEdit14.Text != "" && textEdit15.Text != "" && textEdit16.Text != "" && textEdit17.Text != "" && textEdit18.Text != "" && textEdit19.Text != "" && textEdit20.Text != ""
                                     //&& textEdit21.Text != "" && textEdit22.Text != "" && textEdit23.Text != "" && textEdit24.Text != "")
                                     //{
-                                    string Add = "declare @Id int; exec [dbo].[FillRenderedService] '" + User_ID + "'," + Num + ",'" + textEdit2.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "'," + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL, @CurrentID = @Id output; select @Id";
+                                    string Add = "" +
+                                        "declare @Id int; exec [dbo].[FillRenderedService] " +
+                                        "'" + User_ID + "'," +
+                                        "" + Num + "," +
+                                        "'" + textEdit2.Text.Trim() + "'," +
+                                        "'" + dateTimePicker1.Value.Date.ToString() + "'," +
+                                        "" + textEdit1.Text.Trim() + "," +
+                                        "" + textEdit4.Text.Trim() + "," +
+                                        "" + textEdit6.Text.Trim() + "," +
+                                        "" + textEdit8.Text.Trim() + "," +
+                                        "" + textEdit7.Text.Trim() + "," +
+                                        "" + textEdit9.Text.Trim() + "," +
+                                        "" + textEdit10.Text.Trim() + "," +
+                                        "" + textEdit11.Text.Trim() + "," +
+                                        "" + textEdit5.Text.Trim() + "," +
+                                        "" + comboBox1.SelectedValue.ToString() + "," +
+                                        "'" + textEdit3.Text.Trim() + "'," +
+                                        "" + comboBox2.SelectedValue.ToString() + "," +
+                                        "NULL, " +
+                                        "'"+ dateTimePicker2.Value.ToString() + "', " +
+                                        "'" + dateTimePicker3.Value.ToString() + "', " +
+                                        "'" + dateTimePicker4.Value.ToString() + "'," +
+                                        "'" + dateTimePicker5.Value.ToString() + "', " +
+                                        "'" + dateTimePicker6.Value.ToString() + "', " +
+                                        "'" + dateTimePicker8.Value.ToString() + "'," +
+                                        "'" + dateTimePicker9.Value.ToString() + "',  @CurrentID = @Id output; select @Id";
+
                                     DataTable HeadID = DbConnection.DBConnect(Add);
                                     if (HeadID.Rows.Count > 0)
                                     {
@@ -552,7 +547,32 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                 if ((textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
                                     (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                                 {
-                                    string Add = "declare @Id int; exec [dbo].[FillRenderedService] '" + User_ID + "'," + Num + ",'" + textEdit2.Text.Trim() + "','" + dateTimePicker1.Value.Date.ToString() + "'," + textEdit1.Text.Trim() + "," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + ",NULL, @CurrentID = @Id output; select @Id";
+                                    string Add = "" +
+                                        "declare @Id int; exec [dbo].[FillRenderedService] " +
+                                        "'" + User_ID + "'," +
+                                        "" + Num + "," +
+                                        "'" + textEdit2.Text.Trim() + "'," +
+                                        "'" + dateTimePicker1.Value.Date.ToString() + "'," +
+                                        "" + textEdit1.Text.Trim() + "," +
+                                        "" + textEdit4.Text.Trim() + "," +
+                                        "" + textEdit6.Text.Trim() + "," +
+                                        "" + textEdit8.Text.Trim() + "," +
+                                        "" + textEdit7.Text.Trim() + "," +
+                                        "" + textEdit9.Text.Trim() + "," +
+                                        "" + textEdit10.Text.Trim() + "," +
+                                        "" + textEdit11.Text.Trim() + "," +
+                                        "" + textEdit5.Text.Trim() + "," +
+                                        "" + comboBox1.SelectedValue.ToString() + "," +
+                                        "'" + textEdit3.Text.Trim() + "'," +
+                                        "" + comboBox2.SelectedValue.ToString() + "," +
+                                        "NULL, " +
+                                        "'" + dateTimePicker2.Value.ToString() + "', " +
+                                        "'" + dateTimePicker3.Value.ToString() + "', " +
+                                        "'" + dateTimePicker4.Value.ToString() + "'," +
+                                        "'" + dateTimePicker5.Value.ToString() + "', " +
+                                        "'" + dateTimePicker6.Value.ToString() + "', " +
+                                        "'" + dateTimePicker8.Value.ToString() + "'," +
+                                        "'" + dateTimePicker9.Value.ToString() + "',  @CurrentID = @Id output; select @Id";
                                     DataTable HeadID = DbConnection.DBConnect(Add);
                                     if (HeadID.Rows.Count > 0)
                                     {
@@ -584,7 +604,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         if ((textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
                                     (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                         {
-                            string Oper,Brigade,Product,HOL,TOR,GOR,DR1,DR2,Trafar,Naruzh = string.Empty;
+                            string Oper,Brigade,Product,HOL,TOR,GOR,DR1,DR2,Trafar,Naruzh,
+                                   StartProcess,EndProcess,DateTehCart,StartTor,EndTor,ArrivalDate,DateVU19 = string.Empty;
                         
                             if (checkEdit1.Checked){Oper = textEdit4.Text.Trim();}
                             else{Oper = "";}
@@ -616,6 +637,14 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                             if (checkEdit10.Checked) { Naruzh = textEdit5.Text.Trim(); }
                             else { Naruzh = ""; }
 
+                            if (checkEdit25.Checked) { StartProcess = dateTimePicker9.Value.ToString(); } else { StartProcess = ""; }
+                            if (checkEdit26.Checked) { EndProcess = dateTimePicker8.Value.ToString(); } else { EndProcess = ""; }
+                            if (checkEdit27.Checked) { DateTehCart = dateTimePicker6.Value.ToString(); } else { DateTehCart = ""; }
+                            if (checkEdit28.Checked) { StartTor = dateTimePicker2.Value.ToString(); } else { StartTor = ""; }
+                            if (checkEdit29.Checked) { EndTor = dateTimePicker3.Value.ToString(); } else { EndTor = ""; }
+                            if (checkEdit30.Checked) { ArrivalDate = dateTimePicker5.Value.ToString(); } else { ArrivalDate = ""; }
+                            if (checkEdit31.Checked) { DateVU19 = dateTimePicker4.Value.ToString(); } else { DateVU19 = ""; }
+
                             ArrayList rows = new ArrayList();
                             List<Object> aList = new List<Object>();
                             string Arrays = string.Empty;
@@ -635,7 +664,26 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                             string[] split = Arrays.Split(new Char[] { ' ', ',', '.', ':', '\t' });
                             foreach (string s in split)
                             {
-                                string UpdateAll = "exec [dbo].[UpdateRenderedServiceAll] '" + User_ID + "','" + Oper + "','" + HOL + "','" + GOR + "','" + TOR + "','" + DR1 + "','" + DR2 + "','" + Trafar + "','" + Naruzh + "','" + Brigade + "','" + Product + "'," + Temp + ",'" + s + "'";
+                                string UpdateAll = "exec [dbo].[UpdateRenderedServiceAll] " +
+                                    "'" + User_ID + "'," +
+                                    "'" + Oper + "'," +
+                                    "'" + HOL + "'," +
+                                    "'" + GOR + "'," +
+                                    "'" + TOR + "'," +
+                                    "'" + DR1 + "'," +
+                                    "'" + DR2 + "'," +
+                                    "'" + Trafar + "'," +
+                                    "'" + Naruzh + "'," +
+                                    "'" + Brigade + "'," +
+                                    "'" + Product + "', " +
+                                    "'" + StartProcess + "'," +
+                                    "'" + EndProcess + "'," +
+                                    "'" + DateTehCart + "'," +
+                                    "'" + StartTor + "'," +
+                                    "'" + EndTor + "'," +
+                                    "'" + ArrivalDate + "'," +
+                                    "'" + DateVU19 + "'," +
+                                    "" + Temp + ",'" + s + "'";
                                 DbConnection.DBConnect(UpdateAll);
                             }
                             Refreshh("1");
@@ -650,7 +698,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                         if ((textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
                                     (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                         {
-                            string Oper, Brigade, Product, HOL, TOR, GOR, DR1, DR2, Trafar, Naruzh = string.Empty;
+                            string Oper, Brigade, Product, HOL, TOR, GOR, DR1, DR2, Trafar, Naruzh,
+                                StartProcess, EndProcess, DateTehCart, StartTor, EndTor, ArrivalDate, DateVU19 = string.Empty;
 
                             if (checkEdit1.Checked) { Oper = textEdit4.Text.Trim(); }
                             else { Oper = ""; }
@@ -684,6 +733,14 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                             if (checkEdit10.Checked) { Naruzh = textEdit5.Text.Trim(); }
                             else { Naruzh = ""; }
 
+                            if (checkEdit25.Checked) { StartProcess = dateTimePicker9.Value.ToString(); } else { StartProcess = ""; }
+                            if (checkEdit26.Checked) { EndProcess = dateTimePicker8.Value.ToString(); } else { EndProcess = ""; }
+                            if (checkEdit27.Checked) { DateTehCart = dateTimePicker6.Value.ToString(); } else { DateTehCart = ""; }
+                            if (checkEdit28.Checked) { StartTor = dateTimePicker2.Value.ToString(); } else { StartTor = ""; }
+                            if (checkEdit29.Checked) { EndTor = dateTimePicker3.Value.ToString(); } else { EndTor = ""; }
+                            if (checkEdit30.Checked) { ArrivalDate = dateTimePicker5.Value.ToString(); } else { ArrivalDate = ""; }
+                            if (checkEdit31.Checked) { DateVU19 = dateTimePicker4.Value.ToString(); } else { DateVU19 = ""; }
+
                             ArrayList rows = new ArrayList();
                             List<Object> aList = new List<Object>();
                             string Arrays = string.Empty;  
@@ -703,7 +760,26 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                             string[] split = Arrays.Split(new Char[] { ' ', ',', '.', ':', '\t' });
                             foreach(string s in split)
                             {
-                                string UpdateAll = "exec [dbo].[UpdateRenderedServiceAll] '" + User_ID + "','" + Oper + "','" + HOL + "','" + GOR + "','" + TOR + "','" + DR1 + "','" + DR2 + "','" + Trafar + "','" + Naruzh + "','" + Brigade + "','" + Product + "'," + Temp + ",'" + s + "'";
+                                string UpdateAll = "exec [dbo].[UpdateRenderedServiceAll] " +
+                                    "'" + User_ID + "'," +
+                                    "'" + Oper + "'," +
+                                    "'" + HOL + "'," +
+                                    "'" + GOR + "'," +
+                                    "'" + TOR + "'," +
+                                    "'" + DR1 + "'," +
+                                    "'" + DR2 + "'," +
+                                    "'" + Trafar + "'," +
+                                    "'" + Naruzh + "'," +
+                                    "'" + Brigade + "'," +
+                                    "'" + Product + "', " +
+                                    "'" + StartProcess + "'," +
+                                    "'" + EndProcess + "'," +
+                                    "'" + DateTehCart + "'," +
+                                    "'" + StartTor + "'," +
+                                    "'" + EndTor + "'," +
+                                    "'" + ArrivalDate + "'," +
+                                    "'" + DateVU19 + "'," +
+                                    "" + Temp + ",'" + s + "'";
                                 DbConnection.DBConnect(UpdateAll);
                             }
                             Refreshh("1");
@@ -773,7 +849,28 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                 //if (textEdit12.Text != "" && textEdit13.Text != "" && textEdit14.Text != "" && textEdit15.Text != "" && textEdit16.Text != "" && textEdit17.Text != "" && textEdit18.Text != "" && textEdit19.Text != "" && textEdit20.Text != ""
                                 //&& textEdit21.Text != "" && textEdit22.Text != "" && textEdit23.Text != "" && textEdit24.Text != "")
                                 //{
-                                    string Update = "exec [dbo].[UpdateRenderedService] '"+User_ID+"'," + textEdit1.Text.Trim() + ",'"+textEdit2.Text.Trim()+"'," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + "," + SelectItemRow;
+                                    string Update = "exec [dbo].[UpdateRenderedService] " +
+                                    "'"+User_ID+"'," + textEdit1.Text.Trim() + "," +
+                                    "'"+textEdit2.Text.Trim()+"'," +
+                                    "" + textEdit4.Text.Trim() + "," +
+                                    "" + textEdit6.Text.Trim() + "," +
+                                    "" + textEdit8.Text.Trim() + "," +
+                                    "" + textEdit7.Text.Trim() + "," +
+                                    "" + textEdit9.Text.Trim() + "," +
+                                    "" + textEdit10.Text.Trim() + "," +
+                                    "" + textEdit11.Text.Trim() + "," +
+                                    "" + textEdit5.Text.Trim() + "," +
+                                    "" + comboBox1.SelectedValue.ToString() + "," +
+                                    "'" + textEdit3.Text.Trim() + "'," +
+                                    "" + comboBox2.SelectedValue.ToString() + "," +
+                                    "'" + dateTimePicker2.Value.ToString() + "', " +
+                                    "'" + dateTimePicker3.Value.ToString() + "', " +
+                                    "'" + dateTimePicker4.Value.ToString() + "'," +
+                                    "'" + dateTimePicker5.Value.ToString() + "', " +
+                                    "'" + dateTimePicker6.Value.ToString() + "', " +
+                                    "'" + dateTimePicker8.Value.ToString() + "'," +
+                                    "'" + dateTimePicker9.Value.ToString() + "'," +
+                                    "" + SelectItemRow;
                                     DbConnection.DBConnect(Update);
                                     Refreshh("1");
                                     Block();
@@ -794,7 +891,28 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                             if ((textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
                                     (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                             {
-                                string Update = "exec [dbo].[UpdateRenderedService] '"+User_ID+"'," + textEdit1.Text.Trim() + ",'" + textEdit2.Text.Trim() + "'," + textEdit4.Text.Trim() + "," + textEdit6.Text.Trim() + "," + textEdit8.Text.Trim() + "," + textEdit7.Text.Trim() + "," + textEdit9.Text.Trim() + "," + textEdit10.Text.Trim() + "," + textEdit11.Text.Trim() + "," + textEdit5.Text.Trim() + "," + comboBox1.SelectedValue.ToString() + ",'" + textEdit3.Text.Trim() + "'," + comboBox2.SelectedValue.ToString() + "," + SelectItemRow;
+                                string Update = "exec [dbo].[UpdateRenderedService] " +
+                                    "'" + User_ID + "'," + textEdit1.Text.Trim() + "," +
+                                    "'" + textEdit2.Text.Trim() + "'," +
+                                    "" + textEdit4.Text.Trim() + "," +
+                                    "" + textEdit6.Text.Trim() + "," +
+                                    "" + textEdit8.Text.Trim() + "," +
+                                    "" + textEdit7.Text.Trim() + "," +
+                                    "" + textEdit9.Text.Trim() + "," +
+                                    "" + textEdit10.Text.Trim() + "," +
+                                    "" + textEdit11.Text.Trim() + "," +
+                                    "" + textEdit5.Text.Trim() + "," +
+                                    "" + comboBox1.SelectedValue.ToString() + "," +
+                                    "'" + textEdit3.Text.Trim() + "'," +
+                                    "" + comboBox2.SelectedValue.ToString() + "," +
+                                    "'" + dateTimePicker2.Value.ToString() + "', " +
+                                    "'" + dateTimePicker3.Value.ToString() + "', " +
+                                    "'" + dateTimePicker4.Value.ToString() + "'," +
+                                    "'" + dateTimePicker5.Value.ToString() + "', " +
+                                    "'" + dateTimePicker6.Value.ToString() + "', " +
+                                    "'" + dateTimePicker8.Value.ToString() + "'," +
+                                    "'" + dateTimePicker9.Value.ToString() + "'," +
+                                    "" + SelectItemRow;
                                 DbConnection.DBConnect(Update);
                                 Refreshh("1");
                                 Block();
@@ -962,6 +1080,14 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 textEdit11.Text = Trafar1.ToString();
                 textEdit5.Text = Naruzhka1.ToString();
 
+                dateTimePicker9.Value = Convert.ToDateTime(dt.Rows[0][28]);
+                dateTimePicker8.Value = Convert.ToDateTime(dt.Rows[0][29]);
+                dateTimePicker6.Value = Convert.ToDateTime(dt.Rows[0][30]);
+                dateTimePicker2.Value = Convert.ToDateTime(dt.Rows[0][31]);
+                dateTimePicker3.Value = Convert.ToDateTime(dt.Rows[0][32]);
+                dateTimePicker5.Value = Convert.ToDateTime(dt.Rows[0][33]);
+                dateTimePicker4.Value = Convert.ToDateTime(dt.Rows[0][34]);
+
                 Num = Convert.ToInt32(dt.Rows[0][26].ToString());
 
                 string GetAutn = "select * from d__Autn_2 where Head_ID = " + Id;
@@ -1031,6 +1157,14 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             textEdit22.Enabled = false;
             textEdit23.Enabled = false;
             textEdit24.Enabled = false;
+
+            dateTimePicker2.Enabled = false;
+            dateTimePicker3.Enabled = false;
+            dateTimePicker4.Enabled = false;
+            dateTimePicker5.Enabled = false;
+            dateTimePicker6.Enabled = false;
+            dateTimePicker8.Enabled = false;
+            dateTimePicker9.Enabled = false;
         }
         private void Unblock()
         {
@@ -1047,6 +1181,14 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             comboBox1.Enabled = true;
             comboBox2.Enabled = true;
             simpleButton1.Enabled = true;
+
+            dateTimePicker2.Enabled = true;
+            dateTimePicker3.Enabled = true;
+            dateTimePicker4.Enabled = true;
+            dateTimePicker5.Enabled = true;
+            dateTimePicker6.Enabled = true;
+            dateTimePicker8.Enabled = true;
+            dateTimePicker9.Enabled = true;
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
@@ -1390,6 +1532,14 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             checkEdit9.Visible = true;
             checkEdit10.Visible = true;
 
+            checkEdit25.Visible = true;
+            checkEdit26.Visible = true;
+            checkEdit27.Visible = true;
+            checkEdit28.Visible = true;
+            checkEdit29.Visible = true;
+            checkEdit30.Visible = true;
+            checkEdit31.Visible = true;
+
             textEdit1.Text = "";
             textEdit3.Text = "";
         }
@@ -1434,6 +1584,22 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             checkEdit8.Checked = false;
             checkEdit9.Checked = false;
             checkEdit10.Checked = false;
+
+            checkEdit25.Checked = false;
+            checkEdit26.Checked = false;
+            checkEdit27.Checked = false;
+            checkEdit28.Checked = false;
+            checkEdit29.Checked = false;
+            checkEdit30.Checked = false;
+            checkEdit31.Checked = false;
+
+            checkEdit25.Visible = false;
+            checkEdit26.Visible = false;
+            checkEdit27.Visible = false;
+            checkEdit28.Visible = false;
+            checkEdit29.Visible = false;
+            checkEdit30.Visible = false;
+            checkEdit31.Visible = false;
         }
 
         private void checkEdit1_Properties_CheckStateChanged(object sender, EventArgs e)
@@ -2086,6 +2252,41 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     gridView1_RowCellClick(null, null);
                 }
             }
+        }
+
+        private void checkEdit25_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            dateTimePicker9.Enabled = (checkEdit25.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit26_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            dateTimePicker8.Enabled = (checkEdit26.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit27_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            dateTimePicker6.Enabled = (checkEdit27.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit28_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            dateTimePicker2.Enabled = (checkEdit28.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit29_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            dateTimePicker3.Enabled = (checkEdit29.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit30_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            dateTimePicker5.Enabled = (checkEdit30.CheckState == CheckState.Checked);
+        }
+
+        private void checkEdit31_Properties_CheckStateChanged(object sender, EventArgs e)
+        {
+            dateTimePicker4.Enabled = (checkEdit31.CheckState == CheckState.Checked);
         }
 
         private void Enter_Key_Down(object sender, KeyEventArgs e)
