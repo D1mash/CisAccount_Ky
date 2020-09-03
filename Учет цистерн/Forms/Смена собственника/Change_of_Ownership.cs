@@ -185,7 +185,7 @@ namespace Учет_цистерн.Forms
         }
 
         //Множественная вставка
-        private void вставитьToolStripMenuItem_Click(object sender, EventArgs e)
+        public void вставитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -212,6 +212,7 @@ namespace Учет_цистерн.Forms
 
                 RefreshGrid();
 
+                Clipboard.Clear();
             }
             catch (Exception exp)
             {
