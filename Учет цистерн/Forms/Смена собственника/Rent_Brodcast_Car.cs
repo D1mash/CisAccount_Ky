@@ -27,12 +27,14 @@ namespace Учет_цистерн.Forms.Смена_собственника
         string date;
         string product;
         string role, User_ID;
+        private TradeWright.UI.Forms.TabControlExtra tabControl1;
 
-        public Rent_Brodcast_Car(string role, string UserID)
+        public Rent_Brodcast_Car(TradeWright.UI.Forms.TabControlExtra tabControl1, string role, string UserID)
         {
             InitializeComponent();
             this.role = role;
             this.User_ID = UserID;
+            this.tabControl1 = tabControl1;
         }
 
         private void Rent_Brodcast_Car_Load(object sender, EventArgs e)
@@ -40,11 +42,6 @@ namespace Учет_цистерн.Forms.Смена_собственника
             if (role == "1" | role == "1002")
             {
                 simpleButton1.Enabled = true;
-                simpleButton2.Enabled = true;
-                simpleButton3.Enabled = true;
-                simpleButton4.Enabled = true;
-                simpleButton6.Enabled = true;
-                simpleButton7.Enabled = true;
             }
             else
             {
@@ -52,21 +49,10 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 {
 
                     simpleButton1.Enabled = true;
-                    simpleButton2.Enabled = true;
-                    simpleButton3.Enabled = false;
-                    simpleButton4.Enabled = true;
-                    simpleButton6.Enabled = false;
-                    simpleButton7.Enabled = true;
                 }
                 else
                 {
                     simpleButton1.Enabled = true;
-                    simpleButton2.Enabled = false;
-                    simpleButton3.Enabled = false;
-                    simpleButton4.Enabled = true;
-                    simpleButton5.Enabled = false;
-                    simpleButton6.Enabled = false;
-                    simpleButton7.Enabled = true;
                 }
             }
 
@@ -217,7 +203,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
         //Кнопка Поиск
         public void simpleButton1_Click(object sender, EventArgs e)
         {
-            if (checkEdit1.Checked | checkEdit2.Checked | checkEdit3.Checked | checkEdit4.Checked | checkEdit5.Checked | checkEdit6.Checked | checkEdit7.Checked | checkEdit8.Checked)
+            if (checkEdit1.Checked | checkEdit3.Checked | checkEdit4.Checked | checkEdit5.Checked | checkEdit6.Checked | checkEdit7.Checked | checkEdit8.Checked)
             {
                 string Date_S;
                 string Date_E;
@@ -383,9 +369,210 @@ namespace Учет_цистерн.Forms.Смена_собственника
             }
         }
 
-        private void simpleButton2_Click(object sender, EventArgs e)
+        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            if(gridView2.SelectedRowsCount > 0)
+            string Id = gridView1.GetFocusedDataRow()[6].ToString();
+            string OwnerID = gridView1.GetFocusedDataRow()[7].ToString();
+            string HeadID = gridView1.GetFocusedDataRow()[0].ToString();
+            Grid1Id = Convert.ToInt32(Id);
+            Grid3Id = Convert.ToInt32(HeadID);
+            OwnerId_v2 = Convert.ToInt32(OwnerID);
+        }
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+
+        public void FormattingExcelCells(Excel.Range range, bool val1, bool val2)
+        {
+            range.Font.Name = "Arial Cyr";
+            range.Font.Size = 9;
+            range.Font.FontStyle = "Bold";
+            if (val1 == true)
+            {
+                Excel.Borders border = range.Borders;
+                border.LineStyle = Excel.XlLineStyle.xlContinuous;
+                border.Weight = 2d;
+            }
+            if (val2 == true)
+            {
+                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            }
+            else
+            {
+                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            }
+        }
+
+
+        private void gridControl3_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    contextMenuStrip1.Show(gridControl3, new Point(e.X, e.Y));
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArrayList rows = new ArrayList();
+                List<Object> aList = new List<Object>();
+                string ID = string.Empty;
+
+                List<Object> CarnumList = new List<Object>();
+                string CarNum = string.Empty;
+                
+                Int32[] selectedRowHandles = gridView3.GetSelectedRows();
+
+                if (selectedRowHandles.Length < gridView3.RowCount)
+                {
+                    for (int i = 0; i < selectedRowHandles.Length; i++)
+                    {
+                        int selectedRowHandle = selectedRowHandles[i];
+                        if (selectedRowHandle >= 0)
+                            rows.Add(gridView3.GetDataRow(selectedRowHandle));
+                    }
+
+                    foreach (DataRow row in rows)
+                    {
+                        aList.Add(row["ID"]);
+                        ID = string.Join(" ", aList);
+
+                        CarnumList.Add(row["Номер В/Ц"]);
+                        CarNum = string.Join(" ", CarnumList);
+
+                        string delete = "exec dbo.Remove_Rent_Carriage '" + ID + "','" + CarNum + "'";
+                        DbConnection.DBConnect(delete);
+                    }
+
+                    gridView2_RowCellClick(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("В заявке должен быть хотябы 1 вагон", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArrayList rows = new ArrayList();
+
+                List<Object> aList = new List<Object>();
+                string ID = string.Empty;
+
+                List<Object> CarnumList = new List<Object>();
+                string CarNum = string.Empty;
+
+                Int32[] selectedRowHandles = gridView3.GetSelectedRows();
+
+                if (selectedRowHandles.Length < gridView3.RowCount)
+                {
+                    for (int i = 0; i < selectedRowHandles.Length; i++)
+                    {
+                        int selectedRowHandle = selectedRowHandles[i];
+                        if (selectedRowHandle >= 0)
+                            rows.Add(gridView3.GetDataRow(selectedRowHandle));
+                    }
+
+                    foreach (DataRow row in rows)
+                    {
+                        aList.Add(row["ID"]);
+                        ID = string.Join(" ", aList);
+
+                        CarnumList.Add(row["Номер В/Ц"]);
+                        CarNum = string.Join(" ", CarnumList);
+
+                        Clipboard.SetText(CarNum);
+
+                        string delete = "exec dbo.Remove_Rent_Carriage '" + ID + "','" + CarNum + "'";
+                        DbConnection.DBConnect(delete);
+                    }
+
+                    foreach (Form form in Application.OpenForms)
+                    {
+                        if (form.GetType() == typeof(Change_of_Ownership))
+                        {
+                            form.Activate();
+                            return;
+                        }
+                    }
+
+                    string DateIns = System.DateTime.Now.ToString();
+
+                    Change_of_Ownership change_Of_Ownership = new Change_of_Ownership(tabControl1, role, User_ID);
+                    tabControl1.Show();
+                    TabPage chg_tabPage = new TabPage("Смена собственника от " + DateIns);
+                    change_Of_Ownership.GetDate = DateIns;
+                    tabControl1.TabPages.Add(chg_tabPage);
+                    tabControl1.SelectedTab = chg_tabPage;
+                    change_Of_Ownership.TopLevel = false;
+                    change_Of_Ownership.Visible = true;
+                    change_Of_Ownership.FormBorderStyle = FormBorderStyle.None;
+                    change_Of_Ownership.Dock = DockStyle.Fill;
+                    chg_tabPage.Controls.Add(change_Of_Ownership);
+                    change_Of_Ownership.вставитьToolStripMenuItem_Click(null,null);
+
+                    gridView2_RowCellClick(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("В заявке должен быть хотябы 1 вагон", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void gridControl2_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    contextMenuStrip2.Show(gridControl2, new Point(e.X, e.Y));
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void изменитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (gridView2.SelectedRowsCount > 0)
             {
                 Rent_Update_v1 update_v1 = new Rent_Update_v1(User_ID);
                 update_v1.dateTimePicker1.Text = gridView2.GetFocusedDataRow()[1].ToString();
@@ -402,42 +589,11 @@ namespace Учет_цистерн.Forms.Смена_собственника
             }
         }
 
-        private void simpleButton5_Click(object sender, EventArgs e)
-        {
-            if(gridView1.SelectedRowsCount > 0)
-            {
-                Rent_Update_v2 update_v2 = new Rent_Update_v2(User_ID);
-                update_v2.textEdit3.Text = gridView1.GetFocusedDataRow()[3].ToString();
-                update_v2.dateTimePicker1.Text = gridView1.GetFocusedDataRow()[1].ToString();
-                update_v2.textEdit1.Text = gridView1.GetFocusedDataRow()[2].ToString();
-                update_v2.textEdit2.Text = gridView1.GetFocusedDataRow()[4].ToString();
-                update_v2.HeadID = Grid3Id;
-                update_v2.BodyID = Grid1Id;
-                update_v2.SelectOwnerID = OwnerId_v2;
-                update_v2.Owner = this;
-                update_v2.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Для редактирования записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
-        {
-            string Id = gridView1.GetFocusedDataRow()[6].ToString();
-            string OwnerID = gridView1.GetFocusedDataRow()[7].ToString();
-            string HeadID = gridView1.GetFocusedDataRow()[0].ToString();
-            Grid1Id = Convert.ToInt32(Id);
-            Grid3Id = Convert.ToInt32(HeadID);
-            OwnerId_v2 = Convert.ToInt32(OwnerID);
-        }
-
-        private void simpleButton3_Click(object sender, EventArgs e)
+        private void удалитьToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             try
             {
-                if(gridView2.SelectedRowsCount > 0)
+                if (gridView2.SelectedRowsCount > 0)
                 {
                     if (MessageBox.Show("Удалить выделенные записи?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
@@ -473,47 +629,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
             }
         }
 
-        private void simpleButton6_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if(gridView1.SelectedRowsCount > 0)
-                {
-                    if (MessageBox.Show("Удалить выделенные записи?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        ArrayList rows = new ArrayList();
-                        List<object> aList = new List<Object>();
-                        string Arrays = string.Empty;
-
-                        Int32[] selectedRowHandles = gridView1.GetSelectedRows();
-                        for (int i = 0; i < selectedRowHandles.Length; i++)
-                        {
-                            int selectedRowHandle = selectedRowHandles[i];
-                            if (selectedRowHandle >= 0)
-                                rows.Add(gridView1.GetDataRow(selectedRowHandle));
-                        }
-                        foreach (DataRow row in rows)
-                        {
-                            aList.Add(row["BodyID"]);
-                            Arrays = string.Join(" ", aList);
-                            string delete = "exec dbo.Rent_Delete_v2 '" + Arrays + "'";
-                            DbConnection.DBConnect(delete);
-                        }
-                        simpleButton1_Click(null, null);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void simpleButton4_Click(object sender, EventArgs e)
+        private void отчетToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -559,52 +675,74 @@ namespace Учет_цистерн.Forms.Смена_собственника
                     MessageBox.Show("Выполните поиск", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void releaseObject(object obj)
+        private void изменитьToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            try
+            if (gridView1.SelectedRowsCount > 0)
             {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-                obj = null;
-            }
-            catch (Exception ex)
-            {
-                obj = null;
-                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
-            }
-            finally
-            {
-                GC.Collect();
-            }
-        }
-
-        public void FormattingExcelCells(Excel.Range range, bool val1, bool val2)
-        {
-            range.Font.Name = "Arial Cyr";
-            range.Font.Size = 9;
-            range.Font.FontStyle = "Bold";
-            if (val1 == true)
-            {
-                Excel.Borders border = range.Borders;
-                border.LineStyle = Excel.XlLineStyle.xlContinuous;
-                border.Weight = 2d;
-            }
-            if (val2 == true)
-            {
-                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                Rent_Update_v2 update_v2 = new Rent_Update_v2(User_ID);
+                update_v2.textEdit3.Text = gridView1.GetFocusedDataRow()[3].ToString();
+                update_v2.dateTimePicker1.Text = gridView1.GetFocusedDataRow()[1].ToString();
+                update_v2.textEdit1.Text = gridView1.GetFocusedDataRow()[2].ToString();
+                update_v2.textEdit2.Text = gridView1.GetFocusedDataRow()[4].ToString();
+                update_v2.HeadID = Grid3Id;
+                update_v2.BodyID = Grid1Id;
+                update_v2.SelectOwnerID = OwnerId_v2;
+                update_v2.Owner = this;
+                update_v2.ShowDialog();
             }
             else
             {
-                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                MessageBox.Show("Для редактирования записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void simpleButton7_Click(object sender, EventArgs e)
+        private void удалитьToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (gridView1.SelectedRowsCount > 0)
+                {
+                    if (MessageBox.Show("Удалить выделенные записи?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        ArrayList rows = new ArrayList();
+                        List<object> aList = new List<Object>();
+                        string Arrays = string.Empty;
+
+                        Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                        for (int i = 0; i < selectedRowHandles.Length; i++)
+                        {
+                            int selectedRowHandle = selectedRowHandles[i];
+                            if (selectedRowHandle >= 0)
+                                rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                        }
+                        foreach (DataRow row in rows)
+                        {
+                            aList.Add(row["BodyID"]);
+                            Arrays = string.Join(" ", aList);
+                            string delete = "exec dbo.Rent_Delete_v2 '" + Arrays + "'";
+                            DbConnection.DBConnect(delete);
+                        }
+                        simpleButton1_Click(null, null);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void отчётToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -663,52 +801,20 @@ namespace Учет_цистерн.Forms.Смена_собственника
             {
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
 
-        private void gridControl3_MouseClick(object sender, MouseEventArgs e)
+        private void gridControl1_MouseClick(object sender, MouseEventArgs e)
         {
             try
             {
                 if (e.Button == MouseButtons.Right)
                 {
-                    contextMenuStrip1.Show(gridControl3, new Point(e.X, e.Y));
+                    contextMenuStrip3.Show(gridControl1, new Point(e.X, e.Y));
                 }
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ArrayList rows = new ArrayList();
-                List<Object> aList = new List<Object>();
-                string Arrays = string.Empty;
-
-                Int32[] selectedRowHandles = gridView3.GetSelectedRows();
-                for (int i = 0; i < selectedRowHandles.Length; i++)
-                {
-                    int selectedRowHandle = selectedRowHandles[i];
-                    if (selectedRowHandle >= 0)
-                        rows.Add(gridView3.GetDataRow(selectedRowHandle));
-                }
-
-
-                foreach (DataRow row in rows)
-                {
-                    aList.Add(row["ID"]);
-                    Arrays = string.Join(" ", aList);
-                    //string delete = "exec dbo.Remove_TempMultiCar '" + User_ID + "','" + Arrays + "'";
-                    //DbConnection.DBConnect(delete);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

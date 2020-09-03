@@ -950,7 +950,7 @@ namespace Учет_цистерн
                 }
             }
 
-            Rent_Brodcast_Car rent_Brodcast_Car = new Rent_Brodcast_Car(role, UserID);
+            Rent_Brodcast_Car rent_Brodcast_Car = new Rent_Brodcast_Car(this.tabControl1,role, UserID);
             tabControl1.Show();
             TabPage chg_tabPage = new TabPage("Заявка на передачу в/ц");
             tabControl1.TabPages.Add(chg_tabPage);
