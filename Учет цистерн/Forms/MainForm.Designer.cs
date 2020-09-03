@@ -84,6 +84,7 @@
             this.contextMenuStrip_Rent_Car = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.заявкаНаПередачуВцToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменаСобственникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button8 = new System.Windows.Forms.Button();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -455,6 +456,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.button7);
@@ -591,6 +593,16 @@
             resources.ApplyResources(this.сменаСобственникаToolStripMenuItem, "сменаСобственникаToolStripMenuItem");
             this.сменаСобственникаToolStripMenuItem.Click += new System.EventHandler(this.сменаСобственникаToolStripMenuItem_Click);
             // 
+            // button8
+            // 
+            resources.ApplyResources(this.button8, "button8");
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.button8.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.Name = "button8";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -682,6 +694,7 @@
         private System.Windows.Forms.ToolStripMenuItem заявкаНаПередачуВцToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сменаСобственникаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem дополнительныеПараметрыToolStripMenuItem;
+        public System.Windows.Forms.Button button8;
     }
 }
 

@@ -20,6 +20,7 @@ using Учет_цистерн.Forms.Пользователи;
 using Учет_цистерн.Forms.Обработанные_вагоны;
 using Учет_цистерн.Forms.Смена_собственника;
 using Учет_цистерн.Forms.Доп.параметры;
+using Учет_цистерн.Forms.АУТН;
 
 namespace Учет_цистерн
 {
@@ -964,6 +965,29 @@ namespace Учет_цистерн
         private void button3_Click_1(object sender, EventArgs e)
         {
             contextMenuStrip_Report.Show(button3, new Point(0, button3.Height));
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(AutnForm))
+                {
+                    form.Activate();
+                    return;
+                }
+            }
+
+            AutnForm autnForm = new AutnForm();
+            tabControl1.Show();
+            TabPage autnPage = new TabPage("Журнал АУТН");
+            tabControl1.TabPages.Add(autnPage);
+            tabControl1.SelectedTab = autnPage;
+            autnForm.TopLevel = false;
+            autnForm.Visible = true;
+            autnForm.FormBorderStyle = FormBorderStyle.None;
+            autnForm.Dock = DockStyle.Fill;
+            autnPage.Controls.Add(autnForm);
         }
 
         private void дополнительныеПараметрыToolStripMenuItem_Click(object sender, EventArgs e)
