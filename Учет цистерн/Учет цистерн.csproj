@@ -215,6 +215,12 @@
     <Compile Include="Forms\Продукты\addNewCargo.Designer.cs">
       <DependentUpon>addNewCargo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Смена собственника\Update_Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Смена собственника\Update_Product.Designer.cs">
+      <DependentUpon>Update_Product.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Смена собственника\Rent_Brodcast_Car.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -462,6 +468,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Продукты\addNewCargo.resx">
       <DependentUpon>addNewCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Смена собственника\Update_Product.resx">
+      <DependentUpon>Update_Product.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Смена собственника\Rent_Brodcast_Car.resx">
       <DependentUpon>Rent_Brodcast_Car.cs</DependentUpon>
