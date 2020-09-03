@@ -30,10 +30,6 @@
         {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
-            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
-            this.checkedComboBoxEdit1 = new DevExpress.XtraEditors.CheckedComboBoxEdit();
-            this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.textEdit12 = new DevExpress.XtraEditors.TextEdit();
             this.checkEdit23 = new DevExpress.XtraEditors.CheckEdit();
@@ -134,8 +130,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.xtraScrollableControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).BeginInit();
@@ -211,10 +205,6 @@
             // 
             // xtraScrollableControl1
             // 
-            this.xtraScrollableControl1.Controls.Add(this.lookUpEdit1);
-            this.xtraScrollableControl1.Controls.Add(this.checkedComboBoxEdit1);
-            this.xtraScrollableControl1.Controls.Add(this.labelControl28);
-            this.xtraScrollableControl1.Controls.Add(this.labelControl27);
             this.xtraScrollableControl1.Controls.Add(this.groupControl5);
             this.xtraScrollableControl1.Controls.Add(this.labelControl1);
             this.xtraScrollableControl1.Controls.Add(this.groupControl3);
@@ -242,50 +232,6 @@
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
             this.xtraScrollableControl1.Size = new System.Drawing.Size(342, 791);
             this.xtraScrollableControl1.TabIndex = 0;
-            // 
-            // lookUpEdit1
-            // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(127, 742);
-            this.lookUpEdit1.Name = "lookUpEdit1";
-            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Size = new System.Drawing.Size(209, 20);
-            this.lookUpEdit1.TabIndex = 42;
-            this.lookUpEdit1.Visible = false;
-            this.lookUpEdit1.EditValueChanged += new System.EventHandler(this.lookUpEdit1_EditValueChanged);
-            // 
-            // checkedComboBoxEdit1
-            // 
-            this.checkedComboBoxEdit1.Location = new System.Drawing.Point(127, 768);
-            this.checkedComboBoxEdit1.Name = "checkedComboBoxEdit1";
-            this.checkedComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.checkedComboBoxEdit1.Properties.ItemAutoHeight = true;
-            this.checkedComboBoxEdit1.Size = new System.Drawing.Size(209, 20);
-            this.checkedComboBoxEdit1.TabIndex = 41;
-            this.checkedComboBoxEdit1.Visible = false;
-            // 
-            // labelControl28
-            // 
-            this.labelControl28.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelControl28.Appearance.Options.UseFont = true;
-            this.labelControl28.Location = new System.Drawing.Point(34, 770);
-            this.labelControl28.Name = "labelControl28";
-            this.labelControl28.Size = new System.Drawing.Size(65, 14);
-            this.labelControl28.TabIndex = 39;
-            this.labelControl28.Text = "Номера в/ц";
-            this.labelControl28.Visible = false;
-            // 
-            // labelControl27
-            // 
-            this.labelControl27.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelControl27.Appearance.Options.UseFont = true;
-            this.labelControl27.Location = new System.Drawing.Point(34, 744);
-            this.labelControl27.Name = "labelControl27";
-            this.labelControl27.Size = new System.Drawing.Size(78, 14);
-            this.labelControl27.TabIndex = 37;
-            this.labelControl27.Text = "Номер заявки";
-            this.labelControl27.Visible = false;
             // 
             // groupControl5
             // 
@@ -333,6 +279,7 @@
             this.groupControl5.Size = new System.Drawing.Size(328, 211);
             this.groupControl5.TabIndex = 36;
             this.groupControl5.Text = "АУТН";
+            this.groupControl5.Visible = false;
             // 
             // textEdit12
             // 
@@ -1307,22 +1254,24 @@
             // 
             this.simpleButton11.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton11.Appearance.Options.UseFont = true;
-            this.simpleButton11.Location = new System.Drawing.Point(449, 26);
+            this.simpleButton11.Location = new System.Drawing.Point(705, 26);
             this.simpleButton11.Name = "simpleButton11";
             this.simpleButton11.Size = new System.Drawing.Size(250, 30);
             this.simpleButton11.TabIndex = 10;
             this.simpleButton11.Text = "Завершить редактирование АУТН";
+            this.simpleButton11.Visible = false;
             this.simpleButton11.Click += new System.EventHandler(this.simpleButton11_Click);
             // 
             // simpleButton10
             // 
             this.simpleButton10.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton10.Appearance.Options.UseFont = true;
-            this.simpleButton10.Location = new System.Drawing.Point(449, 26);
+            this.simpleButton10.Location = new System.Drawing.Point(705, 26);
             this.simpleButton10.Name = "simpleButton10";
             this.simpleButton10.Size = new System.Drawing.Size(210, 30);
             this.simpleButton10.TabIndex = 9;
             this.simpleButton10.Text = "Редактировать АУТН";
+            this.simpleButton10.Visible = false;
             this.simpleButton10.Click += new System.EventHandler(this.simpleButton10_Click);
             // 
             // checkEdit24
@@ -1341,7 +1290,7 @@
             // 
             this.simpleButton8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton8.Appearance.Options.UseFont = true;
-            this.simpleButton8.Location = new System.Drawing.Point(705, 26);
+            this.simpleButton8.Location = new System.Drawing.Point(449, 26);
             this.simpleButton8.Name = "simpleButton8";
             this.simpleButton8.Size = new System.Drawing.Size(250, 30);
             this.simpleButton8.TabIndex = 7;
@@ -1352,7 +1301,7 @@
             // 
             this.simpleButton6.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton6.Appearance.Options.UseFont = true;
-            this.simpleButton6.Location = new System.Drawing.Point(705, 26);
+            this.simpleButton6.Location = new System.Drawing.Point(449, 26);
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(250, 30);
             this.simpleButton6.TabIndex = 6;
@@ -1560,8 +1509,6 @@
             this.groupControl1.ResumeLayout(false);
             this.xtraScrollableControl1.ResumeLayout(false);
             this.xtraScrollableControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
@@ -1728,10 +1675,6 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit24;
         private DevExpress.XtraEditors.SimpleButton simpleButton10;
         private DevExpress.XtraEditors.SimpleButton simpleButton11;
-        private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit1;
-        private DevExpress.XtraEditors.LabelControl labelControl28;
-        private DevExpress.XtraEditors.LabelControl labelControl27;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
         private DevExpress.XtraEditors.TextEdit textEdit12;
     }
 }

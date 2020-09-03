@@ -189,14 +189,14 @@
             // 
             // textEdit12
             // 
-            this.textEdit12.Location = new System.Drawing.Point(54, 49);
+            this.textEdit12.Location = new System.Drawing.Point(103, 49);
             this.textEdit12.Name = "textEdit12";
-            this.textEdit12.Size = new System.Drawing.Size(97, 20);
+            this.textEdit12.Size = new System.Drawing.Size(48, 20);
             this.textEdit12.TabIndex = 59;
             // 
             // checkEdit23
             // 
-            this.checkEdit23.Location = new System.Drawing.Point(34, 180);
+            this.checkEdit23.Location = new System.Drawing.Point(3, 179);
             this.checkEdit23.Name = "checkEdit23";
             this.checkEdit23.Properties.Caption = "";
             this.checkEdit23.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit23_Properties_CheckStateChanged);
@@ -218,7 +218,7 @@
             // 
             this.labelControl26.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl26.Appearance.Options.UseFont = true;
-            this.labelControl26.Location = new System.Drawing.Point(56, 182);
+            this.labelControl26.Location = new System.Drawing.Point(24, 181);
             this.labelControl26.Name = "labelControl26";
             this.labelControl26.Size = new System.Drawing.Size(119, 14);
             this.labelControl26.TabIndex = 37;
@@ -227,10 +227,10 @@
             // textEdit17
             // 
             this.textEdit17.EditValue = "";
-            this.textEdit17.Location = new System.Drawing.Point(181, 180);
+            this.textEdit17.Location = new System.Drawing.Point(152, 180);
             this.textEdit17.Name = "textEdit17";
             this.textEdit17.Properties.MaxLength = 20;
-            this.textEdit17.Size = new System.Drawing.Size(85, 20);
+            this.textEdit17.Size = new System.Drawing.Size(168, 20);
             this.textEdit17.TabIndex = 57;
             // 
             // textEdit24
@@ -243,7 +243,6 @@
             this.textEdit24.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit24.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit24.Properties.MaxLength = 1;
-            this.textEdit24.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit24_Properties_KeyPress);
             this.textEdit24.Size = new System.Drawing.Size(48, 20);
             this.textEdit24.TabIndex = 36;
             // 
@@ -277,7 +276,6 @@
             this.textEdit19.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit19.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit19.Properties.MaxLength = 1;
-            this.textEdit19.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit19_Properties_KeyPress);
             this.textEdit19.Size = new System.Drawing.Size(48, 20);
             this.textEdit19.TabIndex = 54;
             // 
@@ -311,7 +309,6 @@
             this.textEdit20.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit20.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit20.Properties.MaxLength = 1;
-            this.textEdit20.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit20_Properties_KeyPress);
             this.textEdit20.Size = new System.Drawing.Size(48, 20);
             this.textEdit20.TabIndex = 51;
             // 
@@ -345,7 +342,6 @@
             this.textEdit21.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit21.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit21.Properties.MaxLength = 1;
-            this.textEdit21.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit21_Properties_KeyPress);
             this.textEdit21.Size = new System.Drawing.Size(48, 20);
             this.textEdit21.TabIndex = 48;
             // 
@@ -379,7 +375,6 @@
             this.textEdit22.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit22.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit22.Properties.MaxLength = 1;
-            this.textEdit22.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit22_Properties_KeyPress);
             this.textEdit22.Size = new System.Drawing.Size(48, 20);
             this.textEdit22.TabIndex = 45;
             // 
@@ -413,7 +408,6 @@
             this.textEdit23.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit23.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit23.Properties.MaxLength = 1;
-            this.textEdit23.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit23_Properties_KeyPress);
             this.textEdit23.Size = new System.Drawing.Size(48, 20);
             this.textEdit23.TabIndex = 42;
             // 
@@ -447,7 +441,6 @@
             this.textEdit16.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit16.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit16.Properties.MaxLength = 1;
-            this.textEdit16.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit16_Properties_KeyPress);
             this.textEdit16.Size = new System.Drawing.Size(48, 20);
             this.textEdit16.TabIndex = 39;
             // 
@@ -481,7 +474,6 @@
             this.textEdit15.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit15.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit15.Properties.MaxLength = 1;
-            this.textEdit15.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit15_Properties_KeyPress);
             this.textEdit15.Size = new System.Drawing.Size(48, 20);
             this.textEdit15.TabIndex = 36;
             // 
@@ -514,7 +506,6 @@
             this.textEdit14.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit14.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit14.Properties.MaxLength = 1;
-            this.textEdit14.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit14_Properties_KeyPress);
             this.textEdit14.Size = new System.Drawing.Size(48, 20);
             this.textEdit14.TabIndex = 33;
             // 
@@ -547,7 +538,6 @@
             this.textEdit13.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit13.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit13.Properties.MaxLength = 1;
-            this.textEdit13.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit13_Properties_KeyPress);
             this.textEdit13.Size = new System.Drawing.Size(48, 20);
             this.textEdit13.TabIndex = 30;
             // 
@@ -577,9 +567,9 @@
             this.labelControl14.Appearance.Options.UseFont = true;
             this.labelControl14.Location = new System.Drawing.Point(24, 51);
             this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(24, 14);
+            this.labelControl14.Size = new System.Drawing.Size(50, 14);
             this.labelControl14.TabIndex = 26;
-            this.labelControl14.Text = "3 кл";
+            this.labelControl14.Text = "3 клапан";
             // 
             // checkEdit17
             // 
@@ -601,7 +591,6 @@
             this.textEdit18.Properties.Mask.ShowPlaceHolders = false;
             this.textEdit18.Properties.MaxLength = 1;
             this.textEdit18.Properties.Name = "textEdit18";
-            this.textEdit18.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit18_Properties_KeyPress);
             this.textEdit18.Size = new System.Drawing.Size(48, 20);
             this.textEdit18.TabIndex = 16;
             // 
@@ -624,6 +613,7 @@
             this.simpleButton1.Size = new System.Drawing.Size(100, 25);
             this.simpleButton1.TabIndex = 15;
             this.simpleButton1.Text = "Сохранить";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // groupControl2
             // 
@@ -643,11 +633,12 @@
             // 
             this.simpleButton11.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton11.Appearance.Options.UseFont = true;
-            this.simpleButton11.Location = new System.Drawing.Point(413, 26);
+            this.simpleButton11.Location = new System.Drawing.Point(197, 26);
             this.simpleButton11.Name = "simpleButton11";
             this.simpleButton11.Size = new System.Drawing.Size(250, 30);
             this.simpleButton11.TabIndex = 10;
             this.simpleButton11.Text = "Завершить редактирование АУТН";
+            this.simpleButton11.Click += new System.EventHandler(this.simpleButton11_Click);
             // 
             // simpleButton10
             // 
@@ -658,6 +649,7 @@
             this.simpleButton10.Size = new System.Drawing.Size(210, 30);
             this.simpleButton10.TabIndex = 9;
             this.simpleButton10.Text = "Редактировать АУТН";
+            this.simpleButton10.Click += new System.EventHandler(this.simpleButton10_Click);
             // 
             // simpleButton4
             // 
@@ -686,6 +678,7 @@
             this.simpleButton3.TabIndex = 2;
             this.simpleButton3.Text = "Редактировать";
             this.simpleButton3.ToolTip = "Редактировать";
+            this.simpleButton3.Visible = false;
             // 
             // dateTimePicker1
             // 
@@ -696,6 +689,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(106, 22);
             this.dateTimePicker1.TabIndex = 0;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // groupControl4
             // 
@@ -812,6 +806,7 @@
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             // 
             // AutnForm
             // 

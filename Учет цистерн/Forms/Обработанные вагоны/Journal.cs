@@ -223,30 +223,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             comboBox2.DataSource = dt1;
             comboBox2.DisplayMember = "Name";
             comboBox2.ValueMember = "ID";
-
-            string Rent = "select s.ID [RentID],s.Number [Номер заявки],s.Date_Rec [Дата],o.Name [Собственник],s.Product [Продукт] from d__Rent_Status s left join d__Owner o on o.ID = s.OwnerId order by s.ID desc";
-            DataTable dt2 = DbConnection.DBConnect(Rent);
-
-            RepositoryItemLookUpEdit riLookup = new RepositoryItemLookUpEdit();
-            riLookup.DataSource = dt2;
-            //riLookup.Columns["RentID"].Visible = false;
-            riLookup.ValueMember = "RentID";
-            riLookup.DisplayMember = "Номер заявки";
-            riLookup.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            riLookup.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
-            riLookup.AutoSearchColumnIndex = 1;
-
-            lookUpEdit1.Properties.Assign(riLookup);
-        }
-
-        private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
-        {
-            string text = lookUpEdit1.EditValue.ToString();
-            string GetCarnumber = "select * from Rent_Carriage where Status_Rent = " + text;
-            DataTable dt = DbConnection.DBConnect(GetCarnumber);
-            checkedComboBoxEdit1.Properties.DataSource = dt;
-            checkedComboBoxEdit1.Properties.DisplayMember = "Number_Carriage";
-            checkedComboBoxEdit1.Properties.ValueMember = "Number_Carriage";
         }
 
         private void LastRenderedService()
@@ -1029,8 +1005,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         private void Block()
         {
             textEdit1.Enabled = false;
-            lookUpEdit1.Enabled = false;
-            checkedComboBoxEdit1.Enabled = false;
             //textEdit3.Enabled = false;
             textEdit4.Enabled = false;
             textEdit6.Enabled = false;
@@ -1061,8 +1035,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
         private void Unblock()
         {
             textEdit1.Enabled = true;
-            lookUpEdit1.Enabled = true;
-            checkedComboBoxEdit1.Enabled = true;
             //textEdit3.Enabled = true;
             textEdit4.Enabled = true;
             textEdit6.Enabled = true;
