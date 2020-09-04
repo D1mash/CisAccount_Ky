@@ -39,6 +39,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.уадилитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.изменитьПродуктToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -146,23 +147,31 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьToolStripMenuItem,
-            this.уадилитьToolStripMenuItem});
+            this.уадилитьToolStripMenuItem,
+            this.изменитьПродуктToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(176, 70);
             // 
             // вставитьToolStripMenuItem
             // 
             this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
-            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.вставитьToolStripMenuItem.Text = "Вставить";
             this.вставитьToolStripMenuItem.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
             // уадилитьToolStripMenuItem
             // 
             this.уадилитьToolStripMenuItem.Name = "уадилитьToolStripMenuItem";
-            this.уадилитьToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.уадилитьToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.уадилитьToolStripMenuItem.Text = "Удалить";
             this.уадилитьToolStripMenuItem.Click += new System.EventHandler(this.уадилитьToolStripMenuItem_Click);
+            // 
+            // изменитьПродуктToolStripMenuItem
+            // 
+            this.изменитьПродуктToolStripMenuItem.Name = "изменитьПродуктToolStripMenuItem";
+            this.изменитьПродуктToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.изменитьПродуктToolStripMenuItem.Text = "Изменить продукт";
+            this.изменитьПродуктToolStripMenuItem.Click += new System.EventHandler(this.изменитьПродуктToolStripMenuItem_Click);
             // 
             // groupControl1
             // 
@@ -245,6 +254,7 @@
             this.textEdit3.Properties.Appearance.Options.UseFont = true;
             this.textEdit3.Size = new System.Drawing.Size(115, 20);
             this.textEdit3.TabIndex = 16;
+            this.textEdit3.EditValueChanged += new System.EventHandler(this.textEdit3_EditValueChanged);
             this.textEdit3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit3_KeyPress);
             // 
             // textEdit2
@@ -356,5 +366,6 @@
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.TextEdit textEdit2;
         private DevExpress.XtraEditors.TextEdit textEdit3;
+        private System.Windows.Forms.ToolStripMenuItem изменитьПродуктToolStripMenuItem;
     }
 }

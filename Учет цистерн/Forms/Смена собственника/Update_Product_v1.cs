@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Учет_цистерн.Forms.Смена_собственника
 {
-    public partial class Update_Product : Form
+    public partial class Update_Product_v1 : Form
     {
         private string id = string.Empty;
         private string carnum = string.Empty;
 
-        public Update_Product(string iD, string carNum)
+        public Update_Product_v1(string iD, string carNum)
         {
             InitializeComponent();
             this.id = iD;

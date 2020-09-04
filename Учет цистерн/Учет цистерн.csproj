@@ -215,11 +215,17 @@
     <Compile Include="Forms\Продукты\addNewCargo.Designer.cs">
       <DependentUpon>addNewCargo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Смена собственника\Update_Product.cs">
+    <Compile Include="Forms\Смена собственника\Update_Product_v2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Смена собственника\Update_Product.Designer.cs">
-      <DependentUpon>Update_Product.cs</DependentUpon>
+    <Compile Include="Forms\Смена собственника\Update_Product_v2.Designer.cs">
+      <DependentUpon>Update_Product_v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Смена собственника\Update_Product_v1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Смена собственника\Update_Product_v1.Designer.cs">
+      <DependentUpon>Update_Product_v1.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Смена собственника\Rent_Brodcast_Car.cs">
       <SubType>Form</SubType>
@@ -469,8 +475,8 @@
     <EmbeddedResource Include="Forms\Продукты\addNewCargo.resx">
       <DependentUpon>addNewCargo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Смена собственника\Update_Product.resx">
-      <DependentUpon>Update_Product.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Смена собственника\Update_Product_v1.resx">
+      <DependentUpon>Update_Product_v1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Смена собственника\Rent_Brodcast_Car.resx">
       <DependentUpon>Rent_Brodcast_Car.cs</DependentUpon>
@@ -480,6 +486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Смена собственника\Rent_Update_v2.resx">
       <DependentUpon>Rent_Update_v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Смена собственника\Update_Product_v2.resx">
+      <DependentUpon>Update_Product_v2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Справка\AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>

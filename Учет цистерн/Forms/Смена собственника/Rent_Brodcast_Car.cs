@@ -652,9 +652,10 @@ namespace Учет_цистерн.Forms.Смена_собственника
                     {
                         xlWorkSheet.Cells[i + 8, 2] = i;
                         xlWorkSheet.Cells[i + 8, 3] = gridView3.GetRowCellValue(i, "Номер В/Ц");
+                        xlWorkSheet.Cells[i + 8, 4] = gridView3.GetRowCellValue(i, "Продукт");
                     }
 
-                    Excel.Range range = xlWorkSheet.Range["B2", xlWorkSheet.Cells[gridView3.RowCount + 8, 3]];
+                    Excel.Range range = xlWorkSheet.Range["B2", xlWorkSheet.Cells[gridView3.RowCount + 8, 4]];
                     FormattingExcelCells(range, false, false);
 
                     xlApp.DisplayAlerts = false;
@@ -851,7 +852,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
                     //DbConnection.DBConnect(delete);
                 }
 
-                Update_Product update_Product = new Update_Product(ID, CarNum);
+                Update_Product_v1 update_Product = new Update_Product_v1(ID, CarNum);
                 update_Product.Owner = this;
                 update_Product.ShowDialog();
 

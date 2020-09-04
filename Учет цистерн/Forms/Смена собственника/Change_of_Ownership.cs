@@ -222,7 +222,7 @@ namespace Учет_цистерн.Forms
         }
 
         //Обновление
-        private void RefreshGrid()
+        public void RefreshGrid()
         {
             gridControl1.DataSource = null;
             gridView1.Columns.Clear();
@@ -301,6 +301,8 @@ namespace Учет_цистерн.Forms
                 DbConnection.DBConnect(delete);
             }
 
+            rows.Clear();
+            aList.Clear();
             RefreshGrid();
         }
 
@@ -383,6 +385,54 @@ namespace Учет_цистерн.Forms
             {
                 e.Handled = true;
             }
+        }
+
+        private void изменитьПродуктToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (gridView1.RowCount > 0)
+                {
+                    ArrayList rows = new ArrayList();
+                    
+                    List<Object> CarnumList = new List<Object>();
+                    string CarNum = string.Empty;
+                    
+                    Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                    for (int i = 0; i < selectedRowHandles.Length; i++)
+                    {
+                        int selectedRowHandle = selectedRowHandles[i];
+                        if (selectedRowHandle >= 0)
+                            rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                    }
+
+                    foreach (DataRow row in rows)
+                    {
+                        CarnumList.Add(row["Номер вагона"]);
+                        CarNum = string.Join(" ", CarnumList);
+                    }
+
+                    Update_Product_v2 update_Product_V2 = new Update_Product_v2(CarNum);
+                    update_Product_V2.Owner = this;
+                    update_Product_V2.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Для изменения необходимо внести вагоны", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textEdit3_EditValueChanged(object sender, EventArgs e)
+        {
+            string update = "Update TM Set TM.Product = '" + textEdit3.Text + "' from Temp_MultiCar TM";
+            DbConnection.DBConnect(update);
+
+            RefreshGrid();
         }
     }
 }
