@@ -491,9 +491,16 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                 if ((textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
                                     (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                                 {
-                                    //if (textEdit12.Text != "" && textEdit13.Text != "" && textEdit14.Text != "" && textEdit15.Text != "" && textEdit16.Text != "" && textEdit17.Text != "" && textEdit18.Text != "" && textEdit19.Text != "" && textEdit20.Text != ""
-                                    //&& textEdit21.Text != "" && textEdit22.Text != "" && textEdit23.Text != "" && textEdit24.Text != "")
-                                    //{
+                                    string StartProcess, EndProcess, DateTehCart, StartTor, EndTor, ArrivalDate, DateVU19 = string.Empty;
+
+                                    if (checkEdit25.Checked) { StartProcess = dateTimePicker9.Value.ToString(); } else { StartProcess = "null"; }
+                                    if (checkEdit26.Checked) { EndProcess = dateTimePicker8.Value.ToString(); } else { EndProcess = "null"; }
+                                    if (checkEdit27.Checked) { DateTehCart = dateTimePicker6.Value.ToString(); } else { DateTehCart = "null"; }
+                                    if (checkEdit28.Checked) { StartTor = dateTimePicker2.Value.ToString(); } else { StartTor = "null"; }
+                                    if (checkEdit29.Checked) { EndTor = dateTimePicker3.Value.ToString(); } else { EndTor = "null"; }
+                                    if (checkEdit30.Checked) { ArrivalDate = dateTimePicker5.Value.ToString(); } else { ArrivalDate = "null"; }
+                                    if (checkEdit31.Checked) { DateVU19 = dateTimePicker4.Value.ToString(); } else { DateVU19 = "null"; }
+
                                     string Add = "" +
                                         "declare @Id int; exec [dbo].[FillRenderedService] " +
                                         "'" + User_ID + "'," +
@@ -513,13 +520,13 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                         "'" + textEdit3.Text.Trim() + "'," +
                                         "" + comboBox2.SelectedValue.ToString() + "," +
                                         "NULL, " +
-                                        "'"+ dateTimePicker2.Value.ToString() + "', " +
-                                        "'" + dateTimePicker3.Value.ToString() + "', " +
-                                        "'" + dateTimePicker4.Value.ToString() + "'," +
-                                        "'" + dateTimePicker5.Value.ToString() + "', " +
-                                        "'" + dateTimePicker6.Value.ToString() + "', " +
-                                        "'" + dateTimePicker8.Value.ToString() + "'," +
-                                        "'" + dateTimePicker9.Value.ToString() + "',  @CurrentID = @Id output; select @Id";
+                                        "'" + StartProcess + "', " +
+                                        "'" + EndProcess + "', " +
+                                        "'" + DateTehCart + "'," +
+                                        "'" + StartTor + "', " +
+                                        "'" + EndTor + "', " +
+                                        "'" + ArrivalDate + "'," +
+                                        "'" + DateVU19 + "',  @CurrentID = @Id output; select @Id";
 
                                     DataTable HeadID = DbConnection.DBConnect(Add);
                                     if (HeadID.Rows.Count > 0)
@@ -547,6 +554,16 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                 if ((textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
                                     (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                                 {
+                                    string StartProcess, EndProcess, DateTehCart, StartTor, EndTor, ArrivalDate, DateVU19 = string.Empty;
+
+                                    if (checkEdit25.Checked) { StartProcess = dateTimePicker9.Value.ToString(); } else { StartProcess = "null"; }
+                                    if (checkEdit26.Checked) { EndProcess = dateTimePicker8.Value.ToString(); } else { EndProcess = "null"; }
+                                    if (checkEdit27.Checked) { DateTehCart = dateTimePicker6.Value.ToString(); } else { DateTehCart = "null"; }
+                                    if (checkEdit28.Checked) { StartTor = dateTimePicker2.Value.ToString(); } else { StartTor = "null"; }
+                                    if (checkEdit29.Checked) { EndTor = dateTimePicker3.Value.ToString(); } else { EndTor = "null"; }
+                                    if (checkEdit30.Checked) { ArrivalDate = dateTimePicker5.Value.ToString(); } else { ArrivalDate = "null"; }
+                                    if (checkEdit31.Checked) { DateVU19 = dateTimePicker4.Value.ToString(); } else { DateVU19 = "null"; }
+
                                     string Add = "" +
                                         "declare @Id int; exec [dbo].[FillRenderedService] " +
                                         "'" + User_ID + "'," +
@@ -566,13 +583,13 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                         "'" + textEdit3.Text.Trim() + "'," +
                                         "" + comboBox2.SelectedValue.ToString() + "," +
                                         "NULL, " +
-                                        "'" + dateTimePicker2.Value.ToString() + "', " +
-                                        "'" + dateTimePicker3.Value.ToString() + "', " +
-                                        "'" + dateTimePicker4.Value.ToString() + "'," +
-                                        "'" + dateTimePicker5.Value.ToString() + "', " +
-                                        "'" + dateTimePicker6.Value.ToString() + "', " +
-                                        "'" + dateTimePicker8.Value.ToString() + "'," +
-                                        "'" + dateTimePicker9.Value.ToString() + "',  @CurrentID = @Id output; select @Id";
+                                        "'" + StartProcess + "', " +
+                                        "'" + EndProcess + "', " +
+                                        "'" + DateTehCart + "'," +
+                                        "'" + StartTor + "', " +
+                                        "'" + EndTor + "', " +
+                                        "'" + ArrivalDate + "'," +
+                                        "'" + DateVU19 + "',  @CurrentID = @Id output; select @Id";
                                     DataTable HeadID = DbConnection.DBConnect(Add);
                                     if (HeadID.Rows.Count > 0)
                                     {
@@ -846,10 +863,18 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                             if ((textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
                                     (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                             {
-                                //if (textEdit12.Text != "" && textEdit13.Text != "" && textEdit14.Text != "" && textEdit15.Text != "" && textEdit16.Text != "" && textEdit17.Text != "" && textEdit18.Text != "" && textEdit19.Text != "" && textEdit20.Text != ""
-                                //&& textEdit21.Text != "" && textEdit22.Text != "" && textEdit23.Text != "" && textEdit24.Text != "")
-                                //{
-                                    string Update = "exec [dbo].[UpdateRenderedService] " +
+
+                                string StartProcess, EndProcess, DateTehCart, StartTor, EndTor, ArrivalDate, DateVU19 = string.Empty;
+
+                                if (checkEdit25.Checked) { StartProcess = dateTimePicker9.Value.ToString(); } else { StartProcess = "null"; }
+                                if (checkEdit26.Checked) { EndProcess = dateTimePicker8.Value.ToString(); } else { EndProcess = "null"; }
+                                if (checkEdit27.Checked) { DateTehCart = dateTimePicker6.Value.ToString(); } else { DateTehCart = "null"; }
+                                if (checkEdit28.Checked) { StartTor = dateTimePicker2.Value.ToString(); } else { StartTor = "null"; }
+                                if (checkEdit29.Checked) { EndTor = dateTimePicker3.Value.ToString(); } else { EndTor = "null"; }
+                                if (checkEdit30.Checked) { ArrivalDate = dateTimePicker5.Value.ToString(); } else { ArrivalDate = "null"; }
+                                if (checkEdit31.Checked) { DateVU19 = dateTimePicker4.Value.ToString(); } else { DateVU19 = "null"; }
+
+                                string Update = "exec [dbo].[UpdateRenderedService] " +
                                     "'"+User_ID+"'," + textEdit1.Text.Trim() + "," +
                                     "'"+textEdit2.Text.Trim()+"'," +
                                     "" + textEdit4.Text.Trim() + "," +
@@ -863,13 +888,13 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                     "" + comboBox1.SelectedValue.ToString() + "," +
                                     "'" + textEdit3.Text.Trim() + "'," +
                                     "" + comboBox2.SelectedValue.ToString() + "," +
-                                    "'" + dateTimePicker2.Value.ToString() + "', " +
-                                    "'" + dateTimePicker3.Value.ToString() + "', " +
-                                    "'" + dateTimePicker4.Value.ToString() + "'," +
-                                    "'" + dateTimePicker5.Value.ToString() + "', " +
-                                    "'" + dateTimePicker6.Value.ToString() + "', " +
-                                    "'" + dateTimePicker8.Value.ToString() + "'," +
-                                    "'" + dateTimePicker9.Value.ToString() + "'," +
+                                    "'" + StartProcess + "', " +
+                                    "'" + EndProcess + "', " +
+                                    "'" + DateTehCart + "'," +
+                                    "'" + StartTor + "', " +
+                                    "'" + EndTor + "', " +
+                                    "'" + ArrivalDate + "'," +
+                                    "'" + DateVU19 + "'," +
                                     "" + SelectItemRow;
                                     DbConnection.DBConnect(Update);
                                     Refreshh("1");
@@ -891,6 +916,16 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                             if ((textEdit3.Text != "" && textEdit4.Text != "" && textEdit6.Text != "" && textEdit7.Text != "" && textEdit8.Text != "" && textEdit5.Text != "" && textEdit9.Text != "" && textEdit10.Text != "" && textEdit11.Text != "") &
                                     (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                             {
+                                string StartProcess, EndProcess, DateTehCart, StartTor, EndTor, ArrivalDate, DateVU19 = string.Empty;
+
+                                if (checkEdit25.Checked) { StartProcess = dateTimePicker9.Value.ToString(); } else { StartProcess = "null"; }
+                                if (checkEdit26.Checked) { EndProcess = dateTimePicker8.Value.ToString(); } else { EndProcess = "null"; }
+                                if (checkEdit27.Checked) { DateTehCart = dateTimePicker6.Value.ToString(); } else { DateTehCart = "null"; }
+                                if (checkEdit28.Checked) { StartTor = dateTimePicker2.Value.ToString(); } else { StartTor = "null"; }
+                                if (checkEdit29.Checked) { EndTor = dateTimePicker3.Value.ToString(); } else { EndTor = "null"; }
+                                if (checkEdit30.Checked) { ArrivalDate = dateTimePicker5.Value.ToString(); } else { ArrivalDate = "null"; }
+                                if (checkEdit31.Checked) { DateVU19 = dateTimePicker4.Value.ToString(); } else { DateVU19 = "null"; }
+
                                 string Update = "exec [dbo].[UpdateRenderedService] " +
                                     "'" + User_ID + "'," + textEdit1.Text.Trim() + "," +
                                     "'" + textEdit2.Text.Trim() + "'," +
@@ -905,13 +940,13 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                     "" + comboBox1.SelectedValue.ToString() + "," +
                                     "'" + textEdit3.Text.Trim() + "'," +
                                     "" + comboBox2.SelectedValue.ToString() + "," +
-                                    "'" + dateTimePicker2.Value.ToString() + "', " +
-                                    "'" + dateTimePicker3.Value.ToString() + "', " +
-                                    "'" + dateTimePicker4.Value.ToString() + "'," +
-                                    "'" + dateTimePicker5.Value.ToString() + "', " +
-                                    "'" + dateTimePicker6.Value.ToString() + "', " +
-                                    "'" + dateTimePicker8.Value.ToString() + "'," +
-                                    "'" + dateTimePicker9.Value.ToString() + "'," +
+                                    "'" + StartProcess + "', " +
+                                    "'" + EndProcess + "', " +
+                                    "'" + DateTehCart + "'," +
+                                    "'" + StartTor + "', " +
+                                    "'" + EndTor + "', " +
+                                    "'" + ArrivalDate + "'," +
+                                    "'" + DateVU19 + "'," +
                                     "" + SelectItemRow;
                                 DbConnection.DBConnect(Update);
                                 Refreshh("1");
@@ -1080,13 +1115,13 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 textEdit11.Text = Trafar1.ToString();
                 textEdit5.Text = Naruzhka1.ToString();
 
-                dateTimePicker9.Value = Convert.ToDateTime(dt.Rows[0][28]);
-                dateTimePicker8.Value = Convert.ToDateTime(dt.Rows[0][29]);
-                dateTimePicker6.Value = Convert.ToDateTime(dt.Rows[0][30]);
-                dateTimePicker2.Value = Convert.ToDateTime(dt.Rows[0][31]);
-                dateTimePicker3.Value = Convert.ToDateTime(dt.Rows[0][32]);
-                dateTimePicker5.Value = Convert.ToDateTime(dt.Rows[0][33]);
-                dateTimePicker4.Value = Convert.ToDateTime(dt.Rows[0][34]);
+                if (dt.Rows[0][28] == System.DBNull.Value) { dateTimePicker9.Value = System.DateTime.Now; } else { dateTimePicker9.Value = Convert.ToDateTime(dt.Rows[0][28]); }
+                if (dt.Rows[0][29] == System.DBNull.Value) { dateTimePicker8.Value = System.DateTime.Now; } else { dateTimePicker8.Value = Convert.ToDateTime(dt.Rows[0][29]); }
+                if (dt.Rows[0][30] == System.DBNull.Value) { dateTimePicker6.Value = System.DateTime.Now; } else { dateTimePicker6.Value = Convert.ToDateTime(dt.Rows[0][30]); }
+                if (dt.Rows[0][31] == System.DBNull.Value) { dateTimePicker2.Value = System.DateTime.Now; } else { dateTimePicker2.Value = Convert.ToDateTime(dt.Rows[0][31]); }
+                if (dt.Rows[0][32] == System.DBNull.Value) { dateTimePicker3.Value = System.DateTime.Now; } else { dateTimePicker3.Value = Convert.ToDateTime(dt.Rows[0][32]); }
+                if (dt.Rows[0][33] == System.DBNull.Value) { dateTimePicker5.Value = System.DateTime.Now; } else { dateTimePicker5.Value = Convert.ToDateTime(dt.Rows[0][33]); }
+                if (dt.Rows[0][34] == System.DBNull.Value) { dateTimePicker4.Value = System.DateTime.Now; } else { dateTimePicker4.Value = Convert.ToDateTime(dt.Rows[0][34]); }
 
                 Num = Convert.ToInt32(dt.Rows[0][26].ToString());
 
@@ -1165,6 +1200,14 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             dateTimePicker6.Enabled = false;
             dateTimePicker8.Enabled = false;
             dateTimePicker9.Enabled = false;
+
+            checkEdit25.Checked = false;
+            checkEdit26.Checked = false;
+            checkEdit27.Checked = false;
+            checkEdit28.Checked = false;
+            checkEdit29.Checked = false;
+            checkEdit30.Checked = false;
+            checkEdit31.Checked = false;
         }
         private void Unblock()
         {
@@ -1181,14 +1224,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             comboBox1.Enabled = true;
             comboBox2.Enabled = true;
             simpleButton1.Enabled = true;
-
-            dateTimePicker2.Enabled = true;
-            dateTimePicker3.Enabled = true;
-            dateTimePicker4.Enabled = true;
-            dateTimePicker5.Enabled = true;
-            dateTimePicker6.Enabled = true;
-            dateTimePicker8.Enabled = true;
-            dateTimePicker9.Enabled = true;
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
@@ -1407,6 +1442,15 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             simpleButton9.Enabled = true;
             Temp = SelectItemRow;
             SelectItemRow = 0;
+
+            checkEdit25.Visible = true;
+            checkEdit26.Visible = true;
+            checkEdit27.Visible = true;
+            checkEdit28.Visible = true;
+            checkEdit29.Visible = true;
+            checkEdit30.Visible = true;
+            checkEdit31.Visible = true;
+
             Clear_AUTN();
         }
 
@@ -1417,6 +1461,15 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
             string CarNum = textEdit1.Text.Trim();
             textEdit1.Text = "";
             textEdit1.Text = CarNum;
+
+
+            checkEdit25.Visible = true;
+            checkEdit26.Visible = true;
+            checkEdit27.Visible = true;
+            checkEdit28.Visible = true;
+            checkEdit29.Visible = true;
+            checkEdit30.Visible = true;
+            checkEdit31.Visible = true;
         }
 
         private void simpleButton5_Click(object sender, EventArgs e)
