@@ -53,7 +53,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             try
             {
-                string Update = "dbo.Rent_Update_v1 '"+ UserAID + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textEdit1.Text.Trim() + "','" + textEdit2.Text.Trim() + "'," + comboBox1.SelectedValue.ToString() + "," + SelectedID;
+                string Update = "dbo.Rent_Update_v1 '"+ UserAID + "','" + dateTimePicker1.Value.Date.ToString() + "','" + textEdit1.Text.Trim() + "'," + comboBox1.SelectedValue.ToString() + "," + SelectedID;
                 DbConnection.DBConnect(Update);
                 Rent_Brodcast_Car main = this.Owner as Rent_Brodcast_Car;
                 main.simpleButton1_Click(null, null);

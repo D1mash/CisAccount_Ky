@@ -62,6 +62,7 @@
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.изменитьToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +72,7 @@
             this.изменитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.отчётToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.изменитьToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьВагонToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -477,17 +478,25 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.создатьToolStripMenuItem,
+            this.добавитьВагонToolStripMenuItem,
             this.изменитьToolStripMenuItem2,
             this.удалитьToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
             // 
             // создатьToolStripMenuItem
             // 
             this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
             this.создатьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.создатьToolStripMenuItem.Text = "Создать";
+            this.создатьToolStripMenuItem.Text = "Создать заявку";
             this.создатьToolStripMenuItem.Click += new System.EventHandler(this.создатьToolStripMenuItem_Click);
+            // 
+            // изменитьToolStripMenuItem2
+            // 
+            this.изменитьToolStripMenuItem2.Name = "изменитьToolStripMenuItem2";
+            this.изменитьToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.изменитьToolStripMenuItem2.Text = "Изменить продукт";
+            this.изменитьToolStripMenuItem2.Click += new System.EventHandler(this.изменитьToolStripMenuItem2_Click);
             // 
             // удалитьToolStripMenuItem
             // 
@@ -556,12 +565,12 @@
             this.отчётToolStripMenuItem.Text = "Отчёт";
             this.отчётToolStripMenuItem.Click += new System.EventHandler(this.отчётToolStripMenuItem_Click);
             // 
-            // изменитьToolStripMenuItem2
+            // добавитьВагонToolStripMenuItem
             // 
-            this.изменитьToolStripMenuItem2.Name = "изменитьToolStripMenuItem2";
-            this.изменитьToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.изменитьToolStripMenuItem2.Text = "Изменить";
-            this.изменитьToolStripMenuItem2.Click += new System.EventHandler(this.изменитьToolStripMenuItem2_Click);
+            this.добавитьВагонToolStripMenuItem.Name = "добавитьВагонToolStripMenuItem";
+            this.добавитьВагонToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.добавитьВагонToolStripMenuItem.Text = "Добавить вагон";
+            this.добавитьВагонToolStripMenuItem.Click += new System.EventHandler(this.добавитьВагонToolStripMenuItem_Click);
             // 
             // Rent_Brodcast_Car
             // 
@@ -664,5 +673,6 @@
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem отчётToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изменитьToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem добавитьВагонToolStripMenuItem;
     }
 }

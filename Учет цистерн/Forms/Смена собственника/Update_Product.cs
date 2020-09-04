@@ -14,7 +14,6 @@ namespace Учет_цистерн.Forms.Смена_собственника
     {
         private string id = string.Empty;
         private string carnum = string.Empty;
-        private int len;
 
         public Update_Product(string iD, string carNum)
         {
@@ -36,7 +35,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 DbConnection.DBConnect(update);
 
                 Rent_Brodcast_Car main = this.Owner as Rent_Brodcast_Car;
-                main.simpleButton1_Click(null, null);
+                main.gridView2_RowCellClick(null,null);
 
                 this.Close();
             }

@@ -31,15 +31,12 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -66,17 +63,10 @@
             this.textEdit1.Size = new System.Drawing.Size(101, 20);
             this.textEdit1.TabIndex = 2;
             // 
-            // textEdit2
-            // 
-            this.textEdit2.Location = new System.Drawing.Point(102, 83);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(101, 20);
-            this.textEdit2.TabIndex = 3;
-            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(102, 109);
+            this.comboBox1.Location = new System.Drawing.Point(102, 84);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(101, 21);
             this.comboBox1.TabIndex = 4;
@@ -89,17 +79,9 @@
             this.labelControl2.TabIndex = 5;
             this.labelControl2.Text = "Номер заявки";
             // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(12, 86);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(44, 13);
-            this.labelControl3.TabIndex = 6;
-            this.labelControl3.Text = "Продукт";
-            // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(12, 112);
+            this.labelControl4.Location = new System.Drawing.Point(12, 87);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(66, 13);
             this.labelControl4.TabIndex = 7;
@@ -131,10 +113,8 @@
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.labelControl4);
-            this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textEdit2);
             this.Controls.Add(this.textEdit1);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.dateTimePicker1);
@@ -143,7 +123,6 @@
             this.Text = "Rent_Update_v1";
             this.Load += new System.EventHandler(this.Rent_Update_v1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,12 +132,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.ComboBox comboBox1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         public System.Windows.Forms.DateTimePicker dateTimePicker1;
         public DevExpress.XtraEditors.TextEdit textEdit1;
-        public DevExpress.XtraEditors.TextEdit textEdit2;
     }
 }

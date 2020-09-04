@@ -18,14 +18,13 @@ namespace Учет_цистерн.Forms.Смена_собственника
 {
     public partial class Rent_Brodcast_Car : Form
     {
-        int SelectItemRow1;
         int SelectItemRow2;
         int OwnerIDS;
         int Grid2Id, Grid1Id, Grid3Id;
         int OwnerId_v2;
         string OwnerName;
         string date;
-        string product;
+        //string product;
         string role, User_ID;
         private TradeWright.UI.Forms.TabControlExtra tabControl1;
 
@@ -293,7 +292,8 @@ namespace Учет_цистерн.Forms.Смена_собственника
                     {
                         gridControl2.DataSource = dt;
                         gridView2.Columns[0].Visible = false;
-                        gridView2.Columns[5].Visible = false;
+                        gridView2.Columns[4].Visible = false;
+                        
 
                         gridView2_RowCellClick(null, null);
                         gridView3_RowCellClick(null, null);
@@ -343,20 +343,19 @@ namespace Учет_цистерн.Forms.Смена_собственника
             try
             {
                 //Ловит номер заявки из грида 2
-                string Id = gridView2.GetFocusedDataRow()[0].ToString();
+                
                 date = gridView2.GetFocusedDataRow()[1].ToString();
-                product = gridView2.GetFocusedDataRow()[3].ToString();
-                string OwnerID = gridView2.GetFocusedDataRow()[5].ToString();
+                //product = gridView2.GetFocusedDataRow()[3].ToString();
+                string OwnerID = gridView2.GetFocusedDataRow()[4].ToString();
                 string RentID = gridView2.GetFocusedDataRow()[0].ToString();
-                OwnerName = gridView2.GetFocusedDataRow()[4].ToString();
+                OwnerName = gridView2.GetFocusedDataRow()[3].ToString();
                 Grid2Id = Convert.ToInt32(RentID);
-                SelectItemRow1 = Convert.ToInt32(Id);
                 OwnerIDS = Convert.ToInt32(OwnerID);
 
                 gridControl3.DataSource = null;
                 gridView3.Columns.Clear();
 
-                string Search = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Rent_id  = '" + SelectItemRow1.ToString() + "'," + "@Type = " + 1;
+                string Search = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Rent_id  = '" + Grid2Id.ToString() + "'," + "@Type = " + 1;
                 gridControl3.DataSource = DbConnection.DBConnect(Search);
                 gridView3.Columns[0].Visible = false;
 
@@ -577,7 +576,6 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 Rent_Update_v1 update_v1 = new Rent_Update_v1(User_ID);
                 update_v1.dateTimePicker1.Text = gridView2.GetFocusedDataRow()[1].ToString();
                 update_v1.textEdit1.Text = gridView2.GetFocusedDataRow()[2].ToString();
-                update_v1.textEdit2.Text = gridView2.GetFocusedDataRow()[3].ToString();
                 update_v1.SelectOwnerID = OwnerIDS;
                 update_v1.SelectedID = Grid2Id;
                 update_v1.Owner = this;
@@ -646,9 +644,9 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
                     xlWorkSheet.Range["B2"].Value = "Собственник:  " + OwnerName;
 
-                    xlWorkSheet.Range["B4"].Value = "Заявка №: " + SelectItemRow1.ToString() + " от " + date;
+                    xlWorkSheet.Range["B4"].Value = "Заявка №: " + Grid2Id.ToString() + " от " + date;
 
-                    xlWorkSheet.Range["B5"].Value = "Продукт: " + product;
+                    //xlWorkSheet.Range["B5"].Value = "Продукт: " + product;
 
                     for (int i = 0; i < gridView3.RowCount; i++)
                     {
@@ -854,11 +852,24 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 }
 
                 Update_Product update_Product = new Update_Product(ID, CarNum);
-                update_Product.Show();
+                update_Product.Owner = this;
+                update_Product.ShowDialog();
 
                 //gridView2_RowCellClick(null, null);
             }
             catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void добавитьВагонToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
