@@ -106,7 +106,7 @@ namespace Учет_цистерн.Forms
                 {
                     if (textEdit2.Text != String.Empty && textEdit3.Text != String.Empty && comboBox1.SelectedValue.ToString() != "-1")
                     {
-                        string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textEdit2.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + textEdit3.Text + "','" + User_ID + "', @CurrentID = @Id output; select @Id";
+                        string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textEdit2.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + User_ID + "', @CurrentID = @Id output; select @Id";
                         DataTable HeadID = DbConnection.DBConnect(NewHead);
 
                         //Список вагонов для передачи в БД
@@ -115,15 +115,20 @@ namespace Учет_цистерн.Forms
                         ArrayList list = new ArrayList();
                         string Arrays = string.Empty;
 
+                        ArrayList Prod_list = new ArrayList();
+                        string Prod_Arrays = string.Empty;
+
                         for (int i = 0; i < dt.Rows.Count; i++)
                         {
                             list.Add(dt.Rows[i][1].ToString());
+                            Prod_list.Add(dt.Rows[i][4].ToString());
                         }
 
                         for (int i = 0; i < list.Count; i++)
                         {
                             Arrays = string.Join(" ", list[i]);
-                            string newRow = "exec dbo.Rent_ADD_Body '" + Arrays + "','" + User_ID + "'," + Id;
+                            Prod_Arrays = string.Join(" ", Prod_list[i]);
+                            string newRow = "exec dbo.Rent_ADD_Body '" + Arrays + "','" + Prod_Arrays + "','" + User_ID + "'," + Id;
                             DbConnection.DBConnect(newRow);
                         }
 
