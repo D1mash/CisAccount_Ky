@@ -338,7 +338,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
             }
         }
 
-        private void gridView2_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        public void gridView2_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             try
             {
@@ -815,6 +815,52 @@ namespace Учет_цистерн.Forms.Смена_собственника
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void изменитьToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArrayList rows = new ArrayList();
+                List<Object> aList = new List<Object>();
+                string ID = string.Empty;
+
+                List<Object> CarnumList = new List<Object>();
+                string CarNum = string.Empty;
+
+                List<Object> ProductList = new List<Object>();
+                string Plist = string.Empty;
+
+                Int32[] selectedRowHandles = gridView3.GetSelectedRows();
+
+                for (int i = 0; i < selectedRowHandles.Length; i++)
+                {
+                    int selectedRowHandle = selectedRowHandles[i];
+                    if (selectedRowHandle >= 0)
+                        rows.Add(gridView3.GetDataRow(selectedRowHandle));
+                }
+
+                foreach (DataRow row in rows)
+                {
+                    aList.Add(row["ID"]);
+                    ID = string.Join(" ", aList);
+
+                    CarnumList.Add(row["Номер В/Ц"]);
+                    CarNum = string.Join(" ", CarnumList);
+                    
+                    //string delete = "exec dbo.Remove_Rent_Carriage '" + ID + "','" + CarNum + "'";
+                    //DbConnection.DBConnect(delete);
+                }
+
+                Update_Product update_Product = new Update_Product(ID, CarNum);
+                update_Product.Show();
+
+                //gridView2_RowCellClick(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
