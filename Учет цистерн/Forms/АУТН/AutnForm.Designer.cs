@@ -664,6 +664,7 @@
             this.simpleButton4.TabIndex = 3;
             this.simpleButton4.Text = "Удаление";
             this.simpleButton4.ToolTip = "Удалить";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // simpleButton3
             // 

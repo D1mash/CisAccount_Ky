@@ -208,6 +208,42 @@ namespace Учет_цистерн.Forms.АУТН
             }
             RefreshBody();
         }
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Удалить выделенные записи?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ArrayList rows = new ArrayList();
+                    List<Object> aList = new List<Object>();
+                    string Arrays = string.Empty;
+
+                    Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                    for (int i = 0; i < selectedRowHandles.Length; i++)
+                    {
+                        int selectedRowHandle = selectedRowHandles[i];
+                        if (selectedRowHandle >= 0)
+                            rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                    }
+                    foreach (DataRow row in rows)
+                    {
+                        aList.Add(row["ID"]);
+                        Arrays = string.Join(" ", aList);
+                        string delete = "exec dbo.DeleteAutn '" + Arrays + "'";
+                        DbConnection.DBConnect(delete);
+                    }
+                    RefreshBody();
+                    if (gridView1.RowCount > 0)
+                    {
+                        gridView1_RowCellClick(null, null);
+                    }
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         //AUTN
         private void checkEdit3_Properties_CheckStateChanged(object sender, EventArgs e)
