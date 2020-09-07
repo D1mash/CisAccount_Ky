@@ -945,10 +945,48 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 DateTime TodayDate = DateTime.Today;
                 DateTime oDate = Convert.ToDateTime(date);
                 int InTime = (TodayDate - oDate).Days;
+                DataTable ch;
+                string checkCar = string.Empty;
 
                 if (InTime <= 14)
                 {
 
+                    ArrayList Carlist = new ArrayList();
+                    string Arr = string.Empty;
+                    Arr = Clipboard.GetText();
+
+                    string CarArray = string.Empty;
+
+                    string[] word = Arr.Split(new char[] { ' ', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    foreach (string s in word)
+                    {
+                        Carlist.Add(s);
+                    }
+                    
+                    for (int i = 0; i < Carlist.Count; i++)
+                    {
+                        string checkCarriage = "exec dbo.CheckCarnumber_v2 '" + Carlist[i] + "'";
+                        ch = DbConnection.DBConnect(checkCarriage);
+                        checkCar = ch.Rows[0][0].ToString();
+
+                        if(checkCar == "0")
+                        { 
+                            CarArray = string.Join(" ", Carlist[i]);
+                        
+                            string newRow = "exec dbo.Rent_ADD_Body '" + CarArray + "','" + null + "','" + User_ID + "'," + Grid2Id;
+                            DbConnection.DBConnect(newRow);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вагон " + Carlist[i] + " не прошел проверку на правильность. Проверьте правильность вагона.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            continue;
+                        }
+                    }
+
+                    Clipboard.Clear();
+                    gridView2_RowCellClick(null, null);
                 }
                 else
                 {
@@ -958,6 +996,24 @@ namespace Учет_цистерн.Forms.Смена_собственника
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textEdit3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 32 && number != 8 && (e.KeyChar <= 39 || e.KeyChar >= 46) && number != 47 && number != 61 && (e.KeyChar < 'А' || e.KeyChar > 'я'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textEdit2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8)
+            {
+                e.Handled = true;
             }
         }
 

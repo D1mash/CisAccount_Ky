@@ -104,12 +104,12 @@ namespace Учет_цистерн.Forms
 
                 if ( Ch == "0")
                 {
-                    if (textEdit2.Text != String.Empty && textEdit3.Text != String.Empty && comboBox1.SelectedValue.ToString() != "-1")
+                    if (textEdit2.Text != String.Empty && textEdit3.Text != String.Empty && comboBox1.SelectedValue.ToString() != "-1" && gridView1.RowCount>0)
                     {
                         string NewHead = "declare @Id int; exec dbo.Rent_Add_Head '" + textEdit2.Text + "','" + dateEdit1.DateTime.ToShortDateString() + "','" + comboBox1.SelectedValue.ToString() + "','" + User_ID + "', @CurrentID = @Id output; select @Id";
                         DataTable HeadID = DbConnection.DBConnect(NewHead);
 
-                        //Список вагонов для передачи в БД
+                        //Список (Status_rent) вагонов для передачи в БД
                         string Id = HeadID.Rows[0][0].ToString();
 
                         ArrayList list = new ArrayList();
@@ -150,7 +150,7 @@ namespace Учет_цистерн.Forms
                             }
                             else
                             {
-                                MessageBox.Show("Не выбран собственник!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Не выбран собственник или не внесены вагоны!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                     }
