@@ -287,28 +287,35 @@ namespace Учет_цистерн.Forms
         //Мульти удаление
         private void уадилитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ArrayList rows = new ArrayList();
-            List<Object> aList = new List<Object>();
-            string Arrays = string.Empty;
-
-            Int32[] selectedRowHandles = gridView1.GetSelectedRows();
-            for (int i = 0; i < selectedRowHandles.Length; i++)
+            if (gridView1.RowCount>0)
             {
-                int selectedRowHandle = selectedRowHandles[i];
-                if (selectedRowHandle >= 0)
-                    rows.Add(gridView1.GetDataRow(selectedRowHandle));
-            }
-            foreach (DataRow row in rows)
-            {
-                aList.Add(row["ID"]);
-                Arrays = string.Join(" ", aList);
-                string delete = "exec dbo.Remove_TempMultiCar '"+User_ID+"','" + Arrays + "'";
-                DbConnection.DBConnect(delete);
-            }
+                ArrayList rows = new ArrayList();
+                List<Object> aList = new List<Object>();
+                string Arrays = string.Empty;
 
-            rows.Clear();
-            aList.Clear();
-            RefreshGrid();
+                Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                for (int i = 0; i < selectedRowHandles.Length; i++)
+                {
+                    int selectedRowHandle = selectedRowHandles[i];
+                    if (selectedRowHandle >= 0)
+                        rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                }
+                foreach (DataRow row in rows)
+                {
+                    aList.Add(row["ID"]);
+                    Arrays = string.Join(" ", aList);
+                    string delete = "exec dbo.Remove_TempMultiCar '" + User_ID + "','" + Arrays + "'";
+                    DbConnection.DBConnect(delete);
+                }
+
+                rows.Clear();
+                aList.Clear();
+                RefreshGrid();
+            }
+            else
+            {
+                MessageBox.Show("Для удаления сначала требуется вставить вагоны", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void tabControl1_TabClosing(object sender, TabControlCancelEventArgs e)
@@ -432,12 +439,28 @@ namespace Учет_цистерн.Forms
             }
         }
 
+        private void textEdit2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
         private void textEdit3_EditValueChanged(object sender, EventArgs e)
         {
-            string update = "Update TM Set TM.Product = '" + textEdit3.Text + "' from Temp_MultiCar TM";
-            DbConnection.DBConnect(update);
+            try
+            {
+                string update = "Update TM Set TM.Product = '" + textEdit3.Text + "' from Temp_MultiCar TM";
+                DbConnection.DBConnect(update);
 
-            RefreshGrid();
+                RefreshGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

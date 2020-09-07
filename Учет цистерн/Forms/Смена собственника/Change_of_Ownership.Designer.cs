@@ -51,6 +51,7 @@
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.button2 = new DevExpress.XtraEditors.SimpleButton();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -67,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -261,10 +263,15 @@
             // 
             this.textEdit2.Location = new System.Drawing.Point(134, 33);
             this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.textEdit2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textEdit2.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.textEdit2.Properties.Appearance.Options.UseBackColor = true;
             this.textEdit2.Properties.Appearance.Options.UseFont = true;
+            this.textEdit2.Properties.Appearance.Options.UseForeColor = true;
             this.textEdit2.Size = new System.Drawing.Size(115, 20);
             this.textEdit2.TabIndex = 15;
+            this.textEdit2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit2_KeyPress);
             // 
             // button1
             // 
@@ -312,6 +319,10 @@
             this.button2.Text = "Добавить";
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
+            // dxErrorProvider1
+            // 
+            this.dxErrorProvider1.ContainerControl = this;
+            // 
             // Change_of_Ownership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,6 +351,7 @@
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -367,5 +379,6 @@
         private DevExpress.XtraEditors.TextEdit textEdit2;
         private DevExpress.XtraEditors.TextEdit textEdit3;
         private System.Windows.Forms.ToolStripMenuItem изменитьПродуктToolStripMenuItem;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
     }
 }

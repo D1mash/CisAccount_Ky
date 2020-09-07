@@ -371,6 +371,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
         private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             string Id = gridView1.GetFocusedDataRow()[6].ToString();
+            date = gridView1.GetFocusedDataRow()[1].ToString();
             string OwnerID = gridView1.GetFocusedDataRow()[7].ToString();
             string HeadID = gridView1.GetFocusedDataRow()[0].ToString();
             Grid1Id = Convert.ToInt32(Id);
@@ -446,7 +447,11 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 
                 Int32[] selectedRowHandles = gridView3.GetSelectedRows();
 
-                if (selectedRowHandles.Length < gridView3.RowCount)
+                DateTime TodayDate = DateTime.Today;
+                DateTime oDate = Convert.ToDateTime(date);
+                int InTime = (TodayDate - oDate).Days;
+
+                if (selectedRowHandles.Length < gridView3.RowCount && InTime<=14)
                 {
                     for (int i = 0; i < selectedRowHandles.Length; i++)
                     {
@@ -471,7 +476,14 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 }
                 else
                 {
-                    MessageBox.Show("В заявке должен быть хотябы 1 вагон", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (selectedRowHandles.Length < gridView3.RowCount && InTime <= 14)
+                    {
+                        MessageBox.Show("В заявке должен быть хотябы 1 вагон", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Вагоны находящиеся в заявке сроком более 14 дней запрещены для удаления", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
             catch (Exception ex)
@@ -494,7 +506,11 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
                 Int32[] selectedRowHandles = gridView3.GetSelectedRows();
 
-                if (selectedRowHandles.Length < gridView3.RowCount)
+                DateTime TodayDate = DateTime.Today;
+                DateTime oDate = Convert.ToDateTime(date);
+                int InTime = (TodayDate - oDate).Days;
+
+                if (selectedRowHandles.Length < gridView3.RowCount && InTime <=14)
                 {
                     for (int i = 0; i < selectedRowHandles.Length; i++)
                     {
@@ -545,7 +561,14 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 }
                 else
                 {
-                    MessageBox.Show("В заявке должен быть хотябы 1 вагон", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (selectedRowHandles.Length < gridView3.RowCount && InTime <= 14)
+                    {
+                        MessageBox.Show("В заявке должен быть хотябы 1 вагон", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Вагоны находящиеся в заявке сроком более 14 дней запрещены для создания заявки", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
             catch(Exception ex)
@@ -571,7 +594,11 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
         private void изменитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (gridView2.SelectedRowsCount > 0)
+            DateTime TodayDate = DateTime.Today;
+            DateTime oDate = Convert.ToDateTime(date);
+            int InTime = (TodayDate - oDate).Days;
+
+            if (gridView2.SelectedRowsCount > 0 && InTime <= 14)
             {
                 Rent_Update_v1 update_v1 = new Rent_Update_v1(User_ID);
                 update_v1.dateTimePicker1.Text = gridView2.GetFocusedDataRow()[1].ToString();
@@ -582,8 +609,15 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 update_v1.ShowDialog();
             }
             else
-            {
-                MessageBox.Show("Для редактирования записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            {  
+                if (gridView2.SelectedRowsCount > 0 && InTime <= 14)
+                {
+                    MessageBox.Show("Для редактирования записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Заявки созданные более 14 дней запрещены для редактирования", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -591,7 +625,11 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             try
             {
-                if (gridView2.SelectedRowsCount > 0)
+                DateTime TodayDate = DateTime.Today;
+                DateTime oDate = Convert.ToDateTime(date);
+                int InTime = (TodayDate - oDate).Days;
+
+                if (gridView2.SelectedRowsCount > 0 && InTime <=14)
                 {
                     if (MessageBox.Show("Удалить выделенные записи?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
@@ -606,6 +644,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
                             if (selectedRowHandle >= 0)
                                 rows.Add(gridView2.GetDataRow(selectedRowHandle));
                         }
+                        
                         foreach (DataRow row in rows)
                         {
                             aList.Add(row["ID"]);
@@ -618,7 +657,13 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 }
                 else
                 {
-                    MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (gridView2.SelectedRowsCount > 0 && InTime <= 14) {
+                        MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Заявки созданные более 14 дней запрещены для удаления", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+                    }
                 }
             }
             catch (Exception exp)
@@ -682,7 +727,11 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
         private void изменитьToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (gridView1.SelectedRowsCount > 0)
+            DateTime TodayDate = DateTime.Today;
+            DateTime oDate = Convert.ToDateTime(date);
+            int InTime = (TodayDate - oDate).Days;
+
+            if (gridView1.SelectedRowsCount > 0 && InTime <= 14)
             {
                 Rent_Update_v2 update_v2 = new Rent_Update_v2(User_ID);
                 update_v2.textEdit3.Text = gridView1.GetFocusedDataRow()[3].ToString();
@@ -697,7 +746,14 @@ namespace Учет_цистерн.Forms.Смена_собственника
             }
             else
             {
-                MessageBox.Show("Для редактирования записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if(gridView1.SelectedRowsCount > 0 && InTime <= 14)
+                {
+                    MessageBox.Show("Для редактирования записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Записи сроком более 14 дней запрещены для редактирования!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -705,7 +761,11 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             try
             {
-                if (gridView1.SelectedRowsCount > 0)
+                DateTime TodayDate = DateTime.Today;
+                DateTime oDate = Convert.ToDateTime(date);
+                int InTime = (TodayDate - oDate).Days;
+
+                if (gridView1.SelectedRowsCount > 0 && InTime <= 14)
                 {
                     if (MessageBox.Show("Удалить выделенные записи?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
@@ -732,7 +792,14 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 }
                 else
                 {
-                    MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if(gridView1.SelectedRowsCount > 0 && InTime <= 14)
+                    {
+                        MessageBox.Show("Для удаления записи, необходимо выбрать строку полностью!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Заявки сроком более 14 дней запрещены!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
             catch (Exception exp)
@@ -776,7 +843,7 @@ namespace Учет_цистерн.Forms.Смена_собственника
                         xlWorkSheet.Cells[i + 5, 6] = gridView1.GetRowCellValue(i, "Получивший собственник");
                     }
 
-                    Excel.Range range = xlWorkSheet.Range["B2", xlWorkSheet.Cells[gridView3.RowCount + 5, 6]];
+                    Excel.Range range = xlWorkSheet.Range["B2", xlWorkSheet.Cells[gridView3.RowCount + 6, 6]];
                     FormattingExcelCells(range, false, false);
 
                     xlApp.DisplayAlerts = false;
@@ -833,30 +900,37 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
                 Int32[] selectedRowHandles = gridView3.GetSelectedRows();
 
-                for (int i = 0; i < selectedRowHandles.Length; i++)
+                DateTime TodayDate = DateTime.Today;
+                DateTime oDate = Convert.ToDateTime(date);
+                int InTime = (TodayDate - oDate).Days;
+
+                if (InTime <= 14)
                 {
-                    int selectedRowHandle = selectedRowHandles[i];
-                    if (selectedRowHandle >= 0)
-                        rows.Add(gridView3.GetDataRow(selectedRowHandle));
-                }
+                    for (int i = 0; i < selectedRowHandles.Length; i++)
+                    {
+                        int selectedRowHandle = selectedRowHandles[i];
+                        if (selectedRowHandle >= 0)
+                            rows.Add(gridView3.GetDataRow(selectedRowHandle));
+                    }
 
-                foreach (DataRow row in rows)
+                    foreach (DataRow row in rows)
+                    {
+                        aList.Add(row["ID"]);
+                        ID = string.Join(" ", aList);
+
+                        CarnumList.Add(row["Номер В/Ц"]);
+                        CarNum = string.Join(" ", CarnumList);
+                        
+                    }
+
+                    Update_Product_v1 update_Product = new Update_Product_v1(ID, CarNum);
+                    update_Product.Owner = this;
+                    update_Product.ShowDialog();
+                }
+                else
                 {
-                    aList.Add(row["ID"]);
-                    ID = string.Join(" ", aList);
-
-                    CarnumList.Add(row["Номер В/Ц"]);
-                    CarNum = string.Join(" ", CarnumList);
-                    
-                    //string delete = "exec dbo.Remove_Rent_Carriage '" + ID + "','" + CarNum + "'";
-                    //DbConnection.DBConnect(delete);
+                    MessageBox.Show("Вагоны находящиеся в заявке сроком более 14 дней запрещены для изменения", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-                Update_Product_v1 update_Product = new Update_Product_v1(ID, CarNum);
-                update_Product.Owner = this;
-                update_Product.ShowDialog();
-
-                //gridView2_RowCellClick(null, null);
             }
             catch (Exception ex)
             {
@@ -868,7 +942,18 @@ namespace Учет_цистерн.Forms.Смена_собственника
         {
             try
             {
+                DateTime TodayDate = DateTime.Today;
+                DateTime oDate = Convert.ToDateTime(date);
+                int InTime = (TodayDate - oDate).Days;
 
+                if (InTime <= 14)
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show("В заявку сроком более 14 дней запрещено добавлять вагоны", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             catch(Exception ex)
             {

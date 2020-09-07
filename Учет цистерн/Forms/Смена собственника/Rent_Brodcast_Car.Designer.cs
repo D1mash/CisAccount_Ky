@@ -62,6 +62,7 @@
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьВагонToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изменитьToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -72,7 +73,6 @@
             this.изменитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.отчётToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.добавитьВагонToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -149,7 +149,6 @@
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsClipboard.AllowCopy = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.OptionsClipboard.CopyColumnHeaders = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
@@ -189,7 +188,6 @@
             this.gridView2.OptionsBehavior.Editable = false;
             this.gridView2.OptionsClipboard.AllowCopy = DevExpress.Utils.DefaultBoolean.True;
             this.gridView2.OptionsClipboard.CopyColumnHeaders = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView2.OptionsSelection.MultiSelect = true;
             this.gridView2.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView2.OptionsView.ShowFooter = true;
             this.gridView2.OptionsView.ShowGroupPanel = false;
@@ -482,26 +480,33 @@
             this.изменитьToolStripMenuItem2,
             this.удалитьToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(176, 92);
             // 
             // создатьToolStripMenuItem
             // 
             this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.создатьToolStripMenuItem.Text = "Создать заявку";
             this.создатьToolStripMenuItem.Click += new System.EventHandler(this.создатьToolStripMenuItem_Click);
+            // 
+            // добавитьВагонToolStripMenuItem
+            // 
+            this.добавитьВагонToolStripMenuItem.Name = "добавитьВагонToolStripMenuItem";
+            this.добавитьВагонToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.добавитьВагонToolStripMenuItem.Text = "Добавить вагон";
+            this.добавитьВагонToolStripMenuItem.Click += new System.EventHandler(this.добавитьВагонToolStripMenuItem_Click);
             // 
             // изменитьToolStripMenuItem2
             // 
             this.изменитьToolStripMenuItem2.Name = "изменитьToolStripMenuItem2";
-            this.изменитьToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.изменитьToolStripMenuItem2.Size = new System.Drawing.Size(175, 22);
             this.изменитьToolStripMenuItem2.Text = "Изменить продукт";
             this.изменитьToolStripMenuItem2.Click += new System.EventHandler(this.изменитьToolStripMenuItem2_Click);
             // 
             // удалитьToolStripMenuItem
             // 
             this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.удалитьToolStripMenuItem.Text = "Удалить";
             this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
             // 
@@ -517,21 +522,21 @@
             // изменитьToolStripMenuItem
             // 
             this.изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
-            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.изменитьToolStripMenuItem.Text = "Изменить";
             this.изменитьToolStripMenuItem.Click += new System.EventHandler(this.изменитьToolStripMenuItem_Click);
             // 
             // удалитьToolStripMenuItem1
             // 
             this.удалитьToolStripMenuItem1.Name = "удалитьToolStripMenuItem1";
-            this.удалитьToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.удалитьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.удалитьToolStripMenuItem1.Text = "Удалить";
             this.удалитьToolStripMenuItem1.Click += new System.EventHandler(this.удалитьToolStripMenuItem1_Click);
             // 
             // отчетToolStripMenuItem
             // 
             this.отчетToolStripMenuItem.Name = "отчетToolStripMenuItem";
-            this.отчетToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.отчетToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.отчетToolStripMenuItem.Text = "Отчет";
             this.отчетToolStripMenuItem.Click += new System.EventHandler(this.отчетToolStripMenuItem_Click);
             // 
@@ -564,13 +569,6 @@
             this.отчётToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.отчётToolStripMenuItem.Text = "Отчёт";
             this.отчётToolStripMenuItem.Click += new System.EventHandler(this.отчётToolStripMenuItem_Click);
-            // 
-            // добавитьВагонToolStripMenuItem
-            // 
-            this.добавитьВагонToolStripMenuItem.Name = "добавитьВагонToolStripMenuItem";
-            this.добавитьВагонToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.добавитьВагонToolStripMenuItem.Text = "Добавить вагон";
-            this.добавитьВагонToolStripMenuItem.Click += new System.EventHandler(this.добавитьВагонToolStripMenuItem_Click);
             // 
             // Rent_Brodcast_Car
             // 
@@ -635,8 +633,6 @@
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.GroupControl groupControl3;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.GroupControl groupControl4;
         private DevExpress.XtraGrid.GridControl gridControl3;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
@@ -674,5 +670,7 @@
         private System.Windows.Forms.ToolStripMenuItem отчётToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изменитьToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem добавитьВагонToolStripMenuItem;
+        private DevExpress.XtraGrid.GridControl gridControl2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
     }
 }
