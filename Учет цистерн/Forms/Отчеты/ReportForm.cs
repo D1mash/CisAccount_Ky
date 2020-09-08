@@ -1307,6 +1307,7 @@ namespace Учет_цистерн
             if (checkBox3.Checked)
             {
                 dateTimePicker2.Enabled = (checkBox3.CheckState == CheckState.Checked);
+                dateTimePicker2.Value = DateTime.Today;
             }
             else
             {
