@@ -32,42 +32,29 @@
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.textEdit12 = new DevExpress.XtraEditors.TextEdit();
-            this.checkEdit23 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit16 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit17 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit24 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit18 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit19 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit19 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit20 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit20 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit21 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit21 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit22 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit22 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit23 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit15 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit16 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit14 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit15 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit13 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit14 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit12 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit13 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit17 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit18 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -86,30 +73,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit23.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit16.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit24.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit18.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit19.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit19.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit20.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit20.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit21.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit21.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit22.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit22.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit23.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit15.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit14.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit13.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit14.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit12.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit13.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit17.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
@@ -143,42 +117,29 @@
             // groupControl5
             // 
             this.groupControl5.Controls.Add(this.textEdit12);
-            this.groupControl5.Controls.Add(this.checkEdit23);
-            this.groupControl5.Controls.Add(this.checkEdit16);
             this.groupControl5.Controls.Add(this.labelControl26);
             this.groupControl5.Controls.Add(this.textEdit17);
             this.groupControl5.Controls.Add(this.textEdit24);
             this.groupControl5.Controls.Add(this.labelControl19);
-            this.groupControl5.Controls.Add(this.checkEdit18);
             this.groupControl5.Controls.Add(this.textEdit19);
             this.groupControl5.Controls.Add(this.labelControl21);
-            this.groupControl5.Controls.Add(this.checkEdit19);
             this.groupControl5.Controls.Add(this.textEdit20);
             this.groupControl5.Controls.Add(this.labelControl22);
-            this.groupControl5.Controls.Add(this.checkEdit20);
             this.groupControl5.Controls.Add(this.textEdit21);
             this.groupControl5.Controls.Add(this.labelControl23);
-            this.groupControl5.Controls.Add(this.checkEdit21);
             this.groupControl5.Controls.Add(this.textEdit22);
             this.groupControl5.Controls.Add(this.labelControl24);
-            this.groupControl5.Controls.Add(this.checkEdit22);
             this.groupControl5.Controls.Add(this.textEdit23);
             this.groupControl5.Controls.Add(this.labelControl25);
-            this.groupControl5.Controls.Add(this.checkEdit15);
             this.groupControl5.Controls.Add(this.textEdit16);
             this.groupControl5.Controls.Add(this.labelControl18);
-            this.groupControl5.Controls.Add(this.checkEdit14);
             this.groupControl5.Controls.Add(this.textEdit15);
             this.groupControl5.Controls.Add(this.labelControl17);
-            this.groupControl5.Controls.Add(this.checkEdit13);
             this.groupControl5.Controls.Add(this.textEdit14);
             this.groupControl5.Controls.Add(this.labelControl16);
-            this.groupControl5.Controls.Add(this.checkEdit12);
             this.groupControl5.Controls.Add(this.textEdit13);
             this.groupControl5.Controls.Add(this.labelControl15);
-            this.groupControl5.Controls.Add(this.checkEdit3);
             this.groupControl5.Controls.Add(this.labelControl14);
-            this.groupControl5.Controls.Add(this.checkEdit17);
             this.groupControl5.Controls.Add(this.textEdit18);
             this.groupControl5.Controls.Add(this.labelControl20);
             this.groupControl5.Location = new System.Drawing.Point(8, 3);
@@ -193,26 +154,6 @@
             this.textEdit12.Name = "textEdit12";
             this.textEdit12.Size = new System.Drawing.Size(48, 20);
             this.textEdit12.TabIndex = 59;
-            // 
-            // checkEdit23
-            // 
-            this.checkEdit23.Location = new System.Drawing.Point(3, 179);
-            this.checkEdit23.Name = "checkEdit23";
-            this.checkEdit23.Properties.Caption = "";
-            this.checkEdit23.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit23_Properties_CheckStateChanged);
-            this.checkEdit23.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit23.TabIndex = 38;
-            this.checkEdit23.Visible = false;
-            // 
-            // checkEdit16
-            // 
-            this.checkEdit16.Location = new System.Drawing.Point(157, 154);
-            this.checkEdit16.Name = "checkEdit16";
-            this.checkEdit16.Properties.Caption = "";
-            this.checkEdit16.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit16_Properties_CheckStateChanged);
-            this.checkEdit16.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit16.TabIndex = 58;
-            this.checkEdit16.Visible = false;
             // 
             // labelControl26
             // 
@@ -256,16 +197,6 @@
             this.labelControl19.TabIndex = 56;
             this.labelControl19.Text = "Годный на эксп";
             // 
-            // checkEdit18
-            // 
-            this.checkEdit18.Location = new System.Drawing.Point(157, 128);
-            this.checkEdit18.Name = "checkEdit18";
-            this.checkEdit18.Properties.Caption = "";
-            this.checkEdit18.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit18_Properties_CheckStateChanged);
-            this.checkEdit18.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit18.TabIndex = 55;
-            this.checkEdit18.Visible = false;
-            // 
             // textEdit19
             // 
             this.textEdit19.EditValue = "";
@@ -288,16 +219,6 @@
             this.labelControl21.Size = new System.Drawing.Size(44, 14);
             this.labelControl21.TabIndex = 53;
             this.labelControl21.Text = "3 болта";
-            // 
-            // checkEdit19
-            // 
-            this.checkEdit19.Location = new System.Drawing.Point(157, 102);
-            this.checkEdit19.Name = "checkEdit19";
-            this.checkEdit19.Properties.Caption = "";
-            this.checkEdit19.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit19_Properties_CheckStateChanged);
-            this.checkEdit19.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit19.TabIndex = 52;
-            this.checkEdit19.Visible = false;
             // 
             // textEdit20
             // 
@@ -322,16 +243,6 @@
             this.labelControl22.TabIndex = 50;
             this.labelControl22.Text = "ВЦ бараш тип";
             // 
-            // checkEdit20
-            // 
-            this.checkEdit20.Location = new System.Drawing.Point(157, 76);
-            this.checkEdit20.Name = "checkEdit20";
-            this.checkEdit20.Properties.Caption = "";
-            this.checkEdit20.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit20_Properties_CheckStateChanged);
-            this.checkEdit20.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit20.TabIndex = 49;
-            this.checkEdit20.Visible = false;
-            // 
             // textEdit21
             // 
             this.textEdit21.EditValue = "";
@@ -354,16 +265,6 @@
             this.labelControl23.Size = new System.Drawing.Size(47, 14);
             this.labelControl23.TabIndex = 47;
             this.labelControl23.Text = "Гребень";
-            // 
-            // checkEdit21
-            // 
-            this.checkEdit21.Location = new System.Drawing.Point(157, 50);
-            this.checkEdit21.Name = "checkEdit21";
-            this.checkEdit21.Properties.Caption = "";
-            this.checkEdit21.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit21_Properties_CheckStateChanged);
-            this.checkEdit21.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit21.TabIndex = 46;
-            this.checkEdit21.Visible = false;
             // 
             // textEdit22
             // 
@@ -388,16 +289,6 @@
             this.labelControl24.TabIndex = 44;
             this.labelControl24.Text = "Лестница";
             // 
-            // checkEdit22
-            // 
-            this.checkEdit22.Location = new System.Drawing.Point(157, 24);
-            this.checkEdit22.Name = "checkEdit22";
-            this.checkEdit22.Properties.Caption = "";
-            this.checkEdit22.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit22_Properties_CheckStateChanged);
-            this.checkEdit22.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit22.TabIndex = 43;
-            this.checkEdit22.Visible = false;
-            // 
             // textEdit23
             // 
             this.textEdit23.EditValue = "";
@@ -420,16 +311,6 @@
             this.labelControl25.Size = new System.Drawing.Size(83, 14);
             this.labelControl25.TabIndex = 41;
             this.labelControl25.Text = "Шайба и валик";
-            // 
-            // checkEdit15
-            // 
-            this.checkEdit15.Location = new System.Drawing.Point(3, 153);
-            this.checkEdit15.Name = "checkEdit15";
-            this.checkEdit15.Properties.Caption = "";
-            this.checkEdit15.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit15_Properties_CheckStateChanged);
-            this.checkEdit15.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit15.TabIndex = 40;
-            this.checkEdit15.Visible = false;
             // 
             // textEdit16
             // 
@@ -454,16 +335,6 @@
             this.labelControl18.TabIndex = 38;
             this.labelControl18.Text = "Скобы";
             // 
-            // checkEdit14
-            // 
-            this.checkEdit14.Location = new System.Drawing.Point(3, 127);
-            this.checkEdit14.Name = "checkEdit14";
-            this.checkEdit14.Properties.Caption = "";
-            this.checkEdit14.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit14_Properties_CheckStateChanged);
-            this.checkEdit14.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit14.TabIndex = 37;
-            this.checkEdit14.Visible = false;
-            // 
             // textEdit15
             // 
             this.textEdit15.EditValue = "";
@@ -487,16 +358,6 @@
             this.labelControl17.TabIndex = 35;
             this.labelControl17.Text = "Ушки";
             // 
-            // checkEdit13
-            // 
-            this.checkEdit13.Location = new System.Drawing.Point(3, 101);
-            this.checkEdit13.Name = "checkEdit13";
-            this.checkEdit13.Properties.Caption = "";
-            this.checkEdit13.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit13_Properties_CheckStateChanged);
-            this.checkEdit13.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit13.TabIndex = 34;
-            this.checkEdit13.Visible = false;
-            // 
             // textEdit14
             // 
             this.textEdit14.Location = new System.Drawing.Point(103, 102);
@@ -518,16 +379,6 @@
             this.labelControl16.Size = new System.Drawing.Size(74, 14);
             this.labelControl16.TabIndex = 32;
             this.labelControl16.Text = "Трафар. PTC";
-            // 
-            // checkEdit12
-            // 
-            this.checkEdit12.Location = new System.Drawing.Point(3, 75);
-            this.checkEdit12.Name = "checkEdit12";
-            this.checkEdit12.Properties.Caption = "";
-            this.checkEdit12.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit12_Properties_CheckStateChanged);
-            this.checkEdit12.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit12.TabIndex = 31;
-            this.checkEdit12.Visible = false;
             // 
             // textEdit13
             // 
@@ -551,16 +402,6 @@
             this.labelControl15.TabIndex = 29;
             this.labelControl15.Text = "Дем скобы";
             // 
-            // checkEdit3
-            // 
-            this.checkEdit3.Location = new System.Drawing.Point(3, 49);
-            this.checkEdit3.Name = "checkEdit3";
-            this.checkEdit3.Properties.Caption = "";
-            this.checkEdit3.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit3_Properties_CheckStateChanged);
-            this.checkEdit3.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit3.TabIndex = 28;
-            this.checkEdit3.Visible = false;
-            // 
             // labelControl14
             // 
             this.labelControl14.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -570,16 +411,6 @@
             this.labelControl14.Size = new System.Drawing.Size(50, 14);
             this.labelControl14.TabIndex = 26;
             this.labelControl14.Text = "3 клапан";
-            // 
-            // checkEdit17
-            // 
-            this.checkEdit17.Location = new System.Drawing.Point(3, 23);
-            this.checkEdit17.Name = "checkEdit17";
-            this.checkEdit17.Properties.Caption = "";
-            this.checkEdit17.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit17_Properties_CheckStateChanged);
-            this.checkEdit17.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit17.TabIndex = 25;
-            this.checkEdit17.Visible = false;
             // 
             // textEdit18
             // 
@@ -826,30 +657,17 @@
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit23.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit16.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit24.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit18.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit19.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit19.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit20.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit20.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit21.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit21.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit22.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit22.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit23.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit15.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit14.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit13.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit14.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit12.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit13.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit17.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
@@ -867,42 +685,29 @@
         private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControl1;
         private DevExpress.XtraEditors.GroupControl groupControl5;
         private DevExpress.XtraEditors.TextEdit textEdit12;
-        private DevExpress.XtraEditors.CheckEdit checkEdit23;
-        private DevExpress.XtraEditors.CheckEdit checkEdit16;
         private DevExpress.XtraEditors.LabelControl labelControl26;
         private DevExpress.XtraEditors.TextEdit textEdit17;
         private DevExpress.XtraEditors.TextEdit textEdit24;
         private DevExpress.XtraEditors.LabelControl labelControl19;
-        private DevExpress.XtraEditors.CheckEdit checkEdit18;
         private DevExpress.XtraEditors.TextEdit textEdit19;
         private DevExpress.XtraEditors.LabelControl labelControl21;
-        private DevExpress.XtraEditors.CheckEdit checkEdit19;
         private DevExpress.XtraEditors.TextEdit textEdit20;
         private DevExpress.XtraEditors.LabelControl labelControl22;
-        private DevExpress.XtraEditors.CheckEdit checkEdit20;
         private DevExpress.XtraEditors.TextEdit textEdit21;
         private DevExpress.XtraEditors.LabelControl labelControl23;
-        private DevExpress.XtraEditors.CheckEdit checkEdit21;
         private DevExpress.XtraEditors.TextEdit textEdit22;
         private DevExpress.XtraEditors.LabelControl labelControl24;
-        private DevExpress.XtraEditors.CheckEdit checkEdit22;
         private DevExpress.XtraEditors.TextEdit textEdit23;
         private DevExpress.XtraEditors.LabelControl labelControl25;
-        private DevExpress.XtraEditors.CheckEdit checkEdit15;
         private DevExpress.XtraEditors.TextEdit textEdit16;
         private DevExpress.XtraEditors.LabelControl labelControl18;
-        private DevExpress.XtraEditors.CheckEdit checkEdit14;
         private DevExpress.XtraEditors.TextEdit textEdit15;
         private DevExpress.XtraEditors.LabelControl labelControl17;
-        private DevExpress.XtraEditors.CheckEdit checkEdit13;
         private DevExpress.XtraEditors.TextEdit textEdit14;
         private DevExpress.XtraEditors.LabelControl labelControl16;
-        private DevExpress.XtraEditors.CheckEdit checkEdit12;
         private DevExpress.XtraEditors.TextEdit textEdit13;
         private DevExpress.XtraEditors.LabelControl labelControl15;
-        private DevExpress.XtraEditors.CheckEdit checkEdit3;
         private DevExpress.XtraEditors.LabelControl labelControl14;
-        private DevExpress.XtraEditors.CheckEdit checkEdit17;
         private DevExpress.XtraEditors.TextEdit textEdit18;
         private DevExpress.XtraEditors.LabelControl labelControl20;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;

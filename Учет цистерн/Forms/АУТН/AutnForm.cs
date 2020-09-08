@@ -82,53 +82,12 @@ namespace Учет_цистерн.Forms.АУТН
             simpleButton1.Enabled = true;
             simpleButton10.Visible = false;
             simpleButton11.Visible = true;
-
-            checkEdit3.Visible = true;
-            checkEdit12.Visible = true;
-            checkEdit13.Visible = true;
-            checkEdit14.Visible = true;
-            checkEdit15.Visible = true;
-            checkEdit16.Visible = true;
-            checkEdit17.Visible = true;
-            checkEdit18.Visible = true;
-            checkEdit19.Visible = true;
-            checkEdit20.Visible = true;
-            checkEdit21.Visible = true;
-            checkEdit22.Visible = true;
-            checkEdit23.Visible = true;
+            Unblock();
         }
         private void simpleButton11_Click(object sender, EventArgs e)
         {
             simpleButton11.Visible = false;
             simpleButton10.Visible = true;
-            checkEdit3.Visible = false;
-            checkEdit12.Visible = false;
-            checkEdit13.Visible = false;
-            checkEdit14.Visible = false;
-            checkEdit15.Visible = false;
-            checkEdit16.Visible = false;
-            checkEdit17.Visible = false;
-            checkEdit18.Visible = false;
-            checkEdit19.Visible = false;
-            checkEdit20.Visible = false;
-            checkEdit21.Visible = false;
-            checkEdit22.Visible = false;
-            checkEdit23.Visible = false;
-
-            checkEdit3.Checked = false;
-            checkEdit12.Checked = false;
-            checkEdit13.Checked = false;
-            checkEdit14.Checked = false;
-            checkEdit15.Checked = false;
-            checkEdit16.Checked = false;
-            checkEdit17.Checked = false;
-            checkEdit18.Checked = false;
-            checkEdit19.Checked = false;
-            checkEdit20.Checked = false;
-            checkEdit21.Checked = false;
-            checkEdit22.Checked = false;
-            checkEdit23.Checked = false;
-
             Block();
         }
 
@@ -174,39 +133,46 @@ namespace Учет_цистерн.Forms.АУТН
         {
             string Avail, Klapan, DemSkob, PTC, Ushki, Skobi, Shaiba, Lest, Greben, Barash, TriBolt, Exp, Note = string.Empty;
 
-            if (checkEdit17.Checked) { Avail = textEdit18.Text.Trim(); } else { Avail = ""; } //Пригодность 
-            if (checkEdit3.Checked) { Klapan = textEdit12.Text.Trim(); } else { Klapan = ""; } //3 кл 
-            if (checkEdit12.Checked) { DemSkob = textEdit13.Text.Trim(); } else { DemSkob = ""; } //дем скобы
-            if (checkEdit13.Checked) { PTC = textEdit14.Text.Trim(); } else { PTC = ""; } //трафар ПТС
-            if (checkEdit14.Checked) { Ushki = textEdit24.Text.Trim(); } else { Ushki = ""; } //Ушки 
-            if (checkEdit15.Checked) { Skobi = textEdit15.Text.Trim(); } else { Skobi = ""; } //Скобы 
-            if (checkEdit22.Checked) { Shaiba = textEdit16.Text.Trim(); } else { Shaiba = ""; } //Шайба и валик 
-            if (checkEdit21.Checked) { Lest = textEdit23.Text.Trim(); } else { Lest = ""; } //ЛЕстница 
-            if (checkEdit20.Checked) { Greben = textEdit22.Text.Trim(); } else { Greben = ""; } //Гребнь 
-            if (checkEdit19.Checked) { Barash = textEdit21.Text.Trim(); } else { Barash = ""; } //ВЦ бараш тип
-            if (checkEdit18.Checked) { TriBolt = textEdit20.Text.Trim(); } else { TriBolt = ""; } //3 болта
-            if (checkEdit16.Checked) { Exp = textEdit19.Text.Trim(); } else { Exp = ""; } //годный на эксп
-            if (checkEdit23.Checked) { Note = textEdit17.Text.Trim(); } else { Note = ""; } //Причина негод
+            Avail = textEdit18.Text.Trim();
+            Klapan = textEdit12.Text.Trim();
+            DemSkob = textEdit13.Text.Trim();
+            PTC = textEdit14.Text.Trim();
+            Ushki = textEdit24.Text.Trim();
+            Skobi = textEdit15.Text.Trim();
+            Shaiba = textEdit16.Text.Trim();
+            Lest = textEdit23.Text.Trim();
+            Greben = textEdit22.Text.Trim();
+            Barash = textEdit21.Text.Trim();
+            TriBolt = textEdit20.Text.Trim();
+            Exp = textEdit19.Text.Trim();
+            Note = textEdit17.Text.Trim();
 
-            ArrayList rows = new ArrayList();
-            List<Object> aList = new List<Object>();
-            string Arrays = string.Empty;
+            if((Avail != "" && Klapan != "" && DemSkob != "" && PTC != "" && Ushki != "" && Skobi != "" && Shaiba != "" && Lest != "" && Greben != "" && Barash != "" && TriBolt != "" && Exp != "" && Note != ""))
+            {
+                ArrayList rows = new ArrayList();
+                List<Object> aList = new List<Object>();
+                string Arrays = string.Empty;
 
-            Int32[] selectedRowHandles = gridView1.GetSelectedRows();
-            for (int i = 0; i < selectedRowHandles.Length; i++)
-            {
-                int selectedRowHandle = selectedRowHandles[i];
-                if (selectedRowHandle >= 0)
-                    rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                Int32[] selectedRowHandles = gridView1.GetSelectedRows();
+                for (int i = 0; i < selectedRowHandles.Length; i++)
+                {
+                    int selectedRowHandle = selectedRowHandles[i];
+                    if (selectedRowHandle >= 0)
+                        rows.Add(gridView1.GetDataRow(selectedRowHandle));
+                }
+                foreach (DataRow row in rows)
+                {
+                    aList.Add(row["ID"]);
+                    Arrays = string.Join(" ", aList);
+                    string UpdateAutnAll = "exec dbo.UpdateAutn '" + Avail + "','" + Klapan + "','" + DemSkob + "','" + PTC + "','" + Ushki + "','" + Skobi + "','" + Shaiba + "','" + Lest + "','" + Greben + "','" + Barash + "','" + TriBolt + "','" + Exp + "','" + Note + "','" + Arrays + "'";
+                    DbConnection.DBConnect(UpdateAutnAll);
+                }
+                RefreshBody();
             }
-            foreach (DataRow row in rows)
+            else
             {
-                aList.Add(row["ID"]);
-                Arrays = string.Join(" ", aList);
-                string UpdateAutnAll = "exec dbo.UpdateAutnAll '" + Avail + "','" + Klapan + "','" + DemSkob + "','" + PTC + "','" + Ushki + "','" + Skobi + "','" + Shaiba + "','" + Lest + "','" + Greben + "','" + Barash + "','" + TriBolt + "','" + Exp + "','" + Note + "','" + Arrays + "'";
-                DbConnection.DBConnect(UpdateAutnAll);
+                MessageBox.Show("Заполните пустые поля АУТН!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            RefreshBody();
         }
         private void simpleButton4_Click(object sender, EventArgs e)
         {
@@ -246,26 +212,11 @@ namespace Учет_цистерн.Forms.АУТН
         }
 
         //AUTN
-        private void checkEdit3_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            textEdit12.Enabled = (checkEdit3.CheckState == CheckState.Checked);
-        }
-
-        private void checkEdit17_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            textEdit18.Enabled = (checkEdit17.CheckState == CheckState.Checked);
-        }
-
         private void textEdit18_Properties_KeyPress(object sender, KeyPressEventArgs e)
         {
             var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
 
             e.Handled = !validKeys.Contains((Keys)e.KeyChar);
-        }
-
-        private void checkEdit12_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            textEdit13.Enabled = (checkEdit12.CheckState == CheckState.Checked);
         }
 
         private void textEdit13_Properties_KeyPress(object sender, KeyPressEventArgs e)
@@ -275,21 +226,11 @@ namespace Учет_цистерн.Forms.АУТН
             e.Handled = !validKeys.Contains((Keys)e.KeyChar);
         }
 
-        private void checkEdit13_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            textEdit14.Enabled = (checkEdit13.CheckState == CheckState.Checked);
-        }
-
         private void textEdit14_Properties_KeyPress(object sender, KeyPressEventArgs e)
         {
             var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
 
             e.Handled = !validKeys.Contains((Keys)e.KeyChar);
-        }
-
-        private void checkEdit14_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            textEdit24.Enabled = (checkEdit14.CheckState == CheckState.Checked);
         }
 
         private void textEdit24_Properties_KeyPress(object sender, KeyPressEventArgs e)
@@ -305,22 +246,11 @@ namespace Учет_цистерн.Forms.АУТН
 
             e.Handled = !validKeys.Contains((Keys)e.KeyChar);
         }
-
-        private void checkEdit15_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            textEdit15.Enabled = (checkEdit15.CheckState == CheckState.Checked);
-        }
-
         private void textEdit16_Properties_KeyPress(object sender, KeyPressEventArgs e)
         {
             var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
 
             e.Handled = !validKeys.Contains((Keys)e.KeyChar);
-        }
-
-        private void checkEdit22_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            textEdit16.Enabled = (checkEdit22.CheckState == CheckState.Checked);
         }
 
         private void textEdit23_Properties_KeyPress(object sender, KeyPressEventArgs e)
@@ -329,65 +259,30 @@ namespace Учет_цистерн.Forms.АУТН
 
             e.Handled = !validKeys.Contains((Keys)e.KeyChar);
         }
-
-        private void checkEdit21_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            textEdit23.Enabled = (checkEdit21.CheckState == CheckState.Checked);
-        }
-
         private void textEdit22_Properties_KeyPress(object sender, KeyPressEventArgs e)
         {
             var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
 
             e.Handled = !validKeys.Contains((Keys)e.KeyChar);
         }
-
-        private void checkEdit20_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            textEdit22.Enabled = (checkEdit20.CheckState == CheckState.Checked);
-        }
-
         private void textEdit21_Properties_KeyPress(object sender, KeyPressEventArgs e)
         {
             var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
 
             e.Handled = !validKeys.Contains((Keys)e.KeyChar);
         }
-
-        private void checkEdit19_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            textEdit21.Enabled = (checkEdit19.CheckState == CheckState.Checked);
-        }
-
         private void textEdit20_Properties_KeyPress(object sender, KeyPressEventArgs e)
         {
             var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
 
             e.Handled = !validKeys.Contains((Keys)e.KeyChar);
         }
-
-        private void checkEdit18_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            textEdit20.Enabled = (checkEdit18.CheckState == CheckState.Checked);
-        }
-
         private void textEdit19_Properties_KeyPress(object sender, KeyPressEventArgs e)
         {
             var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
 
             e.Handled = !validKeys.Contains((Keys)e.KeyChar);
         }
-
-        private void checkEdit16_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            textEdit19.Enabled = (checkEdit16.CheckState == CheckState.Checked);
-        }
-
-        private void checkEdit23_Properties_CheckStateChanged(object sender, EventArgs e)
-        {
-            textEdit17.Enabled = (checkEdit23.CheckState == CheckState.Checked);
-        }
-
         private void textEdit12_Properties_KeyPress(object sender, KeyPressEventArgs e)
         {
             var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
