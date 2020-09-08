@@ -153,7 +153,7 @@ namespace Учет_цистерн.Forms.АУТН
             string Id = gridView1.GetFocusedDataRow()[0].ToString();
             int CurrentId = Convert.ToInt32(Id);
 
-            string GetAutn = "select * from d__Autn_2 where Head_ID = " + CurrentId;
+            string GetAutn = "select * from d__Autn_2 where ID = " + CurrentId;
             DataTable Autn = DbConnection.DBConnect(GetAutn);
 
             textEdit18.Text = Autn.Rows[0][1].ToString();
