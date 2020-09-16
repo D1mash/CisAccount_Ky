@@ -978,7 +978,7 @@ namespace Учет_цистерн
                 }
             }
 
-            AutnForm autnForm = new AutnForm();
+            AutnForm autnForm = new AutnForm(role);
             tabControl1.Show();
             TabPage autnPage = new TabPage("Журнал АУТН");
             tabControl1.TabPages.Add(autnPage);

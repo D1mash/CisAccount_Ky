@@ -30,6 +30,7 @@
         {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.textEdit12 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
@@ -67,10 +68,10 @@
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.xtraScrollableControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).BeginInit();
@@ -92,7 +93,6 @@
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -116,6 +116,18 @@
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
             this.xtraScrollableControl1.Size = new System.Drawing.Size(342, 791);
             this.xtraScrollableControl1.TabIndex = 0;
+            // 
+            // memoEdit1
+            // 
+            this.memoEdit1.Location = new System.Drawing.Point(11, 253);
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Chartreuse;
+            this.memoEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.memoEdit1.Properties.Appearance.Options.UseBackColor = true;
+            this.memoEdit1.Properties.Appearance.Options.UseFont = true;
+            this.memoEdit1.Properties.ReadOnly = true;
+            this.memoEdit1.Size = new System.Drawing.Size(321, 47);
+            this.memoEdit1.TabIndex = 37;
             // 
             // groupControl5
             // 
@@ -145,7 +157,7 @@
             this.groupControl5.Controls.Add(this.labelControl14);
             this.groupControl5.Controls.Add(this.textEdit18);
             this.groupControl5.Controls.Add(this.labelControl20);
-            this.groupControl5.Location = new System.Drawing.Point(8, 59);
+            this.groupControl5.Location = new System.Drawing.Point(8, 5);
             this.groupControl5.Name = "groupControl5";
             this.groupControl5.Size = new System.Drawing.Size(328, 211);
             this.groupControl5.TabIndex = 36;
@@ -157,6 +169,7 @@
             this.textEdit12.Name = "textEdit12";
             this.textEdit12.Size = new System.Drawing.Size(48, 20);
             this.textEdit12.TabIndex = 59;
+            this.textEdit12.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit12_KeyUp);
             // 
             // labelControl26
             // 
@@ -176,6 +189,7 @@
             this.textEdit17.Properties.MaxLength = 20;
             this.textEdit17.Size = new System.Drawing.Size(168, 20);
             this.textEdit17.TabIndex = 57;
+            this.textEdit17.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit17_KeyUp);
             // 
             // textEdit24
             // 
@@ -189,6 +203,7 @@
             this.textEdit24.Properties.MaxLength = 1;
             this.textEdit24.Size = new System.Drawing.Size(48, 20);
             this.textEdit24.TabIndex = 36;
+            this.textEdit24.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit24_KeyUp);
             // 
             // labelControl19
             // 
@@ -212,6 +227,7 @@
             this.textEdit19.Properties.MaxLength = 1;
             this.textEdit19.Size = new System.Drawing.Size(48, 20);
             this.textEdit19.TabIndex = 54;
+            this.textEdit19.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit19_KeyUp);
             // 
             // labelControl21
             // 
@@ -235,6 +251,7 @@
             this.textEdit20.Properties.MaxLength = 1;
             this.textEdit20.Size = new System.Drawing.Size(48, 20);
             this.textEdit20.TabIndex = 51;
+            this.textEdit20.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit20_KeyUp);
             // 
             // labelControl22
             // 
@@ -258,6 +275,7 @@
             this.textEdit21.Properties.MaxLength = 1;
             this.textEdit21.Size = new System.Drawing.Size(48, 20);
             this.textEdit21.TabIndex = 48;
+            this.textEdit21.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit21_KeyUp);
             // 
             // labelControl23
             // 
@@ -281,6 +299,7 @@
             this.textEdit22.Properties.MaxLength = 1;
             this.textEdit22.Size = new System.Drawing.Size(48, 20);
             this.textEdit22.TabIndex = 45;
+            this.textEdit22.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit22_KeyUp);
             // 
             // labelControl24
             // 
@@ -304,6 +323,7 @@
             this.textEdit23.Properties.MaxLength = 1;
             this.textEdit23.Size = new System.Drawing.Size(48, 20);
             this.textEdit23.TabIndex = 42;
+            this.textEdit23.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit23_KeyUp);
             // 
             // labelControl25
             // 
@@ -327,6 +347,7 @@
             this.textEdit16.Properties.MaxLength = 1;
             this.textEdit16.Size = new System.Drawing.Size(48, 20);
             this.textEdit16.TabIndex = 39;
+            this.textEdit16.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit16_KeyUp);
             // 
             // labelControl18
             // 
@@ -350,6 +371,7 @@
             this.textEdit15.Properties.MaxLength = 1;
             this.textEdit15.Size = new System.Drawing.Size(48, 20);
             this.textEdit15.TabIndex = 36;
+            this.textEdit15.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit15_KeyUp);
             // 
             // labelControl17
             // 
@@ -372,6 +394,7 @@
             this.textEdit14.Properties.MaxLength = 1;
             this.textEdit14.Size = new System.Drawing.Size(48, 20);
             this.textEdit14.TabIndex = 33;
+            this.textEdit14.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit14_KeyUp);
             // 
             // labelControl16
             // 
@@ -394,6 +417,7 @@
             this.textEdit13.Properties.MaxLength = 1;
             this.textEdit13.Size = new System.Drawing.Size(48, 20);
             this.textEdit13.TabIndex = 30;
+            this.textEdit13.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit13_KeyUp);
             // 
             // labelControl15
             // 
@@ -427,6 +451,7 @@
             this.textEdit18.Properties.Name = "textEdit18";
             this.textEdit18.Size = new System.Drawing.Size(48, 20);
             this.textEdit18.TabIndex = 16;
+            this.textEdit18.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit18_KeyUp);
             // 
             // labelControl20
             // 
@@ -442,12 +467,13 @@
             // 
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(236, 276);
+            this.simpleButton1.Location = new System.Drawing.Point(236, 222);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 25);
             this.simpleButton1.TabIndex = 15;
             this.simpleButton1.Text = "Сохранить";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.simpleButton1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.simpleButton1_KeyUp);
             // 
             // groupControl2
             // 
@@ -645,17 +671,6 @@
             this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle);
             // 
-            // memoEdit1
-            // 
-            this.memoEdit1.Location = new System.Drawing.Point(11, 6);
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Chartreuse;
-            this.memoEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.memoEdit1.Properties.Appearance.Options.UseBackColor = true;
-            this.memoEdit1.Properties.Appearance.Options.UseFont = true;
-            this.memoEdit1.Size = new System.Drawing.Size(321, 47);
-            this.memoEdit1.TabIndex = 37;
-            // 
             // AutnForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -670,6 +685,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.xtraScrollableControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
@@ -692,7 +708,6 @@
             this.groupControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
