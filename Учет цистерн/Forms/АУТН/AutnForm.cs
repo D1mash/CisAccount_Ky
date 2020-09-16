@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +16,9 @@ namespace Учет_цистерн.Forms.АУТН
 {
     public partial class AutnForm : Form
     {
+        private string Carnum = string.Empty;
+        private int CurrentId;
+
         public AutnForm()
         {
             InitializeComponent();
@@ -22,14 +28,14 @@ namespace Учет_цистерн.Forms.АУТН
             DateTime now = DateTime.Now;
             dateTimePicker1.Value = now;
 
-            RefreshBody();
+            RefreshBody(1);
 
             Block();
 
             simpleButton11.Visible = false;
         }
 
-        public void RefreshBody()
+        public void RefreshBody(int section)
         {
             gridControl1.DataSource = null;
             gridView1.Columns.Clear();
@@ -40,6 +46,23 @@ namespace Учет_цистерн.Forms.АУТН
             gridView1.BestFitColumns();
             gridView1.Columns[0].Visible = false;
             gridView1.Columns[1].Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+
+            if (section == 1)
+            {
+                gridView1.MoveLast();
+            }
+            else
+            {
+                ColumnView View = (ColumnView)gridControl1.FocusedView;
+                // obtaining the column bound to the Country field 
+                GridColumn column = View.Columns["id"];
+                if (column != null)
+                {
+                    int rhFound = View.LocateByDisplayText(View.FocusedRowHandle + 1, column, Convert.ToString(CurrentId));
+                    View.FocusedRowHandle = rhFound;
+                    View.FocusedColumn = column;
+                }
+            }
         }
 
         private void Block()
@@ -100,17 +123,21 @@ namespace Учет_цистерн.Forms.АУТН
             {
                 dateTimePicker1.Value = DateTime.Today;
 
-                RefreshBody();
+                RefreshBody(1);
             }
             else
             {
-                RefreshBody();
+                RefreshBody(1);
             }
         }
         private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             string Id = gridView1.GetFocusedDataRow()[0].ToString();
-            int CurrentId = Convert.ToInt32(Id);
+            CurrentId = Convert.ToInt32(Id);
+
+            Carnum = gridView1.GetFocusedDataRow()[1].ToString();
+            memoEdit1.Text = Carnum;
+
 
             string GetAutn = "select * from d__Autn_2 where ID = " + CurrentId;
             DataTable Autn = DbConnection.DBConnect(GetAutn);
@@ -167,7 +194,7 @@ namespace Учет_цистерн.Forms.АУТН
                     string UpdateAutnAll = "exec dbo.UpdateAutn '" + Avail + "','" + Klapan + "','" + DemSkob + "','" + PTC + "','" + Ushki + "','" + Skobi + "','" + Shaiba + "','" + Lest + "','" + Greben + "','" + Barash + "','" + TriBolt + "','" + Exp + "','" + Note + "','" + Arrays + "'";
                     DbConnection.DBConnect(UpdateAutnAll);
                 }
-                RefreshBody();
+                RefreshBody(2);
             }
             else
             {
@@ -198,7 +225,7 @@ namespace Учет_цистерн.Forms.АУТН
                         string delete = "exec dbo.DeleteAutn '" + Arrays + "'";
                         DbConnection.DBConnect(delete);
                     }
-                    RefreshBody();
+                    RefreshBody(1);
                     if (gridView1.RowCount > 0)
                     {
                         gridView1_RowCellClick(null, null);
@@ -288,6 +315,32 @@ namespace Учет_цистерн.Forms.АУТН
             var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
 
             e.Handled = !validKeys.Contains((Keys)e.KeyChar);
+        }
+
+        private void gridControl1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                gridView1_RowCellClick(null, null);
+            }
+            else
+            {
+                if (e.KeyCode == Keys.Down)
+                {
+                    gridView1_RowCellClick(null, null);
+                }
+            }
+        }
+
+        private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+
+            if (View.FocusedRowHandle == e.RowHandle)
+            {
+                e.Appearance.ForeColor = Color.DarkBlue;
+                e.Appearance.BackColor = Color.LightBlue;
+            }
         }
     }
 }

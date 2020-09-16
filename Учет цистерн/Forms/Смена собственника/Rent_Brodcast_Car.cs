@@ -248,6 +248,8 @@ namespace Учет_цистерн.Forms.Смена_собственника
                         gridControl2.DataSource = null;
                         gridView2.Columns.Clear();
 
+                        Context1_Visible(false);
+
                         string Search_1 = "exec dbo.Rent_Search_By_Parametrs_2 " + "@Car_Num = '" + textEdit1.Text.Trim() + "', " + "@Type = " + 2;
                         gridControl3.DataSource = DbConnection.DBConnect(Search_1);
                         gridView3.Columns[0].Visible = false;
@@ -257,8 +259,6 @@ namespace Учет_цистерн.Forms.Смена_собственника
                             string Search_2 = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Car_Num = '" + SelectItemRow2.ToString() + "', " + "@Date_Start = '" + Date_S + "', " + " @Date_End = '" + Date_E + "', " + "@Date_Rec = '" + Date_R + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + "@Product = '" + textEdit3.Text + "'," + "@Rent_Num = '" + textEdit2.Text + "'," + "@Type = " + 2;
                             gridControl1.DataSource = DbConnection.DBConnect(Search_2);
                             gridView1.Columns[0].Visible = false;
-
-                            gridView3_RowCellClick(null, null);
 
                             GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер В/Ц", "Кол.во={0}");
                             gridView3.Columns["Номер В/Ц"].Summary.Add(item3);
@@ -284,6 +284,8 @@ namespace Учет_цистерн.Forms.Смена_собственника
 
                     gridControl1.DataSource = null;
                     gridView1.Columns.Clear();
+
+                    Context1_Visible(true);
 
                     string Search = "exec dbo.Rent_Search_By_Parametrs_1 " + "@Car_Num = '" + textEdit1.Text + "', " + "@Date_Start = '" + Date_S + "', " + " @Date_End = '" + Date_E + "', " + "@Date_Rec = '" + Date_R + "', " + "@OwnerId = '" + comboBox1.SelectedValue + "'," + "@Product = '" + textEdit3.Text + "'," + "@Rent_Num = '" + textEdit2.Text + "'," + "@Type = " + 1;
                     DataTable dt = DbConnection.DBConnect(Search);
@@ -1052,5 +1054,15 @@ namespace Учет_цистерн.Forms.Смена_собственника
                 e.HighPriority = true;
             }
         }
+
+
+        private void Context1_Visible(bool val)
+        {
+            contextMenuStrip1.Items[0].Enabled = val;
+            contextMenuStrip1.Items[1].Enabled = val;
+            contextMenuStrip1.Items[2].Enabled = val;
+            contextMenuStrip1.Items[3].Enabled = val;
+        }
+
     }
 }
