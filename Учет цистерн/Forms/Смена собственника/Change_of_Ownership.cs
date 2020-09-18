@@ -127,7 +127,7 @@ namespace Учет_цистерн.Forms
                         for (int i = 0; i < list.Count; i++)
                         {
                             Arrays = string.Join(" ", list[i]);
-                            Prod_Arrays = string.Join(" ", Prod_list[i]);
+                            Prod_Arrays = string.Join(",", Prod_list[i]);
                             string newRow = "exec dbo.Rent_ADD_Body '" + Arrays + "','" + Prod_Arrays + "','" + User_ID + "'," + Id;
                             DbConnection.DBConnect(newRow);
                         }
@@ -310,12 +310,20 @@ namespace Учет_цистерн.Forms
 
                 rows.Clear();
                 aList.Clear();
+                ClearGroup();
                 RefreshGrid();
             }
             else
             {
                 MessageBox.Show("Для удаления сначала требуется вставить вагоны", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void ClearGroup()
+        {
+            textEdit2.Text = string.Empty;
+            textEdit3.Text = string.Empty;
+            dateEdit1.DateTime = DateTime.Today;
         }
 
         private void tabControl1_TabClosing(object sender, TabControlCancelEventArgs e)
