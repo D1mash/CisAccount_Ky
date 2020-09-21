@@ -990,6 +990,21 @@ namespace Учет_цистерн
             autnPage.Controls.Add(autnForm);
         }
 
+        private void cSVExportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(CSV))
+                {
+                    form.Activate();
+                    return;
+                }
+            }
+
+            CSV cSV = new CSV();
+            cSV.ShowDialog();
+        }
+
         private void дополнительныеПараметрыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string GetParameter = "select Parameter from d__Parameter";

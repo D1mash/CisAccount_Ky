@@ -67,6 +67,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -84,7 +85,7 @@
             this.contextMenuStrip_Rent_Car = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.заявкаНаПередачуВцToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменаСобственникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button8 = new System.Windows.Forms.Button();
+            this.cSVExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -152,7 +153,8 @@
             // contextMenuStrip_Report
             // 
             this.contextMenuStrip_Report.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.cSVExportToolStripMenuItem});
             this.contextMenuStrip_Report.Name = "contextMenuStrip_Report";
             this.contextMenuStrip_Report.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             resources.ApplyResources(this.contextMenuStrip_Report, "contextMenuStrip_Report");
@@ -470,6 +472,16 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
+            // button8
+            // 
+            resources.ApplyResources(this.button8, "button8");
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.button8.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.Name = "button8";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // button6
             // 
             resources.ApplyResources(this.button6, "button6");
@@ -593,15 +605,11 @@
             resources.ApplyResources(this.сменаСобственникаToolStripMenuItem, "сменаСобственникаToolStripMenuItem");
             this.сменаСобственникаToolStripMenuItem.Click += new System.EventHandler(this.сменаСобственникаToolStripMenuItem_Click);
             // 
-            // button8
+            // cSVExportToolStripMenuItem
             // 
-            resources.ApplyResources(this.button8, "button8");
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.button8.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.Name = "button8";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.cSVExportToolStripMenuItem.Name = "cSVExportToolStripMenuItem";
+            resources.ApplyResources(this.cSVExportToolStripMenuItem, "cSVExportToolStripMenuItem");
+            this.cSVExportToolStripMenuItem.Click += new System.EventHandler(this.cSVExportToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -695,6 +703,7 @@
         private System.Windows.Forms.ToolStripMenuItem сменаСобственникаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem дополнительныеПараметрыToolStripMenuItem;
         public System.Windows.Forms.Button button8;
+        private System.Windows.Forms.ToolStripMenuItem cSVExportToolStripMenuItem;
     }
 }
 
