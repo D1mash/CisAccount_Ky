@@ -700,29 +700,7 @@ namespace Учет_цистерн
                 logger.Error(exp, "сНОПриходToolStripMenuItem_Click");
             }
         }
-
-        private void сНОToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                foreach (Form form in Application.OpenForms)
-                {
-                    if (form.GetType() == typeof(SnoReportForm))
-                    {
-                        form.Activate();
-                        return;
-                    }
-                }
-                SnoReportForm snoReporForm = new SnoReportForm();
-                snoReporForm.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error(ex, "сНОToolStripMenuItem1_Click");
-            }
-        }
-
+        
         private void проверитьОбновлениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -795,28 +773,6 @@ namespace Учет_цистерн
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 logger.Error(ex, "btn_Refrence_Click_MainForm");
-            }
-        }
-
-        private void аУТНToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                foreach (Form form in Application.OpenForms)
-                {
-                    if (form.GetType() == typeof(AUTNReportForm))
-                    {
-                        form.Activate();
-                        return;
-                    }
-                }
-                AUTNReportForm aUTNReportForm = new AUTNReportForm();
-                aUTNReportForm.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error(ex, " аУТНToolStripMenuItem_Click_MainForm");
             }
         }
 
@@ -989,22 +945,7 @@ namespace Учет_цистерн
             autnForm.Dock = DockStyle.Fill;
             autnPage.Controls.Add(autnForm);
         }
-
-        private void cSVExportToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.GetType() == typeof(CSV))
-                {
-                    form.Activate();
-                    return;
-                }
-            }
-
-            CSV cSV = new CSV();
-            cSV.ShowDialog();
-        }
-
+        
         private void дополнительныеПараметрыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string GetParameter = "select Parameter from d__Parameter";

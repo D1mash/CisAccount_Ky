@@ -18,7 +18,6 @@ namespace Учет_цистерн
         }
 
         int SelectItemRow;
-        int Active;
 
         private void BtnBrigadeAdd_Click(object sender, EventArgs e)
         {

@@ -149,12 +149,10 @@
     <Compile Include="Forms\Обработанные вагоны\Journal.Designer.cs">
       <DependentUpon>Journal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Отчеты\CSV.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Отчеты\CSV.Designer.cs">
-      <DependentUpon>CSV.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Forms\Отчеты\AUTN.cs" />
+    <Compile Include="Forms\Отчеты\General_Reestr.cs" />
+    <Compile Include="Forms\Отчеты\SNO.cs" />
+    <Compile Include="Forms\Отчеты\TotalByStation.cs" />
     <Compile Include="Forms\Смена собственника\Change_of_Ownership.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,18 +182,6 @@
     </Compile>
     <Compile Include="Forms\заявки на обработку\OrderUpdateForm.Designer.cs">
       <DependentUpon>OrderUpdateForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Отчеты\AUTNReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Отчеты\AUTNReportForm.Designer.cs">
-      <DependentUpon>AUTNReportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Отчеты\SnoReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Отчеты\SnoReportForm.Designer.cs">
-      <DependentUpon>SnoReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Пользователи\AddUserForm.cs">
       <SubType>Form</SubType>
@@ -448,9 +434,6 @@
     <EmbeddedResource Include="Forms\Обработанные вагоны\Journal.resx">
       <DependentUpon>Journal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Отчеты\CSV.resx">
-      <DependentUpon>CSV.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Смена собственника\Change_of_Ownership.resx">
       <DependentUpon>Change_of_Ownership.cs</DependentUpon>
     </EmbeddedResource>
@@ -465,12 +448,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\заявки на обработку\OrderUpdateForm.resx">
       <DependentUpon>OrderUpdateForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Отчеты\AUTNReportForm.resx">
-      <DependentUpon>AUTNReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Отчеты\SnoReportForm.resx">
-      <DependentUpon>SnoReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Пользователи\AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>
@@ -562,6 +539,7 @@
     <EmbeddedResource Include="Forms\Услуги\СНО Реализация\SnoImplUpdateForm.resx">
       <DependentUpon>SnoImplUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>

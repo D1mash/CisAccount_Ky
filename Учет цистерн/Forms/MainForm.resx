@@ -319,14 +319,8 @@
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Обработанные вагоны</value>
   </data>
-  <data name="cSVExportToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
-  <data name="cSVExportToolStripMenuItem.Text" xml:space="preserve">
-    <value>CSV export</value>
-  </data>
   <data name="contextMenuStrip_Report.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 70</value>
+    <value>201, 48</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip_Report.Name" xml:space="preserve">
     <value>contextMenuStrip_Report</value>
@@ -1578,12 +1572,6 @@
     <value>сменаСобственникаToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;сменаСобственникаToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cSVExportToolStripMenuItem.Name" xml:space="preserve">
-    <value>cSVExportToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;cSVExportToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
