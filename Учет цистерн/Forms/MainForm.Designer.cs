@@ -85,7 +85,6 @@
             this.contextMenuStrip_Rent_Car = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.заявкаНаПередачуВцToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменаСобственникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cSVExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Product.SuspendLayout();
             this.contextMenuStrip_Report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -153,8 +152,7 @@
             // contextMenuStrip_Report
             // 
             this.contextMenuStrip_Report.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.cSVExportToolStripMenuItem});
+            this.toolStripMenuItem1});
             this.contextMenuStrip_Report.Name = "contextMenuStrip_Report";
             this.contextMenuStrip_Report.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             resources.ApplyResources(this.contextMenuStrip_Report, "contextMenuStrip_Report");
@@ -605,12 +603,6 @@
             resources.ApplyResources(this.сменаСобственникаToolStripMenuItem, "сменаСобственникаToolStripMenuItem");
             this.сменаСобственникаToolStripMenuItem.Click += new System.EventHandler(this.сменаСобственникаToolStripMenuItem_Click);
             // 
-            // cSVExportToolStripMenuItem
-            // 
-            this.cSVExportToolStripMenuItem.Name = "cSVExportToolStripMenuItem";
-            resources.ApplyResources(this.cSVExportToolStripMenuItem, "cSVExportToolStripMenuItem");
-            this.cSVExportToolStripMenuItem.Click += new System.EventHandler(this.cSVExportToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -703,7 +695,6 @@
         private System.Windows.Forms.ToolStripMenuItem сменаСобственникаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem дополнительныеПараметрыToolStripMenuItem;
         public System.Windows.Forms.Button button8;
-        private System.Windows.Forms.ToolStripMenuItem cSVExportToolStripMenuItem;
     }
 }
 
