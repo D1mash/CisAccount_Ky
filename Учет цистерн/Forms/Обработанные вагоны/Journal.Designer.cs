@@ -149,6 +149,9 @@
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.checkEdit32 = new DevExpress.XtraEditors.CheckEdit();
+            this.dateTimePicker7 = new System.Windows.Forms.DateTimePicker();
+            this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.xtraScrollableControl1.SuspendLayout();
@@ -221,6 +224,7 @@
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit32.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -267,6 +271,9 @@
             // 
             // groupControl7
             // 
+            this.groupControl7.Controls.Add(this.checkEdit32);
+            this.groupControl7.Controls.Add(this.dateTimePicker7);
+            this.groupControl7.Controls.Add(this.labelControl32);
             this.groupControl7.Controls.Add(this.checkEdit31);
             this.groupControl7.Controls.Add(this.checkEdit30);
             this.groupControl7.Controls.Add(this.checkEdit29);
@@ -290,7 +297,7 @@
             this.groupControl7.Controls.Add(this.labelControl34);
             this.groupControl7.Location = new System.Drawing.Point(8, 306);
             this.groupControl7.Name = "groupControl7";
-            this.groupControl7.Size = new System.Drawing.Size(328, 211);
+            this.groupControl7.Size = new System.Drawing.Size(328, 236);
             this.groupControl7.TabIndex = 38;
             this.groupControl7.Text = "Даты и Время";
             // 
@@ -1286,7 +1293,7 @@
             // 
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(236, 523);
+            this.simpleButton1.Location = new System.Drawing.Point(236, 548);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 25);
             this.simpleButton1.TabIndex = 15;
@@ -1415,7 +1422,7 @@
             // 
             this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton7.Appearance.Options.UseFont = true;
-            this.simpleButton7.Location = new System.Drawing.Point(8, 523);
+            this.simpleButton7.Location = new System.Drawing.Point(8, 548);
             this.simpleButton7.Name = "simpleButton7";
             this.simpleButton7.Size = new System.Drawing.Size(100, 25);
             this.simpleButton7.TabIndex = 18;
@@ -1444,7 +1451,7 @@
             // 
             // memoEdit1
             // 
-            this.memoEdit1.Location = new System.Drawing.Point(8, 597);
+            this.memoEdit1.Location = new System.Drawing.Point(8, 622);
             this.memoEdit1.Name = "memoEdit1";
             this.memoEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.memoEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1458,7 +1465,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(8, 554);
+            this.panel1.Location = new System.Drawing.Point(8, 579);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(328, 42);
             this.panel1.TabIndex = 19;
@@ -1744,6 +1751,33 @@
             this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle);
             this.gridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridView1_KeyUp);
             // 
+            // checkEdit32
+            // 
+            this.checkEdit32.Location = new System.Drawing.Point(3, 207);
+            this.checkEdit32.Name = "checkEdit32";
+            this.checkEdit32.Properties.Caption = "";
+            this.checkEdit32.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit32_Properties_CheckStateChanged);
+            this.checkEdit32.Size = new System.Drawing.Size(16, 19);
+            this.checkEdit32.TabIndex = 45;
+            this.checkEdit32.Visible = false;
+            // 
+            // dateTimePicker7
+            // 
+            this.dateTimePicker7.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.dateTimePicker7.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker7.Location = new System.Drawing.Point(160, 210);
+            this.dateTimePicker7.Name = "dateTimePicker7";
+            this.dateTimePicker7.Size = new System.Drawing.Size(142, 21);
+            this.dateTimePicker7.TabIndex = 44;
+            // 
+            // labelControl32
+            // 
+            this.labelControl32.Location = new System.Drawing.Point(24, 210);
+            this.labelControl32.Name = "labelControl32";
+            this.labelControl32.Size = new System.Drawing.Size(97, 13);
+            this.labelControl32.TabIndex = 43;
+            this.labelControl32.Text = "Дата уборки с ППС";
+            // 
             // Journal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1831,6 +1865,7 @@
             this.groupControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit32.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1958,5 +1993,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl33;
         private System.Windows.Forms.DateTimePicker dateTimePicker9;
         private DevExpress.XtraEditors.LabelControl labelControl34;
+        private DevExpress.XtraEditors.CheckEdit checkEdit32;
+        private System.Windows.Forms.DateTimePicker dateTimePicker7;
+        private DevExpress.XtraEditors.LabelControl labelControl32;
     }
 }
