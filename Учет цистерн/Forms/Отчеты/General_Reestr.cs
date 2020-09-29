@@ -105,17 +105,17 @@ namespace Учет_цистерн.Forms.Отчеты
                             }
 
                             EndSum += val1;
-                            if (i < Itog_Rep.Rows.Count && (Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт горячей обработкой" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт"))
-                            {
-                                total += int.Parse(Itog_Rep.Rows[i][1].ToString());
-                            }
-                            else
-                            {
-                                continue;
-                            }
+                            //if (i < Itog_Rep.Rows.Count && (Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт горячей обработкой" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт"))
+                            //{
+                            //    total += int.Parse(Itog_Rep.Rows[i][1].ToString());
+                            //}
+                            //else
+                            //{
+                            //    continue;
+                            //}
                         }
 
-                        sl.SetCellValue(dataTable.Rows.Count + 14, 13, total);
+                        sl.SetCellValue(dataTable.Rows.Count + 14, 13, dataTable.Rows.Count);
                         sl.SetCellStyle(dataTable.Rows.Count + 14, 13, FormattingExcelCells(sl, false));
 
 
@@ -192,17 +192,17 @@ namespace Учет_цистерн.Forms.Отчеты
                             }
 
                             EndSum += val1;
-                            if (i < Itog_Rep.Rows.Count && (Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт горячей обработкой" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт"))
-                            {
-                                total += int.Parse(Itog_Rep.Rows[i][1].ToString());
-                            }
-                            else
-                            {
-                                continue;
-                            }
+                            //if (i < Itog_Rep.Rows.Count && (Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт горячей обработкой" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт"))
+                            //{
+                            //    total += int.Parse(Itog_Rep.Rows[i][1].ToString());
+                            //}
+                            //else
+                            //{
+                            //    continue;
+                            //}
                         }
 
-                        sl.SetCellValue(dataTable.Rows.Count + 14, 13, total);
+                        sl.SetCellValue(dataTable.Rows.Count + 14, 13, dataTable.Rows.Count);
                         sl.SetCellStyle(dataTable.Rows.Count + 14, 13, FormattingExcelCells(sl, false));
 
 

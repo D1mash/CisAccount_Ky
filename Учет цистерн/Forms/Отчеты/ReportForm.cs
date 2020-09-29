@@ -106,7 +106,8 @@ namespace Учет_цистерн
             }
             else
             {
-                return;
+                checkBox4.Enabled = true;
+                checkBox6.Enabled = true;
             }
 
             String Owner = "Select * from d__Owner";
@@ -137,7 +138,6 @@ namespace Учет_цистерн
             {
                 if (checkBox1.Checked)
                 {
-
                     //Итоговый реестр
 
                     if (comboBox2.SelectedIndex == 0)
@@ -173,7 +173,6 @@ namespace Учет_цистерн
                     else
                     {
                         //Общий реестр
-
                         if (checkBox2.Checked) 
                         {
                             if (comboBox2.SelectedIndex == 0)
@@ -181,35 +180,30 @@ namespace Учет_цистерн
                                 var GR = new General_Reestr();
                                 GR.General_Reesters(dateTimePicker1.Value.Date.ToString(), dateTimePicker2.Value.Date.ToString());
                             }
-                            else
+                        }
+                        // СНО Реализация
+                        if (checkBox4.Checked)
+                        {
+                            Refresh();
+                            var Sno = new SNO();
+                            Sno.SNO_OUT(dateTimePicker1.Value.Date.ToShortDateString(), dateTimePicker2.Value.Date.ToShortDateString(), dt);
+                            dt.Clear();
+                        }
+                        else
+                        {
+                            // СНО Приход
+                            if (checkBox6.Checked)
                             {
+                                Refresh();
 
-                                // СНО Реализация
-                                if (checkBox4.Checked)
-                                {
-                                    Refresh();
-                                    var Sno = new SNO();
-                                    Sno.SNO_OUT(dateTimePicker1.Value.Date.ToShortDateString(), dateTimePicker2.Value.Date.ToShortDateString(), dt);
-                                    dt.Clear();
-                                }
-                                else
-                                {
-                                    // СНО Приход
-                                    if (checkBox6.Checked)
-                                    {
-                                        Refresh();
-
-                                        var Sno = new SNO();
-                                        Sno.SNO_IN(dateTimePicker1.Value.Date.ToShortDateString(), dateTimePicker2.Value.Date.ToShortDateString(), dt);
-                                        dt.Clear();
-                                    }
-                                }
+                                var Sno = new SNO();
+                                Sno.SNO_IN(dateTimePicker1.Value.Date.ToShortDateString(), dateTimePicker2.Value.Date.ToShortDateString(), dt);
+                                dt.Clear();
                             }
                         }
                     }
                 }
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
