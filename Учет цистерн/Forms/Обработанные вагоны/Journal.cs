@@ -182,7 +182,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     gridView1.Columns[0].Visible = false;
                     gridView1.Columns[1].Visible = false;
                     gridView1.Columns[2].Visible = false;
-
+                    
                     //gridView1.Columns[19].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
                     //gridView1.Columns[19].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
                     //gridView1.Columns[20].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -197,6 +197,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                     gridView1.Columns[24].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
                     gridView1.Columns[25].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
                     gridView1.Columns[25].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
+                    gridView1.Columns[26].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                    gridView1.Columns[26].DisplayFormat.FormatString = "dd.MM.yyyy HH:mm";
 
                     if (Section == "2")
                     {

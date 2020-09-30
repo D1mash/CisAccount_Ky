@@ -31,6 +31,9 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
             this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
+            this.checkEdit32 = new DevExpress.XtraEditors.CheckEdit();
+            this.dateTimePicker7 = new System.Windows.Forms.DateTimePicker();
+            this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
             this.checkEdit31 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit30 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit29 = new DevExpress.XtraEditors.CheckEdit();
@@ -149,14 +152,12 @@
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.checkEdit32 = new DevExpress.XtraEditors.CheckEdit();
-            this.dateTimePicker7 = new System.Windows.Forms.DateTimePicker();
-            this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.xtraScrollableControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
             this.groupControl7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit32.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit31.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit30.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit29.Properties)).BeginInit();
@@ -224,7 +225,6 @@
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit32.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -300,6 +300,33 @@
             this.groupControl7.Size = new System.Drawing.Size(328, 236);
             this.groupControl7.TabIndex = 38;
             this.groupControl7.Text = "Даты и Время";
+            // 
+            // checkEdit32
+            // 
+            this.checkEdit32.Location = new System.Drawing.Point(3, 207);
+            this.checkEdit32.Name = "checkEdit32";
+            this.checkEdit32.Properties.Caption = "";
+            this.checkEdit32.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit32_Properties_CheckStateChanged);
+            this.checkEdit32.Size = new System.Drawing.Size(16, 19);
+            this.checkEdit32.TabIndex = 45;
+            this.checkEdit32.Visible = false;
+            // 
+            // dateTimePicker7
+            // 
+            this.dateTimePicker7.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.dateTimePicker7.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker7.Location = new System.Drawing.Point(160, 210);
+            this.dateTimePicker7.Name = "dateTimePicker7";
+            this.dateTimePicker7.Size = new System.Drawing.Size(142, 21);
+            this.dateTimePicker7.TabIndex = 44;
+            // 
+            // labelControl32
+            // 
+            this.labelControl32.Location = new System.Drawing.Point(24, 210);
+            this.labelControl32.Name = "labelControl32";
+            this.labelControl32.Size = new System.Drawing.Size(97, 13);
+            this.labelControl32.TabIndex = 43;
+            this.labelControl32.Text = "Дата уборки с ППС";
             // 
             // checkEdit31
             // 
@@ -441,7 +468,7 @@
             // 
             // dateTimePicker6
             // 
-            this.dateTimePicker6.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.dateTimePicker6.CustomFormat = "HH:mm:ss";
             this.dateTimePicker6.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker6.Location = new System.Drawing.Point(160, 77);
             this.dateTimePicker6.Name = "dateTimePicker6";
@@ -458,7 +485,7 @@
             // 
             // dateTimePicker8
             // 
-            this.dateTimePicker8.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.dateTimePicker8.CustomFormat = "HH:mm:ss";
             this.dateTimePicker8.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker8.Location = new System.Drawing.Point(160, 50);
             this.dateTimePicker8.Name = "dateTimePicker8";
@@ -475,7 +502,7 @@
             // 
             // dateTimePicker9
             // 
-            this.dateTimePicker9.CustomFormat = "dd.MM.yyyy HH:mm:ss";
+            this.dateTimePicker9.CustomFormat = "HH:mm:ss";
             this.dateTimePicker9.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker9.Location = new System.Drawing.Point(160, 23);
             this.dateTimePicker9.Name = "dateTimePicker9";
@@ -1751,33 +1778,6 @@
             this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle);
             this.gridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridView1_KeyUp);
             // 
-            // checkEdit32
-            // 
-            this.checkEdit32.Location = new System.Drawing.Point(3, 207);
-            this.checkEdit32.Name = "checkEdit32";
-            this.checkEdit32.Properties.Caption = "";
-            this.checkEdit32.Properties.CheckStateChanged += new System.EventHandler(this.checkEdit32_Properties_CheckStateChanged);
-            this.checkEdit32.Size = new System.Drawing.Size(16, 19);
-            this.checkEdit32.TabIndex = 45;
-            this.checkEdit32.Visible = false;
-            // 
-            // dateTimePicker7
-            // 
-            this.dateTimePicker7.CustomFormat = "dd.MM.yyyy HH:mm:ss";
-            this.dateTimePicker7.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker7.Location = new System.Drawing.Point(160, 210);
-            this.dateTimePicker7.Name = "dateTimePicker7";
-            this.dateTimePicker7.Size = new System.Drawing.Size(142, 21);
-            this.dateTimePicker7.TabIndex = 44;
-            // 
-            // labelControl32
-            // 
-            this.labelControl32.Location = new System.Drawing.Point(24, 210);
-            this.labelControl32.Name = "labelControl32";
-            this.labelControl32.Size = new System.Drawing.Size(97, 13);
-            this.labelControl32.TabIndex = 43;
-            this.labelControl32.Text = "Дата уборки с ППС";
-            // 
             // Journal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1796,6 +1796,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).EndInit();
             this.groupControl7.ResumeLayout(false);
             this.groupControl7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit32.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit31.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit30.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit29.Properties)).EndInit();
@@ -1865,7 +1866,6 @@
             this.groupControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit32.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
