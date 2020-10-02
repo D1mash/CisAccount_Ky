@@ -82,7 +82,7 @@ namespace Учет_цистерн.Forms.Отчеты
 
                         //Итоговая сводка
                         int rowcount = 0;
-                        int total = 0;
+                        //int total = 0;
                         double EndSum = 0;
 
                         for (int i = 0; i < Itog_Rep.Rows.Count; i++)
@@ -165,11 +165,8 @@ namespace Учет_цистерн.Forms.Отчеты
 
                         //Итоговая сводка
                         int rowcount = 0;
-                        int total = 0;
-
-
+                        //int total = 0;
                         double EndSum = 0;
-
 
                         for (int i = 0; i < Itog_Rep.Rows.Count; i++)
                         {
@@ -187,7 +184,6 @@ namespace Учет_цистерн.Forms.Отчеты
                                     val1 = val1 * double.Parse(Itog_Rep.Rows[i][j].ToString());
                                     sl.SetCellValue(i + dataTable.Rows.Count + 15 + rowcount, j + 12, Convert.ToDecimal(Itog_Rep.Rows[i][j].ToString()));
                                     sl.SetCellStyle(i + dataTable.Rows.Count + 15 + rowcount, j + 12, FormattingExcelCells(sl, false));
-
                                 }
                             }
 
