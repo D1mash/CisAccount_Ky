@@ -709,6 +709,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                     "'" + StartTor + "'," +
                                     "'" + EndTor + "'," +
                                     "'" + ArrivalDate + "'," +
+                                    "'" + DateFromPPS + "'," +
                                     "'" + DateVU19 + "'," +
                                     "" + Temp + ",'" + s + "'";
                                 DbConnection.DBConnect(UpdateAll);
@@ -726,7 +727,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                     (textEdit6.Text != "0" || textEdit7.Text != "0" || textEdit8.Text != "0" || textEdit5.Text != "0" || textEdit9.Text != "0" || textEdit10.Text != "0" || textEdit11.Text != "0"))
                         {
                             string Oper, Brigade, Product, HOL, TOR, GOR, DR1, DR2, Trafar, Naruzh,
-                                StartProcess, EndProcess, DateTehCart, StartTor, EndTor, ArrivalDate, DateVU19 = string.Empty;
+                                StartProcess, EndProcess, DateTehCart, StartTor, EndTor, ArrivalDate, DateVU19, DateFromPPS = string.Empty;
 
                             if (checkEdit1.Checked) { Oper = textEdit4.Text.Trim(); }
                             else { Oper = ""; }
@@ -766,7 +767,8 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                             if (checkEdit28.Checked) { StartTor = dateTimePicker2.Value.ToString(); } else { StartTor = ""; }
                             if (checkEdit29.Checked) { EndTor = dateTimePicker3.Value.ToString(); } else { EndTor = ""; }
                             if (checkEdit30.Checked) { ArrivalDate = dateTimePicker5.Value.ToString(); } else { ArrivalDate = ""; }
-                            if (checkEdit31.Checked) { DateVU19 = dateTimePicker4.Value.ToString(); } else { DateVU19 = ""; }
+                            if (checkEdit31.Checked) { DateVU19 = dateTimePicker4.Value.ToString(); } else { DateVU19 = ""; }                        
+                            if (checkEdit32.Checked) { DateFromPPS = dateTimePicker7.Value.ToString(); } else { DateFromPPS = ""; }
 
                             ArrayList rows = new ArrayList();
                             List<Object> aList = new List<Object>();
@@ -805,6 +807,7 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                     "'" + StartTor + "'," +
                                     "'" + EndTor + "'," +
                                     "'" + ArrivalDate + "'," +
+                                    "'" + DateFromPPS + "'," +
                                     "'" + DateVU19 + "'," +
                                     "" + Temp + ",'" + s + "'";
                                 DbConnection.DBConnect(UpdateAll);
