@@ -1031,6 +1031,21 @@ namespace Учет_цистерн.Forms.Смена_собственника
             }
         }
 
+        private void gridView3_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Up)
+            {
+                gridView3_RowCellClick(null, null);
+            }
+            else
+            {
+                if(e.KeyCode == Keys.Down)
+                {
+                    gridView3_RowCellClick(null, null);
+                }
+            }
+        }
+
         private void gridView2_RowStyle(object sender, RowStyleEventArgs e)
         {
             GridView View = sender as GridView;
