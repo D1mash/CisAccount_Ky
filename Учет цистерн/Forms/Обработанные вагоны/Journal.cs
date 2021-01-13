@@ -163,9 +163,11 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                 GridColumnSummaryItem Carnumber = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Номер вагона", "{0}");
                 GridColumnSummaryItem ServiceCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма услуг", "{0}");
                 GridColumnSummaryItem TorCost = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Сумма ТОР", "{0}");
+                GridColumnSummaryItem ZnakOpastnosty = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Знак Опастности", "{0}");
                 gridView1.Columns["Номер вагона"].Summary.Add(Carnumber);
                 gridView1.Columns["Сумма услуг"].Summary.Add(ServiceCost);
                 gridView1.Columns["Сумма ТОР"].Summary.Add(TorCost);
+                gridView1.Columns["Знак Опастности"].Summary.Add(ZnakOpastnosty);
             }
             else
             {
@@ -545,11 +547,6 @@ namespace Учет_цистерн.Forms.Обработанные_вагоны
                                         textEdit1.Text = "";
                                         textEdit1.Focus();
                                     }
-                                    //}
-                                    //else
-                                    //{
-                                    //    MessageBox.Show("Заполните пустые поля в АУТН!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                    //}
                                 }
                                 else
                                 {

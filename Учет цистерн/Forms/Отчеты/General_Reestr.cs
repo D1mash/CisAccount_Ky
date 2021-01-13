@@ -64,7 +64,7 @@ namespace Учет_цистерн.Forms.Отчеты
                         sl.CopyCell("B13", "K20", "B" + val, true);
 
                         sl.ImportDataTable(10, 1, dataTable, false);
-                        sl.CopyCell("E10", "R" + Convert.ToString(dataTable.Rows.Count + 10), "G10", true);
+                        sl.CopyCell("E10", "S" + Convert.ToString(dataTable.Rows.Count + 10), "G10", true);
 
                         for (int i = 0; i < dataTable.Rows.Count; i++)
                         {
@@ -105,14 +105,6 @@ namespace Учет_цистерн.Forms.Отчеты
                             }
 
                             EndSum += val1;
-                            //if (i < Itog_Rep.Rows.Count && (Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт горячей обработкой" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт"))
-                            //{
-                            //    total += int.Parse(Itog_Rep.Rows[i][1].ToString());
-                            //}
-                            //else
-                            //{
-                            //    continue;
-                            //}
                         }
 
                         sl.SetCellValue(dataTable.Rows.Count + 14, 13, dataTable.Rows.Count);
@@ -147,7 +139,7 @@ namespace Учет_цистерн.Forms.Отчеты
                         sl.CopyCell("B13", "K20", "B" + val, true);
 
                         sl.ImportDataTable(10, 1, dataTable, false);
-                        sl.CopyCell("E10", "R" + Convert.ToString(dataTable.Rows.Count + 10), "G10", true);
+                        sl.CopyCell("E10", "S" + Convert.ToString(dataTable.Rows.Count + 10), "G10", true);
 
                         for (int i = 0; i < dataTable.Rows.Count; i++)
                         {
@@ -188,14 +180,6 @@ namespace Учет_цистерн.Forms.Отчеты
                             }
 
                             EndSum += val1;
-                            //if (i < Itog_Rep.Rows.Count && (Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт горячей обработкой" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт"))
-                            //{
-                            //    total += int.Parse(Itog_Rep.Rows[i][1].ToString());
-                            //}
-                            //else
-                            //{
-                            //    continue;
-                            //}
                         }
 
                         sl.SetCellValue(dataTable.Rows.Count + 14, 13, dataTable.Rows.Count);

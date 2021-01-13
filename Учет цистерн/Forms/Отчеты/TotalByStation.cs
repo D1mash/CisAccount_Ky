@@ -23,25 +23,22 @@ namespace Учет_цистерн.Forms.Отчеты
 
                 sl.SetCellValue("B6", "c " + date_1 + " по " + date_2);
 
-                var val = dt.Rows.Count * 2 + 11;
-                sl.CopyCell("B13", "H24", "B" + val, true);
-                //worksheet.Range["B13:H24"].Cut(worksheet.Cells[gridView1.RowCount * 2 + 11, 2]);
+                var val = dt.Rows.Count * 2 + 12;
+                sl.CopyCell("B13", "H20", "B" + val, true);
 
                 int item = 0;
 
-                //Кол.во услуг
                 int total = 0;
 
-                //Сумм * Кол.во
                 double final_sum = 0;
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
+                    
+
                     if (i % 2 == 0)
                     {
                         var k = 11 + item;
-                        //Excel.Range range = worksheet.Range[worksheet.Cells[i + k, 2], worksheet.Cells[i + k, 8]];
-                        //range.Merge();
 
                         sl.MergeWorksheetCells(i + k, 2, i + k, 8);
 
@@ -62,12 +59,9 @@ namespace Учет_цистерн.Forms.Отчеты
                     else
                     {
                         var k = 11 + item;
-                        //Excel.Range range = worksheet.Range[worksheet.Cells[i + k, 2], worksheet.Cells[i + k, 8]];
-                        //range.Merge();
 
                         sl.MergeWorksheetCells(i + k, 2, i + k, 8);
 
-                        //FormattingExcelCells(range, false, false);
                         for (int j = 0; j < dt.Columns.Count; j++)
                         {
                             if (j == 0)
@@ -84,9 +78,10 @@ namespace Учет_цистерн.Forms.Отчеты
 
                     }
 
+                    item++;
                     final_sum += int.Parse(dt.Rows[i][1].ToString()) * double.Parse(dt.Rows[i][2].ToString()); ;
 
-                    if (i < dt.Rows.Count && dt.Rows[i][0].ToString() != "Текущий отцепочный ремонт горячей обработкой" && dt.Rows[i][0].ToString() != "Текущий отцепочный ремонт")
+                    if (i < dt.Rows.Count && dt.Rows[i][0].ToString() != "Текущий отцепочный ремонт горячей обработкой" && dt.Rows[i][0].ToString() != "Текущий отцепочный ремонт" && dt.Rows[i][0].ToString() != "Очистка от знака опастности")
                     {
                         total += int.Parse(dt.Rows[i][1].ToString());
                     }
@@ -94,9 +89,6 @@ namespace Учет_цистерн.Forms.Отчеты
                     {
                         continue;
                     }
-
-                    //backgroundWorker.ReportProgress(i);
-                    item++;
                 }
                 //Кол.во обработанных
                 sl.SetCellValue("I8", total);
@@ -181,14 +173,15 @@ namespace Учет_цистерн.Forms.Отчеты
                         }
                     }
                     EndSum += val1;
-                    //if (i < Itog_Rep.Rows.Count && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт горячей обработкой" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт")
-                    //{
-                    //    total += int.Parse(Itog_Rep.Rows[i][1].ToString());
-                    //}
-                    //else
-                    //{
-                    //    continue;
-                    //}
+
+                    if (i < Itog_Rep.Rows.Count && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт горячей обработкой" && Itog_Rep.Rows[i][0].ToString() != "Текущий отцепочный ремонт" && Itog_Rep.Rows[i][0].ToString() != "Очистка от знака опастности")
+                    {
+                        total += int.Parse(Itog_Rep.Rows[i][1].ToString());
+                    }
+                    else
+                    {
+                        continue;
+                    }
                 }
 
                 //sl.SetCellValue(dataTable.Rows.Count + 14, 13, total);
